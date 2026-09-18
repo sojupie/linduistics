@@ -1,6 +1,6 @@
 # Phase 4: Go Backend Service Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Build a high-performance Go HTTP REST service providing sub-millisecond endpoints for 2D spatial slider queries, dynamic text universality inspection, false friends quizzes, and fuzzy headword search.
 
@@ -19,7 +19,7 @@
 - Test: `backend/internal/config/config_test.go`
 - Test: `backend/internal/database/db_test.go`
 
-- [ ] **Step 1: Initialize Go module and install pgx dependency**
+- [x] **Step 1: Initialize Go module and install pgx dependency**
 
 Run from project root:
 ```bash
@@ -29,7 +29,7 @@ go mod init github.com/sojupie/linduistics/backend
 go get github.com/jackc/pgx/v5@v5.7.2
 ```
 
-- [ ] **Step 2: Implement configuration loader with fallback defaults**
+- [x] **Step 2: Implement configuration loader with fallback defaults**
 
 Write `backend/internal/config/config.go`:
 ```go
@@ -97,7 +97,7 @@ func Load() *Config {
 }
 ```
 
-- [ ] **Step 3: Implement database pool wrapper with healthcheck**
+- [x] **Step 3: Implement database pool wrapper with healthcheck**
 
 Write `backend/internal/database/db.go`:
 ```go
@@ -149,7 +149,7 @@ func (d *DB) Close() {
 }
 ```
 
-- [ ] **Step 4: Write and run config and db pool tests**
+- [x] **Step 4: Write and run config and db pool tests**
 
 Write `backend/internal/config/config_test.go` and `backend/internal/database/db_test.go`:
 ```go
@@ -205,7 +205,7 @@ func TestDBConnection(t *testing.T) {
 Run: `cd backend && go test -v ./internal/config ./internal/database`
 Expected: PASS
 
-- [ ] **Step 5: Commit Task 1**
+- [x] **Step 5: Commit Task 1**
 
 ```bash
 git add backend/go.mod backend/go.sum backend/internal/config backend/internal/database
@@ -221,7 +221,7 @@ git commit -m "feat(backend): initialize go module and pgx connection pool"
 - Create: `backend/internal/repository/comparisons.go`
 - Test: `backend/internal/repository/comparisons_test.go`
 
-- [ ] **Step 1: Define domain models**
+- [x] **Step 1: Define domain models**
 
 Write `backend/internal/models/comparison.go`:
 ```go
@@ -265,7 +265,7 @@ type PairsResult struct {
 }
 ```
 
-- [ ] **Step 2: Implement repository methods**
+- [x] **Step 2: Implement repository methods**
 
 Write `backend/internal/repository/comparisons.go`:
 ```go
@@ -473,7 +473,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 }
 ```
 
-- [ ] **Step 3: Write and run repository integration test**
+- [x] **Step 3: Write and run repository integration test**
 
 Write `backend/internal/repository/comparisons_test.go`:
 ```go
@@ -547,7 +547,7 @@ func TestRepositoryQueries(t *testing.T) {
 Run: `cd backend && go test -v ./internal/repository`
 Expected: PASS
 
-- [ ] **Step 4: Commit Task 2**
+- [x] **Step 4: Commit Task 2**
 
 ```bash
 git add backend/internal/models backend/internal/repository
@@ -562,7 +562,7 @@ git commit -m "feat(backend): implement comparison domain models and spatial rep
 - Create: `backend/internal/services/inspector.go`
 - Test: `backend/internal/services/inspector_test.go`
 
-- [ ] **Step 1: Implement Tokenizer and Universality Scoring Logic**
+- [x] **Step 1: Implement Tokenizer and Universality Scoring Logic**
 
 Write `backend/internal/services/inspector.go`:
 ```go
@@ -727,7 +727,7 @@ func (s *InspectorService) InspectText(ctx context.Context, req InspectRequest) 
 }
 ```
 
-- [ ] **Step 2: Write unit tests for Tokenizer and scoring**
+- [x] **Step 2: Write unit tests for Tokenizer and scoring**
 
 Write `backend/internal/services/inspector_test.go`:
 ```go
@@ -767,7 +767,7 @@ func TestTokenizePunctuationAndNumbers(t *testing.T) {
 Run: `cd backend && go test -v ./internal/services`
 Expected: PASS
 
-- [ ] **Step 3: Commit Task 3**
+- [x] **Step 3: Commit Task 3**
 
 ```bash
 git add backend/internal/services
@@ -789,7 +789,7 @@ git commit -m "feat(backend): implement universality text inspector and tokenize
 - Create: `backend/internal/api/router.go`
 - Test: `backend/internal/handlers/handlers_test.go`
 
-- [ ] **Step 1: Write pure standard library middleware stack**
+- [x] **Step 1: Write pure standard library middleware stack**
 
 Write `backend/internal/middleware/middleware.go`:
 ```go
@@ -866,7 +866,7 @@ func (rw *responseWriter) WriteHeader(code int) {
 }
 ```
 
-- [ ] **Step 2: Write JSON helpers and HTTP handlers**
+- [x] **Step 2: Write JSON helpers and HTTP handlers**
 
 Write `backend/internal/handlers/helpers.go`:
 ```go
@@ -1157,7 +1157,7 @@ func (h *HealthHandler) HandleHealth(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-- [ ] **Step 3: Assemble standard library ServeMux with method matching**
+- [x] **Step 3: Assemble standard library ServeMux with method matching**
 
 Write `backend/internal/api/router.go`:
 ```go
@@ -1201,7 +1201,7 @@ func NewRouter(pool *pgxpool.Pool, corsOrigin string) http.Handler {
 }
 ```
 
-- [ ] **Step 4: Write comprehensive HTTP integration tests**
+- [x] **Step 4: Write comprehensive HTTP integration tests**
 
 Write `backend/internal/handlers/handlers_test.go`:
 ```go
@@ -1292,7 +1292,7 @@ func TestSearchEndpoint(t *testing.T) {
 Run: `cd backend && go test -v ./internal/handlers`
 Expected: PASS
 
-- [ ] **Step 5: Commit Task 4**
+- [x] **Step 5: Commit Task 4**
 
 ```bash
 git add backend/internal/middleware backend/internal/handlers backend/internal/api
@@ -1306,7 +1306,7 @@ git commit -m "feat(backend): implement standard library HTTP handlers, middlewa
 **Files:**
 - Create: `backend/cmd/server/main.go`
 
-- [ ] **Step 1: Write main.go with graceful shutdown**
+- [x] **Step 1: Write main.go with graceful shutdown**
 
 Write `backend/cmd/server/main.go`:
 ```go
@@ -1378,7 +1378,7 @@ func main() {
 }
 ```
 
-- [ ] **Step 2: Build server executable and run tests across all packages**
+- [x] **Step 2: Build server executable and run tests across all packages**
 
 Run:
 ```bash
@@ -1388,7 +1388,7 @@ go test -v ./...
 ```
 Expected: PASS across all packages.
 
-- [ ] **Step 3: Commit Task 5**
+- [x] **Step 3: Commit Task 5**
 
 ```bash
 git add backend/cmd/server
