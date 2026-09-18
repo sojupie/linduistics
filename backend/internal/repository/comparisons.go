@@ -200,3 +200,26 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 	}
 	return items, nil
 }
+
+func (r *ComparisonsRepository) ResolveForms(ctx context.Context, lang string, forms []string) (map[string][]string, error) {
+	query := `
+		SELECT form, lemma
+		FROM word_forms
+		WHERE lang = $1 AND form = ANY($2)
+	`
+	rows, err := r.pool.Query(ctx, query, lang, forms)
+	if err != nil {
+		return nil, fmt.Errorf("resolve forms error: %w", err)
+	}
+	defer rows.Close()
+
+	mapping := make(map[string][]string)
+	for rows.Next() {
+		var f, l string
+		if err := rows.Scan(&f, &l); err != nil {
+			return nil, err
+		}
+		mapping[f] = append(mapping[f], l)
+	}
+	return mapping, nil
+}

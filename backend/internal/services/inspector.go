@@ -25,6 +25,7 @@ type TargetMatch struct {
 
 type TokenAnalysis struct {
 	Token           string                 `json:"token"`
+	Lemma           string                 `json:"lemma,omitempty"`
 	Status          string                 `json:"status"` // "universal", "branch_specific", "isolate"
 	CoverageRatio   float32                `json:"coverage_ratio"`
 	LanguageMatches map[string]TargetMatch `json:"matches"`
@@ -89,12 +90,32 @@ func (s *InspectorService) InspectText(ctx context.Context, req InspectRequest) 
 		}, nil
 	}
 
-	matches, err := s.repo.GetByTokens(ctx, req.SourceLang, uniqueTokens, req.TargetLangs, 0.70)
+	// Resolve inflected forms to canonical lemmas (e.g. katten -> katt, sover -> sova)
+	formMap, _ := s.repo.ResolveForms(ctx, req.SourceLang, uniqueTokens)
+
+	lookupWords := make([]string, 0, len(uniqueTokens)*2)
+	seenLookup := make(map[string]bool)
+	for _, tok := range uniqueTokens {
+		if !seenLookup[tok] {
+			seenLookup[tok] = true
+			lookupWords = append(lookupWords, tok)
+		}
+		if lemmas, ok := formMap[tok]; ok {
+			for _, l := range lemmas {
+				if !seenLookup[l] {
+					seenLookup[l] = true
+					lookupWords = append(lookupWords, l)
+				}
+			}
+		}
+	}
+
+	matches, err := s.repo.GetByTokens(ctx, req.SourceLang, lookupWords, req.TargetLangs, 0.70)
 	if err != nil {
 		return nil, err
 	}
 
-	// Group matches by token and target lang (keeping highest semantic sim)
+	// Group matches by word and target lang (keeping highest semantic sim)
 	tokenMap := make(map[string]map[string]TargetMatch)
 	for _, m := range matches {
 		if _, ok := tokenMap[m.WordA]; !ok {
@@ -119,6 +140,21 @@ func (s *InspectorService) InspectText(ctx context.Context, req InspectRequest) 
 
 	for _, tok := range uniqueTokens {
 		langMatches := tokenMap[tok]
+		var resolvedLemma string
+
+		// If no direct matches on the surface form, try resolved lemmas
+		if len(langMatches) == 0 {
+			if lemmas, ok := formMap[tok]; ok {
+				for _, l := range lemmas {
+					if lMatches, found := tokenMap[l]; found && len(lMatches) > 0 {
+						langMatches = lMatches
+						resolvedLemma = l
+						break
+					}
+				}
+			}
+		}
+
 		if langMatches == nil {
 			langMatches = make(map[string]TargetMatch)
 		}
@@ -136,6 +172,7 @@ func (s *InspectorService) InspectText(ctx context.Context, req InspectRequest) 
 
 		tokenAnalyses = append(tokenAnalyses, TokenAnalysis{
 			Token:           tok,
+			Lemma:           resolvedLemma,
 			Status:          status,
 			CoverageRatio:   ratio,
 			LanguageMatches: langMatches,
