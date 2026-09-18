@@ -6,6 +6,7 @@ import type {
   QuizItemDto,
   RawComparisonDto,
 } from '../types/linguistics';
+import { QUERY_CONFIG } from '../constants/config';
 
 export class ApiError extends Error {
   readonly statusCode: number;
@@ -62,10 +63,11 @@ export async function inspectText(payload: {
   });
 }
 
+
 export async function fetchFalseFriendsQuiz(
   source = 'sv',
   target = 'en',
-  limit = 10,
+  limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
 ): Promise<QuizItemDto[]> {
   const query = new URLSearchParams({
     mode: 'quiz',
@@ -79,7 +81,7 @@ export async function fetchFalseFriendsQuiz(
 export async function searchHeadwords(
   query: string,
   lang = 'sv',
-  limit = 20,
+  limit = QUERY_CONFIG.DEFAULT_SEARCH_LIMIT,
 ): Promise<RawComparisonDto[]> {
   const params = new URLSearchParams({
     q: query,

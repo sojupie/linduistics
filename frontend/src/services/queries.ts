@@ -14,13 +14,14 @@ import type {
   QuizItemDto,
   RawComparisonDto,
 } from '../types/linguistics';
+import { QUERY_CONFIG } from '../constants/config';
 
 export function useHealthQuery() {
   return useQuery<HealthStatus>({
     queryKey: ['health'],
     queryFn: fetchHealth,
-    refetchInterval: 30000,
-    retry: 1,
+    refetchInterval: QUERY_CONFIG.HEALTH_POLL_INTERVAL_MS,
+    retry: QUERY_CONFIG.HEALTH_RETRY_COUNT,
   });
 }
 
@@ -28,7 +29,7 @@ export function usePairsQuery(params: PairsQueryParams) {
   return useQuery<PairsResultDto>({
     queryKey: ['pairs', params],
     queryFn: () => fetchPairs(params),
-    staleTime: 1000 * 60 * 5, // 5 minutes cache
+    staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
 }
 
@@ -45,13 +46,13 @@ export function useInspectMutation() {
 export function useFalseFriendsQuizQuery(
   source = 'sv',
   target = 'en',
-  limit = 10,
+  limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
   options?: { enabled?: boolean },
 ) {
   return useQuery<QuizItemDto[]>({
     queryKey: ['false-friends', 'quiz', source, target, limit],
     queryFn: () => fetchFalseFriendsQuiz(source, target, limit),
-    staleTime: 1000 * 60 * 2,
+    staleTime: QUERY_CONFIG.QUIZ_STALE_TIME_MS,
     enabled: options?.enabled ?? true,
   });
 }
@@ -61,7 +62,7 @@ export function useHeadwordSearchQuery(query: string, lang = 'sv') {
   return useQuery<RawComparisonDto[]>({
     queryKey: ['search', lang, trimmed],
     queryFn: () => searchHeadwords(trimmed, lang),
-    enabled: trimmed.length >= 2,
-    staleTime: 1000 * 60 * 2,
+    enabled: trimmed.length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS,
+    staleTime: QUERY_CONFIG.SEARCH_STALE_TIME_MS,
   });
 }

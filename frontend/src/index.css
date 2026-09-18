@@ -7,8 +7,11 @@
   --color-substrate-lightpanel: #ECE7DD;
 
   --color-border-hairline: #2C2A26;
+  --color-border-subtle: #3E3B35;
   --color-border-lighthairline: #D8D1C3;
   --color-border-faint: rgba(234, 230, 223, 0.08);
+  --color-border-grid: #23211E;
+  --color-border-radar: #2A2824;
 
   --color-ink-carbon: #EAE6DF;
   --color-ink-muted: #9C968A;
