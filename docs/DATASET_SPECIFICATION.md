@@ -198,20 +198,68 @@ This recognizes Germanic consonant shifts (Grimm's Law: $p \rightarrow f$, $t \r
 
 ---
 
-## 6. Implementation Action Plan
+## 6. Implementation Status Matrix
 
-1. **Pipeline Extraction Enhancement (`parser.py`):**
-   * Extract all valid senses and definitions into `senses: List[dict]`.
-   * Extract `etymology_text` and parse `etymology_templates` (`inh`, `bor`, `der`, `cog`).
-2. **Sense Alignment & Disqualification Engine (`build_crosslingual_dataset.py`):**
-   * Compute full $N \times M$ sense matrix between Word A and Word B.
-   * Isolate the argmax sense pair $(i^*, j^*)$ and store their exact texts in `def_a` and `def_b`.
-   * Disqualify pairs from False Friend classification if any primary sense matches with $S_{\text{sem}} \ge 0.75$.
-   * Tag `false_friend_type` as `'etymological_shift'` or `'surface_collision'`.
-3. **Database Migration (`003_add_polysemy_and_etymology.sql`):**
-   * Add `senses_a JSONB`, `senses_b JSONB`, `etym_root VARCHAR(100)`, `etym_text_a TEXT`, `etym_text_b TEXT`, `false_friend_type VARCHAR(30)`.
-   * Add unique index on `(lang_a, lang_b, word_a, word_b)`.
-4. **Dense Table Frontend (`SpecimenDecks.tsx`):**
-   * Replace card deck with a dense, paginated register table.
-   * One row per headword pair.
-   * Drawer displays full polysemous contrast and etymological lineage.
+The following table defines the current operational status across all architectural layers:
+
+| Layer / Component | Status | Verified Capabilities | Active Limitations / Open Work |
+| :--- | :--- | :--- | :--- |
+| **Pipeline: Parser (`parser.py`)** | **Deployed** | Extracts full `senses` JSON (gloss, pos, tags, `is_active`); parses ancestral etymology templates (`gem-pro`, `ine-pro`, `la`) and regex fallbacks; fast CMU dict + rule fallback for English G2P. | Obsolete sense classification relies strictly on Wiktextract tags (`obsolete`, `archaic`, `historical`, `dated`). |
+| **Pipeline: Alignment & Classifier (`build_crosslingual_dataset.py`, `classifier.py`)** | **Deployed** | Full $N \times M$ sense matrix alignment; argmax binding $(i^*, j^*)$ for `def_a`/`def_b`; False Friend Disqualification Rule ($S_{\text{sem}} \ge 0.75$ on active senses); Type A vs Type B tagging; exact-spelling collision inclusion (5,112/pair). | Loanword identity override requires exact string match between gloss and counterpart headword. Articulatory distance matrix not yet integrated. |
+| **Database Schema (`003_add_polysemy_and_etymology.sql`)** | **Deployed** | 320,374 pairs populated across 20 directed pairs; `senses_a` and `senses_b` JSONB columns; `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; unique constraint on `(lang_a, lang_b, word_a, word_b)`. | Pairwise edge storage only; no unified $N$-language clique cluster table. |
+| **Backend API (`internal/repository/comparisons.go`)** | **Deployed** | Queries return `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; spatial GiST slider indexing; 100% test pass rate. | Endpoints return raw JSONB; no cluster aggregation endpoint for root lineages. |
+| **Frontend Types & API (`frontend/src/types/`, `frontend/src/api/`)** | **Pending** | Basic `WordComparison` interface in place. | Needs updated TypeScript fields for `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`. |
+| **Frontend UI (`frontend/src/routes/specimens.lazy.tsx`)** | **Pending** | Basic routing and layout. | Currently uses legacy card deck (`SpecimenDecks.tsx`). Must be rewritten to a dense, paginated table with detail drawer. |
+
+---
+
+## 7. Known Lexicological Caveats & Architectural Edge Cases
+
+This section documents active boundary conditions, edge cases, algorithmic trade-offs, and data limitations that must remain explicitly tracked across all pipeline and UI iterations:
+
+### 7.1 Homographs with Divergent Ancestral Origins Under One Headword
+* **The Problem:** A single orthographic string in a language may represent two historically distinct words (homographs with different etymologies). For example, Swedish *gift* represents:
+  1. *gift¹* (noun, neuter): poison $\leftarrow$ Middle Low German / German *Gift* ($\leftarrow$ Proto-Germanic *\*gifti*).
+  2. *gift²* (adjective): married $\leftarrow$ Old Swedish *gipt* / Old Norse *gipta* ($\leftarrow$ Proto-Germanic *\*giftiz*).
+* **Dataset Decision:** Due to the strict primary invariant of **one row per headword pair** (`UNIQUE(lang_a, lang_b, word_a, word_b)`), both homographs share a single database record. When compared to English *gift* (noun: present, verb: give), the argmax sense evaluator selects Swedish *married* ($S_{\text{sem}} = 0.22$) over *poison* ($S_{\text{sem}} = 0.04$) because $0.22 > 0.04$. 
+* **Pedagogical Requirement:** While both senses satisfy $S_{\text{sem}} \le 0.30$ (preserving the Type A False Friend tag), the UI Specimen Detail Drawer must prominently surface the *poison* sense alongside *married* so learners understand the primary semantic collision.
+
+### 7.2 Obsolete / Historical Sense Filtering & The Disqualification Rule
+* **The Problem:** If archaic or obsolete dictionary senses are treated as active meanings, legitimate modern False Friends would be disqualified. In historical Swedish, *gift* was once an obsolete noun meaning "a present" (attested from Proto-Germanic *\*giftiz*). If an unconstrained sense search evaluates this sense against English *gift*, $S_{\text{sem}}$ reaches $\approx 0.72$, falsely categorizing the pair as a cognate.
+* **Invariant:** Senses flagged with `obsolete`, `archaic`, `historical`, or `dated` tags in Wiktextract are tagged with `is_active: false`. The **False Friend Disqualification Rule** ($S_{\text{sem}} \ge 0.75$) checks **only active modern senses**. Obsolete senses are retained in `senses_a` and `senses_b` for historical inspection in the drawer, but are strictly barred from disqualifying modern False Friends.
+* **Caveat:** If a Wiktionary contributor neglected to tag an archaic meaning with appropriate template markup, that sense remains `is_active: true` and can artificially inflate $S_{\text{sem}}$.
+
+### 7.3 Identity & Circular Definitions in Foreign Loanwords
+* **The Problem:** In Wiktextract, shared internationalisms and culinary loanwords are frequently given circular single-word definitions in the source language (e.g., the Swedish Wiktionary entry for *halva* is defined simply as `['halva']`). Passing the isolated token `"halva"` into a multilingual sentence transformer against a descriptive English gloss (*"A confection usually made from crushed sesame seeds and honey..."*) produces an artificially depressed cosine similarity of $\approx 0.12$, triggering a false False Friend classification.
+* **Invariant:** In `align_pair_senses`, if two identical headwords (`word_a.lower() == word_b.lower()`) have a definition gloss that literally matches the counterpart headword (`gloss == word_b`), the sense pair is recognized as a direct lexicographical identity with $S_{\text{sem}} = 1.00$. This prevents shared loanwords (*halva*, *taco*, *sushi*) from collapsing into False Friends.
+* **Caveat:** Exact string matching only handles literal gloss-to-headword identities (`"halva" == "halva"`). If the Wiktionary gloss contains qualifying phrasing (e.g., `"a type of halva"`, `"sesame halva"`, or variant spelling `"halvah"`), it falls back to raw embedding cosine similarity, which may score lower than intended.
+
+### 7.4 Phonetic Similarity Limitation: Levenshtein vs. Articulatory Features
+* **Current State:** Phonetic similarity in `pipeline/src/ipa_normalizer.py` operates via normalized Levenshtein string edit distance over IPA representations after suprasegmental stripping and affricate mapping.
+* **Caveat:** String edit distance treats all phoneme substitutions equally ($/d/ \leftrightarrow /t/$ costs the same as $/d/ \leftrightarrow /m/$). This underestimates sound shifts governed by regular phonetic laws (e.g., Grimm's Law: $p \rightarrow f$, $t \rightarrow \theta$, $k \rightarrow h$; High German consonant shift: $t \rightarrow ts$, $p \rightarrow pf$). Implementation of the full articulatory feature matrix (Section 5) remains an open work item.
+* **Transcription Variability:** Phonemic transcriptions in Wiktionary vary in phonetic granularity across languages (e.g., narrow Swedish transcriptions with tone accents vs. broad English CMU transcriptions). Suprasegmental normalization mitigates but does not fully eliminate transcription bias.
+
+### 7.5 Etymology Template Coverage Asymmetry
+* **The Problem:** Wiktionary's crowd-sourced nature means etymology coverage is non-uniform. High-frequency words possess rich structured templates (`inh`, `der`, `gem-pro`), but rarer vocabulary may only have unstructured prose text or no etymology section at all.
+* **Behavior:** If a word lacks structured ancestral templates, `classifier.py` falls back to regex matching on `etymology_text`. If no ancestral link can be verified from the extracted text, a deceptive surface overlap defaults conservatively to Type B (`surface_collision`) rather than assuming historical cognacy.
+* **Caveat:** Some genuine historical cognates with unparsed prose etymologies may currently be classified as Type B rather than Type A.
+
+### 7.6 Pairwise Storage vs. Multi-Language Root Cliques
+* **Current State:** Data is currently indexed and queried pairwise across the 20 directed pairs in `word_comparisons`.
+* **Caveat:** While `etym_root` records ancestral roots (e.g., `Proto-Germanic *hundaz`), there is no first-class `cognate_cliques` table grouping all 5 languages into a single graph node. Cross-language universality is currently derived at query time via `GetByTokens`.
+
+### 7.7 Dual-Channel Candidate Recall Boundaries (Non-Identical Homophones)
+* **Current State:** Exact-spelling collisions are exhaustively captured (5,112 per language pair). Candidate generation for spelling-divergent pairs relies on:
+  1. Channel A: Character 2-gram/3-gram inverted index ($S_{\text{orth}} \ge 0.50$ or $S_{\text{phon}} \ge 0.50$).
+  2. Channel B: Semantic vector ANN ($S_{\text{sem}} \ge 0.50$).
+* **Caveat:** Homophones or near-homophones with drastically divergent orthography and low semantic overlap (e.g., German *See* [lake] vs. Swedish *sjö* [lake/sea] if evaluated as a false friend against an unrelated homophone) can fail candidate recall if they share fewer than 50% character $n$-grams and are not returned by the semantic Top-K retrieval channel.
+
+### 7.8 Symmetrical Pair Directionality & Asymmetric Polysemy
+* **Current State:** The database stores symmetrical rows (`A -> B` and `B -> A`).
+* **Caveat:** While continuous scores ($S_{\text{orth}}, S_{\text{phon}}, S_{\text{sem}}$) are symmetric, semantic polysemy is inherently directional. A headword in Language A may have 8 distinct senses while the counterpart in Language B has only 1. The argmax alignment captures the optimal intersection, but the proportion of unaligned semantic mass is asymmetric. Senses arrays (`senses_a`, `senses_b`) must be inspected to evaluate the full directional asymmetry.
+
+### 7.9 Semantic Blurring in Metaphorical and Figurative Senses ($0.30 < S_{\text{sem}} < 0.75$)
+* **The Problem:** Many cognates retain a shared literal meaning but have developed divergent metaphorical extensions, or vice versa.
+* **Classification Impact:** Senses with cosine similarity between 0.30 and 0.75 fall into `partial_cognate`. If a headword's primary modern sense is deceptive but a secondary figurative sense produces a moderate similarity score (e.g., 0.35), the pair avoids the `false_friend` label. The threshold boundaries ($S_{\text{sem}} \le 0.30$ for False Friends; $S_{\text{sem}} \ge 0.75$ for True Cognates) are discrete cutoffs applied to continuous semantic distributions.
+
+

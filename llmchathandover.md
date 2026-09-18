@@ -319,3 +319,11 @@ LIMIT :limit;
   - **Interactive 2D Matrix / Slider Interface:** Dual-axis continuous sliders controlling phonetic and semantic bounds, with responsive scatter visualization.
   - **Universality Text Inspector:** Live textarea with real-time token highlighting (Universal / Branch / Isolate) and breakdown drawer.
   - **False Friend Flashcard / Quiz Mode:** Quick-test mode leveraging deceptive cognate pairs.
+
+---
+
+## 7. Authoritative Status & Known Lexicological Caveats
+
+For the full status of all components (Pipeline, Database, Backend, Frontend) and the complete registry of active lexicological caveats, edge cases, and algorithmic boundaries, refer directly to:
+* **Status Matrix:** [`docs/DATASET_SPECIFICATION.md#6`](docs/DATASET_SPECIFICATION.md#6-implementation-status-matrix)
+* **Lexicological Caveats & Edge Cases:** [`docs/DATASET_SPECIFICATION.md#7`](docs/DATASET_SPECIFICATION.md#7-known-lexicological-caveats--architectural-edge-cases)
