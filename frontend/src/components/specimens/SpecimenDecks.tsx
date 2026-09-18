@@ -15,6 +15,21 @@ export const SpecimenDecks: React.FC = () => {
   const [targetLang, setTargetLang] = useState('en');
   const [viewMode, setViewMode] = useState<ViewMode>('atlas');
 
+  const apiCategory = useMemo(() => {
+    switch (activeFilter) {
+      case 'cognate':
+        return 'true_cognate';
+      case 'minefield':
+        return 'false_friend';
+      case 'cousin':
+        return 'partial_cognate';
+      case 'schism':
+        return 'translation_pair';
+      default:
+        return undefined;
+    }
+  }, [activeFilter]);
+
   // Query database for live pairs
   const {
     data: livePairsData,
@@ -22,7 +37,7 @@ export const SpecimenDecks: React.FC = () => {
   } = usePairsQuery({
     source: sourceLang,
     target: targetLang,
-    category: activeFilter === 'all' ? undefined : activeFilter,
+    category: apiCategory,
     limit: 30,
   });
 
@@ -55,11 +70,11 @@ export const SpecimenDecks: React.FC = () => {
       phoneticSim: dto.phonetic_sim,
       semanticSim: dto.semantic_sim,
       category:
-        dto.category === 'cognate'
+        dto.category === 'true_cognate' || dto.category === 'cognate'
           ? 'cognate'
           : dto.category === 'false_friend'
           ? 'minefield'
-          : dto.category === 'cousin'
+          : dto.category === 'partial_cognate' || dto.category === 'cousin'
           ? 'cousin'
           : 'schism',
       marginalia:
