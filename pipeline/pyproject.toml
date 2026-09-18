@@ -1,0 +1,20 @@
+[project]
+name = "linduistics-pipeline"
+version = "0.1.0"
+description = "Cross-Lingual Germanic Lexical Engine Data Pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "orjson>=3.10.0",
+    "rapidfuzz>=3.9.0",
+    "pyarrow>=17.0.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

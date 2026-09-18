@@ -1,0 +1,5 @@
+orjson>=3.10.0
+rapidfuzz>=3.9.0
+pyarrow>=17.0.0
+tqdm>=4.66.0
+pytest>=8.0.0
