@@ -3,3 +3,6 @@ rapidfuzz>=3.9.0
 pyarrow>=17.0.0
 tqdm>=4.66.0
 pytest>=8.0.0
+numpy>=1.26.0
+torch>=2.2.0
+sentence-transformers>=3.0.0
