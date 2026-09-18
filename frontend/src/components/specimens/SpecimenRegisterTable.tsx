@@ -1,5 +1,4 @@
 import React from 'react';
-import { Search, ChevronLeft, ChevronRight, Sparkles, Filter, ArrowUpRight } from 'lucide-react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 
@@ -50,102 +49,118 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
   const startItem = total === 0 ? 0 : offset + 1;
   const endItem = Math.min(offset + limit, total);
 
-  const getCategoryBadge = (pair: SpecimenPair) => {
+  const getTaxonomyLabel = (pair: SpecimenPair) => {
     switch (pair.category) {
       case 'cognate':
         return (
-          <span className="inline-flex items-center gap-1 rounded border border-cognate-border bg-cognate-bg px-2 py-0.5 text-xs font-medium text-cognate-ink whitespace-nowrap">
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-ink-main whitespace-nowrap">
             Cognate
           </span>
         );
       case 'minefield':
         return (
-          <span className="inline-flex items-center gap-1 rounded border border-falsefriend-border bg-falsefriend-bg px-2 py-0.5 text-xs font-semibold text-falsefriend-ink whitespace-nowrap">
+          <span className="text-[11px] uppercase tracking-wider font-bold text-falsefriend-ink whitespace-nowrap">
             {pair.falseFriendType === 'etymological_shift' ? 'False Friend [A]' : 'False Friend [B]'}
           </span>
         );
       case 'cousin':
         return (
-          <span className="inline-flex items-center gap-1 rounded border border-shifted-border bg-shifted-bg px-2 py-0.5 text-xs font-medium text-shifted-ink whitespace-nowrap">
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-shifted-ink whitespace-nowrap">
             Sound Shift
           </span>
         );
       case 'schism':
         return (
-          <span className="inline-flex items-center gap-1 rounded border border-divergent-border bg-divergent-bg px-2 py-0.5 text-xs font-medium text-divergent-ink whitespace-nowrap">
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-divergent-ink whitespace-nowrap">
             Translation
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center rounded border border-book-rule bg-page-muted px-2 py-0.5 text-xs font-medium text-ink-muted whitespace-nowrap">
-            Other
+          <span className="text-[11px] uppercase tracking-wider text-ink-light whitespace-nowrap">
+            Unclassified
           </span>
         );
     }
   };
 
+  const getMeaningDisplay = (pair: SpecimenPair) => {
+    const isExactEcho =
+      pair.defA.trim().toLowerCase() === pair.wordA.trim().toLowerCase() &&
+      pair.defB.trim().toLowerCase() === pair.wordB.trim().toLowerCase();
+
+    if (isExactEcho) {
+      // Look for a richer gloss in active sense items
+      const matchA = pair.sensesA?.find((s) => s.is_active_match && s.gloss.toLowerCase() !== pair.wordA.toLowerCase());
+      const matchB = pair.sensesB?.find((s) => s.is_active_match && s.gloss.toLowerCase() !== pair.wordB.toLowerCase());
+      if (matchA && matchB) {
+        return `“${matchA.gloss}” ↔ “${matchB.gloss}”`;
+      }
+      if (matchA) return `“${matchA.gloss}”`;
+      if (matchB) return `“${matchB.gloss}”`;
+      return 'Shared lexical identity / direct loan';
+    }
+
+    if (pair.defA === pair.defB) {
+      return `“${pair.defA}”`;
+    }
+
+    return `“${pair.defA}” ↔ “${pair.defB}”`;
+  };
+
   return (
-    <div className="space-y-4 font-serif">
-      {/* Search & Filter Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-book-rule bg-page-surface p-3.5 shadow-2xs">
+    <div className="font-serif space-y-4">
+      {/* Filtering Toolbar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-book-rule pb-3 text-xs">
         {/* Search Input */}
-        <div className="relative flex-1 min-w-[220px] max-w-md">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-ink-light" />
+        <div className="flex-1 min-w-[200px] max-w-sm">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder={`Search ${sourceName} or ${targetName} headwords...`}
-            className="w-full rounded-md border border-book-rule bg-page-bg pl-9 pr-3 py-1.5 text-sm text-ink-main placeholder:text-ink-light focus:border-book-rule-strong focus:outline-none"
+            placeholder={`Filter ${sourceName} or ${targetName}...`}
+            className="w-full border-b border-book-rule bg-transparent px-1 py-1 text-xs text-ink-main placeholder:text-ink-light focus:border-ink-main focus:outline-none font-serif"
           />
         </div>
 
-        {/* Taxonomy Filters */}
-        <div className="flex flex-wrap items-center gap-2 text-xs">
+        {/* Category & Tier Filters */}
+        <div className="flex items-center gap-3 font-serif">
           <div className="flex items-center gap-1.5">
-            <Filter className="w-3.5 h-3.5 text-ink-light" />
-            <span className="font-sans text-ink-muted">Category:</span>
+            <span className="text-ink-light uppercase tracking-wider text-[10px]">Category:</span>
+            <select
+              value={selectedCategory ?? 'all'}
+              onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
+              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+            >
+              <option value="all">All Categories</option>
+              <option value="cognate">True Cognates</option>
+              <option value="false_friend">False Friends</option>
+              <option value="partial_cognate">Sound Shifts</option>
+              <option value="translation_pair">Translations</option>
+            </select>
           </div>
 
-          <select
-            value={selectedCategory || 'all'}
-            onChange={(e) => {
-              const val = e.target.value === 'all' ? undefined : e.target.value;
-              onCategoryChange(val);
-              if (val !== 'false_friend') {
-                onFfTypeChange(undefined);
-              }
-            }}
-            className="rounded border border-book-rule bg-page-bg px-2.5 py-1 text-ink-main font-sans text-xs focus:outline-none"
-          >
-            <option value="all">All Categories</option>
-            <option value="true_cognate">True Cognates</option>
-            <option value="false_friend">False Friends</option>
-            <option value="partial_cognate">Sound Shifts (Partial)</option>
-            <option value="translation_pair">Translation Pairs</option>
-          </select>
-
-          {/* False Friend Sub-Tier Filter */}
           {selectedCategory === 'false_friend' && (
-            <select
-              value={selectedFfType || 'all'}
-              onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
-              className="rounded border border-falsefriend-border bg-falsefriend-bg/50 px-2.5 py-1 text-falsefriend-ink font-sans text-xs font-semibold focus:outline-none"
-            >
-              <option value="all">All False Friend Tiers</option>
-              <option value="etymological_shift">Tier A: Etymological Shift</option>
-              <option value="surface_collision">Tier B: Surface Collision</option>
-            </select>
+            <div className="flex items-center gap-1.5">
+              <span className="text-ink-light uppercase tracking-wider text-[10px]">Tier:</span>
+              <select
+                value={selectedFfType ?? 'all'}
+                onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
+                className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+              >
+                <option value="all">All Tiers</option>
+                <option value="etymological_shift">Tier A: Drift</option>
+                <option value="surface_collision">Tier B: Collision</option>
+              </select>
+            </div>
           )}
 
-          {/* Page Size Selector */}
-          <div className="flex items-center gap-1.5 ml-auto">
-            <span className="font-sans text-ink-muted">Rows:</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-ink-light uppercase tracking-wider text-[10px]">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
-              className="rounded border border-book-rule bg-page-bg px-2 py-1 text-ink-main font-sans text-xs focus:outline-none"
+              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
             >
               <option value={25}>25</option>
               <option value={50}>50</option>
@@ -155,159 +170,150 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </div>
       </div>
 
-      {/* Dense Botanical Register Table */}
-      <div className="rounded-lg border border-book-rule bg-page-surface shadow-2xs overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b border-book-rule bg-page-muted/60 text-xs font-sans text-ink-muted uppercase tracking-wider">
-                <th className="py-3 px-4 font-semibold w-1/5">{sourceName} Headword</th>
-                <th className="py-3 px-4 font-semibold w-1/5">{targetName} Counterpart</th>
-                <th className="py-3 px-3 font-semibold text-center w-36">Category</th>
-                <th className="py-3 px-2 font-semibold text-center w-16" title="Orthographic Similarity">Orth.</th>
-                <th className="py-3 px-2 font-semibold text-center w-16" title="Phonetic (Articulatory) Similarity">Phon.</th>
-                <th className="py-3 px-2 font-semibold text-center w-16" title="Semantic Sense Similarity">Sem.</th>
-                <th className="py-3 px-4 font-semibold">Active Aligned Meaning</th>
-                <th className="py-3 px-3 text-right w-10"></th>
+      {/* Edge-to-Edge Register Ledger Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse font-serif">
+          <thead>
+            <tr className="border-b border-book-rule text-[11px] uppercase tracking-wider text-ink-muted">
+              <th className="py-2.5 px-3 font-semibold w-1/4">{sourceName} Headword</th>
+              <th className="py-2.5 px-3 font-semibold w-1/4">{targetName} Counterpart</th>
+              <th className="py-2.5 px-2 font-semibold text-center w-28">Taxonomy</th>
+              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Orthographic Similarity">Δₒ</th>
+              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Phonetic Similarity">Δₚ</th>
+              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Semantic Similarity">Δₛ</th>
+              <th className="py-2.5 px-3 font-semibold">Active Aligned Meaning</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-book-rule/50 text-xs">
+            {isLoading ? (
+              <tr>
+                <td colSpan={7} className="py-12 text-center text-ink-light italic">
+                  Scanning cataloged register...
+                </td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-book-rule/70 text-sm">
-              {isLoading ? (
-                <tr>
-                  <td colSpan={8} className="py-12 text-center text-ink-muted">
-                    <div className="inline-flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 animate-spin text-ink-light" />
-                      <span>Reading cataloged register...</span>
-                    </div>
-                  </td>
-                </tr>
-              ) : pairs.length === 0 ? (
-                <tr>
-                  <td colSpan={8} className="py-12 text-center text-ink-muted">
-                    No specimen pairs match the current filter or search criteria.
-                  </td>
-                </tr>
-              ) : (
-                pairs.map((pair) => {
-                  const isSelected = selectedPairId === pair.id;
-                  return (
-                    <tr
-                      key={pair.id}
-                      onClick={() => onSelectPair(pair)}
-                      className={`group cursor-pointer transition-colors ${
-                        isSelected
-                          ? 'bg-cognate-bg/25 border-l-4 border-l-cognate-ink'
-                          : 'hover:bg-page-muted/45'
-                      }`}
-                    >
-                      {/* Source Word */}
-                      <td className="py-3 px-4 font-serif">
-                        <div className="flex items-baseline gap-1.5 flex-wrap">
-                          <span className="font-bold text-base text-ink-main group-hover:text-cognate-ink transition-colors">
-                            {pair.wordA}
+            ) : pairs.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="py-12 text-center text-ink-light italic">
+                  No specimen pairs match the current filter or search criteria.
+                </td>
+              </tr>
+            ) : (
+              pairs.map((pair) => {
+                const isSelected = selectedPairId === pair.id;
+                return (
+                  <tr
+                    key={pair.id}
+                    onClick={() => onSelectPair(pair)}
+                    className={`cursor-pointer transition-colors ${
+                      isSelected
+                        ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
+                        : 'hover:bg-page-muted/40'
+                    }`}
+                  >
+                    {/* Source Headword */}
+                    <td className="py-2.5 px-3 font-serif">
+                      <div className="flex items-baseline gap-1.5 flex-wrap">
+                        <span className="font-bold text-sm text-ink-main">
+                          {pair.wordA}
+                        </span>
+                        {pair.ipaA && (
+                          <span className="font-serif italic text-xs text-[#383531]">
+                            /{pair.ipaA}/
                           </span>
-                          {pair.ipaA && (
-                            <span className="font-mono text-xs text-ink-muted">/{pair.ipaA}/</span>
-                          )}
-                          {pair.posA && (
-                            <span className="text-xs italic text-ink-light">({pair.posA})</span>
-                          )}
-                        </div>
-                      </td>
-
-                      {/* Target Word */}
-                      <td className="py-3 px-4 font-serif">
-                        <div className="flex items-baseline gap-1.5 flex-wrap">
-                          <span className={`font-bold text-base ${
-                            pair.category === 'minefield'
-                              ? 'text-falsefriend-ink'
-                              : pair.category === 'cognate'
-                              ? 'text-cognate-ink'
-                              : 'text-ink-main'
-                          }`}>
-                            {pair.wordB}
+                        )}
+                        {pair.posA && (
+                          <span className="text-[10px] text-ink-light">
+                            [{pair.posA}]
                           </span>
-                          {pair.ipaB && (
-                            <span className="font-mono text-xs text-ink-muted">/{pair.ipaB}/</span>
-                          )}
-                          {pair.posB && (
-                            <span className="text-xs italic text-ink-light">({pair.posB})</span>
-                          )}
-                        </div>
-                      </td>
+                        )}
+                      </div>
+                    </td>
 
-                      {/* Category Badge */}
-                      <td className="py-3 px-3 text-center">
-                        {getCategoryBadge(pair)}
-                      </td>
+                    {/* Target Counterpart */}
+                    <td className="py-2.5 px-3 font-serif">
+                      <div className="flex items-baseline gap-1.5 flex-wrap">
+                        <span className={`font-bold text-sm ${
+                          pair.category === 'minefield'
+                            ? 'text-falsefriend-ink'
+                            : pair.category === 'cognate'
+                            ? 'text-cognate-ink'
+                            : 'text-ink-main'
+                        }`}>
+                          {pair.wordB}
+                        </span>
+                        {pair.ipaB && (
+                          <span className="font-serif italic text-xs text-[#383531]">
+                            /{pair.ipaB}/
+                          </span>
+                        )}
+                        {pair.posB && (
+                          <span className="text-[10px] text-ink-light">
+                            [{pair.posB}]
+                          </span>
+                        )}
+                      </div>
+                    </td>
 
-                      {/* Orthographic Similarity */}
-                      <td className="py-3 px-2 text-center font-mono text-xs text-ink-muted">
-                        {Math.round(pair.orthographicSim * 100)}%
-                      </td>
+                    {/* Taxonomy Label */}
+                    <td className="py-2.5 px-2 text-center">
+                      {getTaxonomyLabel(pair)}
+                    </td>
 
-                      {/* Phonetic Similarity */}
-                      <td className="py-3 px-2 text-center font-mono text-xs font-semibold text-ink-main">
-                        {Math.round(pair.phoneticSim * 100)}%
-                      </td>
+                    {/* Orthographic Similarity */}
+                    <td className="py-2.5 px-2 text-center font-mono text-xs text-ink-muted">
+                      {pair.orthographicSim.toFixed(2)}
+                    </td>
 
-                      {/* Semantic Similarity */}
-                      <td className="py-3 px-2 text-center font-mono text-xs font-semibold text-ink-main">
-                        {Math.round(pair.semanticSim * 100)}%
-                      </td>
+                    {/* Phonetic Similarity */}
+                    <td className="py-2.5 px-2 text-center font-mono text-xs font-semibold text-ink-main">
+                      {pair.phoneticSim.toFixed(2)}
+                    </td>
 
-                      {/* Active Aligned Meaning */}
-                      <td className="py-3 px-4 text-xs leading-relaxed text-ink-muted">
-                        <div className="line-clamp-2" title={`${pair.defA} ↔ ${pair.defB}`}>
-                          <span className="font-medium text-ink-main">{pair.defA}</span>
-                          <span className="mx-1 text-ink-light">↔</span>
-                          <span>{pair.defB}</span>
-                        </div>
-                      </td>
+                    {/* Semantic Similarity */}
+                    <td className="py-2.5 px-2 text-center font-mono text-xs font-semibold text-ink-main">
+                      {pair.semanticSim.toFixed(2)}
+                    </td>
 
-                      {/* Detail Indicator */}
-                      <td className="py-3 px-3 text-right">
-                        <ArrowUpRight className="w-4 h-4 text-ink-light group-hover:text-ink-main transition-colors opacity-0 group-hover:opacity-100" />
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+                    {/* Active Aligned Meaning */}
+                    <td className="py-2.5 px-3 text-xs leading-relaxed text-ink-muted">
+                      <span className="line-clamp-1 italic">
+                        {getMeaningDisplay(pair)}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination Footer */}
+      <div className="flex items-center justify-between border-t border-book-rule pt-3 text-xs text-ink-muted">
+        <div>
+          Showing {startItem}–{endItem} of {total.toLocaleString()} cataloged specimens
         </div>
 
-        {/* Pagination Footer */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-book-rule bg-page-muted/40 px-4 py-3 text-xs font-sans text-ink-muted">
-          <div>
-            Showing <span className="font-semibold text-ink-main">{startItem.toLocaleString()}</span> to{' '}
-            <span className="font-semibold text-ink-main">{endItem.toLocaleString()}</span> of{' '}
-            <span className="font-semibold text-ink-main">{total.toLocaleString()}</span> cataloged pairs
-          </div>
-
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <span className="text-[11px] uppercase tracking-wider text-ink-light">
+            Leaf {currentPage} of {totalPages}
+          </span>
+          <div className="flex items-center gap-1">
             <button
               type="button"
-              disabled={offset === 0 || isLoading}
               onClick={() => onPageChange(Math.max(0, offset - limit))}
-              className="inline-flex items-center gap-1 rounded border border-book-rule bg-page-surface px-3 py-1 text-xs font-medium text-ink-main hover:bg-page-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              disabled={offset === 0 || isLoading}
+              className="px-2 py-1 border border-book-rule text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
-              Previous
+              ← Prev
             </button>
-
-            <span className="px-2 font-mono">
-              Page {currentPage.toLocaleString()} of {totalPages.toLocaleString()}
-            </span>
-
             <button
               type="button"
-              disabled={offset + limit >= total || isLoading}
               onClick={() => onPageChange(offset + limit)}
-              className="inline-flex items-center gap-1 rounded border border-book-rule bg-page-surface px-3 py-1 text-xs font-medium text-ink-main hover:bg-page-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              disabled={offset + limit >= total || isLoading}
+              className="px-2 py-1 border border-book-rule text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
-              Next
-              <ChevronRight className="w-3.5 h-3.5" />
+              Next →
             </button>
           </div>
         </div>
