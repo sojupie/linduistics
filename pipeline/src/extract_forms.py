@@ -30,8 +30,10 @@ def extract_forms(
 
     print(f"Loading valid canonical lemmas from {lemmas_parquet_path}...")
     lemmas_table = pq.read_table(lemmas_parquet_path, columns=["word"])
-    valid_lemmas = set(lemmas_table.column("word").to_pylist())
-    print(f"Loaded {len(valid_lemmas):,} valid canonical lemmas for lang '{lang}'.")
+    raw_lemmas = lemmas_table.column("word").to_pylist()
+    # Build case-insensitive lookup to canonical lemma spelling
+    lemma_lookup = {w.lower(): w for w in raw_lemmas if w}
+    print(f"Loaded {len(lemma_lookup):,} valid canonical lemmas for lang '{lang}'.")
 
     # Set of (form, lemma) pairs
     pairs: set[tuple[str, str]] = set()
@@ -42,30 +44,32 @@ def extract_forms(
     with open(raw_jsonl_path, "rb") as f:
         for line in f:
             d = orjson.loads(line)
-            word = d.get("word", "").strip().lower()
-            if not word or " " in word:
+            raw_word = d.get("word", "").strip()
+            word_lower = raw_word.lower()
+            if not word_lower or " " in word_lower:
                 continue
 
             # Source 1: Declension/conjugation tables on canonical headwords
-            if word in valid_lemmas:
+            if word_lower in lemma_lookup:
+                canonical_lemma = lemma_lookup[word_lower]
                 for form_entry in d.get("forms", []):
                     form = form_entry.get("form", "").strip().lower()
                     tags = form_entry.get("tags", [])
                     if (
                         form
                         and " " not in form
-                        and form != word
+                        and form != word_lower
                         and "table-tags" not in tags
                         and "inflection-template" not in tags
                     ):
-                        pairs.add((form, word))
+                        pairs.add((form, canonical_lemma))
 
             # Source 2: "form-of" senses pointing back to canonical headwords
             for sense in d.get("senses", []):
                 for fo in sense.get("form_of", []):
-                    lemma = fo.get("word", "").strip().lower()
-                    if lemma in valid_lemmas and lemma != word:
-                        pairs.add((word, lemma))
+                    target_lemma_lower = fo.get("word", "").strip().lower()
+                    if target_lemma_lower in lemma_lookup and target_lemma_lower != word_lower:
+                        pairs.add((word_lower, lemma_lookup[target_lemma_lower]))
 
     extract_time = time.perf_counter() - start_time
     print(f"Extracted {len(pairs):,} unique (form, lemma) pairs in {extract_time:.2f}s.")

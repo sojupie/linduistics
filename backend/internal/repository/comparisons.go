@@ -13,11 +13,21 @@ type ComparisonsRepository struct {
 	pool *pgxpool.Pool
 }
 
+func normalizeLang(code string) string {
+	if code == "no" {
+		return "nb"
+	}
+	return code
+}
+
 func NewComparisonsRepository(pool *pgxpool.Pool) *ComparisonsRepository {
 	return &ComparisonsRepository{pool: pool}
 }
 
 func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQueryParams) ([]models.WordComparison, int, error) {
+	p.SourceLang = normalizeLang(p.SourceLang)
+	p.TargetLang = normalizeLang(p.TargetLang)
+
 	if p.Limit <= 0 || p.Limit > 200 {
 		p.Limit = 50
 	}
@@ -77,6 +87,13 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 }
 
 func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang string, tokens []string, targetLangs []string, minSem float32) ([]models.WordComparison, error) {
+	sourceLang = normalizeLang(sourceLang)
+	normTargets := make([]string, len(targetLangs))
+	for i, l := range targetLangs {
+		normTargets[i] = normalizeLang(l)
+	}
+	targetLangs = normTargets
+
 	query := `
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
@@ -203,6 +220,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 }
 
 func (r *ComparisonsRepository) ResolveForms(ctx context.Context, lang string, forms []string) (map[string][]string, error) {
+	lang = normalizeLang(lang)
 	query := `
 		SELECT form, lemma
 		FROM word_forms
@@ -230,7 +248,7 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 	var args []any
 	if source != "" {
 		whereClause = "WHERE lang_a = $1"
-		args = append(args, source)
+		args = append(args, normalizeLang(source))
 	}
 
 	query := fmt.Sprintf(`

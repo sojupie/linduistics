@@ -16,7 +16,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from tqdm import tqdm
 
-from g2p_sv import swedish_to_ipa
+from g2p_multilingual import g2p_fallback
 from ipa_normalizer import normalize_ipa
 
 # Words containing hyphens, spaces, or affix symbols are excluded
@@ -45,7 +45,11 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
     if not word or not isinstance(word, str):
         return None
 
-    word = word.strip().lower()
+    # Preserve German capitalization (nouns are capitalized), lowercase other languages
+    word = word.strip()
+    target_lang = (lang or raw.get("lang_code") or "").lower()
+    if target_lang != "de":
+        word = word.lower()
 
     # Reject multi-word compounds, hyphenated terms, or affixes
     if _INVALID_WORD_PATTERN.search(word) or word.startswith("-") or word.endswith("-"):
@@ -100,9 +104,9 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
                 normalized_ipa = cand_ipa
                 break
 
-    # Swedish G2P fallback if no explicit IPA was found
-    if not normalized_ipa and (lang == "sv" or raw.get("lang_code") == "sv"):
-        normalized_ipa = swedish_to_ipa(word)
+    # Multilingual G2P fallback if no explicit IPA was found
+    if not normalized_ipa and target_lang:
+        normalized_ipa = g2p_fallback(word, target_lang)
 
     return {
         "word": word,

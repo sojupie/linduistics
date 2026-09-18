@@ -115,7 +115,7 @@ def main() -> None:
         "DATABASE_URL",
         "postgresql://postgres:postgres@localhost:5432/linduistics",
     )
-    default_input = project_root / "pipeline" / "data" / "test_comparisons.parquet"
+    default_input = project_root / "pipeline" / "data" / "all_comparisons.parquet"
 
     parser = argparse.ArgumentParser(description="Bulk seed PostgreSQL word_comparisons table.")
     parser.add_argument(
@@ -133,7 +133,8 @@ def main() -> None:
     parser.add_argument(
         "--truncate",
         action="store_true",
-        help="Truncate table before ingesting",
+        default=True,
+        help="Truncate table before ingesting (default: True)",
     )
     parser.add_argument(
         "--batch-size",

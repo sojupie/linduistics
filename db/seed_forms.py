@@ -84,6 +84,50 @@ def seed_forms(
     return total_rows
 
 
+def seed_all_forms(
+    parquet_paths: list[Path],
+    db_url: str,
+    truncate: bool = False,
+    batch_size: int = 50000,
+) -> int:
+    total_all = 0
+    start_time = time.perf_counter()
+
+    with psycopg.connect(db_url) as conn:
+        with conn.cursor() as cur:
+            if truncate:
+                print("Truncating word_forms table...")
+                cur.execute("TRUNCATE TABLE word_forms;")
+                conn.commit()
+
+            copy_sql = "COPY word_forms (lang, form, lemma) FROM STDIN"
+            for p in parquet_paths:
+                if not p.is_file():
+                    print(f"Skipping missing file: {p}")
+                    continue
+                print(f"Reading from: {p.name}")
+                file_rows = 0
+                with cur.copy(copy_sql) as copy:
+                    for row in stream_forms_rows(p, batch_size=batch_size):
+                        copy.write_row(row)
+                        file_rows += 1
+                        if file_rows % 200000 == 0:
+                            print(f"  Ingested {file_rows:,} rows from {p.name}...")
+                conn.commit()
+                print(f"  Completed {p.name}: {file_rows:,} rows.")
+                total_all += file_rows
+
+            print(f"Total ingestion complete: {total_all:,} rows written.")
+            print("Running ANALYZE word_forms...")
+            cur.execute("ANALYZE word_forms;")
+            conn.commit()
+
+    duration = time.perf_counter() - start_time
+    rate = total_all / duration if duration > 0 else 0
+    print(f"Finished in {duration:.2f}s ({rate:,.0f} rows/s).")
+    return total_all
+
+
 def main() -> None:
     project_root = Path(__file__).resolve().parent.parent
     load_env_file(project_root / ".env")
@@ -92,16 +136,34 @@ def main() -> None:
         "DATABASE_URL",
         "postgresql://postgres:postgres@localhost:5432/linduistics",
     )
-    default_input = project_root / "pipeline" / "data" / "word_forms_sv.parquet"
+    data_dir = project_root / "pipeline" / "data"
 
     parser = argparse.ArgumentParser(description="Bulk seed word_forms table.")
-    parser.add_argument("--input", type=Path, default=default_input, help="Input Parquet file")
+    parser.add_argument(
+        "--input",
+        type=str,
+        default=None,
+        help="Path or pattern for input Parquet files (e.g., pipeline/data/word_forms_*.parquet)",
+    )
     parser.add_argument("--db-url", type=str, default=default_db_url, help="Database URL")
-    parser.add_argument("--truncate", action="store_true", help="Truncate table before ingesting")
+    parser.add_argument("--truncate", action="store_true", default=True, help="Truncate table before ingesting")
     args = parser.parse_args()
 
+    if args.input:
+        matched = list(Path().glob(args.input)) if "*" in args.input else [Path(args.input)]
+    else:
+        matched = sorted(data_dir.glob("word_forms_*.parquet"))
+
+    if not matched:
+        print(f"No parquet files found to seed.")
+        sys.exit(1)
+
+    print(f"Found {len(matched)} word_forms file(s) to seed:")
+    for m in matched:
+        print(f"  - {m}")
+
     try:
-        seed_forms(parquet_path=args.input, db_url=args.db_url, truncate=args.truncate)
+        seed_all_forms(parquet_paths=matched, db_url=args.db_url, truncate=args.truncate)
     except Exception as e:
         print(f"Error during seeding: {e}", file=sys.stderr)
         sys.exit(1)

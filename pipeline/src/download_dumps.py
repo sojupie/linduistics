@@ -14,6 +14,7 @@ KAIKKI_URLS = {
     "de": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
     "nl": "https://kaikki.org/dictionary/Dutch/kaikki.org-dictionary-Dutch.jsonl",
     "da": "https://kaikki.org/dictionary/Danish/kaikki.org-dictionary-Danish.jsonl",
+    "nb": "https://kaikki.org/dictionary/Norwegian%20Bokm%C3%A5l/kaikki.org-dictionary-NorwegianBokm%C3%A5l.jsonl",
 }
 
 
