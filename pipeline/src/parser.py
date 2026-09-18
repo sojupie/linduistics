@@ -1,8 +1,11 @@
 """Kaikki Wiktextract Streaming Parser for Germanic Lexicon Engine.
 
 Streams line-delimited JSON dumps, strictly filters out inflectional forms,
-normalizes phonetic data, and serializes deduplicated headword lemmas to Parquet.
+extracts polysemous senses and etymological provenance, normalizes phonetic data,
+and serializes deduplicated headword lemmas to Parquet.
 """
+
+from __future__ import annotations
 
 import argparse
 import bz2
@@ -10,11 +13,11 @@ import gzip
 import io
 import os
 import re
-from typing import BinaryIO, Dict, Iterable, List, Optional, Union
+from typing import BinaryIO, Dict, Iterable, List, Optional, Tuple, Union
+
 import orjson
 import pyarrow as pa
 import pyarrow.parquet as pq
-from tqdm import tqdm
 
 from g2p_multilingual import g2p_fallback
 from ipa_normalizer import normalize_ipa
@@ -33,6 +36,78 @@ _META_GLOSS_PATTERN = re.compile(
     r"used\s+with\s+an?\s+adjective)",
     re.IGNORECASE,
 )
+
+_INACTIVE_TAGS = {"obsolete", "archaic", "historical", "dated"}
+_ROOT_RE = re.compile(r"\*([a-zA-Z\u0100-\u017F\u0180-\u024F]+)")
+
+# Prioritized proto/ancestral language codes
+_ANCESTRAL_LANG_ORDER = [
+    ("gem-pro", "Proto-Germanic"),
+    ("gmw-pro", "Proto-West Germanic"),
+    ("gmq-pro", "Proto-Norse"),
+    ("ine-pro", "Proto-Indo-European"),
+    ("non", "Old Norse"),
+    ("ang", "Old English"),
+    ("goh", "Old High German"),
+    ("la", "Latin"),
+    ("grc", "Ancient Greek"),
+]
+
+
+def extract_etym_root(raw: dict) -> Tuple[str, str]:
+    """Extracts (etym_root, etym_text) from raw Kaikki entry."""
+    etym_text = (raw.get("etymology_text") or "").strip()
+    etym_root = ""
+
+    templates = raw.get("etymology_templates") or []
+    # 1. Search templates in order of ancestral significance
+    for lang_code, prefix in _ANCESTRAL_LANG_ORDER:
+        for t in templates:
+            if not isinstance(t, dict):
+                continue
+            args = t.get("args") or {}
+            target_code = args.get("2") or args.get("1") or ""
+            if target_code == lang_code:
+                for k in ("3", "4", "alt", "tr"):
+                    term = args.get(k)
+                    if term and not term.isdigit() and len(term) > 1:
+                        clean = "*" + term.lstrip("*") if prefix.startswith("Proto") else term
+                        etym_root = f"{prefix} {clean}"
+                        break
+            if etym_root:
+                break
+        if etym_root:
+            break
+
+    # 2. Any template argument explicitly starting with '*'
+    if not etym_root:
+        for t in templates:
+            if not isinstance(t, dict):
+                continue
+            args = t.get("args") or {}
+            for v in args.values():
+                if isinstance(v, str) and v.startswith("*") and len(v) > 2:
+                    etym_root = v
+                    break
+            if etym_root:
+                break
+
+    # 3. Fallback to regex on etymology text
+    if not etym_root and etym_text:
+        m = re.search(
+            r"(Proto-Germanic|Proto-Indo-European|Proto-West Germanic|Old Norse|Latin)\s+\*?([a-zA-Z\u0100-\u017F]+)",
+            etym_text,
+            re.I,
+        )
+        if m:
+            etym_root = f"{m.group(1)} *{m.group(2).lstrip('*')}"
+        else:
+            m2 = _ROOT_RE.search(etym_text)
+            if m2:
+                etym_root = f"*{m2.group(1)}"
+
+    clean_text = etym_text[:500] if etym_text else ""
+    return etym_root, clean_text
 
 
 def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
@@ -64,34 +139,40 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
     if "form-of" in top_tags:
         return None
 
-    # Extract valid definition glosses, dropping inflectional senses
-    valid_glosses: List[str] = []
+    # Extract valid definition glosses and structured senses
+    valid_active_glosses: List[str] = []
+    structured_senses: List[dict] = []
     senses = raw.get("senses") or []
 
     for sense in senses:
         if not isinstance(sense, dict):
             continue
 
-        # Check for inflection markers inside sense
-        sense_tags = sense.get("tags") or []
-        if "form-of" in sense_tags:
+        sense_tags = [t for t in (sense.get("tags") or []) if isinstance(t, str)]
+        if "form-of" in sense_tags or sense.get("form_of"):
             continue
 
-        if sense.get("form_of"):
-            continue
+        is_active = not bool(set(sense_tags) & _INACTIVE_TAGS)
 
         for gloss in sense.get("glosses") or []:
             if isinstance(gloss, str):
                 cleaned_gloss = gloss.strip()
-                if (
-                    cleaned_gloss
-                    and not _META_GLOSS_PATTERN.search(cleaned_gloss)
-                    and cleaned_gloss not in valid_glosses
-                ):
-                    valid_glosses.append(cleaned_gloss)
+                if not cleaned_gloss or _META_GLOSS_PATTERN.search(cleaned_gloss):
+                    continue
 
-    # If no base semantic glosses survived, entry is either pure inflection or empty
-    if not valid_glosses:
+                if is_active and cleaned_gloss not in valid_active_glosses:
+                    valid_active_glosses.append(cleaned_gloss)
+
+                structured_senses.append({
+                    "sense_id": len(structured_senses) + 1,
+                    "gloss": cleaned_gloss,
+                    "pos": pos,
+                    "tags": sense_tags,
+                    "is_active": is_active,
+                })
+
+    # If no semantic glosses survived, entry is either pure inflection or empty
+    if not structured_senses:
         return None
 
     # Extract and normalize IPA
@@ -104,15 +185,16 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
                 normalized_ipa = cand_ipa
                 break
 
-    # Multilingual G2P fallback if no explicit IPA was found
-    if not normalized_ipa and target_lang:
-        normalized_ipa = g2p_fallback(word, target_lang)
+    etym_root, etym_text = extract_etym_root(raw)
 
     return {
         "word": word,
         "pos": pos,
         "ipa": normalized_ipa,
-        "glosses": valid_glosses,
+        "glosses": valid_active_glosses if valid_active_glosses else [s["gloss"] for s in structured_senses[:1]],
+        "senses": structured_senses,
+        "etym_root": etym_root,
+        "etym_text": etym_text,
     }
 
 
@@ -159,23 +241,50 @@ def stream_kaikki_entries(
                     "pos": entry["pos"],
                     "ipa": entry["ipa"],
                     "glosses": list(entry["glosses"]),
+                    "senses": list(entry["senses"]),
+                    "etym_root": entry["etym_root"],
+                    "etym_text": entry["etym_text"],
                     "lang": lang,
                 }
             else:
+                target = lemmas[word]
                 # Update missing IPA if newly found
-                if not lemmas[word]["ipa"] and entry["ipa"]:
-                    lemmas[word]["ipa"] = entry["ipa"]
-                # Append unique glosses
+                if not target["ipa"] and entry["ipa"]:
+                    target["ipa"] = entry["ipa"]
+                # Update etym_root if newly found or if entry has Proto-Germanic root
+                if entry["etym_root"] and (not target["etym_root"] or "Proto-Germanic" in entry["etym_root"]):
+                    target["etym_root"] = entry["etym_root"]
+                # Update etym_text if newly found
+                if not target["etym_text"] and entry["etym_text"]:
+                    target["etym_text"] = entry["etym_text"]
+                # Append unique active glosses
                 for g in entry["glosses"]:
-                    if g not in lemmas[word]["glosses"]:
-                        lemmas[word]["glosses"].append(g)
+                    if g not in target["glosses"]:
+                        target["glosses"].append(g)
+                # Append senses with deduplication
+                existing_glosses = {s["gloss"] for s in target["senses"]}
+                for s in entry["senses"]:
+                    if s["gloss"] not in existing_glosses:
+                        s_copy = dict(s)
+                        s_copy["sense_id"] = len(target["senses"]) + 1
+                        target["senses"].append(s_copy)
+                        existing_glosses.add(s["gloss"])
 
             count += 1
+            if count % 25000 == 0:
+                print(f"  Processed {count:,} entries ({len(lemmas):,} unique lemmas)...", flush=True)
             if max_entries and count >= max_entries:
                 break
     finally:
         if close_stream:
             stream.close()
+
+    # Post-process: G2P fallback only for unique lemmas missing IPA
+    missing_ipa = [w for w, item in lemmas.items() if not item["ipa"]]
+    if missing_ipa:
+        print(f"Applying G2P fallback to {len(missing_ipa):,} lemmas missing IPA...", flush=True)
+        for w in missing_ipa:
+            lemmas[w]["ipa"] = g2p_fallback(w, lang)
 
     return lemmas
 
@@ -189,6 +298,9 @@ def export_lemmas_to_parquet(lemmas: Dict[str, dict], output_path: str) -> None:
         ("pos", pa.string()),
         ("ipa", pa.string()),
         ("glosses", pa.list_(pa.string())),
+        ("senses_json", pa.string()),
+        ("etym_root", pa.string()),
+        ("etym_text", pa.string()),
         ("lang", pa.string()),
     ])
 
@@ -196,6 +308,9 @@ def export_lemmas_to_parquet(lemmas: Dict[str, dict], output_path: str) -> None:
     poses = [r["pos"] for r in records]
     ipas = [r["ipa"] for r in records]
     glosses = [r["glosses"] for r in records]
+    senses_json = [orjson.dumps(r["senses"]).decode("utf-8") for r in records]
+    etym_roots = [r["etym_root"] for r in records]
+    etym_texts = [r["etym_text"] for r in records]
     langs = [r["lang"] for r in records]
 
     table = pa.Table.from_arrays(
@@ -204,6 +319,9 @@ def export_lemmas_to_parquet(lemmas: Dict[str, dict], output_path: str) -> None:
             pa.array(poses, type=pa.string()),
             pa.array(ipas, type=pa.string()),
             pa.array(glosses, type=pa.list_(pa.string())),
+            pa.array(senses_json, type=pa.string()),
+            pa.array(etym_roots, type=pa.string()),
+            pa.array(etym_texts, type=pa.string()),
             pa.array(langs, type=pa.string()),
         ],
         schema=schema,

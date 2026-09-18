@@ -47,6 +47,12 @@ COLUMNS = [
     "phonetic_sim",
     "semantic_sim",
     "category",
+    "false_friend_type",
+    "senses_a",
+    "senses_b",
+    "etym_root",
+    "etym_text_a",
+    "etym_text_b",
 ]
 
 

@@ -51,17 +51,48 @@ def _get_en_g2p():
     return _G2P_EN_ENGINE
 
 
+_EN_RULE_CLUSTERS = [
+    ("ch", "tʃ"),
+    ("sh", "ʃ"),
+    ("th", "θ"),
+    ("ph", "f"),
+    ("wh", "w"),
+    ("ng", "ŋ"),
+    ("qu", "kw"),
+    ("ck", "k"),
+    ("ee", "i"),
+    ("oo", "u"),
+    ("ea", "i"),
+    ("ai", "eɪ"),
+    ("ay", "eɪ"),
+    ("oi", "ɔɪ"),
+    ("oy", "ɔɪ"),
+    ("ou", "aʊ"),
+    ("ow", "aʊ"),
+]
+
+
+def _english_rule_fallback(word: str) -> str:
+    """Fast rule-based approximation for OOV English words."""
+    text = word.lower().strip()
+    for cluster, ph in _EN_RULE_CLUSTERS:
+        text = text.replace(cluster, ph)
+    return text
+
+
 def english_to_ipa(word: str) -> str:
-    """Converts English orthography to IPA using g2p-en and ARPAbet mapping."""
+    """Converts English orthography to IPA using fast O(1) CMU lookup with rule fallback."""
+    if not word or not isinstance(word, str):
+        return ""
+    w_lower = word.strip().lower()
     g2p = _get_en_g2p()
-    if not g2p:
-        return ""
-    try:
-        phonemes = g2p(word)
-        ipa_parts = [_ARPABET_TO_IPA.get(p.strip(), "") for p in phonemes if p.strip()]
-        return "".join(ipa_parts)
-    except Exception:
-        return ""
+    if g2p and hasattr(g2p, "cmu"):
+        cmu_entry = g2p.cmu.get(w_lower)
+        if cmu_entry:
+            phonemes = cmu_entry[0] if isinstance(cmu_entry[0], list) else cmu_entry
+            ipa_parts = [_ARPABET_TO_IPA.get(p.strip(), "") for p in phonemes if p.strip()]
+            return "".join(ipa_parts)
+    return _english_rule_fallback(w_lower)
 
 
 # ---------------------------------------------------------------------------

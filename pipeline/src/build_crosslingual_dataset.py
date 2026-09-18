@@ -1,8 +1,9 @@
 """Unified Cross-Lingual Dataset Builder for Linduistics.
 
 Combines Wiktionary translation graph mining with targeted surface collision
-search to generate a comprehensive, balanced lexical comparison dataset
-across English, Swedish, German, Danish, and Norwegian Bokmål (20 directed pairs).
+search to generate an authoritative, balanced lexical comparison dataset
+across English, Swedish, German, Danish, and Norwegian Bokmål (20 directed pairs),
+with strict sense-level alignment, polysemous inventory, and etymological provenance.
 """
 
 from __future__ import annotations
@@ -14,7 +15,7 @@ import sys
 import time
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 # Ensure pipeline/src is on sys.path
 _src_dir = str(Path(__file__).resolve().parent)
@@ -26,7 +27,7 @@ import orjson
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from classifier import classify_pair
+from classifier import are_cognate_roots, classify_pair
 from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
@@ -41,20 +42,10 @@ LANG_ALIASES = {
     "english": "en",
 }
 
-_ARCHAIC_PATTERN = re.compile(r"^\s*\((?:archaic|obsolete|dated|historical)\)", re.IGNORECASE)
-
 
 def normalize_lang(code: str) -> str:
     code = code.lower().strip()
     return LANG_ALIASES.get(code, code)
-
-
-def get_primary_glosses(glosses: List[str], max_senses: int = 2) -> List[str]:
-    """Filters out archaic senses and returns primary modern definition glosses."""
-    filtered = [g for g in glosses if g and not _ARCHAIC_PATTERN.search(g)]
-    if not filtered and glosses:
-        filtered = glosses
-    return filtered[:max_senses]
 
 
 def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
@@ -70,19 +61,32 @@ def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
         poses = table.column("pos").to_pylist()
         ipas = table.column("ipa").to_pylist()
         glosses = table.column("glosses").to_pylist()
+        senses_json = table.column("senses_json").to_pylist()
+        etym_roots = table.column("etym_root").to_pylist()
+        etym_texts = table.column("etym_text").to_pylist()
 
         lexicons[lang] = {}
         for i in range(len(words)):
             w = words[i]
             if not w:
                 continue
-            prim = get_primary_glosses(glosses[i] or [])
+            s_json = senses_json[i]
+            senses = orjson.loads(s_json) if s_json else []
+            active_glosses = (
+                glosses[i]
+                or [s["gloss"] for s in senses if s.get("is_active")]
+                or [s["gloss"] for s in senses[:1]]
+            )
+
             lexicons[lang][w.lower()] = {
                 "word": w,
-                "pos": poses[i] or "noun",
+                "pos": poses[i] or (senses[0].get("pos") if senses else "noun"),
                 "ipa": ipas[i] or "",
-                "def": prim[0] if prim else (glosses[i][0] if glosses[i] else ""),
-                "glosses": prim if prim else (glosses[i] or []),
+                "def": active_glosses[0] if active_glosses else (senses[0]["gloss"] if senses else ""),
+                "glosses": active_glosses,
+                "senses": senses,
+                "etym_root": etym_roots[i] or "",
+                "etym_text": etym_texts[i] or "",
                 "lang": lang,
             }
         print(f"Loaded {len(lexicons[lang]):,} lemmas for [{lang}].")
@@ -92,9 +96,9 @@ def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
 def mine_translation_cliques(
     en_jsonl_path: Path,
     lexicons: Dict[str, Dict[str, dict]],
-) -> Dict[Tuple[str, str], Dict[Tuple[str, str], Tuple[str, str]]]:
-    """Extracts structured translation links from Kaikki English dump."""
-    pairs_by_lang: Dict[Tuple[str, str], Dict[Tuple[str, str], Tuple[str, str]]] = defaultdict(dict)
+) -> Dict[Tuple[str, str], Set[Tuple[str, str]]]:
+    """Extracts candidate translation links from Kaikki English dump."""
+    pairs_by_lang: Dict[Tuple[str, str], Set[Tuple[str, str]]] = defaultdict(set)
 
     if not en_jsonl_path.is_file():
         print(f"Warning: {en_jsonl_path} not found.")
@@ -117,9 +121,6 @@ def mine_translation_cliques(
                 continue
 
             for sense in d.get("senses", []):
-                sense_glosses = sense.get("glosses", [])
-                sense_def = sense_glosses[0] if sense_glosses else en_meta["def"]
-
                 translations = sense.get("translations", [])
                 if not translations:
                     continue
@@ -140,12 +141,10 @@ def mine_translation_cliques(
                 for t_lang, t_words in targets.items():
                     pair_key = ("en", t_lang) if "en" < t_lang else (t_lang, "en")
                     for tw in t_words:
-                        tw_meta = lexicons[t_lang][tw.lower()]
-                        tw_def = tw_meta["def"] or sense_def
                         if pair_key == ("en", t_lang):
-                            pairs_by_lang[pair_key][(en_meta["word"], tw)] = (sense_def, tw_def)
+                            pairs_by_lang[pair_key].add((en_meta["word"], tw))
                         else:
-                            pairs_by_lang[pair_key][(tw, en_meta["word"])] = (tw_def, sense_def)
+                            pairs_by_lang[pair_key].add((tw, en_meta["word"]))
 
                 # Target to Target clique (canonically sorted pair key)
                 t_langs = list(targets.keys())
@@ -156,16 +155,16 @@ def mine_translation_cliques(
                         pair_key = (l_a, l_b) if l_a < l_b else (l_b, l_a)
                         for w_a in targets[l_a]:
                             for w_b in targets[l_b]:
-                                def_a = lexicons[l_a][w_a.lower()]["def"] or sense_def
-                                def_b = lexicons[l_b][w_b.lower()]["def"] or sense_def
                                 if l_a < l_b:
-                                    pairs_by_lang[pair_key][(w_a, w_b)] = (def_a, def_b)
+                                    pairs_by_lang[pair_key].add((w_a, w_b))
                                 else:
-                                    pairs_by_lang[pair_key][(w_b, w_a)] = (def_b, def_a)
+                                    pairs_by_lang[pair_key].add((w_b, w_a))
 
     elapsed = time.perf_counter() - start_time
     total_mined = sum(len(p) for p in pairs_by_lang.values())
-    print(f"Extracted {total_mined:,} translation pairs across {len(pairs_by_lang)} language combinations in {elapsed:.2f}s.")
+    print(
+        f"Extracted {total_mined:,} translation pairs across {len(pairs_by_lang)} language combinations in {elapsed:.2f}s."
+    )
     return pairs_by_lang
 
 
@@ -175,24 +174,33 @@ def find_surface_collisions(
     lex_a: Dict[str, dict],
     lex_b: Dict[str, dict],
     seen_pairs: Set[Tuple[str, str]],
-    max_candidates: int = 2500,
+    max_prefix_candidates: int = 2500,
 ) -> List[Tuple[dict, dict, float, float]]:
-    """Rapidly extracts identical and near-identical surface collisions."""
+    """Deterministically extracts ALL identical spelling collisions plus near-identical prefix collisions."""
     collisions: List[Tuple[dict, dict, float, float]] = []
 
-    # 1. Exact spelling intersections
-    common_lower = set(lex_a.keys()) & set(lex_b.keys())
+    # 1. Exact spelling intersections: include ALL exact matches!
+    common_lower = sorted(
+        list(set(lex_a.keys()) & set(lex_b.keys())),
+        key=lambda w: (
+            0 if (lex_a[w].get("etym_root") or lex_b[w].get("etym_root")) else 1,
+            len(w),
+            w,
+        ),
+    )
     for w in common_lower:
         if (w, w) in seen_pairs:
             continue
         meta_a = lex_a[w]
         meta_b = lex_b[w]
         s_orth = orthographic_similarity(meta_a["word"], meta_b["word"])
-        s_phon = phonetic_similarity(meta_a["ipa"], meta_b["ipa"]) if (meta_a["ipa"] and meta_b["ipa"]) else 0.0
+        s_phon = (
+            phonetic_similarity(meta_a["ipa"], meta_b["ipa"])
+            if (meta_a["ipa"] and meta_b["ipa"])
+            else 0.0
+        )
         collisions.append((meta_a, meta_b, s_orth, s_phon))
         seen_pairs.add((w, w))
-        if len(collisions) >= max_candidates:
-            return collisions
 
     # 2. 3-character prefix collisions for near-identical forms (dist <= 2)
     prefix_map_b: Dict[str, List[str]] = defaultdict(list)
@@ -201,9 +209,17 @@ def find_surface_collisions(
             norm_b = normalize_orthography(w_b)
             prefix_map_b[norm_b[:3]].append(w_b)
 
-    for w_a in lex_a.keys():
-        if len(w_a) < 3 or len(w_a) > 10:
-            continue
+    sorted_a = sorted(
+        [w for w in lex_a.keys() if 3 <= len(w) <= 10],
+        key=lambda w: (
+            0 if lex_a[w].get("etym_root") else 1,
+            len(w),
+            w,
+        ),
+    )
+
+    prefix_count = 0
+    for w_a in sorted_a:
         norm_a = normalize_orthography(w_a)
         cands = prefix_map_b.get(norm_a[:3], [])
         for w_b in cands:
@@ -215,19 +231,137 @@ def find_surface_collisions(
             if s_orth >= 0.70:
                 meta_a = lex_a[w_a]
                 meta_b = lex_b[w_b]
-                s_phon = phonetic_similarity(meta_a["ipa"], meta_b["ipa"]) if (meta_a["ipa"] and meta_b["ipa"]) else 0.0
+                s_phon = (
+                    phonetic_similarity(meta_a["ipa"], meta_b["ipa"])
+                    if (meta_a["ipa"] and meta_b["ipa"])
+                    else 0.0
+                )
                 collisions.append((meta_a, meta_b, s_orth, s_phon))
                 seen_pairs.add((w_a, w_b))
-                if len(collisions) >= max_candidates:
+                prefix_count += 1
+                if prefix_count >= max_prefix_candidates:
                     return collisions
 
     return collisions
 
 
+def align_pair_senses(
+    meta_a: dict,
+    meta_b: dict,
+    matcher: SemanticMatcher,
+    is_mined_translation: bool = False,
+) -> Tuple[float, float, str, str, List[dict], List[dict]]:
+    """Evaluates N x M sense matrix between Word A and Word B.
+
+    Enforces that def_a and def_b correspond to the exact same winning sense pair.
+
+    Returns:
+        (best_sem_sim, max_active_sem, best_def_a, best_def_b, annotated_senses_a, annotated_senses_b)
+    """
+    senses_a = meta_a.get("senses") or []
+    senses_b = meta_b.get("senses") or []
+
+    if not senses_a:
+        senses_a = [{
+            "sense_id": 1,
+            "gloss": meta_a.get("def") or meta_a["word"],
+            "pos": meta_a.get("pos", "noun"),
+            "tags": [],
+            "is_active": True,
+        }]
+    if not senses_b:
+        senses_b = [{
+            "sense_id": 1,
+            "gloss": meta_b.get("def") or meta_b["word"],
+            "pos": meta_b.get("pos", "noun"),
+            "tags": [],
+            "is_active": True,
+        }]
+
+    glosses_a = [s["gloss"] for s in senses_a]
+    glosses_b = [s["gloss"] for s in senses_b]
+
+    vecs_a = matcher.encode(glosses_a)
+    vecs_b = matcher.encode(glosses_b)
+
+    # N x M similarity matrix
+    if len(vecs_a) > 0 and len(vecs_b) > 0:
+        sim_matrix = np.dot(vecs_a, vecs_b.T)
+        sim_matrix = np.clip(sim_matrix, 0.0, 1.0)
+    else:
+        sim_matrix = np.zeros((len(senses_a), len(senses_b)), dtype=np.float32)
+
+    # Check for loanword definition identities (e.g. Swedish halva defined as 'halva')
+    wa_lower = meta_a["word"].strip().lower()
+    wb_lower = meta_b["word"].strip().lower()
+    if wa_lower == wb_lower:
+        for i in range(len(senses_a)):
+            for j in range(len(senses_b)):
+                ga = senses_a[i]["gloss"].strip().lower()
+                gb = senses_b[j]["gloss"].strip().lower()
+                if ga == wb_lower or gb == wa_lower:
+                    sim_matrix[i, j] = 1.0
+
+    # Separate active senses from obsolete ones
+    active_pairs = [
+        (i, j)
+        for i in range(len(senses_a))
+        for j in range(len(senses_b))
+        if senses_a[i].get("is_active", True) and senses_b[j].get("is_active", True)
+    ]
+
+    if active_pairs:
+        best_i, best_j = max(active_pairs, key=lambda idx: sim_matrix[idx[0], idx[1]])
+        max_active_sem = float(sim_matrix[best_i, best_j])
+    else:
+        best_flat_idx = int(np.argmax(sim_matrix))
+        best_i, best_j = np.unravel_index(best_flat_idx, sim_matrix.shape)
+        max_active_sem = float(sim_matrix[best_i, best_j])
+
+    best_sem_sim = float(sim_matrix[best_i, best_j])
+
+    # Direct translation links from Wiktionary represent high semantic affinity
+    if is_mined_translation:
+        best_sem_sim = max(best_sem_sim, 0.95)
+        max_active_sem = max(max_active_sem, 0.95)
+
+    # Annotate senses with attribution and counterpart affinity
+    annotated_a = []
+    for i, s in enumerate(senses_a):
+        affinity = float(sim_matrix[i, best_j])
+        annotated_a.append({
+            "sense_id": int(s.get("sense_id", i + 1)),
+            "gloss": str(s["gloss"]),
+            "pos": str(s.get("pos", meta_a["pos"])),
+            "tags": [str(t) for t in s.get("tags", [])],
+            "is_active": bool(s.get("is_active", True)),
+            "is_active_match": bool(int(i) == int(best_i)),
+            "similarity_to_counterpart": float(round(affinity, 3)),
+        })
+
+    annotated_b = []
+    for j, s in enumerate(senses_b):
+        affinity = float(sim_matrix[best_i, j])
+        annotated_b.append({
+            "sense_id": int(s.get("sense_id", j + 1)),
+            "gloss": str(s["gloss"]),
+            "pos": str(s.get("pos", meta_b["pos"])),
+            "tags": [str(t) for t in s.get("tags", [])],
+            "is_active": bool(s.get("is_active", True)),
+            "is_active_match": bool(int(j) == int(best_j)),
+            "similarity_to_counterpart": float(round(affinity, 3)),
+        })
+
+    best_def_a = str(senses_a[best_i]["gloss"])
+    best_def_b = str(senses_b[best_j]["gloss"])
+
+    return float(best_sem_sim), float(max_active_sem), best_def_a, best_def_b, annotated_a, annotated_b
+
+
 def build_pair_dataset(
     lang_a: str,
     lang_b: str,
-    mined_pairs: Dict[Tuple[str, str], Tuple[str, str]],
+    mined_pairs: Set[Tuple[str, str]],
     lexicons: Dict[str, Dict[str, dict]],
     matcher: SemanticMatcher,
     max_translation_pairs: int = 10000,
@@ -240,106 +374,102 @@ def build_pair_dataset(
     records: List[dict] = []
     seen_pairs: Set[Tuple[str, str]] = set()
 
-    # Step 1: Mined Translation Pairs
-    mined_items = list(mined_pairs.items())
-    if len(mined_items) > max_translation_pairs:
-        mined_items = mined_items[:max_translation_pairs]
+    # Step 1: Pre-collect candidate items
+    candidate_items: List[Tuple[dict, dict, bool, float, float]] = []
 
-    for (w_a, w_b), (def_a, def_b) in mined_items:
+    # 1.1 Mined translations
+    mined_list = list(mined_pairs)[:max_translation_pairs]
+    for w_a, w_b in mined_list:
         lower_a, lower_b = w_a.lower(), w_b.lower()
         if lower_a not in lex_a or lower_b not in lex_b:
             continue
-
         meta_a = lex_a[lower_a]
         meta_b = lex_b[lower_b]
-
-        ipa_a = meta_a["ipa"]
-        ipa_b = meta_b["ipa"]
-        s_orth = orthographic_similarity(w_a, w_b)
-        s_phon = phonetic_similarity(ipa_a, ipa_b) if (ipa_a and ipa_b) else 0.0
-        s_sem = 0.95
-
-        max_len = max(len(w_a), len(w_b))
-        category = classify_pair(
-            s_orth=s_orth,
-            s_phon=s_phon,
-            s_sem=s_sem,
-            max_len=max_len,
-            word_a=w_a,
-            word_b=w_b,
+        s_orth = orthographic_similarity(meta_a["word"], meta_b["word"])
+        s_phon = (
+            phonetic_similarity(meta_a["ipa"], meta_b["ipa"])
+            if (meta_a["ipa"] and meta_b["ipa"])
+            else 0.0
         )
-
+        candidate_items.append((meta_a, meta_b, True, s_orth, s_phon))
         seen_pairs.add((lower_a, lower_b))
-        records.append({
-            "lang_a": lang_a,
-            "word_a": meta_a["word"],
-            "ipa_a": ipa_a,
-            "def_a": def_a or meta_a["def"],
-            "pos_a": meta_a["pos"],
-            "lang_b": lang_b,
-            "word_b": meta_b["word"],
-            "ipa_b": ipa_b,
-            "def_b": def_b or meta_b["def"],
-            "pos_b": meta_b["pos"],
-            "orthographic_sim": float(s_orth),
-            "phonetic_sim": float(s_phon),
-            "semantic_sim": float(s_sem),
-            "category": category,
-        })
 
-    # Step 2: Surface Collisions (False Friends & Cognates)
+    # 1.2 Surface collisions
     collisions = find_surface_collisions(
         lang_a=lang_a,
         lang_b=lang_b,
         lex_a=lex_a,
         lex_b=lex_b,
         seen_pairs=seen_pairs,
-        max_candidates=max_collision_candidates,
+        max_prefix_candidates=max_collision_candidates,
     )
+    for meta_a, meta_b, s_orth, s_phon in collisions:
+        candidate_items.append((meta_a, meta_b, False, s_orth, s_phon))
 
-    if collisions:
-        # Pre-encode all collision glosses
-        all_glosses = []
-        for src, tgt, _, _ in collisions:
-            all_glosses.extend(src["glosses"])
-            all_glosses.extend(tgt["glosses"])
-        matcher.preencode_glosses(all_glosses)
+    # Pre-encode all glosses for candidate items in batches
+    all_glosses: List[str] = []
+    for meta_a, meta_b, _, _, _ in candidate_items:
+        for s in meta_a.get("senses") or []:
+            all_glosses.append(s["gloss"])
+        for s in meta_b.get("senses") or []:
+            all_glosses.append(s["gloss"])
+    matcher.preencode_glosses(all_glosses)
 
-        for src, tgt, s_orth, s_phon in collisions:
-            s_sem, best_def_a, best_def_b = matcher.compute_sense_similarity(
-                src["glosses"], tgt["glosses"]
-            )
-            def_a = best_def_a or src["def"]
-            def_b = best_def_b or tgt["def"]
-            max_len = max(len(src["word"]), len(tgt["word"]))
+    # Step 2: Sense alignment and classification
+    for meta_a, meta_b, is_mined, s_orth, s_phon in candidate_items:
+        s_sem, max_active_sem, def_a, def_b, senses_a, senses_b = align_pair_senses(
+            meta_a, meta_b, matcher, is_mined_translation=is_mined
+        )
 
-            category = classify_pair(
-                s_orth=s_orth,
-                s_phon=s_phon,
-                s_sem=s_sem,
-                max_len=max_len,
-                word_a=src["word"],
-                word_b=tgt["word"],
-            )
+        max_len = max(len(meta_a["word"]), len(meta_b["word"]))
+        category, false_friend_type = classify_pair(
+            s_orth=s_orth,
+            s_phon=s_phon,
+            s_sem=s_sem,
+            max_len=max_len,
+            word_a=meta_a["word"],
+            word_b=meta_b["word"],
+            etym_root_a=meta_a.get("etym_root", ""),
+            etym_root_b=meta_b.get("etym_root", ""),
+            etym_text_a=meta_a.get("etym_text", ""),
+            etym_text_b=meta_b.get("etym_text", ""),
+            max_active_sem=max_active_sem,
+        )
 
-            records.append({
-                "lang_a": lang_a,
-                "word_a": src["word"],
-                "ipa_a": src["ipa"],
-                "def_a": def_a,
-                "pos_a": src["pos"],
-                "lang_b": lang_b,
-                "word_b": tgt["word"],
-                "ipa_b": tgt["ipa"],
-                "def_b": def_b,
-                "pos_b": tgt["pos"],
-                "orthographic_sim": float(s_orth),
-                "phonetic_sim": float(s_phon),
-                "semantic_sim": float(s_sem),
-                "category": category,
-            })
+        # Determine shared etymological root
+        etym_root = ""
+        if meta_a.get("etym_root") and meta_b.get("etym_root"):
+            if are_cognate_roots(meta_a["etym_root"], meta_b["etym_root"]):
+                etym_root = meta_a["etym_root"]
+        elif meta_a.get("etym_root") and "Proto-Germanic" in meta_a["etym_root"]:
+            etym_root = meta_a["etym_root"]
+        elif meta_b.get("etym_root") and "Proto-Germanic" in meta_b["etym_root"]:
+            etym_root = meta_b["etym_root"]
 
-    # Step 3: Symmetrical Inversion
+        records.append({
+            "lang_a": lang_a,
+            "word_a": meta_a["word"],
+            "ipa_a": meta_a["ipa"],
+            "def_a": def_a,
+            "pos_a": meta_a["pos"],
+            "lang_b": lang_b,
+            "word_b": meta_b["word"],
+            "ipa_b": meta_b["ipa"],
+            "def_b": def_b,
+            "pos_b": meta_b["pos"],
+            "orthographic_sim": float(s_orth),
+            "phonetic_sim": float(s_phon),
+            "semantic_sim": float(s_sem),
+            "category": category,
+            "false_friend_type": false_friend_type,
+            "senses_a": orjson.dumps(senses_a, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
+            "senses_b": orjson.dumps(senses_b, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
+            "etym_root": etym_root or None,
+            "etym_text_a": meta_a.get("etym_text") or None,
+            "etym_text_b": meta_b.get("etym_text") or None,
+        })
+
+    # Step 3: Symmetrical Inversion (Lang B -> Lang A)
     symmetrical: List[dict] = []
     for r in records:
         symmetrical.append(r)
@@ -358,6 +488,12 @@ def build_pair_dataset(
             "phonetic_sim": r["phonetic_sim"],
             "semantic_sim": r["semantic_sim"],
             "category": r["category"],
+            "false_friend_type": r["false_friend_type"],
+            "senses_a": r["senses_b"],
+            "senses_b": r["senses_a"],
+            "etym_root": r["etym_root"],
+            "etym_text_a": r["etym_text_b"],
+            "etym_text_b": r["etym_text_a"],
         })
 
     return symmetrical
@@ -387,21 +523,28 @@ def main() -> None:
 
     all_rows: List[dict] = []
     category_counts: Dict[str, int] = defaultdict(int)
+    ff_type_counts: Dict[str, int] = defaultdict(int)
 
     for l_a, l_b in unique_pairs:
         pair_key = (l_a, l_b)
-        mined = mined_by_pair.get(pair_key, {})
+        mined = mined_by_pair.get(pair_key, set())
         print(f"\nProcessing pair [{l_a} <-> {l_b}] ({len(mined):,} mined translation links)...")
         pair_records = build_pair_dataset(l_a, l_b, mined, lexicons, matcher)
         all_rows.extend(pair_records)
         for r in pair_records:
             category_counts[r["category"]] += 1
+            if r["false_friend_type"]:
+                ff_type_counts[r["false_friend_type"]] += 1
         print(f"  Generated {len(pair_records):,} symmetrical rows for [{l_a} <-> {l_b}].")
 
     print(f"\nTotal comparison rows generated: {len(all_rows):,}")
     print("Taxonomy distribution:")
     for cat, cnt in sorted(category_counts.items(), key=lambda x: -x[1]):
         print(f"  {cat:20}: {cnt:,} ({cnt / len(all_rows) * 100:.1f}%)")
+
+    print("False Friend Sub-Tiers:")
+    for ff_t, cnt in sorted(ff_type_counts.items(), key=lambda x: -x[1]):
+        print(f"  {ff_t:25}: {cnt:,}")
 
     # Serialize to Parquet
     print(f"\nWriting to {out_parquet}...")
@@ -420,6 +563,12 @@ def main() -> None:
         ("phonetic_sim", pa.float64()),
         ("semantic_sim", pa.float64()),
         ("category", pa.string()),
+        ("false_friend_type", pa.string()),
+        ("senses_a", pa.string()),
+        ("senses_b", pa.string()),
+        ("etym_root", pa.string()),
+        ("etym_text_a", pa.string()),
+        ("etym_text_b", pa.string()),
     ])
 
     cols = {name: [r[name] for r in all_rows] for name in schema.names}

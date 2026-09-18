@@ -42,6 +42,10 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		args = append(args, p.Category)
 		whereClause += fmt.Sprintf(" AND category = $%d", len(args))
 	}
+	if p.FalseFriendType != "" {
+		args = append(args, p.FalseFriendType)
+		whereClause += fmt.Sprintf(" AND false_friend_type = $%d", len(args))
+	}
 
 	countQuery := "SELECT count(*) FROM word_comparisons " + whereClause
 	var total int
@@ -52,7 +56,8 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 	dataQuery := fmt.Sprintf(`
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
-		       orthographic_sim, phonetic_sim, semantic_sim, category
+		       orthographic_sim, phonetic_sim, semantic_sim, category,
+		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		%s
 		ORDER BY phonetic_sim DESC, semantic_sim DESC
@@ -73,6 +78,7 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
+			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
 		)
 		if err != nil {
 			return nil, 0, fmt.Errorf("scan pair error: %w", err)
@@ -97,7 +103,8 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 	query := `
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
-		       orthographic_sim, phonetic_sim, semantic_sim, category
+		       orthographic_sim, phonetic_sim, semantic_sim, category,
+		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		WHERE lang_a = $1
 		  AND word_a = ANY($2)
@@ -118,6 +125,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
+			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan token match error: %w", err)
 		}
@@ -133,7 +141,8 @@ func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang,
 	query := `
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
-		       orthographic_sim, phonetic_sim, semantic_sim, category
+		       orthographic_sim, phonetic_sim, semantic_sim, category,
+		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		WHERE lang_a = $1 AND lang_b = $2 AND category = 'false_friend'
 		ORDER BY random()
@@ -152,6 +161,7 @@ func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang,
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
+			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan false friend error: %w", err)
 		}
@@ -192,7 +202,8 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 	query := `
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
-		       orthographic_sim, phonetic_sim, semantic_sim, category
+		       orthographic_sim, phonetic_sim, semantic_sim, category,
+		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		WHERE lang_a = $1 AND word_a ILIKE $2 || '%'
 		ORDER BY phonetic_sim DESC, semantic_sim DESC
@@ -211,6 +222,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
+			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan search result error: %w", err)
 		}
@@ -324,4 +336,3 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 		Pairs:     pairs,
 	}, nil
 }
-
