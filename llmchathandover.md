@@ -84,13 +84,18 @@ S_sem(w_A, w_B) = max_{i, j} ( (e_{A,i} · e_{B,j}) / (||e_{A,i}|| * ||e_{B,j}||
 
 4. **Sense Attribution (Argmax Tracking):** The ETL pipeline retains the specific gloss pair `(d_{A, i*}, d_{B, j*})` that produced the maximum score. Storing the matching glosses alongside headwords allows the UI to explain *why* two words were categorized as related or divergent.
 
-### 2.4 Lexical Classification Taxonomy
+### 2.4 Lexical Classification Taxonomy & False Friend Tiers
 
-* **True Cognate / Direct Borrowing:** (S_phon >= 0.65 OR S_orth >= 0.70) AND S_sem >= 0.75
-* **False Friend (Deceptive Cognate):** (S_phon >= 0.65 OR S_orth >= 0.70) AND S_sem <= 0.30
-* **Partial Cognate:** S_phon >= 0.65 AND 0.30 < S_sem < 0.75
-* **Translation Pair:** S_sem >= 0.75 AND S_phon < 0.65 AND S_orth < 0.70
-* **Lexical Isolate:** A word in L_A with no counterparts having S_sem >= 0.70 in any evaluated sibling Germanic language
+The taxonomy enforces strict sense-to-sense correspondence (no cross-wired definitions). See detailed specification in [`docs/DATASET_SPECIFICATION.md`](docs/DATASET_SPECIFICATION.md).
+
+* **True Cognate / Direct Borrowing:** (S_phon >= 0.65 OR S_orth >= 0.70) AND S_sem >= 0.75.
+* **False Friends (Deceptive Cognates):** (S_phon >= 0.65 OR S_orth >= 0.70) AND S_sem <= 0.30 across all shared primary senses:
+  * **Type A (Academic / Etymological Shift):** Verified common historical root (Proto-Germanic/Latin) where meaning diverged over centuries (e.g., *gift* / *gift*, *semester* / *semester*, *bald* / *bold*).
+  * **Type B (Casual / Surface Collision):** Accidental homographs/homophones or unrelated loanword clashes with different roots (e.g., Swedish *bra* [good] vs. English *bra* [brassiere]; German *Mist* [manure] vs. English *mist* [fog]).
+* **False Friend Disqualification Rule:** A headword pair CANNOT be classified as a False Friend if they share *any* active sense with S_sem >= 0.75 (e.g., *halva* is a shared loanword confection in both Swedish and English; it must not be labeled a false friend due to unaligned secondary senses).
+* **Partial Cognate:** S_phon >= 0.65 AND 0.30 < S_sem < 0.75.
+* **Translation Pair:** S_sem >= 0.75 AND S_phon < 0.65 AND S_orth < 0.70.
+* **UI & Storage Invariant:** One entry per unique headword pair in primary register list. The list must render as a dense, paginated table (not floating cards). Clicking or expanding reveals the complete polysemous drawer contrasting all definitions.
 
 ---
 
