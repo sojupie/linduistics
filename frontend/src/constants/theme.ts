@@ -1,59 +1,53 @@
 /**
- * Archival Field Guide Design Tokens & Color Palette
- * Derived from 18th/19th century botanical and lexical indices.
+ * Printed Book & Lexical Reference Design Tokens
+ * Light-mode unbleached paper substrates and archival carbon inks.
  */
 
 export const PALETTE = {
-  // Substrates (Naturalist Rag Papers & Slate Ledgers)
-  SUBSTRATE_DARK: '#161514',
-  SUBSTRATE_PANEL: '#1E1D1B',
-  SUBSTRATE_LIGHT: '#F5F2EB',
-  SUBSTRATE_LIGHTPANEL: '#ECE7DD',
+  // Paper Substrates
+  PAGE_BG: '#FAF8F5',
+  PAGE_SURFACE: '#FFFFFF',
+  PAGE_MUTED: '#F3EFEA',
+  PAGE_ACCENT: '#EDE7DE',
 
-  // Borders & Linework
-  BORDER_HAIRLINE: '#2C2A26',
-  BORDER_LIGHTHAIRLINE: '#D8D1C3',
-  BORDER_FAINT: 'rgba(234, 230, 223, 0.08)',
-  BORDER_GRID_DEEP: '#1F1E1B',
-  BORDER_GRID_FAINT: '#23211E',
-  BORDER_GRID_RADAR: '#2A2824',
-  BORDER_GRID_RADAR_OUTER: '#3A3732',
+  // Book Linework & Dividers
+  BOOK_RULE: '#E5E0D8',
+  BOOK_RULE_MUTED: '#EDE9E2',
+  BOOK_RULE_STRONG: '#D0C9BE',
 
-  // Canvas Alpha Suffixes
-  TETHER_ALPHA_HEX: '33',
-  ORBIT_PATH_ALPHA_HEX: '1A',
+  // Reading Inks (Never stark #000000)
+  INK_MAIN: '#1F1E1D',
+  INK_MUTED: '#5E5B56',
+  INK_LIGHT: '#8A8680',
 
-  // Inks & Typography
-  INK_CARBON: '#EAE6DF',
-  INK_MUTED: '#9C968A',
-  INK_FAINT: '#6A655C',
-  INK_SCALE_MARKER: '#5A564D',
-  INK_AXIS_LABEL: '#4E4B43',
-  INK_DARKCARBON: '#1C1B18',
+  // Word Classification Inks (Legible on warm paper)
+  COGNATE_INK: '#255D36',        // Deep forest green
+  COGNATE_BG: '#EBF3ED',
+  COGNATE_BORDER: '#B8DAC0',
 
-  // Specimen Taxonomic Inks
-  SPECIMEN_MOSS: '#5A8A64',
-  SPECIMEN_MOSS_BG: 'rgba(90, 138, 100, 0.12)',
-  SPECIMEN_MOSS_BG_DEEP: 'rgba(90, 138, 100, 0.25)',
-  SPECIMEN_MOSS_ORBIT_AURA: 'rgba(90, 138, 100, 0.15)',
-  SPECIMEN_MOSS_ANCHOR_AURA: 'rgba(90, 138, 100, 0.08)',
+  FALSE_FRIEND_INK: '#9E2A2B',   // Deep crimson / rust
+  FALSE_FRIEND_BG: '#F9ECEC',
+  FALSE_FRIEND_BORDER: '#E8B6B6',
 
-  SPECIMEN_OXBLOOD: '#B04358',
-  SPECIMEN_OXBLOOD_BG: 'rgba(176, 67, 88, 0.12)',
-  SPECIMEN_OXBLOOD_BORDER: 'rgba(176, 67, 88, 0.40)',
+  SHIFTED_INK: '#8F581B',        // Warm sienna / ochre
+  SHIFTED_BG: '#FBF3EB',
+  SHIFTED_BORDER: '#ECCFA9',
 
-  SPECIMEN_OCHRE: '#C88A4E',
-  SPECIMEN_OCHRE_BG: 'rgba(200, 138, 78, 0.12)',
-  SPECIMEN_OCHRE_BG_DEEP: 'rgba(200, 138, 78, 0.25)',
-  SPECIMEN_OCHRE_ORBIT_AURA: 'rgba(200, 138, 78, 0.15)',
+  DIVERGENT_INK: '#2D516B',      // Slate blue
+  DIVERGENT_BG: '#EBF1F6',
+  DIVERGENT_BORDER: '#BCD0E0',
 
-  SPECIMEN_IRONGALL: '#4E7498',
-  SPECIMEN_IRONGALL_BG: 'rgba(78, 116, 152, 0.12)',
-
-  SPECIMEN_SLATE: '#7E7A71',
-  SPECIMEN_SLATE_BG: 'rgba(126, 122, 113, 0.12)',
-  SPECIMEN_COMPARISON_INK: '#6A655C',
-  SPECIMEN_COMPARISON_FILL: 'rgba(106, 101, 92, 0.12)',
+  // Canvas Grid & Orbit Linework for Light Book Substrate
+  CANVAS_BG: '#FAF8F5',
+  CANVAS_RING: '#E0DAD0',
+  CANVAS_RING_ACCENT: '#CCC4B6',
+  CANVAS_CROSSHAIR: '#EAE4DA',
+  CANVAS_TETHER: '#BFB7A8',
+  CANVAS_TEXT: '#1F1E1D',
+  CANVAS_TEXT_MUTED: '#5E5B56',
+  CANVAS_ANCHOR_FILL: '#FFFFFF',
+  CANVAS_ANCHOR_STROKE: '#255D36',
+  CANVAS_SATELLITE_FILL: '#FFFFFF',
 } as const;
 
 export const TYPOGRAPHY = {

@@ -1,7 +1,6 @@
 import React from 'react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { SPECIMEN_CONFIG } from '../../constants/config';
-import { BookOpen } from 'lucide-react';
 
 interface SpecimenCardProps {
   specimen: SpecimenPair;
@@ -11,121 +10,135 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
   const getBadgeStyle = () => {
     switch (specimen.category) {
       case 'cognate':
-        return 'border-specimen-moss/30 bg-specimen-moss/10 text-specimen-moss';
+        return 'text-cognate-ink bg-cognate-bg border-cognate-border';
       case 'minefield':
-        return 'border-specimen-oxblood/30 bg-specimen-oxblood/10 text-specimen-oxblood';
+        return 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border';
       case 'cousin':
-        return 'border-specimen-ochre/30 bg-specimen-ochre/10 text-specimen-ochre';
+        return 'text-shifted-ink bg-shifted-bg border-shifted-border';
       case 'schism':
-        return 'border-specimen-irongall/30 bg-specimen-irongall/10 text-specimen-irongall';
+        return 'text-divergent-ink bg-divergent-bg border-divergent-border';
       default:
-        return 'border-border-hairline bg-substrate-dark text-ink-muted';
+        return 'text-ink-muted bg-page-muted border-book-rule';
+    }
+  };
+
+  const getCategoryLabel = () => {
+    switch (specimen.category) {
+      case 'cognate':
+        return 'Cognate';
+      case 'minefield':
+        return 'False friend';
+      case 'cousin':
+        return 'Sound shift';
+      case 'schism':
+        return 'Different word';
+      default:
+        return 'Word pair';
     }
   };
 
   return (
-    <div className="flex flex-col justify-between rounded border border-border-hairline bg-substrate-panel p-5 font-serif transition-all hover:border-ink-faint hover:shadow-md">
-      {/* Top Header: Catalog Tabula & Category Badge */}
-      <div>
-        <div className="flex items-center justify-between border-b border-border-hairline/60 pb-2.5">
-          <span className="font-mono text-[10px] tracking-widest uppercase text-ink-faint">
-            {specimen.catalogId}
-          </span>
+    <article className="rounded border border-book-rule bg-page-surface p-6 font-serif shadow-2xs">
+      {/* Top entry header */}
+      <div className="flex flex-wrap items-baseline justify-between border-b border-book-rule pb-3 gap-2">
+        <div className="flex flex-wrap items-baseline gap-3">
+          {/* Word A (Swedish) */}
+          <span className="text-2xl font-bold text-ink-main">{specimen.wordA}</span>
+          {specimen.ipaA && (
+            <span className="font-mono text-base text-ink-muted">/{specimen.ipaA}/</span>
+          )}
+          {specimen.posA && (
+            <span className="text-sm italic text-ink-light">({specimen.posA})</span>
+          )}
+
+          <span className="text-ink-light mx-1">→</span>
+
+          {/* Word B (Target) */}
           <span
-            className={`rounded px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider border ${getBadgeStyle()}`}
+            className={`text-2xl font-bold ${
+              specimen.category === 'minefield'
+                ? 'text-falsefriend-ink'
+                : specimen.category === 'cognate'
+                ? 'text-cognate-ink'
+                : 'text-ink-main'
+            }`}
           >
-            {specimen.category}
+            {specimen.wordB}
           </span>
+          {specimen.ipaB && (
+            <span className="font-mono text-base text-ink-muted">/{specimen.ipaB}/</span>
+          )}
+          {specimen.posB && (
+            <span className="text-sm italic text-ink-light">({specimen.posB})</span>
+          )}
         </div>
 
-        {/* Headword Pair Observation */}
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {/* Source Specimen (A) */}
-          <div className="rounded border border-border-hairline/40 bg-substrate-dark/60 p-3">
-            <div className="flex items-baseline justify-between">
-              <h4 className="text-lg font-bold text-ink-carbon">{specimen.wordA}</h4>
-              {specimen.posA && (
-                <span className="font-mono text-[9px] uppercase text-ink-faint">
-                  {specimen.posA}
-                </span>
-              )}
-            </div>
-            {specimen.ipaA && (
-              <p className="font-mono text-[11px] text-ink-muted">{specimen.ipaA}</p>
-            )}
-            <p className="mt-2 text-xs text-ink-muted leading-relaxed line-clamp-2">
-              {specimen.defA}
-            </p>
-          </div>
+        {/* Category tag */}
+        <span
+          className={`rounded border px-2.5 py-0.5 text-sm font-medium ${getBadgeStyle()}`}
+        >
+          {getCategoryLabel()}
+        </span>
+      </div>
 
-          {/* Target Specimen (B) */}
-          <div className="rounded border border-border-hairline/40 bg-substrate-dark/60 p-3">
-            <div className="flex items-baseline justify-between">
-              <h4 className="text-lg font-bold text-ink-carbon">{specimen.wordB}</h4>
-              {specimen.posB && (
-                <span className="font-mono text-[9px] uppercase text-ink-faint">
-                  {specimen.posB}
-                </span>
-              )}
-            </div>
-            {specimen.ipaB && (
-              <p className="font-mono text-[11px] text-ink-muted">{specimen.ipaB}</p>
-            )}
-            <p className="mt-2 text-xs text-ink-muted leading-relaxed line-clamp-2">
-              {specimen.defB}
-            </p>
-          </div>
+      {/* Definitions layout */}
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
+        <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
+          <span className="text-sm text-ink-muted block mb-1 font-sans">Swedish:</span>
+          <p className="text-ink-main leading-relaxed">{specimen.defA}</p>
+        </div>
+
+        <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
+          <span className="text-sm text-ink-muted block mb-1 font-sans">Target language:</span>
+          <p className="text-ink-main leading-relaxed">{specimen.defB}</p>
         </div>
       </div>
 
-      {/* Mathematical Alignment Coefficients */}
-      <div className="mt-4 border-t border-border-hairline/50 pt-3">
-        <div className="grid grid-cols-3 gap-2 font-mono text-[10px] text-center">
-          <div className="rounded bg-substrate-dark/80 p-1.5 border border-border-hairline/30">
-            <span className="block text-[8px] text-ink-faint uppercase">Spelling</span>
-            <span className="text-ink-carbon">
-              {(specimen.orthographicSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-                SPECIMEN_CONFIG.SIMILARITY_PRECISION,
-              )}
-              %
-            </span>
-          </div>
-          <div className="rounded bg-substrate-dark/80 p-1.5 border border-border-hairline/30">
-            <span className="block text-[8px] text-ink-faint uppercase">Acoustic</span>
-            <span className="text-specimen-moss">
-              {(specimen.phoneticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-                SPECIMEN_CONFIG.SIMILARITY_PRECISION,
-              )}
-              %
-            </span>
-          </div>
-          <div className="rounded bg-substrate-dark/80 p-1.5 border border-border-hairline/30">
-            <span className="block text-[8px] text-ink-faint uppercase">Semantic</span>
-            <span
-              className={
-                specimen.semanticSim > 0.7
-                  ? 'text-specimen-moss'
-                  : specimen.semanticSim < 0.3
-                  ? 'text-specimen-oxblood'
-                  : 'text-specimen-ochre'
-              }
-            >
-              {(specimen.semanticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-                SPECIMEN_CONFIG.SIMILARITY_PRECISION,
-              )}
-              %
-            </span>
-          </div>
-        </div>
+      {/* Etymological historical note */}
+      {specimen.marginalia && (
+        <p className="mt-4 border-l-2 border-book-rule-strong pl-4 text-base italic text-ink-muted leading-relaxed">
+          {specimen.marginalia}
+        </p>
+      )}
 
-        {/* Marginalia Annotation */}
-        {specimen.marginalia && (
-          <div className="mt-3 flex items-start gap-2 rounded bg-substrate-dark/40 p-2.5 text-[11px] italic text-ink-muted">
-            <BookOpen size={12} className="shrink-0 text-specimen-moss mt-0.5" />
-            <span className="leading-snug">{specimen.marginalia}</span>
-          </div>
-        )}
+      {/* Similarity percentages */}
+      <div className="mt-4 flex flex-wrap items-center gap-6 border-t border-book-rule pt-3 text-sm text-ink-muted font-serif">
+        <span>
+          Spelling similarity:{' '}
+          <strong className="font-mono text-ink-main font-normal">
+            {(specimen.orthographicSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
+              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            )}
+            %
+          </strong>
+        </span>
+        <span>
+          Pronunciation similarity:{' '}
+          <strong className="font-mono text-cognate-ink font-normal">
+            {(specimen.phoneticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
+              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            )}
+            %
+          </strong>
+        </span>
+        <span>
+          Meaning similarity:{' '}
+          <strong
+            className={`font-mono font-normal ${
+              specimen.semanticSim > 0.7
+                ? 'text-cognate-ink'
+                : specimen.semanticSim < 0.3
+                ? 'text-falsefriend-ink'
+                : 'text-shifted-ink'
+            }`}
+          >
+            {(specimen.semanticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
+              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            )}
+            %
+          </strong>
+        </span>
       </div>
-    </div>
+    </article>
   );
 };

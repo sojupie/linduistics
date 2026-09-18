@@ -1,72 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  --color-substrate-dark: #161514;
-  --color-substrate-panel: #1E1D1B;
-  --color-substrate-light: #F5F2EB;
-  --color-substrate-lightpanel: #ECE7DD;
+  --color-page-bg: #FAF8F5;
+  --color-page-surface: #FFFFFF;
+  --color-page-muted: #F3EFEA;
+  --color-page-accent: #EDE7DE;
 
-  --color-border-hairline: #2C2A26;
-  --color-border-subtle: #3E3B35;
-  --color-border-lighthairline: #D8D1C3;
-  --color-border-faint: rgba(234, 230, 223, 0.08);
-  --color-border-grid: #23211E;
-  --color-border-radar: #2A2824;
+  --color-book-rule: #E5E0D8;
+  --color-book-rule-strong: #D0C9BE;
 
-  --color-ink-carbon: #EAE6DF;
-  --color-ink-muted: #9C968A;
-  --color-ink-faint: #6A655C;
-  --color-ink-darkcarbon: #1C1B18;
+  --color-ink-main: #1F1E1D;
+  --color-ink-muted: #5E5B56;
+  --color-ink-light: #8A8680;
 
-  --color-specimen-moss: #5A8A64;
-  --color-specimen-mossbg: rgba(90, 138, 100, 0.12);
-  --color-specimen-oxblood: #B04358;
-  --color-specimen-oxbloodbg: rgba(176, 67, 88, 0.12);
-  --color-specimen-ochre: #C88A4E;
-  --color-specimen-ochrebg: rgba(200, 138, 78, 0.12);
-  --color-specimen-irongall: #4E7498;
-  --color-specimen-irongallbg: rgba(78, 116, 152, 0.12);
-  --color-specimen-slate: #7E7A71;
-  --color-specimen-slatebg: rgba(126, 122, 113, 0.12);
+  --color-cognate-ink: #255D36;
+  --color-cognate-bg: #EBF3ED;
+  --color-cognate-border: #B8DAC0;
+
+  --color-falsefriend-ink: #9E2A2B;
+  --color-falsefriend-bg: #F9ECEC;
+  --color-falsefriend-border: #E8B6B6;
+
+  --color-shifted-ink: #8F581B;
+  --color-shifted-bg: #FBF3EB;
+  --color-shifted-border: #ECCFA9;
+
+  --color-divergent-ink: #2D516B;
+  --color-divergent-bg: #EBF1F6;
+  --color-divergent-border: #BCD0E0;
 
   --font-serif: 'Cardo', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
-  background-color: var(--color-substrate-dark);
-  color: var(--color-ink-carbon);
+  background-color: var(--color-page-bg);
+  color: var(--color-ink-main);
   font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-.small-caps {
-  font-variant: small-caps;
-  letter-spacing: 0.06em;
-}
-
-.border-hairline {
-  border: 1px solid var(--color-border-hairline);
-}
-
+/* Custom scrollbars matching book paper */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-substrate-dark);
+  background: var(--color-page-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-hairline);
-  border-radius: 2px;
+  background: var(--color-book-rule);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3E3B35;
+  background: var(--color-book-rule-strong);
 }

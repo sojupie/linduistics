@@ -68,8 +68,8 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
     bodiesRef.current = others.map((lang, i) => {
       const isNorth = lang.branch === 'North Germanic';
-      const color = isNorth ? PALETTE.SPECIMEN_MOSS : PALETTE.SPECIMEN_OCHRE;
-      const bgColor = isNorth ? PALETTE.SPECIMEN_MOSS_ORBIT_AURA : PALETTE.SPECIMEN_OCHRE_ORBIT_AURA;
+      const color = isNorth ? PALETTE.COGNATE_INK : PALETTE.SHIFTED_INK;
+      const bgColor = isNorth ? PALETTE.COGNATE_BG : PALETTE.SHIFTED_BG;
 
       const initialRadius =
         ORBIT_CONFIG.INITIAL_RADIUS_BASE_PX + i * ORBIT_CONFIG.INITIAL_RADIUS_STEP_PX;
@@ -131,12 +131,12 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
       const centerY = height / 2;
       const maxRadius = Math.min(centerX, centerY);
 
-      // Substrate base fill
-      ctx.fillStyle = PALETTE.SUBSTRATE_DARK;
+      // Light warm paper substrate
+      ctx.fillStyle = PALETTE.CANVAS_BG;
       ctx.fillRect(0, 0, width, height);
 
-      // Coordinate crosshairs
-      ctx.strokeStyle = PALETTE.BORDER_GRID_FAINT;
+      // Faint coordinate crosshairs
+      ctx.strokeStyle = PALETTE.CANVAS_CROSSHAIR;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(centerX, ORBIT_CONFIG.CROSSHAIR_EDGE_MARGIN_PX);
@@ -152,7 +152,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         const r = minR + step * (maxR - minR);
 
         ctx.beginPath();
-        ctx.strokeStyle = idx === 1 ? PALETTE.BORDER_HAIRLINE : PALETTE.BORDER_GRID_DEEP;
+        ctx.strokeStyle = idx === 1 ? PALETTE.CANVAS_RING_ACCENT : PALETTE.CANVAS_RING;
         ctx.setLineDash(
           idx % 2 === 0
             ? [...ORBIT_CONFIG.DASH_EVEN_PATTERN]
@@ -162,11 +162,11 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Label on horizontal axis
+        // Legible ring label
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_RING_LABEL_PX}px ${TYPOGRAPHY.FONT_MONO}`;
-        ctx.fillStyle = PALETTE.INK_AXIS_LABEL;
+        ctx.fillStyle = PALETTE.CANVAS_TEXT_MUTED;
         ctx.textAlign = 'center';
-        ctx.fillText(`δ ${(step * 1.0).toFixed(2)}`, centerX + r, centerY - 6);
+        ctx.fillText(`${(step * 100).toFixed(0)}% distance`, centerX + r, centerY - 8);
       });
 
       // Update and draw bodies
@@ -182,10 +182,10 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         const x = centerX + Math.cos(body.angle) * body.currentRadius;
         const y = centerY + Math.sin(body.angle) * body.currentRadius;
 
-        // Gravity tether to central anchor
+        // Gravity tether line
         ctx.beginPath();
         ctx.setLineDash([...ORBIT_CONFIG.TETHER_DASH_PATTERN]);
-        ctx.strokeStyle = body.color + PALETTE.TETHER_ALPHA_HEX;
+        ctx.strokeStyle = PALETTE.CANVAS_TETHER;
         ctx.lineWidth = ORBIT_CONFIG.TETHER_LINE_WIDTH_PX;
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
@@ -194,21 +194,21 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
         // Orbit path ring for this satellite
         ctx.beginPath();
-        ctx.strokeStyle = body.color + PALETTE.ORBIT_PATH_ALPHA_HEX;
+        ctx.strokeStyle = PALETTE.CANVAS_RING;
         ctx.lineWidth = ORBIT_CONFIG.SATELLITE_ORBIT_RING_WIDTH_PX;
         ctx.arc(centerX, centerY, body.currentRadius, 0, Math.PI * 2);
         ctx.stroke();
 
-        // Satellite body shadow/glow
+        // Satellite disc shadow/halo
         ctx.beginPath();
         ctx.arc(x, y, body.size + ORBIT_CONFIG.SATELLITE_AURA_PADDING_PX, 0, Math.PI * 2);
         ctx.fillStyle = body.bgColor;
         ctx.fill();
 
-        // Main body disc
+        // Main body disc (White paper with crisp ink border)
         ctx.beginPath();
         ctx.arc(x, y, body.size, 0, Math.PI * 2);
-        ctx.fillStyle = PALETTE.SUBSTRATE_PANEL;
+        ctx.fillStyle = PALETTE.CANVAS_SATELLITE_FILL;
         ctx.strokeStyle = body.color;
         ctx.lineWidth = ORBIT_CONFIG.SATELLITE_BORDER_WIDTH_PX;
         ctx.fill();
@@ -216,17 +216,17 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
         // Satellite code
         ctx.font = `bold ${ORBIT_CONFIG.FONT_SIZE_SATELLITE_CODE_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
-        ctx.fillStyle = PALETTE.INK_CARBON;
+        ctx.fillStyle = PALETTE.CANVAS_TEXT;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(body.profile.code.toUpperCase(), x, y - 2);
+        ctx.fillText(body.profile.code.toUpperCase(), x, y);
 
-        // Satellite vernacular name below
+        // Satellite language name below (Clear, legible size)
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_SATELLITE_NAME_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
-        ctx.fillStyle = PALETTE.INK_MUTED;
+        ctx.fillStyle = PALETTE.CANVAS_TEXT;
         ctx.fillText(body.profile.name, x, y + body.size + ORBIT_CONFIG.SATELLITE_LABEL_OFFSET_Y_PX);
 
-        // Distance coefficient
+        // Distance value
         const distValue =
           register === 'vernacular'
             ? modality === 'phonetic'
@@ -237,13 +237,13 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_METRIC_PX}px ${TYPOGRAPHY.FONT_MONO}`;
         ctx.fillStyle = body.color;
         ctx.fillText(
-          `δ ${distValue.toFixed(2)}`,
+          `${(distValue * 100).toFixed(0)}%`,
           x,
           y + body.size + ORBIT_CONFIG.SATELLITE_DISTANCE_OFFSET_Y_PX,
         );
       });
 
-      // Draw Central Polar Anchor
+      // Draw Center Anchor Disc
       const anchorRadius = ORBIT_CONFIG.ANCHOR_RADIUS_PX;
       ctx.beginPath();
       ctx.arc(
@@ -253,18 +253,18 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         0,
         Math.PI * 2,
       );
-      ctx.fillStyle = PALETTE.SPECIMEN_MOSS_ANCHOR_AURA;
+      ctx.fillStyle = PALETTE.COGNATE_BG;
       ctx.fill();
 
       ctx.beginPath();
       ctx.arc(centerX, centerY, anchorRadius, 0, Math.PI * 2);
-      ctx.fillStyle = PALETTE.SUBSTRATE_PANEL;
-      ctx.strokeStyle = PALETTE.SPECIMEN_MOSS;
+      ctx.fillStyle = PALETTE.CANVAS_ANCHOR_FILL;
+      ctx.strokeStyle = PALETTE.CANVAS_ANCHOR_STROKE;
       ctx.lineWidth = ORBIT_CONFIG.ANCHOR_BORDER_WIDTH_PX;
       ctx.fill();
       ctx.stroke();
 
-      // Cardinal inner ring on central anchor
+      // Inner ring
       ctx.beginPath();
       ctx.arc(
         centerX,
@@ -273,24 +273,20 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         0,
         Math.PI * 2,
       );
-      ctx.strokeStyle = PALETTE.BORDER_HAIRLINE;
+      ctx.strokeStyle = PALETTE.CANVAS_RING_ACCENT;
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Central text
+      // Center text
       ctx.font = `bold ${ORBIT_CONFIG.FONT_SIZE_ANCHOR_CODE_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
-      ctx.fillStyle = PALETTE.INK_CARBON;
+      ctx.fillStyle = PALETTE.CANVAS_TEXT;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(anchor.code.toUpperCase(), centerX, centerY - 6);
+      ctx.fillText(anchor.name, centerX, centerY - 6);
 
-      ctx.font = `italic ${ORBIT_CONFIG.FONT_SIZE_ANCHOR_SUB_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
-      ctx.fillStyle = PALETTE.SPECIMEN_MOSS;
-      ctx.fillText(
-        anchor.taxonomicName.split(' ')[1] || anchor.name,
-        centerX,
-        centerY + 10,
-      );
+      ctx.font = `${ORBIT_CONFIG.FONT_SIZE_ANCHOR_SUB_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
+      ctx.fillStyle = PALETTE.COGNATE_INK;
+      ctx.fillText('center', centerX, centerY + 14);
 
       animId = requestAnimationFrame(render);
     };
@@ -353,7 +349,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden bg-substrate-dark">
+    <div ref={containerRef} className="relative w-full overflow-hidden bg-page-bg font-serif">
       <canvas
         ref={canvasRef}
         onMouseMove={handleMouseMove}
@@ -361,120 +357,108 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         className="block w-full h-[620px] sm:h-[700px]"
       />
 
-      {/* Naturalist Astrolabe Legend */}
-      <div className="pointer-events-none absolute bottom-4 left-4 rounded border border-border-hairline bg-substrate-panel/90 p-3 backdrop-blur-xs max-w-xs text-xs font-serif shadow-md">
-        <div className="flex items-center gap-2 border-b border-border-hairline pb-1.5 font-mono text-[10px] uppercase tracking-wider text-ink-muted">
-          <span>Taxonomic Celestial Field</span>
-          <span className="text-specimen-moss">60 FPS Canvas</span>
+      {/* Book legend */}
+      <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm text-sm shadow-xs">
+        <div className="border-b border-book-rule pb-2 font-bold text-ink-main">
+          Linguistic distance orbit
         </div>
-        <div className="mt-2 space-y-1.5 text-[11px] text-ink-muted">
+        <div className="mt-2.5 space-y-2 text-ink-muted text-sm">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-specimen-moss" />
-            <span>North Germanic branch (Scandinavian core)</span>
+            <span className="h-3 w-3 rounded-full bg-cognate-ink" />
+            <span>North Germanic branch (Scandinavian)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-specimen-ochre" />
-            <span>West Germanic branch (High German / Anglo-Frisian)</span>
+            <span className="h-3 w-3 rounded-full bg-shifted-ink" />
+            <span>West Germanic branch (German, Dutch, English)</span>
           </div>
-          <p className="pt-1 font-mono text-[9px] text-ink-faint">
-            Click any orbiting body to inspect specimen cognate distributions.
+          <p className="pt-1 text-ink-light">
+            Click any language to see its vocabulary breakdown.
           </p>
         </div>
       </div>
 
-      {/* Hover Info Tooltip */}
+      {/* Hover info tooltip */}
       {hoveredBody && (
-        <div className="pointer-events-none absolute top-4 right-4 rounded border border-specimen-moss/40 bg-substrate-panel/95 p-3.5 shadow-xl max-w-sm backdrop-blur-xs">
-          <div className="flex items-center justify-between gap-3 border-b border-border-hairline pb-2">
-            <div>
-              <h4 className="font-serif text-sm font-bold text-ink-carbon">
-                {hoveredBody.profile.name}
-              </h4>
-              <p className="font-serif text-xs italic text-specimen-moss">
-                {hoveredBody.profile.taxonomicName}
-              </p>
-            </div>
-            <span className="rounded border border-border-hairline bg-substrate-dark px-2 py-0.5 font-mono text-[10px] uppercase text-ink-muted">
+        <div className="pointer-events-none absolute top-6 right-6 rounded border border-book-rule bg-page-surface p-5 shadow-md max-w-sm">
+          <div className="flex items-center justify-between border-b border-book-rule pb-2 gap-4">
+            <h4 className="text-lg font-bold text-ink-main">
+              {hoveredBody.profile.name}
+            </h4>
+            <span className="text-sm text-ink-muted">
               {hoveredBody.profile.branch}
             </span>
           </div>
 
-          <div className="mt-2.5 grid grid-cols-2 gap-2 font-mono text-xs text-ink-muted">
+          <div className="mt-3 grid grid-cols-2 gap-3 text-sm text-ink-muted">
             <div>
-              <span className="text-[10px] block text-ink-faint">Everyday Distance:</span>
-              <span className="text-ink-carbon">
-                δ {(hoveredBody.profile.everydayDistance * 100).toFixed(0)}%
+              <span className="block text-ink-light">Everyday distance:</span>
+              <span className="font-mono text-ink-main font-bold">
+                {(hoveredBody.profile.everydayDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
-              <span className="text-[10px] block text-ink-faint">Academic Distance:</span>
-              <span className="text-ink-carbon">
-                δ {(hoveredBody.profile.academicDistance * 100).toFixed(0)}%
+              <span className="block text-ink-light">Academic distance:</span>
+              <span className="font-mono text-ink-main font-bold">
+                {(hoveredBody.profile.academicDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
-              <span className="text-[10px] block text-ink-faint">Acoustic / IPA:</span>
-              <span className="text-specimen-moss">
-                {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}% dist
+              <span className="block text-ink-light">Sound distance:</span>
+              <span className="font-mono text-cognate-ink font-bold">
+                {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
-              <span className="text-[10px] block text-ink-faint">Spelling / Text:</span>
-              <span className="text-specimen-irongall">
-                {(hoveredBody.profile.spellingDistance * 100).toFixed(0)}% dist
+              <span className="block text-ink-light">Spelling distance:</span>
+              <span className="font-mono text-divergent-ink font-bold">
+                {(hoveredBody.profile.spellingDistance * 100).toFixed(0)}%
               </span>
             </div>
           </div>
         </div>
       )}
 
-      {/* Selected Specimen Modal / Drawer */}
+      {/* Selected language detail box */}
       {activeDetails && (
-        <div className="absolute inset-x-4 bottom-4 z-20 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-96 rounded border border-border-hairline bg-substrate-panel p-4 shadow-2xl">
-          <div className="flex items-center justify-between border-b border-border-hairline pb-2">
+        <div className="absolute inset-x-6 bottom-6 z-20 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-96 rounded border border-book-rule bg-page-surface p-6 shadow-lg">
+          <div className="flex items-start justify-between border-b border-book-rule pb-3">
             <div>
-              <span className="font-mono text-[9px] uppercase tracking-widest text-specimen-moss">
-                Specimen Dossier
-              </span>
-              <h3 className="font-serif text-lg font-bold text-ink-carbon">
+              <h3 className="text-2xl font-bold text-ink-main">
                 {activeDetails.name}
               </h3>
+              <p className="text-sm text-ink-muted mt-0.5">{activeDetails.branch} branch</p>
             </div>
             <button
               type="button"
               onClick={() => setActiveDetails(null)}
-              className="rounded p-1 text-ink-muted hover:bg-substrate-dark hover:text-ink-carbon"
+              className="rounded p-1 text-ink-muted hover:text-ink-main text-lg"
             >
               ✕
             </button>
           </div>
 
-          <p className="mt-2 font-serif text-xs italic text-ink-muted">
-            {activeDetails.taxonomicName} — {activeDetails.branch}
-          </p>
-
-          <div className="mt-3 space-y-2 font-serif text-xs">
-            <div className="flex justify-between border-b border-border-hairline/50 pb-1">
-              <span className="text-ink-muted">Identical Core Cognates:</span>
-              <span className="font-mono text-specimen-moss">
+          <div className="mt-4 space-y-3 text-base">
+            <div className="flex justify-between border-b border-book-rule pb-2">
+              <span className="text-ink-muted">Identical root words:</span>
+              <span className="font-mono font-bold text-cognate-ink">
                 {(activeDetails.ratios.identical * 100).toFixed(0)}%
               </span>
             </div>
-            <div className="flex justify-between border-b border-border-hairline/50 pb-1">
-              <span className="text-ink-muted">Sound-Shifted Cousins:</span>
-              <span className="font-mono text-specimen-ochre">
+            <div className="flex justify-between border-b border-book-rule pb-2">
+              <span className="text-ink-muted">Sound shifted words:</span>
+              <span className="font-mono font-bold text-shifted-ink">
                 {(activeDetails.ratios.shifted * 100).toFixed(0)}%
               </span>
             </div>
-            <div className="flex justify-between border-b border-border-hairline/50 pb-1">
-              <span className="text-ink-muted">False Friend Traps:</span>
-              <span className="font-mono text-specimen-oxblood">
+            <div className="flex justify-between border-b border-book-rule pb-2">
+              <span className="text-ink-muted">False friends:</span>
+              <span className="font-mono font-bold text-falsefriend-ink">
                 {(activeDetails.ratios.falseFriends * 100).toFixed(0)}%
               </span>
             </div>
             <div className="flex justify-between pb-1">
-              <span className="text-ink-muted">Semantic Divergence:</span>
-              <span className="font-mono text-specimen-irongall">
+              <span className="text-ink-muted">Different vocabulary:</span>
+              <span className="font-mono font-bold text-divergent-ink">
                 {(activeDetails.ratios.divergent * 100).toFixed(0)}%
               </span>
             </div>

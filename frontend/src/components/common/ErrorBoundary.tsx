@@ -30,24 +30,24 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.fallback;
       }
       return (
-        <div className="mx-auto my-12 max-w-xl rounded border border-specimen-oxblood/40 bg-substrate-panel p-6 text-ink-carbon shadow-lg">
-          <div className="flex items-center gap-3 border-b border-border-hairline pb-3">
-            <span className="text-specimen-oxblood font-mono text-xs tracking-wider uppercase">
-              Observation Interrupted
-            </span>
+        <div className="mx-auto my-12 max-w-xl rounded border border-falsefriend-border bg-page-surface p-8 text-ink-main shadow-xs">
+          <div className="border-b border-book-rule pb-3">
+            <h3 className="text-falsefriend-ink font-serif text-lg font-bold">
+              Unable to display this section
+            </h3>
           </div>
           <p className="mt-4 font-serif text-base text-ink-muted">
-            A taxonomic computation anomaly occurred while rendering this specimen view.
+            An unexpected error occurred while loading this view.
           </p>
-          <pre className="mt-3 overflow-x-auto rounded bg-substrate-dark p-3 font-mono text-xs text-specimen-oxblood">
-            {this.state.error?.message || 'Unknown taxonomy fault'}
+          <pre className="mt-4 overflow-x-auto rounded border border-book-rule bg-page-muted p-4 font-mono text-sm text-falsefriend-ink">
+            {this.state.error?.message || 'Unknown error'}
           </pre>
           <button
             type="button"
             onClick={() => this.setState({ hasError: false, error: null })}
-            className="mt-4 inline-flex items-center rounded border border-border-hairline bg-substrate-dark px-4 py-1.5 font-serif text-xs text-ink-carbon hover:border-ink-muted transition-colors"
+            className="mt-6 inline-flex items-center rounded border border-book-rule bg-page-surface px-4 py-2 font-serif text-sm text-ink-main hover:border-book-rule-strong transition-colors"
           >
-            Reset Field Register
+            Try again
           </button>
         </div>
       );

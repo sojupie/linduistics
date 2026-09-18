@@ -4,8 +4,7 @@ import { GERMANIC_LANGUAGES } from '../../data/languages';
 import type { TokenAnalysis, InspectResponse } from '../../types/linguistics';
 import { SpecimenTokenPill } from './SpecimenTokenPill';
 import { SpecimenDetailDrawer } from './SpecimenDetailDrawer';
-import { Microscope, Play, Sparkles, Layers, Globe } from 'lucide-react';
-import { TOOLBAR_CONFIG, INSPECTOR_CONFIG } from '../../constants/config';
+import { INSPECTOR_CONFIG } from '../../constants/config';
 
 const SAMPLE_SENTENCES = [
   'Katten dricker vatten och sover i huset.',
@@ -45,41 +44,30 @@ export const TextInspectorFolio: React.FC = () => {
   const response: InspectResponse | undefined = inspectMutation.data;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 font-serif">
-      {/* Folio Header */}
-      <div className="border-b border-border-hairline pb-6">
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-specimen-moss">
-            Laboratorium Lexicale · In Vivo Field Scanner
-          </span>
-          <span className="rounded border border-border-hairline bg-substrate-panel px-2 py-0.5 font-mono text-[9px] uppercase text-ink-muted">
-            311,744 Resolved Word Forms
-          </span>
-        </div>
-        <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink-carbon">
-          Universal Field Text Inspector
+    <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
+      {/* Chapter header */}
+      <div className="border-b border-book-rule pb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-ink-main">
+          Text inspector
         </h2>
-        <p className="mt-1.5 text-sm italic text-ink-muted max-w-2xl">
-          Deconstruct continuous Germanic vernacular sentences into individual inflected specimens. Resolves grammatical forms to canonical dictionary lemmas and computes cross-lingual intelligibility.
+        <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl">
+          Enter any Swedish sentence to analyze its individual words, resolve grammatical inflections to base lemmas, and measure mutual intelligibility across Germanic languages.
         </p>
       </div>
 
-      {/* Input Folio & Language Setup */}
+      {/* Main input & configuration */}
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Input text & configuration (8 cols) */}
-        <div className="lg:col-span-8 space-y-6">
-          <div className="rounded border border-border-hairline bg-substrate-panel p-5 shadow-xs">
-            {/* Language Controls & Sample Excerpts */}
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+        {/* Left column: Input and results (7 cols) */}
+        <div className="lg:col-span-7 space-y-6">
+          <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
+            {/* Source selector & sample excerpts */}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1 font-mono text-[10px] uppercase text-ink-faint">
-                  <Globe size={11} className="text-specimen-moss" />
-                  Source:
-                </span>
+                <span className="text-sm text-ink-muted">Source language:</span>
                 <select
                   value={sourceLang}
                   onChange={(e) => setSourceLang(e.target.value)}
-                  className="rounded border border-border-hairline bg-substrate-dark px-2 py-0.5 font-serif text-xs text-ink-carbon focus:border-specimen-moss focus:outline-none"
+                  className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-base text-ink-main focus:outline-none"
                 >
                   {GERMANIC_LANGUAGES.map((l) => (
                     <option key={l.code} value={l.code}>
@@ -89,39 +77,34 @@ export const TextInspectorFolio: React.FC = () => {
                 </select>
               </div>
 
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="font-mono text-[10px] uppercase text-ink-faint mr-1 flex items-center gap-1">
-                  <Sparkles size={11} className="text-specimen-ochre" />
-                  Excerpts:
-                </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-ink-muted">Examples:</span>
                 {SAMPLE_SENTENCES.map((sample, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setInputText(sample)}
-                    className="rounded border border-border-hairline/60 bg-substrate-dark px-2 py-0.5 text-xs text-ink-muted hover:border-ink-faint hover:text-ink-carbon transition-colors"
+                    className="rounded border border-book-rule bg-page-bg px-2.5 py-1 text-sm text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors"
                   >
-                    {idx + 1}
+                    Sentence {idx + 1}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Main Textarea */}
+            {/* Textarea */}
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               rows={INSPECTOR_CONFIG.DEFAULT_TEXTAREA_ROWS}
-              placeholder="Inscribe a Germanic sentence to analyze cross-lingual universality..."
-              className="w-full rounded border border-border-hairline bg-substrate-dark p-3.5 text-base text-ink-carbon placeholder-ink-faint focus:border-specimen-moss focus:outline-none"
+              placeholder="Enter a Swedish sentence to analyze..."
+              className="w-full rounded border border-book-rule bg-page-bg p-4 text-lg text-ink-main placeholder-ink-light focus:outline-none leading-relaxed"
             />
 
-            {/* Target Language Toggles & Run Button */}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-border-hairline/60 pt-4">
+            {/* Target language toggles & run button */}
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-book-rule pt-4">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-mono text-[10px] uppercase text-ink-faint">
-                  Target Field Observers:
-                </span>
+                <span className="text-sm text-ink-muted mr-1">Compare against:</span>
                 {GERMANIC_LANGUAGES.filter((l) => l.code !== sourceLang).map((l) => {
                   const isChecked = targetLangs.includes(l.code);
                   return (
@@ -129,13 +112,13 @@ export const TextInspectorFolio: React.FC = () => {
                       key={l.code}
                       type="button"
                       onClick={() => handleToggleTarget(l.code)}
-                      className={`rounded px-2.5 py-1 font-mono text-[11px] transition-colors border ${
+                      className={`rounded px-3 py-1 text-sm transition-colors border ${
                         isChecked
-                          ? 'border-specimen-moss/40 bg-specimen-moss/10 text-specimen-moss font-bold'
-                          : 'border-border-hairline bg-substrate-dark text-ink-faint hover:text-ink-muted'
+                          ? 'border-cognate-border bg-cognate-bg text-cognate-ink font-bold'
+                          : 'border-book-rule bg-page-bg text-ink-muted hover:text-ink-main'
                       }`}
                     >
-                      {l.code.toUpperCase()} · {l.name}
+                      {l.name}
                     </button>
                   );
                 })}
@@ -145,42 +128,38 @@ export const TextInspectorFolio: React.FC = () => {
                 type="button"
                 disabled={inspectMutation.isPending || !inputText.trim()}
                 onClick={handleInspect}
-                className="flex items-center gap-2 rounded border border-specimen-moss bg-specimen-moss px-5 py-2 font-serif text-xs font-bold text-substrate-dark shadow-sm hover:bg-specimen-moss/90 transition-colors disabled:opacity-50"
+                className="rounded border border-ink-main bg-ink-main px-6 py-2.5 text-base font-medium text-page-surface hover:opacity-90 transition-opacity disabled:opacity-50 shadow-2xs"
               >
-                <Play size={TOOLBAR_CONFIG.ICON_SIZE_SM} fill="currentColor" />
-                <span>{inspectMutation.isPending ? 'Resolving Forms...' : 'Analyze Sentence'}</span>
+                {inspectMutation.isPending ? 'Resolving words...' : 'Analyze sentence'}
               </button>
             </div>
           </div>
 
-          {/* Interactive Token Inspection Display */}
+          {/* Token analysis result passage */}
           {response && (
-            <div className="rounded border border-border-hairline bg-substrate-panel p-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-border-hairline pb-3">
-                <div className="flex items-center gap-2">
-                  <Microscope size={14} className="text-specimen-moss" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-ink-muted">
-                    Token Stream Observation
+            <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
+              <div className="flex items-center justify-between border-b border-book-rule pb-3">
+                <h3 className="text-lg font-bold text-ink-main">
+                  Analyzed sentence
+                </h3>
+                <div className="flex items-center gap-4 text-sm text-ink-muted">
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block h-2 w-2 rounded-full bg-cognate-ink" />
+                    Common Germanic
                   </span>
-                </div>
-                <div className="flex items-center gap-3 font-mono text-[10px]">
-                  <span className="flex items-center gap-1 text-specimen-moss">
-                    <span className="h-1.5 w-1.5 rounded-full bg-specimen-moss" />
-                    Universal Germanic
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block h-2 w-2 rounded-full bg-shifted-ink" />
+                    Sound shifted
                   </span>
-                  <span className="flex items-center gap-1 text-specimen-ochre">
-                    <span className="h-1.5 w-1.5 rounded-full bg-specimen-ochre" />
-                    Branch-Specific
-                  </span>
-                  <span className="flex items-center gap-1 text-ink-muted">
-                    <span className="h-1.5 w-1.5 rounded-full bg-border-hairline" />
-                    Isolate
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block h-2 w-2 rounded-full bg-book-rule-strong" />
+                    Isolated word
                   </span>
                 </div>
               </div>
 
-              {/* Tokens Ribbon */}
-              <div className="mt-5 flex flex-wrap items-center gap-2 p-4 rounded border border-border-hairline/60 bg-substrate-dark">
+              {/* Text passage with clickable word tokens */}
+              <div className="mt-6 flex flex-wrap items-center gap-2.5 p-6 rounded border border-book-rule bg-page-bg leading-loose">
                 {response.tokens.map((tok, idx) => (
                   <SpecimenTokenPill
                     key={idx}
@@ -191,70 +170,48 @@ export const TextInspectorFolio: React.FC = () => {
                 ))}
               </div>
 
-              <p className="mt-3 font-mono text-[10px] text-ink-faint italic">
-                * Asterisk indicates inflected form successfully resolved to base dictionary lemma via 311k word form index. Click token for detailed correspondences.
+              <p className="mt-4 text-sm text-ink-muted italic">
+                * Words with an asterisk have been resolved to their base dictionary lemma from their inflected form. Click any word to inspect its cognates.
               </p>
             </div>
           )}
         </div>
 
-        {/* Right Column: Universality Gauge & Token Detail Drawer (4 cols) */}
-        <div className="lg:col-span-4 space-y-6">
-          {/* Universality Score Gauge Card */}
+        {/* Right column: Results summary & word drawer (5 cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          {/* Summary card */}
           {response && (
-            <div className="rounded border border-border-hairline bg-substrate-panel p-5 shadow-xs text-center">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-specimen-moss">
-                Calculated Intelligibility
-              </span>
-              <h4 className="mt-1 font-serif text-lg font-bold text-ink-carbon">
-                Universality Quotient
-              </h4>
+            <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
+              <h3 className="text-xl font-bold text-ink-main">
+                Mutual intelligibility
+              </h3>
+              <p className="text-sm text-ink-muted mt-1">
+                Estimated proportion of vocabulary recognizable across target languages.
+              </p>
 
-              {/* Gauge Graphic */}
-              <div className="relative mx-auto my-4 flex h-32 w-32 items-center justify-center">
-                <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke="currentColor"
-                    strokeWidth="8"
-                    className="text-border-hairline fill-none"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke="currentColor"
-                    strokeWidth="8"
-                    strokeDasharray={251.2}
-                    strokeDashoffset={251.2 - (251.2 * response.universality_score) / 100}
-                    strokeLinecap="round"
-                    className="text-specimen-moss fill-none transition-all duration-700 ease-out"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center font-mono">
-                  <span className="text-2xl font-bold text-ink-carbon">
-                    {response.universality_score.toFixed(0)}%
-                  </span>
-                  <span className="text-[9px] text-ink-muted uppercase">Score</span>
-                </div>
+              <div className="my-6 text-center">
+                <span className="font-mono text-5xl font-bold text-cognate-ink">
+                  {response.universality_score.toFixed(0)}%
+                </span>
+                <span className="text-sm text-ink-muted block mt-1">
+                  Vocabulary overlap score
+                </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 border-t border-border-hairline/60 pt-3 font-mono text-[11px]">
+              <div className="grid grid-cols-2 gap-4 border-t border-book-rule pt-4 text-base text-ink-muted">
                 <div>
-                  <span className="text-ink-faint block text-[9px] uppercase">Total Tokens</span>
-                  <span className="text-ink-carbon">{response.total_tokens}</span>
+                  <span className="text-sm block">Total words:</span>
+                  <strong className="text-ink-main font-mono text-lg">{response.total_tokens}</strong>
                 </div>
                 <div>
-                  <span className="text-ink-faint block text-[9px] uppercase">Unique Tokens</span>
-                  <span className="text-ink-carbon">{response.unique_tokens}</span>
+                  <span className="text-sm block">Unique words:</span>
+                  <strong className="text-ink-main font-mono text-lg">{response.unique_tokens}</strong>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Token Drawer */}
+          {/* Selected word drawer */}
           {selectedToken && (
             <SpecimenDetailDrawer
               tokenAnalysis={selectedToken}
@@ -263,9 +220,8 @@ export const TextInspectorFolio: React.FC = () => {
           )}
 
           {!selectedToken && response && (
-            <div className="rounded border border-dashed border-border-hairline bg-substrate-panel/50 p-6 text-center font-serif text-xs text-ink-muted">
-              <Layers size={18} className="mx-auto mb-2 text-ink-faint" />
-              Click any examined word token on the left to reveal its morphological breakdown and target cognate matches.
+            <div className="rounded border border-dashed border-book-rule bg-page-surface p-6 text-center text-base text-ink-muted">
+              Click any underlined word on the left to view its base lemma and corresponding words in other languages.
             </div>
           )}
         </div>

@@ -3,17 +3,16 @@ import { usePairsQuery, useFalseFriendsQuizQuery } from '../../services/queries'
 import { CURATED_SPECIMEN_COLLECTION, GERMANIC_LANGUAGES } from '../../data/languages';
 import type { SpecimenCategory, SpecimenPair } from '../../types/linguistics';
 import { SpecimenCard } from './SpecimenCard';
-import { Layers, ShieldAlert, Sparkles, Filter, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
-import { TOOLBAR_CONFIG } from '../../constants/config';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 type DeckFilter = 'all' | SpecimenCategory;
-type ViewMode = 'atlas' | 'quiz';
+type ViewMode = 'list' | 'quiz';
 
 export const SpecimenDecks: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<DeckFilter>('all');
   const [sourceLang, setSourceLang] = useState('sv');
   const [targetLang, setTargetLang] = useState('en');
-  const [viewMode, setViewMode] = useState<ViewMode>('atlas');
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
 
   const apiCategory = useMemo(() => {
     switch (activeFilter) {
@@ -31,10 +30,7 @@ export const SpecimenDecks: React.FC = () => {
   }, [activeFilter]);
 
   // Query database for live pairs
-  const {
-    data: livePairsData,
-    isLoading: pairsLoading,
-  } = usePairsQuery({
+  const { data: livePairsData, isLoading: pairsLoading } = usePairsQuery({
     source: sourceLang,
     target: targetLang,
     category: apiCategory,
@@ -57,7 +53,7 @@ export const SpecimenDecks: React.FC = () => {
     }
     return livePairsData.items.map((dto) => ({
       id: dto.id,
-      catalogId: `SP-${dto.category.toUpperCase().slice(0, 3)}-${dto.id.toString().padStart(4, '0')}`,
+      catalogId: dto.id.toString(),
       wordA: dto.word_a,
       ipaA: dto.ipa_a,
       defA: dto.def_a,
@@ -79,14 +75,13 @@ export const SpecimenDecks: React.FC = () => {
           : 'schism',
       marginalia:
         dto.category === 'false_friend'
-          ? 'Deceptive orthographic homograph with divergent semantic drift.'
-          : dto.category === 'cognate'
-          ? 'Unbroken inherited Proto-Germanic root.'
-          : 'Phonetically shifted cognate pair.',
+          ? 'Similar spelling or pronunciation, but with divergent meaning.'
+          : dto.category === 'true_cognate' || dto.category === 'cognate'
+          ? 'Directly shared from early Germanic roots with preserved meaning.'
+          : 'Phonetically shifted word with shared ancestry.',
     }));
   }, [livePairsData]);
 
-  // Fallback to curated specimens if query returned empty or during initial boot
   const displayedSpecimens = useMemo(() => {
     if (livePairs.length > 0) {
       return livePairs;
@@ -124,65 +119,58 @@ export const SpecimenDecks: React.FC = () => {
     }
   };
 
+  const targetLangName =
+    GERMANIC_LANGUAGES.find((l) => l.code === targetLang)?.name ?? targetLang;
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      {/* Header Deck Folio */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-border-hairline pb-6 gap-4">
+    <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
+      {/* Chapter header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-book-rule pb-8 gap-6">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-specimen-moss">
-              Tabulae Speciminum · Lexical Herbarium
-            </span>
-            <span className="rounded border border-border-hairline bg-substrate-panel px-2 py-0.5 font-mono text-[9px] uppercase text-ink-muted">
-              {displayedSpecimens.length} Specimen Cards
-            </span>
-          </div>
-          <h2 className="mt-1 font-serif text-3xl font-bold tracking-tight text-ink-carbon">
-            Taxonomic Specimen Decks
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-ink-main">
+            Word pairs
           </h2>
-          <p className="mt-1.5 font-serif text-sm italic text-ink-muted max-w-2xl">
-            Individual lexical specimens examined under phonological, orthographic, and semantic cross-illumination.
+          <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-2xl">
+            A dictionary list of cognates, historical sound shifts, and deceptive false friends between Swedish and other Germanic languages.
           </p>
         </div>
 
-        {/* View Mode Toggle: Atlas vs Field Quiz */}
-        <div className="flex items-center rounded border border-border-hairline bg-substrate-panel p-1">
+        {/* Mode toggle */}
+        <div className="flex items-center rounded border border-book-rule bg-page-surface p-1">
           <button
             type="button"
-            onClick={() => setViewMode('atlas')}
-            className={`flex items-center gap-1.5 rounded px-3 py-1 font-serif text-xs transition-colors ${
-              viewMode === 'atlas'
-                ? 'bg-substrate-dark font-bold text-ink-carbon shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+            onClick={() => setViewMode('list')}
+            className={`rounded px-4 py-2 text-sm transition-colors ${
+              viewMode === 'list'
+                ? 'bg-page-muted font-bold text-ink-main'
+                : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            <Layers size={TOOLBAR_CONFIG.ICON_SIZE_SM} />
-            Specimen Atlas
+            Dictionary list
           </button>
           <button
             type="button"
             onClick={() => setViewMode('quiz')}
-            className={`flex items-center gap-1.5 rounded px-3 py-1 font-serif text-xs transition-colors ${
+            className={`rounded px-4 py-2 text-sm transition-colors ${
               viewMode === 'quiz'
-                ? 'bg-substrate-dark font-bold text-specimen-oxblood shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+                ? 'bg-falsefriend-bg font-bold text-falsefriend-ink'
+                : 'text-ink-muted hover:text-falsefriend-ink'
             }`}
           >
-            <ShieldAlert size={TOOLBAR_CONFIG.ICON_SIZE_SM} className="text-specimen-oxblood" />
-            Field Trap Quiz
+            False friends quiz
           </button>
         </div>
       </div>
 
-      {/* Language Pair Selectors & Filter Bar */}
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded border border-border-hairline bg-substrate-panel p-3">
-        {/* Source & Target Dropdowns */}
-        <div className="flex flex-wrap items-center gap-2 text-xs font-serif">
-          <span className="font-mono text-[10px] uppercase text-ink-faint">Pair:</span>
+      {/* Language selector & filter bar */}
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded border border-book-rule bg-page-surface p-4">
+        {/* Language selector */}
+        <div className="flex flex-wrap items-center gap-3 text-base">
+          <span className="text-sm text-ink-muted">Language pair:</span>
           <select
             value={sourceLang}
             onChange={(e) => setSourceLang(e.target.value)}
-            className="rounded border border-border-hairline bg-substrate-dark px-2.5 py-1 text-ink-carbon focus:border-specimen-moss focus:outline-none"
+            className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-ink-main focus:outline-none"
           >
             {GERMANIC_LANGUAGES.map((l) => (
               <option key={l.code} value={l.code}>
@@ -190,11 +178,11 @@ export const SpecimenDecks: React.FC = () => {
               </option>
             ))}
           </select>
-          <span className="text-ink-faint">-&gt;</span>
+          <span className="text-ink-light">→</span>
           <select
             value={targetLang}
             onChange={(e) => setTargetLang(e.target.value)}
-            className="rounded border border-border-hairline bg-substrate-dark px-2.5 py-1 text-ink-carbon focus:border-specimen-moss focus:outline-none"
+            className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-ink-main focus:outline-none"
           >
             {GERMANIC_LANGUAGES.map((l) => (
               <option key={l.code} value={l.code}>
@@ -204,83 +192,79 @@ export const SpecimenDecks: React.FC = () => {
           </select>
         </div>
 
-        {/* Category Filters (Only in Atlas Mode) */}
-        {viewMode === 'atlas' && (
-          <div className="flex flex-wrap items-center gap-1.5 font-serif text-xs">
-            <span className="flex items-center gap-1 font-mono text-[10px] uppercase text-ink-faint mr-1">
-              <Filter size={11} /> Filter:
-            </span>
+        {/* Category filters */}
+        {viewMode === 'list' && (
+          <div className="flex flex-wrap items-center gap-2 text-sm">
             <button
               type="button"
               onClick={() => setActiveFilter('all')}
-              className={`rounded px-2.5 py-1 transition-colors ${
+              className={`rounded px-3 py-1.5 transition-colors border ${
                 activeFilter === 'all'
-                  ? 'bg-substrate-dark text-ink-carbon font-bold border border-border-hairline'
-                  : 'text-ink-muted hover:text-ink-carbon'
+                  ? 'bg-page-muted text-ink-main font-bold border-ink-main'
+                  : 'bg-page-surface text-ink-muted border-book-rule hover:text-ink-main'
               }`}
             >
-              All Taxa
+              All words
             </button>
             <button
               type="button"
               onClick={() => setActiveFilter('cognate')}
-              className={`rounded px-2.5 py-1 transition-colors ${
+              className={`rounded px-3 py-1.5 transition-colors border ${
                 activeFilter === 'cognate'
-                  ? 'bg-specimen-moss/20 text-specimen-moss font-bold border border-specimen-moss/40'
-                  : 'text-ink-muted hover:text-specimen-moss'
+                  ? 'bg-cognate-bg text-cognate-ink font-bold border-cognate-border'
+                  : 'bg-page-surface text-ink-muted border-book-rule hover:text-cognate-ink'
               }`}
             >
-              True Cognates
+              True cognates
             </button>
             <button
               type="button"
               onClick={() => setActiveFilter('minefield')}
-              className={`rounded px-2.5 py-1 transition-colors ${
+              className={`rounded px-3 py-1.5 transition-colors border ${
                 activeFilter === 'minefield'
-                  ? 'bg-specimen-oxblood/20 text-specimen-oxblood font-bold border border-specimen-oxblood/40'
-                  : 'text-ink-muted hover:text-specimen-oxblood'
+                  ? 'bg-falsefriend-bg text-falsefriend-ink font-bold border-falsefriend-border'
+                  : 'bg-page-surface text-ink-muted border-book-rule hover:text-falsefriend-ink'
               }`}
             >
-              Minefields / Traps
+              False friends
             </button>
             <button
               type="button"
               onClick={() => setActiveFilter('cousin')}
-              className={`rounded px-2.5 py-1 transition-colors ${
+              className={`rounded px-3 py-1.5 transition-colors border ${
                 activeFilter === 'cousin'
-                  ? 'bg-specimen-ochre/20 text-specimen-ochre font-bold border border-specimen-ochre/40'
-                  : 'text-ink-muted hover:text-specimen-ochre'
+                  ? 'bg-shifted-bg text-shifted-ink font-bold border-shifted-border'
+                  : 'bg-page-surface text-ink-muted border-book-rule hover:text-shifted-ink'
               }`}
             >
-              Sound Shifts
+              Sound shifts
             </button>
             <button
               type="button"
               onClick={() => setActiveFilter('schism')}
-              className={`rounded px-2.5 py-1 transition-colors ${
+              className={`rounded px-3 py-1.5 transition-colors border ${
                 activeFilter === 'schism'
-                  ? 'bg-specimen-irongall/20 text-specimen-irongall font-bold border border-specimen-irongall/40'
-                  : 'text-ink-muted hover:text-specimen-irongall'
+                  ? 'bg-divergent-bg text-divergent-ink font-bold border-divergent-border'
+                  : 'bg-page-surface text-ink-muted border-book-rule hover:text-divergent-ink'
               }`}
             >
-              Divergence
+              Different words
             </button>
           </div>
         )}
       </div>
 
-      {/* Mode View: Atlas Grid */}
-      {viewMode === 'atlas' && (
-        <div className="mt-8">
+      {/* Dictionary list */}
+      {viewMode === 'list' && (
+        <div className="mt-8 space-y-6">
           {pairsLoading && (
-            <div className="flex items-center justify-center py-12 text-ink-muted font-mono text-xs">
-              <RefreshCw size={14} className="animate-spin mr-2" />
-              Ingesting comparative specimens from PostGIS...
-            </div>
+            <p className="py-12 text-center text-base text-ink-muted italic">
+              Loading word entries...
+            </p>
           )}
 
           {!pairsLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="space-y-6">
               {displayedSpecimens.map((specimen) => (
                 <SpecimenCard key={specimen.id} specimen={specimen} />
               ))}
@@ -289,71 +273,64 @@ export const SpecimenDecks: React.FC = () => {
         </div>
       )}
 
-      {/* Mode View: Field Trap Quiz */}
+      {/* False friends quiz mode (Workbook style) */}
       {viewMode === 'quiz' && (
-        <div className="mx-auto mt-8 max-w-2xl rounded border border-border-hairline bg-substrate-panel p-6 shadow-sm">
+        <div className="mx-auto mt-8 max-w-2xl rounded border border-book-rule bg-page-surface p-8 shadow-xs">
           {quizLoading && (
-            <div className="flex items-center justify-center py-12 text-ink-muted font-mono text-xs">
-              <RefreshCw size={14} className="animate-spin mr-2" />
-              Synthesizing false-friend distractors...
-            </div>
+            <p className="py-12 text-center text-base text-ink-muted italic">
+              Loading quiz questions...
+            </p>
           )}
 
           {!quizLoading && currentQuizItem && (
             <div>
-              {/* Quiz Header */}
-              <div className="flex items-center justify-between border-b border-border-hairline pb-3">
-                <div className="flex items-center gap-2">
-                  <ShieldAlert size={14} className="text-specimen-oxblood" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-ink-muted">
-                    Trap Identification Lab · Specimen {currentQuizIdx + 1} of {quizData.length}
-                  </span>
-                </div>
-                <span className="font-mono text-xs text-specimen-moss">
+              {/* Question header */}
+              <div className="flex items-center justify-between border-b border-book-rule pb-4">
+                <span className="text-sm font-medium text-ink-muted">
+                  Question {currentQuizIdx + 1} of {quizData.length}
+                </span>
+                <span className="text-sm font-bold text-cognate-ink">
                   Score: {quizScore} / {quizAnsweredCount}
                 </span>
               </div>
 
-              {/* The Headword Prompt */}
-              <div className="mt-6 rounded border border-border-hairline bg-substrate-dark p-4 text-center">
-                <span className="font-mono text-[10px] uppercase text-ink-faint">
-                  Source Observation ({currentQuizItem.lang_a.toUpperCase()})
-                </span>
-                <h3 className="mt-1 font-serif text-2xl font-bold text-ink-carbon">
+              {/* Prompt box */}
+              <div className="mt-6 rounded border border-book-rule bg-page-bg p-6 text-center">
+                <span className="text-sm text-ink-muted block">Swedish word</span>
+                <h3 className="text-3xl font-bold text-ink-main mt-1">
                   {currentQuizItem.word_a}
                 </h3>
                 {currentQuizItem.ipa_a && (
-                  <p className="font-mono text-xs text-ink-muted">{currentQuizItem.ipa_a}</p>
+                  <p className="font-mono text-sm text-ink-muted mt-1">/{currentQuizItem.ipa_a}/</p>
                 )}
-                <p className="mt-2 font-serif text-xs italic text-ink-muted">
-                  &ldquo;{currentQuizItem.def_a}&rdquo;
+                <p className="mt-3 text-base italic text-ink-muted">
+                  Meaning in Swedish: &ldquo;{currentQuizItem.def_a}&rdquo;
                 </p>
-                <div className="mt-3 flex items-center justify-center gap-2 text-xs font-serif text-specimen-oxblood">
-                  <span>Deceptive Twin in {currentQuizItem.lang_b.toUpperCase()}:</span>
-                  <strong className="text-sm font-bold underline decoration-dotted">
-                    {currentQuizItem.word_b}
-                  </strong>
+
+                <div className="mt-4 pt-3 border-t border-book-rule text-base text-falsefriend-ink font-medium">
+                  Deceptive twin in {targetLangName}:{' '}
+                  <strong className="text-xl underline decoration-2">{currentQuizItem.word_b}</strong>
                 </div>
               </div>
 
-              {/* Distractor Choices */}
+              {/* Option choices */}
               <div className="mt-6 space-y-3">
-                <p className="font-serif text-xs font-semibold text-ink-muted">
-                  Select the actual meaning of <span className="text-ink-carbon">{currentQuizItem.word_b}</span> in {currentQuizItem.lang_b.toUpperCase()}:
+                <p className="text-base font-bold text-ink-main">
+                  What does &ldquo;{currentQuizItem.word_b}&rdquo; mean in {targetLangName}?
                 </p>
 
                 {currentQuizItem.options.map((option, idx) => {
                   const isChosen = selectedOption === idx;
                   const isCorrect = idx === currentQuizItem.correct_option;
 
-                  let btnStyle = 'border-border-hairline bg-substrate-dark hover:border-ink-faint';
+                  let optionStyle = 'border-book-rule bg-page-surface hover:bg-page-muted text-ink-main';
                   if (selectedOption !== null) {
                     if (isCorrect) {
-                      btnStyle = 'border-specimen-moss bg-specimen-moss/15 text-ink-carbon';
+                      optionStyle = 'border-cognate-border bg-cognate-bg text-cognate-ink font-bold';
                     } else if (isChosen) {
-                      btnStyle = 'border-specimen-oxblood bg-specimen-oxblood/15 text-ink-carbon';
+                      optionStyle = 'border-falsefriend-border bg-falsefriend-bg text-falsefriend-ink font-bold';
                     } else {
-                      btnStyle = 'border-border-hairline bg-substrate-dark opacity-50';
+                      optionStyle = 'border-book-rule bg-page-surface opacity-50 text-ink-muted';
                     }
                   }
 
@@ -363,46 +340,39 @@ export const SpecimenDecks: React.FC = () => {
                       type="button"
                       disabled={selectedOption !== null}
                       onClick={() => handleQuizAnswer(idx)}
-                      className={`flex w-full items-center justify-between rounded border p-3.5 text-left font-serif text-xs transition-all ${btnStyle}`}
+                      className={`flex w-full items-center justify-between rounded border p-4 text-left text-base transition-all ${optionStyle}`}
                     >
                       <span>{option}</span>
                       {selectedOption !== null && isCorrect && (
-                        <CheckCircle2 size={16} className="text-specimen-moss shrink-0 ml-2" />
+                        <CheckCircle2 size={20} className="text-cognate-ink shrink-0 ml-3" />
                       )}
                       {selectedOption !== null && isChosen && !isCorrect && (
-                        <XCircle size={16} className="text-specimen-oxblood shrink-0 ml-2" />
+                        <XCircle size={20} className="text-falsefriend-ink shrink-0 ml-3" />
                       )}
                     </button>
                   );
                 })}
               </div>
 
-              {/* Next Step / Explanation */}
+              {/* Next button */}
               {selectedOption !== null && (
-                <div className="mt-6 flex items-center justify-between border-t border-border-hairline pt-4">
-                  <div className="font-serif text-xs italic text-ink-muted">
+                <div className="mt-8 flex items-center justify-between border-t border-book-rule pt-5">
+                  <span className="text-base italic">
                     {selectedOption === currentQuizItem.correct_option ? (
-                      <span className="text-specimen-moss">Cognitive trap successfully navigated.</span>
+                      <span className="text-cognate-ink font-bold">Correct answer.</span>
                     ) : (
-                      <span className="text-specimen-oxblood">Encountered semantic false-friend minefield.</span>
+                      <span className="text-falsefriend-ink">Deceived by the false friend.</span>
                     )}
-                  </div>
+                  </span>
                   <button
                     type="button"
                     onClick={handleNextQuizItem}
-                    className="flex items-center gap-1.5 rounded border border-border-hairline bg-substrate-dark px-4 py-1.5 font-serif text-xs text-ink-carbon hover:border-specimen-moss transition-colors"
+                    className="rounded border border-ink-main bg-ink-main px-5 py-2 text-base font-medium text-page-surface hover:opacity-90 transition-opacity"
                   >
-                    <span>Next Specimen</span>
-                    <Sparkles size={12} className="text-specimen-moss" />
+                    Next question →
                   </button>
                 </div>
               )}
-            </div>
-          )}
-
-          {!quizLoading && !currentQuizItem && (
-            <div className="py-8 text-center font-serif text-xs text-ink-muted">
-              No false-friend pairs cataloged for this specific pair yet.
             </div>
           )}
         </div>

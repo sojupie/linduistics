@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TokenAnalysis } from '../../types/linguistics';
-import { X, BookMarked } from 'lucide-react';
-import { TOOLBAR_CONFIG, SPECIMEN_CONFIG } from '../../constants/config';
+import { X } from 'lucide-react';
+import { HEADER_CONFIG, SPECIMEN_CONFIG } from '../../constants/config';
 
 interface SpecimenDetailDrawerProps {
   tokenAnalysis: TokenAnalysis | null;
@@ -16,102 +16,99 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
 
   const matches = Object.entries(tokenAnalysis.matches);
 
+  const getStatusLabel = () => {
+    switch (tokenAnalysis.status) {
+      case 'universal':
+        return 'Shared across Germanic languages';
+      case 'branch_specific':
+        return 'Branch specific';
+      default:
+        return 'Isolated word';
+    }
+  };
+
   return (
-    <div className="rounded border border-border-hairline bg-substrate-panel p-5 font-serif shadow-xl">
-      {/* Header with Token & Resolved Lemma */}
-      <div className="flex items-center justify-between border-b border-border-hairline pb-3">
+    <div className="rounded border border-book-rule bg-page-surface p-6 font-serif shadow-xs">
+      {/* Header */}
+      <div className="flex items-start justify-between border-b border-book-rule pb-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-[9px] uppercase tracking-wider text-specimen-moss">
-              Specimen Token Analysis
-            </span>
-            <span className="rounded border border-border-hairline bg-substrate-dark px-1.5 py-0.2 font-mono text-[9px] uppercase text-ink-muted">
-              {tokenAnalysis.status}
-            </span>
-          </div>
-          <h3 className="mt-1 font-serif text-2xl font-bold text-ink-carbon">
+          <span className="text-sm text-ink-muted block">{getStatusLabel()}</span>
+          <h3 className="mt-1 text-2xl font-bold text-ink-main">
             {tokenAnalysis.token}
           </h3>
           {tokenAnalysis.lemma && (
-            <p className="mt-0.5 font-mono text-xs text-specimen-ochre">
-              Lemma Resolved: <strong className="text-ink-carbon">{tokenAnalysis.lemma}</strong>
+            <p className="mt-1 text-base text-shifted-ink">
+              Base dictionary lemma: <strong className="text-ink-main">{tokenAnalysis.lemma}</strong>
             </p>
           )}
         </div>
         <button
           type="button"
           onClick={onClose}
-          className="rounded p-1 text-ink-muted hover:bg-substrate-dark hover:text-ink-carbon"
+          className="rounded p-1 text-ink-muted hover:text-ink-main"
         >
-          <X size={TOOLBAR_CONFIG.ICON_SIZE_MD} />
+          <X size={HEADER_CONFIG.ICON_SIZE_CLEAR} />
         </button>
       </div>
 
-      {/* Cross-Lingual Cognate Matches */}
-      <div className="mt-4">
-        <h4 className="font-mono text-[10px] uppercase tracking-wider text-ink-muted flex items-center gap-1.5">
-          <BookMarked size={TOOLBAR_CONFIG.ICON_SIZE_SM} className="text-specimen-moss" />
-          Target Germanic Correlates ({matches.length})
+      {/* Target language matches */}
+      <div className="mt-6">
+        <h4 className="text-base font-bold text-ink-main">
+          Corresponding words ({matches.length})
         </h4>
 
         {matches.length === 0 && (
-          <p className="mt-3 font-serif text-xs italic text-ink-muted">
-            No cognate correspondences cataloged for this token across selected targets.
+          <p className="mt-3 text-base italic text-ink-muted">
+            No direct cognates cataloged for this word in the selected languages.
           </p>
         )}
 
-        <div className="mt-3 space-y-2.5">
+        <div className="mt-4 space-y-4">
           {matches.map(([lang, match]) => (
             <div
               key={lang}
-              className="rounded border border-border-hairline/60 bg-substrate-dark/80 p-3 text-xs"
+              className="rounded border border-book-rule bg-page-bg p-4 text-base"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="rounded bg-border-hairline px-1.5 py-0.5 font-mono text-[9px] uppercase text-ink-muted">
-                    {lang}
+              <div className="flex items-baseline justify-between">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm font-bold text-ink-muted uppercase">
+                    {lang}:
                   </span>
-                  <span className="font-bold text-ink-carbon text-sm">{match.word}</span>
+                  <span className="font-bold text-ink-main text-lg">{match.word}</span>
                   {match.ipa && (
-                    <span className="font-mono text-[10px] text-ink-muted">{match.ipa}</span>
+                    <span className="font-mono text-sm text-ink-muted">/{match.ipa}/</span>
                   )}
                 </div>
-                <span
-                  className={`rounded px-1.5 py-0.2 font-mono text-[9px] uppercase ${
-                    match.category === 'cognate'
-                      ? 'bg-specimen-moss/15 text-specimen-moss'
-                      : match.category === 'false_friend'
-                      ? 'bg-specimen-oxblood/15 text-specimen-oxblood'
-                      : 'bg-specimen-ochre/15 text-specimen-ochre'
-                  }`}
-                >
-                  {match.category}
+                <span className="text-sm text-ink-muted">
+                  {match.category === 'cognate' || match.category === 'true_cognate'
+                    ? 'Cognate'
+                    : match.category === 'false_friend'
+                    ? 'False friend'
+                    : 'Related'}
                 </span>
               </div>
 
               {match.def && (
-                <p className="mt-1.5 font-serif text-xs text-ink-muted line-clamp-2">
+                <p className="mt-2 text-sm text-ink-muted leading-relaxed">
                   {match.def}
                 </p>
               )}
 
-              <div className="mt-2 flex items-center gap-4 font-mono text-[10px] text-ink-faint">
+              <div className="mt-3 flex items-center gap-6 text-sm text-ink-muted border-t border-book-rule pt-2">
                 <span>
-                  Semantic:{' '}
-                  <strong className="text-ink-carbon">
+                  Meaning similarity:{' '}
+                  <strong className="font-mono text-ink-main">
                     {(match.semantic_sim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
                       SPECIMEN_CONFIG.SIMILARITY_PRECISION,
-                    )}
-                    %
+                    )}%
                   </strong>
                 </span>
                 <span>
-                  Acoustic:{' '}
-                  <strong className="text-specimen-moss">
+                  Sound similarity:{' '}
+                  <strong className="font-mono text-cognate-ink">
                     {(match.phonetic_sim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
                       SPECIMEN_CONFIG.SIMILARITY_PRECISION,
-                    )}
-                    %
+                    )}%
                   </strong>
                 </span>
               </div>

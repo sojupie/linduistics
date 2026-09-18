@@ -1,7 +1,5 @@
 import React from 'react';
-import { Compass, Sliders, Volume2, Type, Globe } from 'lucide-react';
 import { GERMANIC_LANGUAGES } from '../../data/languages';
-import { TOOLBAR_CONFIG } from '../../constants/config';
 
 export type OrbitRegister = 'vernacular' | 'academic';
 export type OrbitModality = 'phonetic' | 'spelling';
@@ -28,109 +26,90 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
   onTogglePause,
 }) => {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-hairline bg-substrate-panel/80 px-4 py-3 sm:px-6 backdrop-blur-xs">
-      {/* Left: Anchor Selector */}
+    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-book-rule bg-page-surface px-6 py-4 font-serif">
+      {/* Reference language selector */}
       <div className="flex items-center gap-2">
-        <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-ink-muted">
-          <Globe size={TOOLBAR_CONFIG.ICON_SIZE_MD} className="text-specimen-moss" />
-          Central Anchor:
+        <span className="text-sm text-ink-muted">
+          Center language:
         </span>
         <select
           value={anchor}
           onChange={(e) => onAnchorChange(e.target.value)}
-          className="rounded border border-border-hairline bg-substrate-dark px-2.5 py-1 font-serif text-xs text-ink-carbon focus:border-specimen-moss focus:outline-none"
+          className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-base text-ink-main focus:outline-none"
         >
           {GERMANIC_LANGUAGES.map((lang) => (
             <option key={lang.code} value={lang.code}>
-              {lang.name} ({lang.taxonomicName})
+              {lang.name}
             </option>
           ))}
         </select>
       </div>
 
-      {/* Center / Right: Register & Modality Controls */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-4">
-        {/* Register: Vernacular vs Academic */}
-        <div className="flex items-center rounded border border-border-hairline bg-substrate-dark p-0.5">
+      {/* Register and modality controls */}
+      <div className="flex flex-wrap items-center gap-4">
+        {/* Register: Everyday vs Academic */}
+        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 text-sm">
           <button
             type="button"
             onClick={() => onRegisterChange('vernacular')}
-            className={`flex items-center gap-1.5 rounded px-2.5 py-1 font-serif text-xs transition-colors ${
+            className={`rounded px-3 py-1 transition-colors ${
               register === 'vernacular'
-                ? 'bg-substrate-panel font-semibold text-ink-carbon shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+                ? 'bg-page-surface font-bold text-ink-main shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            <Sliders
-              size={TOOLBAR_CONFIG.ICON_SIZE_SM}
-              className={register === 'vernacular' ? 'text-specimen-moss' : ''}
-            />
-            Vernacular
+            Everyday words
           </button>
           <button
             type="button"
             onClick={() => onRegisterChange('academic')}
-            className={`flex items-center gap-1.5 rounded px-2.5 py-1 font-serif text-xs transition-colors ${
+            className={`rounded px-3 py-1 transition-colors ${
               register === 'academic'
-                ? 'bg-substrate-panel font-semibold text-ink-carbon shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+                ? 'bg-page-surface font-bold text-ink-main shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            <Sliders
-              size={TOOLBAR_CONFIG.ICON_SIZE_SM}
-              className={register === 'academic' ? 'text-specimen-ochre' : ''}
-            />
-            Academic
+            Academic words
           </button>
         </div>
 
-        {/* Modality: Phonetic vs Spelling */}
-        <div className="flex items-center rounded border border-border-hairline bg-substrate-dark p-0.5">
+        {/* Modality: Sound vs Spelling */}
+        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 text-sm">
           <button
             type="button"
             onClick={() => onModalityChange('phonetic')}
-            className={`flex items-center gap-1.5 rounded px-2.5 py-1 font-serif text-xs transition-colors ${
+            className={`rounded px-3 py-1 transition-colors ${
               modality === 'phonetic'
-                ? 'bg-substrate-panel font-semibold text-ink-carbon shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+                ? 'bg-page-surface font-bold text-cognate-ink shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            <Volume2
-              size={TOOLBAR_CONFIG.ICON_SIZE_SM}
-              className={modality === 'phonetic' ? 'text-specimen-moss' : ''}
-            />
-            Acoustic / IPA
+            By sound
           </button>
           <button
             type="button"
             onClick={() => onModalityChange('spelling')}
-            className={`flex items-center gap-1.5 rounded px-2.5 py-1 font-serif text-xs transition-colors ${
+            className={`rounded px-3 py-1 transition-colors ${
               modality === 'spelling'
-                ? 'bg-substrate-panel font-semibold text-ink-carbon shadow-xs'
-                : 'text-ink-muted hover:text-ink-carbon'
+                ? 'bg-page-surface font-bold text-divergent-ink shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            <Type
-              size={TOOLBAR_CONFIG.ICON_SIZE_SM}
-              className={modality === 'spelling' ? 'text-specimen-irongall' : ''}
-            />
-            Orthography
+            By spelling
           </button>
         </div>
 
-        {/* Pause Toggle */}
+        {/* Pause drift */}
         <button
           type="button"
           onClick={onTogglePause}
-          className={`flex items-center gap-1.5 rounded border px-2.5 py-1 font-mono text-xs transition-colors ${
+          className={`rounded border px-3 py-1.5 text-sm transition-colors ${
             isPaused
-              ? 'border-specimen-ochre bg-specimen-ochre/10 text-specimen-ochre'
-              : 'border-border-hairline bg-substrate-dark text-ink-muted hover:text-ink-carbon'
+              ? 'border-shifted-border bg-shifted-bg text-shifted-ink font-medium'
+              : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
           }`}
-          title="Toggle celestial motion"
         >
-          <Compass size={TOOLBAR_CONFIG.ICON_SIZE_SM} />
-          <span>{isPaused ? 'Orbit Paused' : 'Dynamic Drift'}</span>
+          {isPaused ? 'Resume drift' : 'Pause drift'}
         </button>
       </div>
     </div>

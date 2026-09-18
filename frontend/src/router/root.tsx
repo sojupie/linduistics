@@ -4,20 +4,20 @@ import { ErrorBoundary } from '../components/common/ErrorBoundary';
 
 export const RootRoute = createRootRoute({
   component: () => (
-    <div className="min-h-screen bg-substrate-dark text-ink-carbon flex flex-col font-serif">
+    <div className="min-h-screen bg-page-bg text-ink-main flex flex-col font-serif">
       <HeaderFolio />
       <main className="flex-1">
         <ErrorBoundary>
           <Outlet />
         </ErrorBoundary>
       </main>
-      <footer className="border-t border-border-hairline bg-substrate-dark py-6 text-center text-xs text-ink-muted">
-        <div className="mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="italic">
-            Linduistics — Field Register of Germanic Lexicology
+      <footer className="border-t border-book-rule bg-page-bg py-8 text-center text-sm text-ink-muted">
+        <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-serif">
+            Linduistics — comparative lexicon of Germanic languages
           </p>
-          <p className="font-mono text-[10px] text-ink-faint">
-            Based on 311k inflected forms & 144k spatial GiST pairwise alignments
+          <p className="text-ink-light">
+            Based on 311,000 word forms and 144,000 pairwise comparisons
           </p>
         </div>
       </footer>

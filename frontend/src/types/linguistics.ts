@@ -26,7 +26,7 @@ export interface SpecimenPair {
 export interface LanguageProfile {
   code: string;
   name: string;
-  taxonomicName: string;
+  taxonomicName?: string;
   branch: 'North Germanic' | 'West Germanic';
   everydayDistance: number;
   academicDistance: number;

@@ -30,41 +30,53 @@ export const TaxonomicRatioBar: React.FC<TaxonomicRatioBarProps> = ({
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full font-serif">
       {/* Segmented bar */}
       <div
-        className={`flex w-full overflow-hidden rounded border border-border-hairline bg-substrate-dark ${
+        className={`flex w-full overflow-hidden rounded-xs border border-book-rule bg-page-muted ${
           compact
             ? TAXONOMIC_BAR_CONFIG.BAR_HEIGHT_COMPACT_PX
             : TAXONOMIC_BAR_CONFIG.BAR_HEIGHT_DEFAULT_PX
         }`}
-        title={`Identical: ${pctId}% | Shifted: ${pctSh}% | False Friends: ${pctFf}% | Divergent: ${pctDv}%`}
+        title={`Identical words: ${pctId}% | Sound shifted: ${pctSh}% | False friends: ${pctFf}% | Different words: ${pctDv}%`}
       >
         <div
           style={{ width: `${identical * TAXONOMIC_BAR_CONFIG.PERCENT_MULTIPLIER}%` }}
-          className="bg-specimen-moss transition-all duration-300"
+          className="bg-cognate-ink"
         />
         <div
           style={{ width: `${shifted * TAXONOMIC_BAR_CONFIG.PERCENT_MULTIPLIER}%` }}
-          className="border-l border-border-hairline bg-specimen-ochre transition-all duration-300"
+          className="border-l border-book-rule bg-shifted-ink"
         />
         <div
           style={{ width: `${falseFriends * TAXONOMIC_BAR_CONFIG.PERCENT_MULTIPLIER}%` }}
-          className="border-l border-border-hairline bg-specimen-oxblood transition-all duration-300"
+          className="border-l border-book-rule bg-falsefriend-ink"
         />
         <div
           style={{ width: `${divergent * TAXONOMIC_BAR_CONFIG.PERCENT_MULTIPLIER}%` }}
-          className="border-l border-border-hairline bg-specimen-irongall transition-all duration-300"
+          className="border-l border-book-rule bg-divergent-ink"
         />
       </div>
 
       {/* Legend below bar if not compact */}
       {!compact && (
-        <div className="mt-1 flex items-center justify-between font-mono text-[9px] text-ink-muted">
-          <span className="text-specimen-moss">{pctId}% Cognate</span>
-          <span className="text-specimen-ochre">{pctSh}% Shift</span>
-          <span className="text-specimen-oxblood">{pctFf}% Trap</span>
-          <span className="text-specimen-irongall">{pctDv}% Div</span>
+        <div className="mt-2 flex flex-wrap items-center justify-between text-sm text-ink-muted gap-2">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
+            <span>{pctId}% identical words</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-xs bg-shifted-ink" />
+            <span>{pctSh}% sound shifted</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-xs bg-falsefriend-ink" />
+            <span>{pctFf}% false friends</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" />
+            <span>{pctDv}% different words</span>
+          </span>
         </div>
       )}
     </div>
