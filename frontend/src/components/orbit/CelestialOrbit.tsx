@@ -1,5 +1,6 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { GERMANIC_LANGUAGES } from '../../data/languages';
+import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
+import { useLanguagesQuery } from '../../services/queries';
+import { getLanguageName, pairStatsToProfile } from '../../data/languages';
 import type { LanguageProfile } from '../../types/linguistics';
 import type { OrbitRegister, OrbitModality } from './OrbitToolbar';
 import { PALETTE, TYPOGRAPHY } from '../../constants/theme';
@@ -25,7 +26,6 @@ interface OrbitingBody {
 }
 
 export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
-  register,
   modality,
   anchorCode,
   isPaused,
@@ -37,17 +37,21 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
   const [hoveredBody, setHoveredBody] = useState<OrbitingBody | null>(null);
   const [activeDetails, setActiveDetails] = useState<LanguageProfile | null>(null);
 
-  const anchor = GERMANIC_LANGUAGES.find((l) => l.code === anchorCode) ?? GERMANIC_LANGUAGES[0];
+  const { data: languagesData, isLoading } = useLanguagesQuery();
 
-  // Calculate target radius for a language based on register & modality
+  const targetProfiles = useMemo(() => {
+    if (!languagesData?.pairs) return [];
+    return languagesData.pairs
+      .filter((p) => p.source === anchorCode)
+      .map(pairStatsToProfile);
+  }, [languagesData, anchorCode]);
+
+  const anchorName = getLanguageName(anchorCode);
+
+  // Calculate target radius for a language based on modality
   const computeDistanceRadius = useCallback(
     (lang: LanguageProfile, maxCanvasRadius: number) => {
-      let normDist = 0.5;
-      if (register === 'vernacular') {
-        normDist = modality === 'phonetic' ? lang.phoneticDistance : lang.spellingDistance;
-      } else {
-        normDist = lang.academicDistance;
-      }
+      const normDist = modality === 'phonetic' ? lang.phoneticDistance : lang.spellingDistance;
 
       const minR = ORBIT_CONFIG.MIN_ORBIT_RADIUS_PX;
       const maxR = Math.max(
@@ -56,24 +60,22 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
       );
       return minR + normDist * (maxR - minR);
     },
-    [register, modality],
+    [modality],
   );
 
   // Initialize orbiting bodies
   const bodiesRef = useRef<OrbitingBody[]>([]);
 
   useEffect(() => {
-    const others = GERMANIC_LANGUAGES.filter((l) => l.code !== anchor.code);
-    const count = others.length;
-
-    bodiesRef.current = others.map((lang, i) => {
-      const isNorth = lang.branch === 'North Germanic';
-      const color = isNorth ? PALETTE.COGNATE_INK : PALETTE.SHIFTED_INK;
-      const bgColor = isNorth ? PALETTE.COGNATE_BG : PALETTE.SHIFTED_BG;
+    const count = targetProfiles.length;
+    bodiesRef.current = targetProfiles.map((lang, i) => {
+      const isClose = lang.phoneticDistance < 0.45;
+      const color = isClose ? PALETTE.COGNATE_INK : PALETTE.SHIFTED_INK;
+      const bgColor = isClose ? PALETTE.COGNATE_BG : PALETTE.SHIFTED_BG;
 
       const initialRadius =
         ORBIT_CONFIG.INITIAL_RADIUS_BASE_PX + i * ORBIT_CONFIG.INITIAL_RADIUS_STEP_PX;
-      const baseAngle = (i / count) * Math.PI * 2;
+      const baseAngle = count > 0 ? (i / count) * Math.PI * 2 : 0;
       const speed =
         (ORBIT_CONFIG.BASE_SPEED_MULTIPLIER + (i % 3) * ORBIT_CONFIG.SPEED_VARIANCE_INCREMENT) *
         (i % 2 === 0 ? 1 : -1);
@@ -86,12 +88,12 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         targetRadius: initialRadius,
         size:
           ORBIT_CONFIG.SATELLITE_BASE_RADIUS_PX +
-          (1 - lang.everydayDistance) * ORBIT_CONFIG.SATELLITE_SIZE_SCALE_FACTOR,
+          (1 - lang.semanticDistance) * ORBIT_CONFIG.SATELLITE_SIZE_SCALE_FACTOR,
         color,
         bgColor,
       };
     });
-  }, [anchor.code]);
+  }, [targetProfiles]);
 
   // Main animation loop
   useEffect(() => {
@@ -205,7 +207,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         ctx.fillStyle = body.bgColor;
         ctx.fill();
 
-        // Main body disc (White paper with crisp ink border)
+        // Main body disc
         ctx.beginPath();
         ctx.arc(x, y, body.size, 0, Math.PI * 2);
         ctx.fillStyle = PALETTE.CANVAS_SATELLITE_FILL;
@@ -221,18 +223,16 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         ctx.textBaseline = 'middle';
         ctx.fillText(body.profile.code.toUpperCase(), x, y);
 
-        // Satellite language name below (Clear, legible size)
+        // Satellite language name below
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_SATELLITE_NAME_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
         ctx.fillStyle = PALETTE.CANVAS_TEXT;
         ctx.fillText(body.profile.name, x, y + body.size + ORBIT_CONFIG.SATELLITE_LABEL_OFFSET_Y_PX);
 
         // Distance value
         const distValue =
-          register === 'vernacular'
-            ? modality === 'phonetic'
-              ? body.profile.phoneticDistance
-              : body.profile.spellingDistance
-            : body.profile.academicDistance;
+          modality === 'phonetic'
+            ? body.profile.phoneticDistance
+            : body.profile.spellingDistance;
 
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_METRIC_PX}px ${TYPOGRAPHY.FONT_MONO}`;
         ctx.fillStyle = body.color;
@@ -253,7 +253,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         0,
         Math.PI * 2,
       );
-      ctx.fillStyle = PALETTE.COGNATE_BG;
+      ctx.fillStyle = PALETTE.CANVAS_RING_ACCENT;
       ctx.fill();
 
       ctx.beginPath();
@@ -264,29 +264,21 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
       ctx.fill();
       ctx.stroke();
 
-      // Inner ring
-      ctx.beginPath();
-      ctx.arc(
-        centerX,
-        centerY,
-        anchorRadius - ORBIT_CONFIG.ANCHOR_INNER_RING_OFFSET_PX,
-        0,
-        Math.PI * 2,
-      );
-      ctx.strokeStyle = PALETTE.CANVAS_RING_ACCENT;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      // Center text
       ctx.font = `bold ${ORBIT_CONFIG.FONT_SIZE_ANCHOR_CODE_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
       ctx.fillStyle = PALETTE.CANVAS_TEXT;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(anchor.name, centerX, centerY - 6);
+      ctx.fillText(anchorCode.toUpperCase(), centerX, centerY - 8);
 
       ctx.font = `${ORBIT_CONFIG.FONT_SIZE_ANCHOR_SUB_PX}px ${TYPOGRAPHY.FONT_SERIF}`;
-      ctx.fillStyle = PALETTE.COGNATE_INK;
-      ctx.fillText('center', centerX, centerY + 14);
+      ctx.fillStyle = PALETTE.CANVAS_TEXT_MUTED;
+      ctx.fillText(anchorName, centerX, centerY + 14);
+
+      if (bodiesRef.current.length === 0 && !isLoading) {
+        ctx.font = `italic 16px ${TYPOGRAPHY.FONT_SERIF}`;
+        ctx.fillStyle = PALETTE.CANVAS_TEXT_MUTED;
+        ctx.fillText('No target language pairs cataloged for this center language.', centerX, centerY + 80);
+      }
 
       animId = requestAnimationFrame(render);
     };
@@ -297,49 +289,55 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', updateDimensions);
     };
-  }, [anchor, register, modality, isPaused, computeDistanceRadius]);
+  }, [
+    computeDistanceRadius,
+    isPaused,
+    modality,
+    anchorCode,
+    anchorName,
+    isLoading,
+  ]);
 
+  // Mouse interaction: Hover and Click
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    const centerX = canvas.clientWidth / 2;
+    const centerY = canvas.clientHeight / 2;
 
     let found: OrbitingBody | null = null;
     bodiesRef.current.forEach((body) => {
       const bx = centerX + Math.cos(body.angle) * body.currentRadius;
       const by = centerY + Math.sin(body.angle) * body.currentRadius;
-      const dist = Math.hypot(mx - bx, my - by);
-      if (dist <= body.size + ORBIT_CONFIG.SATELLITE_HOVER_HITBOX_PADDING_PX) {
+      const dist = Math.hypot(x - bx, y - by);
+      if (dist < body.size + ORBIT_CONFIG.SATELLITE_HOVER_HITBOX_PADDING_PX) {
         found = body;
       }
     });
 
     setHoveredBody(found);
-    if (canvas) {
-      canvas.style.cursor = found ? 'pointer' : 'default';
-    }
+    canvas.style.cursor = found ? 'pointer' : 'default';
   };
 
   const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    const centerX = canvas.clientWidth / 2;
+    const centerY = canvas.clientHeight / 2;
 
     bodiesRef.current.forEach((body) => {
       const bx = centerX + Math.cos(body.angle) * body.currentRadius;
       const by = centerY + Math.sin(body.angle) * body.currentRadius;
-      const dist = Math.hypot(mx - bx, my - by);
-      if (dist <= body.size + ORBIT_CONFIG.SATELLITE_HOVER_HITBOX_PADDING_PX) {
+      const dist = Math.hypot(x - bx, y - by);
+      if (dist < body.size + ORBIT_CONFIG.SATELLITE_HOVER_HITBOX_PADDING_PX) {
         setActiveDetails(body.profile);
         if (onSelectLanguage) {
           onSelectLanguage(body.profile.code);
@@ -365,11 +363,11 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         <div className="mt-2.5 space-y-2 text-ink-muted text-sm">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-cognate-ink" />
-            <span>North Germanic branch (Scandinavian)</span>
+            <span>High lexical proximity</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-shifted-ink" />
-            <span>West Germanic branch (German, Dutch, English)</span>
+            <span>Greater lexical distance</span>
           </div>
           <p className="pt-1 text-ink-light">
             Click any language to see its vocabulary breakdown.
@@ -385,33 +383,33 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
               {hoveredBody.profile.name}
             </h4>
             <span className="text-sm text-ink-muted">
-              {hoveredBody.profile.branch}
+              {hoveredBody.profile.pairCount.toLocaleString()} pairs
             </span>
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-3 text-sm text-ink-muted">
             <div>
-              <span className="block text-ink-light">Everyday distance:</span>
+              <span className="block text-ink-light">Pronunciation shift:</span>
               <span className="font-mono text-ink-main font-bold">
-                {(hoveredBody.profile.everydayDistance * 100).toFixed(0)}%
-              </span>
-            </div>
-            <div>
-              <span className="block text-ink-light">Academic distance:</span>
-              <span className="font-mono text-ink-main font-bold">
-                {(hoveredBody.profile.academicDistance * 100).toFixed(0)}%
-              </span>
-            </div>
-            <div>
-              <span className="block text-ink-light">Sound distance:</span>
-              <span className="font-mono text-cognate-ink font-bold">
                 {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
               <span className="block text-ink-light">Spelling distance:</span>
-              <span className="font-mono text-divergent-ink font-bold">
+              <span className="font-mono text-ink-main font-bold">
                 {(hoveredBody.profile.spellingDistance * 100).toFixed(0)}%
+              </span>
+            </div>
+            <div>
+              <span className="block text-ink-light">Identical words:</span>
+              <span className="font-mono text-cognate-ink font-bold">
+                {(hoveredBody.profile.ratios.identical * 100).toFixed(0)}%
+              </span>
+            </div>
+            <div>
+              <span className="block text-ink-light">False friends:</span>
+              <span className="font-mono text-falsefriend-ink font-bold">
+                {(hoveredBody.profile.ratios.falseFriends * 100).toFixed(0)}%
               </span>
             </div>
           </div>
@@ -426,7 +424,9 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
               <h3 className="text-2xl font-bold text-ink-main">
                 {activeDetails.name}
               </h3>
-              <p className="text-sm text-ink-muted mt-0.5">{activeDetails.branch} branch</p>
+              <p className="text-sm text-ink-muted mt-0.5">
+                {activeDetails.pairCount.toLocaleString()} cataloged pairs with {anchorName}
+              </p>
             </div>
             <button
               type="button"
@@ -439,7 +439,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
           <div className="mt-4 space-y-3 text-base">
             <div className="flex justify-between border-b border-book-rule pb-2">
-              <span className="text-ink-muted">Identical root words:</span>
+              <span className="text-ink-muted">Identical words:</span>
               <span className="font-mono font-bold text-cognate-ink">
                 {(activeDetails.ratios.identical * 100).toFixed(0)}%
               </span>

@@ -1,30 +1,32 @@
 import React from 'react';
-import { GERMANIC_LANGUAGES } from '../../data/languages';
+import { useLanguagesQuery } from '../../services/queries';
+import { getLanguageName } from '../../data/languages';
 
 export type OrbitRegister = 'vernacular' | 'academic';
 export type OrbitModality = 'phonetic' | 'spelling';
 
 interface OrbitToolbarProps {
-  register: OrbitRegister;
+  register?: OrbitRegister;
   modality: OrbitModality;
   anchor: string;
   isPaused: boolean;
-  onRegisterChange: (reg: OrbitRegister) => void;
+  onRegisterChange?: (reg: OrbitRegister) => void;
   onModalityChange: (mod: OrbitModality) => void;
   onAnchorChange: (code: string) => void;
   onTogglePause: () => void;
 }
 
 export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
-  register,
   modality,
   anchor,
   isPaused,
-  onRegisterChange,
   onModalityChange,
   onAnchorChange,
   onTogglePause,
 }) => {
+  const { data: languagesData } = useLanguagesQuery();
+  const availableLanguages = languagesData?.languages ?? [anchor];
+
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 border-b border-book-rule bg-page-surface px-6 py-4 font-serif">
       {/* Reference language selector */}
@@ -37,9 +39,9 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
           onChange={(e) => onAnchorChange(e.target.value)}
           className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-base text-ink-main focus:outline-none"
         >
-          {GERMANIC_LANGUAGES.map((lang) => (
-            <option key={lang.code} value={lang.code}>
-              {lang.name}
+          {availableLanguages.map((code) => (
+            <option key={code} value={code}>
+              {getLanguageName(code)}
             </option>
           ))}
         </select>
@@ -47,32 +49,6 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
 
       {/* Register and modality controls */}
       <div className="flex flex-wrap items-center gap-4">
-        {/* Register: Everyday vs Academic */}
-        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 text-sm">
-          <button
-            type="button"
-            onClick={() => onRegisterChange('vernacular')}
-            className={`rounded px-3 py-1 transition-colors ${
-              register === 'vernacular'
-                ? 'bg-page-surface font-bold text-ink-main shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main'
-            }`}
-          >
-            Everyday words
-          </button>
-          <button
-            type="button"
-            onClick={() => onRegisterChange('academic')}
-            className={`rounded px-3 py-1 transition-colors ${
-              register === 'academic'
-                ? 'bg-page-surface font-bold text-ink-main shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main'
-            }`}
-          >
-            Academic words
-          </button>
-        </div>
-
         {/* Modality: Sound vs Spelling */}
         <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 text-sm">
           <button

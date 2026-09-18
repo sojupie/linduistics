@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { usePairsQuery, useFalseFriendsQuizQuery } from '../../services/queries';
-import { CURATED_SPECIMEN_COLLECTION, GERMANIC_LANGUAGES } from '../../data/languages';
+import { usePairsQuery, useFalseFriendsQuizQuery, useLanguagesQuery } from '../../services/queries';
+import { getLanguageName } from '../../data/languages';
 import type { SpecimenCategory, SpecimenPair } from '../../types/linguistics';
 import { SpecimenCard } from './SpecimenCard';
 import { CheckCircle2, XCircle } from 'lucide-react';
@@ -10,9 +10,36 @@ type ViewMode = 'list' | 'quiz';
 
 export const SpecimenDecks: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<DeckFilter>('all');
-  const [sourceLang, setSourceLang] = useState('sv');
-  const [targetLang, setTargetLang] = useState('en');
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
+  const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('list');
+
+  // Load dynamically available languages and pairs from database
+  const { data: languagesData } = useLanguagesQuery();
+
+  const availableLanguages = languagesData?.languages ?? [];
+  const defaultSource = availableLanguages[0] ?? 'sv';
+  const sourceLang =
+    selectedSource && availableLanguages.includes(selectedSource)
+      ? selectedSource
+      : defaultSource;
+
+  const availableTargets = useMemo(() => {
+    if (!languagesData?.pairs) return [];
+    return Array.from(
+      new Set(
+        languagesData.pairs
+          .filter((p) => p.source === sourceLang)
+          .map((p) => p.target),
+      ),
+    );
+  }, [languagesData, sourceLang]);
+
+  const defaultTarget = availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
+  const targetLang =
+    selectedTarget && availableTargets.includes(selectedTarget)
+      ? selectedTarget
+      : defaultTarget;
 
   const apiCategory = useMemo(() => {
     switch (activeFilter) {
@@ -34,7 +61,7 @@ export const SpecimenDecks: React.FC = () => {
     source: sourceLang,
     target: targetLang,
     category: apiCategory,
-    limit: 30,
+    limit: 50,
   });
 
   // Query database for quiz items
@@ -77,20 +104,10 @@ export const SpecimenDecks: React.FC = () => {
         dto.category === 'false_friend'
           ? 'Similar spelling or pronunciation, but with divergent meaning.'
           : dto.category === 'true_cognate' || dto.category === 'cognate'
-          ? 'Directly shared from early Germanic roots with preserved meaning.'
+          ? 'Directly shared roots with preserved meaning across languages.'
           : 'Phonetically shifted word with shared ancestry.',
     }));
   }, [livePairsData]);
-
-  const displayedSpecimens = useMemo(() => {
-    if (livePairs.length > 0) {
-      return livePairs;
-    }
-    if (activeFilter === 'all') {
-      return CURATED_SPECIMEN_COLLECTION;
-    }
-    return CURATED_SPECIMEN_COLLECTION.filter((s) => s.category === activeFilter);
-  }, [livePairs, activeFilter]);
 
   // Quiz State
   const [currentQuizIdx, setCurrentQuizIdx] = useState(0);
@@ -119,8 +136,10 @@ export const SpecimenDecks: React.FC = () => {
     }
   };
 
-  const targetLangName =
-    GERMANIC_LANGUAGES.find((l) => l.code === targetLang)?.name ?? targetLang;
+  const sourceLangName = getLanguageName(sourceLang);
+  const targetLangName = getLanguageName(targetLang);
+
+  const selectableLanguages = availableLanguages.length > 0 ? availableLanguages : [sourceLang, targetLang];
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
@@ -131,7 +150,7 @@ export const SpecimenDecks: React.FC = () => {
             Word pairs
           </h2>
           <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-2xl">
-            A dictionary list of cognates, historical sound shifts, and deceptive false friends between Swedish and other Germanic languages.
+            A dictionary list of cognates, sound shifts, and deceptive false friends across cataloged languages.
           </p>
         </div>
 
@@ -169,24 +188,27 @@ export const SpecimenDecks: React.FC = () => {
           <span className="text-sm text-ink-muted">Language pair:</span>
           <select
             value={sourceLang}
-            onChange={(e) => setSourceLang(e.target.value)}
+            onChange={(e) => {
+              setSelectedSource(e.target.value);
+              setSelectedTarget(null);
+            }}
             className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-ink-main focus:outline-none"
           >
-            {GERMANIC_LANGUAGES.map((l) => (
-              <option key={l.code} value={l.code}>
-                {l.name}
+            {selectableLanguages.map((code) => (
+              <option key={code} value={code}>
+                {getLanguageName(code)}
               </option>
             ))}
           </select>
           <span className="text-ink-light">→</span>
           <select
             value={targetLang}
-            onChange={(e) => setTargetLang(e.target.value)}
+            onChange={(e) => setSelectedTarget(e.target.value)}
             className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-ink-main focus:outline-none"
           >
-            {GERMANIC_LANGUAGES.map((l) => (
-              <option key={l.code} value={l.code}>
-                {l.name}
+            {(availableTargets.length > 0 ? availableTargets : selectableLanguages.filter((c) => c !== sourceLang)).map((code) => (
+              <option key={code} value={code}>
+                {getLanguageName(code)}
               </option>
             ))}
           </select>
@@ -263,9 +285,18 @@ export const SpecimenDecks: React.FC = () => {
             </p>
           )}
 
-          {!pairsLoading && (
+          {!pairsLoading && livePairs.length === 0 && (
+            <div className="py-16 text-center border-y border-book-rule bg-page-surface rounded">
+              <p className="text-xl font-bold text-ink-main">No cataloged pairs found in register</p>
+              <p className="mt-2 text-base text-ink-muted max-w-md mx-auto">
+                No lexical comparisons matching this filter were found for {sourceLangName} → {targetLangName}.
+              </p>
+            </div>
+          )}
+
+          {!pairsLoading && livePairs.length > 0 && (
             <div className="space-y-6">
-              {displayedSpecimens.map((specimen) => (
+              {livePairs.map((specimen) => (
                 <SpecimenCard key={specimen.id} specimen={specimen} />
               ))}
             </div>
@@ -282,6 +313,15 @@ export const SpecimenDecks: React.FC = () => {
             </p>
           )}
 
+          {!quizLoading && (!quizData || quizData.length === 0) && (
+            <div className="py-12 text-center">
+              <p className="text-xl font-bold text-ink-main">No false friends recorded</p>
+              <p className="mt-2 text-base text-ink-muted">
+                There are no false friends cataloged for {sourceLangName} → {targetLangName}.
+              </p>
+            </div>
+          )}
+
           {!quizLoading && currentQuizItem && (
             <div>
               {/* Question header */}
@@ -296,7 +336,7 @@ export const SpecimenDecks: React.FC = () => {
 
               {/* Prompt box */}
               <div className="mt-6 rounded border border-book-rule bg-page-bg p-6 text-center">
-                <span className="text-sm text-ink-muted block">Swedish word</span>
+                <span className="text-sm text-ink-muted block">{sourceLangName} word</span>
                 <h3 className="text-3xl font-bold text-ink-main mt-1">
                   {currentQuizItem.word_a}
                 </h3>
@@ -304,7 +344,7 @@ export const SpecimenDecks: React.FC = () => {
                   <p className="font-mono text-sm text-ink-muted mt-1">/{currentQuizItem.ipa_a}/</p>
                 )}
                 <p className="mt-3 text-base italic text-ink-muted">
-                  Meaning in Swedish: &ldquo;{currentQuizItem.def_a}&rdquo;
+                  Meaning in {sourceLangName}: &ldquo;{currentQuizItem.def_a}&rdquo;
                 </p>
 
                 <div className="mt-4 pt-3 border-t border-book-rule text-base text-falsefriend-ink font-medium">

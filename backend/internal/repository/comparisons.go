@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"sort"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/sojupie/linduistics/backend/internal/models"
@@ -223,3 +224,86 @@ func (r *ComparisonsRepository) ResolveForms(ctx context.Context, lang string, f
 	}
 	return mapping, nil
 }
+
+func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source string) (*models.LanguagesResponse, error) {
+	whereClause := ""
+	var args []any
+	if source != "" {
+		whereClause = "WHERE lang_a = $1"
+		args = append(args, source)
+	}
+
+	query := fmt.Sprintf(`
+		SELECT 
+			lang_a,
+			lang_b,
+			count(*) AS pair_count,
+			COALESCE(avg(orthographic_sim), 0) AS avg_ortho,
+			COALESCE(avg(phonetic_sim), 0) AS avg_phon,
+			COALESCE(avg(semantic_sim), 0) AS avg_sem,
+			COALESCE(count(*) FILTER (WHERE category IN ('true_cognate', 'cognate')), 0) AS cognates,
+			COALESCE(count(*) FILTER (WHERE category = 'false_friend'), 0) AS false_friends,
+			COALESCE(count(*) FILTER (WHERE category IN ('partial_cognate', 'cousin')), 0) AS shifted,
+			COALESCE(count(*) FILTER (WHERE category IN ('translation_pair', 'schism', 'divergent')), 0) AS divergent
+		FROM word_comparisons
+		%s
+		GROUP BY lang_a, lang_b
+		ORDER BY lang_a, lang_b;
+	`, whereClause)
+
+	rows, err := r.pool.Query(ctx, query, args...)
+	if err != nil {
+		return nil, fmt.Errorf("get language stats error: %w", err)
+	}
+	defer rows.Close()
+
+	langSet := make(map[string]bool)
+	var pairs []models.LanguagePairStats
+
+	for rows.Next() {
+		var p models.LanguagePairStats
+		var cognates, falseFriends, shifted, divergent int64
+		if err := rows.Scan(
+			&p.Source,
+			&p.Target,
+			&p.PairCount,
+			&p.AvgOrthographic,
+			&p.AvgPhonetic,
+			&p.AvgSemantic,
+			&cognates,
+			&falseFriends,
+			&shifted,
+			&divergent,
+		); err != nil {
+			return nil, fmt.Errorf("scan language pair stats error: %w", err)
+		}
+
+		if p.PairCount > 0 {
+			countF := float32(p.PairCount)
+			p.IdenticalRatio = float32(cognates) / countF
+			p.ShiftedRatio = float32(shifted) / countF
+			p.FalseFriendsRatio = float32(falseFriends) / countF
+			p.DivergentRatio = float32(divergent) / countF
+		}
+
+		langSet[p.Source] = true
+		langSet[p.Target] = true
+		pairs = append(pairs, p)
+	}
+
+	if pairs == nil {
+		pairs = []models.LanguagePairStats{}
+	}
+
+	languages := make([]string, 0, len(langSet))
+	for l := range langSet {
+		languages = append(languages, l)
+	}
+	sort.Strings(languages)
+
+	return &models.LanguagesResponse{
+		Languages: languages,
+		Pairs:     pairs,
+	}, nil
+}
+

@@ -23,27 +23,36 @@ export interface SpecimenPair {
   marginalia?: string;
 }
 
+export interface LanguagePairStats {
+  source: string;
+  target: string;
+  pair_count: number;
+  avg_orthographic: number;
+  avg_phonetic: number;
+  avg_semantic: number;
+  identical_ratio: number;
+  shifted_ratio: number;
+  false_friends_ratio: number;
+  divergent_ratio: number;
+}
+
+export interface LanguagesResponse {
+  languages: string[];
+  pairs: LanguagePairStats[];
+}
+
 export interface LanguageProfile {
   code: string;
   name: string;
-  taxonomicName?: string;
-  branch: 'North Germanic' | 'West Germanic';
-  everydayDistance: number;
-  academicDistance: number;
+  pairCount: number;
   phoneticDistance: number;
   spellingDistance: number;
+  semanticDistance: number;
   ratios: {
     identical: number;
     shifted: number;
     falseFriends: number;
     divergent: number;
-  };
-  radarProfile: {
-    orthography: number;
-    phonetics: number;
-    heritageSurvival: number;
-    classicalLoanwords: number;
-    deceptionFactor: number;
   };
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TokenAnalysis } from '../../types/linguistics';
+import { getLanguageName } from '../../data/languages';
 import { X } from 'lucide-react';
 import { HEADER_CONFIG, SPECIMEN_CONFIG } from '../../constants/config';
 
@@ -19,9 +20,9 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
   const getStatusLabel = () => {
     switch (tokenAnalysis.status) {
       case 'universal':
-        return 'Shared across Germanic languages';
+        return 'Shared across analyzed languages';
       case 'branch_specific':
-        return 'Branch specific';
+        return 'Present in target language';
       default:
         return 'Isolated word';
     }
@@ -71,8 +72,8 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
             >
               <div className="flex items-baseline justify-between">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-sm font-bold text-ink-muted uppercase">
-                    {lang}:
+                  <span className="text-sm font-bold text-ink-muted">
+                    {getLanguageName(lang)}:
                   </span>
                   <span className="font-bold text-ink-main text-lg">{match.word}</span>
                   {match.ipa && (

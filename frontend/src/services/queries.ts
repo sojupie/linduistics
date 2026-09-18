@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   fetchFalseFriendsQuiz,
   fetchHealth,
+  fetchLanguages,
   fetchPairs,
   inspectText,
   searchHeadwords,
@@ -9,6 +10,7 @@ import {
 import type {
   HealthStatus,
   InspectResponse,
+  LanguagesResponse,
   PairsQueryParams,
   PairsResultDto,
   QuizItemDto,
@@ -22,6 +24,14 @@ export function useHealthQuery() {
     queryFn: fetchHealth,
     refetchInterval: QUERY_CONFIG.HEALTH_POLL_INTERVAL_MS,
     retry: QUERY_CONFIG.HEALTH_RETRY_COUNT,
+  });
+}
+
+export function useLanguagesQuery(source?: string) {
+  return useQuery<LanguagesResponse>({
+    queryKey: ['languages', source],
+    queryFn: () => fetchLanguages(source),
+    staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
 }
 

@@ -35,6 +35,7 @@ const registerSearchSchema = z.object({
 
 const specimensSearchSchema = z.object({
   category: z.string().optional(),
+  source: z.string().optional(),
   target: z.string().optional(),
 });
 

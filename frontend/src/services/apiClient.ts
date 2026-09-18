@@ -1,6 +1,7 @@
 import type {
   HealthStatus,
   InspectResponse,
+  LanguagesResponse,
   PairsQueryParams,
   PairsResultDto,
   QuizItemDto,
@@ -34,6 +35,11 @@ export async function apiClient<T>(url: string, options?: RequestInit): Promise<
 
 export async function fetchHealth(): Promise<HealthStatus> {
   return apiClient<HealthStatus>('/api/health');
+}
+
+export async function fetchLanguages(source?: string): Promise<LanguagesResponse> {
+  const query = source ? `?source=${encodeURIComponent(source)}` : '';
+  return apiClient<LanguagesResponse>(`/api/languages${query}`);
 }
 
 export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsResultDto> {

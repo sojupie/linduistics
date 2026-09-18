@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
-import { useInspectMutation } from '../../services/queries';
-import { GERMANIC_LANGUAGES } from '../../data/languages';
+import React, { useState, useMemo } from 'react';
+import { useInspectMutation, useLanguagesQuery } from '../../services/queries';
+import { getLanguageName } from '../../data/languages';
 import type { TokenAnalysis, InspectResponse } from '../../types/linguistics';
 import { SpecimenTokenPill } from './SpecimenTokenPill';
 import { SpecimenDetailDrawer } from './SpecimenDetailDrawer';
 import { INSPECTOR_CONFIG } from '../../constants/config';
 
-const SAMPLE_SENTENCES = [
-  'Katten dricker vatten och sover i huset.',
-  'Vinterstormen förde med sig snö och kyla.',
-  'Barnen leker i trädgården med hunden.',
-  'Ett skepp kom lastat med äpplen och bröd.',
-];
-
 export const TextInspectorFolio: React.FC = () => {
-  const [inputText, setInputText] = useState(SAMPLE_SENTENCES[0]);
-  const [sourceLang, setSourceLang] = useState('sv');
-  const [targetLangs, setTargetLangs] = useState<string[]>(['da', 'de', 'nl', 'en']);
+  const [inputText, setInputText] = useState('');
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
+  const [customTargetLangs, setCustomTargetLangs] = useState<string[] | null>(null);
   const [selectedToken, setSelectedToken] = useState<TokenAnalysis | null>(null);
+
+  const { data: languagesData } = useLanguagesQuery();
+
+  const availableLanguages = languagesData?.languages ?? [];
+  const defaultSource = availableLanguages[0] ?? 'sv';
+  const sourceLang =
+    selectedSource && availableLanguages.includes(selectedSource)
+      ? selectedSource
+      : defaultSource;
+
+  const availableTargets = useMemo(() => {
+    if (!languagesData?.pairs) return [];
+    return Array.from(
+      new Set(
+        languagesData.pairs
+          .filter((p) => p.source === sourceLang)
+          .map((p) => p.target),
+      ),
+    );
+  }, [languagesData, sourceLang]);
+
+  const targetLangs = customTargetLangs !== null ? customTargetLangs : availableTargets;
 
   const inspectMutation = useInspectMutation();
 
@@ -27,21 +42,23 @@ export const TextInspectorFolio: React.FC = () => {
     inspectMutation.mutate({
       text: inputText,
       source_lang: sourceLang,
-      target_langs: targetLangs,
+      target_langs: targetLangs.length > 0 ? targetLangs : availableTargets,
     });
   };
 
   const handleToggleTarget = (code: string) => {
     if (targetLangs.includes(code)) {
       if (targetLangs.length > 1) {
-        setTargetLangs(targetLangs.filter((c) => c !== code));
+        setCustomTargetLangs(targetLangs.filter((c) => c !== code));
       }
     } else {
-      setTargetLangs([...targetLangs, code]);
+      setCustomTargetLangs([...targetLangs, code]);
     }
   };
 
   const response: InspectResponse | undefined = inspectMutation.data;
+  const sourceLangName = getLanguageName(sourceLang);
+  const selectableLanguages = availableLanguages.length > 0 ? availableLanguages : [sourceLang];
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
@@ -51,7 +68,7 @@ export const TextInspectorFolio: React.FC = () => {
           Text inspector
         </h2>
         <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl">
-          Enter any Swedish sentence to analyze its individual words, resolve grammatical inflections to base lemmas, and measure mutual intelligibility across Germanic languages.
+          Enter text to analyze individual words, resolve grammatical inflections to base lemmas, and measure cross-lingual lexical relationships.
         </p>
       </div>
 
@@ -60,35 +77,24 @@ export const TextInspectorFolio: React.FC = () => {
         {/* Left column: Input and results (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
-            {/* Source selector & sample excerpts */}
+            {/* Source selector */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-ink-muted">Source language:</span>
                 <select
                   value={sourceLang}
-                  onChange={(e) => setSourceLang(e.target.value)}
+                  onChange={(e) => {
+                    setSelectedSource(e.target.value);
+                    setCustomTargetLangs(null);
+                  }}
                   className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-base text-ink-main focus:outline-none"
                 >
-                  {GERMANIC_LANGUAGES.map((l) => (
-                    <option key={l.code} value={l.code}>
-                      {l.name}
+                  {selectableLanguages.map((code) => (
+                    <option key={code} value={code}>
+                      {getLanguageName(code)}
                     </option>
                   ))}
                 </select>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-ink-muted">Examples:</span>
-                {SAMPLE_SENTENCES.map((sample, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setInputText(sample)}
-                    className="rounded border border-book-rule bg-page-bg px-2.5 py-1 text-sm text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors"
-                  >
-                    Sentence {idx + 1}
-                  </button>
-                ))}
               </div>
             </div>
 
@@ -97,7 +103,7 @@ export const TextInspectorFolio: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               rows={INSPECTOR_CONFIG.DEFAULT_TEXTAREA_ROWS}
-              placeholder="Enter a Swedish sentence to analyze..."
+              placeholder={`Enter text in ${sourceLangName} to analyze individual words and grammatical forms...`}
               className="w-full rounded border border-book-rule bg-page-bg p-4 text-lg text-ink-main placeholder-ink-light focus:outline-none leading-relaxed"
             />
 
@@ -105,20 +111,20 @@ export const TextInspectorFolio: React.FC = () => {
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-book-rule pt-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm text-ink-muted mr-1">Compare against:</span>
-                {GERMANIC_LANGUAGES.filter((l) => l.code !== sourceLang).map((l) => {
-                  const isChecked = targetLangs.includes(l.code);
+                {availableTargets.map((code) => {
+                  const isChecked = targetLangs.includes(code);
                   return (
                     <button
-                      key={l.code}
+                      key={code}
                       type="button"
-                      onClick={() => handleToggleTarget(l.code)}
+                      onClick={() => handleToggleTarget(code)}
                       className={`rounded px-3 py-1 text-sm transition-colors border ${
                         isChecked
                           ? 'border-cognate-border bg-cognate-bg text-cognate-ink font-bold'
                           : 'border-book-rule bg-page-bg text-ink-muted hover:text-ink-main'
                       }`}
                     >
-                      {l.name}
+                      {getLanguageName(code)}
                     </button>
                   );
                 })}
@@ -130,7 +136,7 @@ export const TextInspectorFolio: React.FC = () => {
                 onClick={handleInspect}
                 className="rounded border border-ink-main bg-ink-main px-6 py-2.5 text-base font-medium text-page-surface hover:opacity-90 transition-opacity disabled:opacity-50 shadow-2xs"
               >
-                {inspectMutation.isPending ? 'Resolving words...' : 'Analyze sentence'}
+                {inspectMutation.isPending ? 'Resolving words...' : 'Analyze text'}
               </button>
             </div>
           </div>
@@ -140,12 +146,12 @@ export const TextInspectorFolio: React.FC = () => {
             <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
               <div className="flex items-center justify-between border-b border-book-rule pb-3">
                 <h3 className="text-lg font-bold text-ink-main">
-                  Analyzed sentence
+                  Analyzed text
                 </h3>
                 <div className="flex items-center gap-4 text-sm text-ink-muted">
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full bg-cognate-ink" />
-                    Common Germanic
+                    Universal cognate
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full bg-shifted-ink" />
@@ -171,7 +177,7 @@ export const TextInspectorFolio: React.FC = () => {
               </div>
 
               <p className="mt-4 text-sm text-ink-muted italic">
-                * Words with an asterisk have been resolved to their base dictionary lemma from their inflected form. Click any word to inspect its cognates.
+                * Words marked with an asterisk have been lemmatized from inflected forms. Click any word to inspect matches.
               </p>
             </div>
           )}
@@ -183,10 +189,10 @@ export const TextInspectorFolio: React.FC = () => {
           {response && (
             <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
               <h3 className="text-xl font-bold text-ink-main">
-                Mutual intelligibility
+                Lexical intelligibility
               </h3>
               <p className="text-sm text-ink-muted mt-1">
-                Estimated proportion of vocabulary recognizable across target languages.
+                Proportion of vocabulary recognizable across selected target languages.
               </p>
 
               <div className="my-6 text-center">
@@ -194,7 +200,7 @@ export const TextInspectorFolio: React.FC = () => {
                   {response.universality_score.toFixed(0)}%
                 </span>
                 <span className="text-sm text-ink-muted block mt-1">
-                  Vocabulary overlap score
+                  Cross-lingual recognition score
                 </span>
               </div>
 

@@ -80,3 +80,15 @@ func TestSearchEndpoint(t *testing.T) {
 		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
 	}
 }
+
+func TestLanguagesEndpoint(t *testing.T) {
+	router := setupTestServer(t)
+	req := httptest.NewRequest("GET", "/api/languages", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+}
+

@@ -21,9 +21,11 @@ func NewRouter(pool *pgxpool.Pool, corsOrigin string) http.Handler {
 	inspectHandler := handlers.NewInspectHandler(inspector)
 	ffHandler := handlers.NewFalseFriendsHandler(repo)
 	searchHandler := handlers.NewSearchHandler(repo)
+	languagesHandler := handlers.NewLanguagesHandler(repo)
 
 	// Standard library method matching
 	mux.HandleFunc("GET /api/health", healthHandler.HandleHealth)
+	mux.HandleFunc("GET /api/languages", languagesHandler.HandleGetLanguages)
 	mux.HandleFunc("GET /api/pairs", pairsHandler.HandleGetPairs)
 	mux.HandleFunc("POST /api/inspect", inspectHandler.HandleInspect)
 	mux.HandleFunc("GET /api/false-friends", ffHandler.HandleGetFalseFriends)

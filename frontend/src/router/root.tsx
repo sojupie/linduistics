@@ -14,10 +14,10 @@ export const RootRoute = createRootRoute({
       <footer className="border-t border-book-rule bg-page-bg py-8 text-center text-sm text-ink-muted">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-serif">
-            Linduistics — comparative lexicon of Germanic languages
+            Linduistics — comparative lexicon
           </p>
           <p className="text-ink-light">
-            Based on 311,000 word forms and 144,000 pairwise comparisons
+            Algorithmic lexicological register
           </p>
         </div>
       </footer>
