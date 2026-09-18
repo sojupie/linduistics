@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { X, ArrowRight, BookOpen, GitFork, Sparkles, Scale, Info } from 'lucide-react';
+import { X, ArrowRight, BookOpen, GitFork, Sparkles, Scale, Info, Layers } from 'lucide-react';
 import type { SpecimenPair, SenseItem } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
+import { useClusterByRootQuery } from '../../services/queries';
 
 interface SpecimenDetailDrawerProps {
   specimen: SpecimenPair | null;
@@ -12,6 +13,10 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
   specimen,
   onClose,
 }) => {
+  const { data: cognateCluster } = useClusterByRootQuery(
+    specimen?.etymRoot
+  );
+
   // Listen for ESC key to dismiss drawer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -287,6 +292,56 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
                   <div className="text-xs text-ink-muted leading-relaxed border-l-2 border-book-rule pl-3">
                     <span className="font-sans font-semibold text-ink-main block mb-0.5">{targetName} Lineage:</span>
                     <p>{specimen.etymTextB}</p>
+                  </div>
+                )}
+
+                {/* Pan-Germanic Sister Cognates (Multi-Language Clique) */}
+                {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
+                  <div className="pt-3 border-t border-book-rule/60 space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider text-ink-main flex items-center gap-1.5 font-sans">
+                        <Layers className="w-3.5 h-3.5 text-cognate-ink" />
+                        Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)
+                      </span>
+                      <span className="text-[11px] font-mono text-ink-light bg-page-muted px-2 py-0.5 rounded border border-book-rule">
+                        {cognateCluster.proto_language}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {cognateCluster.members.map((m, idx) => (
+                        <div
+                          key={idx}
+                          className="rounded border border-book-rule/70 bg-page-muted/30 p-2 text-xs flex items-start justify-between gap-2 hover:bg-page-muted/50 transition-colors"
+                        >
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5 mb-0.5">
+                              <span className="font-mono text-[10px] font-bold px-1.5 py-0.2 rounded bg-ink-main/10 text-ink-main uppercase shrink-0">
+                                {m.lang}
+                              </span>
+                              <span className="font-serif font-bold text-sm text-ink-main truncate">
+                                {m.word}
+                              </span>
+                              {m.ipa && (
+                                <span className="font-mono text-[11px] text-ink-light shrink-0">
+                                  /{m.ipa}/
+                                </span>
+                              )}
+                            </div>
+                            {m.gloss && (
+                              <p className="text-[11px] text-ink-muted italic line-clamp-1">
+                                "{m.gloss}"
+                              </p>
+                            )}
+                          </div>
+                          {m.pos && (
+                            <span className="text-[10px] text-ink-light uppercase shrink-0">
+                              {m.pos}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

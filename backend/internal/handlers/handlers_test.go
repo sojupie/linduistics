@@ -92,3 +92,25 @@ func TestLanguagesEndpoint(t *testing.T) {
 	}
 }
 
+func TestClustersEndpoint(t *testing.T) {
+	router := setupTestServer(t)
+	req := httptest.NewRequest("GET", "/api/clusters?min_langs=3&limit=5", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+func TestClusterByRootEndpoint(t *testing.T) {
+	router := setupTestServer(t)
+	req := httptest.NewRequest("GET", "/api/clusters/by-root?root=Proto-Germanic%20*hundaz", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+}
+

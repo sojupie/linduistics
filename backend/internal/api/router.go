@@ -22,6 +22,8 @@ func NewRouter(pool *pgxpool.Pool, corsOrigin string) http.Handler {
 	ffHandler := handlers.NewFalseFriendsHandler(repo)
 	searchHandler := handlers.NewSearchHandler(repo)
 	languagesHandler := handlers.NewLanguagesHandler(repo)
+	clustersRepo := repository.NewClustersRepository(pool)
+	clustersHandler := handlers.NewClustersHandler(clustersRepo)
 
 	// Standard library method matching
 	mux.HandleFunc("GET /api/health", healthHandler.HandleHealth)
@@ -30,6 +32,8 @@ func NewRouter(pool *pgxpool.Pool, corsOrigin string) http.Handler {
 	mux.HandleFunc("POST /api/inspect", inspectHandler.HandleInspect)
 	mux.HandleFunc("GET /api/false-friends", ffHandler.HandleGetFalseFriends)
 	mux.HandleFunc("GET /api/search", searchHandler.HandleSearch)
+	mux.HandleFunc("GET /api/clusters", clustersHandler.HandleGetClusters)
+	mux.HandleFunc("GET /api/clusters/by-root", clustersHandler.HandleGetClusterByRoot)
 
 	return middleware.Chain(
 		mux,

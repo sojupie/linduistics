@@ -1,5 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import {
+  fetchClusterByRoot,
+  fetchClusters,
   fetchFalseFriendsQuiz,
   fetchHealth,
   fetchLanguages,
@@ -8,6 +10,9 @@ import {
   searchHeadwords,
 } from './apiClient';
 import type {
+  ClustersQueryParams,
+  ClustersResultDto,
+  CognateCluster,
   HealthStatus,
   InspectResponse,
   LanguagesResponse,
@@ -74,5 +79,23 @@ export function useHeadwordSearchQuery(query: string, lang = 'sv') {
     queryFn: () => searchHeadwords(trimmed, lang),
     enabled: trimmed.length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS,
     staleTime: QUERY_CONFIG.SEARCH_STALE_TIME_MS,
+  });
+}
+
+export function useClustersQuery(params: ClustersQueryParams = {}) {
+  return useQuery<ClustersResultDto>({
+    queryKey: ['clusters', params],
+    queryFn: () => fetchClusters(params),
+    staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
+  });
+}
+
+export function useClusterByRootQuery(root?: string | null) {
+  const trimmed = (root ?? '').trim();
+  return useQuery<CognateCluster | null>({
+    queryKey: ['cluster-by-root', trimmed],
+    queryFn: () => fetchClusterByRoot(trimmed),
+    enabled: Boolean(trimmed),
+    staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
 }

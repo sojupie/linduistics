@@ -1,4 +1,7 @@
 import type {
+  ClustersQueryParams,
+  ClustersResultDto,
+  CognateCluster,
   HealthStatus,
   InspectResponse,
   LanguagesResponse,
@@ -97,4 +100,29 @@ export async function searchHeadwords(
     limit: limit.toString(),
   });
   return apiClient<RawComparisonDto[]>(`/api/search?${params.toString()}`);
+}
+
+export async function fetchClusters(params: ClustersQueryParams = {}): Promise<ClustersResultDto> {
+  const query = new URLSearchParams();
+  if (params.min_langs !== undefined) query.set('min_langs', params.min_langs.toString());
+  if (params.proto) query.set('proto', params.proto);
+  if (params.lang) query.set('lang', params.lang);
+  if (params.q) query.set('q', params.q);
+  if (params.limit !== undefined) query.set('limit', params.limit.toString());
+  if (params.offset !== undefined) query.set('offset', params.offset.toString());
+
+  const qs = query.toString();
+  return apiClient<ClustersResultDto>(qs ? `/api/clusters?${qs}` : '/api/clusters');
+}
+
+export async function fetchClusterByRoot(root: string): Promise<CognateCluster | null> {
+  try {
+    const params = new URLSearchParams({ root });
+    return await apiClient<CognateCluster>(`/api/clusters/by-root?${params.toString()}`);
+  } catch (err) {
+    if (err instanceof ApiError && err.statusCode === 404) {
+      return null;
+    }
+    throw err;
+  }
 }

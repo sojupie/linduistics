@@ -157,3 +157,38 @@ export interface QuizItemDto extends RawComparisonDto {
   options: string[];
   correct_option: number;
 }
+
+export interface ClusterMember {
+  lang: string;
+  word: string;
+  ipa: string;
+  pos: string;
+  gloss: string;
+  etym_text?: string;
+}
+
+export interface CognateCluster {
+  id: number;
+  root: string;
+  proto_language: string;
+  language_count: number;
+  languages: string[];
+  members: ClusterMember[];
+  sample_gloss?: string;
+}
+
+export interface ClustersQueryParams {
+  min_langs?: number;
+  proto?: string;
+  lang?: string;
+  q?: string;
+  limit?: number;
+  offset?: number;
+}
+
+export interface ClustersResultDto {
+  items: CognateCluster[];
+  total: number;
+  limit: number;
+  offset: number;
+}

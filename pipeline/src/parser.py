@@ -251,8 +251,8 @@ def stream_kaikki_entries(
                 # Update missing IPA if newly found
                 if not target["ipa"] and entry["ipa"]:
                     target["ipa"] = entry["ipa"]
-                # Update etym_root if newly found or if entry has Proto-Germanic root
-                if entry["etym_root"] and (not target["etym_root"] or "Proto-Germanic" in entry["etym_root"]):
+                # Update etym_root if newly found or if entry has Proto-Germanic root and target does not
+                if entry["etym_root"] and (not target["etym_root"] or ("Proto-Germanic" in entry["etym_root"] and "Proto-Germanic" not in target["etym_root"])):
                     target["etym_root"] = entry["etym_root"]
                 # Update etym_text if newly found
                 if not target["etym_text"] and entry["etym_text"]:
