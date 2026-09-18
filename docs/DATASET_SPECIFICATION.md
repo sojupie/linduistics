@@ -179,22 +179,28 @@ The user interface for browsing specimens (the Specimen Register) must reject la
 
 ---
 
-## 5. Phonetic Alignment: Articulatory Feature Matrix (Replacing Levenshtein)
+## 5. Phonetic Alignment: Articulatory Feature Matrix & Weighted Wagner-Fischer
 
-Raw string Levenshtein fails to capture natural phonetic shifts:
-* $/d/ \leftrightarrow /t/$ is a single-feature voicing shift (low articulatory distance $\approx 0.10$).
-* $/d/ \leftrightarrow /m/$ alters voicing, nasality, and place of articulation (high articulatory distance $\approx 0.85$).
+Raw string Levenshtein fails to capture regular historical sound shifts (e.g. $/d/ \leftrightarrow /t/$, $/t/ \leftrightarrow /s/$, $/p/ \leftrightarrow /f/$). The pipeline replaces string Levenshtein with continuous articulatory distance minimization. For the complete mathematical derivation, dense ID space cache architecture, and phoneme inventory, refer directly to [`docs/phonetic_alignment_strategy.md`](phonetic_alignment_strategy.md).
 
 ### The Feature Vector Model:
 Each phoneme is mapped to a vector of articulatory features:
-* **Manner:** Plosive, Fricative, Affricate, Nasal, Liquid, Glide, Vowel.
-* **Place:** Bilabial, Labiodental, Dental, Alveolar, Postalveolar, Palatal, Velar, Uvular, Glottal.
-* **Voicing:** Voiced ($+1$) vs. Voiceless ($0$).
-* **Vowel Dimension:** Height (High, Mid, Low), Backness (Front, Central, Back), Rounding (Rounded vs. Unrounded).
+* **Consonants ($w_m=0.40, w_p=0.40, w_v=0.20$):**
+  * **Manner:** Plosive, Affricate, Fricative, Nasal, Liquid, Glide.
+  * **Place:** Bilabial, Labiodental, Dental, Alveolar, Postalveolar, Retroflex, Palatal, Velar, Uvular, Glottal.
+  * **Voicing:** Voiced ($+1$) vs. Voiceless ($0$).
+* **Vowels ($w_h=0.45, w_b=0.40, w_r=0.15$):**
+  * **Height:** Close, Near-close, Close-mid, Mid, Open-mid, Near-open, Open.
+  * **Backness:** Front, Central, Back.
+  * **Rounding:** Rounded vs. Unrounded.
+* **Cross-Class & Rhotic Bridges:** Vocalized rhotics ($/ʁ, r/ \leftrightarrow /ɐ, ɚ, ɝ/$) and semivowel glides ($/j/ \leftrightarrow /i/$, $/w/ \leftrightarrow /u/$) are bridged at distance $0.15\text{--}0.25$. Default consonant-to-vowel substitutions are penalized at $1.00$.
 
-Phonetic similarity between aligned sequences $P = (p_1, \dots, p_k)$ and $Q = (q_1, \dots, q_k)$ is:
-$$S_{\text{art}}(P, Q) = 1.0 - \frac{\sum_{i=1}^k \text{ArticulatoryDistance}(p_i, q_i)}{k}$$
-This recognizes Germanic consonant shifts (Grimm's Law: $p \rightarrow f$, $t \rightarrow \theta$, $k \rightarrow h$; High German shift: $t \rightarrow ts$, $p \rightarrow pf$) as close phonetic relatives.
+### Implementation Architecture:
+* **Dense ID Space & L1 Cache Fit:** All $\approx 79$ canonical Germanic phones are indexed $0..K-1$ with slot $K$ as OOV. The $(80 \times 80)$ `float32` matrix takes $25.0\,\text{KB}$, fitting completely within the CPU's 32 KB L1 Data Cache.
+* **Metric Closure:** The feature table undergoes Floyd-Warshall metric closure, strictly satisfying the symmetric triangle inequality ($M[i, k] \le M[i, j] + M[j, k]$).
+* **JIT-Compiled Alignment:** Sequence alignment is executed via Numba `@njit(fastmath=True)` Weighted Wagner-Fischer dynamic programming with indel cost $0.70$, operating at $\approx 0.78\,\mu\text{s}$ per pair.
+
+$$S_{\text{phon}}(P, Q) = 1.0 - \frac{\text{WagnerFischerCost}(P, Q)}{\max(|P|, |Q|)}$$
 
 ---
 
@@ -205,8 +211,8 @@ The following table defines the current operational status across all architectu
 | Layer / Component | Status | Verified Capabilities | Active Limitations / Open Work |
 | :--- | :--- | :--- | :--- |
 | **Pipeline: Parser (`parser.py`)** | **Deployed** | Extracts full `senses` JSON (gloss, pos, tags, `is_active`); parses ancestral etymology templates (`gem-pro`, `ine-pro`, `la`) and regex fallbacks; fast CMU dict + rule fallback for English G2P. | Obsolete sense classification relies strictly on Wiktextract tags (`obsolete`, `archaic`, `historical`, `dated`). |
-| **Pipeline: Alignment & Classifier (`build_crosslingual_dataset.py`, `classifier.py`)** | **Deployed** | Full $N \times M$ sense matrix alignment; argmax binding $(i^*, j^*)$ for `def_a`/`def_b`; False Friend Disqualification Rule ($S_{\text{sem}} \ge 0.75$ on active senses); Type A vs Type B tagging; exact-spelling collision inclusion (5,112/pair). | Loanword identity override requires exact string match between gloss and counterpart headword. Articulatory distance matrix not yet integrated. |
-| **Database Schema (`003_add_polysemy_and_etymology.sql`)** | **Deployed** | 320,374 pairs populated across 20 directed pairs; `senses_a` and `senses_b` JSONB columns; `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; unique constraint on `(lang_a, lang_b, word_a, word_b)`. | Pairwise edge storage only; no unified $N$-language clique cluster table. |
+| **Pipeline: Alignment & Classifier (`build_crosslingual_dataset.py`, `classifier.py`, `articulatory_matrix.py`, `ipa_normalizer.py`)** | **Deployed** | Full $N \times M$ sense matrix alignment; argmax binding $(i^*, j^*)$ for `def_a`/`def_b`; False Friend Disqualification Rule ($S_{\text{sem}} \ge 0.75$ on active senses); Type A vs Type B tagging; exact-spelling collision inclusion (5,112/pair); **JIT-compiled Articulatory Feature Matrix & Weighted Wagner-Fischer phonetics**. | Loanword identity override requires exact string match between gloss and counterpart headword. |
+| **Database Schema (`003_add_polysemy_and_etymology.sql`)** | **Deployed** | 403,298 pairs populated across 20 directed pairs; `senses_a` and `senses_b` JSONB columns; `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; unique constraint on `(lang_a, lang_b, word_a, word_b)`. | Pairwise edge storage only; no unified $N$-language clique cluster table. |
 | **Backend API (`internal/repository/comparisons.go`)** | **Deployed** | Queries return `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; spatial GiST slider indexing; 100% test pass rate. | Endpoints return raw JSONB; no cluster aggregation endpoint for root lineages. |
 | **Frontend Types & API (`frontend/src/types/`, `frontend/src/api/`)** | **Pending** | Basic `WordComparison` interface in place. | Needs updated TypeScript fields for `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`. |
 | **Frontend UI (`frontend/src/routes/specimens.lazy.tsx`)** | **Pending** | Basic routing and layout. | Currently uses legacy card deck (`SpecimenDecks.tsx`). Must be rewritten to a dense, paginated table with detail drawer. |
@@ -234,10 +240,10 @@ This section documents active boundary conditions, edge cases, algorithmic trade
 * **Invariant:** In `align_pair_senses`, if two identical headwords (`word_a.lower() == word_b.lower()`) have a definition gloss that literally matches the counterpart headword (`gloss == word_b`), the sense pair is recognized as a direct lexicographical identity with $S_{\text{sem}} = 1.00$. This prevents shared loanwords (*halva*, *taco*, *sushi*) from collapsing into False Friends.
 * **Caveat:** Exact string matching only handles literal gloss-to-headword identities (`"halva" == "halva"`). If the Wiktionary gloss contains qualifying phrasing (e.g., `"a type of halva"`, `"sesame halva"`, or variant spelling `"halvah"`), it falls back to raw embedding cosine similarity, which may score lower than intended.
 
-### 7.4 Phonetic Similarity Limitation: Levenshtein vs. Articulatory Features
-* **Current State:** Phonetic similarity in `pipeline/src/ipa_normalizer.py` operates via normalized Levenshtein string edit distance over IPA representations after suprasegmental stripping and affricate mapping.
-* **Caveat:** String edit distance treats all phoneme substitutions equally ($/d/ \leftrightarrow /t/$ costs the same as $/d/ \leftrightarrow /m/$). This underestimates sound shifts governed by regular phonetic laws (e.g., Grimm's Law: $p \rightarrow f$, $t \rightarrow \theta$, $k \rightarrow h$; High German consonant shift: $t \rightarrow ts$, $p \rightarrow pf$). Implementation of the full articulatory feature matrix (Section 5) remains an open work item.
-* **Transcription Variability:** Phonemic transcriptions in Wiktionary vary in phonetic granularity across languages (e.g., narrow Swedish transcriptions with tone accents vs. broad English CMU transcriptions). Suprasegmental normalization mitigates but does not fully eliminate transcription bias.
+### 7.4 Phonetic Similarity Representation & Source Transcription Variance
+* **Current State:** Phonetic similarity executes via the JIT-compiled Articulatory Feature Matrix with Weighted Wagner-Fischer sequence alignment (`pipeline/src/articulatory_matrix.py`, `pipeline/src/ipa_normalizer.py`), replacing character-level string Levenshtein.
+* **Remaining Caveat:** Wiktionary transcriptions vary in phonetic granularity across languages (e.g. narrow Swedish transcriptions with grave/acute tonal diacritics vs. broad English CMU-derived phonemic representations). While suprasegmental stripping, affricate normalization (`t͡ʃ` $\rightarrow$ `č`), and vocalic rhotic bridges mitigate this variance, deep dialectal differences in source data can cause slight asymmetries in phone lengths.
+
 
 ### 7.5 Etymology Template Coverage Asymmetry
 * **The Problem:** Wiktionary's crowd-sourced nature means etymology coverage is non-uniform. High-frequency words possess rich structured templates (`inh`, `der`, `gem-pro`), but rarer vocabulary may only have unstructured prose text or no etymology section at all.
@@ -261,5 +267,10 @@ This section documents active boundary conditions, edge cases, algorithmic trade
 ### 7.9 Semantic Blurring in Metaphorical and Figurative Senses ($0.30 < S_{\text{sem}} < 0.75$)
 * **The Problem:** Many cognates retain a shared literal meaning but have developed divergent metaphorical extensions, or vice versa.
 * **Classification Impact:** Senses with cosine similarity between 0.30 and 0.75 fall into `partial_cognate`. If a headword's primary modern sense is deceptive but a secondary figurative sense produces a moderate similarity score (e.g., 0.35), the pair avoids the `false_friend` label. The threshold boundaries ($S_{\text{sem}} \le 0.30$ for False Friends; $S_{\text{sem}} \ge 0.75$ for True Cognates) are discrete cutoffs applied to continuous semantic distributions.
+
+### 7.10 Translation Graph Mining Slicing & Core Lemma Prioritization
+* **The Problem:** The English Wiktionary translation graph contains $>66,000$ translation links between high-density language pairs like German and English. In naive candidate generators, converting raw Python sets to lists and applying unseeded head-slices (`[:10000]`) arbitrarily omits foundational core vocabulary (e.g. *water* $\leftrightarrow$ *Wasser*, *apple* $\leftrightarrow$ *Apfel*) depending on non-deterministic memory hash ordering.
+* **Invariant:** Mined translation links must be sorted deterministically prior to candidate bounding (`max_translation_pairs = 15000`), prioritizing pairs with verified ancestral etymological roots (`etym_root` present) and shorter lexical lengths (canonical core vocabulary over obscure multi-token or rare compounds).
+
 
 

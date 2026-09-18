@@ -364,7 +364,7 @@ def build_pair_dataset(
     mined_pairs: Set[Tuple[str, str]],
     lexicons: Dict[str, Dict[str, dict]],
     matcher: SemanticMatcher,
-    max_translation_pairs: int = 10000,
+    max_translation_pairs: int = 15000,
     max_collision_candidates: int = 2500,
 ) -> List[dict]:
     """Constructs comparison records for (lang_a, lang_b) and its inverse."""
@@ -377,8 +377,17 @@ def build_pair_dataset(
     # Step 1: Pre-collect candidate items
     candidate_items: List[Tuple[dict, dict, bool, float, float]] = []
 
-    # 1.1 Mined translations
-    mined_list = list(mined_pairs)[:max_translation_pairs]
+    # 1.1 Mined translations prioritized deterministically by verified root and core lemma length
+    sorted_mined = sorted(
+        mined_pairs,
+        key=lambda p: (
+            0 if (lex_a.get(p[0].lower(), {}).get("etym_root") or lex_b.get(p[1].lower(), {}).get("etym_root")) else 1,
+            len(p[0]) + len(p[1]),
+            p[0],
+            p[1],
+        ),
+    )
+    mined_list = sorted_mined[:max_translation_pairs]
     for w_a, w_b in mined_list:
         lower_a, lower_b = w_a.lower(), w_b.lower()
         if lower_a not in lex_a or lower_b not in lex_b:

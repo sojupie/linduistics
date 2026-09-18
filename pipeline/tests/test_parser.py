@@ -128,6 +128,9 @@ def test_export_lemmas_to_parquet(tmp_path):
             "pos": "noun",
             "ipa": "hɵnd",
             "glosses": ["dog (canine mammal)"],
+            "senses": [{"gloss": "dog (canine mammal)", "pos": "noun", "tags": [], "is_active": True}],
+            "etym_root": "Proto-Germanic *hundaz",
+            "etym_text": "From Proto-Germanic *hundaz.",
             "lang": "sv"
         }
     }

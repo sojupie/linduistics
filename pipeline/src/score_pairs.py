@@ -136,7 +136,7 @@ def score_lexicons(
                 def_b = glosses_b[0]
 
             pair_max_len = max(len(word_a), len(word_b))
-            category = classify_pair(
+            category, false_friend_type = classify_pair(
                 s_orth=s_orth,
                 s_phon=s_phon,
                 s_sem=s_sem,
@@ -161,6 +161,7 @@ def score_lexicons(
                 "phonetic_sim": float(s_phon),
                 "semantic_sim": float(s_sem),
                 "category": category,
+                "false_friend_type": false_friend_type,
             }
             evaluated_pairs.append(pair_record)
 
@@ -180,6 +181,7 @@ def score_lexicons(
                 "phonetic_sim": float(s_phon),
                 "semantic_sim": float(s_sem),
                 "category": category,
+                "false_friend_type": false_friend_type,
             }
             evaluated_pairs.append(inverse_record)
 
