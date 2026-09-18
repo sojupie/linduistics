@@ -60,6 +60,12 @@ def score_lexicons(
     print("Building Channel B (Semantic Gloss Embedding Index)...")
     matcher.index_target_lexicon(target_lemmas)
 
+    print("Pre-encoding source lemma glosses in batch...")
+    all_source_glosses = [
+        g for src in source_lemmas for g in src.get("glosses", []) if g
+    ]
+    matcher.preencode_glosses(all_source_glosses, batch_size=256)
+
     target_by_word: Dict[str, dict] = {item["word"]: item for item in target_lemmas}
     evaluated_pairs: List[dict] = []
     seen_pairs = set()
@@ -129,7 +135,15 @@ def score_lexicons(
             if not def_b and glosses_b:
                 def_b = glosses_b[0]
 
-            category = classify_pair(s_orth=s_orth, s_phon=s_phon, s_sem=s_sem)
+            pair_max_len = max(len(word_a), len(word_b))
+            category = classify_pair(
+                s_orth=s_orth,
+                s_phon=s_phon,
+                s_sem=s_sem,
+                max_len=pair_max_len,
+                word_a=word_a,
+                word_b=word_b,
+            )
 
             # Base pair
             pair_record = {

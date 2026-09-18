@@ -13,8 +13,23 @@ def test_classify_true_cognate():
 
 def test_classify_false_friend():
     # High surface (orth >= 0.70 or phon >= 0.65) AND low semantic (sem <= 0.30)
-    assert classify_pair(s_orth=1.00, s_phon=0.60, s_sem=0.15) == "false_friend"
-    assert classify_pair(s_orth=0.50, s_phon=0.75, s_sem=0.20) == "false_friend"
+    assert classify_pair(s_orth=1.00, s_phon=0.60, s_sem=0.15, word_a="gift", word_b="gift") == "false_friend"
+    assert classify_pair(s_orth=0.50, s_phon=0.75, s_sem=0.20, max_len=6) == "false_friend"
+
+
+def test_classify_false_friend_length_calibration():
+    # Long words sharing initial letter: standard threshold orth >= 0.70 qualifies
+    assert classify_pair(s_orth=0.70, s_phon=0.30, s_sem=0.15, max_len=8, word_a="absolute", word_b="absolve") == "false_friend"
+
+    # Suffix-only match without shared root or high phonetics (e.g. federation vs duration) -> other
+    assert classify_pair(s_orth=0.70, s_phon=0.20, s_sem=0.15, max_len=10, word_a="federation", word_b="duration") == "other"
+
+    # Short words (len <= 4): rhyming pairs with 0.75 orth (like hart/dart) are filtered to "other"
+    assert classify_pair(s_orth=0.75, s_phon=0.30, s_sem=0.20, max_len=4, word_a="hart", word_b="dart") == "other"
+
+    # Short words (len <= 4): near-identical deceptive words (>= 0.85) qualify as false friends
+    assert classify_pair(s_orth=1.00, s_phon=0.60, s_sem=0.15, max_len=4, word_a="gift", word_b="gift") == "false_friend"
+    assert classify_pair(s_orth=0.50, s_phon=0.88, s_sem=0.15, max_len=4, word_a="abb", word_b="ebb") == "false_friend"
 
 
 def test_classify_partial_cognate():

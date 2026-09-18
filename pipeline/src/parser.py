@@ -16,6 +16,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from tqdm import tqdm
 
+from g2p_sv import swedish_to_ipa
 from ipa_normalizer import normalize_ipa
 
 # Words containing hyphens, spaces, or affix symbols are excluded
@@ -24,8 +25,17 @@ _INVALID_WORD_PATTERN = re.compile(r"[\s\-\u2010\u2013\u2014]")
 # Non-lemma parts of speech to reject
 _REJECTED_POS = {"prefix", "suffix", "affix", "punctuation", "symbol", "character"}
 
+# Dictionary meta-glosses that produce false-positive semantic matches
+_META_GLOSS_PATTERN = re.compile(
+    r"^(?:(?:alternative|archaic|obsolete|dated|rare|dialectal)\s+(?:form|spelling|pronunciation)\s+of|"
+    r"(?:synonym|initialism|acronym|abbreviation|misspelling|variant)\s+of|"
+    r"(?:plural|singular|past|present|participle|comparative|superlative)\s+of|"
+    r"used\s+with\s+an?\s+adjective)",
+    re.IGNORECASE,
+)
 
-def parse_kaikki_entry(raw: dict) -> Optional[dict]:
+
+def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
     """Parses and validates a single Kaikki JSON entry.
 
     Returns a normalized dictionary if the entry is a valid base lemma,
@@ -69,7 +79,11 @@ def parse_kaikki_entry(raw: dict) -> Optional[dict]:
         for gloss in sense.get("glosses") or []:
             if isinstance(gloss, str):
                 cleaned_gloss = gloss.strip()
-                if cleaned_gloss and cleaned_gloss not in valid_glosses:
+                if (
+                    cleaned_gloss
+                    and not _META_GLOSS_PATTERN.search(cleaned_gloss)
+                    and cleaned_gloss not in valid_glosses
+                ):
                     valid_glosses.append(cleaned_gloss)
 
     # If no base semantic glosses survived, entry is either pure inflection or empty
@@ -85,6 +99,10 @@ def parse_kaikki_entry(raw: dict) -> Optional[dict]:
             if cand_ipa:
                 normalized_ipa = cand_ipa
                 break
+
+    # Swedish G2P fallback if no explicit IPA was found
+    if not normalized_ipa and (lang == "sv" or raw.get("lang_code") == "sv"):
+        normalized_ipa = swedish_to_ipa(word)
 
     return {
         "word": word,
@@ -126,7 +144,7 @@ def stream_kaikki_entries(
             except orjson.JSONDecodeError:
                 continue
 
-            entry = parse_kaikki_entry(raw)
+            entry = parse_kaikki_entry(raw, lang=lang)
             if entry is None:
                 continue
 

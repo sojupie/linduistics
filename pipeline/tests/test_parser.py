@@ -59,6 +59,22 @@ def test_parse_kaikki_entry_rejects_form_of_field():
     assert parse_kaikki_entry(raw) is None
 
 
+def test_parse_kaikki_entry_filters_meta_glosses():
+    raw = {
+        "word": "acceptance",
+        "pos": "noun",
+        "senses": [
+            {"glosses": ["Synonym of etendue."]},
+            {"glosses": ["The act of accepting; a receiving what is offered with approbation."]},
+            {"glosses": ["Alternative form of something."]},
+        ],
+    }
+    entry = parse_kaikki_entry(raw)
+    assert entry is not None
+    assert len(entry["glosses"]) == 1
+    assert entry["glosses"][0] == "The act of accepting; a receiving what is offered with approbation."
+
+
 def test_parse_kaikki_entry_rejects_compounds_phrases_affixes():
     # Multi-word
     assert parse_kaikki_entry({"word": "god dag", "pos": "noun", "senses": [{"glosses": ["hello"]}]}) is None

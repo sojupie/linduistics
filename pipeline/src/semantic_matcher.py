@@ -19,6 +19,7 @@ class SemanticMatcher:
     ):
         self.model_name = model_name
         self._model = model
+        self._cache: Dict[str, np.ndarray] = {}
         self.target_words: List[str] = []
         self.target_metadata: Dict[str, dict] = {}
         self.target_gloss_vectors: Optional[np.ndarray] = None
@@ -27,18 +28,46 @@ class SemanticMatcher:
 
     def _get_model(self) -> Any:
         if self._model is None:
+            import torch
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self.model_name)
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+            self._model = SentenceTransformer(self.model_name, device=device)
         return self._model
 
+    def preencode_glosses(self, texts: Iterable[str], batch_size: int = 256) -> None:
+        """Pre-encodes an iterable of unique glosses in large batches into memory cache."""
+        missing = [
+            t.strip() for t in texts if t and t.strip() and t.strip() not in self._cache
+        ]
+        unique_missing = list(dict.fromkeys(missing))
+        if not unique_missing:
+            return
+
+        model = self._get_model()
+        vecs = model.encode(
+            unique_missing,
+            batch_size=batch_size,
+            normalize_embeddings=True,
+            show_progress_bar=False,
+        )
+        for text, vec in zip(unique_missing, vecs):
+            self._cache[text] = np.asarray(vec, dtype=np.float32)
+
     def encode(self, texts: List[str]) -> np.ndarray:
-        """Encodes texts into normalized dense vectors."""
+        """Encodes texts into normalized dense vectors using cache when available."""
         if not texts:
             return np.empty((0, 0), dtype=np.float32)
-        model = self._get_model()
-        vecs = model.encode(texts, normalize_embeddings=True)
-        return np.asarray(vecs, dtype=np.float32)
+
+        cleaned = [t.strip() for t in texts]
+        uncached = [t for t in cleaned if t and t not in self._cache]
+        if uncached:
+            self.preencode_glosses(uncached)
+
+        result = [self._cache[t] for t in cleaned if t in self._cache]
+        if not result:
+            return np.empty((0, 0), dtype=np.float32)
+        return np.array(result, dtype=np.float32)
 
     def compute_sense_similarity(
         self, glosses_a: List[str], glosses_b: List[str]
