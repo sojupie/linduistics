@@ -51,6 +51,8 @@ export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsRe
   if (params.min_sem !== undefined) query.set('min_sem', params.min_sem.toString());
   if (params.max_sem !== undefined) query.set('max_sem', params.max_sem.toString());
   if (params.category) query.set('category', params.category);
+  if (params.false_friend_type) query.set('false_friend_type', params.false_friend_type);
+  if (params.q) query.set('q', params.q);
   if (params.limit !== undefined) query.set('limit', params.limit.toString());
   if (params.offset !== undefined) query.set('offset', params.offset.toString());
 

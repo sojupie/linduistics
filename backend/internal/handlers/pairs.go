@@ -35,6 +35,7 @@ func (h *PairsHandler) HandleGetPairs(w http.ResponseWriter, r *http.Request) {
 		MaxSem:     ParseFloat(q.Get("max_sem"), 1.0),
 		Category:        q.Get("category"),
 		FalseFriendType: q.Get("false_friend_type"),
+		Search:          q.Get("q"),
 		Limit:           ParseInt(q.Get("limit"), 50),
 		Offset:          ParseInt(q.Get("offset"), 0),
 	}

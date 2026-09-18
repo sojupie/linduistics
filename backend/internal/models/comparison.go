@@ -35,6 +35,7 @@ type PairsQueryParams struct {
 	MaxSem          float32
 	Category        string
 	FalseFriendType string
+	Search          string
 	Limit           int
 	Offset          int
 }

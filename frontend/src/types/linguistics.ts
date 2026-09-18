@@ -1,17 +1,31 @@
 export type SpecimenCategory = 
   | 'cognate'     // True Cognates (Herbarium moss green)
   | 'minefield'   // False Friends (Dried oxblood red)
-  | 'cousin'      // Sound-Shifted Cousins (Raw ochre / amber)
+  | 'cousin'      // Sound-Shifted Cousins / Partial Cognates (Raw ochre / amber)
   | 'schism'      // Semantic Divergence / Translation Pairs (Iron gall blue)
   | 'alien';      // Unrelated Lexicon (Slate)
+
+export type FalseFriendType = 'etymological_shift' | 'surface_collision' | null;
+
+export interface SenseItem {
+  sense_id: number;
+  gloss: string;
+  pos?: string;
+  tags?: string[];
+  is_active: boolean;
+  is_active_match: boolean;
+  similarity_to_counterpart: number;
+}
 
 export interface SpecimenPair {
   id: number;
   catalogId: string;
+  langA: string;
   wordA: string;
   ipaA?: string;
   defA: string;
   posA?: string;
+  langB: string;
   wordB: string;
   ipaB?: string;
   defB: string;
@@ -20,6 +34,13 @@ export interface SpecimenPair {
   phoneticSim: number;
   semanticSim: number;
   category: SpecimenCategory;
+  rawCategory: string;
+  falseFriendType?: FalseFriendType;
+  sensesA: SenseItem[];
+  sensesB: SenseItem[];
+  etymRoot?: string | null;
+  etymTextA?: string | null;
+  etymTextB?: string | null;
   marginalia?: string;
 }
 
@@ -98,6 +119,12 @@ export interface RawComparisonDto {
   phonetic_sim: number;
   semantic_sim: number;
   category: string;
+  false_friend_type?: FalseFriendType;
+  senses_a?: SenseItem[];
+  senses_b?: SenseItem[];
+  etym_root?: string | null;
+  etym_text_a?: string | null;
+  etym_text_b?: string | null;
 }
 
 export interface PairsQueryParams {
@@ -108,6 +135,8 @@ export interface PairsQueryParams {
   min_sem?: number;
   max_sem?: number;
   category?: string;
+  false_friend_type?: string;
+  q?: string;
   limit?: number;
   offset?: number;
 }

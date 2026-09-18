@@ -46,6 +46,10 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		args = append(args, p.FalseFriendType)
 		whereClause += fmt.Sprintf(" AND false_friend_type = $%d", len(args))
 	}
+	if p.Search != "" {
+		args = append(args, "%"+p.Search+"%")
+		whereClause += fmt.Sprintf(" AND (word_a ILIKE $%d OR word_b ILIKE $%d)", len(args), len(args))
+	}
 
 	countQuery := "SELECT count(*) FROM word_comparisons " + whereClause
 	var total int
