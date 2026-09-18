@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-substrate-dark: #161514;
+  --color-substrate-panel: #1E1D1B;
+  --color-substrate-light: #F5F2EB;
+  --color-substrate-lightpanel: #ECE7DD;
+
+  --color-border-hairline: #2C2A26;
+  --color-border-lighthairline: #D8D1C3;
+  --color-border-faint: rgba(234, 230, 223, 0.08);
+
+  --color-ink-carbon: #EAE6DF;
+  --color-ink-muted: #9C968A;
+  --color-ink-faint: #6A655C;
+  --color-ink-darkcarbon: #1C1B18;
+
+  --color-specimen-moss: #5A8A64;
+  --color-specimen-mossbg: rgba(90, 138, 100, 0.12);
+  --color-specimen-oxblood: #B04358;
+  --color-specimen-oxbloodbg: rgba(176, 67, 88, 0.12);
+  --color-specimen-ochre: #C88A4E;
+  --color-specimen-ochrebg: rgba(200, 138, 78, 0.12);
+  --color-specimen-irongall: #4E7498;
+  --color-specimen-irongallbg: rgba(78, 116, 152, 0.12);
+  --color-specimen-slate: #7E7A71;
+  --color-specimen-slatebg: rgba(126, 122, 113, 0.12);
+
+  --font-serif: 'Cardo', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-substrate-dark);
+  color: var(--color-ink-carbon);
+  font-family: var(--font-serif);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.small-caps {
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+
+.border-hairline {
+  border: 1px solid var(--color-border-hairline);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-substrate-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hairline);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3E3B35;
+}
