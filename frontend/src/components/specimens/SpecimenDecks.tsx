@@ -5,6 +5,7 @@ import type { SpecimenPair, SpecimenCategory } from '../../types/linguistics';
 import { SpecimenRegisterTable } from './SpecimenRegisterTable';
 import { SpecimenDossier } from './SpecimenDossier';
 import { Phonetic } from '../common/Phonetic';
+import { formatPos } from '../../utils/formatters';
 
 type ViewMode = 'register' | 'quiz';
 
@@ -243,10 +244,10 @@ export const SpecimenDecks: React.FC = () => {
 
       {/* Main View Area */}
       {viewMode === 'register' ? (
-        /* Full-Width 60/40 Master-Detail Split Pane */
-        <div className="grid grid-cols-1 lg:grid-cols-12 border border-book-rule bg-page-bg">
-          {/* Left 60%: Scrollable Register Table */}
-          <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-book-rule p-4 sm:p-5 overflow-hidden">
+        /* Disciplined Master-Detail Layout with Pinned Fixed-Width Editorial Dossier */
+        <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule items-start">
+          {/* Left: Scrollable Register Table */}
+          <div className="flex-1 min-w-0 p-4 sm:p-5 overflow-hidden w-full">
             <SpecimenRegisterTable
               pairs={livePairs}
               total={livePairsData?.total ?? 0}
@@ -271,8 +272,8 @@ export const SpecimenDecks: React.FC = () => {
             />
           </div>
 
-          {/* Right 40%: Pinned Specimen Dossier (Folio Leaf) */}
-          <div className="lg:col-span-5 p-4 sm:p-6 lg:sticky lg:top-4 max-h-[calc(100vh-6rem)] overflow-y-auto bg-page-bg">
+          {/* Right: Pinned Specimen Dossier (Capped at 480px width to eliminate desert void) */}
+          <div className="w-full lg:w-[460px] xl:w-[480px] lg:shrink-0 p-4 sm:p-5 lg:sticky lg:top-4 max-h-[calc(100vh-5rem)] overflow-y-auto bg-page-surface">
             <SpecimenDossier
               specimen={selectedSpecimen}
               sourceLang={sourceLang}
@@ -314,12 +315,16 @@ export const SpecimenDecks: React.FC = () => {
                 <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold">
                   What is the primary modern definition of:
                 </span>
-                <div className="flex items-baseline gap-2 mt-1.5">
-                  <span className="text-2xl font-bold text-ink-main">{currentQuizItem.word_a}</span>
-                  {currentQuizItem.ipa_a && <Phonetic ipa={currentQuizItem.ipa_a} />}
-                  {currentQuizItem.pos_a && (
-                    <span className="text-xs text-ink-muted">[{currentQuizItem.pos_a}]</span>
+                <div className="flex items-baseline gap-2 mt-1.5 flex-wrap">
+                  <span className="text-2xl font-bold text-ink-main">
+                    {currentQuizItem.word_a}{formatPos(currentQuizItem.pos_a) ? ',' : ''}
+                  </span>
+                  {formatPos(currentQuizItem.pos_a) && (
+                    <span className="table-pos text-sm italic font-serif text-ink-muted">
+                      {formatPos(currentQuizItem.pos_a)}
+                    </span>
                   )}
+                  {currentQuizItem.ipa_a && <Phonetic ipa={currentQuizItem.ipa_a} className="table-ipa" />}
                 </div>
                 <p className="mt-2 text-sm text-ink-muted italic">
                   Note counterpart in {getLanguageName(currentQuizItem.lang_b)}: <span className="font-bold text-ink-main">{currentQuizItem.word_b}</span>

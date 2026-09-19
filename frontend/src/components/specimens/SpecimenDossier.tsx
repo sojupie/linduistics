@@ -3,6 +3,7 @@ import type { SpecimenPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { useClusterByRootQuery } from '../../services/queries';
 import { Phonetic } from '../common/Phonetic';
+import { formatPos } from '../../utils/formatters';
 
 interface SpecimenDossierProps {
   specimen: SpecimenPair | null;
@@ -33,101 +34,105 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
   const getTaxonomyTitle = () => {
     switch (specimen.category) {
       case 'cognate':
-        return 'COGNATE PAIR';
+        return 'Cognate Pair';
       case 'minefield':
         return specimen.falseFriendType === 'etymological_shift'
-          ? 'FALSE FRIEND · TIER A (ETYMOLOGICAL DRIFT)'
-          : 'FALSE FRIEND · TIER B (SURFACE COLLISION)';
+          ? 'False Friend · Tier A (Etymological Drift)'
+          : 'False Friend · Tier B (Surface Clash)';
       case 'cousin':
-        return 'SOUND-SHIFTED COUSIN (PARTIAL COGNATE)';
+        return 'Sound-Shifted Cousin';
       case 'schism':
-        return 'TRANSLATION PAIR (SEMANTIC OVERLAP)';
+        return 'Translation Counterpart';
       default:
-        return 'LEXICAL PAIR';
+        return 'Lexical Pair';
     }
   };
 
+  const posAbbrA = formatPos(specimen.posA);
+  const posAbbrB = formatPos(specimen.posB);
+
   return (
-    <div className="font-serif text-ink-main select-text space-y-6">
-      {/* Folio Cataloging Header */}
-      <div className="border-b border-book-rule pb-5">
-        <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold mb-2">
-          {sourceLang.toUpperCase()} · {targetLang.toUpperCase()} — {getTaxonomyTitle()}
+    <div className="font-serif text-ink-main select-text space-y-5">
+      {/* 1. Folio Title Plate (Framed Editorial Anchor) */}
+      <div className="border border-book-rule bg-page-bg p-4 space-y-3">
+        {/* Running Header */}
+        <div className="flex items-center justify-between text-2xs uppercase tracking-widest text-ink-muted font-serif font-semibold border-b border-book-rule/60 pb-2">
+          <span>{sourceName} ↔ {targetName}</span>
+          <span className="italic font-serif normal-case text-xs text-ink-muted">
+            {getTaxonomyTitle()}
+          </span>
         </div>
 
-        <div className="flex items-baseline gap-3 flex-wrap">
-          <span className="text-2xl sm:text-3xl font-bold font-serif text-ink-main tracking-tight">
-            {specimen.wordA}
-          </span>
-          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="text-lg" />}
-          {specimen.posA && (
-            <span className="text-xs text-ink-muted">[{specimen.posA}]</span>
-          )}
+        {/* Headword Comparison Plate */}
+        <div className="space-y-2 pt-1">
+          {/* Source Entry */}
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-xs uppercase tracking-wider font-mono text-ink-muted w-8 shrink-0">
+              {sourceLang}
+            </span>
+            <span className="text-xl sm:text-2xl font-bold font-serif text-ink-main tracking-tight">
+              {specimen.wordA}{posAbbrA ? ',' : ''}
+            </span>
+            {posAbbrA && (
+              <span className="table-pos text-sm italic font-serif text-ink-muted">
+                {posAbbrA}
+              </span>
+            )}
+            {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="text-sm table-ipa" />}
+          </div>
 
-          <span className="text-ink-muted font-serif px-1">·</span>
-
-          <span className={`text-2xl sm:text-3xl font-bold font-serif tracking-tight ${
-            specimen.category === 'minefield'
-              ? 'text-falsefriend-ink'
-              : specimen.category === 'cognate'
-              ? 'text-cognate-ink'
-              : 'text-ink-main'
-          }`}>
-            {specimen.wordB}
-          </span>
-          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="text-lg" />}
-          {specimen.posB && (
-            <span className="text-xs text-ink-muted">[{specimen.posB}]</span>
-          )}
+          {/* Target Entry */}
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-xs uppercase tracking-wider font-mono text-ink-muted w-8 shrink-0">
+              {targetLang}
+            </span>
+            <span className={`text-xl sm:text-2xl font-bold font-serif tracking-tight ${
+              specimen.category === 'minefield'
+                ? 'text-falsefriend-ink'
+                : specimen.category === 'cognate'
+                ? 'text-cognate-ink'
+                : 'text-ink-main'
+            }`}>
+              {specimen.wordB}{posAbbrB ? ',' : ''}
+            </span>
+            {posAbbrB && (
+              <span className="table-pos text-sm italic font-serif text-ink-muted">
+                {posAbbrB}
+              </span>
+            )}
+            {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="text-sm table-ipa" />}
+          </div>
         </div>
 
+        {/* False Friend Distinction Advisory */}
         {specimen.category === 'minefield' && (
-          <p className="mt-3 text-sm text-falsefriend-ink leading-relaxed italic border-l-2 border-falsefriend-border pl-3">
+          <p className="pt-2 border-t border-book-rule/50 text-xs text-falsefriend-ink leading-relaxed italic">
             {specimen.falseFriendType === 'etymological_shift'
-              ? 'Academic False Friend: Headwords share a verified common ancestral etymon (Proto-Germanic or Latin), but their modern definitions have diverged.'
-              : 'Casual False Friend: Accidental orthographic or phonetic convergence between unrelated roots or independent foreign borrowings.'}
+              ? 'Academic False Friend: Headwords share a verified ancestral root (Proto-Germanic or Latinate), but historical semantic divergence has created incompatible modern senses.'
+              : 'Casual False Friend: Accidental phonetic or orthographic convergence between historically unrelated lexical roots.'}
           </p>
         )}
       </div>
 
-      {/* Disciplined Similarity Scale (Scalar Coefficients) */}
-      <div className="border-b border-book-rule pb-5">
-        <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold mb-2.5">
-          Similarity Coefficients
-        </div>
-        <div className="grid grid-cols-3 gap-3 text-center font-serif">
-          <div className="border-r border-book-rule/60 pr-2">
-            <span className="text-ink-muted block text-xs uppercase tracking-wider mb-0.5 font-semibold">
-              Orthographic
-            </span>
-            <span className="font-mono text-base font-semibold text-ink-main">
-              Δₒ = {specimen.orthographicSim.toFixed(2)}
-            </span>
-          </div>
-          <div className="border-r border-book-rule/60 px-2">
-            <span className="text-ink-muted block text-xs uppercase tracking-wider mb-0.5 font-semibold">
-              Phonetic (Articulatory)
-            </span>
-            <span className="font-mono text-base font-semibold text-ink-main">
-              Δₚ = {specimen.phoneticSim.toFixed(2)}
-            </span>
-          </div>
-          <div className="pl-2">
-            <span className="text-ink-muted block text-xs uppercase tracking-wider mb-0.5 font-semibold">
-              Semantic (Aligned)
-            </span>
-            <span className="font-mono text-base font-semibold text-ink-main">
-              Δₛ = {specimen.semanticSim.toFixed(2)}
-            </span>
-          </div>
+      {/* 2. Compact Scalar Ledger Strip (Directly beneath Title Plate) */}
+      <div className="flex items-center justify-between border-y border-book-rule py-2 px-3 text-xs font-serif bg-page-muted/30">
+        <span className="text-ink-muted uppercase tracking-wider font-semibold">
+          Similarity Coefficients:
+        </span>
+        <div className="flex items-center gap-3 font-mono text-xs tabular-nums text-ink-main">
+          <span title="Orthographic Similarity">Δₒ <strong className="font-semibold">{specimen.orthographicSim.toFixed(2)}</strong></span>
+          <span className="text-book-rule-strong">·</span>
+          <span title="Phonetic Articulatory Distance">Δₚ <strong className="font-semibold">{specimen.phoneticSim.toFixed(2)}</strong></span>
+          <span className="text-book-rule-strong">·</span>
+          <span title="Semantic Alignment">Δₛ <strong className="font-semibold">{specimen.semanticSim.toFixed(2)}</strong></span>
         </div>
       </div>
 
-      {/* Etymological Lineage & Ancestral Root */}
+      {/* 3. Etymological Lineage & Ancestral Root */}
       {(specimen.etymRoot || specimen.etymTextA || specimen.etymTextB || cognateCluster) && (
-        <div className="border-b border-book-rule pb-5 space-y-3">
+        <div className="space-y-3 pt-1 border-b border-book-rule pb-5">
           <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold">
-            Etymological Lineage & Ancestral Root
+            Etymological Lineage
           </div>
 
           {specimen.etymRoot && (
@@ -136,7 +141,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                 Reconstructed Root:
               </span>
               <span className="font-serif font-bold text-base text-ink-main italic">
-                {specimen.etymRoot}
+                *{specimen.etymRoot}
               </span>
             </div>
           )}
@@ -144,18 +149,18 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           {specimen.etymTextA && (
             <div className="text-sm text-ink-main leading-relaxed pl-3 border-l border-book-rule-strong">
               <span className="font-serif font-semibold text-ink-muted block mb-0.5 text-xs uppercase tracking-wider">
-                {sourceName} Ancestry:
+                {sourceName} Descent:
               </span>
-              <p className="font-serif">{specimen.etymTextA}</p>
+              <p className="font-serif text-sm leading-relaxed">{specimen.etymTextA}</p>
             </div>
           )}
 
           {specimen.etymTextB && (
             <div className="text-sm text-ink-main leading-relaxed pl-3 border-l border-book-rule-strong">
               <span className="font-serif font-semibold text-ink-muted block mb-0.5 text-xs uppercase tracking-wider">
-                {targetName} Ancestry:
+                {targetName} Descent:
               </span>
-              <p className="font-serif">{specimen.etymTextB}</p>
+              <p className="font-serif text-sm leading-relaxed">{specimen.etymTextB}</p>
             </div>
           )}
 
@@ -163,114 +168,125 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
             <div className="pt-3 border-t border-book-rule/40 space-y-2">
               <div className="flex items-center justify-between text-xs text-ink-muted uppercase tracking-wider font-serif font-semibold">
-                <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
-                <span className="italic font-serif normal-case font-normal">{cognateCluster.proto_language}</span>
+                <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count})</span>
+                <span className="italic font-serif normal-case font-normal text-xs">{cognateCluster.proto_language}</span>
               </div>
               <div className="space-y-1.5 pt-1">
-                {cognateCluster.members.map((m, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-baseline justify-between text-sm py-1 border-b border-book-rule/30"
-                  >
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-xs font-mono font-bold text-ink-muted uppercase w-7">
-                        {m.lang}
-                      </span>
-                      <span className="font-serif font-bold text-ink-main text-base">
-                        {m.word}
-                      </span>
-                      {m.ipa && <Phonetic ipa={m.ipa} />}
-                      {m.pos && (
-                        <span className="text-xs text-ink-muted">[{m.pos}]</span>
+                {cognateCluster.members.map((m, idx) => {
+                  const sisterPos = formatPos(m.pos);
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-baseline justify-between text-sm py-1 border-b border-book-rule/30 gap-2"
+                    >
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className="text-xs font-mono font-bold text-ink-muted uppercase w-7 shrink-0">
+                          {m.lang}
+                        </span>
+                        <span className="font-serif font-bold text-ink-main text-sm">
+                          {m.word}{sisterPos ? ',' : ''}
+                        </span>
+                        {sisterPos && (
+                          <span className="table-pos text-xs italic font-serif text-ink-muted">
+                            {sisterPos}
+                          </span>
+                        )}
+                        {m.ipa && <Phonetic ipa={m.ipa} className="text-xs table-ipa" />}
+                      </div>
+                      {m.gloss && (
+                        <span className="text-xs text-ink-muted italic max-w-[200px] truncate text-right shrink-0">
+                          “{m.gloss}”
+                        </span>
                       )}
                     </div>
-                    {m.gloss && (
-                      <span className="text-sm text-ink-muted italic max-w-[240px] truncate text-right">
-                        “{m.gloss}”
-                      </span>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
         </div>
       )}
 
-      {/* Polysemous Sense Inventory */}
-      <div className="space-y-5 pb-6">
+      {/* 4. Polysemous Sense Inventory (Hanging Indent Dictionary Entries) */}
+      <div className="space-y-4 pb-4">
         <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold">
           Polysemous Sense Inventory
         </div>
 
         {/* Source Language Senses */}
-        <div>
-          <div className="text-sm uppercase tracking-wider font-semibold text-ink-main border-b border-book-rule/60 pb-1 mb-2.5">
+        <div className="space-y-2">
+          <div className="text-xs uppercase tracking-wider font-semibold text-ink-muted border-b border-book-rule/60 pb-1">
             {sourceName} Senses ({specimen.sensesA.length})
           </div>
           {specimen.sensesA.length === 0 ? (
-            <p className="text-sm text-ink-muted italic pl-2">No secondary senses recorded in source entry.</p>
+            <p className="text-xs text-ink-muted italic pl-4">No secondary senses recorded in source ledger.</p>
           ) : (
-            <div className="space-y-2.5 pl-2">
-              {specimen.sensesA.map((s) => (
-                <div key={s.sense_id} className="text-sm font-serif leading-relaxed flex items-start gap-2.5">
-                  <span className="font-mono text-xs text-ink-muted shrink-0 pt-0.5">
-                    {s.sense_id}.
-                  </span>
-                  <div>
-                    {s.pos && <span className="italic text-ink-muted text-xs mr-1.5">[{s.pos}]</span>}
-                    <span className={s.is_active_match ? 'font-bold text-ink-main' : 'text-ink-muted'}>
+            <div className="space-y-2 pt-0.5">
+              {specimen.sensesA.map((s, idx) => {
+                const sensePos = formatPos(s.pos);
+                return (
+                  <div key={s.sense_id} className="pl-6 -indent-6 text-sm font-serif leading-relaxed">
+                    <span className="font-bold text-ink-main mr-1.5">{idx + 1}.</span>
+                    {sensePos && (
+                      <span className="table-pos text-xs italic font-serif text-ink-muted mr-1.5">
+                        {sensePos}
+                      </span>
+                    )}
+                    <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-muted'}>
                       {s.gloss}
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2.5 text-xs uppercase tracking-wider text-cognate-ink font-semibold">
-                        [active match · S_sem = {s.similarity_to_counterpart.toFixed(2)}]
+                      <span className="ml-2 text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold">
+                        [active · Δₛ {s.similarity_to_counterpart.toFixed(2)}]
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2.5 text-xs uppercase tracking-wider text-ink-muted italic">
-                        [archaic / obsolete]
+                      <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                        (archaic)
                       </span>
                     )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
 
         {/* Target Language Senses */}
-        <div>
-          <div className="text-sm uppercase tracking-wider font-semibold text-ink-main border-b border-book-rule/60 pb-1 mb-2.5">
+        <div className="space-y-2 pt-2">
+          <div className="text-xs uppercase tracking-wider font-semibold text-ink-muted border-b border-book-rule/60 pb-1">
             {targetName} Senses ({specimen.sensesB.length})
           </div>
           {specimen.sensesB.length === 0 ? (
-            <p className="text-sm text-ink-muted italic pl-2">No secondary senses recorded in target entry.</p>
+            <p className="text-xs text-ink-muted italic pl-4">No secondary senses recorded in target ledger.</p>
           ) : (
-            <div className="space-y-2.5 pl-2">
-              {specimen.sensesB.map((s) => (
-                <div key={s.sense_id} className="text-sm font-serif leading-relaxed flex items-start gap-2.5">
-                  <span className="font-mono text-xs text-ink-muted shrink-0 pt-0.5">
-                    {s.sense_id}.
-                  </span>
-                  <div>
-                    {s.pos && <span className="italic text-ink-muted text-xs mr-1.5">[{s.pos}]</span>}
-                    <span className={s.is_active_match ? 'font-bold text-ink-main' : 'text-ink-muted'}>
+            <div className="space-y-2 pt-0.5">
+              {specimen.sensesB.map((s, idx) => {
+                const sensePos = formatPos(s.pos);
+                return (
+                  <div key={s.sense_id} className="pl-6 -indent-6 text-sm font-serif leading-relaxed">
+                    <span className="font-bold text-ink-main mr-1.5">{idx + 1}.</span>
+                    {sensePos && (
+                      <span className="table-pos text-xs italic font-serif text-ink-muted mr-1.5">
+                        {sensePos}
+                      </span>
+                    )}
+                    <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-muted'}>
                       {s.gloss}
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2.5 text-xs uppercase tracking-wider text-cognate-ink font-semibold">
-                        [active match · S_sem = {s.similarity_to_counterpart.toFixed(2)}]
+                      <span className="ml-2 text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold">
+                        [active · Δₛ {s.similarity_to_counterpart.toFixed(2)}]
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2.5 text-xs uppercase tracking-wider text-ink-muted italic">
-                        [archaic / obsolete]
+                      <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                        (archaic)
                       </span>
                     )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

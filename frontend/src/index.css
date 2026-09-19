@@ -144,6 +144,28 @@ body {
   color: var(--color-ink-muted);
 }
 
+/* Lexicographical Type Scale */
+.table-lemma {
+  font-size: 1.0625rem;
+  line-height: 1.25;
+}
+
+.table-ipa {
+  font-size: 0.9375rem;
+  color: #44403C;
+}
+
+.table-pos {
+  font-size: 0.875rem;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.table-gloss {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
 /* Custom scrollbars matching book paper */
 ::-webkit-scrollbar {
   width: 6px;

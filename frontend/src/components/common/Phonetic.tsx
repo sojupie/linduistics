@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPos } from '../../utils/formatters';
 
 interface PhoneticProps {
   ipa?: string | null;
@@ -15,7 +16,8 @@ export const Phonetic: React.FC<PhoneticProps> = ({ ipa, className = '' }) => {
   );
 };
 
-interface SpecimenHeadwordProps {
+
+export interface SpecimenHeadwordProps {
   lemma: string;
   ipa?: string | null;
   pos?: string | null;
@@ -38,15 +40,19 @@ export const SpecimenHeadword: React.FC<SpecimenHeadwordProps> = ({
     ? 'text-cognate-ink'
     : 'text-ink-main';
 
+  const posAbbr = formatPos(pos);
+
   return (
-    <span className={`inline-flex items-baseline gap-2 text-base ${className}`.trim()}>
-      <span className={`font-bold tracking-tight ${lemmaColor}`}>{lemma}</span>
-      {ipa && <Phonetic ipa={ipa} />}
-      {pos && (
-        <span className="text-xs tracking-wider uppercase text-ink-muted">
-          [{pos}]
+    <span className={`inline-flex items-baseline gap-1.5 flex-wrap ${className}`.trim()}>
+      <span className={`table-lemma font-bold tracking-tight ${lemmaColor}`}>
+        {lemma}{posAbbr ? ',' : ''}
+      </span>
+      {posAbbr && (
+        <span className="table-pos text-ink-muted">
+          {posAbbr}
         </span>
       )}
+      {ipa && <Phonetic ipa={ipa} className="table-ipa" />}
     </span>
   );
 };

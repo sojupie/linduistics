@@ -2,6 +2,7 @@ import React from 'react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { SPECIMEN_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
+import { formatPos } from '../../utils/formatters';
 
 interface SpecimenCardProps {
   specimen: SpecimenPair;
@@ -44,11 +45,11 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
       <div className="flex flex-wrap items-baseline justify-between border-b border-book-rule pb-3 gap-2">
         <div className="flex flex-wrap items-baseline gap-3">
           {/* Word A (Swedish) */}
-          <span className="text-2xl font-bold text-ink-main">{specimen.wordA}</span>
-          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} />}
-          {specimen.posA && (
-            <span className="text-sm italic text-ink-light">({specimen.posA})</span>
+          <span className="text-2xl font-bold text-ink-main">{specimen.wordA}{formatPos(specimen.posA) ? ',' : ''}</span>
+          {formatPos(specimen.posA) && (
+            <span className="table-pos text-base italic text-ink-muted">{formatPos(specimen.posA)}</span>
           )}
+          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="table-ipa" />}
 
           <span className="text-ink-light mx-1">→</span>
 
@@ -62,12 +63,12 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
                 : 'text-ink-main'
             }`}
           >
-            {specimen.wordB}
+            {specimen.wordB}{formatPos(specimen.posB) ? ',' : ''}
           </span>
-          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} />}
-          {specimen.posB && (
-            <span className="text-sm italic text-ink-light">({specimen.posB})</span>
+          {formatPos(specimen.posB) && (
+            <span className="table-pos text-base italic text-ink-muted">{formatPos(specimen.posB)}</span>
           )}
+          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="table-ipa" />}
         </div>
 
         {/* Category tag */}
