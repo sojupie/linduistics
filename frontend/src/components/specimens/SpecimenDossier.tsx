@@ -3,7 +3,7 @@ import type { SpecimenPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { useClusterByRootQuery } from '../../services/queries';
 import { Phonetic } from '../common/Phonetic';
-import { formatPos } from '../../utils/formatters';
+import { formatPos, parseEtymRoot } from '../../utils/formatters';
 
 interface SpecimenDossierProps {
   specimen: SpecimenPair | null;
@@ -20,6 +20,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
   const sourceName = getLanguageName(sourceLang);
   const targetName = getLanguageName(targetLang);
+  const parsedRoot = parseEtymRoot(specimen?.etymRoot, cognateCluster?.proto_language);
 
   if (!specimen) {
     return (
@@ -197,7 +198,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         </div>
         <div className="grid grid-cols-3 gap-2 text-center divide-x divide-book-rule">
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
+            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
               Orthographic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
@@ -210,7 +211,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
+            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
               Phonetic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
@@ -223,7 +224,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
+            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
               Semantic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
@@ -245,32 +246,36 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         </div>
 
         {specimen.etymRoot ? (
-          <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2">
-            <span className="text-xs uppercase tracking-wider font-semibold text-ink-muted block">
+          <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2.5">
+            <span className="font-deck text-xs font-medium text-ink-muted block">
               Reconstructed Ancestral Root
             </span>
-            <div className="text-xl font-bold font-serif text-ink-main italic">
-              *{specimen.etymRoot}
-              {cognateCluster?.proto_language && (
-                <span className="ml-2.5 text-xs font-normal font-sans text-ink-muted uppercase tracking-wider not-italic">
-                  ({cognateCluster.proto_language})
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <span className="text-xl font-medium font-deck text-ink-main italic">
+                {parsedRoot.lemma}
+              </span>
+              {parsedRoot.language && (
+                <span className="text-sm font-serif italic text-ink-muted">
+                  ({parsedRoot.language})
                 </span>
               )}
             </div>
 
             {/* Directional Transitional Descent Chain */}
             <div className="pt-2 border-t border-book-rule/60 text-sm text-ink-main font-serif flex items-center gap-2 flex-wrap">
-              <span className="text-xs uppercase tracking-wider font-mono font-bold text-ink-muted">Descent:</span>
-              <span className="font-serif text-ink-main">
-                <span className="font-bold">{specimen.wordA}</span> <span className="text-xs italic text-ink-muted">({sourceName})</span>
+              <span className="font-deck text-xs font-medium text-ink-muted">Descent:</span>
+              <span className="font-deck font-medium italic text-cognate-ink">
+                {parsedRoot.lemma}
               </span>
-              <span className="text-ink-muted">←</span>
+              <span className="text-ink-muted font-serif">→</span>
               <span className="font-serif text-ink-main">
-                <span className="font-bold">{specimen.wordB}</span> <span className="text-xs italic text-ink-muted">({targetName})</span>
+                <span className="font-deck font-medium">{specimen.wordA}</span>{' '}
+                <span className="text-xs italic text-ink-muted font-serif">({sourceName})</span>
               </span>
-              <span className="text-ink-muted">←</span>
-              <span className="font-serif italic font-bold text-cognate-ink">
-                *{specimen.etymRoot}
+              <span className="text-ink-muted font-serif text-xs">,</span>
+              <span className="font-serif text-ink-main">
+                <span className="font-deck font-medium">{specimen.wordB}</span>{' '}
+                <span className="text-xs italic text-ink-muted font-serif">({targetName})</span>
               </span>
             </div>
           </div>
@@ -282,7 +287,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {specimen.etymTextA && (
           <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
+            <span className="font-deck font-medium text-ink-muted block text-xs">
               {sourceName} Historical Descent:
             </span>
             <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextA}</p>
@@ -291,7 +296,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {specimen.etymTextB && (
           <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
+            <span className="font-deck font-medium text-ink-muted block text-xs">
               {targetName} Historical Descent:
             </span>
             <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextB}</p>
@@ -301,7 +306,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         {/* Pan-Germanic Sister Cognates Ledger */}
         {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
           <div className="pt-2 space-y-2">
-            <div className="flex items-center justify-between text-xs text-ink-main uppercase tracking-wider font-deck font-normal border-b border-book-rule/60 pb-1.5">
+            <div className="flex items-center justify-between text-xs text-ink-main font-deck font-medium border-b border-book-rule/60 pb-1.5">
               <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
               <span className="italic font-serif normal-case font-normal text-xs text-ink-muted">
                 {cognateCluster.proto_language}
@@ -350,7 +355,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {/* Source Language Senses */}
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1">
+          <div className="text-xs font-medium font-deck text-ink-muted border-b border-book-rule/60 pb-1">
             <span>{sourceName} Senses ({sensesListA.length})</span>
           </div>
           <div className="space-y-3 pt-1">
@@ -373,12 +378,12 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center text-2xs text-cognate-ink font-serif italic bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
                         Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2 inline-block text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                      <span className="ml-2 inline-block text-2xs text-ink-muted italic font-serif">
                         (archaic)
                       </span>
                     )}
@@ -391,7 +396,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {/* Target Language Senses */}
         <div className="space-y-3 pt-2">
-          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1">
+          <div className="text-xs font-medium font-deck text-ink-muted border-b border-book-rule/60 pb-1">
             <span>{targetName} Senses ({sensesListB.length})</span>
           </div>
           <div className="space-y-3 pt-1">
@@ -414,12 +419,12 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center text-2xs text-cognate-ink font-serif italic bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
                         Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2 inline-block text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                      <span className="ml-2 inline-block text-2xs text-ink-muted italic font-serif">
                         (archaic)
                       </span>
                     )}

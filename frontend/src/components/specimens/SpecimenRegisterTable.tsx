@@ -137,7 +137,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         {/* Category & Tier Filters */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-serif">
           <div className="flex items-center gap-1.5">
-            <span className="text-ink-muted uppercase tracking-wider font-semibold">Taxonomy:</span>
+            <span className="text-ink-muted font-deck text-xs font-medium">Taxonomy:</span>
             <select
               value={selectedCategory ?? 'all'}
               onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
@@ -153,7 +153,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
           {selectedCategory === 'false_friend' && (
             <div className="flex items-center gap-1.5">
-              <span className="text-ink-muted uppercase tracking-wider font-semibold">Tier:</span>
+              <span className="text-ink-muted font-deck text-xs font-medium">Tier:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
@@ -167,7 +167,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
           )}
 
           <div className="flex items-center gap-1.5">
-            <span className="text-ink-muted uppercase tracking-wider font-semibold">Rows:</span>
+            <span className="text-ink-muted font-deck text-xs font-medium">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
@@ -185,7 +185,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-auto my-1">
         <table className="w-full text-left border-collapse font-serif">
           <thead className="sticky top-0 z-10 bg-page-bg">
-            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-wider text-ink-muted font-deck font-normal">
+            <tr className="border-b-2 border-book-rule-strong text-xs text-ink-muted font-deck font-medium">
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{sourceName} Headword</th>
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
@@ -291,7 +291,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold">
+          <span className="text-xs text-ink-muted font-deck font-medium">
             Leaf {currentPage} of {totalPages}
           </span>
           <div className="flex items-center gap-1.5">
@@ -299,7 +299,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               type="button"
               onClick={() => onPageChange(Math.max(0, offset - limit))}
               disabled={offset === 0 || isLoading}
-              className="px-2.5 py-1 border border-book-rule text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors font-serif"
+              className="px-2.5 py-1 border border-book-rule text-xs font-deck font-medium text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
               ← Prev
             </button>
@@ -307,7 +307,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               type="button"
               onClick={() => onPageChange(offset + limit)}
               disabled={offset + limit >= total || isLoading}
-              className="px-2.5 py-1 border border-book-rule text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors font-serif"
+              className="px-2.5 py-1 border border-book-rule text-xs font-deck font-medium text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
               Next →
             </button>
