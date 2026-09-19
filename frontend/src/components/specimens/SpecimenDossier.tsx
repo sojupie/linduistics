@@ -34,18 +34,20 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
   const getTaxonomyTitle = () => {
     switch (specimen.category) {
-      case 'cognate':
-        return 'Cognate Pair';
-      case 'minefield':
+      case 'true_cognate':
+        return 'True Cognate';
+      case 'false_friend':
         return specimen.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Tier A (Drift)'
-          : 'False Friend · Tier B (Clash)';
-      case 'cousin':
-        return 'Sound-Shifted Cousin';
-      case 'schism':
-        return 'Translation Counterpart';
+          ? 'False Friend · Tier A (Etymological Shift)'
+          : specimen.falseFriendType === 'surface_collision'
+          ? 'False Friend · Tier B (Surface Collision)'
+          : 'False Friend';
+      case 'partial_cognate':
+        return 'Partial Cognate';
+      case 'translation_pair':
+        return 'Translation Pair';
       default:
-        return 'Lexical Pair';
+        return 'Other';
     }
   };
 
@@ -117,9 +119,9 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         <div className="flex items-center justify-between text-xs uppercase tracking-wider text-ink-muted font-deck font-normal border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
           <span className={`text-xs font-normal tracking-wider px-2 py-0.5 border ${
-            specimen.category === 'minefield'
+            specimen.category === 'false_friend'
               ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
-              : specimen.category === 'cognate'
+              : specimen.category === 'true_cognate'
               ? 'text-cognate-ink bg-cognate-bg border-cognate-border'
               : 'text-ink-main bg-page-muted border-book-rule'
           }`}>
@@ -162,9 +164,9 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
               {targetLang.toUpperCase()}
             </span>
             <h2 className={`font-deck text-2xl font-medium tracking-tight leading-tight ${
-              specimen.category === 'minefield'
+              specimen.category === 'false_friend'
                 ? 'text-falsefriend-ink'
-                : specimen.category === 'cognate'
+                : specimen.category === 'true_cognate'
                 ? 'text-cognate-ink'
                 : 'text-ink-main'
             }`}>
@@ -182,7 +184,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         </div>
 
         {/* False Friend Distinction Advisory */}
-        {specimen.category === 'minefield' && (
+        {specimen.category === 'false_friend' && (
           <div className="pt-3 border-t border-book-rule/80 text-sm text-falsefriend-ink leading-relaxed italic bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {specimen.falseFriendType === 'etymological_shift'
               ? 'Academic False Friend (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern denotations divergent or mutually deceptive.'

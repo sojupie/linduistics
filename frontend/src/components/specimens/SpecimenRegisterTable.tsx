@@ -52,34 +52,38 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
   const getTaxonomyLabel = (pair: SpecimenPair) => {
     switch (pair.category) {
-      case 'cognate':
+      case 'true_cognate':
         return (
           <span className="text-base text-cognate-ink whitespace-nowrap font-serif font-normal">
-            Cognate
+            True Cognate
           </span>
         );
-      case 'minefield':
+      case 'false_friend':
         return (
           <span className="text-base text-falsefriend-ink whitespace-nowrap font-serif font-normal">
-            {pair.falseFriendType === 'etymological_shift' ? 'False Friend · Drift' : 'False Friend · Clash'}
+            {pair.falseFriendType === 'etymological_shift'
+              ? 'False Friend · Drift'
+              : pair.falseFriendType === 'surface_collision'
+              ? 'False Friend · Clash'
+              : 'False Friend'}
           </span>
         );
-      case 'cousin':
+      case 'partial_cognate':
         return (
           <span className="text-base text-shifted-ink whitespace-nowrap font-serif font-normal">
-            Sound Shift
+            Partial Cognate
           </span>
         );
-      case 'schism':
+      case 'translation_pair':
         return (
           <span className="text-base text-divergent-ink whitespace-nowrap font-serif font-normal">
-            Translation
+            Translation Pair
           </span>
         );
       default:
         return (
           <span className="text-base text-ink-muted whitespace-nowrap font-serif font-normal">
-            Unclassified
+            Other
           </span>
         );
     }
@@ -115,7 +119,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       return `“${pair.sensesA[0].gloss}”`;
     }
 
-    return pair.category === 'cognate'
+    return pair.category === 'true_cognate'
       ? `“${pair.wordA}” (identical shared cognate)`
       : `“${pair.wordA}” ↔ “${pair.wordB}”`;
   };
@@ -143,11 +147,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
               className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
             >
-              <option value="all">All Specimens</option>
-              <option value="cognate">True Cognates</option>
+              <option value="all">All Taxonomy</option>
+              <option value="true_cognate">True Cognates</option>
               <option value="false_friend">False Friends</option>
-              <option value="sound_shift">Sound Shifts</option>
-              <option value="translation_pair">Translations</option>
+              <option value="partial_cognate">Partial Cognates</option>
+              <option value="translation_pair">Translation Pairs</option>
+              <option value="other">Other</option>
             </select>
           </div>
 
@@ -160,8 +165,8 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                 className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
               >
                 <option value="all">All Tiers</option>
-                <option value="etymological_shift">Tier A: Drift</option>
-                <option value="surface_collision">Tier B: Clash</option>
+                <option value="etymological_shift">Tier A: Drift (Etymological Shift)</option>
+                <option value="surface_collision">Tier B: Clash (Surface Collision)</option>
               </select>
             </div>
           )}
@@ -242,8 +247,8 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                         lemma={pair.wordB}
                         ipa={pair.ipaB}
                         pos={pair.posB}
-                        isFalseFriend={pair.category === 'minefield'}
-                        isCognate={pair.category === 'cognate'}
+                        isFalseFriend={pair.category === 'false_friend'}
+                        isCognate={pair.category === 'true_cognate'}
                       />
                     </td>
 

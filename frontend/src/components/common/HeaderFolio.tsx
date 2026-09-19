@@ -123,10 +123,14 @@ export const HeaderFolio: React.FC = () => {
                   </div>
                   <div className="text-ink-muted text-sm">
                     {item.category === 'true_cognate' || item.category === 'cognate'
-                      ? 'Cognate'
+                      ? 'True Cognate'
                       : item.category === 'false_friend'
-                      ? 'False friend'
-                      : 'Related word'}
+                      ? 'False Friend'
+                      : item.category === 'partial_cognate' || item.category === 'cousin' || item.category === 'sound_shift'
+                      ? 'Partial Cognate'
+                      : item.category === 'translation_pair' || item.category === 'schism'
+                      ? 'Translation Pair'
+                      : 'Other'}
                   </div>
                 </div>
               ))}

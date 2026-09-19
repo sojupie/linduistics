@@ -1,9 +1,9 @@
 export type SpecimenCategory = 
-  | 'cognate'     // True Cognates (Herbarium moss green)
-  | 'minefield'   // False Friends (Dried oxblood red)
-  | 'cousin'      // Sound-Shifted Cousins / Partial Cognates (Raw ochre / amber)
-  | 'schism'      // Semantic Divergence / Translation Pairs (Iron gall blue)
-  | 'alien';      // Unrelated Lexicon (Slate)
+  | 'true_cognate'       // True Cognates (Herbarium moss green)
+  | 'false_friend'       // False Friends (Dried oxblood red)
+  | 'partial_cognate'    // Partial Cognates (Raw ochre / amber)
+  | 'translation_pair'   // Translation Pairs (Iron gall blue)
+  | 'other';             // Other / Unclassified (Slate)
 
 export type FalseFriendType = 'etymological_shift' | 'surface_collision' | null;
 

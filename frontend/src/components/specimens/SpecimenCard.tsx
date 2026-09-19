@@ -11,13 +11,13 @@ interface SpecimenCardProps {
 export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
   const getBadgeStyle = () => {
     switch (specimen.category) {
-      case 'cognate':
+      case 'true_cognate':
         return 'text-cognate-ink bg-cognate-bg border-cognate-border';
-      case 'minefield':
+      case 'false_friend':
         return 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border';
-      case 'cousin':
+      case 'partial_cognate':
         return 'text-shifted-ink bg-shifted-bg border-shifted-border';
-      case 'schism':
+      case 'translation_pair':
         return 'text-divergent-ink bg-divergent-bg border-divergent-border';
       default:
         return 'text-ink-muted bg-page-muted border-book-rule';
@@ -26,16 +26,20 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
 
   const getCategoryLabel = () => {
     switch (specimen.category) {
-      case 'cognate':
-        return 'Cognate';
-      case 'minefield':
-        return 'False friend';
-      case 'cousin':
-        return 'Sound shift';
-      case 'schism':
-        return 'Different word';
+      case 'true_cognate':
+        return 'True Cognate';
+      case 'false_friend':
+        return specimen.falseFriendType === 'etymological_shift'
+          ? 'False Friend · Drift'
+          : specimen.falseFriendType === 'surface_collision'
+          ? 'False Friend · Clash'
+          : 'False Friend';
+      case 'partial_cognate':
+        return 'Partial Cognate';
+      case 'translation_pair':
+        return 'Translation Pair';
       default:
-        return 'Word pair';
+        return 'Other';
     }
   };
 
@@ -56,9 +60,9 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
           {/* Word B (Target) */}
           <span
             className={`text-2xl font-bold ${
-              specimen.category === 'minefield'
+              specimen.category === 'false_friend'
                 ? 'text-falsefriend-ink'
-                : specimen.category === 'cognate'
+                : specimen.category === 'true_cognate'
                 ? 'text-cognate-ink'
                 : 'text-ink-main'
             }`}

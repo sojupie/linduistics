@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/sojupie/linduistics/backend/internal/models"
@@ -39,7 +40,8 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 	args := []any{p.SourceLang, p.TargetLang, p.MinPhon, p.MinSem, p.MaxPhon, p.MaxSem}
 
 	if p.Category != "" {
-		args = append(args, p.Category)
+		category := normalizeCategory(p.Category)
+		args = append(args, category)
 		whereClause += fmt.Sprintf(" AND category = $%d", len(args))
 	}
 	if p.FalseFriendType != "" {
@@ -277,7 +279,7 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 			COALESCE(avg(semantic_sim), 0) AS avg_sem,
 			COALESCE(count(*) FILTER (WHERE category IN ('true_cognate', 'cognate')), 0) AS cognates,
 			COALESCE(count(*) FILTER (WHERE category = 'false_friend'), 0) AS false_friends,
-			COALESCE(count(*) FILTER (WHERE category IN ('partial_cognate', 'cousin')), 0) AS shifted,
+			COALESCE(count(*) FILTER (WHERE category IN ('partial_cognate', 'cousin', 'sound_shift')), 0) AS shifted,
 			COALESCE(count(*) FILTER (WHERE category IN ('translation_pair', 'schism', 'divergent')), 0) AS divergent
 		FROM word_comparisons
 		%s
@@ -339,4 +341,21 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 		Languages: languages,
 		Pairs:     pairs,
 	}, nil
+}
+
+func normalizeCategory(cat string) string {
+	switch strings.ToLower(strings.TrimSpace(cat)) {
+	case "true_cognate", "cognate":
+		return "true_cognate"
+	case "false_friend", "minefield":
+		return "false_friend"
+	case "partial_cognate", "sound_shift", "cousin", "shifted":
+		return "partial_cognate"
+	case "translation_pair", "translation", "schism", "divergent":
+		return "translation_pair"
+	case "other", "alien":
+		return "other"
+	default:
+		return cat
+	}
 }

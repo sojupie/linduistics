@@ -63,11 +63,12 @@ export const SpecimenDecks: React.FC = () => {
       return [];
     }
     return livePairsData.items.map((dto) => {
-      let cat: SpecimenCategory = 'alien';
-      if (dto.category === 'true_cognate' || dto.category === 'cognate') cat = 'cognate';
-      else if (dto.category === 'false_friend') cat = 'minefield';
-      else if (dto.category === 'partial_cognate' || dto.category === 'cousin') cat = 'cousin';
-      else if (dto.category === 'translation_pair' || dto.category === 'schism') cat = 'schism';
+      let cat: SpecimenCategory = 'other';
+      if (dto.category === 'true_cognate' || dto.category === 'cognate') cat = 'true_cognate';
+      else if (dto.category === 'false_friend') cat = 'false_friend';
+      else if (dto.category === 'partial_cognate' || dto.category === 'cousin' || dto.category === 'sound_shift') cat = 'partial_cognate';
+      else if (dto.category === 'translation_pair' || dto.category === 'schism') cat = 'translation_pair';
+      else cat = 'other';
 
       return {
         id: dto.id,

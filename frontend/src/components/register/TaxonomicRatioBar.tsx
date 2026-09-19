@@ -38,7 +38,7 @@ export const TaxonomicRatioBar: React.FC<TaxonomicRatioBarProps> = ({
             ? TAXONOMIC_BAR_CONFIG.BAR_HEIGHT_COMPACT_PX
             : TAXONOMIC_BAR_CONFIG.BAR_HEIGHT_DEFAULT_PX
         }`}
-        title={`Identical words: ${pctId}% | Sound shifted: ${pctSh}% | False friends: ${pctFf}% | Different words: ${pctDv}%`}
+        title={`True cognates: ${pctId}% | Partial cognates: ${pctSh}% | False friends: ${pctFf}% | Translation pairs: ${pctDv}%`}
       >
         <div
           style={{ width: `${identical * TAXONOMIC_BAR_CONFIG.PERCENT_MULTIPLIER}%` }}
@@ -63,11 +63,11 @@ export const TaxonomicRatioBar: React.FC<TaxonomicRatioBarProps> = ({
         <div className="mt-2 flex flex-wrap items-center justify-between text-sm text-ink-muted gap-2">
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
-            <span>{pctId}% identical words</span>
+            <span>{pctId}% true cognates</span>
           </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-xs bg-shifted-ink" />
-            <span>{pctSh}% sound shifted</span>
+            <span>{pctSh}% partial cognates</span>
           </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-xs bg-falsefriend-ink" />
@@ -75,7 +75,7 @@ export const TaxonomicRatioBar: React.FC<TaxonomicRatioBarProps> = ({
           </span>
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" />
-            <span>{pctDv}% different words</span>
+            <span>{pctDv}% translation pairs</span>
           </span>
         </div>
       )}

@@ -80,11 +80,15 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
                   {match.ipa && <Phonetic ipa={match.ipa} />}
                 </div>
                 <span className="text-sm text-ink-muted">
-                  {match.category === 'cognate' || match.category === 'true_cognate'
-                    ? 'Cognate'
+                  {match.category === 'true_cognate' || match.category === 'cognate'
+                    ? 'True Cognate'
                     : match.category === 'false_friend'
-                    ? 'False friend'
-                    : 'Related'}
+                    ? 'False Friend'
+                    : match.category === 'partial_cognate' || match.category === 'cousin' || match.category === 'sound_shift'
+                    ? 'Partial Cognate'
+                    : match.category === 'translation_pair' || match.category === 'schism'
+                    ? 'Translation Pair'
+                    : 'Other'}
                 </span>
               </div>
 
