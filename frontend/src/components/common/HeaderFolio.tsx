@@ -46,7 +46,7 @@ export const HeaderFolio: React.FC = () => {
                 to={link.to}
                 className={`font-deck text-base transition-colors ${
                   isActive
-                    ? 'text-ink-main font-semibold underline decoration-2 underline-offset-8 decoration-cognate-ink'
+                    ? 'text-ink-main font-medium underline decoration-2 underline-offset-8 decoration-cognate-ink'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
@@ -149,8 +149,8 @@ export const HeaderFolio: React.FC = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`font-serif text-sm whitespace-nowrap ${
-                isActive ? 'text-ink-main font-bold underline' : 'text-ink-muted'
+              className={`font-deck text-sm whitespace-nowrap ${
+                isActive ? 'text-ink-main font-medium underline' : 'text-ink-muted'
               }`}
             >
               {link.label}

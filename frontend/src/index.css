@@ -66,6 +66,22 @@
 
 @font-face {
   font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerVariable[opsz,wght]-Edu.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerVariable-Italic[opsz,wght]-Edu.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Deck';
   src: url('/fonts/warbler/WarblerDeck-Regular-Edu.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -232,6 +248,7 @@ body {
 /* Lexicographical Type Scale */
 .table-lemma {
   font-family: var(--font-deck);
+  font-weight: 500;
   font-size: 1.0625rem;
   line-height: 1.25;
 }

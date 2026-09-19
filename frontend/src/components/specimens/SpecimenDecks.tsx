@@ -126,7 +126,7 @@ export const SpecimenDecks: React.FC = () => {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif">
       {/* Chapter Top Bar (No hairline divider) */}
-      <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+      <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
             Specimen Register
@@ -136,41 +136,43 @@ export const SpecimenDecks: React.FC = () => {
           </p>
         </div>
 
-        {/* Language Comparison Selector */}
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-ink-muted uppercase tracking-wider text-xs font-semibold">Comparison:</span>
-          <select
-            value={sourceLang}
-            onChange={(e) => {
-              setSelectedSource(e.target.value);
-              setSelectedTarget(null);
-              setOffset(0);
-              setSelectedPairId(null);
-            }}
-            className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none"
-          >
-            {selectableLanguages.map((lang) => (
-              <option key={lang} value={lang}>
-                {getLanguageName(lang)}
-              </option>
-            ))}
-          </select>
-          <span className="text-ink-muted font-serif">→</span>
-          <select
-            value={targetLang}
-            onChange={(e) => {
-              setSelectedTarget(e.target.value);
-              setOffset(0);
-              setSelectedPairId(null);
-            }}
-            className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none"
-          >
-            {availableTargets.map((lang) => (
-              <option key={lang} value={lang}>
-                {getLanguageName(lang)}
-              </option>
-            ))}
-          </select>
+        {/* Language Comparison Selector (Prominent Tactile Plate) */}
+        <div className="flex items-center gap-3 bg-page-surface border border-book-rule px-3.5 py-2 shadow-2xs self-start md:self-auto">
+          <span className="text-ink-muted font-deck text-sm font-medium">Comparison:</span>
+          <div className="flex items-center gap-1.5">
+            <select
+              value={sourceLang}
+              onChange={(e) => {
+                setSelectedSource(e.target.value);
+                setSelectedTarget(null);
+                setOffset(0);
+                setSelectedPairId(null);
+              }}
+              className="bg-page-bg border border-book-rule px-2.5 py-1 text-sm sm:text-base font-deck font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer"
+            >
+              {selectableLanguages.map((lang) => (
+                <option key={lang} value={lang}>
+                  {getLanguageName(lang)}
+                </option>
+              ))}
+            </select>
+            <span className="text-ink-muted font-serif text-base px-0.5">→</span>
+            <select
+              value={targetLang}
+              onChange={(e) => {
+                setSelectedTarget(e.target.value);
+                setOffset(0);
+                setSelectedPairId(null);
+              }}
+              className="bg-page-bg border border-book-rule px-2.5 py-1 text-sm sm:text-base font-deck font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer"
+            >
+              {availableTargets.map((lang) => (
+                <option key={lang} value={lang}>
+                  {getLanguageName(lang)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 

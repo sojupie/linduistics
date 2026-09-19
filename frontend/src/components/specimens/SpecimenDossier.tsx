@@ -133,7 +133,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             <span className="text-2xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {sourceLang.toUpperCase()}
             </span>
-            <h2 className="font-deck text-2xl font-normal text-ink-main tracking-tight leading-tight">
+            <h2 className="font-deck text-2xl font-medium text-ink-main tracking-tight leading-tight">
               {specimen.wordA}{posAbbrA ? ',' : ''}
             </h2>
             {posAbbrA && (
@@ -160,7 +160,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             <span className="text-xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`font-deck text-2xl font-normal tracking-tight leading-tight ${
+            <h2 className={`font-deck text-2xl font-medium tracking-tight leading-tight ${
               specimen.category === 'minefield'
                 ? 'text-falsefriend-ink'
                 : specimen.category === 'cognate'

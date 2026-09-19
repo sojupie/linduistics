@@ -253,17 +253,17 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                     </td>
 
                     {/* Orthographic Similarity */}
-                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums text-ink-muted">
+                    <td className="py-3 px-2 text-center text-sm tabular-nums text-ink-muted">
                       {pair.orthographicSim.toFixed(2)}
                     </td>
 
                     {/* Phonetic Similarity */}
-                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-medium text-ink-main">
+                    <td className="py-3 px-2 text-center text-sm tabular-nums font-medium text-ink-main">
                       {pair.phoneticSim.toFixed(2)}
                     </td>
 
                     {/* Semantic Similarity */}
-                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-medium text-ink-main">
+                    <td className="py-3 px-2 text-center text-sm tabular-nums font-medium text-ink-main">
                       {pair.semanticSim.toFixed(2)}
                     </td>
 
