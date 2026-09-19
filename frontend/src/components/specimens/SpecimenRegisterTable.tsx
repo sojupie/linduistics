@@ -189,9 +189,15 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               <th className="py-3.5 px-3.5 w-1/4">{sourceName} Headword</th>
               <th className="py-3.5 px-3.5 w-1/4">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32">Taxonomy</th>
-              <th className="py-3.5 px-2 text-center w-14" title="Orthographic Similarity">Δₒ</th>
-              <th className="py-3.5 px-2 text-center w-14" title="Phonetic Similarity">Δₚ</th>
-              <th className="py-3.5 px-2 text-center w-14" title="Semantic Similarity">Δₛ</th>
+              <th className="py-3.5 px-2 text-center w-16" title="Orthographic Similarity">
+                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub></span>
+              </th>
+              <th className="py-3.5 px-2 text-center w-16" title="Phonetic Similarity">
+                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub></span>
+              </th>
+              <th className="py-3.5 px-2 text-center w-16" title="Semantic Similarity">
+                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub></span>
+              </th>
               <th className="py-3.5 px-3.5">Active Aligned Meaning</th>
             </tr>
           </thead>

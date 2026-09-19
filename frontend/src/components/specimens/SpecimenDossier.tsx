@@ -110,10 +110,10 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
   return (
     <div className="font-serif text-ink-main select-text space-y-6">
-      {/* 1. Folio Title Plate (Warbler Display 26px–28px Anchoring Plate) */}
-      <div className="border-2 border-book-rule-strong bg-page-surface p-5 sm:p-6 space-y-4 shadow-2xs">
+      {/* 1. Folio Title Plate (Unboxed, Direct on Substrate) */}
+      <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
-        <div className="flex items-center justify-between text-xs uppercase tracking-widest text-ink-muted font-serif font-bold border-b border-book-rule pb-2.5">
+        <div className="flex items-center justify-between text-xs uppercase tracking-widest text-ink-muted font-serif font-bold border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
           <span className={`text-xs font-bold tracking-wider uppercase px-2 py-0.5 border ${
             specimen.category === 'minefield'
@@ -190,23 +190,51 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         )}
       </div>
 
-      {/* 2. Compact Scalar Ledger Strip (Beneath Title Plate) */}
-      <div className="flex items-center justify-between border-y border-book-rule-strong py-2.5 px-4 text-xs font-serif bg-page-muted/40">
-        <span className="text-xs uppercase tracking-widest font-bold text-ink-main">
+      {/* 2. Similarity Coefficients (Two Rows: Title on top, Delta columns below) */}
+      <div className="border-y border-book-rule py-3 px-2 space-y-2.5 bg-page-muted/30">
+        <div className="text-xs uppercase tracking-widest font-bold text-ink-main">
           Similarity Coefficients
-        </span>
-        <div className="flex items-center gap-4 font-mono text-xs tabular-nums text-ink-main">
-          <span title="Orthographic Similarity">
-            Δₒ <strong className="font-bold text-sm text-ink-main">{specimen.orthographicSim.toFixed(2)}</strong>
-          </span>
-          <span className="text-book-rule-strong font-light">|</span>
-          <span title="Phonetic Articulatory Distance">
-            Δₚ <strong className="font-bold text-sm text-ink-main">{specimen.phoneticSim.toFixed(2)}</strong>
-          </span>
-          <span className="text-book-rule-strong font-light">|</span>
-          <span title="Semantic Alignment">
-            Δₛ <strong className="font-bold text-sm text-ink-main">{specimen.semanticSim.toFixed(2)}</strong>
-          </span>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-center divide-x divide-book-rule">
+          <div className="px-2">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+              Orthographic
+            </span>
+            <div className="flex items-baseline justify-center gap-1.5">
+              <span className="font-serif font-bold text-ink-main text-sm">
+                Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub>
+              </span>
+              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+                {specimen.orthographicSim.toFixed(2)}
+              </span>
+            </div>
+          </div>
+          <div className="px-2">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+              Phonetic
+            </span>
+            <div className="flex items-baseline justify-center gap-1.5">
+              <span className="font-serif font-bold text-ink-main text-sm">
+                Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub>
+              </span>
+              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+                {specimen.phoneticSim.toFixed(2)}
+              </span>
+            </div>
+          </div>
+          <div className="px-2">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+              Semantic
+            </span>
+            <div className="flex items-baseline justify-center gap-1.5">
+              <span className="font-serif font-bold text-ink-main text-sm">
+                Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub>
+              </span>
+              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+                {specimen.semanticSim.toFixed(2)}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -330,26 +358,32 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             {sensesListA.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrA;
               return (
-                <div key={s.sense_id || idx} className="pl-8 -indent-8 text-[15px] sm:text-base font-serif leading-relaxed">
-                  <span className="font-bold text-ink-main text-base mr-2">{idx + 1}.</span>
-                  {sensePos && (
-                    <span className="table-pos text-sm italic font-serif text-ink-muted mr-2">
-                      {sensePos}
-                    </span>
-                  )}
-                  <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
-                    {s.gloss}
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-[15px] sm:text-base font-serif leading-relaxed">
+                  <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
+                    {idx + 1}.
                   </span>
-                  {s.is_active_match && (
-                    <span className="ml-2.5 inline-block text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 align-middle">
-                      Aligned Sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                  <div className="flex-1 min-w-0">
+                    <span className="text-ink-main">
+                      {sensePos && (
+                        <span className="table-pos text-sm italic font-serif text-ink-muted mr-1.5 font-normal">
+                          {sensePos}
+                        </span>
+                      )}
+                      <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
+                        {s.gloss}
+                      </span>
                     </span>
-                  )}
-                  {!s.is_active && (
-                    <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
-                      (archaic)
-                    </span>
-                  )}
+                    {s.is_active_match && (
+                      <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                        Aligned Sense · Δ<sub className="font-serif not-italic text-[10px]">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                      </span>
+                    )}
+                    {!s.is_active && (
+                      <span className="ml-2 inline-block text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                        (archaic)
+                      </span>
+                    )}
+                  </div>
                 </div>
               );
             })}
@@ -366,26 +400,32 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             {sensesListB.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrB;
               return (
-                <div key={s.sense_id || idx} className="pl-8 -indent-8 text-[15px] sm:text-base font-serif leading-relaxed">
-                  <span className="font-bold text-ink-main text-base mr-2">{idx + 1}.</span>
-                  {sensePos && (
-                    <span className="table-pos text-sm italic font-serif text-ink-muted mr-2">
-                      {sensePos}
-                    </span>
-                  )}
-                  <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
-                    {s.gloss}
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-[15px] sm:text-base font-serif leading-relaxed">
+                  <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
+                    {idx + 1}.
                   </span>
-                  {s.is_active_match && (
-                    <span className="ml-2.5 inline-block text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 align-middle">
-                      Aligned Sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                  <div className="flex-1 min-w-0">
+                    <span className="text-ink-main">
+                      {sensePos && (
+                        <span className="table-pos text-sm italic font-serif text-ink-muted mr-1.5 font-normal">
+                          {sensePos}
+                        </span>
+                      )}
+                      <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
+                        {s.gloss}
+                      </span>
                     </span>
-                  )}
-                  {!s.is_active && (
-                    <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
-                      (archaic)
-                    </span>
-                  )}
+                    {s.is_active_match && (
+                      <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                        Aligned Sense · Δ<sub className="font-serif not-italic text-[10px]">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                      </span>
+                    )}
+                    {!s.is_active && (
+                      <span className="ml-2 inline-block text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                        (archaic)
+                      </span>
+                    )}
+                  </div>
                 </div>
               );
             })}
