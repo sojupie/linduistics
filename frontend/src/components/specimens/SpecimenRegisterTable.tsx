@@ -135,13 +135,13 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </div>
 
         {/* Category & Tier Filters */}
-        <div className="flex flex-wrap items-center gap-4 text-xs font-serif">
-          <div className="flex items-center gap-1.5">
-            <span className="text-ink-muted font-deck text-xs font-medium">Taxonomy:</span>
+        <div className="flex flex-wrap items-center gap-4 text-sm font-serif">
+          <div className="flex items-center gap-2">
+            <span className="text-ink-muted font-deck text-sm font-medium">Taxonomy:</span>
             <select
               value={selectedCategory ?? 'all'}
               onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
-              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+              className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
             >
               <option value="all">All Specimens</option>
               <option value="cognate">True Cognates</option>
@@ -152,12 +152,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
           </div>
 
           {selectedCategory === 'false_friend' && (
-            <div className="flex items-center gap-1.5">
-              <span className="text-ink-muted font-deck text-xs font-medium">Tier:</span>
+            <div className="flex items-center gap-2">
+              <span className="text-ink-muted font-deck text-sm font-medium">Tier:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
-                className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+                className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
               >
                 <option value="all">All Tiers</option>
                 <option value="etymological_shift">Tier A: Drift</option>
@@ -166,12 +166,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
             </div>
           )}
 
-          <div className="flex items-center gap-1.5">
-            <span className="text-ink-muted font-deck text-xs font-medium">Rows:</span>
+          <div className="flex items-center gap-2">
+            <span className="text-ink-muted font-deck text-sm font-medium">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
-              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+              className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
             >
               <option value={25}>25</option>
               <option value={50}>50</option>
@@ -185,7 +185,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-auto my-1">
         <table className="w-full text-left border-collapse font-serif">
           <thead className="sticky top-0 z-10 bg-page-bg">
-            <tr className="border-b-2 border-book-rule-strong text-xs text-ink-muted font-deck font-medium">
+            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-wider text-ink-muted font-deck font-medium">
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{sourceName} Headword</th>
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
