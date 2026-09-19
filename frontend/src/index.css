@@ -141,7 +141,16 @@ body {
   font-weight: 400;
   font-style: normal; /* Keep slashes and IPA upright even if parent is italic */
   letter-spacing: 0;
-  color: var(--color-ink-muted);
+  color: #292524; /* Deep rich carbon-stone ink, high contrast against paper ground */
+}
+
+/* Typography Family Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
 }
 
 /* Lexicographical Type Scale */
@@ -152,18 +161,21 @@ body {
 
 .table-ipa {
   font-size: 0.9375rem;
-  color: #44403C;
+  color: #292524; /* High contrast legible carbon, never washed out */
+  font-weight: 400;
 }
 
 .table-pos {
   font-size: 0.875rem;
   font-style: italic;
   font-family: var(--font-serif);
+  color: #57534E;
 }
 
 .table-gloss {
   font-size: 0.9375rem;
-  line-height: 1.4;
+  line-height: 1.45;
+  color: #1C1917;
 }
 
 /* Custom scrollbars matching book paper */

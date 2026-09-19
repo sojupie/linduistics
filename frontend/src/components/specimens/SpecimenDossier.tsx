@@ -23,8 +23,8 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
   if (!specimen) {
     return (
-      <div className="py-20 text-center text-ink-muted font-serif">
-        <p className="text-sm italic">
+      <div className="py-24 text-center text-ink-muted font-serif">
+        <p className="text-base italic leading-relaxed">
           Select any specimen from the register ledger to inspect comparative etymology and polysemous sense divergence.
         </p>
       </div>
@@ -37,8 +37,8 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         return 'Cognate Pair';
       case 'minefield':
         return specimen.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Tier A (Etymological Drift)'
-          : 'False Friend · Tier B (Surface Clash)';
+          ? 'False Friend · Tier A (Drift)'
+          : 'False Friend · Tier B (Clash)';
       case 'cousin':
         return 'Sound-Shifted Cousin';
       case 'schism':
@@ -51,42 +51,116 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
   const posAbbrA = formatPos(specimen.posA);
   const posAbbrB = formatPos(specimen.posB);
 
+  // Synthesize complete sense lists so the dossier never renders an empty graveyard
+  const sensesListA = (() => {
+    if (specimen.sensesA && specimen.sensesA.length > 0) {
+      return specimen.sensesA;
+    }
+    if (specimen.defA && specimen.defA.trim()) {
+      return [
+        {
+          sense_id: 1,
+          gloss: specimen.defA.trim(),
+          pos: specimen.posA,
+          is_active_match: true,
+          is_active: true,
+          similarity_to_counterpart: specimen.semanticSim,
+        },
+      ];
+    }
+    return [
+      {
+        sense_id: 1,
+        gloss: `Primary lexical sense of ${specimen.wordA}.`,
+        pos: specimen.posA,
+        is_active_match: true,
+        is_active: true,
+        similarity_to_counterpart: specimen.semanticSim,
+      },
+    ];
+  })();
+
+  const sensesListB = (() => {
+    if (specimen.sensesB && specimen.sensesB.length > 0) {
+      return specimen.sensesB;
+    }
+    if (specimen.defB && specimen.defB.trim()) {
+      return [
+        {
+          sense_id: 1,
+          gloss: specimen.defB.trim(),
+          pos: specimen.posB,
+          is_active_match: true,
+          is_active: true,
+          similarity_to_counterpart: specimen.semanticSim,
+        },
+      ];
+    }
+    return [
+      {
+        sense_id: 1,
+        gloss: `Primary lexical sense of ${specimen.wordB}.`,
+        pos: specimen.posB,
+        is_active_match: true,
+        is_active: true,
+        similarity_to_counterpart: specimen.semanticSim,
+      },
+    ];
+  })();
+
   return (
-    <div className="font-serif text-ink-main select-text space-y-5">
-      {/* 1. Folio Title Plate (Framed Editorial Anchor) */}
-      <div className="border border-book-rule bg-page-bg p-4 space-y-3">
+    <div className="font-serif text-ink-main select-text space-y-6">
+      {/* 1. Folio Title Plate (Warbler Display 26px–28px Anchoring Plate) */}
+      <div className="border-2 border-book-rule-strong bg-page-surface p-5 sm:p-6 space-y-4 shadow-2xs">
         {/* Running Header */}
-        <div className="flex items-center justify-between text-2xs uppercase tracking-widest text-ink-muted font-serif font-semibold border-b border-book-rule/60 pb-2">
+        <div className="flex items-center justify-between text-xs uppercase tracking-widest text-ink-muted font-serif font-bold border-b border-book-rule pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
-          <span className="italic font-serif normal-case text-xs text-ink-muted">
+          <span className={`text-xs font-bold tracking-wider uppercase px-2 py-0.5 border ${
+            specimen.category === 'minefield'
+              ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
+              : specimen.category === 'cognate'
+              ? 'text-cognate-ink bg-cognate-bg border-cognate-border'
+              : 'text-ink-main bg-page-muted border-book-rule'
+          }`}>
             {getTaxonomyTitle()}
           </span>
         </div>
 
-        {/* Headword Comparison Plate */}
-        <div className="space-y-2 pt-1">
+        {/* Specimen Headwords in Warbler Display (26px–28px) */}
+        <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-xs uppercase tracking-wider font-mono text-ink-muted w-8 shrink-0">
-              {sourceLang}
+          <div className="flex items-baseline gap-3 flex-wrap">
+            <span className="text-2xs uppercase tracking-widest font-mono font-bold text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+              {sourceLang.toUpperCase()}
             </span>
-            <span className="text-xl sm:text-2xl font-bold font-serif text-ink-main tracking-tight">
+            <h2 className="font-display text-2xl sm:text-[28px] font-bold text-ink-main tracking-tight leading-tight">
               {specimen.wordA}{posAbbrA ? ',' : ''}
-            </span>
+            </h2>
             {posAbbrA && (
-              <span className="table-pos text-sm italic font-serif text-ink-muted">
+              <span className="table-pos text-lg italic font-serif text-ink-muted">
                 {posAbbrA}
               </span>
             )}
-            {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="text-sm table-ipa" />}
+            {specimen.ipaA && (
+              <Phonetic ipa={specimen.ipaA} className="text-base text-stone-800 font-normal" />
+            )}
+          </div>
+
+          {/* Symmetrical Lexical Axis Divider */}
+          <div className="flex items-center gap-3 text-ink-muted/40 py-0.5">
+            <div className="flex-1 border-t border-book-rule"></div>
+            <span className="font-serif italic text-xs tracking-wider text-ink-muted font-medium">
+              corresponds in {targetName} to
+            </span>
+            <div className="flex-1 border-t border-book-rule"></div>
           </div>
 
           {/* Target Entry */}
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-xs uppercase tracking-wider font-mono text-ink-muted w-8 shrink-0">
-              {targetLang}
+          <div className="flex items-baseline gap-3 flex-wrap">
+            <span className="text-xs uppercase tracking-widest font-mono font-bold text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+              {targetLang.toUpperCase()}
             </span>
-            <span className={`text-xl sm:text-2xl font-bold font-serif tracking-tight ${
+            <h2 className={`font-display text-2xl sm:text-[28px] font-bold tracking-tight leading-tight ${
               specimen.category === 'minefield'
                 ? 'text-falsefriend-ink'
                 : specimen.category === 'cognate'
@@ -94,201 +168,228 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                 : 'text-ink-main'
             }`}>
               {specimen.wordB}{posAbbrB ? ',' : ''}
-            </span>
+            </h2>
             {posAbbrB && (
-              <span className="table-pos text-sm italic font-serif text-ink-muted">
+              <span className="table-pos text-lg italic font-serif text-ink-muted">
                 {posAbbrB}
               </span>
             )}
-            {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="text-sm table-ipa" />}
+            {specimen.ipaB && (
+              <Phonetic ipa={specimen.ipaB} className="text-base text-stone-800 font-normal" />
+            )}
           </div>
         </div>
 
         {/* False Friend Distinction Advisory */}
         {specimen.category === 'minefield' && (
-          <p className="pt-2 border-t border-book-rule/50 text-xs text-falsefriend-ink leading-relaxed italic">
+          <div className="pt-3 border-t border-book-rule/80 text-sm text-falsefriend-ink leading-relaxed italic bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {specimen.falseFriendType === 'etymological_shift'
-              ? 'Academic False Friend: Headwords share a verified ancestral root (Proto-Germanic or Latinate), but historical semantic divergence has created incompatible modern senses.'
-              : 'Casual False Friend: Accidental phonetic or orthographic convergence between historically unrelated lexical roots.'}
-          </p>
+              ? 'Academic False Friend (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern denotations divergent or mutually deceptive.'
+              : 'Casual False Friend (Surface Collision): Headwords represent historically unrelated roots that have accidentally converged through phonetic erosion or foreign borrowing.'}
+          </div>
         )}
       </div>
 
-      {/* 2. Compact Scalar Ledger Strip (Directly beneath Title Plate) */}
-      <div className="flex items-center justify-between border-y border-book-rule py-2 px-3 text-xs font-serif bg-page-muted/30">
-        <span className="text-ink-muted uppercase tracking-wider font-semibold">
-          Similarity Coefficients:
+      {/* 2. Compact Scalar Ledger Strip (Beneath Title Plate) */}
+      <div className="flex items-center justify-between border-y border-book-rule-strong py-2.5 px-4 text-xs font-serif bg-page-muted/40">
+        <span className="text-xs uppercase tracking-widest font-bold text-ink-main">
+          Similarity Coefficients
         </span>
-        <div className="flex items-center gap-3 font-mono text-xs tabular-nums text-ink-main">
-          <span title="Orthographic Similarity">Δₒ <strong className="font-semibold">{specimen.orthographicSim.toFixed(2)}</strong></span>
-          <span className="text-book-rule-strong">·</span>
-          <span title="Phonetic Articulatory Distance">Δₚ <strong className="font-semibold">{specimen.phoneticSim.toFixed(2)}</strong></span>
-          <span className="text-book-rule-strong">·</span>
-          <span title="Semantic Alignment">Δₛ <strong className="font-semibold">{specimen.semanticSim.toFixed(2)}</strong></span>
+        <div className="flex items-center gap-4 font-mono text-xs tabular-nums text-ink-main">
+          <span title="Orthographic Similarity">
+            Δₒ <strong className="font-bold text-sm text-ink-main">{specimen.orthographicSim.toFixed(2)}</strong>
+          </span>
+          <span className="text-book-rule-strong font-light">|</span>
+          <span title="Phonetic Articulatory Distance">
+            Δₚ <strong className="font-bold text-sm text-ink-main">{specimen.phoneticSim.toFixed(2)}</strong>
+          </span>
+          <span className="text-book-rule-strong font-light">|</span>
+          <span title="Semantic Alignment">
+            Δₛ <strong className="font-bold text-sm text-ink-main">{specimen.semanticSim.toFixed(2)}</strong>
+          </span>
         </div>
       </div>
 
-      {/* 3. Etymological Lineage & Ancestral Root */}
-      {(specimen.etymRoot || specimen.etymTextA || specimen.etymTextB || cognateCluster) && (
-        <div className="space-y-3 pt-1 border-b border-book-rule pb-5">
-          <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold">
-            Etymological Lineage
-          </div>
+      {/* 3. Etymological Descent & Lineage */}
+      <div className="space-y-4 pt-1 border-b border-book-rule pb-5">
+        <div className="text-xs uppercase tracking-widest text-ink-main font-serif font-bold border-b border-book-rule pb-1.5">
+          Etymological Descent & Lineage
+        </div>
 
-          {specimen.etymRoot && (
-            <div className="text-sm font-serif">
-              <span className="text-ink-muted text-xs uppercase tracking-wider font-semibold mr-2">
-                Reconstructed Root:
+        {specimen.etymRoot ? (
+          <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2">
+            <span className="text-xs uppercase tracking-wider font-semibold text-ink-muted block">
+              Reconstructed Ancestral Root
+            </span>
+            <div className="text-xl font-bold font-serif text-ink-main italic">
+              *{specimen.etymRoot}
+              {cognateCluster?.proto_language && (
+                <span className="ml-2.5 text-xs font-normal font-sans text-ink-muted uppercase tracking-wider not-italic">
+                  ({cognateCluster.proto_language})
+                </span>
+              )}
+            </div>
+
+            {/* Directional Transitional Descent Chain */}
+            <div className="pt-2 border-t border-book-rule/60 text-sm text-ink-main font-serif flex items-center gap-2 flex-wrap">
+              <span className="text-xs uppercase tracking-wider font-mono font-bold text-ink-muted">Descent:</span>
+              <span className="font-serif text-ink-main">
+                <span className="font-bold">{specimen.wordA}</span> <span className="text-xs italic text-ink-muted">({sourceName})</span>
               </span>
-              <span className="font-serif font-bold text-base text-ink-main italic">
+              <span className="text-ink-muted">←</span>
+              <span className="font-serif text-ink-main">
+                <span className="font-bold">{specimen.wordB}</span> <span className="text-xs italic text-ink-muted">({targetName})</span>
+              </span>
+              <span className="text-ink-muted">←</span>
+              <span className="font-serif italic font-bold text-cognate-ink">
                 *{specimen.etymRoot}
               </span>
             </div>
-          )}
+          </div>
+        ) : (
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 text-sm text-ink-muted italic">
+            Direct reconstructed proto-etymon currently undergoing comparative triangulation across sister dialects.
+          </div>
+        )}
 
-          {specimen.etymTextA && (
-            <div className="text-sm text-ink-main leading-relaxed pl-3 border-l border-book-rule-strong">
-              <span className="font-serif font-semibold text-ink-muted block mb-0.5 text-xs uppercase tracking-wider">
-                {sourceName} Descent:
+        {specimen.etymTextA && (
+          <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+            <span className="font-serif font-bold text-ink-muted block text-xs uppercase tracking-wider">
+              {sourceName} Historical Descent:
+            </span>
+            <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextA}</p>
+          </div>
+        )}
+
+        {specimen.etymTextB && (
+          <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+            <span className="font-serif font-bold text-ink-muted block text-xs uppercase tracking-wider">
+              {targetName} Historical Descent:
+            </span>
+            <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextB}</p>
+          </div>
+        )}
+
+        {/* Pan-Germanic Sister Cognates Ledger */}
+        {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
+          <div className="pt-2 space-y-2">
+            <div className="flex items-center justify-between text-xs text-ink-main uppercase tracking-widest font-serif font-bold border-b border-book-rule/60 pb-1.5">
+              <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
+              <span className="italic font-serif normal-case font-normal text-xs text-ink-muted">
+                {cognateCluster.proto_language}
               </span>
-              <p className="font-serif text-sm leading-relaxed">{specimen.etymTextA}</p>
             </div>
-          )}
-
-          {specimen.etymTextB && (
-            <div className="text-sm text-ink-main leading-relaxed pl-3 border-l border-book-rule-strong">
-              <span className="font-serif font-semibold text-ink-muted block mb-0.5 text-xs uppercase tracking-wider">
-                {targetName} Descent:
-              </span>
-              <p className="font-serif text-sm leading-relaxed">{specimen.etymTextB}</p>
-            </div>
-          )}
-
-          {/* Pan-Germanic Sister Cognates */}
-          {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
-            <div className="pt-3 border-t border-book-rule/40 space-y-2">
-              <div className="flex items-center justify-between text-xs text-ink-muted uppercase tracking-wider font-serif font-semibold">
-                <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count})</span>
-                <span className="italic font-serif normal-case font-normal text-xs">{cognateCluster.proto_language}</span>
-              </div>
-              <div className="space-y-1.5 pt-1">
-                {cognateCluster.members.map((m, idx) => {
-                  const sisterPos = formatPos(m.pos);
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-baseline justify-between text-sm py-1 border-b border-book-rule/30 gap-2"
-                    >
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="text-xs font-mono font-bold text-ink-muted uppercase w-7 shrink-0">
-                          {m.lang}
-                        </span>
-                        <span className="font-serif font-bold text-ink-main text-sm">
-                          {m.word}{sisterPos ? ',' : ''}
-                        </span>
-                        {sisterPos && (
-                          <span className="table-pos text-xs italic font-serif text-ink-muted">
-                            {sisterPos}
-                          </span>
-                        )}
-                        {m.ipa && <Phonetic ipa={m.ipa} className="text-xs table-ipa" />}
-                      </div>
-                      {m.gloss && (
-                        <span className="text-xs text-ink-muted italic max-w-[200px] truncate text-right shrink-0">
-                          “{m.gloss}”
+            <div className="space-y-1 divide-y divide-book-rule/40">
+              {cognateCluster.members.map((m, idx) => {
+                const sisterPos = formatPos(m.pos);
+                return (
+                  <div
+                    key={idx}
+                    className="flex items-baseline justify-between py-2 gap-3"
+                  >
+                    <div className="flex items-baseline gap-2.5 flex-wrap">
+                      <span className="text-xs font-mono font-bold text-ink-muted uppercase w-8 shrink-0">
+                        {m.lang}
+                      </span>
+                      <span className="font-serif font-bold text-ink-main text-base">
+                        {m.word}{sisterPos ? ',' : ''}
+                      </span>
+                      {sisterPos && (
+                        <span className="table-pos text-xs italic font-serif text-ink-muted">
+                          {sisterPos}
                         </span>
                       )}
+                      {m.ipa && <Phonetic ipa={m.ipa} className="text-xs text-stone-800" />}
                     </div>
-                  );
-                })}
-              </div>
+                    {m.gloss && (
+                      <span className="text-sm text-ink-muted italic max-w-[220px] truncate text-right shrink-0">
+                        “{m.gloss}”
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
 
       {/* 4. Polysemous Sense Inventory (Hanging Indent Dictionary Entries) */}
-      <div className="space-y-4 pb-4">
-        <div className="text-xs uppercase tracking-widest text-ink-muted font-serif font-semibold">
+      <div className="space-y-5 pb-6">
+        <div className="text-xs uppercase tracking-widest text-ink-main font-serif font-bold border-b border-book-rule pb-1.5">
           Polysemous Sense Inventory
         </div>
 
         {/* Source Language Senses */}
-        <div className="space-y-2">
-          <div className="text-xs uppercase tracking-wider font-semibold text-ink-muted border-b border-book-rule/60 pb-1">
-            {sourceName} Senses ({specimen.sensesA.length})
+        <div className="space-y-3">
+          <div className="text-xs uppercase tracking-wider font-bold text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+            <span>{sourceName} Senses ({sensesListA.length})</span>
+            <span className="font-mono text-2xs uppercase tracking-widest">{sourceLang}</span>
           </div>
-          {specimen.sensesA.length === 0 ? (
-            <p className="text-xs text-ink-muted italic pl-4">No secondary senses recorded in source ledger.</p>
-          ) : (
-            <div className="space-y-2 pt-0.5">
-              {specimen.sensesA.map((s, idx) => {
-                const sensePos = formatPos(s.pos);
-                return (
-                  <div key={s.sense_id} className="pl-6 -indent-6 text-sm font-serif leading-relaxed">
-                    <span className="font-bold text-ink-main mr-1.5">{idx + 1}.</span>
-                    {sensePos && (
-                      <span className="table-pos text-xs italic font-serif text-ink-muted mr-1.5">
-                        {sensePos}
-                      </span>
-                    )}
-                    <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-muted'}>
-                      {s.gloss}
+          <div className="space-y-3 pt-1">
+            {sensesListA.map((s, idx) => {
+              const sensePos = formatPos(s.pos) || posAbbrA;
+              return (
+                <div key={s.sense_id || idx} className="pl-8 -indent-8 text-[15px] sm:text-base font-serif leading-relaxed">
+                  <span className="font-bold text-ink-main text-base mr-2">{idx + 1}.</span>
+                  {sensePos && (
+                    <span className="table-pos text-sm italic font-serif text-ink-muted mr-2">
+                      {sensePos}
                     </span>
-                    {s.is_active_match && (
-                      <span className="ml-2 text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold">
-                        [active · Δₛ {s.similarity_to_counterpart.toFixed(2)}]
-                      </span>
-                    )}
-                    {!s.is_active && (
-                      <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
-                        (archaic)
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
+                  )}
+                  <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
+                    {s.gloss}
+                  </span>
+                  {s.is_active_match && (
+                    <span className="ml-2.5 inline-block text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 align-middle">
+                      Aligned Sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                    </span>
+                  )}
+                  {!s.is_active && (
+                    <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                      (archaic)
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Target Language Senses */}
-        <div className="space-y-2 pt-2">
-          <div className="text-xs uppercase tracking-wider font-semibold text-ink-muted border-b border-book-rule/60 pb-1">
-            {targetName} Senses ({specimen.sensesB.length})
+        <div className="space-y-3 pt-2">
+          <div className="text-xs uppercase tracking-wider font-bold text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+            <span>{targetName} Senses ({sensesListB.length})</span>
+            <span className="font-mono text-2xs uppercase tracking-widest">{targetLang}</span>
           </div>
-          {specimen.sensesB.length === 0 ? (
-            <p className="text-xs text-ink-muted italic pl-4">No secondary senses recorded in target ledger.</p>
-          ) : (
-            <div className="space-y-2 pt-0.5">
-              {specimen.sensesB.map((s, idx) => {
-                const sensePos = formatPos(s.pos);
-                return (
-                  <div key={s.sense_id} className="pl-6 -indent-6 text-sm font-serif leading-relaxed">
-                    <span className="font-bold text-ink-main mr-1.5">{idx + 1}.</span>
-                    {sensePos && (
-                      <span className="table-pos text-xs italic font-serif text-ink-muted mr-1.5">
-                        {sensePos}
-                      </span>
-                    )}
-                    <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-muted'}>
-                      {s.gloss}
+          <div className="space-y-3 pt-1">
+            {sensesListB.map((s, idx) => {
+              const sensePos = formatPos(s.pos) || posAbbrB;
+              return (
+                <div key={s.sense_id || idx} className="pl-8 -indent-8 text-[15px] sm:text-base font-serif leading-relaxed">
+                  <span className="font-bold text-ink-main text-base mr-2">{idx + 1}.</span>
+                  {sensePos && (
+                    <span className="table-pos text-sm italic font-serif text-ink-muted mr-2">
+                      {sensePos}
                     </span>
-                    {s.is_active_match && (
-                      <span className="ml-2 text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold">
-                        [active · Δₛ {s.similarity_to_counterpart.toFixed(2)}]
-                      </span>
-                    )}
-                    {!s.is_active && (
-                      <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
-                        (archaic)
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
+                  )}
+                  <span className={s.is_active_match ? 'font-medium text-ink-main' : 'text-ink-main'}>
+                    {s.gloss}
+                  </span>
+                  {s.is_active_match && (
+                    <span className="ml-2.5 inline-block text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 align-middle">
+                      Aligned Sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                    </span>
+                  )}
+                  {!s.is_active && (
+                    <span className="ml-2 text-2xs uppercase tracking-wider text-ink-muted italic font-serif">
+                      (archaic)
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

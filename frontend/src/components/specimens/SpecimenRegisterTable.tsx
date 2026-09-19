@@ -54,61 +54,70 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     switch (pair.category) {
       case 'cognate':
         return (
-          <span className="text-xs uppercase tracking-wider font-semibold text-ink-main whitespace-nowrap">
-            Cognate
+          <span className="text-xs font-bold tracking-wider uppercase text-cognate-ink whitespace-nowrap">
+            COGNATE
           </span>
         );
       case 'minefield':
         return (
-          <span className="text-xs uppercase tracking-wider font-bold text-falsefriend-ink whitespace-nowrap">
-            {pair.falseFriendType === 'etymological_shift' ? 'False Friend · Drift' : 'False Friend · Clash'}
+          <span className="text-xs font-bold tracking-wider uppercase text-falsefriend-ink whitespace-nowrap">
+            {pair.falseFriendType === 'etymological_shift' ? 'FALSE FRIEND · DRIFT' : 'FALSE FRIEND · CLASH'}
           </span>
         );
       case 'cousin':
         return (
-          <span className="text-xs uppercase tracking-wider font-semibold text-shifted-ink whitespace-nowrap">
-            Sound Shift
+          <span className="text-xs font-bold tracking-wider uppercase text-shifted-ink whitespace-nowrap">
+            SOUND SHIFT
           </span>
         );
       case 'schism':
         return (
-          <span className="text-xs uppercase tracking-wider font-semibold text-divergent-ink whitespace-nowrap">
-            Translation
+          <span className="text-xs font-bold tracking-wider uppercase text-divergent-ink whitespace-nowrap">
+            TRANSLATION
           </span>
         );
       default:
         return (
-          <span className="text-xs uppercase tracking-wider text-ink-muted whitespace-nowrap">
-            Unclassified
+          <span className="text-xs font-bold tracking-wider uppercase text-ink-muted whitespace-nowrap">
+            UNCLASSIFIED
           </span>
         );
     }
   };
 
   const getMeaningDisplay = (pair: SpecimenPair) => {
-    const isExactEcho =
-      pair.defA.trim().toLowerCase() === pair.wordA.trim().toLowerCase() &&
-      pair.defB.trim().toLowerCase() === pair.wordB.trim().toLowerCase();
-
-    if (isExactEcho) {
-      // Look for a richer gloss in active sense items
-      const matchA = pair.sensesA?.find((s) => s.is_active_match && s.gloss.toLowerCase() !== pair.wordA.toLowerCase());
-      const matchB = pair.sensesB?.find((s) => s.is_active_match && s.gloss.toLowerCase() !== pair.wordB.toLowerCase());
-      if (matchA && matchB) {
-        return `“${matchA.gloss}” ↔ “${matchB.gloss}”`;
-      }
-      if (matchA) return `“${matchA.gloss}”`;
-      if (matchB) return `“${matchB.gloss}”`;
-      return '—';
+    // 1. Check for active aligned sense matches
+    const matchA = pair.sensesA?.find((s) => s.is_active_match)?.gloss;
+    const matchB = pair.sensesB?.find((s) => s.is_active_match)?.gloss;
+    if (matchA && matchB && matchA.toLowerCase() !== matchB.toLowerCase()) {
+      return `“${matchA}” ↔ “${matchB}”`;
+    }
+    if (matchB && matchB.toLowerCase() !== pair.wordB.toLowerCase()) {
+      return `“${matchB}”`;
+    }
+    if (matchA && matchA.toLowerCase() !== pair.wordA.toLowerCase()) {
+      return `“${matchA}”`;
     }
 
-    if (pair.defB && pair.defB.trim().toLowerCase() !== pair.wordB.trim().toLowerCase()) {
-      return `“${pair.defB}”`;
+    // 2. Check definition strings
+    if (pair.defB && pair.defB.trim()) {
+      return `“${pair.defB.trim()}”`;
     }
-    if (pair.defA && pair.defA.trim().toLowerCase() !== pair.wordA.trim().toLowerCase()) {
-      return `“${pair.defA}”`;
+    if (pair.defA && pair.defA.trim()) {
+      return `“${pair.defA.trim()}”`;
     }
-    return '—';
+
+    // 3. Fallback to first sense gloss
+    if (pair.sensesB?.[0]?.gloss) {
+      return `“${pair.sensesB[0].gloss}”`;
+    }
+    if (pair.sensesA?.[0]?.gloss) {
+      return `“${pair.sensesA[0].gloss}”`;
+    }
+
+    return pair.category === 'cognate'
+      ? `“${pair.wordA}” (identical shared cognate)`
+      : `“${pair.wordA}” ↔ “${pair.wordB}”`;
   };
 
   return (
@@ -137,7 +146,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               <option value="all">All Specimens</option>
               <option value="cognate">True Cognates</option>
               <option value="false_friend">False Friends</option>
-              <option value="partial_cognate">Sound Shifts</option>
+              <option value="sound_shift">Sound Shifts</option>
               <option value="translation_pair">Translations</option>
             </select>
           </div>
@@ -176,14 +185,14 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse font-serif">
           <thead>
-            <tr className="border-b border-book-rule text-xs uppercase tracking-wider text-ink-muted font-semibold">
-              <th className="py-2.5 px-3.5 w-1/4">{sourceName} Headword</th>
-              <th className="py-2.5 px-3.5 w-1/4">{targetName} Counterpart</th>
-              <th className="py-2.5 px-2 text-center w-28">Taxonomy</th>
-              <th className="py-2.5 px-2 text-center w-14" title="Orthographic Similarity">Δₒ</th>
-              <th className="py-2.5 px-2 text-center w-14" title="Phonetic Similarity">Δₚ</th>
-              <th className="py-2.5 px-2 text-center w-14" title="Semantic Similarity">Δₛ</th>
-              <th className="py-2.5 px-3.5">Active Aligned Meaning</th>
+            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-widest text-ink-main font-bold">
+              <th className="py-3.5 px-3.5 w-1/4">{sourceName} Headword</th>
+              <th className="py-3.5 px-3.5 w-1/4">{targetName} Counterpart</th>
+              <th className="py-3.5 px-2 text-center w-32">Taxonomy</th>
+              <th className="py-3.5 px-2 text-center w-14" title="Orthographic Similarity">Δₒ</th>
+              <th className="py-3.5 px-2 text-center w-14" title="Phonetic Similarity">Δₚ</th>
+              <th className="py-3.5 px-2 text-center w-14" title="Semantic Similarity">Δₛ</th>
+              <th className="py-3.5 px-3.5">Active Aligned Meaning</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-book-rule/50">

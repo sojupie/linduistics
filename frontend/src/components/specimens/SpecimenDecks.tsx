@@ -272,8 +272,8 @@ export const SpecimenDecks: React.FC = () => {
             />
           </div>
 
-          {/* Right: Pinned Specimen Dossier (Capped at 480px width to eliminate desert void) */}
-          <div className="w-full lg:w-[460px] xl:w-[480px] lg:shrink-0 p-4 sm:p-5 lg:sticky lg:top-4 max-h-[calc(100vh-5rem)] overflow-y-auto bg-page-surface">
+          {/* Right: Pinned Specimen Dossier (Capped at 520px width) */}
+          <div className="w-full lg:w-[480px] xl:w-[520px] lg:shrink-0 p-5 sm:p-6 lg:sticky lg:top-4 max-h-[calc(100vh-5rem)] overflow-y-auto bg-page-surface">
             <SpecimenDossier
               specimen={selectedSpecimen}
               sourceLang={sourceLang}
