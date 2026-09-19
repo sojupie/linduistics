@@ -170,15 +170,15 @@ export const SpecimenDecks: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-ink-main font-serif">
             Specimen Register
           </h1>
-          <p className="text-xs text-ink-muted mt-1 font-serif">
+          <p className="text-sm text-ink-muted mt-1 font-serif">
             Comparative ledger of Germanic lexical roots, sound shifts, and deceptive false friends.
           </p>
         </div>
 
         {/* Language Comparison Selector & View Mode */}
-        <div className="flex flex-wrap items-center gap-6 text-xs">
+        <div className="flex flex-wrap items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
-            <span className="text-ink-light uppercase tracking-wider text-[10px]">Comparison:</span>
+            <span className="text-ink-muted uppercase tracking-wider text-xs font-semibold">Comparison:</span>
             <select
               value={sourceLang}
               onChange={(e) => {
@@ -187,7 +187,7 @@ export const SpecimenDecks: React.FC = () => {
                 setOffset(0);
                 setSelectedPairId(null);
               }}
-              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+              className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none"
             >
               {selectableLanguages.map((lang) => (
                 <option key={lang} value={lang}>
@@ -195,7 +195,7 @@ export const SpecimenDecks: React.FC = () => {
                 </option>
               ))}
             </select>
-            <span className="text-ink-light font-serif">→</span>
+            <span className="text-ink-muted font-serif">→</span>
             <select
               value={targetLang}
               onChange={(e) => {
@@ -203,7 +203,7 @@ export const SpecimenDecks: React.FC = () => {
                 setOffset(0);
                 setSelectedPairId(null);
               }}
-              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none"
+              className="border-b border-book-rule bg-transparent py-0.5 text-sm text-ink-main focus:border-ink-main focus:outline-none"
             >
               {availableTargets.map((lang) => (
                 <option key={lang} value={lang}>
@@ -219,7 +219,7 @@ export const SpecimenDecks: React.FC = () => {
               onClick={() => setViewMode('register')}
               className={`px-3 py-1 text-xs uppercase tracking-wider transition-colors ${
                 viewMode === 'register'
-                  ? 'bg-page-muted text-ink-main font-semibold'
+                  ? 'bg-page-muted text-ink-main font-bold'
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
@@ -230,7 +230,7 @@ export const SpecimenDecks: React.FC = () => {
               onClick={() => setViewMode('quiz')}
               className={`px-3 py-1 text-xs uppercase tracking-wider transition-colors ${
                 viewMode === 'quiz'
-                  ? 'bg-page-muted text-falsefriend-ink font-semibold'
+                  ? 'bg-page-muted text-falsefriend-ink font-bold'
                   : 'text-ink-muted hover:text-falsefriend-ink'
               }`}
             >
@@ -284,39 +284,39 @@ export const SpecimenDecks: React.FC = () => {
         <div className="max-w-2xl mx-auto border border-book-rule p-8 space-y-6">
           <div className="flex items-center justify-between border-b border-book-rule pb-4">
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-ink-light block">
+              <span className="text-xs uppercase tracking-widest text-ink-muted font-semibold block font-serif">
                 Field Examination
               </span>
               <h3 className="text-xl font-bold text-ink-main font-serif">
                 Deceptive Cognates & False Friends
               </h3>
             </div>
-            <div className="text-right text-xs text-ink-muted">
+            <div className="text-right text-sm text-ink-muted">
               <span>Score: {quizScore} / {quizAnsweredCount}</span>
-              <span className="text-[10px] text-ink-light block uppercase tracking-wider">
+              <span className="text-xs text-ink-muted block uppercase tracking-wider mt-0.5">
                 Question {currentQuizIdx + 1} of {quizData?.length || 10}
               </span>
             </div>
           </div>
 
           {quizLoading ? (
-            <div className="py-12 text-center text-ink-light italic">
+            <div className="py-12 text-center text-ink-muted italic text-sm">
               Extracting quiz items from lexical catalog...
             </div>
           ) : !currentQuizItem ? (
-            <div className="py-12 text-center text-ink-light italic">
+            <div className="py-12 text-center text-ink-muted italic text-sm">
               No false friend quiz specimens cataloged for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}.
             </div>
           ) : (
             <div className="space-y-6">
               <div className="border-b border-book-rule/60 pb-4">
-                <span className="text-[10px] uppercase tracking-wider text-ink-light">
+                <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold">
                   What is the primary modern definition of:
                 </span>
-                <div className="flex items-baseline gap-2 mt-1">
+                <div className="flex items-baseline gap-2 mt-1.5">
                   <span className="text-2xl font-bold text-ink-main">{currentQuizItem.word_a}</span>
                   {currentQuizItem.ipa_a && (
-                    <span className="font-serif italic text-sm text-[#383531]">
+                    <span className="font-serif italic text-sm text-ink-muted">
                       /{currentQuizItem.ipa_a}/
                     </span>
                   )}
@@ -324,12 +324,12 @@ export const SpecimenDecks: React.FC = () => {
                     <span className="text-xs text-ink-muted">[{currentQuizItem.pos_a}]</span>
                   )}
                 </div>
-                <p className="mt-2 text-xs text-ink-muted italic">
-                  Note counterpart in {getLanguageName(currentQuizItem.lang_b)}: <span className="font-bold">{currentQuizItem.word_b}</span>
+                <p className="mt-2 text-sm text-ink-muted italic">
+                  Note counterpart in {getLanguageName(currentQuizItem.lang_b)}: <span className="font-bold text-ink-main">{currentQuizItem.word_b}</span>
                 </p>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {currentQuizItem.options.map((option, idx) => {
                   const isSelected = selectedOption === idx;
                   const isCorrect = idx === currentQuizItem.correct_option;
@@ -341,7 +341,7 @@ export const SpecimenDecks: React.FC = () => {
                     } else if (isSelected) {
                       optStyle = 'border-falsefriend-border text-falsefriend-ink font-semibold';
                     } else {
-                      optStyle = 'border-book-rule text-ink-light opacity-40';
+                      optStyle = 'border-book-rule text-ink-muted opacity-40';
                     }
                   }
 
@@ -351,16 +351,16 @@ export const SpecimenDecks: React.FC = () => {
                       type="button"
                       onClick={() => handleQuizAnswer(idx)}
                       disabled={selectedOption !== null}
-                      className={`w-full border p-3.5 text-left text-xs transition-all flex items-center justify-between ${optStyle}`}
+                      className={`w-full border p-3.5 text-left text-sm transition-all flex items-center justify-between ${optStyle}`}
                     >
                       <span>{option}</span>
                       {selectedOption !== null && isCorrect && (
-                        <span className="text-[10px] uppercase tracking-wider font-bold text-cognate-ink shrink-0">
+                        <span className="text-xs uppercase tracking-wider font-bold text-cognate-ink shrink-0">
                           [Correct]
                         </span>
                       )}
                       {selectedOption !== null && isSelected && !isCorrect && (
-                        <span className="text-[10px] uppercase tracking-wider font-bold text-falsefriend-ink shrink-0">
+                        <span className="text-xs uppercase tracking-wider font-bold text-falsefriend-ink shrink-0">
                           [Deceived]
                         </span>
                       )}
@@ -374,7 +374,7 @@ export const SpecimenDecks: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleNextQuizItem}
-                    className="border border-ink-main px-4 py-1.5 text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted transition-colors font-serif"
+                    className="border border-ink-main px-4 py-1.5 text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted transition-colors font-serif font-semibold"
                   >
                     Next Specimen →
                   </button>

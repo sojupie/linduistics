@@ -53,31 +53,31 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     switch (pair.category) {
       case 'cognate':
         return (
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-ink-main whitespace-nowrap">
+          <span className="text-xs uppercase tracking-wider font-semibold text-ink-main whitespace-nowrap">
             Cognate
           </span>
         );
       case 'minefield':
         return (
-          <span className="text-[11px] uppercase tracking-wider font-bold text-falsefriend-ink whitespace-nowrap">
+          <span className="text-xs uppercase tracking-wider font-bold text-falsefriend-ink whitespace-nowrap">
             {pair.falseFriendType === 'etymological_shift' ? 'False Friend [A]' : 'False Friend [B]'}
           </span>
         );
       case 'cousin':
         return (
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-shifted-ink whitespace-nowrap">
+          <span className="text-xs uppercase tracking-wider font-semibold text-shifted-ink whitespace-nowrap">
             Sound Shift
           </span>
         );
       case 'schism':
         return (
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-divergent-ink whitespace-nowrap">
+          <span className="text-xs uppercase tracking-wider font-semibold text-divergent-ink whitespace-nowrap">
             Translation
           </span>
         );
       default:
         return (
-          <span className="text-[11px] uppercase tracking-wider text-ink-light whitespace-nowrap">
+          <span className="text-xs uppercase tracking-wider text-ink-muted whitespace-nowrap">
             Unclassified
           </span>
         );
@@ -111,7 +111,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
   return (
     <div className="font-serif space-y-4">
       {/* Filtering Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-book-rule pb-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-book-rule pb-3.5 text-xs">
         {/* Search Input */}
         <div className="flex-1 min-w-[200px] max-w-sm">
           <input
@@ -119,14 +119,14 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={`Filter ${sourceName} or ${targetName}...`}
-            className="w-full border-b border-book-rule bg-transparent px-1 py-1 text-xs text-ink-main placeholder:text-ink-light focus:border-ink-main focus:outline-none font-serif"
+            className="w-full border-b border-book-rule bg-transparent px-1 py-1 text-sm text-ink-main placeholder:text-ink-muted focus:border-ink-main focus:outline-none font-serif"
           />
         </div>
 
         {/* Category & Tier Filters */}
-        <div className="flex items-center gap-3 font-serif">
+        <div className="flex items-center gap-4 font-serif">
           <div className="flex items-center gap-1.5">
-            <span className="text-ink-light uppercase tracking-wider text-[10px]">Category:</span>
+            <span className="text-ink-muted uppercase tracking-wider text-xs font-semibold">Category:</span>
             <select
               value={selectedCategory ?? 'all'}
               onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
@@ -142,7 +142,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
           {selectedCategory === 'false_friend' && (
             <div className="flex items-center gap-1.5">
-              <span className="text-ink-light uppercase tracking-wider text-[10px]">Tier:</span>
+              <span className="text-ink-muted uppercase tracking-wider text-xs font-semibold">Tier:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
@@ -156,7 +156,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
           )}
 
           <div className="flex items-center gap-1.5">
-            <span className="text-ink-light uppercase tracking-wider text-[10px]">Rows:</span>
+            <span className="text-ink-muted uppercase tracking-wider text-xs font-semibold">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
@@ -174,26 +174,26 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse font-serif">
           <thead>
-            <tr className="border-b border-book-rule text-[11px] uppercase tracking-wider text-ink-muted">
-              <th className="py-2.5 px-3 font-semibold w-1/4">{sourceName} Headword</th>
-              <th className="py-2.5 px-3 font-semibold w-1/4">{targetName} Counterpart</th>
-              <th className="py-2.5 px-2 font-semibold text-center w-28">Taxonomy</th>
-              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Orthographic Similarity">Δₒ</th>
-              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Phonetic Similarity">Δₚ</th>
-              <th className="py-2.5 px-2 font-semibold text-center w-12" title="Semantic Similarity">Δₛ</th>
-              <th className="py-2.5 px-3 font-semibold">Active Aligned Meaning</th>
+            <tr className="border-b border-book-rule text-xs uppercase tracking-wider text-ink-muted font-semibold">
+              <th className="py-2.5 px-3 w-1/4">{sourceName} Headword</th>
+              <th className="py-2.5 px-3 w-1/4">{targetName} Counterpart</th>
+              <th className="py-2.5 px-2 text-center w-32">Taxonomy</th>
+              <th className="py-2.5 px-2 text-center w-14" title="Orthographic Similarity">Δₒ</th>
+              <th className="py-2.5 px-2 text-center w-14" title="Phonetic Similarity">Δₚ</th>
+              <th className="py-2.5 px-2 text-center w-14" title="Semantic Similarity">Δₛ</th>
+              <th className="py-2.5 px-3">Active Aligned Meaning</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-book-rule/50 text-xs">
+          <tbody className="divide-y divide-book-rule/50 text-sm">
             {isLoading ? (
               <tr>
-                <td colSpan={7} className="py-12 text-center text-ink-light italic">
+                <td colSpan={7} className="py-12 text-center text-ink-muted italic">
                   Scanning cataloged register...
                 </td>
               </tr>
             ) : pairs.length === 0 ? (
               <tr>
-                <td colSpan={7} className="py-12 text-center text-ink-light italic">
+                <td colSpan={7} className="py-12 text-center text-ink-muted italic">
                   No specimen pairs match the current filter or search criteria.
                 </td>
               </tr>
@@ -212,17 +212,17 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                   >
                     {/* Source Headword */}
                     <td className="py-2.5 px-3 font-serif">
-                      <div className="flex items-baseline gap-1.5 flex-wrap">
-                        <span className="font-bold text-sm text-ink-main">
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className="font-bold text-base text-ink-main">
                           {pair.wordA}
                         </span>
                         {pair.ipaA && (
-                          <span className="font-serif italic text-xs text-[#383531]">
+                          <span className="font-serif italic text-sm text-ink-muted">
                             /{pair.ipaA}/
                           </span>
                         )}
                         {pair.posA && (
-                          <span className="text-[10px] text-ink-light">
+                          <span className="text-xs text-ink-muted">
                             [{pair.posA}]
                           </span>
                         )}
@@ -231,8 +231,8 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
                     {/* Target Counterpart */}
                     <td className="py-2.5 px-3 font-serif">
-                      <div className="flex items-baseline gap-1.5 flex-wrap">
-                        <span className={`font-bold text-sm ${
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className={`font-bold text-base ${
                           pair.category === 'minefield'
                             ? 'text-falsefriend-ink'
                             : pair.category === 'cognate'
@@ -242,12 +242,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                           {pair.wordB}
                         </span>
                         {pair.ipaB && (
-                          <span className="font-serif italic text-xs text-[#383531]">
+                          <span className="font-serif italic text-sm text-ink-muted">
                             /{pair.ipaB}/
                           </span>
                         )}
                         {pair.posB && (
-                          <span className="text-[10px] text-ink-light">
+                          <span className="text-xs text-ink-muted">
                             [{pair.posB}]
                           </span>
                         )}
@@ -260,23 +260,23 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                     </td>
 
                     {/* Orthographic Similarity */}
-                    <td className="py-2.5 px-2 text-center font-mono text-xs text-ink-muted">
+                    <td className="py-2.5 px-2 text-center font-mono text-sm text-ink-muted">
                       {pair.orthographicSim.toFixed(2)}
                     </td>
 
                     {/* Phonetic Similarity */}
-                    <td className="py-2.5 px-2 text-center font-mono text-xs font-semibold text-ink-main">
+                    <td className="py-2.5 px-2 text-center font-mono text-sm font-semibold text-ink-main">
                       {pair.phoneticSim.toFixed(2)}
                     </td>
 
                     {/* Semantic Similarity */}
-                    <td className="py-2.5 px-2 text-center font-mono text-xs font-semibold text-ink-main">
+                    <td className="py-2.5 px-2 text-center font-mono text-sm font-semibold text-ink-main">
                       {pair.semanticSim.toFixed(2)}
                     </td>
 
                     {/* Active Aligned Meaning */}
-                    <td className="py-2.5 px-3 text-xs leading-relaxed text-ink-muted">
-                      <span className="line-clamp-1 italic">
+                    <td className="py-2.5 px-3 text-sm leading-snug text-ink-main">
+                      <span className="line-clamp-1 italic text-ink-muted">
                         {getMeaningDisplay(pair)}
                       </span>
                     </td>
@@ -289,21 +289,21 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       </div>
 
       {/* Pagination Footer */}
-      <div className="flex items-center justify-between border-t border-book-rule pt-3 text-xs text-ink-muted">
+      <div className="flex items-center justify-between border-t border-book-rule pt-3.5 text-sm text-ink-muted">
         <div>
           Showing {startItem}–{endItem} of {total.toLocaleString()} cataloged specimens
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-[11px] uppercase tracking-wider text-ink-light">
+          <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold">
             Leaf {currentPage} of {totalPages}
           </span>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={() => onPageChange(Math.max(0, offset - limit))}
               disabled={offset === 0 || isLoading}
-              className="px-2 py-1 border border-book-rule text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors font-serif"
             >
               ← Prev
             </button>
@@ -311,7 +311,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               type="button"
               onClick={() => onPageChange(offset + limit)}
               disabled={offset + limit >= total || isLoading}
-              className="px-2 py-1 border border-book-rule text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors font-serif"
             >
               Next →
             </button>
