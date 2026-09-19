@@ -54,32 +54,32 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     switch (pair.category) {
       case 'cognate':
         return (
-          <span className="text-xs font-bold tracking-wider uppercase text-cognate-ink whitespace-nowrap">
-            COGNATE
+          <span className="text-sm sm:text-[15px] text-cognate-ink whitespace-nowrap font-serif font-normal">
+            cognate
           </span>
         );
       case 'minefield':
         return (
-          <span className="text-xs font-bold tracking-wider uppercase text-falsefriend-ink whitespace-nowrap">
-            {pair.falseFriendType === 'etymological_shift' ? 'FALSE FRIEND · DRIFT' : 'FALSE FRIEND · CLASH'}
+          <span className="text-sm sm:text-[15px] text-falsefriend-ink whitespace-nowrap font-serif font-normal">
+            {pair.falseFriendType === 'etymological_shift' ? 'false friend · drift' : 'false friend · clash'}
           </span>
         );
       case 'cousin':
         return (
-          <span className="text-xs font-bold tracking-wider uppercase text-shifted-ink whitespace-nowrap">
-            SOUND SHIFT
+          <span className="text-sm sm:text-[15px] text-shifted-ink whitespace-nowrap font-serif font-normal">
+            sound shift
           </span>
         );
       case 'schism':
         return (
-          <span className="text-xs font-bold tracking-wider uppercase text-divergent-ink whitespace-nowrap">
-            TRANSLATION
+          <span className="text-sm sm:text-[15px] text-divergent-ink whitespace-nowrap font-serif font-normal">
+            translation
           </span>
         );
       default:
         return (
-          <span className="text-xs font-bold tracking-wider uppercase text-ink-muted whitespace-nowrap">
-            UNCLASSIFIED
+          <span className="text-sm sm:text-[15px] text-ink-muted whitespace-nowrap font-serif font-normal">
+            unclassified
           </span>
         );
     }
@@ -185,18 +185,18 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse font-serif">
           <thead>
-            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-widest text-ink-main font-bold">
+            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-wider text-ink-muted font-deck font-normal">
               <th className="py-3.5 px-3.5 w-1/4">{sourceName} Headword</th>
               <th className="py-3.5 px-3.5 w-1/4">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16" title="Orthographic Similarity">
-                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16" title="Phonetic Similarity">
-                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16" title="Semantic Similarity">
-                <span className="font-serif font-bold text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub></span>
               </th>
               <th className="py-3.5 px-3.5">Active Aligned Meaning</th>
             </tr>
@@ -258,18 +258,21 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                     </td>
 
                     {/* Phonetic Similarity */}
-                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-semibold text-ink-main">
+                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-medium text-ink-main">
                       {pair.phoneticSim.toFixed(2)}
                     </td>
 
                     {/* Semantic Similarity */}
-                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-semibold text-ink-main">
+                    <td className="py-3 px-2 text-center font-mono text-sm tabular-nums font-medium text-ink-main">
                       {pair.semanticSim.toFixed(2)}
                     </td>
 
                     {/* Active Aligned Meaning */}
-                    <td className="py-3 px-3.5 table-gloss text-ink-main">
-                      <span className="line-clamp-2 italic text-ink-muted">
+                    <td className="py-3 px-3.5 max-w-xs md:max-w-md">
+                      <span
+                        className="truncate block italic text-ink-muted text-[15px] sm:text-base leading-snug"
+                        title={getMeaningDisplay(pair)}
+                      >
                         {getMeaningDisplay(pair)}
                       </span>
                     </td>

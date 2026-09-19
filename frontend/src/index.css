@@ -64,6 +64,70 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerDeck-Regular-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerDeck-Italic-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerDeck-Bold-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Deck';
+  src: url('/fonts/warbler/WarblerDeck-BoldItalic-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Banner';
+  src: url('/fonts/warbler/WarblerBanner-Regular-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Banner';
+  src: url('/fonts/warbler/WarblerBanner-Italic-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Banner';
+  src: url('/fonts/warbler/WarblerBanner-Bold-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Banner';
+  src: url('/fonts/warbler/WarblerBanner-BoldItalic-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --color-page-bg: #FAF8F5;
   --color-page-surface: #FAF8F5;
@@ -94,7 +158,9 @@
   --color-divergent-border: #BCD0E0;
 
   --font-serif: 'Warbler Text', Georgia, serif;
+  --font-deck: 'Warbler Deck', 'Warbler Text', Georgia, serif;
   --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
+  --font-header: 'Warbler Display', 'Warbler Banner', Georgia, serif;
   --font-ipa: 'Cardo', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
 
@@ -118,7 +184,9 @@
 :root {
   color-scheme: light;
   --font-serif: 'Warbler Text', Georgia, serif;
+  --font-deck: 'Warbler Deck', 'Warbler Text', Georgia, serif;
   --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
+  --font-header: 'Warbler Display', 'Warbler Banner', Georgia, serif;
   --font-ipa: 'Cardo', Georgia, serif;
 }
 
@@ -147,6 +215,14 @@ body {
 /* Typography Family Classes */
 .font-display {
   font-family: var(--font-display);
+}
+
+.font-header {
+  font-family: var(--font-header);
+}
+
+.font-deck {
+  font-family: var(--font-deck);
 }
 
 .font-serif {

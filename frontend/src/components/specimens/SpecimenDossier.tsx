@@ -113,9 +113,9 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
       {/* 1. Folio Title Plate (Unboxed, Direct on Substrate) */}
       <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
-        <div className="flex items-center justify-between text-xs uppercase tracking-widest text-ink-muted font-serif font-bold border-b border-book-rule/60 pb-2.5">
+        <div className="flex items-center justify-between text-xs uppercase tracking-wider text-ink-muted font-deck font-normal border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
-          <span className={`text-xs font-bold tracking-wider uppercase px-2 py-0.5 border ${
+          <span className={`text-xs font-normal tracking-wider uppercase px-2 py-0.5 border ${
             specimen.category === 'minefield'
               ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
               : specimen.category === 'cognate'
@@ -126,14 +126,14 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           </span>
         </div>
 
-        {/* Specimen Headwords in Warbler Display (26px–28px) */}
+        {/* Specimen Headwords in Warbler Header (26px–28px, default normal style) */}
         <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="text-2xs uppercase tracking-widest font-mono font-bold text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+            <span className="text-2xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {sourceLang.toUpperCase()}
             </span>
-            <h2 className="font-display text-2xl sm:text-[28px] font-bold text-ink-main tracking-tight leading-tight">
+            <h2 className="font-header text-2xl sm:text-[28px] font-normal text-ink-main tracking-tight leading-tight">
               {specimen.wordA}{posAbbrA ? ',' : ''}
             </h2>
             {posAbbrA && (
@@ -149,7 +149,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           {/* Symmetrical Lexical Axis Divider */}
           <div className="flex items-center gap-3 text-ink-muted/40 py-0.5">
             <div className="flex-1 border-t border-book-rule"></div>
-            <span className="font-serif italic text-xs tracking-wider text-ink-muted font-medium">
+            <span className="font-serif italic text-xs tracking-wider text-ink-muted font-normal">
               corresponds in {targetName} to
             </span>
             <div className="flex-1 border-t border-book-rule"></div>
@@ -157,10 +157,10 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
           {/* Target Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="text-xs uppercase tracking-widest font-mono font-bold text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+            <span className="text-xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`font-display text-2xl sm:text-[28px] font-bold tracking-tight leading-tight ${
+            <h2 className={`font-header text-2xl sm:text-[28px] font-normal tracking-tight leading-tight ${
               specimen.category === 'minefield'
                 ? 'text-falsefriend-ink'
                 : specimen.category === 'cognate'
@@ -191,46 +191,46 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
       </div>
 
       {/* 2. Similarity Coefficients (Two Rows: Title on top, Delta columns below) */}
-      <div className="border-y border-book-rule py-3 px-2 space-y-2.5 bg-page-muted/30">
-        <div className="text-xs uppercase tracking-widest font-bold text-ink-main">
+      <div className="border-y border-book-rule py-3 px-2 space-y-2 bg-page-muted/30">
+        <div className="font-deck text-base text-ink-main font-normal">
           Similarity Coefficients
         </div>
         <div className="grid grid-cols-3 gap-2 text-center divide-x divide-book-rule">
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
               Orthographic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-bold text-ink-main text-sm">
+              <span className="font-serif font-normal text-ink-main text-sm">
                 Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub>
               </span>
-              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.orthographicSim.toFixed(2)}
               </span>
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
               Phonetic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-bold text-ink-main text-sm">
+              <span className="font-serif font-normal text-ink-main text-sm">
                 Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub>
               </span>
-              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.phoneticSim.toFixed(2)}
               </span>
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs uppercase tracking-wider text-ink-muted font-semibold block mb-1 font-serif">
+            <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block mb-1 font-deck">
               Semantic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-bold text-ink-main text-sm">
+              <span className="font-serif font-normal text-ink-main text-sm">
                 Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub>
               </span>
-              <span className="font-mono font-bold text-base text-ink-main tabular-nums">
+              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.semanticSim.toFixed(2)}
               </span>
             </div>
@@ -240,7 +240,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
       {/* 3. Etymological Descent & Lineage */}
       <div className="space-y-4 pt-1 border-b border-book-rule pb-5">
-        <div className="text-xs uppercase tracking-widest text-ink-main font-serif font-bold border-b border-book-rule pb-1.5">
+        <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
           Etymological Descent & Lineage
         </div>
 
@@ -282,7 +282,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {specimen.etymTextA && (
           <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-serif font-bold text-ink-muted block text-xs uppercase tracking-wider">
+            <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
               {sourceName} Historical Descent:
             </span>
             <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextA}</p>
@@ -291,7 +291,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {specimen.etymTextB && (
           <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-serif font-bold text-ink-muted block text-xs uppercase tracking-wider">
+            <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
               {targetName} Historical Descent:
             </span>
             <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextB}</p>
@@ -301,7 +301,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         {/* Pan-Germanic Sister Cognates Ledger */}
         {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
           <div className="pt-2 space-y-2">
-            <div className="flex items-center justify-between text-xs text-ink-main uppercase tracking-widest font-serif font-bold border-b border-book-rule/60 pb-1.5">
+            <div className="flex items-center justify-between text-xs text-ink-main uppercase tracking-wider font-deck font-normal border-b border-book-rule/60 pb-1.5">
               <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
               <span className="italic font-serif normal-case font-normal text-xs text-ink-muted">
                 {cognateCluster.proto_language}
@@ -316,10 +316,10 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                     className="flex items-baseline justify-between py-2 gap-3"
                   >
                     <div className="flex items-baseline gap-2.5 flex-wrap">
-                      <span className="text-xs font-mono font-bold text-ink-muted uppercase w-8 shrink-0">
+                      <span className="text-xs font-mono font-medium text-ink-muted uppercase w-8 shrink-0">
                         {m.lang}
                       </span>
-                      <span className="font-serif font-bold text-ink-main text-base">
+                      <span className="font-serif font-normal text-ink-main text-base">
                         {m.word}{sisterPos ? ',' : ''}
                       </span>
                       {sisterPos && (
@@ -344,15 +344,15 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
       {/* 4. Polysemous Sense Inventory (Hanging Indent Dictionary Entries) */}
       <div className="space-y-5 pb-6">
-        <div className="text-xs uppercase tracking-widest text-ink-main font-serif font-bold border-b border-book-rule pb-1.5">
+        <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
           Polysemous Sense Inventory
         </div>
 
         {/* Source Language Senses */}
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-wider font-bold text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
             <span>{sourceName} Senses ({sensesListA.length})</span>
-            <span className="font-mono text-2xs uppercase tracking-widest">{sourceLang}</span>
+            <span className="font-mono text-2xs uppercase tracking-widest font-medium">{sourceLang}</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListA.map((s, idx) => {
@@ -392,9 +392,9 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {/* Target Language Senses */}
         <div className="space-y-3 pt-2">
-          <div className="text-xs uppercase tracking-wider font-bold text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
             <span>{targetName} Senses ({sensesListB.length})</span>
-            <span className="font-mono text-2xs uppercase tracking-widest">{targetLang}</span>
+            <span className="font-mono text-2xs uppercase tracking-widest font-medium">{targetLang}</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListB.map((s, idx) => {

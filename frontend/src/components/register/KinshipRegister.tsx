@@ -74,10 +74,10 @@ export const KinshipRegister: React.FC<KinshipRegisterProps> = ({
       <div className="border-b border-book-rule pb-8">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-ink-main">
+            <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
               Language register
             </h2>
-            <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl">
+            <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl font-deck font-normal">
               A comparative reference showing calculated phonetic distance, spelling variation, and lexical composition derived from cataloged word pairs.
             </p>
           </div>
@@ -245,11 +245,11 @@ export const KinshipRegister: React.FC<KinshipRegisterProps> = ({
               <h4 className="font-bold text-ink-main mb-2">Lexical overlap</h4>
               <p>
                 In the comparison dataset, <strong className="text-ink-main">{selectedLang.name}</strong> shares approximately{' '}
-                <span className="font-mono text-cognate-ink font-bold">
+                <span className="font-mono text-cognate-ink font-medium">
                   {(selectedLang.ratios.identical * 100).toFixed(0)}%
                 </span>{' '}
                 of its cataloged root words directly with {anchorName} without significant semantic change. Another{' '}
-                <span className="font-mono text-shifted-ink font-bold">
+                <span className="font-mono text-shifted-ink font-medium">
                   {(selectedLang.ratios.shifted * 100).toFixed(0)}%
                 </span>{' '}
                 of words show recognizable sound shifts.
@@ -260,7 +260,7 @@ export const KinshipRegister: React.FC<KinshipRegisterProps> = ({
               <h4 className="font-bold text-ink-main mb-2">False friends</h4>
               <p>
                 Around{' '}
-                <span className="font-mono text-falsefriend-ink font-bold">
+                <span className="font-mono text-falsefriend-ink font-medium">
                   {(selectedLang.ratios.falseFriends * 100).toFixed(0)}%
                 </span>{' '}
                 of similar-looking or sounding words between {anchorName} and {selectedLang.name} are deceptive false friends with divergent definitions.

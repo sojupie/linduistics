@@ -169,10 +169,10 @@ export const SpecimenDecks: React.FC = () => {
       {/* Chapter Top Bar */}
       <div className="border-b border-book-rule pb-4 mb-6 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-ink-main font-serif">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
             Specimen Register
           </h1>
-          <p className="text-sm text-ink-muted mt-1 font-serif">
+          <p className="text-base sm:text-lg text-ink-muted mt-1.5 font-deck font-normal">
             Comparative ledger of Germanic lexical roots, sound shifts, and deceptive false friends.
           </p>
         </div>

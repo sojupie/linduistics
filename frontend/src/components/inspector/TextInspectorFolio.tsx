@@ -64,10 +64,10 @@ export const TextInspectorFolio: React.FC = () => {
     <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
       {/* Chapter header */}
       <div className="border-b border-book-rule pb-8">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-ink-main">
+        <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
           Text inspector
         </h2>
-        <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl">
+        <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl font-deck font-normal">
           Enter text to analyze individual words, resolve grammatical inflections to base lemmas, and measure cross-lingual lexical relationships.
         </p>
       </div>
@@ -188,7 +188,7 @@ export const TextInspectorFolio: React.FC = () => {
           {/* Summary card */}
           {response && (
             <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
-              <h3 className="text-xl font-bold text-ink-main">
+              <h3 className="text-xl font-normal text-ink-main font-deck">
                 Lexical intelligibility
               </h3>
               <p className="text-sm text-ink-muted mt-1">
@@ -196,7 +196,7 @@ export const TextInspectorFolio: React.FC = () => {
               </p>
 
               <div className="my-6 text-center">
-                <span className="font-mono text-5xl font-bold text-cognate-ink">
+                <span className="font-mono text-5xl font-medium text-cognate-ink">
                   {response.universality_score.toFixed(0)}%
                 </span>
                 <span className="text-sm text-ink-muted block mt-1">
@@ -207,11 +207,11 @@ export const TextInspectorFolio: React.FC = () => {
               <div className="grid grid-cols-2 gap-4 border-t border-book-rule pt-4 text-base text-ink-muted">
                 <div>
                   <span className="text-sm block">Total words:</span>
-                  <strong className="text-ink-main font-mono text-lg">{response.total_tokens}</strong>
+                  <strong className="text-ink-main font-mono text-lg font-medium">{response.total_tokens}</strong>
                 </div>
                 <div>
                   <span className="text-sm block">Unique words:</span>
-                  <strong className="text-ink-main font-mono text-lg">{response.unique_tokens}</strong>
+                  <strong className="text-ink-main font-mono text-lg font-medium">{response.unique_tokens}</strong>
                 </div>
               </div>
             </div>

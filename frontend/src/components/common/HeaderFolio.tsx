@@ -28,7 +28,7 @@ export const HeaderFolio: React.FC = () => {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Clean book title */}
         <Link to="/orbit" className="text-decoration-none">
-          <h1 className="font-serif text-2xl font-bold tracking-tight text-ink-main hover:opacity-80 transition-opacity">
+          <h1 className="font-header text-2xl font-normal tracking-tight text-ink-main hover:opacity-80 transition-opacity">
             Linduistics
           </h1>
         </Link>
