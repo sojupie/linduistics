@@ -20,30 +20,33 @@ export const HeaderFolio: React.FC = () => {
     { to: '/orbit', label: 'Linguistic orbit' },
     { to: '/register', label: 'Language overview' },
     { to: '/specimens', label: 'Word pairs' },
+    { to: '/quiz', label: 'False friends quiz' },
     { to: '/inspector', label: 'Text inspector' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-book-rule bg-page-bg/95 backdrop-blur-xs">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        {/* Clean book title */}
-        <Link to="/orbit" className="text-decoration-none">
-          <h1 className="font-header text-2xl font-normal tracking-tight text-ink-main hover:opacity-80 transition-opacity">
-            Linduistics
-          </h1>
-        </Link>
+    <header className="sticky top-0 z-40 border-b border-book-rule bg-page-bg/95 backdrop-blur-xs w-full">
+      <div className="w-full flex items-center justify-between px-6 sm:px-8 lg:px-12 py-4">
+        {/* Clean book title (left edge) */}
+        <div className="flex-none">
+          <Link to="/orbit" className="text-decoration-none">
+            <h1 className="font-header text-2xl font-normal tracking-tight text-ink-main hover:opacity-80 transition-opacity">
+              Linduistics
+            </h1>
+          </Link>
+        </div>
 
-        {/* Clean book navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Clean book navigation (middle) */}
+        <nav className="hidden md:flex items-center justify-center gap-8 flex-1 px-4">
           {navLinks.map((link) => {
             const isActive = currentPath === link.to || (link.to === '/orbit' && currentPath === '/');
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-serif text-base transition-colors ${
+                className={`font-deck text-base transition-colors ${
                   isActive
-                    ? 'text-ink-main font-bold underline decoration-2 underline-offset-8 decoration-cognate-ink'
+                    ? 'text-ink-main font-semibold underline decoration-2 underline-offset-8 decoration-cognate-ink'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
@@ -53,8 +56,8 @@ export const HeaderFolio: React.FC = () => {
           })}
         </nav>
 
-        {/* Search */}
-        <div className="flex items-center gap-3">
+        {/* Search (right edge) */}
+        <div className="flex-none flex items-center gap-3">
           <button
             type="button"
             onClick={() => setSearchOpen(!searchOpen)}

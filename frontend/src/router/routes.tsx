@@ -21,6 +21,9 @@ const SpecimensLazy = React.lazy(() =>
 const InspectorLazy = React.lazy(() =>
   import('../routes/inspector.lazy').then((m) => ({ default: m.InspectorRouteComponent })),
 );
+const QuizLazy = React.lazy(() =>
+  import('../routes/quiz.lazy').then((m) => ({ default: m.QuizRouteComponent })),
+);
 
 // Zod search param validation schemas
 const orbitSearchSchema = z.object({
@@ -81,6 +84,16 @@ export const specimensRoute = createRoute({
   ),
 });
 
+export const quizRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/quiz',
+  component: () => (
+    <Suspense fallback={<LoadingFolio />}>
+      <QuizLazy />
+    </Suspense>
+  ),
+});
+
 export const inspectorRoute = createRoute({
   getParentRoute: () => RootRoute,
   path: '/inspector',
@@ -96,6 +109,7 @@ const routeTree = RootRoute.addChildren([
   orbitRoute,
   registerRoute,
   specimensRoute,
+  quizRoute,
   inspectorRoute,
 ]);
 

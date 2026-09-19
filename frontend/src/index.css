@@ -231,6 +231,7 @@ body {
 
 /* Lexicographical Type Scale */
 .table-lemma {
+  font-family: var(--font-deck);
   font-size: 1.0625rem;
   line-height: 1.25;
 }

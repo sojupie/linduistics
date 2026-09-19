@@ -44,7 +44,7 @@ export const SpecimenHeadword: React.FC<SpecimenHeadwordProps> = ({
 
   return (
     <span className={`inline-flex items-baseline gap-1.5 flex-wrap ${className}`.trim()}>
-      <span className={`table-lemma font-bold tracking-tight ${lemmaColor}`}>
+      <span className={`table-lemma font-deck font-normal tracking-tight ${lemmaColor}`}>
         {lemma}{posAbbr ? ',' : ''}
       </span>
       {posAbbr && (
