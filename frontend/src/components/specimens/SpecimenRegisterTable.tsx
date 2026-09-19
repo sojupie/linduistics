@@ -130,7 +130,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search specimen ledger by lemma..."
-            className="w-full border-b border-book-rule bg-transparent py-1 text-sm text-ink-main placeholder:text-ink-muted/60 focus:border-ink-main focus:outline-none font-serif"
+            className="w-full border-b border-book-rule bg-transparent py-1 text-base text-ink-main placeholder:text-ink-muted/60 focus:border-ink-main focus:outline-none font-serif"
           />
         </div>
 
@@ -166,12 +166,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
             </div>
           )}
 
-          <div className="flex items-center gap-1.5">
-            <span className="text-ink-muted font-deck text-xs font-medium">Rows:</span>
+          <div className="flex items-center gap-2">
+            <span className="text-ink-muted font-deck text-base font-medium">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
-              className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
+              className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
             >
               <option value={25}>25</option>
               <option value={50}>50</option>
