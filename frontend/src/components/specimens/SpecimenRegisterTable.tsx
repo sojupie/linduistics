@@ -152,12 +152,12 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
           </div>
 
           {selectedCategory === 'false_friend' && (
-            <div className="flex items-center gap-1.5">
-              <span className="text-ink-muted font-deck text-xs font-medium">Tier:</span>
+            <div className="flex items-center gap-2">
+              <span className="text-ink-muted font-deck text-base font-medium">Tier:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
-                className="border-b border-book-rule bg-transparent py-0.5 text-xs text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
+                className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
               >
                 <option value="all">All Tiers</option>
                 <option value="etymological_shift">Tier A: Drift</option>
