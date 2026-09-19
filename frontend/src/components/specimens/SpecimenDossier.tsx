@@ -115,7 +115,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         {/* Running Header */}
         <div className="flex items-center justify-between text-xs uppercase tracking-wider text-ink-muted font-deck font-normal border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
-          <span className={`text-xs font-normal tracking-wider uppercase px-2 py-0.5 border ${
+          <span className={`text-xs font-normal tracking-wider px-2 py-0.5 border ${
             specimen.category === 'minefield'
               ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
               : specimen.category === 'cognate'
@@ -126,14 +126,14 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           </span>
         </div>
 
-        {/* Specimen Headwords in Warbler Header (26px–28px, default normal style) */}
+        {/* Specimen Headwords in Warbler Header (default normal style) */}
         <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
             <span className="text-2xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {sourceLang.toUpperCase()}
             </span>
-            <h2 className="font-header text-2xl sm:text-[28px] font-normal text-ink-main tracking-tight leading-tight">
+            <h2 className="font-header text-2xl font-normal text-ink-main tracking-tight leading-tight">
               {specimen.wordA}{posAbbrA ? ',' : ''}
             </h2>
             {posAbbrA && (
@@ -160,7 +160,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             <span className="text-xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`font-header text-2xl sm:text-[28px] font-normal tracking-tight leading-tight ${
+            <h2 className={`font-header text-2xl font-normal tracking-tight leading-tight ${
               specimen.category === 'minefield'
                 ? 'text-falsefriend-ink'
                 : specimen.category === 'cognate'
@@ -202,7 +202,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub>
+                Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.orthographicSim.toFixed(2)}
@@ -215,7 +215,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub>
+                Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.phoneticSim.toFixed(2)}
@@ -228,7 +228,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub>
+                Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
                 {specimen.semanticSim.toFixed(2)}
@@ -281,20 +281,20 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         )}
 
         {specimen.etymTextA && (
-          <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+          <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
               {sourceName} Historical Descent:
             </span>
-            <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextA}</p>
+            <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextA}</p>
           </div>
         )}
 
         {specimen.etymTextB && (
-          <div className="text-[15px] text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+          <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="font-deck font-normal text-ink-muted block text-xs uppercase tracking-wider">
               {targetName} Historical Descent:
             </span>
-            <p className="font-serif text-[15px] leading-relaxed text-ink-main">{specimen.etymTextB}</p>
+            <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextB}</p>
           </div>
         )}
 
@@ -358,7 +358,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             {sensesListA.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrA;
               return (
-                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-[15px] sm:text-base font-serif leading-relaxed">
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-base font-serif leading-relaxed">
                   <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
                     {idx + 1}.
                   </span>
@@ -375,7 +375,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="font-serif not-italic text-[10px]">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
@@ -400,7 +400,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
             {sensesListB.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrB;
               return (
-                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-[15px] sm:text-base font-serif leading-relaxed">
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-base font-serif leading-relaxed">
                   <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
                     {idx + 1}.
                   </span>
@@ -417,7 +417,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center text-2xs uppercase tracking-wider text-cognate-ink font-sans font-semibold bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="font-serif not-italic text-[10px]">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (

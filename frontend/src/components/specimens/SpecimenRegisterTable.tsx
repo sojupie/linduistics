@@ -54,32 +54,32 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     switch (pair.category) {
       case 'cognate':
         return (
-          <span className="text-sm sm:text-[15px] text-cognate-ink whitespace-nowrap font-serif font-normal">
-            cognate
+          <span className="text-base text-cognate-ink whitespace-nowrap font-serif font-normal">
+            Cognate
           </span>
         );
       case 'minefield':
         return (
-          <span className="text-sm sm:text-[15px] text-falsefriend-ink whitespace-nowrap font-serif font-normal">
-            {pair.falseFriendType === 'etymological_shift' ? 'false friend · drift' : 'false friend · clash'}
+          <span className="text-base text-falsefriend-ink whitespace-nowrap font-serif font-normal">
+            {pair.falseFriendType === 'etymological_shift' ? 'False Friend · Drift' : 'False Friend · Clash'}
           </span>
         );
       case 'cousin':
         return (
-          <span className="text-sm sm:text-[15px] text-shifted-ink whitespace-nowrap font-serif font-normal">
-            sound shift
+          <span className="text-base text-shifted-ink whitespace-nowrap font-serif font-normal">
+            Sound Shift
           </span>
         );
       case 'schism':
         return (
-          <span className="text-sm sm:text-[15px] text-divergent-ink whitespace-nowrap font-serif font-normal">
-            translation
+          <span className="text-base text-divergent-ink whitespace-nowrap font-serif font-normal">
+            Translation
           </span>
         );
       default:
         return (
-          <span className="text-sm sm:text-[15px] text-ink-muted whitespace-nowrap font-serif font-normal">
-            unclassified
+          <span className="text-base text-ink-muted whitespace-nowrap font-serif font-normal">
+            Unclassified
           </span>
         );
     }
@@ -190,13 +190,13 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
               <th className="py-3.5 px-3.5 w-1/4">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16" title="Orthographic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">o</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16" title="Phonetic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">p</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16" title="Semantic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-[11px] font-normal not-italic">s</sub></span>
+                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub></span>
               </th>
               <th className="py-3.5 px-3.5">Active Aligned Meaning</th>
             </tr>
@@ -270,7 +270,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                     {/* Active Aligned Meaning */}
                     <td className="py-3 px-3.5 max-w-xs md:max-w-md">
                       <span
-                        className="truncate block italic text-ink-muted text-[15px] sm:text-base leading-snug"
+                        className="truncate block italic text-ink-muted text-base leading-snug"
                         title={getMeaningDisplay(pair)}
                       >
                         {getMeaningDisplay(pair)}
