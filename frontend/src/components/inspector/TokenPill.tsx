@@ -1,13 +1,13 @@
 import React from 'react';
 import type { TokenAnalysis } from '../../types/linguistics';
 
-interface SpecimenTokenPillProps {
+interface TokenPillProps {
   tokenAnalysis: TokenAnalysis;
   isSelected: boolean;
   onSelect: (token: TokenAnalysis) => void;
 }
 
-export const SpecimenTokenPill: React.FC<SpecimenTokenPillProps> = ({
+export const TokenPill: React.FC<TokenPillProps> = ({
   tokenAnalysis,
   isSelected,
   onSelect,
@@ -42,3 +42,4 @@ export const SpecimenTokenPill: React.FC<SpecimenTokenPillProps> = ({
     </button>
   );
 };
+

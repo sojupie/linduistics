@@ -1,45 +1,45 @@
 import React from 'react';
-import type { SpecimenPair } from '../../types/linguistics';
+import type { WordPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { useClusterByRootQuery } from '../../services/queries';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos, parseEtymRoot } from '../../utils/formatters';
 
-interface SpecimenDossierProps {
-  specimen: SpecimenPair | null;
+interface WordPairDetailsProps {
+  pair: WordPair | null;
   sourceLang: string;
   targetLang: string;
 }
 
-export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
-  specimen,
+export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
+  pair,
   sourceLang,
   targetLang,
 }) => {
-  const { data: cognateCluster } = useClusterByRootQuery(specimen?.etymRoot);
+  const { data: cognateCluster } = useClusterByRootQuery(pair?.etymRoot);
 
   const sourceName = getLanguageName(sourceLang);
   const targetName = getLanguageName(targetLang);
-  const parsedRoot = parseEtymRoot(specimen?.etymRoot, cognateCluster?.proto_language);
+  const parsedRoot = parseEtymRoot(pair?.etymRoot, cognateCluster?.proto_language);
 
-  if (!specimen) {
+  if (!pair) {
     return (
       <div className="py-24 text-center text-ink-muted font-serif">
         <p className="text-base italic leading-relaxed">
-          Select any specimen from the register ledger to inspect comparative etymology and polysemous sense divergence.
+          Select a word pair from the lexicon to view comparative etymology, definitions, and phonetic transcriptions.
         </p>
       </div>
     );
   }
 
   const getTaxonomyTitle = () => {
-    switch (specimen.category) {
+    switch (pair.category) {
       case 'true_cognate':
         return 'True Cognate';
       case 'false_friend':
-        return specimen.falseFriendType === 'etymological_shift'
+        return pair.falseFriendType === 'etymological_shift'
           ? 'False Friend · Tier A (Etymological Shift)'
-          : specimen.falseFriendType === 'surface_collision'
+          : pair.falseFriendType === 'surface_collision'
           ? 'False Friend · Tier B (Surface Collision)'
           : 'False Friend';
       case 'partial_cognate':
@@ -51,77 +51,77 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
     }
   };
 
-  const posAbbrA = formatPos(specimen.posA);
-  const posAbbrB = formatPos(specimen.posB);
+  const posAbbrA = formatPos(pair.posA);
+  const posAbbrB = formatPos(pair.posB);
 
-  // Synthesize complete sense lists so the dossier never renders an empty graveyard
+  // Synthesize complete sense lists to ensure definitions always render
   const sensesListA = (() => {
-    if (specimen.sensesA && specimen.sensesA.length > 0) {
-      return specimen.sensesA;
+    if (pair.sensesA && pair.sensesA.length > 0) {
+      return pair.sensesA;
     }
-    if (specimen.defA && specimen.defA.trim()) {
+    if (pair.defA && pair.defA.trim()) {
       return [
         {
           sense_id: 1,
-          gloss: specimen.defA.trim(),
-          pos: specimen.posA,
+          gloss: pair.defA.trim(),
+          pos: pair.posA,
           is_active_match: true,
           is_active: true,
-          similarity_to_counterpart: specimen.semanticSim,
+          similarity_to_counterpart: pair.semanticSim,
         },
       ];
     }
     return [
       {
         sense_id: 1,
-        gloss: `Primary lexical sense of ${specimen.wordA}.`,
-        pos: specimen.posA,
+        gloss: `Primary lexical sense of ${pair.wordA}.`,
+        pos: pair.posA,
         is_active_match: true,
         is_active: true,
-        similarity_to_counterpart: specimen.semanticSim,
+        similarity_to_counterpart: pair.semanticSim,
       },
     ];
   })();
 
   const sensesListB = (() => {
-    if (specimen.sensesB && specimen.sensesB.length > 0) {
-      return specimen.sensesB;
+    if (pair.sensesB && pair.sensesB.length > 0) {
+      return pair.sensesB;
     }
-    if (specimen.defB && specimen.defB.trim()) {
+    if (pair.defB && pair.defB.trim()) {
       return [
         {
           sense_id: 1,
-          gloss: specimen.defB.trim(),
-          pos: specimen.posB,
+          gloss: pair.defB.trim(),
+          pos: pair.posB,
           is_active_match: true,
           is_active: true,
-          similarity_to_counterpart: specimen.semanticSim,
+          similarity_to_counterpart: pair.semanticSim,
         },
       ];
     }
     return [
       {
         sense_id: 1,
-        gloss: `Primary lexical sense of ${specimen.wordB}.`,
-        pos: specimen.posB,
+        gloss: `Primary lexical sense of ${pair.wordB}.`,
+        pos: pair.posB,
         is_active_match: true,
         is_active: true,
-        similarity_to_counterpart: specimen.semanticSim,
+        similarity_to_counterpart: pair.semanticSim,
       },
     ];
   })();
 
   return (
     <div className="font-serif text-ink-main select-text space-y-6">
-      {/* 1. Folio Title Plate (Unboxed, Direct on Substrate) */}
+      {/* 1. Word Pair Title Plate */}
       <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
         <div className="flex items-center justify-between text-xs uppercase tracking-wider text-ink-muted font-deck font-normal border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
           <span className={`text-xs font-normal tracking-wider px-2 py-0.5 border ${
-            specimen.category === 'false_friend'
+            pair.category === 'false_friend'
               ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
-              : specimen.category === 'true_cognate'
+              : pair.category === 'true_cognate'
               ? 'text-cognate-ink bg-cognate-bg border-cognate-border'
               : 'text-ink-main bg-page-muted border-book-rule'
           }`}>
@@ -129,7 +129,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           </span>
         </div>
 
-        {/* Specimen Headwords in Warbler Header (default normal style) */}
+        {/* Headwords */}
         <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
@@ -137,15 +137,15 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
               {sourceLang.toUpperCase()}
             </span>
             <h2 className="font-deck text-2xl font-medium text-ink-main tracking-tight leading-tight">
-              {specimen.wordA}{posAbbrA ? ',' : ''}
+              {pair.wordA}{posAbbrA ? ',' : ''}
             </h2>
             {posAbbrA && (
               <span className="table-pos text-lg italic font-serif text-ink-muted">
                 {posAbbrA}
               </span>
             )}
-            {specimen.ipaA && (
-              <Phonetic ipa={specimen.ipaA} className="text-base text-stone-800 font-normal" />
+            {pair.ipaA && (
+              <Phonetic ipa={pair.ipaA} className="text-base text-stone-800 font-normal" />
             )}
           </div>
 
@@ -164,36 +164,36 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
               {targetLang.toUpperCase()}
             </span>
             <h2 className={`font-deck text-2xl font-medium tracking-tight leading-tight ${
-              specimen.category === 'false_friend'
+              pair.category === 'false_friend'
                 ? 'text-falsefriend-ink'
-                : specimen.category === 'true_cognate'
+                : pair.category === 'true_cognate'
                 ? 'text-cognate-ink'
                 : 'text-ink-main'
             }`}>
-              {specimen.wordB}{posAbbrB ? ',' : ''}
+              {pair.wordB}{posAbbrB ? ',' : ''}
             </h2>
             {posAbbrB && (
               <span className="table-pos text-lg italic font-serif text-ink-muted">
                 {posAbbrB}
               </span>
             )}
-            {specimen.ipaB && (
-              <Phonetic ipa={specimen.ipaB} className="text-base text-stone-800 font-normal" />
+            {pair.ipaB && (
+              <Phonetic ipa={pair.ipaB} className="text-base text-stone-800 font-normal" />
             )}
           </div>
         </div>
 
         {/* False Friend Distinction Advisory */}
-        {specimen.category === 'false_friend' && (
+        {pair.category === 'false_friend' && (
           <div className="pt-3 border-t border-book-rule/80 text-sm text-falsefriend-ink leading-relaxed italic bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
-            {specimen.falseFriendType === 'etymological_shift'
-              ? 'Academic False Friend (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern denotations divergent or mutually deceptive.'
-              : 'Casual False Friend (Surface Collision): Headwords represent historically unrelated roots that have accidentally converged through phonetic erosion or foreign borrowing.'}
+            {pair.falseFriendType === 'etymological_shift'
+              ? 'Etymological Shift (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern definitions divergent or mutually deceptive.'
+              : 'Surface Collision: Headwords represent historically unrelated roots that have accidentally converged in pronunciation or spelling.'}
           </div>
         )}
       </div>
 
-      {/* 2. Similarity Coefficients (Two Rows: Title on top, Delta columns below) */}
+      {/* 2. Similarity Coefficients */}
       <div className="border-y border-book-rule py-3 px-2 space-y-2 bg-page-muted/30">
         <div className="font-deck text-base text-ink-main font-normal">
           Similarity Coefficients
@@ -208,7 +208,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                 Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
-                {specimen.orthographicSim.toFixed(2)}
+                {pair.orthographicSim.toFixed(2)}
               </span>
             </div>
           </div>
@@ -221,7 +221,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                 Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
-                {specimen.phoneticSim.toFixed(2)}
+                {pair.phoneticSim.toFixed(2)}
               </span>
             </div>
           </div>
@@ -234,20 +234,20 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                 Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub>
               </span>
               <span className="font-mono font-medium text-base text-ink-main tabular-nums">
-                {specimen.semanticSim.toFixed(2)}
+                {pair.semanticSim.toFixed(2)}
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. Etymological Descent & Lineage */}
+      {/* 3. Etymological Lineage */}
       <div className="space-y-4 pt-1 border-b border-book-rule pb-5">
         <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
           Etymological Descent & Lineage
         </div>
 
-        {specimen.etymRoot ? (
+        {pair.etymRoot ? (
           <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2.5">
             <span className="font-deck text-xs font-medium text-ink-muted block">
               Reconstructed Ancestral Root
@@ -263,7 +263,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
               )}
             </div>
 
-            {/* Directional Transitional Descent Chain */}
+            {/* Directional Descent Chain */}
             <div className="pt-2 border-t border-book-rule/60 text-sm text-ink-main font-serif flex items-center gap-2 flex-wrap">
               <span className="font-deck text-xs font-medium text-ink-muted">Descent:</span>
               <span className="font-deck font-medium italic text-cognate-ink">
@@ -271,41 +271,41 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
               </span>
               <span className="text-ink-muted font-serif">→</span>
               <span className="font-serif text-ink-main">
-                <span className="font-deck font-medium">{specimen.wordA}</span>{' '}
+                <span className="font-deck font-medium">{pair.wordA}</span>{' '}
                 <span className="text-xs italic text-ink-muted font-serif">({sourceName})</span>
               </span>
               <span className="text-ink-muted font-serif text-xs">,</span>
               <span className="font-serif text-ink-main">
-                <span className="font-deck font-medium">{specimen.wordB}</span>{' '}
+                <span className="font-deck font-medium">{pair.wordB}</span>{' '}
                 <span className="text-xs italic text-ink-muted font-serif">({targetName})</span>
               </span>
             </div>
           </div>
         ) : (
           <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 text-sm text-ink-muted italic">
-            Direct reconstructed proto-etymon currently undergoing comparative triangulation across sister dialects.
+            Direct reconstructed proto-etymon currently undergoing comparative triangulation.
           </div>
         )}
 
-        {specimen.etymTextA && (
+        {pair.etymTextA && (
           <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="font-deck font-medium text-ink-muted block text-xs">
               {sourceName} Historical Descent:
             </span>
-            <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextA}</p>
+            <p className="font-serif text-base leading-relaxed text-ink-main">{pair.etymTextA}</p>
           </div>
         )}
 
-        {specimen.etymTextB && (
+        {pair.etymTextB && (
           <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="font-deck font-medium text-ink-muted block text-xs">
               {targetName} Historical Descent:
             </span>
-            <p className="font-serif text-base leading-relaxed text-ink-main">{specimen.etymTextB}</p>
+            <p className="font-serif text-base leading-relaxed text-ink-main">{pair.etymTextB}</p>
           </div>
         )}
 
-        {/* Pan-Germanic Sister Cognates Ledger */}
+        {/* Pan-Germanic Sister Cognates */}
         {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
           <div className="pt-2 space-y-2">
             <div className="flex items-center justify-between text-xs text-ink-main font-deck font-medium border-b border-book-rule/60 pb-1.5">
@@ -349,10 +349,10 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
         )}
       </div>
 
-      {/* 4. Polysemous Sense Inventory (Hanging Indent Dictionary Entries) */}
+      {/* 4. Sense Inventory & Definitions */}
       <div className="space-y-5 pb-6">
         <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
-          Polysemous Sense Inventory
+          Sense Inventory & Definitions
         </div>
 
         {/* Source Language Senses */}
@@ -440,3 +440,12 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
     </div>
   );
 };
+
+export type SpecimenDossierProps = {
+  specimen: WordPair | null;
+  sourceLang: string;
+  targetLang: string;
+};
+export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({ specimen, sourceLang, targetLang }) => (
+  <WordPairDetails pair={specimen} sourceLang={sourceLang} targetLang={targetLang} />
+);

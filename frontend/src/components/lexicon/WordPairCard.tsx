@@ -1,16 +1,16 @@
 import React from 'react';
-import type { SpecimenPair } from '../../types/linguistics';
-import { SPECIMEN_CONFIG } from '../../constants/config';
+import type { WordPair } from '../../types/linguistics';
+import { LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos } from '../../utils/formatters';
 
-interface SpecimenCardProps {
-  specimen: SpecimenPair;
+interface WordPairCardProps {
+  pair: WordPair;
 }
 
-export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
+export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
   const getBadgeStyle = () => {
-    switch (specimen.category) {
+    switch (pair.category) {
       case 'true_cognate':
         return 'text-cognate-ink bg-cognate-bg border-cognate-border';
       case 'false_friend':
@@ -25,13 +25,13 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
   };
 
   const getCategoryLabel = () => {
-    switch (specimen.category) {
+    switch (pair.category) {
       case 'true_cognate':
         return 'True Cognate';
       case 'false_friend':
-        return specimen.falseFriendType === 'etymological_shift'
+        return pair.falseFriendType === 'etymological_shift'
           ? 'False Friend · Drift'
-          : specimen.falseFriendType === 'surface_collision'
+          : pair.falseFriendType === 'surface_collision'
           ? 'False Friend · Clash'
           : 'False Friend';
       case 'partial_cognate':
@@ -48,31 +48,31 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
       {/* Top entry header */}
       <div className="flex flex-wrap items-baseline justify-between border-b border-book-rule pb-3 gap-2">
         <div className="flex flex-wrap items-baseline gap-3">
-          {/* Word A (Swedish) */}
-          <span className="text-2xl font-bold text-ink-main">{specimen.wordA}{formatPos(specimen.posA) ? ',' : ''}</span>
-          {formatPos(specimen.posA) && (
-            <span className="table-pos text-base italic text-ink-muted">{formatPos(specimen.posA)}</span>
+          {/* Word A (Source) */}
+          <span className="text-2xl font-bold text-ink-main">{pair.wordA}{formatPos(pair.posA) ? ',' : ''}</span>
+          {formatPos(pair.posA) && (
+            <span className="table-pos text-base italic text-ink-muted">{formatPos(pair.posA)}</span>
           )}
-          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="table-ipa" />}
+          {pair.ipaA && <Phonetic ipa={pair.ipaA} className="table-ipa" />}
 
           <span className="text-ink-light mx-1">→</span>
 
           {/* Word B (Target) */}
           <span
             className={`text-2xl font-bold ${
-              specimen.category === 'false_friend'
+              pair.category === 'false_friend'
                 ? 'text-falsefriend-ink'
-                : specimen.category === 'true_cognate'
+                : pair.category === 'true_cognate'
                 ? 'text-cognate-ink'
                 : 'text-ink-main'
             }`}
           >
-            {specimen.wordB}{formatPos(specimen.posB) ? ',' : ''}
+            {pair.wordB}{formatPos(pair.posB) ? ',' : ''}
           </span>
-          {formatPos(specimen.posB) && (
-            <span className="table-pos text-base italic text-ink-muted">{formatPos(specimen.posB)}</span>
+          {formatPos(pair.posB) && (
+            <span className="table-pos text-base italic text-ink-muted">{formatPos(pair.posB)}</span>
           )}
-          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="table-ipa" />}
+          {pair.ipaB && <Phonetic ipa={pair.ipaB} className="table-ipa" />}
         </div>
 
         {/* Category tag */}
@@ -86,20 +86,20 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
       {/* Definitions layout */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
         <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
-          <span className="text-sm text-ink-muted block mb-1 font-sans">Swedish:</span>
-          <p className="text-ink-main leading-relaxed">{specimen.defA}</p>
+          <span className="text-sm text-ink-muted block mb-1 font-sans">Source definition:</span>
+          <p className="text-ink-main leading-relaxed">{pair.defA}</p>
         </div>
 
         <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
-          <span className="text-sm text-ink-muted block mb-1 font-sans">Target language:</span>
-          <p className="text-ink-main leading-relaxed">{specimen.defB}</p>
+          <span className="text-sm text-ink-muted block mb-1 font-sans">Target definition:</span>
+          <p className="text-ink-main leading-relaxed">{pair.defB}</p>
         </div>
       </div>
 
       {/* Etymological historical note */}
-      {specimen.marginalia && (
+      {pair.marginalia && (
         <p className="mt-4 border-l-2 border-book-rule-strong pl-4 text-base italic text-ink-muted leading-relaxed">
-          {specimen.marginalia}
+          {pair.marginalia}
         </p>
       )}
 
@@ -108,8 +108,8 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
         <span>
           Spelling similarity:{' '}
           <strong className="font-mono text-ink-main font-normal">
-            {(specimen.orthographicSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            {(pair.orthographicSim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
+              LEXICON_CONFIG.SIMILARITY_PRECISION,
             )}
             %
           </strong>
@@ -117,8 +117,8 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
         <span>
           Pronunciation similarity:{' '}
           <strong className="font-mono text-cognate-ink font-normal">
-            {(specimen.phoneticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            {(pair.phoneticSim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
+              LEXICON_CONFIG.SIMILARITY_PRECISION,
             )}
             %
           </strong>
@@ -127,15 +127,15 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
           Meaning similarity:{' '}
           <strong
             className={`font-mono font-normal ${
-              specimen.semanticSim > 0.7
+              pair.semanticSim > 0.7
                 ? 'text-cognate-ink'
-                : specimen.semanticSim < 0.3
+                : pair.semanticSim < 0.3
                 ? 'text-falsefriend-ink'
                 : 'text-shifted-ink'
             }`}
           >
-            {(specimen.semanticSim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-              SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+            {(pair.semanticSim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
+              LEXICON_CONFIG.SIMILARITY_PRECISION,
             )}
             %
           </strong>
@@ -144,3 +144,6 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
     </article>
   );
 };
+
+export type SpecimenCardProps = { specimen: WordPair };
+export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => <WordPairCard pair={specimen} />;

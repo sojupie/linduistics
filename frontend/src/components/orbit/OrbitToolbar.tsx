@@ -60,7 +60,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
                 : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            By sound
+            Phonetic distance
           </button>
           <button
             type="button"
@@ -71,11 +71,11 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
                 : 'text-ink-muted hover:text-ink-main'
             }`}
           >
-            By spelling
+            Orthographic distance
           </button>
         </div>
 
-        {/* Pause drift */}
+        {/* Pause animation */}
         <button
           type="button"
           onClick={onTogglePause}
@@ -85,7 +85,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
           }`}
         >
-          {isPaused ? 'Resume drift' : 'Pause drift'}
+          {isPaused ? 'Resume motion' : 'Pause motion'}
         </button>
       </div>
     </div>

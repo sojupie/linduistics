@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextInspectorFolio } from '../components/inspector/TextInspectorFolio';
+import { TextInspector } from '../components/inspector/TextInspector';
 
 export const InspectorRouteComponent: React.FC = () => {
-  return <TextInspectorFolio />;
+  return <TextInspector />;
 };

@@ -280,7 +280,8 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 			COALESCE(count(*) FILTER (WHERE category IN ('true_cognate', 'cognate')), 0) AS cognates,
 			COALESCE(count(*) FILTER (WHERE category = 'false_friend'), 0) AS false_friends,
 			COALESCE(count(*) FILTER (WHERE category IN ('partial_cognate', 'cousin', 'sound_shift')), 0) AS shifted,
-			COALESCE(count(*) FILTER (WHERE category IN ('translation_pair', 'schism', 'divergent')), 0) AS divergent
+			COALESCE(count(*) FILTER (WHERE category IN ('translation_pair', 'schism', 'divergent')), 0) AS divergent,
+			COALESCE(count(*) FILTER (WHERE category = 'other' OR category IS NULL OR category NOT IN ('true_cognate', 'cognate', 'false_friend', 'partial_cognate', 'cousin', 'sound_shift', 'translation_pair', 'schism', 'divergent')), 0) AS other_count
 		FROM word_comparisons
 		%s
 		GROUP BY lang_a, lang_b
@@ -298,7 +299,7 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 
 	for rows.Next() {
 		var p models.LanguagePairStats
-		var cognates, falseFriends, shifted, divergent int64
+		var cognates, falseFriends, shifted, divergent, otherCount int64
 		if err := rows.Scan(
 			&p.Source,
 			&p.Target,
@@ -310,16 +311,18 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 			&falseFriends,
 			&shifted,
 			&divergent,
+			&otherCount,
 		); err != nil {
 			return nil, fmt.Errorf("scan language pair stats error: %w", err)
 		}
 
 		if p.PairCount > 0 {
 			countF := float32(p.PairCount)
-			p.IdenticalRatio = float32(cognates) / countF
-			p.ShiftedRatio = float32(shifted) / countF
+			p.TrueCognatesRatio = float32(cognates) / countF
+			p.PartialCognatesRatio = float32(shifted) / countF
 			p.FalseFriendsRatio = float32(falseFriends) / countF
-			p.DivergentRatio = float32(divergent) / countF
+			p.TranslationPairsRatio = float32(divergent) / countF
+			p.OtherRatio = float32(otherCount) / countF
 		}
 
 		langSet[p.Source] = true

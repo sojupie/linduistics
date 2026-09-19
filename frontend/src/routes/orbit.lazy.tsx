@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearch, useNavigate } from '@tanstack/react-router';
-import { CelestialOrbit } from '../components/orbit/CelestialOrbit';
+import { LanguageOrbit } from '../components/orbit/LanguageOrbit';
 import {
   OrbitToolbar,
   type OrbitRegister,
@@ -50,7 +50,7 @@ export const OrbitRouteComponent: React.FC = () => {
         onAnchorChange={handleAnchorChange}
         onTogglePause={() => setIsPaused(!isPaused)}
       />
-      <CelestialOrbit
+      <LanguageOrbit
         register={register}
         modality={modality}
         anchorCode={anchor}

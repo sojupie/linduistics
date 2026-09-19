@@ -51,8 +51,9 @@ export const PALETTE = {
 } as const;
 
 export const TYPOGRAPHY = {
-  FONT_SERIF: "'Warbler Text', Georgia, serif",
-  FONT_DISPLAY: "'Warbler Display', 'Warbler Text', Georgia, serif",
-  FONT_IPA: "'Cardo', Georgia, serif",
-  FONT_MONO: "'JetBrains Mono', monospace",
+  FONT_SANS: "'Noto Sans', sans-serif",
+  FONT_SERIF: "'Noto Sans', sans-serif",
+  FONT_DISPLAY: "'Noto Sans', sans-serif",
+  FONT_IPA: "'Noto Sans', sans-serif",
+  FONT_MONO: "'Noto Sans Mono', monospace",
 } as const;

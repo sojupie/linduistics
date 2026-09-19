@@ -1,149 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Warbler Text';
-  src: url('/fonts/warbler/WarblerText-Regular-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Text';
-  src: url('/fonts/warbler/WarblerText-Italic-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Text';
-  src: url('/fonts/warbler/WarblerText-Bold-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Text';
-  src: url('/fonts/warbler/WarblerText-BoldItalic-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Display';
-  src: url('/fonts/warbler/WarblerDisplay-Regular-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Display';
-  src: url('/fonts/warbler/WarblerDisplay-Italic-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Display';
-  src: url('/fonts/warbler/WarblerDisplay-Bold-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Display';
-  src: url('/fonts/warbler/WarblerDisplay-BoldItalic-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerVariable[opsz,wght]-Edu.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerVariable-Italic[opsz,wght]-Edu.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerDeck-Regular-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerDeck-Italic-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerDeck-Bold-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Deck';
-  src: url('/fonts/warbler/WarblerDeck-BoldItalic-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Banner';
-  src: url('/fonts/warbler/WarblerBanner-Regular-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Banner';
-  src: url('/fonts/warbler/WarblerBanner-Italic-Edu.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Banner';
-  src: url('/fonts/warbler/WarblerBanner-Bold-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Warbler Banner';
-  src: url('/fonts/warbler/WarblerBanner-BoldItalic-Edu.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
 @theme {
   --color-page-bg: #FAF8F5;
   --color-page-surface: #FAF8F5;
@@ -173,12 +29,13 @@
   --color-divergent-bg: #EBF1F6;
   --color-divergent-border: #BCD0E0;
 
-  --font-serif: 'Warbler Text', Georgia, serif;
-  --font-deck: 'Warbler Deck', 'Warbler Text', Georgia, serif;
-  --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
-  --font-header: 'Warbler Display', 'Warbler Banner', Georgia, serif;
-  --font-ipa: 'Cardo', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Noto Sans', sans-serif;
+  --font-serif: 'Noto Sans', sans-serif;
+  --font-deck: 'Noto Sans', sans-serif;
+  --font-display: 'Noto Sans', sans-serif;
+  --font-header: 'Noto Sans', sans-serif;
+  --font-ipa: 'Noto Sans', sans-serif;
+  --font-mono: 'Noto Sans Mono', monospace;
 
   /* Field Guide Typography Scale (Strict Floor: 13px min for metadata, 15px min for data) */
   --text-2xs: 0.75rem;
@@ -199,18 +56,20 @@
 
 :root {
   color-scheme: light;
-  --font-serif: 'Warbler Text', Georgia, serif;
-  --font-deck: 'Warbler Deck', 'Warbler Text', Georgia, serif;
-  --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
-  --font-header: 'Warbler Display', 'Warbler Banner', Georgia, serif;
-  --font-ipa: 'Cardo', Georgia, serif;
+  --font-sans: 'Noto Sans', sans-serif;
+  --font-serif: 'Noto Sans', sans-serif;
+  --font-deck: 'Noto Sans', sans-serif;
+  --font-display: 'Noto Sans', sans-serif;
+  --font-header: 'Noto Sans', sans-serif;
+  --font-ipa: 'Noto Sans', sans-serif;
+  --font-mono: 'Noto Sans Mono', monospace;
 }
 
 body {
   margin: 0;
   background-color: var(--color-page-bg);
   color: var(--color-ink-main);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-feature-settings: 'kern' 1, 'liga' 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -229,6 +88,14 @@ body {
 }
 
 /* Typography Family Classes */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
 .font-display {
   font-family: var(--font-display);
 }

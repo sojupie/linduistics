@@ -6,7 +6,7 @@ import type { OrbitRegister, OrbitModality } from './OrbitToolbar';
 import { PALETTE, TYPOGRAPHY } from '../../constants/theme';
 import { ORBIT_CONFIG } from '../../constants/config';
 
-interface CelestialOrbitProps {
+interface LanguageOrbitProps {
   register: OrbitRegister;
   modality: OrbitModality;
   anchorCode: string;
@@ -25,7 +25,7 @@ interface OrbitingBody {
   bgColor: string;
 }
 
-export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
+export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
   modality,
   anchorCode,
   isPaused,
@@ -355,10 +355,10 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
         className="block w-full h-[620px] sm:h-[700px]"
       />
 
-      {/* Book legend */}
+      {/* Legend */}
       <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm text-sm shadow-xs">
         <div className="border-b border-book-rule pb-2 font-bold text-ink-main">
-          Linguistic distance orbit
+          Language Proximity Map
         </div>
         <div className="mt-2.5 space-y-2 text-ink-muted text-sm">
           <div className="flex items-center gap-2">
@@ -370,7 +370,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
             <span>Greater lexical distance</span>
           </div>
           <p className="pt-1 text-ink-light">
-            Click any language to see its vocabulary breakdown.
+            Click any language to inspect comparative metrics.
           </p>
         </div>
       </div>
@@ -389,7 +389,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
           <div className="mt-3 grid grid-cols-2 gap-3 text-sm text-ink-muted">
             <div>
-              <span className="block text-ink-light">Pronunciation shift:</span>
+              <span className="block text-ink-light">Pronunciation distance:</span>
               <span className="font-mono text-ink-main font-bold">
                 {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}%
               </span>
@@ -401,9 +401,9 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
               </span>
             </div>
             <div>
-              <span className="block text-ink-light">Identical words:</span>
+              <span className="block text-ink-light">True cognates:</span>
               <span className="font-mono text-cognate-ink font-bold">
-                {(hoveredBody.profile.ratios.identical * 100).toFixed(0)}%
+                {(hoveredBody.profile.ratios.trueCognates * 100).toFixed(0)}%
               </span>
             </div>
             <div>
@@ -425,7 +425,7 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
                 {activeDetails.name}
               </h3>
               <p className="text-sm text-ink-muted mt-0.5">
-                {activeDetails.pairCount.toLocaleString()} cataloged pairs with {anchorName}
+                {activeDetails.pairCount.toLocaleString()} evaluated word pairs with {anchorName}
               </p>
             </div>
             <button
@@ -439,15 +439,15 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
 
           <div className="mt-4 space-y-3 text-base">
             <div className="flex justify-between border-b border-book-rule pb-2">
-              <span className="text-ink-muted">Identical words:</span>
+              <span className="text-ink-muted">True cognates:</span>
               <span className="font-mono font-bold text-cognate-ink">
-                {(activeDetails.ratios.identical * 100).toFixed(0)}%
+                {(activeDetails.ratios.trueCognates * 100).toFixed(0)}%
               </span>
             </div>
             <div className="flex justify-between border-b border-book-rule pb-2">
-              <span className="text-ink-muted">Sound shifted words:</span>
+              <span className="text-ink-muted">Partial cognates:</span>
               <span className="font-mono font-bold text-shifted-ink">
-                {(activeDetails.ratios.shifted * 100).toFixed(0)}%
+                {(activeDetails.ratios.partialCognates * 100).toFixed(0)}%
               </span>
             </div>
             <div className="flex justify-between border-b border-book-rule pb-2">
@@ -457,9 +457,9 @@ export const CelestialOrbit: React.FC<CelestialOrbitProps> = ({
               </span>
             </div>
             <div className="flex justify-between pb-1">
-              <span className="text-ink-muted">Different vocabulary:</span>
+              <span className="text-ink-muted">Translation pairs:</span>
               <span className="font-mono font-bold text-divergent-ink">
-                {(activeDetails.ratios.divergent * 100).toFixed(0)}%
+                {(activeDetails.ratios.translationPairs * 100).toFixed(0)}%
               </span>
             </div>
           </div>

@@ -17,7 +17,7 @@ export interface SenseItem {
   similarity_to_counterpart: number;
 }
 
-export interface SpecimenPair {
+export interface WordPair {
   id: number;
   catalogId: string;
   langA: string;
@@ -51,10 +51,11 @@ export interface LanguagePairStats {
   avg_orthographic: number;
   avg_phonetic: number;
   avg_semantic: number;
-  identical_ratio: number;
-  shifted_ratio: number;
+  true_cognates_ratio: number;
+  partial_cognates_ratio: number;
   false_friends_ratio: number;
-  divergent_ratio: number;
+  translation_pairs_ratio: number;
+  other_ratio: number;
 }
 
 export interface LanguagesResponse {
@@ -70,10 +71,11 @@ export interface LanguageProfile {
   spellingDistance: number;
   semanticDistance: number;
   ratios: {
-    identical: number;
-    shifted: number;
+    trueCognates: number;
+    partialCognates: number;
     falseFriends: number;
-    divergent: number;
+    translationPairs: number;
+    other: number;
   };
 }
 

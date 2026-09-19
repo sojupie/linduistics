@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { usePairsQuery, useLanguagesQuery } from '../../services/queries';
 import { getLanguageName } from '../../data/languages';
-import type { SpecimenPair, SpecimenCategory } from '../../types/linguistics';
-import { SpecimenRegisterTable } from './SpecimenRegisterTable';
-import { SpecimenDossier } from './SpecimenDossier';
+import type { WordPair, SpecimenCategory } from '../../types/linguistics';
+import { LexiconTable } from './LexiconTable';
+import { WordPairDetails } from './WordPairDetails';
 
-export const SpecimenDecks: React.FC = () => {
+export const ComparativeLexicon: React.FC = () => {
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
 
@@ -57,8 +57,8 @@ export const SpecimenDecks: React.FC = () => {
     offset,
   });
 
-  // Convert live comparison DTOs into SpecimenPair objects
-  const livePairs: SpecimenPair[] = useMemo(() => {
+  // Convert live comparison DTOs into WordPair objects
+  const livePairs: WordPair[] = useMemo(() => {
     if (!livePairsData?.items || livePairsData.items.length === 0) {
       return [];
     }
@@ -98,10 +98,10 @@ export const SpecimenDecks: React.FC = () => {
     });
   }, [livePairsData]);
 
-  // Master-Detail active specimen: defaults to first item if none clicked
+  // Master-Detail active word pair: defaults to first item if none clicked
   const activePairId = selectedPairId ?? (livePairs.length > 0 ? livePairs[0].id : null);
 
-  const selectedSpecimen = useMemo(() => {
+  const selectedPair = useMemo(() => {
     if (activePairId === null) return null;
     return livePairs.find((p) => p.id === activePairId) || (livePairs.length > 0 ? livePairs[0] : null);
   }, [livePairs, activePairId]);
@@ -126,18 +126,18 @@ export const SpecimenDecks: React.FC = () => {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif">
-      {/* Chapter Top Bar (No hairline divider) */}
+      {/* Top Bar */}
       <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
-            Specimen Register
+            Comparative Lexicon
           </h1>
           <p className="text-base sm:text-lg text-ink-muted mt-1.5 font-deck font-normal">
-            Comparative ledger of Germanic lexical roots, sound shifts, and deceptive false friends.
+            Bilingual lexical comparisons across Germanic languages, tracking cognates, sound shifts, and false friends.
           </p>
         </div>
 
-        {/* Language Comparison Selector (Prominent Tactile Plate) */}
+        {/* Language Comparison Selector */}
         <div className="flex items-center gap-3 bg-page-surface border border-book-rule px-3.5 py-2 shadow-2xs self-start md:self-auto">
           <span className="text-ink-muted font-deck text-sm font-medium">Comparison:</span>
           <div className="flex items-center gap-1.5">
@@ -177,11 +177,11 @@ export const SpecimenDecks: React.FC = () => {
         </div>
       </div>
 
-      {/* Disciplined Master-Detail Layout with Independent Vertical Scrolling */}
+      {/* Master-Detail Layout with Independent Vertical Scrolling */}
       <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule lg:h-[calc(100vh-13rem)] overflow-hidden">
-        {/* Left: Register Table Pane with Pinned Affordances and Independent Item Scroll */}
+        {/* Left: Lexicon Table Pane with Independent Item Scroll */}
         <div className="flex-1 min-w-0 p-4 sm:p-5 h-[560px] lg:h-full w-full flex flex-col min-h-0">
-          <SpecimenRegisterTable
+          <LexiconTable
             pairs={livePairs}
             total={livePairsData?.total ?? 0}
             limit={limit}
@@ -205,10 +205,10 @@ export const SpecimenDecks: React.FC = () => {
           />
         </div>
 
-        {/* Right: Independently Scrollable Specimen Dossier (Capped at 520px width) */}
+        {/* Right: Independently Scrollable Word Pair Details */}
         <div className="w-full lg:w-[480px] xl:w-[520px] lg:shrink-0 p-5 sm:p-6 overflow-y-auto h-full bg-page-surface">
-          <SpecimenDossier
-            specimen={selectedSpecimen}
+          <WordPairDetails
+            pair={selectedPair}
             sourceLang={sourceLang}
             targetLang={targetLang}
           />
@@ -217,3 +217,5 @@ export const SpecimenDecks: React.FC = () => {
     </div>
   );
 };
+
+export const SpecimenDecks = ComparativeLexicon;

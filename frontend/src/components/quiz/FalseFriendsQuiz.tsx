@@ -75,10 +75,10 @@ export const FalseFriendsQuiz: React.FC = () => {
       <div className="pb-4 mb-6 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
         <div>
           <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
-            False Friends Examination
+            False Friends Quiz
           </h1>
           <p className="text-base sm:text-lg text-ink-muted mt-1.5 font-deck font-normal">
-            Test and sharpen discernment against deceptively similar cognate pairs and semantic traps.
+            Test your ability to distinguish deceptive false friends from true cognates.
           </p>
         </div>
 
@@ -129,10 +129,10 @@ export const FalseFriendsQuiz: React.FC = () => {
         <div className="flex items-center justify-between border-b border-book-rule pb-4">
           <div>
             <span className="text-xs uppercase tracking-wider text-ink-muted font-normal block font-deck">
-              Field Examination
+              Vocabulary Quiz
             </span>
             <h3 className="text-xl font-normal text-ink-main font-deck">
-              Deceptive Cognates & False Friends
+              Deceptive False Friends
             </h3>
           </div>
           <div className="text-right text-sm text-ink-muted">
@@ -145,11 +145,11 @@ export const FalseFriendsQuiz: React.FC = () => {
 
         {quizLoading ? (
           <div className="py-12 text-center text-ink-muted italic text-sm">
-            Extracting quiz items from lexical catalog...
+            Loading quiz questions...
           </div>
         ) : !currentQuizItem ? (
           <div className="py-12 text-center text-ink-muted italic text-sm">
-            No false friend quiz specimens cataloged for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}.
+            No false friend word pairs found for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}.
           </div>
         ) : (
           <div className="space-y-6">
@@ -220,7 +220,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                   onClick={handleNextQuizItem}
                   className="border border-ink-main px-4 py-1.5 text-xs uppercase tracking-wider text-ink-main hover:bg-page-muted transition-colors font-deck font-normal"
                 >
-                  Next Specimen →
+                  Next Question →
                 </button>
               </div>
             )}

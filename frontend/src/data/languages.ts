@@ -28,10 +28,11 @@ export function pairStatsToProfile(pair: LanguagePairStats): LanguageProfile {
     spellingDistance: Math.max(0, 1.0 - pair.avg_orthographic),
     semanticDistance: Math.max(0, 1.0 - pair.avg_semantic),
     ratios: {
-      identical: pair.identical_ratio,
-      shifted: pair.shifted_ratio,
+      trueCognates: pair.true_cognates_ratio,
+      partialCognates: pair.partial_cognates_ratio,
       falseFriends: pair.false_friends_ratio,
-      divergent: pair.divergent_ratio,
+      translationPairs: pair.translation_pairs_ratio,
+      other: pair.other_ratio,
     },
   };
 }

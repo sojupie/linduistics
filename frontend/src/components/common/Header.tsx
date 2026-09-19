@@ -5,7 +5,7 @@ import { Search, X } from 'lucide-react';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
 import { Phonetic } from './Phonetic';
 
-export const HeaderFolio: React.FC = () => {
+export const Header: React.FC = () => {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 
@@ -17,17 +17,17 @@ export const HeaderFolio: React.FC = () => {
   );
 
   const navLinks = [
-    { to: '/orbit', label: 'Linguistic orbit' },
-    { to: '/register', label: 'Language overview' },
-    { to: '/specimens', label: 'Word pairs' },
-    { to: '/quiz', label: 'False friends quiz' },
-    { to: '/inspector', label: 'Text inspector' },
+    { to: '/orbit', label: 'Language Orbit' },
+    { to: '/languages', label: 'Language Overview' },
+    { to: '/lexicon', label: 'Comparative Lexicon' },
+    { to: '/quiz', label: 'False Friends Quiz' },
+    { to: '/inspector', label: 'Text Inspector' },
   ];
 
   return (
     <header className="sticky top-0 z-40 border-b border-book-rule bg-page-bg/95 backdrop-blur-xs w-full">
       <div className="w-full flex items-center justify-between px-6 sm:px-8 lg:px-12 py-4">
-        {/* Clean book title (left edge) */}
+        {/* Application title */}
         <div className="flex-none">
           <Link to="/orbit" className="text-decoration-none">
             <h1 className="font-header text-2xl font-normal tracking-tight text-ink-main hover:opacity-80 transition-opacity">
@@ -36,10 +36,13 @@ export const HeaderFolio: React.FC = () => {
           </Link>
         </div>
 
-        {/* Clean book navigation (middle) */}
+        {/* Navigation */}
         <nav className="hidden md:flex items-center justify-center gap-8 flex-1 px-4">
           {navLinks.map((link) => {
-            const isActive = currentPath === link.to || (link.to === '/orbit' && currentPath === '/');
+            const isActive =
+              currentPath === link.to ||
+              (link.to === '/orbit' && currentPath === '/');
+
             return (
               <Link
                 key={link.to}
@@ -56,16 +59,16 @@ export const HeaderFolio: React.FC = () => {
           })}
         </nav>
 
-        {/* Search (right edge) */}
+        {/* Quick Search */}
         <div className="flex-none flex items-center gap-3">
           <button
             type="button"
             onClick={() => setSearchOpen(!searchOpen)}
             className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 font-serif text-sm text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs"
-            title="Search words"
+            title="Search dictionary"
           >
             <Search size={HEADER_CONFIG.ICON_SIZE_TOOL_SM} />
-            <span>Search words</span>
+            <span>Search dictionary</span>
           </button>
         </div>
       </div>
@@ -79,7 +82,7 @@ export const HeaderFolio: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search words (e.g. katt, hund, kvinna, gift)..."
+              placeholder="Search dictionary (e.g. katt, hund, kvinna, gift)..."
               autoFocus
               className="flex-1 bg-transparent font-serif text-base text-ink-main placeholder-ink-light focus:outline-none"
             />
@@ -103,7 +106,7 @@ export const HeaderFolio: React.FC = () => {
 
           {searchFetching && (
             <p className="mx-auto mt-2 max-w-2xl font-serif text-sm text-ink-muted italic">
-              Searching...
+              Searching dictionary...
             </p>
           )}
 
@@ -148,7 +151,10 @@ export const HeaderFolio: React.FC = () => {
       {/* Mobile nav */}
       <div className="flex md:hidden border-t border-book-rule bg-page-bg px-4 py-2 overflow-x-auto gap-4">
         {navLinks.map((link) => {
-          const isActive = currentPath === link.to || (link.to === '/orbit' && currentPath === '/');
+          const isActive =
+            currentPath === link.to ||
+            (link.to === '/orbit' && currentPath === '/');
+
           return (
             <Link
               key={link.to}
@@ -165,3 +171,4 @@ export const HeaderFolio: React.FC = () => {
     </header>
   );
 };
+

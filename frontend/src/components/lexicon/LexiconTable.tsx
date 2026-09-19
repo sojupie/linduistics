@@ -1,10 +1,10 @@
 import React from 'react';
-import type { SpecimenPair } from '../../types/linguistics';
+import type { WordPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
-import { SpecimenHeadword } from '../common/Phonetic';
+import { WordHeadword } from '../common/Phonetic';
 
-interface SpecimenRegisterTableProps {
-  pairs: SpecimenPair[];
+interface LexiconTableProps {
+  pairs: WordPair[];
   total: number;
   limit: number;
   offset: number;
@@ -18,12 +18,12 @@ interface SpecimenRegisterTableProps {
   onFfTypeChange: (tier: string | undefined) => void;
   onPageChange: (newOffset: number) => void;
   onLimitChange: (newLimit: number) => void;
-  onSelectPair: (pair: SpecimenPair) => void;
+  onSelectPair: (pair: WordPair) => void;
   selectedPairId: number | null;
   isLoading: boolean;
 }
 
-export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
+export const LexiconTable: React.FC<LexiconTableProps> = ({
   pairs,
   total,
   limit,
@@ -50,7 +50,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
   const startItem = total === 0 ? 0 : offset + 1;
   const endItem = Math.min(offset + limit, total);
 
-  const getTaxonomyLabel = (pair: SpecimenPair) => {
+  const getTaxonomyLabel = (pair: WordPair) => {
     switch (pair.category) {
       case 'true_cognate':
         return (
@@ -89,7 +89,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     }
   };
 
-  const getMeaningDisplay = (pair: SpecimenPair) => {
+  const getMeaningDisplay = (pair: WordPair) => {
     // 1. Check for active aligned sense matches
     const matchA = pair.sensesA?.find((s) => s.is_active_match)?.gloss;
     const matchB = pair.sensesB?.find((s) => s.is_active_match)?.gloss;
@@ -126,14 +126,14 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
   return (
     <div className="h-full flex flex-col min-h-0 font-serif">
-      {/* Search & Register Ledger Controls (Permanently Pinned) */}
+      {/* Search & Lexicon Controls */}
       <div className="flex-none flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-book-rule pb-3">
         <div className="relative flex-1 max-w-sm">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search specimen ledger by lemma..."
+            placeholder="Search word pairs by headword or meaning..."
             className="w-full border-b border-book-rule bg-transparent py-1 text-base text-ink-main placeholder:text-ink-muted/60 focus:border-ink-main focus:outline-none font-serif"
           />
         </div>
@@ -210,13 +210,13 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
             {isLoading ? (
               <tr>
                 <td colSpan={7} className="py-12 text-center text-ink-muted italic table-gloss">
-                  Scanning cataloged register...
+                  Scanning lexicon...
                 </td>
               </tr>
             ) : pairs.length === 0 ? (
               <tr>
                 <td colSpan={7} className="py-12 text-center text-ink-muted italic table-gloss">
-                  No specimen pairs match the current filter or search criteria.
+                  No word pairs match the current filter or search criteria.
                 </td>
               </tr>
             ) : (
@@ -234,7 +234,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                   >
                     {/* Source Headword */}
                     <td className="py-3 px-3.5 font-serif">
-                      <SpecimenHeadword
+                      <WordHeadword
                         lemma={pair.wordA}
                         ipa={pair.ipaA}
                         pos={pair.posA}
@@ -243,7 +243,7 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
 
                     {/* Target Counterpart */}
                     <td className="py-3 px-3.5 font-serif">
-                      <SpecimenHeadword
+                      <WordHeadword
                         lemma={pair.wordB}
                         ipa={pair.ipaB}
                         pos={pair.posB}
@@ -289,15 +289,15 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </table>
       </div>
 
-      {/* Pagination Footer (Permanently Pinned) */}
+      {/* Pagination Footer */}
       <div className="flex-none flex items-center justify-between border-t border-book-rule pt-3 text-sm text-ink-muted">
         <div>
-          Showing {startItem}–{endItem} of {total.toLocaleString()} cataloged specimens
+          Showing {startItem}–{endItem} of {total.toLocaleString()} word pairs
         </div>
 
         <div className="flex items-center gap-4">
           <span className="text-xs text-ink-muted font-deck font-medium">
-            Leaf {currentPage} of {totalPages}
+            Page {currentPage} of {totalPages}
           </span>
           <div className="flex items-center gap-1.5">
             <button
@@ -322,3 +322,6 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
     </div>
   );
 };
+
+export type SpecimenRegisterTableProps = LexiconTableProps;
+export const SpecimenRegisterTable = LexiconTable;

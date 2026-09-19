@@ -6,17 +6,17 @@ import {
 } from '@tanstack/react-router';
 import { z } from 'zod';
 import { RootRoute } from './root';
-import { LoadingFolio } from '../components/common/LoadingFolio';
+import { LoadingIndicator } from '../components/common/LoadingIndicator';
 
 // Lazy component imports for clean code splitting
 const OrbitLazy = React.lazy(() =>
   import('../routes/orbit.lazy').then((m) => ({ default: m.OrbitRouteComponent })),
 );
-const RegisterLazy = React.lazy(() =>
-  import('../routes/register.lazy').then((m) => ({ default: m.RegisterRouteComponent })),
+const LanguagesLazy = React.lazy(() =>
+  import('../routes/languages.lazy').then((m) => ({ default: m.LanguagesRouteComponent })),
 );
-const SpecimensLazy = React.lazy(() =>
-  import('../routes/specimens.lazy').then((m) => ({ default: m.SpecimensRouteComponent })),
+const LexiconLazy = React.lazy(() =>
+  import('../routes/lexicon.lazy').then((m) => ({ default: m.LexiconRouteComponent })),
 );
 const InspectorLazy = React.lazy(() =>
   import('../routes/inspector.lazy').then((m) => ({ default: m.InspectorRouteComponent })),
@@ -32,11 +32,11 @@ const orbitSearchSchema = z.object({
   anchor: z.string().optional(),
 });
 
-const registerSearchSchema = z.object({
-  sort: z.enum(['ease', 'minefield', 'phonetic', 'ancient']).optional(),
+export const languagesSearchSchema = z.object({
+  sort: z.enum(['ease', 'minefield', 'phonetic', 'ancient', 'cognates', 'spelling', 'pairs', 'name']).optional(),
 });
 
-const specimensSearchSchema = z.object({
+export const lexiconSearchSchema = z.object({
   category: z.string().optional(),
   source: z.string().optional(),
   target: z.string().optional(),
@@ -56,30 +56,30 @@ export const orbitRoute = createRoute({
   path: '/orbit',
   validateSearch: orbitSearchSchema,
   component: () => (
-    <Suspense fallback={<LoadingFolio />}>
+    <Suspense fallback={<LoadingIndicator />}>
       <OrbitLazy />
     </Suspense>
   ),
 });
 
-export const registerRoute = createRoute({
+export const languagesRoute = createRoute({
   getParentRoute: () => RootRoute,
-  path: '/register',
-  validateSearch: registerSearchSchema,
+  path: '/languages',
+  validateSearch: languagesSearchSchema,
   component: () => (
-    <Suspense fallback={<LoadingFolio />}>
-      <RegisterLazy />
+    <Suspense fallback={<LoadingIndicator />}>
+      <LanguagesLazy />
     </Suspense>
   ),
 });
 
-export const specimensRoute = createRoute({
+export const lexiconRoute = createRoute({
   getParentRoute: () => RootRoute,
-  path: '/specimens',
-  validateSearch: specimensSearchSchema,
+  path: '/lexicon',
+  validateSearch: lexiconSearchSchema,
   component: () => (
-    <Suspense fallback={<LoadingFolio />}>
-      <SpecimensLazy />
+    <Suspense fallback={<LoadingIndicator />}>
+      <LexiconLazy />
     </Suspense>
   ),
 });
@@ -88,7 +88,7 @@ export const quizRoute = createRoute({
   getParentRoute: () => RootRoute,
   path: '/quiz',
   component: () => (
-    <Suspense fallback={<LoadingFolio />}>
+    <Suspense fallback={<LoadingIndicator />}>
       <QuizLazy />
     </Suspense>
   ),
@@ -98,7 +98,7 @@ export const inspectorRoute = createRoute({
   getParentRoute: () => RootRoute,
   path: '/inspector',
   component: () => (
-    <Suspense fallback={<LoadingFolio />}>
+    <Suspense fallback={<LoadingIndicator />}>
       <InspectorLazy />
     </Suspense>
   ),
@@ -107,8 +107,8 @@ export const inspectorRoute = createRoute({
 const routeTree = RootRoute.addChildren([
   indexRoute,
   orbitRoute,
-  registerRoute,
-  specimensRoute,
+  languagesRoute,
+  lexiconRoute,
   quizRoute,
   inspectorRoute,
 ]);

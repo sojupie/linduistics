@@ -2,15 +2,15 @@ import React from 'react';
 import type { TokenAnalysis } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { X } from 'lucide-react';
-import { HEADER_CONFIG, SPECIMEN_CONFIG } from '../../constants/config';
+import { HEADER_CONFIG, LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 
-interface SpecimenDetailDrawerProps {
+interface TokenDetailDrawerProps {
   tokenAnalysis: TokenAnalysis | null;
   onClose: () => void;
 }
 
-export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
+export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
   tokenAnalysis,
   onClose,
 }) => {
@@ -102,16 +102,16 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
                 <span>
                   Meaning similarity:{' '}
                   <strong className="font-mono text-ink-main">
-                    {(match.semantic_sim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-                      SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+                    {(match.semantic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
+                      LEXICON_CONFIG.SIMILARITY_PRECISION,
                     )}%
                   </strong>
                 </span>
                 <span>
                   Sound similarity:{' '}
                   <strong className="font-mono text-cognate-ink">
-                    {(match.phonetic_sim * SPECIMEN_CONFIG.SIMILARITY_SCALE).toFixed(
-                      SPECIMEN_CONFIG.SIMILARITY_PRECISION,
+                    {(match.phonetic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
+                      LEXICON_CONFIG.SIMILARITY_PRECISION,
                     )}%
                   </strong>
                 </span>
@@ -123,3 +123,4 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
     </div>
   );
 };
+

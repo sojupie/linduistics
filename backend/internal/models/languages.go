@@ -7,10 +7,11 @@ type LanguagePairStats struct {
 	AvgOrthographic   float32 `json:"avg_orthographic"`
 	AvgPhonetic       float32 `json:"avg_phonetic"`
 	AvgSemantic       float32 `json:"avg_semantic"`
-	IdenticalRatio    float32 `json:"identical_ratio"`
-	ShiftedRatio      float32 `json:"shifted_ratio"`
-	FalseFriendsRatio float32 `json:"false_friends_ratio"`
-	DivergentRatio    float32 `json:"divergent_ratio"`
+	TrueCognatesRatio     float32 `json:"true_cognates_ratio"`
+	PartialCognatesRatio  float32 `json:"partial_cognates_ratio"`
+	FalseFriendsRatio     float32 `json:"false_friends_ratio"`
+	TranslationPairsRatio float32 `json:"translation_pairs_ratio"`
+	OtherRatio            float32 `json:"other_ratio"`
 }
 
 type LanguagesResponse struct {

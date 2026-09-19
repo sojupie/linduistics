@@ -17,7 +17,7 @@ export const Phonetic: React.FC<PhoneticProps> = ({ ipa, className = '' }) => {
 };
 
 
-export interface SpecimenHeadwordProps {
+export interface WordHeadwordProps {
   lemma: string;
   ipa?: string | null;
   pos?: string | null;
@@ -26,7 +26,7 @@ export interface SpecimenHeadwordProps {
   className?: string;
 }
 
-export const SpecimenHeadword: React.FC<SpecimenHeadwordProps> = ({
+export const WordHeadword: React.FC<WordHeadwordProps> = ({
   lemma,
   ipa,
   pos,
@@ -56,3 +56,6 @@ export const SpecimenHeadword: React.FC<SpecimenHeadwordProps> = ({
     </span>
   );
 };
+
+export type SpecimenHeadwordProps = WordHeadwordProps;
+export const SpecimenHeadword = WordHeadword;

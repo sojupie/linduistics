@@ -2,11 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { useInspectMutation, useLanguagesQuery } from '../../services/queries';
 import { getLanguageName } from '../../data/languages';
 import type { TokenAnalysis, InspectResponse } from '../../types/linguistics';
-import { SpecimenTokenPill } from './SpecimenTokenPill';
-import { SpecimenDetailDrawer } from './SpecimenDetailDrawer';
+import { TokenPill } from './TokenPill';
+import { TokenDetailDrawer } from './TokenDetailDrawer';
 import { INSPECTOR_CONFIG } from '../../constants/config';
 
-export const TextInspectorFolio: React.FC = () => {
+export const TextInspector: React.FC = () => {
   const [inputText, setInputText] = useState('');
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
   const [customTargetLangs, setCustomTargetLangs] = useState<string[] | null>(null);
@@ -62,13 +62,13 @@ export const TextInspectorFolio: React.FC = () => {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10 font-serif">
-      {/* Chapter header */}
+      {/* Header */}
       <div className="border-b border-book-rule pb-8">
         <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
-          Text inspector
+          Text Inspector
         </h2>
         <p className="mt-3 text-lg text-ink-muted leading-relaxed max-w-3xl font-deck font-normal">
-          Enter text to analyze individual words, resolve grammatical inflections to base lemmas, and measure cross-lingual lexical relationships.
+          Enter text to analyze individual words, resolve grammatical inflections to base lemmas, and evaluate cross-lingual coverage.
         </p>
       </div>
 
@@ -151,11 +151,11 @@ export const TextInspectorFolio: React.FC = () => {
                 <div className="flex items-center gap-4 text-sm text-ink-muted">
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full bg-cognate-ink" />
-                    Universal cognate
+                    True cognate
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full bg-shifted-ink" />
-                    Sound shifted
+                    Partial cognate
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full bg-book-rule-strong" />
@@ -167,7 +167,7 @@ export const TextInspectorFolio: React.FC = () => {
               {/* Text passage with clickable word tokens */}
               <div className="mt-6 flex flex-wrap items-center gap-2.5 p-6 rounded border border-book-rule bg-page-bg leading-loose">
                 {response.tokens.map((tok, idx) => (
-                  <SpecimenTokenPill
+                  <TokenPill
                     key={idx}
                     tokenAnalysis={tok}
                     isSelected={selectedToken?.token === tok.token}
@@ -189,7 +189,7 @@ export const TextInspectorFolio: React.FC = () => {
           {response && (
             <div className="rounded border border-book-rule bg-page-surface p-6 shadow-xs">
               <h3 className="text-xl font-normal text-ink-main font-deck">
-                Lexical intelligibility
+                Lexical coverage
               </h3>
               <p className="text-sm text-ink-muted mt-1">
                 Proportion of vocabulary recognizable across selected target languages.
@@ -219,7 +219,7 @@ export const TextInspectorFolio: React.FC = () => {
 
           {/* Selected word drawer */}
           {selectedToken && (
-            <SpecimenDetailDrawer
+            <TokenDetailDrawer
               tokenAnalysis={selectedToken}
               onClose={() => setSelectedToken(null)}
             />
@@ -235,3 +235,4 @@ export const TextInspectorFolio: React.FC = () => {
     </div>
   );
 };
+
