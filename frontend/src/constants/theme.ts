@@ -51,6 +51,8 @@ export const PALETTE = {
 } as const;
 
 export const TYPOGRAPHY = {
-  FONT_SERIF: 'Cardo, Georgia, serif',
-  FONT_MONO: 'JetBrains Mono, monospace',
+  FONT_SERIF: "'Warbler Text', Georgia, serif",
+  FONT_DISPLAY: "'Warbler Display', 'Warbler Text', Georgia, serif",
+  FONT_IPA: "'Cardo', Georgia, serif",
+  FONT_MONO: "'JetBrains Mono', monospace",
 } as const;

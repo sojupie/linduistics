@@ -2,6 +2,7 @@ import React from 'react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { useClusterByRootQuery } from '../../services/queries';
+import { Phonetic } from '../common/Phonetic';
 
 interface SpecimenDossierProps {
   specimen: SpecimenPair | null;
@@ -58,11 +59,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           <span className="text-2xl sm:text-3xl font-bold font-serif text-ink-main tracking-tight">
             {specimen.wordA}
           </span>
-          {specimen.ipaA && (
-            <span className="font-serif italic text-sm text-ink-muted">
-              /{specimen.ipaA}/
-            </span>
-          )}
+          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} className="text-lg" />}
           {specimen.posA && (
             <span className="text-xs text-ink-muted">[{specimen.posA}]</span>
           )}
@@ -78,11 +75,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
           }`}>
             {specimen.wordB}
           </span>
-          {specimen.ipaB && (
-            <span className="font-serif italic text-sm text-ink-muted">
-              /{specimen.ipaB}/
-            </span>
-          )}
+          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} className="text-lg" />}
           {specimen.posB && (
             <span className="text-xs text-ink-muted">[{specimen.posB}]</span>
           )}
@@ -186,11 +179,7 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
                       <span className="font-serif font-bold text-ink-main text-base">
                         {m.word}
                       </span>
-                      {m.ipa && (
-                        <span className="font-serif italic text-sm text-ink-muted">
-                          /{m.ipa}/
-                        </span>
-                      )}
+                      {m.ipa && <Phonetic ipa={m.ipa} />}
                       {m.pos && (
                         <span className="text-xs text-ink-muted">[{m.pos}]</span>
                       )}

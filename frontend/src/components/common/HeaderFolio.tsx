@@ -3,6 +3,7 @@ import { Link, useRouterState } from '@tanstack/react-router';
 import { useHeadwordSearchQuery } from '../../services/queries';
 import { Search, X } from 'lucide-react';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
+import { Phonetic } from './Phonetic';
 
 export const HeaderFolio: React.FC = () => {
   const routerState = useRouterState();
@@ -112,9 +113,7 @@ export const HeaderFolio: React.FC = () => {
                 >
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-ink-main text-base">{item.word_a}</span>
-                    {item.ipa_a && (
-                      <span className="text-ink-muted font-mono text-sm">/{item.ipa_a}/</span>
-                    )}
+                    {item.ipa_a && <Phonetic ipa={item.ipa_a} />}
                     <span className="text-ink-light">→</span>
                     <span className="font-bold text-cognate-ink text-base">{item.word_b}</span>
                     <span className="text-ink-muted text-sm">({item.lang_b})</span>

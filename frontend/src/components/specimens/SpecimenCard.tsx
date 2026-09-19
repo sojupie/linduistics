@@ -1,6 +1,7 @@
 import React from 'react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { SPECIMEN_CONFIG } from '../../constants/config';
+import { Phonetic } from '../common/Phonetic';
 
 interface SpecimenCardProps {
   specimen: SpecimenPair;
@@ -44,9 +45,7 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
         <div className="flex flex-wrap items-baseline gap-3">
           {/* Word A (Swedish) */}
           <span className="text-2xl font-bold text-ink-main">{specimen.wordA}</span>
-          {specimen.ipaA && (
-            <span className="font-mono text-base text-ink-muted">/{specimen.ipaA}/</span>
-          )}
+          {specimen.ipaA && <Phonetic ipa={specimen.ipaA} />}
           {specimen.posA && (
             <span className="text-sm italic text-ink-light">({specimen.posA})</span>
           )}
@@ -65,9 +64,7 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({ specimen }) => {
           >
             {specimen.wordB}
           </span>
-          {specimen.ipaB && (
-            <span className="font-mono text-base text-ink-muted">/{specimen.ipaB}/</span>
-          )}
+          {specimen.ipaB && <Phonetic ipa={specimen.ipaB} />}
           {specimen.posB && (
             <span className="text-sm italic text-ink-light">({specimen.posB})</span>
           )}

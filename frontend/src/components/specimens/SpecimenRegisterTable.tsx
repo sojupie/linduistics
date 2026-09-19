@@ -1,6 +1,7 @@
 import React from 'react';
 import type { SpecimenPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
+import { SpecimenHeadword } from '../common/Phonetic';
 
 interface SpecimenRegisterTableProps {
   pairs: SpecimenPair[];
@@ -212,46 +213,22 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
                   >
                     {/* Source Headword */}
                     <td className="py-2.5 px-3 font-serif">
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="font-bold text-base text-ink-main">
-                          {pair.wordA}
-                        </span>
-                        {pair.ipaA && (
-                          <span className="font-serif italic text-sm text-ink-muted">
-                            /{pair.ipaA}/
-                          </span>
-                        )}
-                        {pair.posA && (
-                          <span className="text-xs text-ink-muted">
-                            [{pair.posA}]
-                          </span>
-                        )}
-                      </div>
+                      <SpecimenHeadword
+                        lemma={pair.wordA}
+                        ipa={pair.ipaA}
+                        pos={pair.posA}
+                      />
                     </td>
 
                     {/* Target Counterpart */}
                     <td className="py-2.5 px-3 font-serif">
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className={`font-bold text-base ${
-                          pair.category === 'minefield'
-                            ? 'text-falsefriend-ink'
-                            : pair.category === 'cognate'
-                            ? 'text-cognate-ink'
-                            : 'text-ink-main'
-                        }`}>
-                          {pair.wordB}
-                        </span>
-                        {pair.ipaB && (
-                          <span className="font-serif italic text-sm text-ink-muted">
-                            /{pair.ipaB}/
-                          </span>
-                        )}
-                        {pair.posB && (
-                          <span className="text-xs text-ink-muted">
-                            [{pair.posB}]
-                          </span>
-                        )}
-                      </div>
+                      <SpecimenHeadword
+                        lemma={pair.wordB}
+                        ipa={pair.ipaB}
+                        pos={pair.posB}
+                        isFalseFriend={pair.category === 'minefield'}
+                        isCognate={pair.category === 'cognate'}
+                      />
                     </td>
 
                     {/* Taxonomy Label */}

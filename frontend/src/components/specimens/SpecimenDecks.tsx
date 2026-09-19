@@ -4,6 +4,7 @@ import { getLanguageName } from '../../data/languages';
 import type { SpecimenPair, SpecimenCategory } from '../../types/linguistics';
 import { SpecimenRegisterTable } from './SpecimenRegisterTable';
 import { SpecimenDossier } from './SpecimenDossier';
+import { Phonetic } from '../common/Phonetic';
 
 type ViewMode = 'register' | 'quiz';
 
@@ -315,11 +316,7 @@ export const SpecimenDecks: React.FC = () => {
                 </span>
                 <div className="flex items-baseline gap-2 mt-1.5">
                   <span className="text-2xl font-bold text-ink-main">{currentQuizItem.word_a}</span>
-                  {currentQuizItem.ipa_a && (
-                    <span className="font-serif italic text-sm text-ink-muted">
-                      /{currentQuizItem.ipa_a}/
-                    </span>
-                  )}
+                  {currentQuizItem.ipa_a && <Phonetic ipa={currentQuizItem.ipa_a} />}
                   {currentQuizItem.pos_a && (
                     <span className="text-xs text-ink-muted">[{currentQuizItem.pos_a}]</span>
                   )}

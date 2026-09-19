@@ -3,6 +3,7 @@ import type { TokenAnalysis } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { X } from 'lucide-react';
 import { HEADER_CONFIG, SPECIMEN_CONFIG } from '../../constants/config';
+import { Phonetic } from '../common/Phonetic';
 
 interface SpecimenDetailDrawerProps {
   tokenAnalysis: TokenAnalysis | null;
@@ -76,9 +77,7 @@ export const SpecimenDetailDrawer: React.FC<SpecimenDetailDrawerProps> = ({
                     {getLanguageName(lang)}:
                   </span>
                   <span className="font-bold text-ink-main text-lg">{match.word}</span>
-                  {match.ipa && (
-                    <span className="font-mono text-sm text-ink-muted">/{match.ipa}/</span>
-                  )}
+                  {match.ipa && <Phonetic ipa={match.ipa} />}
                 </div>
                 <span className="text-sm text-ink-muted">
                   {match.category === 'cognate' || match.category === 'true_cognate'

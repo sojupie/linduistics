@@ -1,5 +1,69 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Warbler Text';
+  src: url('/fonts/warbler/WarblerText-Regular-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Text';
+  src: url('/fonts/warbler/WarblerText-Italic-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Text';
+  src: url('/fonts/warbler/WarblerText-Bold-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Text';
+  src: url('/fonts/warbler/WarblerText-BoldItalic-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Display';
+  src: url('/fonts/warbler/WarblerDisplay-Regular-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Display';
+  src: url('/fonts/warbler/WarblerDisplay-Italic-Edu.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Display';
+  src: url('/fonts/warbler/WarblerDisplay-Bold-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Warbler Display';
+  src: url('/fonts/warbler/WarblerDisplay-BoldItalic-Edu.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --color-page-bg: #FAF8F5;
   --color-page-surface: #FAF8F5;
@@ -29,7 +93,9 @@
   --color-divergent-bg: #EBF1F6;
   --color-divergent-border: #BCD0E0;
 
-  --font-serif: 'Cardo', Georgia, serif;
+  --font-serif: 'Warbler Text', Georgia, serif;
+  --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
+  --font-ipa: 'Cardo', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Field Guide Typography Scale (Strict Floor: 13px min for metadata, 15px min for data) */
@@ -51,6 +117,9 @@
 
 :root {
   color-scheme: light;
+  --font-serif: 'Warbler Text', Georgia, serif;
+  --font-display: 'Warbler Display', 'Warbler Text', Georgia, serif;
+  --font-ipa: 'Cardo', Georgia, serif;
 }
 
 body {
@@ -58,11 +127,21 @@ body {
   background-color: var(--color-page-bg);
   color: var(--color-ink-main);
   font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.6;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'kern' 1, 'liga' 1;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Phonetic styling for both explicit classes and valid BCP 47 IPA tags */
+.ipa,
+[lang="und-fonipa"] {
+  font-family: var(--font-ipa);
+  font-size: 0.96em;
+  font-weight: 400;
+  font-style: normal; /* Keep slashes and IPA upright even if parent is italic */
+  letter-spacing: 0;
+  color: var(--color-ink-muted);
 }
 
 /* Custom scrollbars matching book paper */
