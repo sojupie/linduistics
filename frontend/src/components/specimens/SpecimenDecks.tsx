@@ -176,8 +176,8 @@ export const SpecimenDecks: React.FC = () => {
 
       {/* Disciplined Master-Detail Layout with Independent Vertical Scrolling */}
       <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule lg:h-[calc(100vh-13rem)] overflow-hidden">
-        {/* Left: Independently Scrollable Register Table */}
-        <div className="flex-1 min-w-0 p-4 sm:p-5 overflow-y-auto h-full w-full">
+        {/* Left: Register Table Pane with Pinned Affordances and Independent Item Scroll */}
+        <div className="flex-1 min-w-0 p-4 sm:p-5 h-[560px] lg:h-full w-full flex flex-col min-h-0">
           <SpecimenRegisterTable
             pairs={livePairs}
             total={livePairsData?.total ?? 0}

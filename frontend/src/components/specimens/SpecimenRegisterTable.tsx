@@ -121,9 +121,9 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
   };
 
   return (
-    <div className="flex flex-col space-y-4 font-serif">
-      {/* Search & Register Ledger Controls */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-book-rule pb-3">
+    <div className="h-full flex flex-col min-h-0 font-serif">
+      {/* Search & Register Ledger Controls (Permanently Pinned) */}
+      <div className="flex-none flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-book-rule pb-3">
         <div className="relative flex-1 max-w-sm">
           <input
             type="text"
@@ -181,24 +181,24 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </div>
       </div>
 
-      {/* Edge-to-Edge Register Ledger Table */}
-      <div className="overflow-x-auto">
+      {/* Independently Scrollable Items Table Container */}
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-auto my-1">
         <table className="w-full text-left border-collapse font-serif">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-page-bg">
             <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-wider text-ink-muted font-deck font-normal">
-              <th className="py-3.5 px-3.5 w-1/4">{sourceName} Headword</th>
-              <th className="py-3.5 px-3.5 w-1/4">{targetName} Counterpart</th>
-              <th className="py-3.5 px-2 text-center w-32">Taxonomy</th>
-              <th className="py-3.5 px-2 text-center w-16" title="Orthographic Similarity">
+              <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{sourceName} Headword</th>
+              <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
+              <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
+              <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Orthographic Similarity">
                 <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub></span>
               </th>
-              <th className="py-3.5 px-2 text-center w-16" title="Phonetic Similarity">
+              <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Phonetic Similarity">
                 <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub></span>
               </th>
-              <th className="py-3.5 px-2 text-center w-16" title="Semantic Similarity">
+              <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
                 <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub></span>
               </th>
-              <th className="py-3.5 px-3.5">Active Aligned Meaning</th>
+              <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Active Aligned Meaning</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-book-rule/50">
@@ -284,8 +284,8 @@ export const SpecimenRegisterTable: React.FC<SpecimenRegisterTableProps> = ({
         </table>
       </div>
 
-      {/* Pagination Footer */}
-      <div className="flex items-center justify-between border-t border-book-rule pt-3.5 text-sm text-ink-muted">
+      {/* Pagination Footer (Permanently Pinned) */}
+      <div className="flex-none flex items-center justify-between border-t border-book-rule pt-3 text-sm text-ink-muted">
         <div>
           Showing {startItem}–{endItem} of {total.toLocaleString()} cataloged specimens
         </div>

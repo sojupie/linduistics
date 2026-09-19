@@ -350,9 +350,8 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {/* Source Language Senses */}
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1">
             <span>{sourceName} Senses ({sensesListA.length})</span>
-            <span className="font-mono text-2xs uppercase tracking-widest font-medium">{sourceLang}</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListA.map((s, idx) => {
@@ -392,9 +391,8 @@ export const SpecimenDossier: React.FC<SpecimenDossierProps> = ({
 
         {/* Target Language Senses */}
         <div className="space-y-3 pt-2">
-          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1 flex items-center justify-between">
+          <div className="text-xs uppercase tracking-wider font-normal font-deck text-ink-muted border-b border-book-rule/60 pb-1">
             <span>{targetName} Senses ({sensesListB.length})</span>
-            <span className="font-mono text-2xs uppercase tracking-widest font-medium">{targetLang}</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListB.map((s, idx) => {
