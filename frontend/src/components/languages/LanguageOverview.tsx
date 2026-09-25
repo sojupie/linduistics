@@ -6,6 +6,7 @@ import type { LanguageProfile } from '../../types/linguistics';
 import { TaxonomyRatioBar } from './TaxonomyRatioBar';
 import { REGISTER_CONFIG } from '../../constants/config';
 import { LanguageSelect } from '../common/LanguagePicker';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 export type LanguageSort =
   | 'ease'
@@ -89,7 +90,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
   const renderSortIndicator = (s: LanguageSort, alt?: LanguageSort) => {
     const isActive = activeSort === s || (alt && activeSort === alt);
     if (!isActive) return null;
-    return <span className="ml-1 text-ink-main font-semibold">↓</span>;
+    return <MaterialSymbol icon="arrow_downward" size={14} className="ml-1 text-ink-main inline-block align-middle" />;
   };
 
   return (
@@ -302,7 +303,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                         {lang.name}
                       </span>
                       {isSelected && (
-                        <span className="ml-2 typo-sublabel text-cognate-ink">●</span>
+                        <MaterialSymbol icon="circle" size={8} className="ml-2 text-cognate-ink align-middle" />
                       )}
                     </td>
                     <td className="py-3 px-3 typo-metric-table text-right text-ink-muted">
@@ -360,9 +361,10 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             <Link
               to="/lexicon"
               search={{ source: anchorLang, target: selectedLang.code }}
-              className="typo-sublabel text-cognate-ink underline decoration-1 hover:text-ink-main transition-colors"
+              className="typo-sublabel text-cognate-ink underline decoration-1 hover:text-ink-main transition-colors inline-flex items-center gap-1"
             >
-              Explore {anchorName}–{selectedLang.name} word pairs →
+              <span>Explore {anchorName}–{selectedLang.name} word pairs</span>
+              <MaterialSymbol icon="arrow_forward" size={14} />
             </Link>
           </div>
 

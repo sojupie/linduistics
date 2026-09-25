@@ -127,7 +127,7 @@ export const Header: React.FC = () => {
                     </span>
                     <span className="typo-headword-row text-ink-main">{item.word_a}</span>
                     {item.ipa_a && <Phonetic ipa={item.ipa_a} />}
-                    <span className="text-ink-light font-serif">→</span>
+                    <MaterialSymbol icon="arrow_forward" size={14} className="text-ink-light" />
                     <span
                       className="font-mono text-xs uppercase px-1.5 py-0.5 rounded border border-book-rule bg-page-muted text-ink-muted cursor-help shrink-0"
                       title={getLanguageName(item.lang_b)}

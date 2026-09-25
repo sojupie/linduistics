@@ -3,6 +3,7 @@ import type { WordPair } from '../../types/linguistics';
 import { LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos } from '../../utils/formatters';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 interface WordPairCardProps {
   pair: WordPair;
@@ -55,7 +56,7 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
           )}
           {pair.ipaA && <Phonetic ipa={pair.ipaA} className="table-ipa" />}
 
-          <span className="text-ink-light mx-1">→</span>
+          <MaterialSymbol icon="arrow_forward" size={16} className="text-ink-light mx-1" />
 
           {/* Word B (Target) */}
           <span

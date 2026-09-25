@@ -347,9 +347,10 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                       <button
                         type="button"
                         onClick={() => onSubstitute(tokenAnalysis, alt.form)}
-                        className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0"
+                        className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1"
                       >
-                        Use alternate →
+                        <span>Use alternate</span>
+                        <MaterialSymbol icon="arrow_forward" size={14} />
                       </button>
                     )}
                   </div>

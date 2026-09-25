@@ -2,6 +2,7 @@ import React from 'react';
 import type { WordPair } from '../../types/linguistics';
 import { getLanguageName } from '../../data/languages';
 import { WordHeadword } from '../common/Phonetic';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 interface LexiconTableProps {
   pairs: WordPair[];
@@ -307,17 +308,19 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               type="button"
               onClick={() => onPageChange(Math.max(0, offset - limit))}
               disabled={offset === 0 || isLoading}
-              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1"
             >
-              ← Prev
+              <MaterialSymbol icon="arrow_back" size={14} />
+              <span>Prev</span>
             </button>
             <button
               type="button"
               onClick={() => onPageChange(offset + limit)}
               disabled={offset + limit >= total || isLoading}
-              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1"
             >
-              Next →
+              <span>Next</span>
+              <MaterialSymbol icon="arrow_forward" size={14} />
             </button>
           </div>
         </div>

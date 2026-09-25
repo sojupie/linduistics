@@ -336,7 +336,9 @@ export const FalseFriendsQuiz: React.FC = () => {
         </div>
       ) : !currentQuizItem ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
-          No false friend word pairs found for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}
+          No false friend word pairs found for {getLanguageName(sourceLang)}{' '}
+          <MaterialSymbol icon="arrow_forward" size={14} className="inline-block text-ink-muted align-middle mx-0.5" />{' '}
+          {getLanguageName(targetLang)}
           {selectedTier !== 'all'
             ? ` classified as ${selectedTier === 'etymological_shift' ? 'shared roots (divergent cognates)' : 'accidental lookalikes'}`
             : ''}.
@@ -348,7 +350,9 @@ export const FalseFriendsQuiz: React.FC = () => {
           <div className="border-b border-book-rule pb-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
             <div>
               <span className="typo-overline text-ink-muted block">
-                Batch Assessment · {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}
+                Batch Assessment · {getLanguageName(sourceLang)}{' '}
+                <MaterialSymbol icon="arrow_forward" size={12} className="inline-block text-ink-muted align-middle mx-0.5" />{' '}
+                {getLanguageName(targetLang)}
               </span>
               <h2 className="typo-section-header mt-0.5">
                 Decryption Assessment Complete
@@ -441,7 +445,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                         <span className="typo-headword-row text-ink-main truncate">
                           {rec.item.word_a}
                         </span>
-                        <span className="text-ink-muted font-serif">→</span>
+                        <MaterialSymbol icon="arrow_forward" size={14} className="text-ink-muted shrink-0" />
                         <span className="typo-headword-row text-falsefriend-ink truncate">
                           {rec.item.word_b}
                         </span>

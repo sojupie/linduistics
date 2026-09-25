@@ -4,6 +4,7 @@ import { getLanguageName } from '../../data/languages';
 import { useClusterByRootQuery } from '../../services/queries';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos, parseEtymRoot } from '../../utils/formatters';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 interface WordPairDetailsProps {
   pair: WordPair | null;
@@ -117,7 +118,11 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
         <div className="flex items-center justify-between typo-overline border-b border-book-rule/60 pb-2.5">
-          <span>{sourceName} ↔ {targetName}</span>
+          <span className="inline-flex items-center gap-1.5">
+            <span>{sourceName}</span>
+            <MaterialSymbol icon="sync_alt" size={14} className="text-ink-muted" />
+            <span>{targetName}</span>
+          </span>
           <span className={`typo-badge px-2.5 py-0.5 rounded ${pair.category === 'false_friend'
               ? 'text-falsefriend-ink bg-falsefriend-bg'
               : pair.category === 'true_cognate'
@@ -271,7 +276,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               <span className="font-deck font-medium italic text-cognate-ink">
                 {parsedRoot.lemma}
               </span>
-              <span className="text-ink-muted font-serif">→</span>
+              <MaterialSymbol icon="arrow_forward" size={14} className="text-ink-muted" />
               <span className="font-serif text-ink-main">
                 <span className="font-deck font-medium">{pair.wordA}</span>{' '}
                 <span className="typo-sublabel italic font-serif">({sourceName})</span>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { getLanguageName } from '../../data/languages';
+import { MaterialSymbol } from './MaterialSymbol';
 
 export interface LanguageSelectProps {
   value: string;
@@ -120,10 +121,10 @@ export const LanguagePairSelect: React.FC<LanguagePairSelectProps> = ({
                 : 'text-ink-muted/40 border-book-rule/40 cursor-not-allowed bg-page-bg'
             }`}
           >
-            ⇄
+            <MaterialSymbol icon="swap_horiz" size={16} />
           </button>
         ) : (
-          <span className="text-ink-muted font-serif px-0.5">→</span>
+          <MaterialSymbol icon="arrow_forward" size={16} className="text-ink-muted px-0.5" />
         )}
 
         <select
