@@ -151,6 +151,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
               ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
           }`}
+          title="Sort by pronunciation similarity (lowest phonetic distance first)"
         >
           Pronunciation distance
         </button>
@@ -162,6 +163,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
               ? 'border-divergent-ink bg-divergent-bg text-divergent-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-divergent-ink'
           }`}
+          title="Sort by spelling similarity (lowest orthographic distance first)"
         >
           Spelling distance
         </button>
@@ -173,6 +175,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
               ? 'border-ink-main bg-page-muted text-ink-main'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
           }`}
+          title="Sort by definition overlap (lowest semantic distance first)"
         >
           Semantic distance
         </button>
@@ -237,18 +240,21 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <th
                   onClick={() => handleSort('phonetic')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
+                  title="Average phonetic distance based on articulatory feature alignment"
                 >
                   Pronunciation dist.{renderSortIndicator('phonetic')}
                 </th>
                 <th
                   onClick={() => handleSort('spelling')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
+                  title="Average orthographic edit distance across headword spellings"
                 >
                   Spelling dist.{renderSortIndicator('spelling')}
                 </th>
                 <th
                   onClick={() => handleSort('ease')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
+                  title="Average definition divergence based on cross-lingual sentence embeddings"
                 >
                   Semantic dist.{renderSortIndicator('ease')}
                 </th>
@@ -471,6 +477,68 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Distance & divergence metrics breakdown */}
+          <div className="border-t border-book-rule pt-5">
+            <div className="typo-sublabel mb-3">
+              Comparative distance metrics for {selectedLang.name}:
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 typo-body text-ink-muted">
+              {/* Semantic Distance */}
+              <div>
+                <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <span className="inline-block h-2.5 w-2.5 rounded-xs bg-ink-main" />
+                    <span>Semantic distance</span>
+                  </span>
+                  <span className="typo-metric-table text-ink-main font-semibold">
+                    {(selectedLang.semanticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      REGISTER_CONFIG.PRECISION,
+                    )}%
+                  </span>
+                </div>
+                <p>
+                  Average definition divergence across cataloged word pairs. Meanings are compared using multilingual sentence embeddings across all senses; lower distance indicates high conceptual overlap, while higher values reflect semantic drift and specialization.
+                </p>
+              </div>
+
+              {/* Pronunciation Distance */}
+              <div>
+                <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
+                    <span>Pronunciation distance</span>
+                  </span>
+                  <span className="typo-metric-table text-cognate-ink font-semibold">
+                    {(selectedLang.phoneticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      REGISTER_CONFIG.PRECISION,
+                    )}%
+                  </span>
+                </div>
+                <p>
+                  Phonetic divergence calculated via articulatory feature alignment (manner, place, and voicing) over IPA transcriptions, tracking regular historical sound shifts rather than raw character mismatches.
+                </p>
+              </div>
+
+              {/* Spelling Distance */}
+              <div>
+                <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" />
+                    <span>Spelling distance</span>
+                  </span>
+                  <span className="typo-metric-table text-divergent-ink font-semibold">
+                    {(selectedLang.spellingDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      REGISTER_CONFIG.PRECISION,
+                    )}%
+                  </span>
+                </div>
+                <p>
+                  Normalized orthographic edit distance across written headwords, reflecting orthographic modernization and spelling variance between {anchorName} and {selectedLang.name}.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}
