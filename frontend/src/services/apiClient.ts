@@ -79,13 +79,18 @@ export async function fetchFalseFriendsQuiz(
   source = 'sv',
   target = 'en',
   limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
+  tier?: string,
 ): Promise<QuizItemDto[]> {
-  const query = new URLSearchParams({
+  const params: Record<string, string> = {
     mode: 'quiz',
     source,
     target,
     limit: limit.toString(),
-  });
+  };
+  if (tier && tier !== 'all') {
+    params.tier = tier;
+  }
+  const query = new URLSearchParams(params);
   return apiClient<QuizItemDto[]>(`/api/false-friends?${query.toString()}`);
 }
 

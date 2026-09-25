@@ -176,21 +176,28 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 	return items, nil
 }
 
-func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang string, limit int) ([]models.WordComparison, error) {
+func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang, tier string, limit int) ([]models.WordComparison, error) {
 	if limit <= 0 || limit > 100 {
 		limit = 20
 	}
-	query := `
+	whereClause := "WHERE lang_a = $1 AND lang_b = $2 AND category = 'false_friend'"
+	args := []any{sourceLang, targetLang}
+	if tier != "" && tier != "all" {
+		args = append(args, tier)
+		whereClause += fmt.Sprintf(" AND false_friend_type = $%d", len(args))
+	}
+	args = append(args, limit)
+	query := fmt.Sprintf(`
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
 		       orthographic_sim, phonetic_sim, semantic_sim, category,
 		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
-		WHERE lang_a = $1 AND lang_b = $2 AND category = 'false_friend'
+		%s
 		ORDER BY random()
-		LIMIT $3
-	`
-	rows, err := r.pool.Query(ctx, query, sourceLang, targetLang, limit)
+		LIMIT $%d
+	`, whereClause, len(args))
+	rows, err := r.pool.Query(ctx, query, args...)
 	if err != nil {
 		return nil, fmt.Errorf("get false friends error: %w", err)
 	}

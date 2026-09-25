@@ -45,7 +45,7 @@ func TestRepositoryQueries(t *testing.T) {
 	}
 
 	// Test 2: False friends
-	ff, err := repo.GetFalseFriends(context.Background(), "sv", "en", 5)
+	ff, err := repo.GetFalseFriends(context.Background(), "sv", "en", "", 5)
 	if err != nil {
 		t.Fatalf("GetFalseFriends failed: %v", err)
 	}
