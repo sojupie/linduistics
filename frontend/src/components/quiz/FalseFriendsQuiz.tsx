@@ -59,6 +59,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     return (saved as ViewingMode) || 'blind';
   });
 
+  const [selectedTier, setSelectedTier] = useState<string>('all');
   const [showSourceHint, setShowSourceHint] = useState(false);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     data: quizData,
     isLoading: quizLoading,
     refetch: refetchQuiz,
-  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10);
+  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedTier);
 
   const currentQuizItem = quizData?.[currentQuizIdx];
 
@@ -197,40 +198,96 @@ export const FalseFriendsQuiz: React.FC = () => {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif max-w-4xl mx-auto">
-      {/* Quiz Header */}
-      <div className="pb-3 mb-4 border-b border-book-rule">
-        <h1 className="typo-page-title">False Friends Decryption</h1>
-        <p className="typo-page-deck mt-1">
-          Test your lexical immunity against deceptive lookalikes across Germanic pairs.
-        </p>
+      {/* Quiz Header & Language Pair Selection (same section, under the text) */}
+      <div className="pb-4 mb-4 border-b border-book-rule space-y-3">
+        <div>
+          <h1 className="typo-page-title">False Friends Decryption</h1>
+          <p className="typo-page-deck mt-1.5">
+            Test your lexical immunity against deceptive lookalikes across Germanic pairs.
+          </p>
+        </div>
+
+        {/* Language Pair Selector */}
+        <div>
+          <LanguagePairSelect
+            label="Pair:"
+            sourceLang={sourceLang}
+            targetLang={targetLang}
+            availableSources={selectableLanguages}
+            availableTargets={availableTargets}
+            onSourceChange={(code) => {
+              setSelectedSource(code);
+              setSelectedTarget(null);
+              handleRestartQuiz();
+            }}
+            onTargetChange={(code) => {
+              setSelectedTarget(code);
+              handleRestartQuiz();
+            }}
+            onSwap={handleSwap}
+            canSwap={canSwap}
+            plate={false}
+          />
+        </div>
       </div>
 
-      {/* Quiz Utility Controls: Pair & Viewing Mode */}
+      {/* Isolated Deck Controls: Etymological Type & Viewing Mode */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-        {/* Language Pair Selector */}
-        <LanguagePairSelect
-          label="Pair:"
-          sourceLang={sourceLang}
-          targetLang={targetLang}
-          availableSources={selectableLanguages}
-          availableTargets={availableTargets}
-          onSourceChange={(code) => {
-            setSelectedSource(code);
-            setSelectedTarget(null);
-            handleRestartQuiz();
-          }}
-          onTargetChange={(code) => {
-            setSelectedTarget(code);
-            handleRestartQuiz();
-          }}
-          onSwap={handleSwap}
-          canSwap={canSwap}
-          plate={false}
-        />
+        {/* Etymological Type Filter Segmented Control */}
+        <div className="flex items-center gap-2">
+          <span className="typo-sublabel text-ink-muted">Type:</span>
+          <div className="inline-flex border border-book-rule bg-page-muted/40 p-0.5">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedTier('all');
+                handleRestartQuiz();
+              }}
+              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+                selectedTier === 'all'
+                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main'
+              }`}
+              title="Test all false friends (both historical cognates and accidental lookalikes)"
+            >
+              All Pairs
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedTier('etymological_shift');
+                handleRestartQuiz();
+              }}
+              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+                selectedTier === 'etymological_shift'
+                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main'
+              }`}
+              title="Shared roots: words sharing an ancestral root whose meanings diverged over centuries (e.g. English 'gift' vs German 'Gift')"
+            >
+              Shared Roots
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedTier('surface_collision');
+                handleRestartQuiz();
+              }}
+              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+                selectedTier === 'surface_collision'
+                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main'
+              }`}
+              title="Accidental lookalikes: unrelated words that coincidentally look or sound alike (e.g. English 'bad' vs German 'Bad')"
+            >
+              Accidental Lookalikes
+            </button>
+          </div>
+        </div>
 
         {/* Viewing Mode Segmented Control */}
         <div className="flex items-center gap-2">
-          <span className="typo-sublabel">View:</span>
+          <span className="typo-sublabel text-ink-muted">View:</span>
           <div className="inline-flex border border-book-rule bg-page-muted/40 p-0.5">
             <button
               type="button"
@@ -279,7 +336,10 @@ export const FalseFriendsQuiz: React.FC = () => {
         </div>
       ) : !currentQuizItem ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
-          No false friend word pairs found for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}.
+          No false friend word pairs found for {getLanguageName(sourceLang)} → {getLanguageName(targetLang)}
+          {selectedTier !== 'all'
+            ? ` classified as ${selectedTier === 'etymological_shift' ? 'shared roots (divergent cognates)' : 'accidental lookalikes'}`
+            : ''}.
         </div>
       ) : isRoundFinished ? (
         /* Round Finished Summary Dossier */
@@ -385,6 +445,20 @@ export const FalseFriendsQuiz: React.FC = () => {
                         <span className="typo-headword-row text-falsefriend-ink truncate">
                           {rec.item.word_b}
                         </span>
+                        {rec.item.false_friend_type && (
+                          <span
+                            className="typo-subscript text-ink-muted text-2xs px-1.5 py-0.5 border border-book-rule/60 shrink-0"
+                            title={
+                              rec.item.false_friend_type === 'etymological_shift'
+                                ? 'Shared historical root with divergent meaning'
+                                : 'Accidental lookalike with no etymological relationship'
+                            }
+                          >
+                            {rec.item.false_friend_type === 'etymological_shift'
+                              ? 'Shared Root'
+                              : 'Accidental Lookalike'}
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -469,10 +543,24 @@ export const FalseFriendsQuiz: React.FC = () => {
           <div className="p-5 sm:p-6 space-y-4 sm:space-y-5">
             {/* Status Tracker Bar (single clean divider line) */}
             <div className="flex items-center justify-between border-b border-book-rule pb-3">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
                 <span className="typo-overline text-ink-main">
                   Question {currentQuizIdx + 1} of {quizData?.length || 10}
                 </span>
+                {currentQuizItem?.false_friend_type && (
+                  <span
+                    className="typo-subscript px-1.5 py-0.5 border border-book-rule text-ink-muted bg-page-muted/20 font-serif"
+                    title={
+                      currentQuizItem.false_friend_type === 'etymological_shift'
+                        ? 'Shared historical root: words share a common ancestor but diverged in meaning'
+                        : 'Accidental lookalike: unrelated words that look or sound alike by coincidence'
+                    }
+                  >
+                    {currentQuizItem.false_friend_type === 'etymological_shift'
+                      ? 'Shared Root · Diverged'
+                      : 'Accidental Lookalike'}
+                  </span>
+                )}
                 {currentStreak > 1 && (
                   <span className="typo-metric-table text-shifted-ink text-xs font-medium inline-flex items-center gap-1.5">
                     <MaterialSymbol icon="local_fire_department" size={18} className="text-shifted-ink" /> {currentStreak} streak
