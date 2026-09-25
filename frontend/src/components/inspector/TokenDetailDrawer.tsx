@@ -312,7 +312,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             <span className="typo-metric-table text-ink-muted">{alternatives.length}</span>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1.5">
             {alternatives.map((alt: AlternativeWord, idx: number) => {
               const isSameForm = alt.form.toLowerCase() === tokenAnalysis.token.toLowerCase();
               const matchEntries = Object.entries(alt.cognate_matches);
@@ -424,7 +424,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
           <span className="typo-metric-table text-ink-muted">{matches.length}</span>
         </div>
 
-        <div className="divide-y divide-book-rule/50">
+        <div className="divide-y divide-book-rule/50 max-h-80 overflow-y-auto pr-1.5">
           {matches.map(([lang, match]) => {
             const isCognate = match.category === 'true_cognate' || match.category === 'cognate';
             const isPartial = match.category === 'partial_cognate' || match.category === 'cousin';

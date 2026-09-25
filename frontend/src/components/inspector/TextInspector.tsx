@@ -307,7 +307,7 @@ export const TextInspector: React.FC = () => {
                     Cognate substitution without syntactic reordering
                   </span>
                 </div>
-                <div className="divide-y divide-book-rule/60 border-t border-b border-book-rule">
+                <div className="divide-y divide-book-rule/60 border-t border-b border-book-rule max-h-64 sm:max-h-72 overflow-y-auto pr-1.5">
                   {Object.entries(translations).map(([lang, transText]) => (
                     <div
                       key={lang}
