@@ -59,7 +59,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     return (saved as ViewingMode) || 'blind';
   });
 
-  const [selectedTier, setSelectedTier] = useState<string>('all');
+  const [selectedTier, setSelectedTier] = useState<string>('etymological_shift');
   const [showSourceHint, setShowSourceHint] = useState(false);
 
   useEffect(() => {
