@@ -11,27 +11,245 @@ interface TokenDetailDrawerProps {
   onSubstitute?: (token: TokenAnalysis, newForm: string) => void;
 }
 
+const POS_FULL_MAP: Record<string, string> = {
+  adj: 'adjective',
+  adp: 'preposition',
+  adv: 'adverb',
+  aux: 'auxiliary verb',
+  cconj: 'coordinating conjunction',
+  det: 'determiner',
+  intj: 'interjection',
+  noun: 'noun',
+  num: 'numeral',
+  part: 'particle',
+  pron: 'pronoun',
+  propn: 'proper noun',
+  punct: 'punctuation',
+  sconj: 'subordinating conjunction',
+  sym: 'symbol',
+  verb: 'verb',
+  x: 'other',
+};
+
+const formatPosFull = (pos?: string): string | null => {
+  if (!pos) return null;
+  const p = pos.toLowerCase();
+  return POS_FULL_MAP[p] ?? p;
+};
+
+const DEP_REL_MAP: Record<string, string> = {
+  root: 'predicate',
+  obj: 'direct object',
+  iobj: 'indirect object',
+  nsubj: 'subject',
+  'nsubj:pass': 'passive subject',
+  csubj: 'clausal subject',
+  'csubj:pass': 'passive clausal subject',
+  obl: 'adverbial',
+  'obl:agent': 'agent',
+  amod: 'adjectival modifier',
+  advmod: 'adverbial modifier',
+  case: 'preposition',
+  det: 'determiner',
+  conj: 'conjunct',
+  cc: 'coordinating conjunction',
+  cop: 'copula',
+  aux: 'auxiliary',
+  'aux:pass': 'passive auxiliary',
+  mark: 'marker',
+  compound: 'compound',
+  'compound:prt': 'particle',
+  flat: 'name component',
+  nummod: 'numeric modifier',
+  appos: 'appositive',
+  nmod: 'nominal modifier',
+  'nmod:poss': 'possessive modifier',
+  acl: 'clausal modifier',
+  'acl:relcl': 'relative clause',
+  advcl: 'adverbial clause',
+  xcomp: 'clausal complement',
+  ccomp: 'clausal complement',
+  vocative: 'vocative',
+  discourse: 'discourse element',
+  punct: 'punctuation',
+  fixed: 'fixed expression',
+  list: 'list item',
+  parataxis: 'parataxis',
+  orphan: 'orphan',
+  goeswith: 'word fragment',
+  reparandum: 'speech repair',
+  dep: 'dependent',
+};
+
 const formatDepContext = (depRel?: string, headText?: string): string | null => {
   if (!depRel) return null;
   const rel = depRel.toLowerCase();
-  if (rel === 'root') return 'predicate';
-  const roleName =
-    rel === 'obj' ? 'direct object' :
-    rel === 'iobj' ? 'indirect object' :
-    rel === 'nsubj' || rel === 'nsubj:pass' ? 'subject' :
-    rel === 'obl' ? 'adverbial' :
-    rel === 'amod' ? 'adjectival modifier' :
-    rel === 'advmod' ? 'adverbial modifier' :
-    rel === 'case' ? 'preposition' :
-    rel === 'det' ? 'determiner' :
-    rel;
-
+  const roleName = DEP_REL_MAP[rel] ?? rel;
   return headText ? `${roleName} of “${headText}”` : roleName;
+};
+
+const MORPH_KEY_EXPANSIONS: Record<string, string> = {
+  case: 'case',
+  definite: 'definite',
+  gender: 'gender',
+  number: 'number',
+  tense: 'tense',
+  verbform: 'verb form',
+  mood: 'mood',
+  person: 'person',
+  degree: 'degree',
+  voice: 'voice',
+  aspect: 'aspect',
+  prontype: 'pronoun type',
+  numtype: 'numeral type',
+  poss: 'possessive',
+  reflex: 'reflexive',
+  polarity: 'polarity',
+  abbr: 'abbreviation',
+  foreign: 'foreign',
+};
+
+const MORPH_VALUE_EXPANSIONS: Record<string, Record<string, string>> = {
+  case: {
+    nom: 'nominative',
+    acc: 'accusative',
+    dat: 'dative',
+    gen: 'genitive',
+    ins: 'instrumental',
+    loc: 'locative',
+    voc: 'vocative',
+    abl: 'ablative',
+  },
+  definite: {
+    def: 'definite',
+    ind: 'indefinite',
+    spec: 'specific',
+    cons: 'construct',
+  },
+  gender: {
+    com: 'common',
+    masc: 'masculine',
+    fem: 'feminine',
+    neut: 'neuter',
+  },
+  number: {
+    sing: 'singular',
+    plur: 'plural',
+    dual: 'dual',
+    pauc: 'paucal',
+  },
+  tense: {
+    pres: 'present',
+    past: 'past',
+    fut: 'future',
+    imp: 'imperfect',
+    pqp: 'pluperfect',
+  },
+  verbform: {
+    fin: 'finite',
+    inf: 'infinitive',
+    part: 'participle',
+    sup: 'supine',
+    ger: 'gerund',
+    conv: 'converb',
+  },
+  mood: {
+    ind: 'indicative',
+    sub: 'subjunctive',
+    imp: 'imperative',
+    cnd: 'conditional',
+    pot: 'potential',
+    opt: 'optative',
+  },
+  person: {
+    '1': 'first person',
+    '2': 'second person',
+    '3': 'third person',
+    '0': 'impersonal',
+  },
+  degree: {
+    pos: 'positive',
+    cmp: 'comparative',
+    comp: 'comparative',
+    sup: 'superlative',
+    abs: 'absolute superlative',
+  },
+  voice: {
+    act: 'active',
+    pass: 'passive',
+    mid: 'middle',
+    rcp: 'reciprocal',
+    cau: 'causative',
+  },
+  aspect: {
+    imp: 'imperfective',
+    perf: 'perfective',
+    iter: 'iterative',
+  },
+  prontype: {
+    prs: 'personal',
+    dem: 'demonstrative',
+    rel: 'relative',
+    int: 'interrogative',
+    ind: 'indefinite',
+    tot: 'total',
+    neg: 'negative',
+    art: 'article',
+    emp: 'emphatic',
+    exc: 'exclamative',
+  },
+  numtype: {
+    card: 'cardinal',
+    ord: 'ordinal',
+    mult: 'multiplicative',
+    frac: 'fraction',
+  },
+  polarity: {
+    pos: 'positive',
+    neg: 'negative',
+  },
+};
+
+const GENERIC_VALUE_EXPANSIONS: Record<string, string> = {
+  nom: 'nominative',
+  acc: 'accusative',
+  dat: 'dative',
+  gen: 'genitive',
+  def: 'definite',
+  ind: 'indefinite',
+  com: 'common',
+  masc: 'masculine',
+  fem: 'feminine',
+  neut: 'neuter',
+  sing: 'singular',
+  plur: 'plural',
+  pres: 'present',
+  past: 'past',
+  fin: 'finite',
+  inf: 'infinitive',
+  part: 'participle',
+  sup: 'supine',
+  act: 'active',
+  pass: 'passive',
+  pos: 'positive',
+  cmp: 'comparative',
+  comp: 'comparative',
 };
 
 const formatMorph = (morph?: Record<string, string>): string | null => {
   if (!morph || Object.keys(morph).length === 0) return null;
-  return Object.entries(morph).map(([k, v]) => `${k.toLowerCase()}: ${v.toLowerCase()}`).join(', ');
+  return Object.entries(morph)
+    .map(([rawKey, rawVal]) => {
+      const keyLower = rawKey.toLowerCase();
+      const valLower = rawVal.toLowerCase();
+      const expandedKey = MORPH_KEY_EXPANSIONS[keyLower] ?? keyLower;
+      const expandedVal =
+        MORPH_VALUE_EXPANSIONS[keyLower]?.[valLower] ??
+        GENERIC_VALUE_EXPANSIONS[valLower] ??
+        valLower;
+      return `${expandedKey}: ${expandedVal}`;
+    })
+    .join(', ');
 };
 
 export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
@@ -57,7 +275,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             </h2>
             {tokenAnalysis.pos && (
               <span className="typo-pos">
-                {tokenAnalysis.pos.toLowerCase()}
+                {formatPosFull(tokenAnalysis.pos)}
               </span>
             )}
             {tokenAnalysis.lemma && tokenAnalysis.lemma !== tokenAnalysis.token.toLowerCase() && (
@@ -81,7 +299,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
           <div className="typo-sublabel flex items-baseline gap-2 flex-wrap pt-0.5">
             {depContext && <span>{depContext}</span>}
             {depContext && morphText && <span className="text-book-rule-strong">•</span>}
-            {morphText && <span className="font-mono text-ink-light">{morphText}</span>}
+            {morphText && <span className="text-ink-muted">{morphText}</span>}
           </div>
         )}
       </div>
@@ -258,10 +476,10 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
 
                 <div className="typo-metric-table text-ink-light pl-10.5 flex gap-4">
                   <span>
-                    sem: {(match.semantic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(0)}%
+                    semantic: {(match.semantic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(0)}%
                   </span>
                   <span>
-                    phon: {(match.phonetic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(0)}%
+                    phonetic: {(match.phonetic_sim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(0)}%
                   </span>
                 </div>
               </div>

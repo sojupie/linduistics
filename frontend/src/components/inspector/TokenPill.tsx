@@ -7,6 +7,25 @@ interface TokenPillProps {
   onSelect: (token: TokenAnalysis) => void;
 }
 
+const POS_EXPANSIONS: Record<string, string> = {
+  adj: 'adjective',
+  adp: 'preposition',
+  adv: 'adverb',
+  aux: 'auxiliary',
+  cconj: 'conjunction',
+  det: 'determiner',
+  intj: 'interjection',
+  noun: 'noun',
+  num: 'numeral',
+  part: 'particle',
+  pron: 'pronoun',
+  propn: 'proper noun',
+  punct: 'punctuation',
+  sconj: 'conjunction',
+  sym: 'symbol',
+  verb: 'verb',
+};
+
 const getDepLabel = (dep?: string): string | null => {
   if (!dep) return null;
   switch (dep.toLowerCase()) {
@@ -18,28 +37,28 @@ const getDepLabel = (dep?: string): string | null => {
     case 'obj':
       return 'object';
     case 'iobj':
-      return 'ind. obj';
+      return 'indirect object';
     case 'obl':
       return 'adverbial';
     case 'case':
-      return 'prep';
+      return 'preposition';
     case 'amod':
-      return 'adj mod';
+      return 'adjective';
     case 'advmod':
-      return 'adv mod';
+      return 'adverb';
     case 'det':
-      return 'det';
+      return 'determiner';
     case 'conj':
       return 'conjunct';
     case 'cc':
-      return 'conj';
+      return 'conjunction';
     case 'cop':
       return 'copula';
     case 'aux':
     case 'aux:pass':
-      return 'aux';
+      return 'auxiliary';
     default:
-      return dep.length <= 6 ? dep.toLowerCase() : null;
+      return dep.length <= 10 ? dep.toLowerCase() : null;
   }
 };
 
@@ -66,7 +85,7 @@ export const TokenPill: React.FC<TokenPillProps> = ({
 
   const depLabel = getDepLabel(tokenAnalysis.dep_rel);
   const fallbackLabel = tokenAnalysis.pos
-    ? tokenAnalysis.pos.toLowerCase()
+    ? POS_EXPANSIONS[tokenAnalysis.pos.toLowerCase()] ?? tokenAnalysis.pos.toLowerCase()
     : tokenAnalysis.coverage_ratio > 0
     ? `${Math.round(tokenAnalysis.coverage_ratio * 100)}%`
     : null;
