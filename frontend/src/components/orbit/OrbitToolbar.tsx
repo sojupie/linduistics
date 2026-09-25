@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguagesQuery } from '../../services/queries';
 import { LanguageSelect } from '../common/LanguagePicker';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 export type OrbitRegister = 'vernacular' | 'academic';
 export type OrbitModality = 'phonetic' | 'spelling';
@@ -40,28 +41,34 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
       {/* Register and modality controls */}
       <div className="flex flex-wrap items-center gap-4">
         {/* Modality: Sound vs Spelling */}
-        <div className="flex items-center rounded-xs border border-book-rule bg-page-muted/80 p-0.5 typo-sublabel">
+        <div className="flex items-center rounded-xs border border-book-rule bg-page-muted/50 p-0.5 typo-sublabel">
           <button
             type="button"
             onClick={() => onModalityChange('phonetic')}
-            className={`rounded-xs px-3 py-1 transition-colors cursor-pointer ${
+            className={`rounded-xs px-2.5 py-1 transition-colors cursor-pointer inline-flex items-center gap-1.5 border ${
               modality === 'phonetic'
-                ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
             }`}
           >
-            Phonetic distance
+            {modality === 'phonetic' && (
+              <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+            )}
+            <span>Phonetic distance</span>
           </button>
           <button
             type="button"
             onClick={() => onModalityChange('spelling')}
-            className={`rounded-xs px-3 py-1 transition-colors cursor-pointer ${
+            className={`rounded-xs px-2.5 py-1 transition-colors cursor-pointer inline-flex items-center gap-1.5 border ${
               modality === 'spelling'
-                ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
             }`}
           >
-            Orthographic distance
+            {modality === 'spelling' && (
+              <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+            )}
+            <span>Orthographic distance</span>
           </button>
         </div>
 

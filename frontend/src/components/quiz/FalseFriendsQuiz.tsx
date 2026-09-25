@@ -236,21 +236,24 @@ export const FalseFriendsQuiz: React.FC = () => {
         {/* Etymological Type Filter Segmented Control */}
         <div className="flex items-center gap-2">
           <span className="typo-sublabel text-ink-muted">Type:</span>
-          <div className="inline-flex border border-book-rule bg-page-muted/80 p-0.5 rounded-xs">
+          <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
             <button
               type="button"
               onClick={() => {
                 setSelectedTier('all');
                 handleRestartQuiz();
               }}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 selectedTier === 'all'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Test all false friends (both historical cognates and accidental lookalikes)"
             >
-              All Pairs
+              {selectedTier === 'all' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>All Pairs</span>
             </button>
             <button
               type="button"
@@ -258,14 +261,17 @@ export const FalseFriendsQuiz: React.FC = () => {
                 setSelectedTier('etymological_shift');
                 handleRestartQuiz();
               }}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 selectedTier === 'etymological_shift'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Shared roots: words sharing an ancestral root whose meanings diverged over centuries (e.g. English 'gift' vs German 'Gift')"
             >
-              Shared Roots
+              {selectedTier === 'etymological_shift' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Shared Roots</span>
             </button>
             <button
               type="button"
@@ -273,14 +279,17 @@ export const FalseFriendsQuiz: React.FC = () => {
                 setSelectedTier('surface_collision');
                 handleRestartQuiz();
               }}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 selectedTier === 'surface_collision'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Accidental lookalikes: unrelated words that coincidentally look or sound alike (e.g. English 'bad' vs German 'Bad')"
             >
-              Accidental Lookalikes
+              {selectedTier === 'surface_collision' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Accidental Lookalikes</span>
             </button>
           </div>
         </div>
@@ -288,42 +297,51 @@ export const FalseFriendsQuiz: React.FC = () => {
         {/* Viewing Mode Segmented Control */}
         <div className="flex items-center gap-2">
           <span className="typo-sublabel text-ink-muted">View:</span>
-          <div className="inline-flex border border-book-rule bg-page-muted/80 p-0.5 rounded-xs">
+          <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
             <button
               type="button"
               onClick={() => setViewingMode('blind')}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 viewingMode === 'blind'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Both headwords shown, but source definition masked to prevent triangulation"
             >
-              Blind Deck
+              {viewingMode === 'blind' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Blind Deck</span>
             </button>
             <button
               type="button"
               onClick={() => setViewingMode('target_only')}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 viewingMode === 'target_only'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Only target word displayed; counterpart reveals upon answering"
             >
-              Target Only
+              {viewingMode === 'target_only' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Target Only</span>
             </button>
             <button
               type="button"
               onClick={() => setViewingMode('comparative')}
-              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
                 viewingMode === 'comparative'
-                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
               title="Source definition visible upfront (assisted study)"
             >
-              Assisted
+              {viewingMode === 'comparative' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Assisted</span>
             </button>
           </div>
         </div>
