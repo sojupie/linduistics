@@ -5,6 +5,7 @@ import { MaterialSymbol } from './MaterialSymbol';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
 import { Phonetic } from './Phonetic';
 import { getLanguageName } from '../../data/languages';
+import logoUrl from '../../assets/logo.png';
 
 export const Header: React.FC = () => {
   const routerState = useRouterState();
@@ -30,8 +31,13 @@ export const Header: React.FC = () => {
       <div className="w-full flex items-center justify-between px-6 sm:px-8 lg:px-12 py-4">
         {/* Application title */}
         <div className="flex-none">
-          <Link to="/orbit" className="text-decoration-none">
-            <h1 className="typo-page-title tracking-tight text-ink-main hover:opacity-80 transition-opacity">
+          <Link to="/orbit" className="text-decoration-none flex items-center gap-2.5 group">
+            <img
+              src={logoUrl}
+              alt="Linduistics Logo"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover group-hover:opacity-80 transition-opacity"
+            />
+            <h1 className="typo-page-title tracking-tight text-ink-main group-hover:opacity-80 transition-opacity">
               Linduistics
             </h1>
           </Link>
