@@ -181,3 +181,15 @@ func TestClusterByRootEndpoint(t *testing.T) {
 	}
 }
 
+func TestSearchEndpointCrossLingual(t *testing.T) {
+	router := setupTestServer(t)
+	req := httptest.NewRequest("GET", "/api/search?q=portend", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+	t.Logf("Search result for portend: %s", w.Body.String())
+}
+
