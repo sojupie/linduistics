@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { useHeadwordSearchQuery } from '../../services/queries';
 import { MaterialSymbol } from './MaterialSymbol';
@@ -61,7 +62,7 @@ export const Header: React.FC = () => {
             aria-label={mobileNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileNavOpen}
           >
-            <MaterialSymbol icon={mobileNavOpen ? 'close' : 'menu'} size={24} />
+            <MaterialSymbol icon="menu" size={24} />
           </button>
 
           <Link to="/orbit" className="text-decoration-none flex items-center gap-2.5 group">
@@ -200,94 +201,105 @@ export const Header: React.FC = () => {
         </div>
       )}
 
-      {/* Mobile drawer backdrop */}
-      <div
-        className={`fixed inset-0 z-50 bg-ink-main/30 backdrop-blur-xs md:hidden transition-opacity duration-300 ${
-          mobileNavOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setMobileNavOpen(false)}
-        aria-hidden="true"
-      />
-
-      {/* Mobile drawer panel (opens from the left) */}
-      <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-[80vw] bg-page-surface border-r border-book-rule shadow-2xl flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
-          mobileNavOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-full pointer-events-none'
-        }`}
-        role="dialog"
-        aria-modal={mobileNavOpen}
-        aria-label="Mobile navigation"
-      >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-book-rule bg-page-bg">
-          <Link
-            to="/orbit"
-            onClick={() => setMobileNavOpen(false)}
-            className="text-decoration-none flex items-center gap-2.5 group"
+      {/* Mobile drawer rendered into document.body to escape header backdrop-filter containing block */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-50 md:hidden ${
+              mobileNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
+            }`}
+            aria-hidden={!mobileNavOpen}
           >
-            <img
-              src={logoUrl}
-              alt="Linduistics Logo"
-              className="w-7 h-7 rounded-full object-cover group-hover:opacity-80 transition-opacity"
+            {/* Backdrop */}
+            <div
+              className={`fixed inset-0 bg-ink-main/40 backdrop-blur-xs transition-opacity duration-300 ${
+                mobileNavOpen ? 'opacity-100' : 'opacity-0'
+              }`}
+              onClick={() => setMobileNavOpen(false)}
             />
-            <span className="typo-page-title tracking-tight text-ink-main group-hover:opacity-80 transition-opacity">
-              Linduistics
-            </span>
-          </Link>
-          <button
-            type="button"
-            onClick={() => setMobileNavOpen(false)}
-            className="p-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
-            aria-label="Close navigation menu"
-          >
-            <MaterialSymbol icon="close" size={20} />
-          </button>
-        </div>
 
-        {/* Drawer navigation links */}
-        <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-          {navLinks.map((link) => {
-            const isActive =
-              currentPath === link.to ||
-              (link.to === '/orbit' && currentPath === '/');
+            {/* Panel */}
+            <aside
+              className={`fixed inset-y-0 left-0 w-72 max-w-[85vw] h-full h-dvh bg-page-surface border-r border-book-rule shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
+                mobileNavOpen ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              role="dialog"
+              aria-modal={mobileNavOpen}
+              aria-label="Mobile navigation"
+            >
+              {/* Drawer header */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-book-rule bg-page-bg shrink-0">
+                <Link
+                  to="/orbit"
+                  onClick={() => setMobileNavOpen(false)}
+                  className="text-decoration-none flex items-center gap-2.5 group"
+                >
+                  <img
+                    src={logoUrl}
+                    alt="Linduistics Logo"
+                    className="w-7 h-7 rounded-full object-cover group-hover:opacity-80 transition-opacity"
+                  />
+                  <span className="typo-page-title tracking-tight text-ink-main group-hover:opacity-80 transition-opacity">
+                    Linduistics
+                  </span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setMobileNavOpen(false)}
+                  className="p-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
+                  aria-label="Close navigation menu"
+                >
+                  <MaterialSymbol icon="close" size={20} />
+                </button>
+              </div>
 
-            return (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setMobileNavOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors typo-nav ${
-                  isActive
-                    ? 'bg-page-muted text-ink-main font-semibold border-l-2 border-cognate-ink pl-2.5'
-                    : 'text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-                }`}
-              >
-                <MaterialSymbol
-                  icon={link.icon}
-                  size={20}
-                  className={isActive ? 'text-cognate-ink' : 'text-ink-light'}
-                />
-                <span>{link.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
+              {/* Drawer navigation links */}
+              <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                {navLinks.map((link) => {
+                  const isActive =
+                    currentPath === link.to ||
+                    (link.to === '/orbit' && currentPath === '/');
 
-        {/* Drawer footer */}
-        <div className="p-4 border-t border-book-rule bg-page-bg/50">
-          <button
-            type="button"
-            onClick={() => {
-              setMobileNavOpen(false);
-              setSearchOpen(true);
-            }}
-            className="w-full flex items-center justify-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-2 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
-          >
-            <MaterialSymbol icon="search" size={18} />
-            <span>Search dictionary</span>
-          </button>
-        </div>
-      </aside>
+                  return (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileNavOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors typo-nav ${
+                        isActive
+                          ? 'bg-page-muted text-ink-main font-semibold border-l-2 border-cognate-ink pl-2.5'
+                          : 'text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+                      }`}
+                    >
+                      <MaterialSymbol
+                        icon={link.icon}
+                        size={20}
+                        className={isActive ? 'text-cognate-ink' : 'text-ink-light'}
+                      />
+                      <span>{link.label}</span>
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              {/* Drawer footer */}
+              <div className="p-4 border-t border-book-rule bg-page-bg/50 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileNavOpen(false);
+                    setSearchOpen(true);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-2 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
+                >
+                  <MaterialSymbol icon="search" size={18} />
+                  <span>Search dictionary</span>
+                </button>
+              </div>
+            </aside>
+          </div>,
+          document.body,
+        )}
     </header>
   );
 };
