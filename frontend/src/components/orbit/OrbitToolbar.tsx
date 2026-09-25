@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguagesQuery } from '../../services/queries';
-import { getLanguageName } from '../../data/languages';
+import { LanguageSelect } from '../common/LanguagePicker';
 
 export type OrbitRegister = 'vernacular' | 'academic';
 export type OrbitModality = 'phonetic' | 'spelling';
@@ -30,27 +30,17 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 border-b border-book-rule bg-page-surface px-6 py-4 font-serif">
       {/* Reference language selector */}
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-ink-muted">
-          Center language:
-        </span>
-        <select
-          value={anchor}
-          onChange={(e) => onAnchorChange(e.target.value)}
-          className="rounded border border-book-rule bg-page-bg px-3 py-1.5 text-base text-ink-main focus:outline-none"
-        >
-          {availableLanguages.map((code) => (
-            <option key={code} value={code}>
-              {getLanguageName(code)}
-            </option>
-          ))}
-        </select>
-      </div>
+      <LanguageSelect
+        label="Center language:"
+        value={anchor}
+        languages={availableLanguages}
+        onChange={onAnchorChange}
+      />
 
       {/* Register and modality controls */}
       <div className="flex flex-wrap items-center gap-4">
         {/* Modality: Sound vs Spelling */}
-        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 text-sm">
+        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 typo-sublabel">
           <button
             type="button"
             onClick={() => onModalityChange('phonetic')}
@@ -79,7 +69,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
         <button
           type="button"
           onClick={onTogglePause}
-          className={`rounded border px-3 py-1.5 text-sm transition-colors ${
+          className={`rounded border px-3 py-1.5 typo-sublabel transition-colors ${
             isPaused
               ? 'border-shifted-border bg-shifted-bg text-shifted-ink font-medium'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'

@@ -25,7 +25,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
   if (!pair) {
     return (
       <div className="py-24 text-center text-ink-muted font-serif">
-        <p className="text-base italic leading-relaxed">
+        <p className="typo-note leading-relaxed">
           Select a word pair from the lexicon to view comparative etymology, definitions, and phonetic transcriptions.
         </p>
       </div>
@@ -116,9 +116,9 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       {/* 1. Word Pair Title Plate */}
       <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
-        <div className="flex items-center justify-between text-xs uppercase tracking-wider text-ink-muted font-deck font-normal border-b border-book-rule/60 pb-2.5">
+        <div className="flex items-center justify-between typo-overline border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
-          <span className={`text-xs font-normal tracking-wider px-2 py-0.5 border ${
+          <span className={`typo-badge px-2.5 py-0.5 border rounded ${
             pair.category === 'false_friend'
               ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
               : pair.category === 'true_cognate'
@@ -133,26 +133,26 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="text-2xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+            <span className="typo-lang-code shrink-0">
               {sourceLang.toUpperCase()}
             </span>
-            <h2 className="font-deck text-2xl font-medium text-ink-main tracking-tight leading-tight">
+            <h2 className="typo-headword-display text-ink-main">
               {pair.wordA}{posAbbrA ? ',' : ''}
             </h2>
             {posAbbrA && (
-              <span className="table-pos text-lg italic font-serif text-ink-muted">
+              <span className="typo-pos-display">
                 {posAbbrA}
               </span>
             )}
             {pair.ipaA && (
-              <Phonetic ipa={pair.ipaA} className="text-base text-stone-800 font-normal" />
+              <Phonetic ipa={pair.ipaA} className="table-ipa" />
             )}
           </div>
 
           {/* Symmetrical Lexical Axis Divider */}
           <div className="flex items-center gap-3 text-ink-muted/40 py-0.5">
             <div className="flex-1 border-t border-book-rule"></div>
-            <span className="font-serif italic text-xs tracking-wider text-ink-muted font-normal">
+            <span className="typo-sublabel italic font-serif">
               corresponds in {targetName} to
             </span>
             <div className="flex-1 border-t border-book-rule"></div>
@@ -160,10 +160,10 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
           {/* Target Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="text-xs uppercase tracking-widest font-mono font-medium text-ink-muted bg-page-muted px-2 py-0.5 border border-book-rule shrink-0">
+            <span className="typo-lang-code shrink-0">
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`font-deck text-2xl font-medium tracking-tight leading-tight ${
+            <h2 className={`typo-headword-display ${
               pair.category === 'false_friend'
                 ? 'text-falsefriend-ink'
                 : pair.category === 'true_cognate'
@@ -173,19 +173,19 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               {pair.wordB}{posAbbrB ? ',' : ''}
             </h2>
             {posAbbrB && (
-              <span className="table-pos text-lg italic font-serif text-ink-muted">
+              <span className="typo-pos-display">
                 {posAbbrB}
               </span>
             )}
             {pair.ipaB && (
-              <Phonetic ipa={pair.ipaB} className="text-base text-stone-800 font-normal" />
+              <Phonetic ipa={pair.ipaB} className="table-ipa" />
             )}
           </div>
         </div>
 
         {/* False Friend Distinction Advisory */}
         {pair.category === 'false_friend' && (
-          <div className="pt-3 border-t border-book-rule/80 text-sm text-falsefriend-ink leading-relaxed italic bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
+          <div className="pt-3 border-t border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {pair.falseFriendType === 'etymological_shift'
               ? 'Etymological Shift (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern definitions divergent or mutually deceptive.'
               : 'Surface Collision: Headwords represent historically unrelated roots that have accidentally converged in pronunciation or spelling.'}
@@ -195,45 +195,45 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
       {/* 2. Similarity Coefficients */}
       <div className="border-y border-book-rule py-3 px-2 space-y-2 bg-page-muted/30">
-        <div className="font-deck text-base text-ink-main font-normal">
+        <div className="typo-section-header">
           Similarity Coefficients
         </div>
         <div className="grid grid-cols-3 gap-2 text-center divide-x divide-book-rule">
           <div className="px-2">
-            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
+            <span className="typo-sublabel block mb-1">
               Orthographic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub>
+              <span className="typo-pos text-ink-main">
+                Δ<sub className="typo-subscript">o</sub>
               </span>
-              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
+              <span className="typo-metric">
                 {pair.orthographicSim.toFixed(2)}
               </span>
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
+            <span className="typo-sublabel block mb-1">
               Phonetic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub>
+              <span className="typo-pos text-ink-main">
+                Δ<sub className="typo-subscript">p</sub>
               </span>
-              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
+              <span className="typo-metric">
                 {pair.phoneticSim.toFixed(2)}
               </span>
             </div>
           </div>
           <div className="px-2">
-            <span className="text-xs font-deck font-medium text-ink-muted block mb-1">
+            <span className="typo-sublabel block mb-1">
               Semantic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="font-serif font-normal text-ink-main text-sm">
-                Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub>
+              <span className="typo-pos text-ink-main">
+                Δ<sub className="typo-subscript">s</sub>
               </span>
-              <span className="font-mono font-medium text-base text-ink-main tabular-nums">
+              <span className="typo-metric">
                 {pair.semanticSim.toFixed(2)}
               </span>
             </div>
@@ -243,74 +243,74 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
       {/* 3. Etymological Lineage */}
       <div className="space-y-4 pt-1 border-b border-book-rule pb-5">
-        <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
+        <div className="typo-section-header border-b border-book-rule pb-1.5">
           Etymological Descent & Lineage
         </div>
 
         {pair.etymRoot ? (
           <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2.5">
-            <span className="font-deck text-xs font-medium text-ink-muted block">
+            <span className="typo-sublabel block">
               Reconstructed Ancestral Root
             </span>
             <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-xl font-medium font-deck text-ink-main italic">
+              <span className="typo-headword-row text-ink-main italic">
                 {parsedRoot.lemma}
               </span>
               {parsedRoot.language && (
-                <span className="text-sm font-serif italic text-ink-muted">
+                <span className="typo-note text-ink-muted">
                   ({parsedRoot.language})
                 </span>
               )}
             </div>
 
             {/* Directional Descent Chain */}
-            <div className="pt-2 border-t border-book-rule/60 text-sm text-ink-main font-serif flex items-center gap-2 flex-wrap">
-              <span className="font-deck text-xs font-medium text-ink-muted">Descent:</span>
+            <div className="pt-2 border-t border-book-rule/60 typo-body text-ink-main flex items-center gap-2 flex-wrap">
+              <span className="typo-sublabel">Descent:</span>
               <span className="font-deck font-medium italic text-cognate-ink">
                 {parsedRoot.lemma}
               </span>
               <span className="text-ink-muted font-serif">→</span>
               <span className="font-serif text-ink-main">
                 <span className="font-deck font-medium">{pair.wordA}</span>{' '}
-                <span className="text-xs italic text-ink-muted font-serif">({sourceName})</span>
+                <span className="typo-sublabel italic font-serif">({sourceName})</span>
               </span>
-              <span className="text-ink-muted font-serif text-xs">,</span>
+              <span className="typo-sublabel font-serif">,</span>
               <span className="font-serif text-ink-main">
                 <span className="font-deck font-medium">{pair.wordB}</span>{' '}
-                <span className="text-xs italic text-ink-muted font-serif">({targetName})</span>
+                <span className="typo-sublabel italic font-serif">({targetName})</span>
               </span>
             </div>
           </div>
         ) : (
-          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 text-sm text-ink-muted italic">
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note">
             Direct reconstructed proto-etymon currently undergoing comparative triangulation.
           </div>
         )}
 
         {pair.etymTextA && (
-          <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-deck font-medium text-ink-muted block text-xs">
+          <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+            <span className="typo-sublabel block">
               {sourceName} Historical Descent:
             </span>
-            <p className="font-serif text-base leading-relaxed text-ink-main">{pair.etymTextA}</p>
+            <p>{pair.etymTextA}</p>
           </div>
         )}
 
         {pair.etymTextB && (
-          <div className="text-base text-ink-main leading-relaxed pl-3.5 border-l-2 border-book-rule-strong space-y-1">
-            <span className="font-deck font-medium text-ink-muted block text-xs">
+          <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">
+            <span className="typo-sublabel block">
               {targetName} Historical Descent:
             </span>
-            <p className="font-serif text-base leading-relaxed text-ink-main">{pair.etymTextB}</p>
+            <p>{pair.etymTextB}</p>
           </div>
         )}
 
         {/* Pan-Germanic Sister Cognates */}
         {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
           <div className="pt-2 space-y-2">
-            <div className="flex items-center justify-between text-xs text-ink-main font-deck font-medium border-b border-book-rule/60 pb-1.5">
+            <div className="flex items-center justify-between typo-sublabel text-ink-main border-b border-book-rule/60 pb-1.5">
               <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
-              <span className="italic font-serif normal-case font-normal text-xs text-ink-muted">
+              <span className="typo-note text-ink-muted normal-case font-normal">
                 {cognateCluster.proto_language}
               </span>
             </div>
@@ -323,21 +323,21 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     className="flex items-baseline justify-between py-2 gap-3"
                   >
                     <div className="flex items-baseline gap-2.5 flex-wrap">
-                      <span className="text-xs font-mono font-medium text-ink-muted uppercase w-8 shrink-0">
+                      <span className="typo-metric-table text-ink-muted uppercase w-8 shrink-0">
                         {m.lang}
                       </span>
-                      <span className="font-serif font-normal text-ink-main text-base">
+                      <span className="typo-headword-row text-ink-main">
                         {m.word}{sisterPos ? ',' : ''}
                       </span>
                       {sisterPos && (
-                        <span className="table-pos text-xs italic font-serif text-ink-muted">
+                        <span className="table-pos text-ink-muted">
                           {sisterPos}
                         </span>
                       )}
-                      {m.ipa && <Phonetic ipa={m.ipa} className="text-xs text-stone-800" />}
+                      {m.ipa && <Phonetic ipa={m.ipa} className="table-ipa" />}
                     </div>
                     {m.gloss && (
-                      <span className="text-sm text-ink-muted italic max-w-[220px] truncate text-right shrink-0">
+                      <span className="typo-gloss max-w-[220px] truncate text-right shrink-0">
                         “{m.gloss}”
                       </span>
                     )}
@@ -351,27 +351,27 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
       {/* 4. Sense Inventory & Definitions */}
       <div className="space-y-5 pb-6">
-        <div className="font-deck text-base text-ink-main font-normal border-b border-book-rule pb-1.5">
+        <div className="typo-section-header border-b border-book-rule pb-1.5">
           Sense Inventory & Definitions
         </div>
 
         {/* Source Language Senses */}
         <div className="space-y-3">
-          <div className="text-xs font-medium font-deck text-ink-muted border-b border-book-rule/60 pb-1">
+          <div className="typo-sublabel border-b border-book-rule/60 pb-1">
             <span>{sourceName} Senses ({sensesListA.length})</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListA.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrA;
               return (
-                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-base font-serif leading-relaxed">
-                  <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 typo-body">
+                  <span className="font-bold text-ink-main shrink-0 w-5 pt-0.5">
                     {idx + 1}.
                   </span>
                   <div className="flex-1 min-w-0">
                     <span className="text-ink-main">
                       {sensePos && (
-                        <span className="table-pos text-sm italic font-serif text-ink-muted mr-1.5 font-normal">
+                        <span className="table-pos text-ink-muted mr-1.5">
                           {sensePos}
                         </span>
                       )}
@@ -380,12 +380,12 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center text-2xs text-cognate-ink font-serif italic bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                        Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2 inline-block text-2xs text-ink-muted italic font-serif">
+                      <span className="ml-2 inline-block typo-badge text-ink-muted italic">
                         (archaic)
                       </span>
                     )}
@@ -398,21 +398,21 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
         {/* Target Language Senses */}
         <div className="space-y-3 pt-2">
-          <div className="text-xs font-medium font-deck text-ink-muted border-b border-book-rule/60 pb-1">
+          <div className="typo-sublabel border-b border-book-rule/60 pb-1">
             <span>{targetName} Senses ({sensesListB.length})</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListB.map((s, idx) => {
               const sensePos = formatPos(s.pos) || posAbbrB;
               return (
-                <div key={s.sense_id || idx} className="flex items-start gap-2.5 text-base font-serif leading-relaxed">
-                  <span className="font-bold text-ink-main text-base shrink-0 w-5 pt-0.5">
+                <div key={s.sense_id || idx} className="flex items-start gap-2.5 typo-body">
+                  <span className="font-bold text-ink-main shrink-0 w-5 pt-0.5">
                     {idx + 1}.
                   </span>
                   <div className="flex-1 min-w-0">
                     <span className="text-ink-main">
                       {sensePos && (
-                        <span className="table-pos text-sm italic font-serif text-ink-muted mr-1.5 font-normal">
+                        <span className="table-pos text-ink-muted mr-1.5">
                           {sensePos}
                         </span>
                       )}
@@ -421,12 +421,12 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center text-2xs text-cognate-ink font-serif italic bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="font-serif not-italic text-2xs">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                        Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
-                      <span className="ml-2 inline-block text-2xs text-ink-muted italic font-serif">
+                      <span className="ml-2 inline-block typo-badge text-ink-muted italic">
                         (archaic)
                       </span>
                     )}

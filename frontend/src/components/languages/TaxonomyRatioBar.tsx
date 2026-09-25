@@ -81,7 +81,7 @@ export const TaxonomyRatioBar: React.FC<TaxonomyRatioBarProps> = ({
 
       {/* Legend below bar if not compact */}
       {!compact && (
-        <div className="mt-2 flex flex-wrap items-center justify-between text-sm text-ink-muted gap-2">
+        <div className="mt-2 flex flex-wrap items-center justify-between typo-sublabel text-ink-muted gap-2">
           <span className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
             <span>{pctTrue}% true cognates</span>

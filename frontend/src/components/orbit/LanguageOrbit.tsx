@@ -356,11 +356,11 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
       />
 
       {/* Legend */}
-      <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm text-sm shadow-xs">
+      <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm typo-sublabel shadow-xs">
         <div className="border-b border-book-rule pb-2 font-bold text-ink-main">
           Language Proximity Map
         </div>
-        <div className="mt-2.5 space-y-2 text-ink-muted text-sm">
+        <div className="mt-2.5 space-y-2 text-ink-muted">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-cognate-ink" />
             <span>High lexical proximity</span>
@@ -379,36 +379,36 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
       {hoveredBody && (
         <div className="pointer-events-none absolute top-6 right-6 rounded border border-book-rule bg-page-surface p-5 shadow-md max-w-sm">
           <div className="flex items-center justify-between border-b border-book-rule pb-2 gap-4">
-            <h4 className="text-lg font-bold text-ink-main">
+            <h4 className="typo-section-header font-bold text-ink-main">
               {hoveredBody.profile.name}
             </h4>
-            <span className="text-sm text-ink-muted">
+            <span className="typo-metric-table text-ink-muted">
               {hoveredBody.profile.pairCount.toLocaleString()} pairs
             </span>
           </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-3 text-sm text-ink-muted">
+          <div className="mt-3 grid grid-cols-2 gap-3 typo-sublabel text-ink-muted">
             <div>
               <span className="block text-ink-light">Pronunciation distance:</span>
-              <span className="font-mono text-ink-main font-bold">
+              <span className="typo-metric font-bold text-ink-main">
                 {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
               <span className="block text-ink-light">Spelling distance:</span>
-              <span className="font-mono text-ink-main font-bold">
+              <span className="typo-metric font-bold text-ink-main">
                 {(hoveredBody.profile.spellingDistance * 100).toFixed(0)}%
               </span>
             </div>
             <div>
               <span className="block text-ink-light">True cognates:</span>
-              <span className="font-mono text-cognate-ink font-bold">
+              <span className="typo-metric font-bold text-cognate-ink">
                 {(hoveredBody.profile.ratios.trueCognates * 100).toFixed(0)}%
               </span>
             </div>
             <div>
               <span className="block text-ink-light">False friends:</span>
-              <span className="font-mono text-falsefriend-ink font-bold">
+              <span className="typo-metric font-bold text-falsefriend-ink">
                 {(hoveredBody.profile.ratios.falseFriends * 100).toFixed(0)}%
               </span>
             </div>
@@ -421,23 +421,23 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
         <div className="absolute inset-x-6 bottom-6 z-20 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-96 rounded border border-book-rule bg-page-surface p-6 shadow-lg">
           <div className="flex items-start justify-between border-b border-book-rule pb-3">
             <div>
-              <h3 className="text-2xl font-bold text-ink-main">
+              <h3 className="typo-page-title font-bold text-ink-main">
                 {activeDetails.name}
               </h3>
-              <p className="text-sm text-ink-muted mt-0.5">
+              <p className="typo-note mt-0.5">
                 {activeDetails.pairCount.toLocaleString()} evaluated word pairs with {anchorName}
               </p>
             </div>
             <button
               type="button"
               onClick={() => setActiveDetails(null)}
-              className="rounded p-1 text-ink-muted hover:text-ink-main text-lg"
+              className="rounded p-1 text-ink-muted hover:text-ink-main typo-sublabel"
             >
               ✕
             </button>
           </div>
 
-          <div className="mt-4 space-y-3 text-base">
+          <div className="mt-4 space-y-3 typo-body">
             <div className="flex justify-between border-b border-book-rule pb-2">
               <span className="text-ink-muted">True cognates:</span>
               <span className="font-mono font-bold text-cognate-ink">

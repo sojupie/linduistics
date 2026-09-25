@@ -54,13 +54,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
     switch (pair.category) {
       case 'true_cognate':
         return (
-          <span className="text-base text-cognate-ink whitespace-nowrap font-serif font-normal">
+          <span className="typo-badge text-cognate-ink whitespace-nowrap">
             True Cognate
           </span>
         );
       case 'false_friend':
         return (
-          <span className="text-base text-falsefriend-ink whitespace-nowrap font-serif font-normal">
+          <span className="typo-badge text-falsefriend-ink whitespace-nowrap">
             {pair.falseFriendType === 'etymological_shift'
               ? 'False Friend · Drift'
               : pair.falseFriendType === 'surface_collision'
@@ -70,19 +70,19 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
         );
       case 'partial_cognate':
         return (
-          <span className="text-base text-shifted-ink whitespace-nowrap font-serif font-normal">
+          <span className="typo-badge text-shifted-ink whitespace-nowrap">
             Partial Cognate
           </span>
         );
       case 'translation_pair':
         return (
-          <span className="text-base text-divergent-ink whitespace-nowrap font-serif font-normal">
+          <span className="typo-badge text-divergent-ink whitespace-nowrap">
             Translation Pair
           </span>
         );
       default:
         return (
-          <span className="text-base text-ink-muted whitespace-nowrap font-serif font-normal">
+          <span className="typo-badge text-ink-muted whitespace-nowrap">
             Other
           </span>
         );
@@ -134,18 +134,18 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search word pairs by headword or meaning..."
-            className="w-full border-b border-book-rule bg-transparent py-1 text-base text-ink-main placeholder:text-ink-muted/60 focus:border-ink-main focus:outline-none font-serif"
+            className="w-full border-b border-book-rule bg-transparent py-1 typo-body text-ink-main placeholder:text-ink-muted/60 focus:border-ink-main focus:outline-none"
           />
         </div>
 
         {/* Category & Tier Filters */}
         <div className="flex flex-wrap items-center gap-4 font-serif">
           <div className="flex items-center gap-2">
-            <span className="text-ink-muted font-deck text-base font-medium">Taxonomy:</span>
+            <span className="typo-sublabel">Taxonomy:</span>
             <select
               value={selectedCategory ?? 'all'}
               onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
-              className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
+              className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
             >
               <option value="all">All Taxonomy</option>
               <option value="true_cognate">True Cognates</option>
@@ -158,11 +158,11 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
 
           {selectedCategory === 'false_friend' && (
             <div className="flex items-center gap-2">
-              <span className="text-ink-muted font-deck text-base font-medium">Tier:</span>
+              <span className="typo-sublabel">Tier:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
-                className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
+                className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
               >
                 <option value="all">All Tiers</option>
                 <option value="etymological_shift">Tier A: Drift (Etymological Shift)</option>
@@ -172,11 +172,11 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
           )}
 
           <div className="flex items-center gap-2">
-            <span className="text-ink-muted font-deck text-base font-medium">Rows:</span>
+            <span className="typo-sublabel">Rows:</span>
             <select
               value={limit}
               onChange={(e) => onLimitChange(Number(e.target.value))}
-              className="border-b border-book-rule bg-transparent py-0.5 text-base text-ink-main focus:border-ink-main focus:outline-none cursor-pointer font-serif"
+              className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
             >
               <option value={25}>25</option>
               <option value={50}>50</option>
@@ -190,18 +190,18 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-auto my-1">
         <table className="w-full text-left border-collapse font-serif">
           <thead className="sticky top-0 z-10 bg-page-bg">
-            <tr className="border-b-2 border-book-rule-strong text-xs uppercase tracking-wider text-ink-muted font-deck font-medium">
+            <tr className="border-b-2 border-book-rule-strong typo-overline">
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{sourceName} Headword</th>
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Orthographic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">o</sub></span>
+                <span className="typo-pos">Δ<sub className="typo-subscript">o</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Phonetic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">p</sub></span>
+                <span className="typo-pos">Δ<sub className="typo-subscript">p</sub></span>
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
-                <span className="font-serif font-normal text-sm">Δ<sub className="font-serif text-2xs font-normal not-italic">s</sub></span>
+                <span className="typo-pos">Δ<sub className="typo-subscript">s</sub></span>
               </th>
               <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Active Aligned Meaning</th>
             </tr>
@@ -209,13 +209,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
           <tbody className="divide-y divide-book-rule/50">
             {isLoading ? (
               <tr>
-                <td colSpan={7} className="py-12 text-center text-ink-muted italic table-gloss">
+                <td colSpan={7} className="py-12 text-center typo-gloss">
                   Scanning lexicon...
                 </td>
               </tr>
             ) : pairs.length === 0 ? (
               <tr>
-                <td colSpan={7} className="py-12 text-center text-ink-muted italic table-gloss">
+                <td colSpan={7} className="py-12 text-center typo-gloss">
                   No word pairs match the current filter or search criteria.
                 </td>
               </tr>
@@ -258,24 +258,24 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
                     </td>
 
                     {/* Orthographic Similarity */}
-                    <td className="py-3 px-2 text-center text-sm tabular-nums text-ink-muted">
+                    <td className="py-3 px-2 text-center typo-metric-table text-ink-muted">
                       {pair.orthographicSim.toFixed(2)}
                     </td>
 
                     {/* Phonetic Similarity */}
-                    <td className="py-3 px-2 text-center text-sm tabular-nums font-medium text-ink-main">
+                    <td className="py-3 px-2 text-center typo-metric-table text-ink-main">
                       {pair.phoneticSim.toFixed(2)}
                     </td>
 
                     {/* Semantic Similarity */}
-                    <td className="py-3 px-2 text-center text-sm tabular-nums font-medium text-ink-main">
+                    <td className="py-3 px-2 text-center typo-metric-table text-ink-main">
                       {pair.semanticSim.toFixed(2)}
                     </td>
 
                     {/* Active Aligned Meaning */}
                     <td className="py-3 px-3.5 max-w-xs md:max-w-md">
                       <span
-                        className="truncate block italic text-ink-muted text-base leading-snug"
+                        className="truncate block typo-gloss"
                         title={getMeaningDisplay(pair)}
                       >
                         {getMeaningDisplay(pair)}
@@ -290,13 +290,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
       </div>
 
       {/* Pagination Footer */}
-      <div className="flex-none flex items-center justify-between border-t border-book-rule pt-3 text-sm text-ink-muted">
+      <div className="flex-none flex items-center justify-between border-t border-book-rule pt-3 typo-sublabel">
         <div>
           Showing {startItem}–{endItem} of {total.toLocaleString()} word pairs
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-xs text-ink-muted font-deck font-medium">
+          <span className="typo-sublabel">
             Page {currentPage} of {totalPages}
           </span>
           <div className="flex items-center gap-1.5">
@@ -304,7 +304,7 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               type="button"
               onClick={() => onPageChange(Math.max(0, offset - limit))}
               disabled={offset === 0 || isLoading}
-              className="px-2.5 py-1 border border-book-rule text-xs font-deck font-medium text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
               ← Prev
             </button>
@@ -312,7 +312,7 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               type="button"
               onClick={() => onPageChange(offset + limit)}
               disabled={offset + limit >= total || isLoading}
-              className="px-2.5 py-1 border border-book-rule text-xs font-deck font-medium text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
             >
               Next →
             </button>

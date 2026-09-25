@@ -1,17 +1,21 @@
 import React, { useState, useMemo } from 'react';
+import { useSearch, useNavigate } from '@tanstack/react-router';
 import { usePairsQuery, useLanguagesQuery } from '../../services/queries';
-import { getLanguageName } from '../../data/languages';
 import type { WordPair, SpecimenCategory } from '../../types/linguistics';
 import { LexiconTable } from './LexiconTable';
 import { WordPairDetails } from './WordPairDetails';
+import { LanguagePairSelect } from '../common/LanguagePicker';
 
 export const ComparativeLexicon: React.FC = () => {
-  const [selectedSource, setSelectedSource] = useState<string | null>(null);
-  const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
+  const search = useSearch({ strict: false }) as {
+    source?: string;
+    target?: string;
+    category?: string;
+  };
+  const navigate = useNavigate();
 
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
   const [selectedFfType, setSelectedFfType] = useState<string | undefined>(undefined);
   const [limit, setLimit] = useState(50);
   const [offset, setOffset] = useState(0);
@@ -25,8 +29,8 @@ export const ComparativeLexicon: React.FC = () => {
   const availableLanguages = languagesData?.languages ?? [];
   const defaultSource = availableLanguages[0] ?? 'sv';
   const sourceLang =
-    selectedSource && availableLanguages.includes(selectedSource)
-      ? selectedSource
+    search?.source && availableLanguages.includes(search.source)
+      ? search.source
       : defaultSource;
 
   const availableTargets = useMemo(() => {
@@ -42,9 +46,11 @@ export const ComparativeLexicon: React.FC = () => {
 
   const defaultTarget = availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
   const targetLang =
-    selectedTarget && availableTargets.includes(selectedTarget)
-      ? selectedTarget
+    search?.target && availableTargets.includes(search.target)
+      ? search.target
       : defaultTarget;
+
+  const selectedCategory = search?.category;
 
   // Query database for live pairs
   const { data: livePairsData, isLoading: pairsLoading } = usePairsQuery({
@@ -106,6 +112,87 @@ export const ComparativeLexicon: React.FC = () => {
     return livePairs.find((p) => p.id === activePairId) || (livePairs.length > 0 ? livePairs[0] : null);
   }, [livePairs, activePairId]);
 
+  // Update URL search parameters
+  const updateUrl = (src: string, tgt: string, cat?: string) => {
+    navigate({
+      to: '/lexicon',
+      search: (prev: Record<string, unknown>) => ({
+        ...prev,
+        source: src,
+        target: tgt,
+        category: cat !== undefined ? cat : selectedCategory,
+      }),
+      replace: true,
+    });
+  };
+
+  // Change source language with smart target preservation and swapping
+  const handleSourceChange = (newSource: string) => {
+    if (newSource === sourceLang) return;
+
+    // Get available targets for the newly selected source
+    const targetsForNewSource = languagesData?.pairs
+      ? Array.from(
+          new Set(
+            languagesData.pairs
+              .filter((p) => p.source === newSource)
+              .map((p) => p.target),
+          ),
+        )
+      : [];
+
+    let nextTarget: string;
+
+    if (newSource === targetLang) {
+      // Swapping: user picked the current target as the new source.
+      // Swap the second option to the previous source if valid, otherwise first available target.
+      if (targetsForNewSource.includes(sourceLang)) {
+        nextTarget = sourceLang;
+      } else {
+        nextTarget = targetsForNewSource[0] ?? (newSource === 'sv' ? 'en' : 'sv');
+      }
+    } else if (targetsForNewSource.includes(targetLang)) {
+      // Keep current target if still valid for new source
+      nextTarget = targetLang;
+    } else if (targetsForNewSource.includes(sourceLang)) {
+      // Fallback to previous source if valid
+      nextTarget = sourceLang;
+    } else {
+      // Otherwise fall back to first available target
+      nextTarget = targetsForNewSource[0] ?? (newSource === 'sv' ? 'en' : 'sv');
+    }
+
+    setOffset(0);
+    setSelectedPairId(null);
+    updateUrl(newSource, nextTarget);
+  };
+
+  // Change target language
+  const handleTargetChange = (newTarget: string) => {
+    if (newTarget === targetLang) return;
+
+    if (newTarget === sourceLang) {
+      handleSourceChange(newTarget);
+      return;
+    }
+
+    setOffset(0);
+    setSelectedPairId(null);
+    updateUrl(sourceLang, newTarget);
+  };
+
+  // Swap source and target
+  const handleSwap = () => {
+    handleSourceChange(targetLang);
+  };
+
+  const canSwap = useMemo(() => {
+    if (!languagesData?.pairs) return true;
+    return languagesData.pairs.some(
+      (p) => p.source === targetLang && p.target === sourceLang,
+    );
+  }, [languagesData, sourceLang, targetLang]);
+
   // Reset pagination offset on filter changes
   const handleSearchChange = (q: string) => {
     setSearchQuery(q);
@@ -113,8 +200,20 @@ export const ComparativeLexicon: React.FC = () => {
   };
 
   const handleCategoryChange = (cat: string | undefined) => {
-    setSelectedCategory(cat);
     setOffset(0);
+    navigate({
+      to: '/lexicon',
+      search: (prev: Record<string, unknown>) => {
+        const next = { ...prev };
+        if (cat) {
+          next.category = cat;
+        } else {
+          delete next.category;
+        }
+        return next;
+      },
+      replace: true,
+    });
   };
 
   const handleFfTypeChange = (tier: string | undefined) => {
@@ -129,52 +228,27 @@ export const ComparativeLexicon: React.FC = () => {
       {/* Top Bar */}
       <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-ink-main font-header">
+          <h1 className="typo-page-title">
             Comparative Lexicon
           </h1>
-          <p className="text-base sm:text-lg text-ink-muted mt-1.5 font-deck font-normal">
+          <p className="typo-page-deck mt-1.5">
             Bilingual lexical comparisons across Germanic languages, tracking cognates, sound shifts, and false friends.
           </p>
         </div>
 
         {/* Language Comparison Selector */}
-        <div className="flex items-center gap-3 bg-page-surface border border-book-rule px-3.5 py-2 shadow-2xs self-start md:self-auto">
-          <span className="text-ink-muted font-deck text-sm font-medium">Comparison:</span>
-          <div className="flex items-center gap-1.5">
-            <select
-              value={sourceLang}
-              onChange={(e) => {
-                setSelectedSource(e.target.value);
-                setSelectedTarget(null);
-                setOffset(0);
-                setSelectedPairId(null);
-              }}
-              className="bg-page-bg border border-book-rule px-2.5 py-1 text-sm sm:text-base font-deck font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer"
-            >
-              {selectableLanguages.map((lang) => (
-                <option key={lang} value={lang}>
-                  {getLanguageName(lang)}
-                </option>
-              ))}
-            </select>
-            <span className="text-ink-muted font-serif text-base px-0.5">→</span>
-            <select
-              value={targetLang}
-              onChange={(e) => {
-                setSelectedTarget(e.target.value);
-                setOffset(0);
-                setSelectedPairId(null);
-              }}
-              className="bg-page-bg border border-book-rule px-2.5 py-1 text-sm sm:text-base font-deck font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer"
-            >
-              {availableTargets.map((lang) => (
-                <option key={lang} value={lang}>
-                  {getLanguageName(lang)}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        <LanguagePairSelect
+          label="Comparison:"
+          sourceLang={sourceLang}
+          targetLang={targetLang}
+          availableSources={selectableLanguages}
+          availableTargets={availableTargets}
+          onSourceChange={handleSourceChange}
+          onTargetChange={handleTargetChange}
+          onSwap={handleSwap}
+          canSwap={canSwap}
+          plate
+        />
       </div>
 
       {/* Master-Detail Layout with Independent Vertical Scrolling */}
