@@ -212,7 +212,7 @@ export const TextInspector: React.FC = () => {
       )}
 
       {/* Master-Detail Layout matching /lexicon */}
-      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px] lg:min-h-0 lg:h-[calc(100vh-10rem)] overflow-hidden">
+      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px] lg:min-h-0 lg:h-[calc(100vh-10.75rem)] overflow-hidden">
         {/* Left: Input, Interlinear Gloss, and Lexical Calques */}
         <div className="flex-1 min-w-0 p-5 sm:p-6 h-[560px] lg:h-full flex flex-col min-h-0 space-y-4 overflow-hidden">
           {/* 1. Input Sentence */}
