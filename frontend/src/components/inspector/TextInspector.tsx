@@ -99,6 +99,8 @@ export const TextInspector: React.FC = () => {
       {
         onSuccess: (data) => {
           setPersistedResponse(data);
+          const firstSelectable = data.tokens?.find((t) => !t.is_punct) ?? data.tokens?.[0] ?? null;
+          setSelectedToken(firstSelectable);
         },
       },
     );
@@ -277,7 +279,12 @@ export const TextInspector: React.FC = () => {
                   <TokenPill
                     key={tok.id ?? idx}
                     tokenAnalysis={tok}
-                    isSelected={selectedToken?.token === tok.token && (selectedToken.id === tok.id || !tok.id)}
+                    isSelected={
+                      selectedToken !== null &&
+                      (selectedToken.id !== undefined && tok.id !== undefined
+                        ? selectedToken.id === tok.id
+                        : selectedToken === tok || selectedToken.token === tok.token)
+                    }
                     onSelect={(t) => setSelectedToken(t)}
                   />
                 ))}
