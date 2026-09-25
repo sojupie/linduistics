@@ -723,18 +723,11 @@ export const FalseFriendsQuiz: React.FC = () => {
 
               let optClass = 'border-book-rule text-ink-main hover:bg-page-muted/50 cursor-pointer';
 
-              const isWrongNotTrapped =
-                selectedOption !== null &&
-                selectedOption !== currentQuizItem.correct_option &&
-                selectedOption !== currentQuizItem.trap_option;
-
               if (selectedOption !== null) {
-                if (isCorrect) {
-                  if (isWrongNotTrapped) {
-                    optClass = 'border-dashed border-cognate-border/80 bg-cognate-bg/20 text-ink-main';
-                  } else {
-                    optClass = 'border-cognate-border bg-cognate-bg/50 text-ink-main font-medium shadow-sm';
-                  }
+                if (isSelected && isCorrect) {
+                  optClass = 'border-cognate-border bg-cognate-bg/50 text-ink-main font-medium shadow-sm';
+                } else if (isCorrect) {
+                  optClass = 'border-dashed border-cognate-border/70 text-ink-muted bg-cognate-bg/10';
                 } else if (isSelected && isTrap) {
                   optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
                 } else if (isSelected) {
@@ -765,18 +758,16 @@ export const FalseFriendsQuiz: React.FC = () => {
 
                   {selectedOption !== null && (
                     <div className="shrink-0 text-right">
-                      {isCorrect && (
-                        isWrongNotTrapped ? (
-                          <span className="px-2 py-0.5 typo-badge rounded-xs border border-cognate-border/80 text-cognate-ink font-medium inline-flex items-center gap-1.5">
-                            Target Reality
-                            <MaterialSymbol icon="check" size={16} className="text-cognate-ink" />
-                          </span>
-                        ) : (
-                          <span className="px-2 py-0.5 typo-badge rounded-xs bg-cognate-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
-                            Target Reality
-                            <MaterialSymbol icon="check" size={16} className="text-page-bg" />
-                          </span>
-                        )
+                      {isSelected && isCorrect && (
+                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-cognate-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
+                          Target Reality
+                          <MaterialSymbol icon="check" size={16} className="text-page-bg" />
+                        </span>
+                      )}
+                      {!isSelected && isCorrect && (
+                        <span className="typo-badge text-cognate-ink/80 font-medium inline-flex items-center gap-1.5">
+                          Target Reality
+                        </span>
                       )}
                       {isSelected && isTrap && (
                         <span className="px-2 py-0.5 typo-badge rounded-xs bg-falsefriend-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
