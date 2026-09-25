@@ -273,17 +273,36 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 	if limit <= 0 || limit > 50 {
 		limit = 20
 	}
-	query := `
-		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
-		       lang_b, word_b, ipa_b, def_b, pos_b,
-		       orthographic_sim, phonetic_sim, semantic_sim, category,
-		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
-		FROM word_comparisons
-		WHERE lang_a = $1 AND word_a ILIKE $2 || '%'
-		ORDER BY phonetic_sim DESC, semantic_sim DESC
-		LIMIT $3
-	`
-	rows, err := r.pool.Query(ctx, query, lang, prefix, limit)
+	var query string
+	var rows pgx.Rows
+	var err error
+
+	if lang == "" || lang == "all" {
+		query = `
+			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
+			       lang_b, word_b, ipa_b, def_b, pos_b,
+			       orthographic_sim, phonetic_sim, semantic_sim, category,
+			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			FROM word_comparisons
+			WHERE word_a ILIKE $1 || '%' OR word_b ILIKE $1 || '%'
+			ORDER BY phonetic_sim DESC, semantic_sim DESC
+			LIMIT $2
+		`
+		rows, err = r.pool.Query(ctx, query, prefix, limit)
+	} else {
+		lang = normalizeLang(lang)
+		query = `
+			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
+			       lang_b, word_b, ipa_b, def_b, pos_b,
+			       orthographic_sim, phonetic_sim, semantic_sim, category,
+			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			FROM word_comparisons
+			WHERE (lang_a = $1 AND word_a ILIKE $2 || '%') OR (lang_b = $1 AND word_b ILIKE $2 || '%')
+			ORDER BY phonetic_sim DESC, semantic_sim DESC
+			LIMIT $3
+		`
+		rows, err = r.pool.Query(ctx, query, lang, prefix, limit)
+	}
 	if err != nil {
 		return nil, fmt.Errorf("search headwords error: %w", err)
 	}

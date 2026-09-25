@@ -4,6 +4,7 @@ import { useHeadwordSearchQuery } from '../../services/queries';
 import { Search, X } from 'lucide-react';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
 import { Phonetic } from './Phonetic';
+import { getLanguageName } from '../../data/languages';
 
 export const Header: React.FC = () => {
   const routerState = useRouterState();
@@ -13,7 +14,7 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { data: searchResults, isFetching: searchFetching } = useHeadwordSearchQuery(
     searchQuery,
-    'sv',
+    'all',
   );
 
   const navLinks = [
@@ -82,7 +83,7 @@ export const Header: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search dictionary (e.g. katt, hund, kvinna, gift)..."
+              placeholder="Search across Germanic vocabulary (e.g. hound, dog, kvinna, gift, meer)..."
               autoFocus
               className="flex-1 bg-transparent typo-body text-ink-main placeholder-ink-light focus:outline-none"
             />
@@ -115,16 +116,28 @@ export const Header: React.FC = () => {
               {searchResults.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between p-3 typo-sublabel hover:bg-page-muted transition-colors"
+                  className="flex items-center justify-between p-3 typo-sublabel hover:bg-page-muted transition-colors gap-3"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap min-w-0">
+                    <span
+                      className="font-mono text-xs uppercase px-1.5 py-0.5 rounded border border-book-rule bg-page-muted text-ink-muted cursor-help shrink-0"
+                      title={getLanguageName(item.lang_a)}
+                    >
+                      {item.lang_a.toUpperCase()}
+                    </span>
                     <span className="typo-headword-row text-ink-main">{item.word_a}</span>
                     {item.ipa_a && <Phonetic ipa={item.ipa_a} />}
-                    <span className="text-ink-light">→</span>
+                    <span className="text-ink-light font-serif">→</span>
+                    <span
+                      className="font-mono text-xs uppercase px-1.5 py-0.5 rounded border border-book-rule bg-page-muted text-ink-muted cursor-help shrink-0"
+                      title={getLanguageName(item.lang_b)}
+                    >
+                      {item.lang_b.toUpperCase()}
+                    </span>
                     <span className="typo-headword-row text-cognate-ink">{item.word_b}</span>
-                    <span className="typo-note">({item.lang_b})</span>
+                    {item.ipa_b && <Phonetic ipa={item.ipa_b} />}
                   </div>
-                  <div className="typo-badge text-ink-muted">
+                  <div className="typo-badge text-ink-muted shrink-0">
                     {item.category === 'true_cognate' || item.category === 'cognate'
                       ? 'True Cognate'
                       : item.category === 'false_friend'

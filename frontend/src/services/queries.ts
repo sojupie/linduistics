@@ -72,7 +72,7 @@ export function useFalseFriendsQuizQuery(
   });
 }
 
-export function useHeadwordSearchQuery(query: string, lang = 'sv') {
+export function useHeadwordSearchQuery(query: string, lang = 'all') {
   const trimmed = query.trim();
   return useQuery<RawComparisonDto[]>({
     queryKey: ['search', lang, trimmed],

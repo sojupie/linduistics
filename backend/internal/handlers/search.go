@@ -22,9 +22,6 @@ func (h *SearchHandler) HandleSearch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	lang := q.Get("lang")
-	if lang == "" {
-		lang = "sv"
-	}
 	limit := ParseInt(q.Get("limit"), 20)
 
 	results, err := h.repo.SearchHeadwords(r.Context(), lang, query, limit)

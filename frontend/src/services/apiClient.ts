@@ -91,14 +91,16 @@ export async function fetchFalseFriendsQuiz(
 
 export async function searchHeadwords(
   query: string,
-  lang = 'sv',
+  lang = 'all',
   limit = QUERY_CONFIG.DEFAULT_SEARCH_LIMIT,
 ): Promise<RawComparisonDto[]> {
   const params = new URLSearchParams({
     q: query,
-    lang,
     limit: limit.toString(),
   });
+  if (lang && lang !== 'all') {
+    params.set('lang', lang);
+  }
   return apiClient<RawComparisonDto[]>(`/api/search?${params.toString()}`);
 }
 
