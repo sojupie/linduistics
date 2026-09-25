@@ -196,15 +196,6 @@ export const TextInspector: React.FC = () => {
               );
             })}
           </div>
-
-          <button
-            type="button"
-            disabled={inspectMutation.isPending || !inputText.trim()}
-            onClick={() => handleInspect()}
-            className="px-1.5 py-1 border border-ink-main bg-ink-main text-page-surface typo-overline hover:opacity-90 transition-opacity disabled:opacity-50 shadow-2xs cursor-pointer ml-1"
-          >
-            {inspectMutation.isPending ? 'Parsing...' : 'Parse'}
-          </button>
         </div>
       </div>
 
@@ -243,6 +234,19 @@ export const TextInspector: React.FC = () => {
               placeholder={`Enter text in ${sourceLangName}...`}
               className="w-full border border-book-rule bg-page-surface p-3.5 typo-body text-ink-main placeholder-ink-light hover:border-book-rule-strong focus:border-ink-main focus:outline-none leading-relaxed resize-y transition-colors"
             />
+            <div className="flex items-center justify-between pt-1">
+              <span className="typo-note text-ink-muted select-none">
+                Ctrl + Enter to parse
+              </span>
+              <button
+                type="button"
+                disabled={inspectMutation.isPending || !inputText.trim()}
+                onClick={() => handleInspect()}
+                className="px-4 py-1.5 border border-cognate-ink bg-cognate-ink text-page-surface typo-overline hover:bg-[#1d4c2b] hover:border-[#1d4c2b] transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {inspectMutation.isPending ? 'Parsing...' : 'Parse'}
+              </button>
+            </div>
           </div>
 
           {/* 2. Interlinear Analysis Reading Passage */}
