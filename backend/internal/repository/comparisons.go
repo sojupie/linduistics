@@ -6,6 +6,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/sojupie/linduistics/backend/internal/models"
 )
@@ -106,6 +107,41 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 	}
 	targetLangs = normTargets
 
+	if sourceLang == "pan" {
+		query := `
+			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
+			       lang_b, word_b, ipa_b, def_b, pos_b,
+			       orthographic_sim, phonetic_sim, semantic_sim, category,
+			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			FROM word_comparisons
+			WHERE word_a = ANY($1)
+			  AND lang_b = ANY($2)
+			  AND lang_a != lang_b
+			  AND semantic_sim >= $3
+			ORDER BY word_a, semantic_sim DESC
+		`
+		rows, err := r.pool.Query(ctx, query, tokens, targetLangs, minSem)
+		if err != nil {
+			return nil, fmt.Errorf("get by tokens pan error: %w", err)
+		}
+		defer rows.Close()
+
+		var items []models.WordComparison
+		for rows.Next() {
+			var c models.WordComparison
+			if err := rows.Scan(
+				&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
+				&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
+				&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
+				&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+			); err != nil {
+				return nil, fmt.Errorf("scan token match error: %w", err)
+			}
+			items = append(items, c)
+		}
+		return items, nil
+	}
+
 	query := `
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
@@ -178,15 +214,47 @@ func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang,
 
 func (r *ComparisonsRepository) GetDistractorDefs(ctx context.Context, targetLang string, excludeDef string, limit int) ([]string, error) {
 	query := `
-		SELECT DISTINCT def_b
-		FROM word_comparisons
-		WHERE lang_b = $1 AND def_b != $2 AND length(def_b) > 5
+		SELECT def_b FROM (
+			SELECT DISTINCT def_b
+			FROM word_comparisons
+			WHERE lang_b = $1 AND def_b != $2 AND length(def_b) > 5
+		) d
 		ORDER BY random()
 		LIMIT $3
 	`
 	rows, err := r.pool.Query(ctx, query, targetLang, excludeDef, limit)
 	if err != nil {
 		return nil, fmt.Errorf("get distractors error: %w", err)
+	}
+	defer rows.Close()
+
+	var defs []string
+	for rows.Next() {
+		var d string
+		if err := rows.Scan(&d); err != nil {
+			return nil, err
+		}
+		defs = append(defs, d)
+	}
+	return defs, nil
+}
+
+func (r *ComparisonsRepository) GetDistractorPool(ctx context.Context, targetLang string, limit int) ([]string, error) {
+	if limit <= 0 {
+		limit = 40
+	}
+	query := `
+		SELECT def_b FROM (
+			SELECT DISTINCT def_b
+			FROM word_comparisons
+			WHERE lang_b = $1 AND length(def_b) > 5
+		) d
+		ORDER BY random()
+		LIMIT $2
+	`
+	rows, err := r.pool.Query(ctx, query, targetLang, limit)
+	if err != nil {
+		return nil, fmt.Errorf("get distractor pool error: %w", err)
 	}
 	defer rows.Close()
 
@@ -239,12 +307,25 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 
 func (r *ComparisonsRepository) ResolveForms(ctx context.Context, lang string, forms []string) (map[string][]string, error) {
 	lang = normalizeLang(lang)
-	query := `
-		SELECT form, lemma
-		FROM word_forms
-		WHERE lang = $1 AND form = ANY($2)
-	`
-	rows, err := r.pool.Query(ctx, query, lang, forms)
+	var query string
+	var rows pgx.Rows
+	var err error
+
+	if lang == "pan" {
+		query = `
+			SELECT form, lemma
+			FROM word_forms
+			WHERE form = ANY($1)
+		`
+		rows, err = r.pool.Query(ctx, query, forms)
+	} else {
+		query = `
+			SELECT form, lemma
+			FROM word_forms
+			WHERE lang = $1 AND form = ANY($2)
+		`
+		rows, err = r.pool.Query(ctx, query, lang, forms)
+	}
 	if err != nil {
 		return nil, fmt.Errorf("resolve forms error: %w", err)
 	}
@@ -259,6 +340,35 @@ func (r *ComparisonsRepository) ResolveForms(ctx context.Context, lang string, f
 		mapping[f] = append(mapping[f], l)
 	}
 	return mapping, nil
+}
+
+func (r *ComparisonsRepository) GetTargetLanguages(ctx context.Context, sourceLang string) ([]string, error) {
+	sourceLang = normalizeLang(sourceLang)
+	var query string
+	var rows pgx.Rows
+	var err error
+
+	if sourceLang == "pan" {
+		query = `SELECT DISTINCT lang_b FROM word_comparisons ORDER BY lang_b`
+		rows, err = r.pool.Query(ctx, query)
+	} else {
+		query = `SELECT DISTINCT lang_b FROM word_comparisons WHERE lang_a = $1 ORDER BY lang_b`
+		rows, err = r.pool.Query(ctx, query, sourceLang)
+	}
+	if err != nil {
+		return nil, fmt.Errorf("get target languages error: %w", err)
+	}
+	defer rows.Close()
+
+	var targets []string
+	for rows.Next() {
+		var t string
+		if err := rows.Scan(&t); err != nil {
+			return nil, err
+		}
+		targets = append(targets, t)
+	}
+	return targets, nil
 }
 
 func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source string) (*models.LanguagesResponse, error) {
