@@ -294,21 +294,21 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
       </div>
 
       {/* Pagination Footer */}
-      <div className="flex-none flex items-center justify-between border-t border-book-rule pt-3 typo-sublabel">
+      <div className="flex-none flex flex-wrap items-center justify-between gap-y-2 gap-x-4 border-t border-book-rule pt-3 typo-sublabel text-ink-muted">
         <div>
           Showing {startItem}–{endItem} of {total.toLocaleString()} word pairs
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="typo-sublabel">
+        <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 w-full sm:w-auto">
+          <span className="typo-sublabel whitespace-nowrap text-ink-muted">
             Page {currentPage} of {totalPages}
           </span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={() => onPageChange(Math.max(0, offset - limit))}
               disabled={offset === 0 || isLoading}
-              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed"
             >
               <MaterialSymbol icon="arrow_back" size={14} />
               <span>Prev</span>
@@ -317,7 +317,7 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               type="button"
               onClick={() => onPageChange(offset + limit)}
               disabled={offset + limit >= total || isLoading}
-              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1"
+              className="px-2.5 py-1 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors inline-flex items-center gap-1 cursor-pointer disabled:cursor-not-allowed"
             >
               <span>Next</span>
               <MaterialSymbol icon="arrow_forward" size={14} />
