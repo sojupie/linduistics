@@ -265,9 +265,9 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
   const morphText = formatMorph(tokenAnalysis.morph);
 
   return (
-    <div className="space-y-6 font-serif select-text">
+    <div className="h-full flex flex-col min-h-0 font-serif select-text gap-4">
       {/* 1. Headword Plate */}
-      <div className="border-b border-book-rule pb-4 space-y-1.5">
+      <div className="border-b border-book-rule pb-3.5 space-y-1.5 shrink-0">
         <div className="flex items-baseline justify-between">
           <div className="flex items-baseline gap-2.5 flex-wrap">
             <h2 className="typo-headword-display text-ink-main">
@@ -306,13 +306,13 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
 
       {/* 2. Attested Lexical Alternates */}
       {alternatives.length > 0 && (
-        <div className="space-y-2">
-          <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between">
+        <div className="flex-1 min-h-0 flex flex-col space-y-2">
+          <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
             <span>Attested Alternates</span>
             <span className="typo-metric-table text-ink-muted">{alternatives.length}</span>
           </div>
 
-          <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1.5">
+          <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 space-y-2.5">
             {alternatives.map((alt: AlternativeWord, idx: number) => {
               const isSameForm = alt.form.toLowerCase() === tokenAnalysis.token.toLowerCase();
               const matchEntries = Object.entries(alt.cognate_matches);
@@ -418,13 +418,14 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
       )}
 
       {/* 3. Cross-Lingual Correspondences */}
-      <div className="space-y-2">
-        <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between">
+      <div className={`space-y-2 ${matches.length > 0 ? 'flex-1 min-h-0 flex flex-col' : 'shrink-0'}`}>
+        <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
           <span>Cross-Lingual Correspondences</span>
           <span className="typo-metric-table text-ink-muted">{matches.length}</span>
         </div>
 
-        <div className="divide-y divide-book-rule/50 max-h-80 overflow-y-auto pr-1.5">
+        {matches.length > 0 ? (
+          <div className="divide-y divide-book-rule/50 flex-1 min-h-0 overflow-y-auto pr-1.5">
           {matches.map(([lang, match]) => {
             const isCognate = match.category === 'true_cognate' || match.category === 'cognate';
             const isPartial = match.category === 'partial_cognate' || match.category === 'cousin';
@@ -489,6 +490,11 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             );
           })}
         </div>
+        ) : (
+          <p className="typo-note text-ink-muted py-2">
+            No cross-lingual correspondences recorded for selected targets.
+          </p>
+        )}
       </div>
     </div>
   );

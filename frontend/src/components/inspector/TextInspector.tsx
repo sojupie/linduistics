@@ -133,6 +133,8 @@ export const TextInspector: React.FC = () => {
   const response: InspectResponse | undefined =
     inspectMutation.data ?? persistedResponse ?? undefined;
   const sourceLangName = getLanguageName(sourceLang);
+  const translations = response?.approximate_translations ?? response?.pan_germanic_translations;
+  const hasCalques = Boolean(translations && Object.keys(translations).length > 0);
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif">
@@ -209,12 +211,12 @@ export const TextInspector: React.FC = () => {
         </div>
       )}
 
-      {/* Master-Detail Layout */}
-      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px]">
+      {/* Master-Detail Layout matching /lexicon */}
+      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px] lg:min-h-0 lg:h-[calc(100vh-13rem)] overflow-hidden">
         {/* Left: Input, Interlinear Gloss, and Lexical Calques */}
-        <div className="flex-1 min-w-0 p-5 sm:p-6 space-y-6">
+        <div className="flex-1 min-w-0 p-5 sm:p-6 h-[560px] lg:h-full flex flex-col min-h-0 space-y-4 overflow-hidden">
           {/* 1. Input Sentence */}
-          <div className="space-y-2">
+          <div className="space-y-2 shrink-0">
             <div className="flex items-center justify-between">
               <span className="typo-overline">
                 Input Sentence
@@ -253,8 +255,8 @@ export const TextInspector: React.FC = () => {
 
           {/* 2. Interlinear Analysis Reading Passage */}
           {response && (
-            <div className="space-y-3 pt-4 border-t border-book-rule">
-              <div className="flex items-center justify-between pb-1">
+            <div className={`space-y-3 pt-4 border-t border-book-rule ${hasCalques ? 'shrink-0 max-h-[38%] overflow-y-auto pr-1' : 'flex-1 min-h-0 overflow-y-auto pr-1'}`}>
+              <div className="flex items-center justify-between pb-1 shrink-0 sticky top-0 bg-page-bg/95 backdrop-blur-xs z-1">
                 <span className="typo-overline">
                   Interlinear Analysis
                 </span>
@@ -293,59 +295,54 @@ export const TextInspector: React.FC = () => {
           )}
 
           {/* 3. Lexical Calques */}
-          {(() => {
-            const translations = response?.approximate_translations ?? response?.pan_germanic_translations;
-            if (!translations || Object.keys(translations).length === 0) return null;
-
-            return (
-              <div className="space-y-3 pt-4 border-t border-book-rule">
-                <div className="flex items-center justify-between pb-1">
-                  <span className="typo-overline">
-                    Lexical Calques
-                  </span>
-                  <span className="typo-note text-ink-muted">
-                    Cognate substitution without syntactic reordering
-                  </span>
-                </div>
-                <div className="divide-y divide-book-rule/60 border-t border-b border-book-rule max-h-64 sm:max-h-72 overflow-y-auto pr-1.5">
-                  {Object.entries(translations).map(([lang, transText]) => (
-                    <div
-                      key={lang}
-                      className="py-3 flex items-start justify-between gap-4 hover:bg-page-surface/40 transition-colors"
-                    >
-                      <div className="space-y-1 min-w-0">
-                        <span
-                          className="typo-lang-code inline-block mb-0.5 cursor-help"
-                          title={getLanguageName(lang)}
-                        >
-                          {lang.toUpperCase()}
-                        </span>
-                        <p className="typo-body">
-                          “{transText}”
-                        </p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleCopyTranslation(lang, transText)}
-                        className="px-2 py-1 typo-subscript border font-mono transition-colors flex items-center justify-center text-ink-muted hover:text-ink-main bg-page-surface hover:bg-page-muted border-book-rule hover:border-book-rule-strong cursor-pointer shrink-0 mt-0.5"
-                        title="Copy calque"
-                      >
-                        {copiedLang === lang ? (
-                          <MaterialSymbol icon="check" size={14} className="text-cognate-ink" />
-                        ) : (
-                          <MaterialSymbol icon="content_copy" size={14} />
-                        )}
-                      </button>
-                    </div>
-                  ))}
-                </div>
+          {hasCalques && translations && (
+            <div className="flex-1 min-h-0 flex flex-col space-y-2 pt-4 border-t border-book-rule">
+              <div className="flex items-center justify-between pb-1 shrink-0">
+                <span className="typo-overline">
+                  Lexical Calques
+                </span>
+                <span className="typo-note text-ink-muted">
+                  Cognate substitution without syntactic reordering
+                </span>
               </div>
-            );
-          })()}
+              <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 divide-y divide-book-rule/60 border-t border-b border-book-rule">
+                {Object.entries(translations).map(([lang, transText]) => (
+                  <div
+                    key={lang}
+                    className="py-3 flex items-start justify-between gap-4 hover:bg-page-surface/40 transition-colors"
+                  >
+                    <div className="space-y-1 min-w-0">
+                      <span
+                        className="typo-lang-code inline-block mb-0.5 cursor-help"
+                        title={getLanguageName(lang)}
+                      >
+                        {lang.toUpperCase()}
+                      </span>
+                      <p className="typo-body">
+                        “{transText}”
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyTranslation(lang, transText)}
+                      className="px-2 py-1 typo-subscript border font-mono transition-colors flex items-center justify-center text-ink-muted hover:text-ink-main bg-page-surface hover:bg-page-muted border-book-rule hover:border-book-rule-strong cursor-pointer shrink-0 mt-0.5"
+                      title="Copy calque"
+                    >
+                      {copiedLang === lang ? (
+                        <MaterialSymbol icon="check" size={14} className="text-cognate-ink" />
+                      ) : (
+                        <MaterialSymbol icon="content_copy" size={14} />
+                      )}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right: Token Specimen Details */}
-        <div className="w-full lg:w-[720px] xl:w-[780px] lg:shrink-0 p-5 sm:p-6 bg-page-surface">
+        <div className="w-full lg:w-[720px] xl:w-[780px] lg:shrink-0 p-5 sm:p-6 bg-page-surface h-[560px] lg:h-full flex flex-col min-h-0 overflow-hidden">
           {selectedToken ? (
             <TokenDetailDrawer
               tokenAnalysis={selectedToken}
@@ -353,11 +350,11 @@ export const TextInspector: React.FC = () => {
               onSubstitute={handleSubstitute}
             />
           ) : response ? (
-            <div className="py-24 text-center text-ink-muted font-serif">
+            <div className="h-full flex flex-col items-center justify-center text-center text-ink-muted font-serif p-6">
               <p className="typo-note">Select a token from the analysis to inspect grammatical properties and correspondences.</p>
             </div>
           ) : (
-            <div className="py-24 text-center text-ink-muted font-serif">
+            <div className="h-full flex flex-col items-center justify-center text-center text-ink-muted font-serif p-6">
               <p className="typo-note">Enter a sentence and parse to inspect syntax and lexical correspondences.</p>
             </div>
           )}
