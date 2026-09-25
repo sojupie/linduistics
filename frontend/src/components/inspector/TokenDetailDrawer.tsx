@@ -320,11 +320,10 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
               return (
                 <div
                   key={idx}
-                  className={`p-3 rounded border transition-colors space-y-2 ${
-                    isSameForm
-                      ? 'border-book-rule bg-page-muted/40'
-                      : 'border-book-rule bg-page-surface hover:border-book-rule-strong'
-                  }`}
+                  className={`p-3 rounded border transition-colors space-y-2 ${isSameForm
+                    ? 'border-book-rule bg-page-muted/40'
+                    : 'border-book-rule bg-page-surface hover:border-book-rule-strong'
+                    }`}
                 >
                   {/* Top row: Alternate headword, lemma tag, and action button */}
                   <div className="flex items-center justify-between gap-3">
@@ -338,7 +337,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                         </span>
                       )}
                       {isSameForm && (
-                        <span className="px-1.5 py-0.2 typo-subscript font-mono rounded bg-page-muted text-ink-muted border border-book-rule">
+                        <span className="px-1.5 py-0.5 typo-subscript font-mono rounded bg-page-muted text-ink-muted">
                           current
                         </span>
                       )}
@@ -359,18 +358,16 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                   <div className="flex items-center gap-2.5 typo-sublabel text-ink-muted flex-wrap">
                     {typeof alt.sentence_delta === 'number' && alt.sentence_delta !== 0 ? (
                       <span
-                        className={`font-medium ${
-                          alt.sentence_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
-                        }`}
+                        className={`font-medium ${alt.sentence_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
+                          }`}
                         title={`Sentence impact: ${alt.sentence_delta > 0 ? '+' : ''}${alt.sentence_delta}% overall cognacy change`}
                       >
                         {alt.sentence_delta > 0 ? `+${alt.sentence_delta}%` : `${alt.sentence_delta}%`} sentence cognacy
                       </span>
                     ) : typeof alt.universality_delta === 'number' && alt.universality_delta !== 0 ? (
                       <span
-                        className={`font-medium ${
-                          alt.universality_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
-                        }`}
+                        className={`font-medium ${alt.universality_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
+                          }`}
                         title={`Word universality: ${Math.round(alt.universality_score)}%`}
                       >
                         {alt.universality_delta > 0 ? `+${Math.round(alt.universality_delta)}%` : `${Math.round(alt.universality_delta)}%`} word cognacy
@@ -405,7 +402,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                             className="font-mono text-xs uppercase font-medium text-ink-muted cursor-help"
                             title={getLanguageName(lang)}
                           >
-                            {lang.toUpperCase()}
+                            {lang.toUpperCase()}:
                           </span>
                           <span className="font-serif text-ink-main">{m.word}</span>
                         </span>
@@ -430,23 +427,28 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
           {matches.map(([lang, match]) => {
             const isCognate = match.category === 'true_cognate' || match.category === 'cognate';
             const isPartial = match.category === 'partial_cognate' || match.category === 'cousin';
+            const isFalseFriend = match.category === 'false_friend';
             const isTranslation = match.category === 'translation_pair';
 
             const categoryText = isCognate
               ? 'True Cognate'
               : isPartial
-              ? 'Partial Cognate'
-              : isTranslation
-              ? 'Translation Pair'
-              : 'Other';
+                ? 'Partial Cognate'
+                : isFalseFriend
+                  ? 'False Friend'
+                  : isTranslation
+                    ? 'Translation Pair'
+                    : 'Other';
 
-            const categoryColor = isCognate
-              ? 'text-cognate-ink'
+            const categoryStyle = isCognate
+              ? 'text-cognate-ink bg-cognate-bg'
               : isPartial
-              ? 'text-shifted-ink'
-              : isTranslation
-              ? 'text-divergent-ink'
-              : 'text-ink-muted';
+                ? 'text-shifted-ink bg-shifted-bg'
+                : isFalseFriend
+                  ? 'text-falsefriend-ink bg-falsefriend-bg'
+                  : isTranslation
+                    ? 'text-divergent-ink bg-divergent-bg'
+                    : 'text-ink-muted bg-page-muted';
 
             return (
               <div key={lang} className="py-2.5 space-y-1">
@@ -463,7 +465,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                     </span>
                     {match.ipa && <Phonetic ipa={match.ipa} className="table-ipa" />}
                   </div>
-                  <span className={`typo-badge ${categoryColor} shrink-0`}>
+                  <span className={`typo-badge px-2 py-0.5 rounded ${categoryStyle} shrink-0`}>
                     {categoryText}
                   </span>
                 </div>
