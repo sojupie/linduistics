@@ -124,7 +124,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('name')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'name'
               ? 'border-ink-main bg-page-muted text-ink-main'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
@@ -135,7 +135,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('pairs')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'pairs'
               ? 'border-ink-main bg-page-muted text-ink-main'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
@@ -146,7 +146,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('phonetic')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'phonetic'
               ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
@@ -158,7 +158,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('spelling')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'spelling'
               ? 'border-divergent-ink bg-divergent-bg text-divergent-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-divergent-ink'
@@ -170,7 +170,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('ease')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'ease'
               ? 'border-ink-main bg-page-muted text-ink-main'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
@@ -182,7 +182,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('cognates')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'cognates'
               ? 'border-shifted-ink bg-shifted-bg text-shifted-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-shifted-ink'
@@ -193,7 +193,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('minefield')}
-          className={`px-2.5 py-1 border typo-sublabel transition-colors ${
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
             activeSort === 'minefield'
               ? 'border-falsefriend-ink bg-falsefriend-bg text-falsefriend-ink'
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-falsefriend-ink'

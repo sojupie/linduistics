@@ -89,6 +89,11 @@ body {
   min-height: 100vh;
 }
 
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
 /* Phonetic styling for both explicit classes and valid BCP 47 IPA tags */
 .ipa,
 [lang="und-fonipa"] {
