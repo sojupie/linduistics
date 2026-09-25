@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
         {/* Application title */}
         <div className="flex-none">
           <Link to="/orbit" className="text-decoration-none">
-            <h1 className="font-header text-2xl font-normal tracking-tight text-ink-main hover:opacity-80 transition-opacity">
+            <h1 className="typo-page-title tracking-tight text-ink-main hover:opacity-80 transition-opacity">
               Linduistics
             </h1>
           </Link>
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-deck text-base transition-colors ${
+                className={`typo-sublabel transition-colors ${
                   isActive
                     ? 'text-ink-main font-medium underline decoration-2 underline-offset-8 decoration-cognate-ink'
                     : 'text-ink-muted hover:text-ink-main'
@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setSearchOpen(!searchOpen)}
-            className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 font-serif text-sm text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs"
+            className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 typo-sublabel text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
             title="Search dictionary"
           >
             <Search size={HEADER_CONFIG.ICON_SIZE_TOOL_SM} />
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search dictionary (e.g. katt, hund, kvinna, gift)..."
               autoFocus
-              className="flex-1 bg-transparent font-serif text-base text-ink-main placeholder-ink-light focus:outline-none"
+              className="flex-1 bg-transparent typo-body text-ink-main placeholder-ink-light focus:outline-none"
             />
             {searchQuery && (
               <button
@@ -98,14 +98,14 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setSearchOpen(false)}
-              className="font-serif text-sm text-ink-muted hover:text-ink-main"
+              className="typo-sublabel text-ink-muted hover:text-ink-main cursor-pointer"
             >
               Close
             </button>
           </div>
 
           {searchFetching && (
-            <p className="mx-auto mt-2 max-w-2xl font-serif text-sm text-ink-muted italic">
+            <p className="mx-auto mt-2 max-w-2xl typo-gloss">
               Searching dictionary...
             </p>
           )}
@@ -115,16 +115,16 @@ export const Header: React.FC = () => {
               {searchResults.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between p-3 text-sm hover:bg-page-muted transition-colors"
+                  className="flex items-center justify-between p-3 typo-sublabel hover:bg-page-muted transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-ink-main text-base">{item.word_a}</span>
+                    <span className="typo-headword-row text-ink-main">{item.word_a}</span>
                     {item.ipa_a && <Phonetic ipa={item.ipa_a} />}
                     <span className="text-ink-light">→</span>
-                    <span className="font-bold text-cognate-ink text-base">{item.word_b}</span>
-                    <span className="text-ink-muted text-sm">({item.lang_b})</span>
+                    <span className="typo-headword-row text-cognate-ink">{item.word_b}</span>
+                    <span className="typo-note">({item.lang_b})</span>
                   </div>
-                  <div className="text-ink-muted text-sm">
+                  <div className="typo-badge text-ink-muted">
                     {item.category === 'true_cognate' || item.category === 'cognate'
                       ? 'True Cognate'
                       : item.category === 'false_friend'
@@ -141,7 +141,7 @@ export const Header: React.FC = () => {
           )}
 
           {searchResults && searchResults.length === 0 && searchQuery.trim().length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS && !searchFetching && (
-            <p className="mx-auto mt-3 max-w-2xl font-serif text-sm italic text-ink-muted">
+            <p className="mx-auto mt-3 max-w-2xl typo-gloss">
               No words found matching &ldquo;{searchQuery}&rdquo;.
             </p>
           )}
@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`font-deck text-sm whitespace-nowrap ${
+              className={`typo-sublabel whitespace-nowrap ${
                 isActive ? 'text-ink-main font-medium underline' : 'text-ink-muted'
               }`}
             >
