@@ -236,17 +236,17 @@ export const FalseFriendsQuiz: React.FC = () => {
         {/* Etymological Type Filter Segmented Control */}
         <div className="flex items-center gap-2">
           <span className="typo-sublabel text-ink-muted">Type:</span>
-          <div className="inline-flex border border-book-rule bg-page-muted/40 p-0.5">
+          <div className="inline-flex border border-book-rule bg-page-muted/80 p-0.5 rounded-xs">
             <button
               type="button"
               onClick={() => {
                 setSelectedTier('all');
                 handleRestartQuiz();
               }}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 selectedTier === 'all'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Test all false friends (both historical cognates and accidental lookalikes)"
             >
@@ -258,10 +258,10 @@ export const FalseFriendsQuiz: React.FC = () => {
                 setSelectedTier('etymological_shift');
                 handleRestartQuiz();
               }}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 selectedTier === 'etymological_shift'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Shared roots: words sharing an ancestral root whose meanings diverged over centuries (e.g. English 'gift' vs German 'Gift')"
             >
@@ -273,10 +273,10 @@ export const FalseFriendsQuiz: React.FC = () => {
                 setSelectedTier('surface_collision');
                 handleRestartQuiz();
               }}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 selectedTier === 'surface_collision'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Accidental lookalikes: unrelated words that coincidentally look or sound alike (e.g. English 'bad' vs German 'Bad')"
             >
@@ -288,14 +288,14 @@ export const FalseFriendsQuiz: React.FC = () => {
         {/* Viewing Mode Segmented Control */}
         <div className="flex items-center gap-2">
           <span className="typo-sublabel text-ink-muted">View:</span>
-          <div className="inline-flex border border-book-rule bg-page-muted/40 p-0.5">
+          <div className="inline-flex border border-book-rule bg-page-muted/80 p-0.5 rounded-xs">
             <button
               type="button"
               onClick={() => setViewingMode('blind')}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 viewingMode === 'blind'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Both headwords shown, but source definition masked to prevent triangulation"
             >
@@ -304,10 +304,10 @@ export const FalseFriendsQuiz: React.FC = () => {
             <button
               type="button"
               onClick={() => setViewingMode('target_only')}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 viewingMode === 'target_only'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Only target word displayed; counterpart reveals upon answering"
             >
@@ -316,10 +316,10 @@ export const FalseFriendsQuiz: React.FC = () => {
             <button
               type="button"
               onClick={() => setViewingMode('comparative')}
-              className={`px-2.5 py-0.5 typo-sublabel transition-all cursor-pointer ${
+              className={`px-3 py-1 typo-sublabel rounded-xs transition-all cursor-pointer ${
                 viewingMode === 'comparative'
-                  ? 'bg-page-surface text-ink-main font-medium shadow-2xs'
-                  : 'text-ink-muted hover:text-ink-main'
+                  ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                  : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
               }`}
               title="Source definition visible upfront (assisted study)"
             >

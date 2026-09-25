@@ -40,14 +40,14 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
       {/* Register and modality controls */}
       <div className="flex flex-wrap items-center gap-4">
         {/* Modality: Sound vs Spelling */}
-        <div className="flex items-center rounded border border-book-rule bg-page-bg p-1 typo-sublabel">
+        <div className="flex items-center rounded-xs border border-book-rule bg-page-muted/80 p-0.5 typo-sublabel">
           <button
             type="button"
             onClick={() => onModalityChange('phonetic')}
-            className={`rounded px-3 py-1 transition-colors ${
+            className={`rounded-xs px-3 py-1 transition-colors cursor-pointer ${
               modality === 'phonetic'
-                ? 'bg-page-surface font-bold text-cognate-ink shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main'
+                ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
             }`}
           >
             Phonetic distance
@@ -55,10 +55,10 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
           <button
             type="button"
             onClick={() => onModalityChange('spelling')}
-            className={`rounded px-3 py-1 transition-colors ${
+            className={`rounded-xs px-3 py-1 transition-colors cursor-pointer ${
               modality === 'spelling'
-                ? 'bg-page-surface font-bold text-divergent-ink shadow-2xs'
-                : 'text-ink-muted hover:text-ink-main'
+                ? 'bg-ink-main text-page-bg font-semibold shadow-2xs'
+                : 'text-ink-muted hover:text-ink-main hover:bg-page-surface/60'
             }`}
           >
             Orthographic distance
