@@ -139,28 +139,33 @@ export const TextInspector: React.FC = () => {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif">
       {/* Top Bar matching ComparativeLexicon */}
-      <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
-        <div className="flex flex-wrap items-baseline gap-3 sm:gap-4">
-          <h1 className="typo-page-title">
-            Sentence Analysis
-          </h1>
-          {response && (
-            <div className="flex items-baseline gap-2 text-ink-muted">
-              <span className="typo-metric text-cognate-ink font-medium">
-                {Math.round(response.universality_score)}%
-              </span>
-              <span className="typo-sublabel">
-                universality
-              </span>
-              <span className="text-book-rule">•</span>
-              <span className="typo-metric text-ink-main font-normal">
-                {response.total_tokens}
-              </span>
-              <span className="typo-sublabel">
-                {response.total_tokens === 1 ? 'token' : 'tokens'}
-              </span>
-            </div>
-          )}
+      <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
+            <h1 className="typo-page-title">
+              Sentence Analysis
+            </h1>
+            {response && (
+              <div className="flex items-baseline gap-2 text-ink-muted">
+                <span className="typo-metric text-cognate-ink font-medium">
+                  {Math.round(response.universality_score)}%
+                </span>
+                <span className="typo-sublabel">
+                  universality
+                </span>
+                <span className="text-book-rule">•</span>
+                <span className="typo-metric text-ink-main font-normal">
+                  {response.total_tokens}
+                </span>
+                <span className="typo-sublabel">
+                  {response.total_tokens === 1 ? 'token' : 'tokens'}
+                </span>
+              </div>
+            )}
+          </div>
+          <p className="typo-page-deck mt-1.5">
+            Multilingual sentence parser tracking cross-lingual cognacy, syntactic dependencies, and calques.
+          </p>
         </div>
 
         {/* Unified Controls Strip: Source selector, target language toggles, and parse action */}
@@ -212,7 +217,7 @@ export const TextInspector: React.FC = () => {
       )}
 
       {/* Master-Detail Layout matching /lexicon */}
-      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px] lg:min-h-0 lg:h-[calc(100vh-10.75rem)] overflow-hidden">
+      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule min-h-[580px] lg:min-h-0 lg:h-[calc(100vh-13rem)] overflow-hidden">
         {/* Left: Input, Interlinear Gloss, and Lexical Calques */}
         <div className="flex-1 min-w-0 p-5 sm:p-6 h-[560px] lg:h-full flex flex-col min-h-0 space-y-4 overflow-hidden">
           {/* 1. Input Sentence */}
