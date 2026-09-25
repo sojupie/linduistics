@@ -245,12 +245,12 @@ export const TextInspector: React.FC = () => {
             />
           </div>
 
-          {/* 2. Interlinear Gloss Reading Passage */}
+          {/* 2. Interlinear Analysis Reading Passage */}
           {response && (
             <div className="space-y-3 pt-4 border-t border-book-rule">
               <div className="flex items-center justify-between pb-1">
                 <span className="typo-overline">
-                  Interlinear Gloss
+                  Interlinear Analysis
                 </span>
                 <div className="flex items-center gap-4 typo-sublabel text-ink-muted select-none">
                   <span className="flex items-center gap-1.5">
@@ -339,7 +339,7 @@ export const TextInspector: React.FC = () => {
             />
           ) : response ? (
             <div className="py-24 text-center text-ink-muted font-serif">
-              <p className="typo-note">Select a token from the gloss to inspect grammatical properties and correspondences.</p>
+              <p className="typo-note">Select a token from the analysis to inspect grammatical properties and correspondences.</p>
             </div>
           ) : (
             <div className="py-24 text-center text-ink-muted font-serif">
