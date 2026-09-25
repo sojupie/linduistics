@@ -451,143 +451,137 @@ export const FalseFriendsQuiz: React.FC = () => {
         </div>
       ) : (
         /* Active Question Specimen */
-        <div className="border border-book-rule p-5 sm:p-6 space-y-4 sm:space-y-5 bg-page-surface shadow-sm">
-          {/* Status Tracker Bar */}
-          <div className="space-y-2 border-b border-book-rule pb-3">
-            <div className="flex items-center justify-between">
+        <div className="border border-book-rule bg-page-surface shadow-xs overflow-hidden">
+          {/* Deck Progress Bar flush at card top */}
+          <div className="w-full h-0.5 bg-book-rule/40">
+            <div
+              className="h-full bg-ink-main/50 transition-all duration-300"
+              style={{
+                width: `${((currentQuizIdx + (selectedOption !== null ? 1 : 0)) / (quizData?.length || 10)) * 100}%`,
+              }}
+            />
+          </div>
+
+          <div className="p-5 sm:p-6 space-y-4 sm:space-y-5">
+            {/* Status Tracker Bar (single clean divider line) */}
+            <div className="flex items-center justify-between border-b border-book-rule pb-3">
               <div className="flex items-center gap-3">
                 <span className="typo-overline text-ink-main">
                   Question {currentQuizIdx + 1} of {quizData?.length || 10}
                 </span>
                 {currentStreak > 1 && (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-cognate-border/70 bg-cognate-bg/50 text-cognate-ink typo-metric-table font-medium text-xs">
+                  <span className="typo-metric-table text-cognate-ink text-xs font-medium">
                     🔥 {currentStreak} streak
                   </span>
                 )}
               </div>
 
-              {/* Structured Metric Badges */}
-              <div className="flex items-center gap-2">
-                <div className="inline-flex items-center gap-1.5 rounded border border-book-rule bg-page-muted/50 px-2.5 py-0.5 typo-metric-table text-xs">
-                  <span className="typo-overline text-ink-muted">Score:</span>
-                  <span className="font-semibold text-ink-main">{quizScore}</span>
-                  <span className="text-ink-light">/</span>
-                  <span className="text-ink-muted">{quizData?.length || 10}</span>
-                </div>
+              {/* Unboxed Typographic Status Metrics */}
+              <div className="flex items-center gap-3 sm:gap-4 typo-sublabel text-xs">
+                <span className="text-ink-muted">
+                  Score: <strong className="font-semibold text-ink-main">{quizScore}</strong>
+                  <span className="text-ink-light"> / </span>
+                  {quizData?.length || 10}
+                </span>
 
                 {trapsTriggered > 0 && (
-                  <div className="inline-flex items-center gap-1.5 rounded border border-falsefriend-border/70 bg-falsefriend-bg/40 px-2 py-0.5 typo-metric-table text-falsefriend-ink text-xs">
-                    <span className="typo-overline text-falsefriend-ink font-medium">
-                      Traps:
-                    </span>
-                    <span className="font-semibold">{trapsTriggered}</span>
-                  </div>
+                  <span className="text-falsefriend-ink font-medium">
+                    ⚠️ {trapsTriggered} {trapsTriggered === 1 ? 'trap' : 'traps'}
+                  </span>
                 )}
 
                 {hintsUsed > 0 && (
-                  <div className="inline-flex items-center gap-1.5 rounded border border-book-rule bg-page-muted/30 px-2 py-0.5 typo-metric-table text-ink-muted text-xs">
-                    <span className="typo-overline text-ink-muted">Hints:</span>
-                    <span className="font-medium text-ink-main">{hintsUsed}</span>
-                  </div>
+                  <span className="text-ink-muted">
+                    Hints: {hintsUsed}
+                  </span>
                 )}
               </div>
             </div>
 
-            {/* Deck Progress Bar */}
-            <div className="w-full h-0.5 bg-page-muted/80 overflow-hidden">
-              <div
-                className="h-full bg-ink-main/50 transition-all duration-300"
-                style={{
-                  width: `${((currentQuizIdx + (selectedOption !== null ? 1 : 0)) / (quizData?.length || 10)) * 100}%`,
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Dual Specimen Presentation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 border border-book-rule/80 p-3.5 sm:p-4 bg-page-muted/20">
-            {/* Source Counterpart Panel */}
-            {viewingMode === 'target_only' && selectedOption === null ? (
-              <div className="flex flex-col justify-center items-center text-center p-3 sm:p-4 border border-dashed border-book-rule/70 bg-page-surface/40 space-y-1">
-                <span className="typo-overline text-ink-muted">
-                  Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
-                </span>
-                <span className="typo-note text-ink-muted">
-                  [Counterpart hidden to eliminate triangulation]
-                </span>
-                <button
-                  type="button"
-                  onClick={handleRevealHint}
-                  className="typo-subscript font-mono text-ink-muted underline hover:text-ink-main mt-0.5 cursor-pointer"
-                >
-                  Peek counterpart
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-1">
-                <div className="flex items-center justify-between">
+            {/* Dual Specimen Presentation - Clean Unboxed 2-Column Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 pt-1">
+              {/* Source Counterpart Panel */}
+              {viewingMode === 'target_only' && selectedOption === null ? (
+                <div className="flex flex-col justify-center items-center text-center p-3 sm:p-4 border border-dashed border-book-rule/70 bg-page-muted/15 space-y-1">
                   <span className="typo-overline text-ink-muted">
                     Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
                   </span>
+                  <span className="typo-note text-ink-muted">
+                    [Counterpart hidden to eliminate triangulation]
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleRevealHint}
+                    className="typo-subscript font-mono text-ink-muted underline hover:text-ink-main mt-0.5 cursor-pointer"
+                  >
+                    Peek counterpart
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="typo-overline text-ink-muted">
+                      Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
+                    </span>
+                    <span className="typo-lang-code">
+                      {currentQuizItem.lang_a}
+                    </span>
+                  </div>
+                  <div className="flex items-baseline gap-2 flex-wrap">
+                    <span className="typo-headword-display text-ink-main">
+                      {currentQuizItem.word_a}
+                    </span>
+                    {formatPos(currentQuizItem.pos_a) && (
+                      <span className="typo-pos">{formatPos(currentQuizItem.pos_a)}</span>
+                    )}
+                    {currentQuizItem.ipa_a && (
+                      <Phonetic ipa={currentQuizItem.ipa_a} className="typo-ipa" />
+                    )}
+                  </div>
+
+                  {/* Source Definition Handling Based on Viewing Mode */}
+                  {viewingMode === 'comparative' || selectedOption !== null || showSourceHint ? (
+                    <p className="typo-gloss pt-0.5 line-clamp-2">
+                      &ldquo;{currentQuizItem.def_a}&rdquo;
+                    </p>
+                  ) : (
+                    <div className="pt-1">
+                      <button
+                        type="button"
+                        onClick={handleRevealHint}
+                        className="typo-subscript font-mono text-ink-muted/80 hover:text-ink-main bg-page-surface px-2 py-0.5 border border-dashed border-book-rule transition-colors cursor-pointer"
+                        title="Definition masked to prevent English triangulation (press H or click to reveal hint)"
+                      >
+                        [Definition masked · click to reveal hint]
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Target Specimen Panel */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="typo-overline text-falsefriend-ink font-medium">
+                    Target Deceiver ({getLanguageName(currentQuizItem.lang_b)})
+                  </span>
                   <span className="typo-lang-code">
-                    {currentQuizItem.lang_a}
+                    {currentQuizItem.lang_b}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-2 flex-wrap">
-                  <span className="typo-headword-display text-ink-main">
-                    {currentQuizItem.word_a}
+                  <span className="typo-headword-display text-falsefriend-ink">
+                    {currentQuizItem.word_b}
                   </span>
-                  {formatPos(currentQuizItem.pos_a) && (
-                    <span className="typo-pos">{formatPos(currentQuizItem.pos_a)}</span>
+                  {formatPos(currentQuizItem.pos_b) && (
+                    <span className="typo-pos">{formatPos(currentQuizItem.pos_b)}</span>
                   )}
-                  {currentQuizItem.ipa_a && (
-                    <Phonetic ipa={currentQuizItem.ipa_a} className="typo-ipa" />
+                  {currentQuizItem.ipa_b && (
+                    <Phonetic ipa={currentQuizItem.ipa_b} className="typo-ipa" />
                   )}
                 </div>
-
-                {/* Source Definition Handling Based on Viewing Mode */}
-                {viewingMode === 'comparative' || selectedOption !== null || showSourceHint ? (
-                  <p className="typo-gloss pt-0.5 line-clamp-2">
-                    &ldquo;{currentQuizItem.def_a}&rdquo;
-                  </p>
-                ) : (
-                  <div className="pt-1">
-                    <button
-                      type="button"
-                      onClick={handleRevealHint}
-                      className="typo-subscript font-mono text-ink-muted/80 hover:text-ink-main bg-page-surface px-2 py-0.5 border border-dashed border-book-rule transition-colors cursor-pointer"
-                      title="Definition masked to prevent English triangulation (press H or click to reveal hint)"
-                    >
-                      [Definition masked · click to reveal hint]
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Target Specimen Panel */}
-            <div className="space-y-1 border-t md:border-t-0 md:border-l border-book-rule/70 pt-2.5 md:pt-0 md:pl-4">
-              <div className="flex items-center justify-between">
-                <span className="typo-overline text-falsefriend-ink font-medium">
-                  Target Deceiver ({getLanguageName(currentQuizItem.lang_b)})
-                </span>
-                <span className="typo-lang-code">
-                  {currentQuizItem.lang_b}
-                </span>
-              </div>
-              <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="typo-headword-display text-falsefriend-ink">
-                  {currentQuizItem.word_b}
-                </span>
-                {formatPos(currentQuizItem.pos_b) && (
-                  <span className="typo-pos">{formatPos(currentQuizItem.pos_b)}</span>
-                )}
-                {currentQuizItem.ipa_b && (
-                  <Phonetic ipa={currentQuizItem.ipa_b} className="typo-ipa" />
-                )}
               </div>
             </div>
-          </div>
 
           {/* Prompt Header */}
           <div className="pt-0.5">
@@ -686,8 +680,8 @@ export const FalseFriendsQuiz: React.FC = () => {
               </div>
 
               {showAutopsy && (
-                <div className="border border-book-rule/80 bg-page-muted/20 p-3.5 space-y-2.5 typo-body animate-in fade-in duration-200">
-                  <div className="flex items-baseline justify-between border-b border-book-rule/60 pb-2">
+                <div className="pt-2 space-y-2.5 typo-body animate-in fade-in duration-200">
+                  <div className="flex items-baseline justify-between border-b border-book-rule/60 pb-1.5">
                     <span className="typo-overline text-ink-main font-medium">
                       Etymological Comparison
                     </span>
@@ -700,7 +694,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
                     {/* Source lineage */}
                     <div className="space-y-1">
                       <span className="typo-section-header block">
@@ -712,7 +706,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                     </div>
 
                     {/* Target lineage */}
-                    <div className="space-y-1 border-t md:border-t-0 md:border-l border-book-rule/60 pt-2 md:pt-0 md:pl-3">
+                    <div className="space-y-1">
                       <span className="typo-section-header block">
                         {currentQuizItem.word_b} ({getLanguageName(currentQuizItem.lang_b)}):
                       </span>
@@ -725,6 +719,7 @@ export const FalseFriendsQuiz: React.FC = () => {
               )}
             </div>
           )}
+          </div>
         </div>
       )}
     </div>
