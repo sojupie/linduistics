@@ -184,10 +184,10 @@ export const TextInspector: React.FC = () => {
                   key={code}
                   type="button"
                   onClick={() => handleToggleTarget(code)}
-                  className={`px-2 py-0.5 border font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`px-2 py-0.5 border typo-lang-code font-medium transition-colors cursor-pointer ${
                     isChecked
-                      ? 'border-ink-main bg-page-muted text-ink-main font-semibold shadow-2xs'
-                      : 'border-book-rule bg-page-surface text-ink-muted hover:border-book-rule-strong hover:text-ink-main'
+                      ? 'border-ink-main bg-page-muted text-ink-main font-semibold'
+                      : 'border-book-rule bg-page-bg text-ink-muted hover:text-ink-main'
                   }`}
                   title={getLanguageName(code)}
                 >
@@ -201,7 +201,7 @@ export const TextInspector: React.FC = () => {
             type="button"
             disabled={inspectMutation.isPending || !inputText.trim()}
             onClick={() => handleInspect()}
-            className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-4 py-1.5 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer ml-1 active:translate-y-px"
+            className="px-1.5 py-1 border border-ink-main bg-ink-main text-page-surface typo-overline hover:opacity-90 transition-opacity disabled:opacity-50 shadow-2xs cursor-pointer ml-1"
           >
             {inspectMutation.isPending ? 'Parsing...' : 'Parse'}
           </button>
@@ -245,12 +245,12 @@ export const TextInspector: React.FC = () => {
             />
           </div>
 
-          {/* 2. Linear Gloss Reading Passage */}
+          {/* 2. Interlinear Gloss Reading Passage */}
           {response && (
             <div className="space-y-3 pt-4 border-t border-book-rule">
               <div className="flex items-center justify-between pb-1">
                 <span className="typo-overline">
-                  Analyzed Text Passage
+                  Interlinear Gloss
                 </span>
                 <div className="flex items-center gap-4 typo-sublabel text-ink-muted select-none">
                   <span className="flex items-center gap-1.5">
@@ -268,7 +268,7 @@ export const TextInspector: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-5 rounded border border-book-rule bg-page-surface flex flex-wrap items-baseline gap-2 leading-loose">
+              <div className="py-2 flex flex-wrap items-baseline gap-x-5 gap-y-6">
                 {response.tokens.map((tok, idx) => (
                   <TokenPill
                     key={tok.id ?? idx}
@@ -278,10 +278,6 @@ export const TextInspector: React.FC = () => {
                   />
                 ))}
               </div>
-
-              <p className="typo-note text-ink-muted italic select-none">
-                * Words marked with an asterisk have been lemmatized from inflected forms. Click any word to inspect matches.
-              </p>
             </div>
           )}
 
