@@ -186,7 +186,7 @@ export const TextInspector: React.FC = () => {
                   onClick={() => handleToggleTarget(code)}
                   className={`px-2 py-0.5 border font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                     isChecked
-                      ? 'border-ink-main bg-ink-main text-page-bg font-semibold shadow-2xs'
+                      ? 'border-ink-main bg-page-muted text-ink-main font-semibold shadow-2xs'
                       : 'border-book-rule bg-page-surface text-ink-muted hover:border-book-rule-strong hover:text-ink-main'
                   }`}
                   title={getLanguageName(code)}
