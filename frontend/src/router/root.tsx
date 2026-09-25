@@ -11,7 +11,7 @@ export const RootRoute = createRootRoute({
           <Outlet />
         </ErrorBoundary>
       </main>
-      <footer className="border-t border-book-rule bg-page-bg py-8 text-center text-sm text-ink-muted">
+      <footer className="border-t border-book-rule bg-page-bg py-8 text-center typo-sublabel text-ink-muted">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-sans">
             Linduistics — Comparative Lexicon

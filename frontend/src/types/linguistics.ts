@@ -88,12 +88,39 @@ export interface TargetMatch {
   phonetic_sim: number;
 }
 
+export interface AlternativeMatch {
+  word: string;
+  category: string;
+  phonetic_sim: number;
+  semantic_sim: number;
+}
+
+export interface AlternativeWord {
+  form: string;
+  lemma: string;
+  pos: string;
+  universality_score: number;
+  universality_delta: number;
+  sentence_delta?: number;
+  context_fit?: number;
+  cognate_matches: Record<string, AlternativeMatch>;
+}
+
 export interface TokenAnalysis {
+  id?: number;
   token: string;
   lemma?: string;
+  pos?: string;
+  dep_rel?: string;
+  head_id?: number;
+  head_text?: string;
+  morph?: Record<string, string>;
+  is_punct?: boolean;
+  is_stop?: boolean;
   status: 'universal' | 'branch_specific' | 'isolate';
   coverage_ratio: number;
   matches: Record<string, TargetMatch>;
+  alternatives?: AlternativeWord[];
 }
 
 export interface InspectResponse {
@@ -103,6 +130,10 @@ export interface InspectResponse {
   unique_tokens: number;
   universality_score: number;
   tokens: TokenAnalysis[];
+  approximate_translations?: Record<string, string>;
+  pan_germanic_translations?: Record<string, string>;
+  root_id?: number;
+  service_mode?: string;
 }
 
 export interface RawComparisonDto {
@@ -158,6 +189,7 @@ export interface HealthStatus {
 export interface QuizItemDto extends RawComparisonDto {
   options: string[];
   correct_option: number;
+  trap_option?: number;
 }
 
 export interface ClusterMember {

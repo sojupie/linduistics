@@ -5,6 +5,9 @@ import type { LanguagePairStats, LanguageProfile } from '../types/linguistics';
  * dynamically using the browser's native Internationalization API.
  */
 export function getLanguageName(code: string): string {
+  if (code.toLowerCase() === 'pan') {
+    return 'Pan-Germanic (Hybrid)';
+  }
   try {
     const displayNames = new Intl.DisplayNames(['en'], { type: 'language' });
     const resolved = displayNames.of(code);
