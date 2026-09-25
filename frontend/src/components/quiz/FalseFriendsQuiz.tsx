@@ -5,6 +5,7 @@ import { Phonetic } from '../common/Phonetic';
 import { formatPos } from '../../utils/formatters';
 import type { QuizItemDto } from '../../types/linguistics';
 import { LanguagePairSelect } from '../common/LanguagePicker';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 type ViewingMode = 'blind' | 'target_only' | 'comparative';
 
@@ -388,21 +389,23 @@ export const FalseFriendsQuiz: React.FC = () => {
 
                       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                         {rec.isCorrect ? (
-                          <span className="typo-badge text-cognate-ink border border-cognate-border/70 bg-cognate-bg/60 px-2 py-0.5 rounded">
-                            ✓ Correct
+                          <span className="typo-badge text-cognate-ink font-medium inline-flex items-center gap-1">
+                            <MaterialSymbol icon="check_circle" size={14} className="text-cognate-ink" /> Correct
                           </span>
                         ) : rec.isTrap ? (
-                          <span className="typo-badge text-falsefriend-ink border border-falsefriend-border/70 bg-falsefriend-bg/50 px-2 py-0.5 rounded">
-                            ⚠️ Trapped
+                          <span className="typo-badge text-falsefriend-ink font-medium inline-flex items-center gap-1">
+                            <MaterialSymbol icon="warning" size={14} className="text-falsefriend-ink" /> Trapped
                           </span>
                         ) : (
-                          <span className="typo-badge text-ink-muted border border-book-rule bg-page-muted/50 px-2 py-0.5 rounded">
-                            ✗ Missed
+                          <span className="typo-badge text-ink-muted font-medium inline-flex items-center gap-1">
+                            <MaterialSymbol icon="cancel" size={14} className="text-ink-muted" /> Missed
                           </span>
                         )}
-                        <span className="text-ink-muted group-open:rotate-180 transition-transform typo-sublabel font-mono">
-                          ▼
-                        </span>
+                        <MaterialSymbol
+                          icon="arrow_drop_down"
+                          size={18}
+                          className="text-ink-muted group-open:rotate-180 transition-transform"
+                        />
                       </div>
                     </summary>
 
@@ -443,9 +446,10 @@ export const FalseFriendsQuiz: React.FC = () => {
             <button
               type="button"
               onClick={handleRestartQuiz}
-              className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-5 py-2 transition-all active:translate-y-px cursor-pointer"
+              className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-5 py-2 transition-all active:translate-y-px cursor-pointer inline-flex items-center gap-1.5"
             >
-              Play Another Batch →
+              <span>Play Another Batch</span>
+              <MaterialSymbol icon="arrow_forward" size={15} />
             </button>
           </div>
         </div>
@@ -470,8 +474,8 @@ export const FalseFriendsQuiz: React.FC = () => {
                   Question {currentQuizIdx + 1} of {quizData?.length || 10}
                 </span>
                 {currentStreak > 1 && (
-                  <span className="typo-metric-table text-cognate-ink text-xs font-medium">
-                    🔥 {currentStreak} streak
+                  <span className="typo-metric-table text-shifted-ink text-xs font-medium inline-flex items-center gap-1">
+                    <MaterialSymbol icon="local_fire_department" size={15} className="text-shifted-ink" /> {currentStreak} streak
                   </span>
                 )}
               </div>
@@ -485,8 +489,8 @@ export const FalseFriendsQuiz: React.FC = () => {
                 </span>
 
                 {trapsTriggered > 0 && (
-                  <span className="text-falsefriend-ink font-medium">
-                    ⚠️ {trapsTriggered} {trapsTriggered === 1 ? 'trap' : 'traps'}
+                  <span className="text-falsefriend-ink font-medium inline-flex items-center gap-1">
+                    <MaterialSymbol icon="warning" size={15} className="text-falsefriend-ink" /> {trapsTriggered} {trapsTriggered === 1 ? 'trap' : 'traps'}
                   </span>
                 )}
 
@@ -643,17 +647,19 @@ export const FalseFriendsQuiz: React.FC = () => {
                   {selectedOption !== null && (
                     <div className="shrink-0 text-right">
                       {isCorrect && (
-                        <span className="typo-badge text-cognate-ink border border-cognate-border bg-cognate-bg px-2 py-0.5 rounded font-medium">
-                          Target Reality ✓
+                        <span className="typo-badge text-cognate-ink font-medium inline-flex items-center gap-1">
+                          Target Reality
+                          <MaterialSymbol icon="check" size={14} className="text-cognate-ink" />
                         </span>
                       )}
                       {isSelected && isTrap && (
-                        <span className="typo-badge text-falsefriend-ink border border-falsefriend-border bg-falsefriend-bg px-2 py-0.5 rounded font-medium">
-                          Cognitive Trap ⚠️
+                        <span className="typo-badge text-falsefriend-ink font-medium inline-flex items-center gap-1">
+                          Cognitive Trap
+                          <MaterialSymbol icon="warning" size={14} className="text-falsefriend-ink" />
                         </span>
                       )}
                       {!isSelected && isTrap && (
-                        <span className="typo-badge text-falsefriend-ink/90 border border-dashed border-falsefriend-border/70 bg-falsefriend-bg/30 px-2 py-0.5 rounded font-medium">
+                        <span className="typo-badge text-falsefriend-ink/80 font-medium inline-flex items-center gap-1">
                           Source Meaning Trap
                         </span>
                       )}
@@ -671,17 +677,19 @@ export const FalseFriendsQuiz: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAutopsy(!showAutopsy)}
-                  className="typo-sublabel text-ink-muted hover:text-ink-main flex items-center gap-1.5 cursor-pointer underline"
+                  className="typo-sublabel text-ink-muted hover:text-ink-main flex items-center gap-1 cursor-pointer underline"
                 >
-                  {showAutopsy ? 'Hide Etymological Autopsy ▲' : 'Show Etymological Autopsy ▼'}
+                  <span>{showAutopsy ? 'Hide Etymological Autopsy' : 'Show Etymological Autopsy'}</span>
+                  <MaterialSymbol icon={showAutopsy ? 'arrow_drop_up' : 'arrow_drop_down'} size={18} />
                 </button>
 
                 <button
                   type="button"
                   onClick={handleNextQuizItem}
-                  className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-4 py-1.5 transition-all active:translate-y-px cursor-pointer"
+                  className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-4 py-1.5 transition-all active:translate-y-px cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  Next Question → (Enter)
+                  <span>Next Question (Enter)</span>
+                  <MaterialSymbol icon="arrow_forward" size={15} />
                 </button>
               </div>
 

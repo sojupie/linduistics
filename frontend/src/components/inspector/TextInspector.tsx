@@ -6,7 +6,7 @@ import { TokenPill } from './TokenPill';
 import { TokenDetailDrawer } from './TokenDetailDrawer';
 import { LanguageSelect } from '../common/LanguagePicker';
 import { INSPECTOR_CONFIG } from '../../constants/config';
-import { Copy, Check } from 'lucide-react';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 const escapeRegExp = (str: string): string =>
   str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -330,7 +330,11 @@ export const TextInspector: React.FC = () => {
                         className="px-2 py-1 typo-subscript border font-mono transition-colors flex items-center justify-center text-ink-muted hover:text-ink-main bg-page-surface hover:bg-page-muted border-book-rule hover:border-book-rule-strong cursor-pointer shrink-0 mt-0.5"
                         title="Copy calque"
                       >
-                        {copiedLang === lang ? <Check size={13} className="text-cognate-ink" /> : <Copy size={13} />}
+                        {copiedLang === lang ? (
+                          <MaterialSymbol icon="check" size={14} className="text-cognate-ink" />
+                        ) : (
+                          <MaterialSymbol icon="content_copy" size={14} />
+                        )}
                       </button>
                     </div>
                   ))}

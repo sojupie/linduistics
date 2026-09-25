@@ -5,6 +5,7 @@ import type { LanguageProfile } from '../../types/linguistics';
 import type { OrbitRegister, OrbitModality } from './OrbitToolbar';
 import { PALETTE, TYPOGRAPHY } from '../../constants/theme';
 import { ORBIT_CONFIG } from '../../constants/config';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 interface LanguageOrbitProps {
   register: OrbitRegister;
@@ -431,9 +432,10 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
             <button
               type="button"
               onClick={() => setActiveDetails(null)}
-              className="rounded p-1 text-ink-muted hover:text-ink-main typo-sublabel"
+              className="rounded p-1 text-ink-muted hover:text-ink-main cursor-pointer"
+              title="Close"
             >
-              ✕
+              <MaterialSymbol icon="close" size={16} />
             </button>
           </div>
 

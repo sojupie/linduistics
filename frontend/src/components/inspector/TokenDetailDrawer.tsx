@@ -1,6 +1,6 @@
 import React from 'react';
 import type { TokenAnalysis, AlternativeWord } from '../../types/linguistics';
-import { X } from 'lucide-react';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 import { LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 import { getLanguageName } from '../../data/languages';
@@ -290,7 +290,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             className="text-ink-muted hover:text-ink-main transition-colors cursor-pointer p-1"
             title="Close"
           >
-            <X size={16} />
+            <MaterialSymbol icon="close" size={18} />
           </button>
         </div>
 

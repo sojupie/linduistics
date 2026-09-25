@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { useHeadwordSearchQuery } from '../../services/queries';
-import { Search, X } from 'lucide-react';
+import { MaterialSymbol } from './MaterialSymbol';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
 import { Phonetic } from './Phonetic';
 import { getLanguageName } from '../../data/languages';
@@ -68,7 +68,7 @@ export const Header: React.FC = () => {
             className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 typo-sublabel text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
             title="Search dictionary"
           >
-            <Search size={HEADER_CONFIG.ICON_SIZE_TOOL_SM} />
+            <MaterialSymbol icon="search" size={16} />
             <span>Search dictionary</span>
           </button>
         </div>
@@ -78,7 +78,7 @@ export const Header: React.FC = () => {
       {searchOpen && (
         <div className="border-t border-book-rule bg-page-surface px-6 py-4 shadow-sm">
           <div className="mx-auto flex max-w-2xl items-center gap-3">
-            <Search size={HEADER_CONFIG.ICON_SIZE_SEARCH} className="text-ink-muted" />
+            <MaterialSymbol icon="search" size={20} className="text-ink-muted" />
             <input
               type="text"
               value={searchQuery}
@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
                 onClick={() => setSearchQuery('')}
                 className="text-ink-muted hover:text-ink-main"
               >
-                <X size={HEADER_CONFIG.ICON_SIZE_CLEAR} />
+                <MaterialSymbol icon="close" size={16} />
               </button>
             )}
             <button
