@@ -723,17 +723,26 @@ export const FalseFriendsQuiz: React.FC = () => {
 
               let optClass = 'border-book-rule text-ink-main hover:bg-page-muted/50 cursor-pointer';
 
+              const isWrongNotTrapped =
+                selectedOption !== null &&
+                selectedOption !== currentQuizItem.correct_option &&
+                selectedOption !== currentQuizItem.trap_option;
+
               if (selectedOption !== null) {
-                if (isSelected && isCorrect) {
-                  optClass = 'border border-cognate-border bg-cognate-bg/60 text-ink-main font-medium shadow-sm ring-1 ring-cognate-ink/30 cursor-default';
+                if (isCorrect) {
+                  if (isWrongNotTrapped) {
+                    optClass = 'border-dashed border-cognate-border/80 bg-cognate-bg/20 text-ink-main';
+                  } else {
+                    optClass = 'border-cognate-border bg-cognate-bg/50 text-ink-main font-medium shadow-sm';
+                  }
+                } else if (isSelected && isTrap) {
+                  optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
                 } else if (isSelected) {
-                  optClass = 'border border-falsefriend-ink bg-falsefriend-bg/70 text-falsefriend-ink font-medium shadow-sm ring-2 ring-falsefriend-ink/40 cursor-default';
-                } else if (isCorrect) {
-                  optClass = 'border border-cognate-ink/80 bg-cognate-bg/40 text-ink-main font-medium cursor-default';
+                  optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
                 } else if (isTrap) {
-                  optClass = 'border border-book-rule/60 text-ink-muted/60 opacity-40 bg-page-muted/10 cursor-default';
+                  optClass = 'border-dashed border-falsefriend-border/70 text-ink-muted bg-falsefriend-bg/10';
                 } else {
-                  optClass = 'border border-book-rule/40 text-ink-muted/40 opacity-30 cursor-default';
+                  optClass = 'border-book-rule/60 text-ink-muted opacity-40';
                 }
               }
 
@@ -743,20 +752,10 @@ export const FalseFriendsQuiz: React.FC = () => {
                   type="button"
                   onClick={() => handleQuizAnswer(idx)}
                   disabled={selectedOption !== null}
-                  className={`w-full border px-3.5 py-2.5 sm:py-3 text-left transition-all flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-3 ${optClass}`}
+                  className={`w-full border px-3.5 py-2.5 sm:py-3 text-left transition-all flex items-start justify-between gap-3 ${optClass}`}
                 >
                   <div className="flex items-baseline gap-2.5 min-w-0">
-                    <span
-                      className={`typo-metric shrink-0 ${
-                        selectedOption !== null
-                          ? isSelected && !isCorrect
-                            ? 'text-falsefriend-ink font-bold'
-                            : isCorrect
-                              ? 'text-cognate-ink font-bold'
-                              : 'text-ink-muted/50 font-normal'
-                          : 'text-ink-muted/80 font-normal'
-                      }`}
-                    >
+                    <span className="typo-metric text-ink-muted/80 shrink-0 font-normal">
                       [{idx + 1}]
                     </span>
                     <span className="typo-definition leading-snug">
@@ -765,28 +764,29 @@ export const FalseFriendsQuiz: React.FC = () => {
                   </div>
 
                   {selectedOption !== null && (
-                    <div className="shrink-0 self-end sm:self-start text-right">
-                      {isSelected && isCorrect && (
-                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-cognate-ink text-page-bg font-semibold inline-flex items-center gap-1 shadow-2xs">
-                          <MaterialSymbol icon="check" size={15} className="text-page-bg" />
-                          Your pick · Correct
+                    <div className="shrink-0 text-right">
+                      {isCorrect && (
+                        isWrongNotTrapped ? (
+                          <span className="px-2 py-0.5 typo-badge rounded-xs border border-cognate-border/80 text-cognate-ink font-medium inline-flex items-center gap-1.5">
+                            Target Reality
+                            <MaterialSymbol icon="check" size={16} className="text-cognate-ink" />
+                          </span>
+                        ) : (
+                          <span className="px-2 py-0.5 typo-badge rounded-xs bg-cognate-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
+                            Target Reality
+                            <MaterialSymbol icon="check" size={16} className="text-page-bg" />
+                          </span>
+                        )
+                      )}
+                      {isSelected && isTrap && (
+                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-falsefriend-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
+                          Cognitive Trap
+                          <MaterialSymbol icon="warning" size={16} className="text-page-bg" />
                         </span>
                       )}
-                      {isSelected && !isCorrect && (
-                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-falsefriend-ink text-page-bg font-semibold inline-flex items-center gap-1 shadow-2xs">
-                          <MaterialSymbol icon={isTrap ? 'warning' : 'close'} size={15} className="text-page-bg" />
-                          Your pick · {isTrap ? 'Cognitive trap' : 'Incorrect'}
-                        </span>
-                      )}
-                      {!isSelected && isCorrect && (
-                        <span className="px-2 py-0.5 typo-badge rounded-xs border border-cognate-border bg-page-surface text-cognate-ink font-semibold inline-flex items-center gap-1 shadow-2xs">
-                          <MaterialSymbol icon="check" size={15} className="text-cognate-ink" />
-                          Correct answer
-                        </span>
-                      )}
-                      {!isSelected && !isCorrect && isTrap && (
-                        <span className="typo-subscript text-ink-muted/60 italic text-2xs">
-                          (Source meaning trap)
+                      {!isSelected && isTrap && (
+                        <span className="typo-badge text-falsefriend-ink/80 font-medium inline-flex items-center gap-1.5">
+                          Source Meaning Trap
                         </span>
                       )}
                     </div>
