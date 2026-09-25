@@ -222,13 +222,13 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
               ? 'Translation Pair'
               : 'Other';
 
-            const categoryBg = isCognate
-              ? 'text-cognate-ink bg-cognate-bg/60 border-cognate-border/70'
+            const categoryColor = isCognate
+              ? 'text-cognate-ink'
               : isPartial
-              ? 'text-shifted-ink bg-shifted-bg/60 border-shifted-border/70'
+              ? 'text-shifted-ink'
               : isTranslation
-              ? 'text-divergent-ink bg-divergent-bg/60 border-divergent-border/70'
-              : 'text-ink-muted bg-page-muted/60 border-book-rule';
+              ? 'text-divergent-ink'
+              : 'text-ink-muted';
 
             return (
               <div key={lang} className="py-2.5 space-y-1">
@@ -245,7 +245,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                     </span>
                     {match.ipa && <Phonetic ipa={match.ipa} className="table-ipa" />}
                   </div>
-                  <span className={`typo-badge ${categoryBg} border rounded px-2 py-0.5 shrink-0`}>
+                  <span className={`typo-badge ${categoryColor} shrink-0`}>
                     {categoryText}
                   </span>
                 </div>
