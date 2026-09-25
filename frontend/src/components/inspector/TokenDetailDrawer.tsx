@@ -350,7 +350,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                         className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1"
                       >
                         <span>Use alternate</span>
-                        <MaterialSymbol icon="arrow_forward" size={14} />
+                        <MaterialSymbol icon="swap_horiz" size={15} />
                       </button>
                     )}
                   </div>
