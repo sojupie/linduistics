@@ -32,7 +32,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       aria-label={ariaLabel || label || 'Select language'}
-      className={`bg-page-bg border border-book-rule px-2.5 py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${className}`.trim()}
+      className={`bg-page-bg border border-book-rule px-2.5 py-1.5 sm:py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto ${className}`.trim()}
     >
       {languages.map((code) => (
         <option key={code} value={code}>
@@ -47,15 +47,15 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   }
 
   const content = (
-    <div className="flex items-center gap-2">
-      {label && <span className="typo-sublabel">{label}</span>}
+    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
+      {label && <span className="typo-sublabel shrink-0">{label}</span>}
       {selectElement}
     </div>
   );
 
   if (plate) {
     return (
-      <div className="bg-page-surface border border-book-rule px-3.5 py-2 shadow-2xs self-start md:self-auto">
+      <div className="bg-page-surface border border-book-rule px-3.5 py-2.5 shadow-2xs w-full sm:w-auto self-stretch sm:self-start md:self-auto">
         {content}
       </div>
     );
@@ -92,14 +92,14 @@ export const LanguagePairSelect: React.FC<LanguagePairSelectProps> = ({
   className = '',
 }) => {
   const content = (
-    <div className={`flex items-center gap-3 ${className}`.trim()}>
-      {label && <span className="typo-sublabel">{label}</span>}
-      <div className="flex items-center gap-1.5">
+    <div className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 w-full sm:w-auto ${className}`.trim()}>
+      {label && <span className="typo-sublabel shrink-0">{label}</span>}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 w-full sm:w-auto">
         <select
           value={sourceLang}
           onChange={(e) => onSourceChange(e.target.value)}
           aria-label="Source language"
-          className="bg-page-bg border border-book-rule px-2.5 py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors"
+          className="w-full sm:w-auto bg-page-bg border border-book-rule px-2.5 py-1.5 sm:py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors"
         >
           {availableSources.map((lang) => (
             <option key={lang} value={lang}>
@@ -115,23 +115,27 @@ export const LanguagePairSelect: React.FC<LanguagePairSelectProps> = ({
             disabled={!canSwap}
             title={`Swap languages (${getLanguageName(targetLang)} ⇄ ${getLanguageName(sourceLang)})`}
             aria-label={`Swap languages to ${getLanguageName(targetLang)} and ${getLanguageName(sourceLang)}`}
-            className={`px-2 py-1 typo-sublabel border rounded-xs font-mono transition-colors flex items-center justify-center ${
+            className={`self-center sm:self-auto px-2.5 py-1 typo-sublabel border rounded-xs font-mono transition-colors flex items-center justify-center shrink-0 ${
               canSwap
                 ? 'text-ink-muted hover:text-ink-main bg-page-bg hover:bg-page-muted border-book-rule hover:border-book-rule-strong cursor-pointer shadow-2xs'
                 : 'text-ink-muted/40 border-book-rule/40 cursor-not-allowed bg-page-bg'
             }`}
           >
-            <MaterialSymbol icon="swap_horiz" size={16} />
+            <MaterialSymbol icon="swap_vert" size={16} className="sm:hidden" />
+            <MaterialSymbol icon="swap_horiz" size={16} className="hidden sm:inline-flex" />
           </button>
         ) : (
-          <MaterialSymbol icon="arrow_forward" size={16} className="text-ink-muted px-0.5" />
+          <div className="self-center sm:self-auto flex items-center justify-center">
+            <MaterialSymbol icon="arrow_downward" size={16} className="text-ink-muted sm:hidden py-0.5" />
+            <MaterialSymbol icon="arrow_forward" size={16} className="text-ink-muted hidden sm:inline-flex px-0.5" />
+          </div>
         )}
 
         <select
           value={targetLang}
           onChange={(e) => onTargetChange(e.target.value)}
           aria-label="Target language"
-          className="bg-page-bg border border-book-rule px-2.5 py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors"
+          className="w-full sm:w-auto bg-page-bg border border-book-rule px-2.5 py-1.5 sm:py-1 typo-sublabel font-medium text-ink-main hover:border-book-rule-strong focus:border-ink-main focus:outline-none cursor-pointer transition-colors"
         >
           {availableTargets.map((lang) => (
             <option key={lang} value={lang}>
@@ -145,7 +149,7 @@ export const LanguagePairSelect: React.FC<LanguagePairSelectProps> = ({
 
   if (plate) {
     return (
-      <div className="bg-page-surface border border-book-rule px-3.5 py-2 shadow-2xs self-start md:self-auto">
+      <div className="bg-page-surface border border-book-rule px-3.5 py-2.5 shadow-2xs w-full sm:w-auto self-stretch sm:self-start md:self-auto">
         {content}
       </div>
     );
