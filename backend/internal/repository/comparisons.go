@@ -269,10 +269,52 @@ func (r *ComparisonsRepository) GetDistractorPool(ctx context.Context, targetLan
 	return defs, nil
 }
 
+func canonicalPairKey(langA, wordA, langB, wordB string) string {
+	a := strings.ToLower(langA) + ":" + strings.ToLower(wordA)
+	b := strings.ToLower(langB) + ":" + strings.ToLower(wordB)
+	if a < b {
+		return a + "<->" + b
+	}
+	return b + "<->" + a
+}
+
+func flipComparison(c models.WordComparison) models.WordComparison {
+	return models.WordComparison{
+		ID:              c.ID,
+		LangA:           c.LangB,
+		WordA:           c.WordB,
+		IpaA:            c.IpaB,
+		DefA:            c.DefB,
+		PosA:            c.PosB,
+		LangB:           c.LangA,
+		WordB:           c.WordA,
+		IpaB:            c.IpaA,
+		DefB:            c.DefA,
+		PosB:            c.PosA,
+		OrthographicSim: c.OrthographicSim,
+		PhoneticSim:     c.PhoneticSim,
+		SemanticSim:     c.SemanticSim,
+		Category:        c.Category,
+		FalseFriendType: c.FalseFriendType,
+		SensesA:         c.SensesB,
+		SensesB:         c.SensesA,
+		EtymRoot:        c.EtymRoot,
+		EtymTextA:       c.EtymTextB,
+		EtymTextB:       c.EtymTextA,
+	}
+}
+
 func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefix string, limit int) ([]models.WordComparison, error) {
 	if limit <= 0 || limit > 50 {
 		limit = 20
 	}
+	fetchLimit := limit * 3
+	if fetchLimit < 30 {
+		fetchLimit = 30
+	} else if fetchLimit > 150 {
+		fetchLimit = 150
+	}
+
 	var query string
 	var rows pgx.Rows
 	var err error
@@ -288,7 +330,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			ORDER BY phonetic_sim DESC, semantic_sim DESC
 			LIMIT $2
 		`
-		rows, err = r.pool.Query(ctx, query, prefix, limit)
+		rows, err = r.pool.Query(ctx, query, prefix, fetchLimit)
 	} else {
 		lang = normalizeLang(lang)
 		query = `
@@ -301,7 +343,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			ORDER BY phonetic_sim DESC, semantic_sim DESC
 			LIMIT $3
 		`
-		rows, err = r.pool.Query(ctx, query, lang, prefix, limit)
+		rows, err = r.pool.Query(ctx, query, lang, prefix, fetchLimit)
 	}
 	if err != nil {
 		return nil, fmt.Errorf("search headwords error: %w", err)
@@ -309,6 +351,9 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 	defer rows.Close()
 
 	var items []models.WordComparison
+	seenKeys := make(map[string]bool)
+	lowerPrefix := strings.ToLower(prefix)
+
 	for rows.Next() {
 		var c models.WordComparison
 		if err := rows.Scan(
@@ -319,7 +364,28 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 		); err != nil {
 			return nil, fmt.Errorf("scan search result error: %w", err)
 		}
+
+		matchA := strings.HasPrefix(strings.ToLower(c.WordA), lowerPrefix)
+		matchB := strings.HasPrefix(strings.ToLower(c.WordB), lowerPrefix)
+
+		if lang != "" && lang != "all" {
+			normLang := strings.ToLower(normalizeLang(lang))
+			if strings.ToLower(c.LangA) != normLang && strings.ToLower(c.LangB) == normLang {
+				c = flipComparison(c)
+			}
+		} else if !matchA && matchB {
+			c = flipComparison(c)
+		}
+
+		key := canonicalPairKey(c.LangA, c.WordA, c.LangB, c.WordB)
+		if seenKeys[key] {
+			continue
+		}
+		seenKeys[key] = true
 		items = append(items, c)
+		if len(items) >= limit {
+			break
+		}
 	}
 	return items, nil
 }

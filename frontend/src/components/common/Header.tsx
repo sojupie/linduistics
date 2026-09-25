@@ -17,6 +17,24 @@ export const Header: React.FC = () => {
     'all',
   );
 
+  const dedupedResults = React.useMemo(() => {
+    if (!searchResults) return [];
+    const seen = new Set<string>();
+    return searchResults.filter((item) => {
+      const key = [
+        item.lang_a.toLowerCase(),
+        item.word_a.toLowerCase(),
+        item.lang_b.toLowerCase(),
+        item.word_b.toLowerCase(),
+      ]
+        .sort()
+        .join(':');
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [searchResults]);
+
   const navLinks = [
     { to: '/orbit', label: 'Language Orbit' },
     { to: '/languages', label: 'Language Overview' },
@@ -111,9 +129,9 @@ export const Header: React.FC = () => {
             </p>
           )}
 
-          {searchResults && searchResults.length > 0 && (
+          {dedupedResults.length > 0 && (
             <div className={`mx-auto mt-4 max-w-2xl divide-y divide-book-rule rounded border border-book-rule bg-page-surface ${HEADER_CONFIG.MAX_SEARCH_RESULTS_HEIGHT_PX} overflow-y-auto`}>
-              {searchResults.map((item) => (
+              {dedupedResults.map((item) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between p-3 typo-sublabel hover:bg-page-muted transition-colors gap-3"
@@ -153,7 +171,7 @@ export const Header: React.FC = () => {
             </div>
           )}
 
-          {searchResults && searchResults.length === 0 && searchQuery.trim().length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS && !searchFetching && (
+          {searchResults && dedupedResults.length === 0 && searchQuery.trim().length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS && !searchFetching && (
             <p className="mx-auto mt-3 max-w-2xl typo-gloss">
               No words found matching &ldquo;{searchQuery}&rdquo;.
             </p>
