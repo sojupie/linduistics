@@ -345,7 +345,7 @@ export const TextInspector: React.FC = () => {
         </div>
 
         {/* Right: Token Specimen Details */}
-        <div className="w-full lg:w-[480px] xl:w-[520px] lg:shrink-0 p-5 sm:p-6 bg-page-surface">
+        <div className="w-full lg:w-[720px] xl:w-[780px] lg:shrink-0 p-5 sm:p-6 bg-page-surface">
           {selectedToken ? (
             <TokenDetailDrawer
               tokenAnalysis={selectedToken}
