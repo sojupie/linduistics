@@ -130,7 +130,7 @@ body {
    ==========================================================================
    1. Display & Headings: .typo-page-title, .typo-page-deck, .typo-section-header, .typo-headword-display, .typo-headword-row
    2. Linguistic & Phonetic: .typo-pos-display, .typo-pos, .typo-ipa, .typo-subscript
-   3. Metadata & Labels: .typo-overline, .typo-sublabel, .typo-badge, .typo-lang-code
+   3. Metadata, Navigation & Labels: .typo-overline, .typo-sublabel, .typo-nav, .typo-action, .typo-close, .typo-badge, .typo-lang-code
    4. Prose & Definitions: .typo-body, .typo-definition, .typo-gloss, .typo-note
    5. Metrics & Values: .typo-metric, .typo-metric-table
    ========================================================================== */
@@ -245,6 +245,22 @@ body {
   line-height: 1.25rem;
   font-weight: 500;
   color: var(--color-ink-muted);
+}
+
+.typo-nav {
+  font-family: var(--font-deck);
+  font-size: 0.9375rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+}
+
+.typo-action,
+.typo-action-close,
+.typo-close {
+  font-family: var(--font-deck);
+  font-size: 1.0625rem;
+  line-height: 1.5rem;
+  font-weight: 500;
 }
 
 .typo-badge {

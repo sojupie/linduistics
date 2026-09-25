@@ -48,9 +48,9 @@ export const Header: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`typo-sublabel transition-colors ${
+                className={`typo-nav transition-colors ${
                   isActive
-                    ? 'text-ink-main font-medium underline decoration-2 underline-offset-8 decoration-cognate-ink'
+                    ? 'text-ink-main underline decoration-2 underline-offset-8 decoration-cognate-ink'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
@@ -65,10 +65,10 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setSearchOpen(!searchOpen)}
-            className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 typo-sublabel text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
+            className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-1.5 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
             title="Search dictionary"
           >
-            <MaterialSymbol icon="search" size={16} />
+            <MaterialSymbol icon="search" size={18} />
             <span>Search dictionary</span>
           </button>
         </div>
@@ -99,7 +99,7 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setSearchOpen(false)}
-              className="typo-sublabel text-ink-muted hover:text-ink-main cursor-pointer"
+              className="typo-close text-ink-muted hover:text-ink-main cursor-pointer transition-colors"
             >
               Close
             </button>
@@ -172,8 +172,8 @@ export const Header: React.FC = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`typo-sublabel whitespace-nowrap ${
-                isActive ? 'text-ink-main font-medium underline' : 'text-ink-muted'
+              className={`typo-nav whitespace-nowrap transition-colors ${
+                isActive ? 'text-ink-main underline' : 'text-ink-muted hover:text-ink-main'
               }`}
             >
               {link.label}
