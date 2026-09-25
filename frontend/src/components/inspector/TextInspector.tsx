@@ -307,7 +307,10 @@ export const TextInspector: React.FC = () => {
                       className="py-3 flex items-start justify-between gap-4 hover:bg-page-surface/40 transition-colors"
                     >
                       <div className="space-y-1 min-w-0">
-                        <span className="typo-lang-code inline-block mb-0.5">
+                        <span
+                          className="typo-lang-code inline-block mb-0.5 cursor-help"
+                          title={getLanguageName(lang)}
+                        >
                           {lang.toUpperCase()}
                         </span>
                         <p className="typo-body">

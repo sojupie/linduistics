@@ -343,7 +343,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <h3 className="typo-headword-display text-ink-main">
                   {selectedLang.name}
                 </h3>
-                <span className="typo-lang-code">
+                <span className="typo-lang-code cursor-help" title={selectedLang.name}>
                   {selectedLang.code.toUpperCase()}
                 </span>
               </div>

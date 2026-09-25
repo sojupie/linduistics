@@ -523,8 +523,11 @@ export const FalseFriendsQuiz: React.FC = () => {
                     <span className="typo-overline text-ink-muted">
                       Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
                     </span>
-                    <span className="typo-lang-code">
-                      {currentQuizItem.lang_a}
+                    <span
+                      className="typo-lang-code cursor-help"
+                      title={getLanguageName(currentQuizItem.lang_a)}
+                    >
+                      {currentQuizItem.lang_a.toUpperCase()}
                     </span>
                   </div>
                   <div className="flex items-baseline gap-2 flex-wrap">
@@ -565,8 +568,11 @@ export const FalseFriendsQuiz: React.FC = () => {
                   <span className="typo-overline text-falsefriend-ink font-medium">
                     Target Deceiver ({getLanguageName(currentQuizItem.lang_b)})
                   </span>
-                  <span className="typo-lang-code">
-                    {currentQuizItem.lang_b}
+                  <span
+                    className="typo-lang-code cursor-help"
+                    title={getLanguageName(currentQuizItem.lang_b)}
+                  >
+                    {currentQuizItem.lang_b.toUpperCase()}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-2 flex-wrap">

@@ -3,6 +3,7 @@ import type { TokenAnalysis, AlternativeWord } from '../../types/linguistics';
 import { X } from 'lucide-react';
 import { LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
+import { getLanguageName } from '../../data/languages';
 
 interface TokenDetailDrawerProps {
   tokenAnalysis: TokenAnalysis | null;
@@ -93,7 +94,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             <span className="typo-metric-table text-ink-muted">{alternatives.length}</span>
           </div>
 
-          <div className="divide-y divide-book-rule/50">
+          <div className="space-y-2.5">
             {alternatives.map((alt: AlternativeWord, idx: number) => {
               const isSameForm = alt.form.toLowerCase() === tokenAnalysis.token.toLowerCase();
               const matchEntries = Object.entries(alt.cognate_matches);
@@ -101,75 +102,97 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
               return (
                 <div
                   key={idx}
-                  className="py-2.5 flex items-baseline justify-between gap-3"
+                  className={`p-3 rounded border transition-colors space-y-2 ${
+                    isSameForm
+                      ? 'border-book-rule bg-page-muted/40'
+                      : 'border-book-rule bg-page-surface hover:border-book-rule-strong'
+                  }`}
                 >
-                  <div className="space-y-0.5 min-w-0">
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                      <span className="typo-headword-row text-ink-main">
+                  {/* Top row: Alternate headword, lemma tag, and action button */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-baseline gap-2 min-w-0 flex-wrap">
+                      <span className="typo-headword-row font-medium text-ink-main">
                         {alt.form}
                       </span>
                       {alt.lemma !== alt.form && (
-                        <span className="typo-note text-ink-muted">
-                          ({alt.lemma})
+                        <span className="typo-note text-ink-muted italic">
+                          (lemma: {alt.lemma})
                         </span>
                       )}
-                      <span className="typo-metric-table text-ink-muted">
-                        {matchEntries.length} {matchEntries.length === 1 ? 'target' : 'targets'}
-                      </span>
-                      {typeof alt.sentence_delta === 'number' && alt.sentence_delta !== 0 ? (
-                        <span
-                          className={`typo-metric-table ${
-                            alt.sentence_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
-                          }`}
-                          title={`Sentence impact: ${alt.sentence_delta > 0 ? '+' : ''}${alt.sentence_delta}% (Token cognacy: ${Math.round(alt.universality_score)}%, ${alt.universality_delta > 0 ? '+' : ''}${Math.round(alt.universality_delta)}%)`}
-                        >
-                          {alt.sentence_delta > 0 ? `+${alt.sentence_delta}% sent` : `${alt.sentence_delta}% sent`}
-                        </span>
-                      ) : typeof alt.universality_delta === 'number' && alt.universality_delta !== 0 ? (
-                        <span
-                          className={`typo-metric-table ${
-                            alt.universality_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
-                          }`}
-                          title={`Universality: ${Math.round(alt.universality_score)}% (${alt.universality_delta > 0 ? '+' : ''}${Math.round(alt.universality_delta)}% relative to current word)`}
-                        >
-                          {alt.universality_delta > 0 ? `+${Math.round(alt.universality_delta)}%` : `${Math.round(alt.universality_delta)}%`}
-                        </span>
-                      ) : null}
-                      {typeof alt.context_fit === 'number' && (
-                        <span
-                          className="typo-metric-table text-ink-muted"
-                          title={`Contextual semantic fit: ${Math.round(alt.context_fit * 100)}% based on cross-lingual MiniLM alignment`}
-                        >
-                          {Math.round(alt.context_fit * 100)}% fit
+                      {isSameForm && (
+                        <span className="px-1.5 py-0.2 typo-subscript font-mono rounded bg-page-muted text-ink-muted border border-book-rule">
+                          current
                         </span>
                       )}
                     </div>
 
-                    {matchEntries.length > 0 && (
-                      <div className="typo-sublabel flex items-baseline gap-2 flex-wrap pt-0.5">
-                        {matchEntries.map(([lang, m]) => (
-                          <span key={lang}>
-                            <span className="font-mono uppercase text-ink-light mr-1">{lang}:</span>
-                            <span className="text-ink-main">{m.word}</span>
-                          </span>
-                        ))}
-                      </div>
+                    {onSubstitute && !isSameForm && (
+                      <button
+                        type="button"
+                        onClick={() => onSubstitute(tokenAnalysis, alt.form)}
+                        className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0"
+                      >
+                        Use alternate →
+                      </button>
                     )}
                   </div>
 
-                  {onSubstitute && !isSameForm && (
-                    <button
-                      type="button"
-                      onClick={() => onSubstitute(tokenAnalysis, alt.form)}
-                      className="typo-sublabel text-cognate-ink hover:text-ink-main underline transition-colors cursor-pointer shrink-0"
-                    >
-                      Use alternate →
-                    </button>
-                  )}
-                  {isSameForm && (
-                    <span className="typo-note text-ink-muted shrink-0">
-                      current form
+                  {/* Middle row: Structured, readable metrics */}
+                  <div className="flex items-center gap-2.5 typo-sublabel text-ink-muted flex-wrap">
+                    {typeof alt.sentence_delta === 'number' && alt.sentence_delta !== 0 ? (
+                      <span
+                        className={`font-medium ${
+                          alt.sentence_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
+                        }`}
+                        title={`Sentence impact: ${alt.sentence_delta > 0 ? '+' : ''}${alt.sentence_delta}% overall cognacy change`}
+                      >
+                        {alt.sentence_delta > 0 ? `+${alt.sentence_delta}%` : `${alt.sentence_delta}%`} sentence cognacy
+                      </span>
+                    ) : typeof alt.universality_delta === 'number' && alt.universality_delta !== 0 ? (
+                      <span
+                        className={`font-medium ${
+                          alt.universality_delta > 0 ? 'text-cognate-ink' : 'text-shifted-ink'
+                        }`}
+                        title={`Word universality: ${Math.round(alt.universality_score)}%`}
+                      >
+                        {alt.universality_delta > 0 ? `+${Math.round(alt.universality_delta)}%` : `${Math.round(alt.universality_delta)}%`} word cognacy
+                      </span>
+                    ) : null}
+
+                    <span className="text-book-rule-strong select-none">•</span>
+
+                    <span>
+                      {matchEntries.length} {matchEntries.length === 1 ? 'target' : 'targets'} attested
                     </span>
+
+                    {typeof alt.context_fit === 'number' && (
+                      <>
+                        <span className="text-book-rule-strong select-none">•</span>
+                        <span title="Contextual semantic fit based on sentence context">
+                          {Math.round(alt.context_fit * 100)}% context fit
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Bottom row: Target Language Correspondences with full name hover tooltips */}
+                  {matchEntries.length > 0 && (
+                    <div className="flex items-center gap-1.5 flex-wrap pt-1 border-t border-book-rule/40">
+                      {matchEntries.map(([lang, m]) => (
+                        <span
+                          key={lang}
+                          className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-book-rule bg-page-bg typo-sublabel"
+                        >
+                          <span
+                            className="font-mono text-xs uppercase font-medium text-ink-muted cursor-help"
+                            title={getLanguageName(lang)}
+                          >
+                            {lang.toUpperCase()}
+                          </span>
+                          <span className="font-serif text-ink-main">{m.word}</span>
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </div>
               );
@@ -211,7 +234,10 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
               <div key={lang} className="py-2.5 space-y-1">
                 <div className="flex items-baseline justify-between gap-3">
                   <div className="flex items-baseline gap-2.5 flex-wrap">
-                    <span className="typo-lang-code w-8 shrink-0 text-center">
+                    <span
+                      className="typo-lang-code w-8 shrink-0 text-center cursor-help"
+                      title={getLanguageName(lang)}
+                    >
                       {lang.toUpperCase()}
                     </span>
                     <span className="typo-headword-row text-ink-main">

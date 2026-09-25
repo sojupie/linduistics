@@ -133,7 +133,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         <div className="space-y-3.5 pt-1">
           {/* Source Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="typo-lang-code shrink-0">
+            <span className="typo-lang-code shrink-0 cursor-help" title={sourceName}>
               {sourceLang.toUpperCase()}
             </span>
             <h2 className="typo-headword-display text-ink-main">
@@ -160,7 +160,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
           {/* Target Entry */}
           <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="typo-lang-code shrink-0">
+            <span className="typo-lang-code shrink-0 cursor-help" title={targetName}>
               {targetLang.toUpperCase()}
             </span>
             <h2 className={`typo-headword-display ${
