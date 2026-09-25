@@ -54,35 +54,38 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
     switch (pair.category) {
       case 'true_cognate':
         return (
-          <span className="typo-badge text-cognate-ink whitespace-nowrap">
+          <span className="typo-badge px-2 py-0.5 rounded bg-cognate-bg text-cognate-ink whitespace-nowrap">
             True Cognate
           </span>
         );
       case 'false_friend':
         return (
-          <span className="typo-badge text-falsefriend-ink whitespace-nowrap">
-            {pair.falseFriendType === 'etymological_shift'
-              ? 'False Friend · Drift'
-              : pair.falseFriendType === 'surface_collision'
-              ? 'False Friend · Clash'
-              : 'False Friend'}
-          </span>
+          <div className="inline-flex flex-col items-center leading-tight">
+            <span className="typo-badge px-2 py-0.5 rounded bg-falsefriend-bg text-falsefriend-ink whitespace-nowrap">
+              False Friend
+            </span>
+            {pair.falseFriendType && (
+              <span className="typo-subscript text-ink-muted text-2xs mt-0.5 whitespace-nowrap">
+                {pair.falseFriendType === 'etymological_shift' ? 'shared root' : 'lookalike'}
+              </span>
+            )}
+          </div>
         );
       case 'partial_cognate':
         return (
-          <span className="typo-badge text-shifted-ink whitespace-nowrap">
+          <span className="typo-badge px-2 py-0.5 rounded bg-shifted-bg text-shifted-ink whitespace-nowrap">
             Partial Cognate
           </span>
         );
       case 'translation_pair':
         return (
-          <span className="typo-badge text-divergent-ink whitespace-nowrap">
+          <span className="typo-badge px-2 py-0.5 rounded bg-divergent-bg text-divergent-ink whitespace-nowrap">
             Translation Pair
           </span>
         );
       default:
         return (
-          <span className="typo-badge text-ink-muted whitespace-nowrap">
+          <span className="typo-badge px-2 py-0.5 rounded bg-page-muted text-ink-muted whitespace-nowrap">
             Other
           </span>
         );
@@ -158,15 +161,15 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
 
           {selectedCategory === 'false_friend' && (
             <div className="flex items-center gap-2">
-              <span className="typo-sublabel">Tier:</span>
+              <span className="typo-sublabel">Type:</span>
               <select
                 value={selectedFfType ?? 'all'}
                 onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
                 className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
               >
-                <option value="all">All Tiers</option>
-                <option value="etymological_shift">Tier A: Drift (Etymological Shift)</option>
-                <option value="surface_collision">Tier B: Clash (Surface Collision)</option>
+                <option value="all">All False Friends</option>
+                <option value="etymological_shift">Shared Roots</option>
+                <option value="surface_collision">Accidental Lookalikes</option>
               </select>
             </div>
           )}

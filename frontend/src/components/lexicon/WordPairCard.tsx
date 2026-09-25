@@ -12,15 +12,15 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
   const getBadgeStyle = () => {
     switch (pair.category) {
       case 'true_cognate':
-        return 'text-cognate-ink bg-cognate-bg border-cognate-border';
+        return 'text-cognate-ink bg-cognate-bg';
       case 'false_friend':
-        return 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border';
+        return 'text-falsefriend-ink bg-falsefriend-bg';
       case 'partial_cognate':
-        return 'text-shifted-ink bg-shifted-bg border-shifted-border';
+        return 'text-shifted-ink bg-shifted-bg';
       case 'translation_pair':
-        return 'text-divergent-ink bg-divergent-bg border-divergent-border';
+        return 'text-divergent-ink bg-divergent-bg';
       default:
-        return 'text-ink-muted bg-page-muted border-book-rule';
+        return 'text-ink-muted bg-page-muted';
     }
   };
 
@@ -30,9 +30,9 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
         return 'True Cognate';
       case 'false_friend':
         return pair.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Drift'
+          ? 'False Friend · Shared Root'
           : pair.falseFriendType === 'surface_collision'
-          ? 'False Friend · Clash'
+          ? 'False Friend · Accidental Lookalike'
           : 'False Friend';
       case 'partial_cognate':
         return 'Partial Cognate';
@@ -77,7 +77,7 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
 
         {/* Category tag */}
         <span
-          className={`rounded border px-2.5 py-0.5 typo-badge ${getBadgeStyle()}`}
+          className={`rounded px-2.5 py-0.5 typo-badge ${getBadgeStyle()}`}
         >
           {getCategoryLabel()}
         </span>

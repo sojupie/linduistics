@@ -38,10 +38,10 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         return 'True Cognate';
       case 'false_friend':
         return pair.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Tier A (Etymological Shift)'
+          ? 'False Friend · Shared Root'
           : pair.falseFriendType === 'surface_collision'
-          ? 'False Friend · Tier B (Surface Collision)'
-          : 'False Friend';
+            ? 'False Friend · Accidental Lookalike'
+            : 'False Friend';
       case 'partial_cognate':
         return 'Partial Cognate';
       case 'translation_pair':
@@ -118,13 +118,16 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {/* Running Header */}
         <div className="flex items-center justify-between typo-overline border-b border-book-rule/60 pb-2.5">
           <span>{sourceName} ↔ {targetName}</span>
-          <span className={`typo-badge px-2.5 py-0.5 border rounded ${
-            pair.category === 'false_friend'
-              ? 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border'
+          <span className={`typo-badge px-2.5 py-0.5 rounded ${pair.category === 'false_friend'
+              ? 'text-falsefriend-ink bg-falsefriend-bg'
               : pair.category === 'true_cognate'
-              ? 'text-cognate-ink bg-cognate-bg border-cognate-border'
-              : 'text-ink-main bg-page-muted border-book-rule'
-          }`}>
+                ? 'text-cognate-ink bg-cognate-bg'
+                : pair.category === 'partial_cognate'
+                  ? 'text-shifted-ink bg-shifted-bg'
+                  : pair.category === 'translation_pair'
+                    ? 'text-divergent-ink bg-divergent-bg'
+                    : 'text-ink-main bg-page-muted'
+            }`}>
             {getTaxonomyTitle()}
           </span>
         </div>
@@ -163,13 +166,12 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             <span className="typo-lang-code shrink-0 cursor-help" title={targetName}>
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`typo-headword-display ${
-              pair.category === 'false_friend'
+            <h2 className={`typo-headword-display ${pair.category === 'false_friend'
                 ? 'text-falsefriend-ink'
                 : pair.category === 'true_cognate'
-                ? 'text-cognate-ink'
-                : 'text-ink-main'
-            }`}>
+                  ? 'text-cognate-ink'
+                  : 'text-ink-main'
+              }`}>
               {pair.wordB}{posAbbrB ? ',' : ''}
             </h2>
             {posAbbrB && (
@@ -185,10 +187,10 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
         {/* False Friend Distinction Advisory */}
         {pair.category === 'false_friend' && (
-          <div className="pt-3 border-t border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
+          <div className="pt-3 border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {pair.falseFriendType === 'etymological_shift'
-              ? 'Etymological Shift (Semantic Drift): Both headwords share a verified common etymon (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern definitions divergent or mutually deceptive.'
-              : 'Surface Collision: Headwords represent historically unrelated roots that have accidentally converged in pronunciation or spelling.'}
+              ? 'Shared Roots: Both headwords share a verified common ancestral root (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern definitions divergent or mutually deceptive.'
+              : 'Accidental Lookalike: Headwords represent historically unrelated roots that have coincidentally converged in spelling or pronunciation.'}
           </div>
         )}
       </div>
@@ -281,11 +283,15 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               </span>
             </div>
           </div>
-        ) : (
-          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note">
-            Direct reconstructed proto-etymon currently undergoing comparative triangulation.
+        ) : pair.category === 'false_friend' && pair.falseFriendType === 'surface_collision' ? (
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note text-ink-muted">
+            No shared ancestral root: these words have historically distinct etymological origins and converged only in surface form.
           </div>
-        )}
+        ) : !pair.etymTextA && !pair.etymTextB ? (
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note text-ink-muted">
+            No reconstructed ancestral root recorded in source data.
+          </div>
+        ) : null}
 
         {pair.etymTextA && (
           <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">
@@ -380,7 +386,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
                         Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
@@ -421,7 +427,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg border border-cognate-border px-1.5 py-0.5 whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
                         Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
