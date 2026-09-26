@@ -205,7 +205,7 @@ export const Header: React.FC = () => {
       {typeof document !== 'undefined' &&
         createPortal(
           <div
-            className={`fixed inset-0 z-50 md:hidden ${mobileNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
+            className={`fixed inset-0 z-50 lg:hidden ${mobileNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
               }`}
             aria-hidden={!mobileNavOpen}
           >

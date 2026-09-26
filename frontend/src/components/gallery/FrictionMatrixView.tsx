@@ -117,6 +117,50 @@ export const FrictionMatrixView: React.FC = () => {
       return `rgba(37, 93, 54, ${0.06 + intensity * 0.75})`;
     }
   };
+  // SVG Tension Chords for circular diagram
+  const chords = useMemo(() => {
+    const result: Array<{
+      src: string;
+      tgt: string;
+      x1: number;
+      y1: number;
+      x2: number;
+      y2: number;
+      intensity: number;
+      isSelected: boolean;
+    }> = [];
+
+    for (let i = 0; i < GALLERY_LANGUAGES.length; i++) {
+      const l1 = GALLERY_LANGUAGES[i];
+      const angle1 = (i / GALLERY_LANGUAGES.length) * Math.PI * 2 - Math.PI / 2;
+      const x1 = 160 + 135 * Math.cos(angle1);
+      const y1 = 160 + 135 * Math.sin(angle1);
+
+      for (let j = i + 1; j < GALLERY_LANGUAGES.length; j++) {
+        const l2 = GALLERY_LANGUAGES[j];
+        const angle2 = (j / GALLERY_LANGUAGES.length) * Math.PI * 2 - Math.PI / 2;
+        const x2 = 160 + 135 * Math.cos(angle2);
+        const y2 = 160 + 135 * Math.sin(angle2);
+
+        const val = getCellValue(l1.code, l2.code);
+        const isSelected =
+          (selectedPair.source === l1.code && selectedPair.target === l2.code) ||
+          (selectedPair.source === l2.code && selectedPair.target === l1.code);
+
+        result.push({
+          src: l1.code,
+          tgt: l2.code,
+          x1,
+          y1,
+          x2,
+          y2,
+          intensity: val.intensity,
+          isSelected,
+        });
+      }
+    }
+    return result;
+  }, [selectedPair, activeMetric, pairMatrixMap]);
 
   return (
     <div className="space-y-4">
@@ -315,8 +359,35 @@ export const FrictionMatrixView: React.FC = () => {
             /* Circular Chord Tension Diagram */
             <div className="py-6 flex flex-col items-center justify-center">
               <div className="relative w-80 h-80 flex items-center justify-center border border-book-rule rounded-full bg-page-muted/15 shadow-inner">
+                {/* SVG Chords Layer */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 320 320">
+                  {chords.map((chord) => {
+                    const strokeColor =
+                      activeMetric === 'false_friends' || activeMetric === 'rift'
+                        ? chord.isSelected
+                          ? '#9E2A2B'
+                          : `rgba(158, 42, 43, ${0.12 + chord.intensity * 0.55})`
+                        : chord.isSelected
+                        ? '#255D36'
+                        : `rgba(37, 93, 54, ${0.12 + chord.intensity * 0.55})`;
+
+                    return (
+                      <path
+                        key={`${chord.src}-${chord.tgt}`}
+                        d={`M ${chord.x1} ${chord.y1} Q 160 160 ${chord.x2} ${chord.y2}`}
+                        fill="none"
+                        stroke={strokeColor}
+                        strokeWidth={chord.isSelected ? 3.5 : Math.max(1, chord.intensity * 3.5)}
+                        strokeDasharray={
+                          activeMetric === 'false_friends' && chord.intensity > 0.35 ? '3,3' : undefined
+                        }
+                      />
+                    );
+                  })}
+                </svg>
+
                 {/* Center Core */}
-                <div className="text-center p-3 max-w-[160px] z-10 bg-page-surface/90 border border-book-rule rounded-full backdrop-blur-xs">
+                <div className="text-center p-3 max-w-[160px] z-10 bg-page-surface/90 border border-book-rule rounded-full backdrop-blur-xs shadow-xs">
                   <span className="typo-overline text-2xs text-ink-muted block">Focused Pair</span>
                   <strong className="typo-headword-row text-xs text-ink-main block mt-0.5">
                     {selectedPair.source.toUpperCase()} ↔ {selectedPair.target.toUpperCase()}
@@ -340,10 +411,21 @@ export const FrictionMatrixView: React.FC = () => {
                       key={lang.code}
                       type="button"
                       style={{ left: `${x}px`, top: `${y}px` }}
-                      className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border flex items-center justify-center typo-lang-code text-xs font-bold transition-all cursor-pointer ${
+                      onClick={() => {
+                        if (selectedPair.source === lang.code) return;
+                        const cell =
+                          pairMatrixMap.get(`${selectedPair.source}-${lang.code}`) ||
+                          pairMatrixMap.get(`${lang.code}-${selectedPair.source}`) ||
+                          PAIRWISE_FRICTION_MATRIX.find(
+                            (p) => p.source === lang.code || p.target === lang.code,
+                          );
+                        if (cell) setSelectedPair(cell);
+                      }}
+                      title={`Click to focus pairs with ${lang.name}`}
+                      className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border flex items-center justify-center typo-lang-code text-xs font-bold transition-all cursor-pointer z-20 ${
                         isPairMember
                           ? 'border-ink-main bg-ink-main text-page-bg shadow-sm scale-110'
-                          : 'border-book-rule-strong bg-page-surface text-ink-main hover:bg-page-muted'
+                          : 'border-book-rule-strong bg-page-surface text-ink-main hover:bg-page-muted hover:scale-105'
                       }`}
                     >
                       {lang.code.toUpperCase()}

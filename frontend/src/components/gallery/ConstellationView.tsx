@@ -588,7 +588,7 @@ export const ConstellationView: React.FC = () => {
             onPointerUp={handlePointerUp}
             onClick={handleClick}
             onWheel={handleWheel}
-            className={`w-full h-full ${dimension === '3d' ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
+            className={`w-full h-full touch-none ${dimension === '3d' ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
           />
 
           {/* Canvas HUD Legend */}
