@@ -3,6 +3,7 @@ import {
   STRATIGRAPHY_LAYERS,
   GALLERY_LANGUAGES,
 } from './galleryData';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 type StratigraphyMode = 'cross-section' | 'volume-bars';
 
@@ -49,7 +50,33 @@ export const StratigraphyView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 font-serif">
+      {/* Methodology & Scalability Banner */}
+      <div className="border border-book-rule bg-page-muted/30 p-3 sm:p-3.5 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-start gap-2.5">
+          <MaterialSymbol icon="layers" size={20} className="text-cognate-ink shrink-0 mt-0.5" />
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-semibold text-ink-main">Language-Level Etymological Stratigraphy</span>
+              <span className="px-1.5 py-0.2 bg-page-surface border border-book-rule rounded-xs typo-subscript text-2xs text-cognate-ink font-medium">
+                Universal Concept
+              </span>
+            </div>
+            <p className="text-ink-muted leading-relaxed">
+              Based on historical linguistics vocabulary benchmarks. Scales to any language family (e.g. English: Norman French + Latin; Swedish: Hanseatic Low German; Finnish: Uralic core + Germanic/Baltic/Swedish loans).
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5 shrink-0 bg-page-surface px-2.5 py-1 border border-book-rule rounded-xs text-2xs text-ink-muted">
+          <span>Bedrock Roots</span>
+          <span>→</span>
+          <span>Trade Loans</span>
+          <span>→</span>
+          <span>Classical Layer</span>
+        </div>
+      </div>
+
       {/* Control Plate */}
       <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">

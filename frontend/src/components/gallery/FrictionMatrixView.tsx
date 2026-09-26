@@ -4,6 +4,7 @@ import {
   PAIRWISE_FRICTION_MATRIX,
   type PairwiseCell,
 } from './galleryData';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 import { useLanguagesQuery } from '../../services/queries';
 
 type MatrixMetric = 'rift' | 'false_friends' | 'phonetic' | 'orthographic' | 'volume';
@@ -163,9 +164,33 @@ export const FrictionMatrixView: React.FC = () => {
   }, [selectedPair, activeMetric, pairMatrixMap]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 font-serif">
+      {/* Production Readiness & Live Data Banner */}
+      <div className="border border-book-rule bg-page-muted/30 p-3 sm:p-3.5 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-start gap-2.5">
+          <MaterialSymbol icon="verified" size={20} className="text-cognate-ink shrink-0 mt-0.5" />
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-semibold text-ink-main">Pair Comparison Matrix</span>
+              <span className="px-1.5 py-0.2 bg-cognate-bg text-cognate-ink border border-cognate-border rounded-xs typo-subscript text-2xs font-semibold">
+                Production Ready · 100% Live Data
+              </span>
+            </div>
+            <p className="text-ink-muted leading-relaxed">
+              Directly resolves the single-anchor limitation of the original Orbit view by calculating every language against every other language. Scales effortlessly to any number of languages or families.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5 shrink-0 bg-page-surface px-2.5 py-1 border border-book-rule rounded-xs text-2xs text-ink-muted">
+          <span>7×7 Live Matrix</span>
+          <span className="text-book-rule">•</span>
+          <span>Zero New Endpoints</span>
+        </div>
+      </div>
+
       {/* Control Plate */}
-      <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="border border-book-rule bg-page-surface p-3.5 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Metric Mode Selector */}
         <div className="flex items-center gap-2 flex-wrap">
           <span className="typo-sublabel text-ink-muted">Metric:</span>

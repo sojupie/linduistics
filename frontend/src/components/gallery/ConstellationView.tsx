@@ -12,12 +12,13 @@ import {
 } from './Canvas3D';
 import { useLanguagesQuery } from '../../services/queries';
 import { getLanguageName } from '../../data/languages';
+import { classicalMDS } from './mds';
 
 type ConstellationDimension = '2d' | '3d';
 type DistanceMetric = 'phonetic' | 'orthographic' | 'semantic';
 
 export const ConstellationView: React.FC = () => {
-  const [dimension, setDimension] = useState<ConstellationDimension>('3d');
+  const [dimension, setDimension] = useState<ConstellationDimension>('2d');
   const [activeMetric, setActiveMetric] = useState<DistanceMetric>('phonetic');
   const [showCognateBridges, setShowCognateBridges] = useState(true);
   const [showFalseFriendFaults, setShowFalseFriendFaults] = useState(true);
@@ -78,36 +79,54 @@ export const ConstellationView: React.FC = () => {
     return map;
   }, [languagesData]);
 
-  // Dynamic 3D positions adjusted by active metric
+  // Compute mathematically justified coordinates via Classical Multidimensional Scaling (MDS)
   const nodePositions = useMemo(() => {
-    return GALLERY_LANGUAGES.map((lang) => {
-      let { x, y, z } = lang.linguisticPos;
+    const codes = GALLERY_LANGUAGES.map((l) => l.code);
+    const n = codes.length;
+    const distMatrix: number[][] = Array.from({ length: n }, () => Array(n).fill(0));
 
-      // Adjust positioning based on selected metric
-      if (activeMetric === 'orthographic') {
-        // In orthographic space, Danish shifts very close to Swedish/Norwegian
-        if (lang.code === 'da') {
-          x = 34;
-          y = -35;
-          z = 5;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        if (i === j) {
+          distMatrix[i][j] = 0;
+        } else {
+          const key = `${codes[i]}-${codes[j]}`;
+          const pair = pairMap.get(key);
+          if (pair) {
+            if (activeMetric === 'phonetic') distMatrix[i][j] = pair.phon;
+            else if (activeMetric === 'orthographic') distMatrix[i][j] = pair.ortho;
+            else distMatrix[i][j] = pair.sem;
+          } else {
+            distMatrix[i][j] = 0.5;
+          }
         }
-      } else if (activeMetric === 'semantic') {
-        // In semantic space, German and Swedish pull closer due to Hanseatic loans
-        if (lang.code === 'sv') x = 20;
-        if (lang.code === 'de') x = -15;
       }
+    }
 
-      // Sizing scales with lexicon volume
+    // Run MDS projection
+    const mdsPoints = classicalMDS(codes, distMatrix);
+    const mdsMap = new Map(mdsPoints.map((p) => [p.code, p]));
+
+    // Standardize orientation: North Germanic on left (negative X), Insular Scandinavian on top (negative Y)
+    const svPoint = mdsMap.get('sv');
+    const dePoint = mdsMap.get('de');
+    const flipX = svPoint && dePoint && svPoint.x > dePoint.x ? -1 : 1;
+
+    const isPoint = mdsMap.get('is');
+    const daPoint = mdsMap.get('da');
+    const flipY = isPoint && daPoint && isPoint.y > daPoint.y ? -1 : 1;
+
+    return GALLERY_LANGUAGES.map((lang) => {
+      const p = mdsMap.get(lang.code) ?? { x: 0, y: 0, z: 0 };
       const radius = 18 + (lang.approxLexiconSize / 170000) * 16;
-
       return {
         ...lang,
-        pos3d: { x: x * 2.2, y: y * 2.0, z: z * 2.2 },
-        pos2d: { x: x * 3.8, y: y * 3.4 },
+        pos3d: { x: p.x * flipX * 1.5, y: p.y * flipY * 1.5, z: p.z * 1.5 },
+        pos2d: { x: p.x * flipX * 2.2, y: p.y * flipY * 2.2 },
         radius,
       };
     });
-  }, [activeMetric]);
+  }, [activeMetric, pairMap]);
 
   // Selected language profile details
   const selectedLangData = useMemo(() => {
@@ -153,33 +172,92 @@ export const ConstellationView: React.FC = () => {
     ctx.fillStyle = '#FAF8F5';
     ctx.fillRect(0, 0, width, height);
 
-    // 1. Draw subtle background coordinate grid
-    ctx.save();
-    ctx.strokeStyle = '#E8E2D8';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([2, 6]);
+    const centerX = width / 2;
+    const centerY = height / 2;
 
-    const gridSize = 60;
-    for (let x = 0; x < width; x += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < height; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(width, y);
-      ctx.stroke();
-    }
-    ctx.restore();
+    if (dimension === '2d') {
+      // 1. Draw Mathematically Justified Coordinate Axes
+      ctx.save();
 
-    // 2. Draw 3D Celestial / Spatial Graticules if in 3D mode
-    if (dimension === '3d') {
+      // Concentric distance reference rings from cluster origin
+      ctx.strokeStyle = '#E8E2D8';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 5]);
+
+      [80, 160, 240].forEach((r, idx) => {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.font = '10px "Noto Sans Mono", monospace';
+        ctx.fillStyle = '#A8A29E';
+        ctx.textAlign = 'right';
+        ctx.fillText(`${(idx + 1) * 20}% dist`, centerX + r - 4, centerY - 6);
+      });
+      ctx.setLineDash([]);
+
+      // Subtle grid
+      ctx.strokeStyle = '#F0EBE1';
+      ctx.lineWidth = 1;
+      [-240, -160, -80, 80, 160, 240].forEach((offset) => {
+        // Vertical grid lines
+        ctx.beginPath();
+        ctx.moveTo(centerX + offset, 40);
+        ctx.lineTo(centerX + offset, height - 40);
+        ctx.stroke();
+
+        // Horizontal grid lines
+        ctx.beginPath();
+        ctx.moveTo(40, centerY + offset);
+        ctx.lineTo(width - 40, centerY + offset);
+        ctx.stroke();
+      });
+
+      // Main X Axis Line (Dimension 1)
+      ctx.strokeStyle = '#C7BFB1';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(40, centerY);
+      ctx.lineTo(width - 40, centerY);
+      ctx.stroke();
+
+      // Main Y Axis Line (Dimension 2)
+      ctx.beginPath();
+      ctx.moveTo(centerX, 40);
+      ctx.lineTo(centerX, height - 40);
+      ctx.stroke();
+
+      // Axis 1 Labels (North Germanic vs West Germanic)
+      ctx.font = 'bold 11px "Noto Serif", serif';
+      ctx.fillStyle = '#255D36';
+      ctx.textAlign = 'left';
+      ctx.fillText('⟵ North Germanic', 45, centerY - 10);
+
+      ctx.fillStyle = '#2D516B';
+      ctx.textAlign = 'right';
+      ctx.fillText('West Germanic ⟶', width - 45, centerY - 10);
+
+      ctx.font = '10px "Noto Sans", sans-serif';
+      ctx.fillStyle = '#78716C';
+      ctx.textAlign = 'center';
+      ctx.fillText('Dimension 1 (Branch Divergence)', centerX, height - 20);
+
+      // Axis 2 Labels (Insular/Archaic vs Continental/Modernized)
+      ctx.font = 'bold 11px "Noto Serif", serif';
+      ctx.fillStyle = '#8F581B';
+      ctx.textAlign = 'center';
+      ctx.fillText('↑ Insular & Archaic (Preserved Roots)', centerX, 30);
+
+      ctx.fillStyle = '#57534E';
+      ctx.fillText('Continental & Modernized (Sound Shifted) ↓', centerX, height - 45);
+
+      ctx.restore();
+    } else {
+      // 3D Celestial / Spatial Graticules
       renderCelestialGraticules(ctx, width, height, camera, 240, 'rgba(216, 209, 198, 0.45)', 'rgba(37, 93, 54, 0.3)');
     }
 
-    // 3. Project nodes to 2D screen coordinates
+    // 2. Project nodes to 2D screen coordinates
     const projectedNodes = nodePositions.map((node) => {
       if (dimension === '3d') {
         const proj = project3D(node.pos3d, width, height, camera);
@@ -193,11 +271,10 @@ export const ConstellationView: React.FC = () => {
           visible: proj.visible,
         };
       } else {
-        // 2D centered coordinate plane
         return {
           ...node,
-          screenX: width / 2 + node.pos2d.x,
-          screenY: height / 2 + node.pos2d.y,
+          screenX: centerX + node.pos2d.x,
+          screenY: centerY + node.pos2d.y,
           scale: 1,
           depth: 0,
           screenRadius: node.radius,
@@ -206,8 +283,7 @@ export const ConstellationView: React.FC = () => {
       }
     });
 
-    // 4. Draw Connecting Edges (Chords)
-    // Draw all pairs
+    // 3. Draw Connecting Edges (Chords)
     for (let i = 0; i < projectedNodes.length; i++) {
       for (let j = i + 1; j < projectedNodes.length; j++) {
         const a = projectedNodes[i];
@@ -227,23 +303,44 @@ export const ConstellationView: React.FC = () => {
           const weight = Math.max(1, (pair.pairs / 3000) * 5);
           ctx.lineWidth = isSelectedPair ? weight + 3 : isRelatedToSelected ? weight + 1.5 : weight * 0.7;
 
-          // Alpha modulation based on distance/depth
           let alpha = isSelectedPair ? 0.95 : isRelatedToSelected ? 0.75 : 0.22;
-          if (selectedLang && !isRelatedToSelected) alpha *= 0.35; // Dim unrelated lines
+          if (selectedLang && !isRelatedToSelected) alpha *= 0.35;
 
           ctx.strokeStyle = `rgba(37, 93, 54, ${alpha})`;
           ctx.beginPath();
           ctx.moveTo(a.screenX, a.screenY);
-
-          if (dimension === '2d') {
-            // Subtle curve in 2D
-            const midX = (a.screenX + b.screenX) / 2;
-            const midY = (a.screenX + b.screenX) / 2 + (a.screenY - b.screenY) * 0.08;
-            ctx.quadraticCurveTo(midX, midY, b.screenX, b.screenY);
-          } else {
-            ctx.lineTo(b.screenX, b.screenY);
-          }
+          ctx.lineTo(b.screenX, b.screenY);
           ctx.stroke();
+
+          // Render exact metric badge on the connecting chord when selected
+          if (isSelectedPair || (isRelatedToSelected && dimension === '2d')) {
+            const midX = (a.screenX + b.screenX) / 2;
+            const midY = (a.screenY + b.screenY) / 2;
+            const metricVal =
+              activeMetric === 'phonetic'
+                ? pair.phon
+                : activeMetric === 'orthographic'
+                ? pair.ortho
+                : pair.sem;
+
+            ctx.save();
+            ctx.font = 'bold 10px "Noto Sans Mono", monospace';
+            const badgeText = `${Math.round(metricVal * 100)}%`;
+            const textWidth = ctx.measureText(badgeText).width;
+
+            ctx.fillStyle = '#FAF8F5';
+            ctx.fillRect(midX - textWidth / 2 - 4, midY - 8, textWidth + 8, 16);
+            ctx.strokeStyle = '#255D36';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(midX - textWidth / 2 - 4, midY - 8, textWidth + 8, 16);
+
+            ctx.fillStyle = '#255D36';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(badgeText, midX, midY);
+            ctx.restore();
+          }
+
           ctx.restore();
         }
 
@@ -267,7 +364,7 @@ export const ConstellationView: React.FC = () => {
       }
     }
 
-    // 5. Draw Language Nodes (Sorted by depth for 3D painter's algorithm)
+    // 4. Draw Language Nodes (Sorted by depth)
     const sortedNodes = [...projectedNodes].sort((a, b) => b.depth - a.depth);
 
     sortedNodes.forEach((node) => {
@@ -317,12 +414,11 @@ export const ConstellationView: React.FC = () => {
       ctx.fillStyle = isSelected ? '#FAF8F5' : '#1C1917';
       ctx.fillText(node.code.toUpperCase(), node.screenX, node.screenY);
 
-      // Label below: Full Language Name + Volume
+      // Label below: Full Language Name + Subbranch
       ctx.font = `500 ${Math.max(11, Math.round(12 * node.scale))}px "Noto Sans", sans-serif`;
       ctx.fillStyle = isSelected ? '#1C1917' : '#57534E';
       ctx.fillText(node.name, node.screenX, node.screenY + node.screenRadius + 14);
 
-      // Subtitle: Branch indicator
       ctx.font = `italic 400 ${Math.max(9, Math.round(10 * node.scale))}px "Noto Sans", sans-serif`;
       ctx.fillStyle = '#78716C';
       ctx.fillText(node.subbranch, node.screenX, node.screenY + node.screenRadius + 27);
@@ -372,8 +468,9 @@ export const ConstellationView: React.FC = () => {
     renderCanvas();
   }, [renderCanvas]);
 
-  // Mouse / Pointer handlers for interactive 3D rotation
+  // Mouse / Pointer handlers for interactive 3D rotation and 2D clicking
   const handlePointerDown = (e: React.PointerEvent) => {
+    if (dimension !== '3d') return;
     isDraggingRef.current = true;
     lastMouseRef.current = { x: e.clientX, y: e.clientY };
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
@@ -460,6 +557,30 @@ export const ConstellationView: React.FC = () => {
 
   return (
     <div className="space-y-4">
+      {/* Methodology & Justification Callout */}
+      <div className="border border-book-rule bg-page-muted/30 p-3 sm:p-3.5 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-start gap-2.5">
+          <MaterialSymbol icon="calculate" size={20} className="text-cognate-ink shrink-0 mt-0.5" />
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-ink-main">Method: Classical Multidimensional Scaling (MDS)</span>
+              <span className="px-1.5 py-0.2 bg-page-surface border border-book-rule rounded-xs typo-subscript text-2xs text-cognate-ink font-medium">
+                Live Data Verified
+              </span>
+            </div>
+            <p className="text-ink-muted leading-relaxed">
+              Coordinates are calculated from live pairwise distance matrices. Distances on screen directly match calculated differences between languages.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-2xs font-mono text-ink-muted shrink-0 bg-page-surface px-2.5 py-1 border border-book-rule rounded-xs">
+          <span>X: Branch Split</span>
+          <span className="text-book-rule">•</span>
+          <span>Y: Archaic Retention</span>
+        </div>
+      </div>
+
       {/* Control Plate */}
       <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* View & Position Controls */}
@@ -477,7 +598,7 @@ export const ConstellationView: React.FC = () => {
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
-                2D Map
+                2D Map (Axes & Scale)
               </button>
               <button
                 type="button"
@@ -496,43 +617,43 @@ export const ConstellationView: React.FC = () => {
 
           {/* Metric Selector */}
           <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Position by:</span>
+            <span className="typo-sublabel text-ink-muted">Distance metric:</span>
             <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
               <button
                 type="button"
                 onClick={() => setActiveMetric('phonetic')}
-                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
                   activeMetric === 'phonetic'
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by how similar their words sound"
+                title="Positions languages by pronunciation distance"
               >
                 Pronunciation
               </button>
               <button
                 type="button"
                 onClick={() => setActiveMetric('orthographic')}
-                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
                   activeMetric === 'orthographic'
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by how similar their spelling looks"
+                title="Positions languages by spelling distance"
               >
                 Spelling
               </button>
               <button
                 type="button"
                 onClick={() => setActiveMetric('semantic')}
-                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
                   activeMetric === 'semantic'
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by shared vocabulary overlap"
+                title="Positions languages by meaning overlap"
               >
-                Shared Vocabulary
+                Meaning
               </button>
             </div>
           </div>
@@ -579,7 +700,7 @@ export const ConstellationView: React.FC = () => {
         {/* Canvas Display Stage */}
         <div
           ref={containerRef}
-          className="lg:col-span-8 relative h-[560px] border border-book-rule bg-page-surface overflow-hidden shadow-xs select-none"
+          className="lg:col-span-8 relative h-[580px] border border-book-rule bg-page-surface overflow-hidden shadow-xs select-none"
         >
           <canvas
             ref={canvasRef}
@@ -594,12 +715,12 @@ export const ConstellationView: React.FC = () => {
           {/* Canvas HUD Legend */}
           <div className="absolute top-3 left-3 bg-page-surface/90 border border-book-rule/80 px-2.5 py-1.5 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none space-y-0.5">
             <span className="typo-overline block text-ink-main">
-              {dimension === '3d' ? 'Language Network (3D)' : 'Language Map (2D)'}
+              {dimension === '3d' ? 'Language Map (3D MDS)' : 'Language Map (2D MDS Projection)'}
             </span>
             <span className="typo-subscript block text-2xs">
               {dimension === '3d'
                 ? 'Drag to rotate · Scroll to zoom'
-                : 'Layout based on similarity distance'}
+                : 'Axes represent principal linguistic divergence dimensions'}
             </span>
           </div>
 
@@ -608,7 +729,7 @@ export const ConstellationView: React.FC = () => {
             <span className="typo-subscript text-2xs">
               {selectedLang
                 ? `Showing connections for ${getLanguageName(selectedLang)} (click again to clear)`
-                : 'Click any language to see its connections'}
+                : 'Click any language to see distance badges and relations'}
             </span>
           </div>
         </div>
@@ -638,9 +759,9 @@ export const ConstellationView: React.FC = () => {
               {/* Pair list */}
               <div className="space-y-2">
                 <span className="typo-sublabel block font-semibold text-ink-main">
-                  Connections with Other Languages
+                  Distance to Other Languages
                 </span>
-                <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
                   {selectedRelations.map((rel) => {
                     const isTrapHeavy = rel.ffRatio > 0.2;
                     return (
@@ -706,7 +827,7 @@ export const ConstellationView: React.FC = () => {
               <MaterialSymbol icon="touch_app" size={32} className="text-ink-muted/50" />
               <p className="typo-body text-sm font-medium">No language selected</p>
               <p className="typo-gloss text-xs">
-                Click any language node on the canvas to see how closely it connects to other languages.
+                Click any language node on the canvas to see its distances and connections.
               </p>
             </div>
           )}

@@ -28,67 +28,67 @@ interface PrototypeTab {
 const PROTOTYPES: PrototypeTab[] = [
   {
     id: 'constellation',
-    label: '1. Language Map',
-    badge: '2D / 3D Network',
+    label: '1. Relative Distance Map',
+    badge: '2D (MDS) / 3D',
     icon: 'hub',
-    conceptHeading: 'Relative Language Distances',
+    conceptHeading: 'Pairwise Language Distances (MDS)',
     conceptDeck:
-      'Places all 7 languages together in 2D or 3D space. Languages with similar pronunciation, spelling, or vocabulary sit closer together, and circle size shows catalogued vocabulary volume.',
+      'Projects live mutual distances between all languages onto mathematically justified axes using Classical Multidimensional Scaling (MDS). Axis 1 separates North vs West Germanic; Axis 2 separates Insular vs Continental languages. Languages with closer pronunciation, spelling, and vocabulary cluster together with concentric distance rings.',
     whatItShows:
-      'Mutual distances between all 7 languages, vocabulary count, shared cognates, and false friend pairs.',
+      'Mathematically justified relative distances (MDS), scale rings, vocabulary count, shared cognates, and false friends.',
   },
   {
     id: 'starfield',
-    label: '2. Proto-Germanic Roots',
-    badge: '2D / 3D Roots',
-    icon: 'flare',
-    conceptHeading: 'Ancestral Roots & Surviving Words',
+    label: '2. Ancestral Root Explorer',
+    badge: 'Multi-Family Roots',
+    icon: 'account_tree',
+    conceptHeading: 'Ancestral Roots & Cognate Trees',
     conceptDeck:
-      'Maps Proto-Germanic root words grouped by topic (nature, body, society, motion). Pick any language to see which roots survived intact, shifted in meaning, or were replaced by other words.',
+      'Replaces the single-family celestial globe with a multi-family ancestral root explorer (Proto-Indo-European, Proto-Germanic, Latin/Italic, Proto-Uralic). Scales across language families without breaking (e.g. Finnish to Proto-Uralic *wete, Spanish/French to Latin tempus, Germanic to Proto-Germanic roots).',
     whatItShows:
-      'Proto-Germanic roots, semantic groups, modern forms across all 7 languages, and cognate vs false friend status.',
+      'Proto-language roots by family, surviving modern words, semantic shifts, false friends, and cross-family cognates.',
   },
   {
     id: 'stratigraphy',
     label: '3. Historical Layers',
-    badge: 'Chronology',
+    badge: 'Etymological Strata',
     icon: 'layers',
     conceptHeading: 'Vocabulary by Historical Era',
     conceptDeck:
-      'Shows where words in each language come from across time: ancient Germanic roots (500 BCE), sound shift divergence, Low German trade borrowings, and later Latin/French loanwords.',
+      'Visualizes modern vocabulary as chronological strata (ancient roots, medieval trade borrowings, Renaissance Latin/Greek, modern international loans). Functions as language-level etymological benchmarks across any language family.',
     whatItShows:
-      'Vocabulary composition from 500 BCE to 1900 CE, unbroken roots vs borrowings, and percentage share per language.',
+      'Vocabulary composition by era (500 BCE to 1900 CE), native inheritance vs borrowed layers, and percentage share.',
   },
   {
     id: 'wave',
     label: '4. Sound Shift Waves',
-    badge: 'Regional Shifts',
+    badge: 'Timeline Waves',
     icon: 'waves',
-    conceptHeading: 'How Sound Shifts Spread',
+    conceptHeading: 'Historical Sound Shift Timeline',
     conceptDeck:
-      'Shows historical sound shifts spreading across regions like ripples. Languages inside the circle adopted the shift, while languages outside kept older sounds.',
+      'Animates how sound shifts spread across language areas over time (400–1600 CE). Features an interactive timeline scrubber and play/pause controls, zoom and pan navigation without edge clipping, and an advisory on dialect data availability.',
     whatItShows:
-      'Historical spread of sound changes, timeline from 400 to 1600 CE, and affected vs unaffected languages.',
+      'Timeline of major sound shifts, geographical spread, affected vs preserved forms, and interactive era playback.',
   },
   {
     id: 'matrix',
     label: '5. Pair Comparison Matrix',
-    badge: 'Table & Chords',
+    badge: '100% Live Data',
     icon: 'grid_view',
-    conceptHeading: 'Language Pair Comparison',
+    conceptHeading: 'Direct Pairwise Comparison',
     conceptDeck:
-      'A direct side-by-side comparison of all 7 languages. Compare pronunciation, spelling, the gap between spelling and speech (e.g. Danish vs Swedish), and false friend rates.',
+      'Direct side-by-side comparison of every language pair. Completely resolves the single-anchor limitation of Orbit view with 100% live database support and zero extra backend endpoints required.',
     whatItShows:
-      '7×7 pair comparisons, sound vs spelling gap, false friend percentages, and shared word counts.',
+      '7×7 mutual distance matrix, spelling vs sound gap, false friend percentages, and direct pair drilldown.',
   },
   {
     id: 'legacy',
     label: '6. Original Orbit (Baseline)',
-    badge: 'Original Orbit',
+    badge: 'Baseline',
     icon: 'history',
     conceptHeading: 'Original Orbit Page',
     conceptDeck:
-      'The original design where other languages orbit a single selected center on concentric circles. Kept here for direct side-by-side comparison.',
+      'The original single-language orbital view, kept here for baseline comparison.',
     whatItShows:
       'Distance from one selected language, fixed orbital rings.',
   },

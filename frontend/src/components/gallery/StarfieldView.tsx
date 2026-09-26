@@ -1,436 +1,249 @@
-import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { MaterialSymbol } from '../common/MaterialSymbol';
 import {
   PROTO_ROOT_STARS,
   GALLERY_LANGUAGES,
   type ProtoRootStar,
-  type RootConstellation,
 } from './galleryData';
-import {
-  celestialToCartesian,
-  project3D,
-  renderCelestialGraticules,
-  DEFAULT_CAMERA,
-  type CameraState,
-} from './Canvas3D';
 import { Phonetic } from '../common/Phonetic';
+import { getLanguageName } from '../../data/languages';
 
-type StarfieldDimension = '2d' | '3d';
+type ProtoLanguageFilter = 'all' | 'proto-germanic' | 'proto-indo-european' | 'latin-italic' | 'proto-uralic';
 
-const CONSTELLATION_COLORS: Record<RootConstellation, string> = {
-  'Cosmos & Elements': '#2D516B',
-  'Kinship & Person': '#8F581B',
-  'Living World & Body': '#255D36',
-  'Vital Action': '#9E2A2B',
-  'Material & Craft': '#57534E',
+interface ExternalDaughter {
+  langName: string;
+  word: string;
+  ipa: string;
+  gloss: string;
+  note?: string;
+}
+
+interface ExtendedRootSpecimen extends ProtoRootStar {
+  protoLanguage: string;
+  family: 'Indo-European' | 'Uralic';
+  externalDaughters?: Record<string, ExternalDaughter>;
+}
+
+const EXTERNAL_ROOT_BRANCHES: Record<string, Record<string, ExternalDaughter>> = {
+  'root-bhrater': {
+    la: { langName: 'Latin', word: 'frāter', ipa: '/ˈfraː.ter/', gloss: 'brother' },
+    fr: { langName: 'French', word: 'frère', ipa: '/fʁɛʁ/', gloss: 'brother' },
+    es: { langName: 'Spanish', word: 'hermano (repl.) / fraternal', ipa: '/eɾˈmano/', gloss: 'brother' },
+    ru: { langName: 'Russian', word: 'брат (brat)', ipa: '/brat/', gloss: 'brother' },
+  },
+  'root-watan': {
+    ru: { langName: 'Russian', word: 'вода (voda)', ipa: '/vɐˈda/', gloss: 'water' },
+    la: { langName: 'Latin', word: 'aqua (counter-root)', ipa: '/ˈa.kʷa/', gloss: 'water' },
+    fr: { langName: 'French', word: 'eau', ipa: '/o/', gloss: 'water' },
+  },
 };
 
+// Extended roots demonstrating cross-family scalability (Indo-European, Romance, Uralic)
+const EXTENDED_ROOT_SPECIMENS: ExtendedRootSpecimen[] = [
+  ...PROTO_ROOT_STARS.map((star) => ({
+    ...star,
+    protoLanguage: star.id === 'root-bhrater' || star.id === 'root-watan' ? 'Proto-Indo-European' : 'Proto-Germanic',
+    family: 'Indo-European' as const,
+    externalDaughters: EXTERNAL_ROOT_BRANCHES[star.id],
+  })),
+  {
+    id: 'root-uralic-water',
+    root: '*wete',
+    protoLanguage: 'Proto-Uralic',
+    family: 'Uralic',
+    reconstructedMeaning: 'water (Uralic core liquid)',
+    constellation: 'Cosmos & Elements',
+    celestial: { ra: 180, dec: 60, magnitude: 1.0 },
+    daughters: {
+      sv: { word: 'vatten (IE loan in Fin)', ipa: '/ˈvatːɛn/', gloss: 'water', status: 'archaic_loss' },
+    },
+    externalDaughters: {
+      fi: { langName: 'Finnish', word: 'vesi / vettä', ipa: '/ˈʋesi/', gloss: 'water' },
+      et: { langName: 'Estonian', word: 'vesi / vett', ipa: '/ˈvesi/', gloss: 'water' },
+      hu: { langName: 'Hungarian', word: 'víz', ipa: '/viːz/', gloss: 'water' },
+    },
+    etymologicalNote:
+      'Universal semantic concept "WATER" in Uralic. Demonstrates how non-Indo-European languages scale alongside Germanic using parallel proto-language roots.',
+  },
+  {
+    id: 'root-italic-tempus',
+    root: 'tempus (*tempos-)',
+    protoLanguage: 'Latin / Proto-Italic',
+    family: 'Indo-European',
+    reconstructedMeaning: 'time, period, season (stretch of time)',
+    constellation: 'Cosmos & Elements',
+    celestial: { ra: 210, dec: 10, magnitude: 1.2 },
+    daughters: {
+      en: { word: 'tempo / tense', ipa: '/ˈtɛm.poʊ/', gloss: 'pace / grammatical time', status: 'shifted', shiftNote: 'Latin loanword via Norman French' },
+      de: { word: 'Tempo', ipa: '/ˈtɛmpo/', gloss: 'speed', status: 'shifted' },
+      sv: { word: 'tempo', ipa: '/ˈtɛmːpʊ/', gloss: 'tempo, pace', status: 'shifted' },
+    },
+    externalDaughters: {
+      la: { langName: 'Latin', word: 'tempus', ipa: '/ˈtem.pus/', gloss: 'time' },
+      fr: { langName: 'French', word: 'temps', ipa: '/tɑ̃/', gloss: 'time, weather' },
+      es: { langName: 'Spanish', word: 'tiempo', ipa: '/ˈtjem.po/', gloss: 'time, weather' },
+      it: { langName: 'Italian', word: 'tempo', ipa: '/ˈtɛm.po/', gloss: 'time' },
+    },
+    etymologicalNote:
+      'Demonstrates Romance root expansion. Germanic languages borrowed this root specifically for tempo/pace, creating widespread cross-family false friends with French/Spanish.',
+  },
+];
+
 export const StarfieldView: React.FC = () => {
-  const [dimension, setDimension] = useState<StarfieldDimension>('3d');
+  const [protoFilter, setProtoFilter] = useState<ProtoLanguageFilter>('all');
   const [activeConstellation, setActiveConstellation] = useState<string>('all');
   const [lensSource, setLensSource] = useState<string>('sv');
   const [lensTarget, setLensTarget] = useState<string>('en');
-  const [selectedStarId, setSelectedStarId] = useState<string>('root-giftiz');
-  const [hoveredStarId, setHoveredStarId] = useState<string | null>(null);
+  const [selectedRootId, setSelectedRootId] = useState<string>('root-giftiz');
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [camera, setCamera] = useState<CameraState>({ ...DEFAULT_CAMERA, yaw: 0.85, pitch: 0.22, zoom: 1.1 });
+  // Filter roots by proto-language and semantic domain
+  const filteredRoots = useMemo(() => {
+    return EXTENDED_ROOT_SPECIMENS.filter((r) => {
+      const matchProto =
+        protoFilter === 'all'
+          ? true
+          : protoFilter === 'proto-germanic'
+          ? r.protoLanguage === 'Proto-Germanic'
+          : protoFilter === 'proto-indo-european'
+          ? r.protoLanguage === 'Proto-Indo-European'
+          : protoFilter === 'latin-italic'
+          ? r.protoLanguage.includes('Latin') || r.protoLanguage.includes('Italic')
+          : r.protoLanguage.includes('Uralic');
 
-  const isDraggingRef = useRef(false);
-  const lastMouseRef = useRef({ x: 0, y: 0 });
+      const matchConstellation =
+        activeConstellation === 'all' ? true : r.constellation === activeConstellation;
 
-  // Filter stars by constellation
-  const filteredStars = useMemo(() => {
-    if (activeConstellation === 'all') return PROTO_ROOT_STARS;
-    return PROTO_ROOT_STARS.filter((s) => s.constellation === activeConstellation);
-  }, [activeConstellation]);
+      return matchProto && matchConstellation;
+    });
+  }, [protoFilter, activeConstellation]);
 
-  // Selected star details
-  const selectedStar = useMemo(() => {
-    return PROTO_ROOT_STARS.find((s) => s.id === selectedStarId) ?? PROTO_ROOT_STARS[0];
-  }, [selectedStarId]);
+  const selectedRoot = useMemo(() => {
+    return filteredRoots.find((r) => r.id === selectedRootId) ?? filteredRoots[0] ?? EXTENDED_ROOT_SPECIMENS[0];
+  }, [filteredRoots, selectedRootId]);
 
-  // Determine spectral status for a star under current lens
-  const getStarSpectralStatus = useCallback(
-    (star: ProtoRootStar): { status: 'cognate' | 'shifted' | 'archaic_loss'; color: string; label: string } => {
-      const srcDaughter = star.daughters[lensSource];
-      const tgtDaughter = star.daughters[lensTarget];
+  // Determine relationship between selected lens languages for this root
+  const getLensStatus = (root: ExtendedRootSpecimen) => {
+    const src = root.daughters[lensSource];
+    const tgt = root.daughters[lensTarget];
 
-      if (!srcDaughter || !tgtDaughter) {
-        return { status: 'archaic_loss', color: '#A8A29E', label: 'Unrecorded' };
-      }
-
-      if (srcDaughter.status === 'archaic_loss' || tgtDaughter.status === 'archaic_loss') {
-        return { status: 'archaic_loss', color: '#78716C', label: 'Lexical Loss / Replaced' };
-      }
-
-      if (srcDaughter.status === 'shifted' || tgtDaughter.status === 'shifted') {
-        return { status: 'shifted', color: '#9E2A2B', label: 'Semantic Drift / False Friend' };
-      }
-
-      return { status: 'cognate', color: '#255D36', label: 'Conserved True Cognate' };
-    },
-    [lensSource, lensTarget],
-  );
-
-  // Render Starfield Canvas
-  const renderCanvas = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const width = canvas.width;
-    const height = canvas.height;
-
-    ctx.clearRect(0, 0, width, height);
-
-    // Warm parchment ground
-    ctx.fillStyle = '#FAF8F5';
-    ctx.fillRect(0, 0, width, height);
-
-    // 1. Draw subtle background celestial coordinate rings
-    if (dimension === '3d') {
-      renderCelestialGraticules(ctx, width, height, camera, 220, 'rgba(216, 209, 198, 0.45)', 'rgba(143, 88, 27, 0.35)');
-    } else {
-      // 2D celestial field chart rings
-      ctx.save();
-      ctx.strokeStyle = '#E8E2D8';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([3, 5]);
-
-      const center = { x: width / 2, y: height / 2 };
-      [80, 160, 240, 320].forEach((r) => {
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, r, 0, Math.PI * 2);
-        ctx.stroke();
-      });
-      ctx.beginPath();
-      ctx.moveTo(center.x - 340, center.y);
-      ctx.lineTo(center.x + 340, center.y);
-      ctx.moveTo(center.x, center.y - 340);
-      ctx.lineTo(center.x, center.y + 340);
-      ctx.stroke();
-      ctx.restore();
+    if (!src || !tgt) {
+      return { status: 'unattested', label: 'Unattested / Diverged', color: 'text-ink-muted bg-page-muted border-book-rule' };
     }
-
-    // 2. Project stars
-    const sphereRadius = 220;
-    const projectedStars = filteredStars.map((star) => {
-      if (dimension === '3d') {
-        const cartesian = celestialToCartesian(star.celestial.ra, star.celestial.dec, sphereRadius);
-        const proj = project3D(cartesian, width, height, camera);
-        return {
-          ...star,
-          screenX: proj.x2d,
-          screenY: proj.y2d,
-          scale: proj.scale,
-          depth: proj.depth,
-          visible: proj.visible,
-        };
-      } else {
-        // 2D polar projection from celestial coordinates
-        const raRad = (star.celestial.ra * Math.PI) / 180;
-        const decDist = (90 - star.celestial.dec) * 2.4;
-        return {
-          ...star,
-          screenX: width / 2 + decDist * Math.cos(raRad),
-          screenY: height / 2 + decDist * Math.sin(raRad),
-          scale: 1,
-          depth: 0,
-          visible: true,
-        };
-      }
-    });
-
-    // 3. Draw Constellation Arteries (Lines connecting stars of same constellation)
-    const starsByConstellation = new Map<RootConstellation, typeof projectedStars>();
-    projectedStars.forEach((s) => {
-      const list = starsByConstellation.get(s.constellation) || [];
-      list.push(s);
-      starsByConstellation.set(s.constellation, list);
-    });
-
-    starsByConstellation.forEach((stars, constellationName) => {
-      if (stars.length < 2) return;
-      ctx.save();
-      ctx.strokeStyle = CONSTELLATION_COLORS[constellationName] || 'rgba(120, 113, 108, 0.4)';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([2, 4]);
-      ctx.globalAlpha = 0.35;
-
-      ctx.beginPath();
-      for (let i = 0; i < stars.length - 1; i++) {
-        const a = stars[i];
-        const b = stars[i + 1];
-        if (a.visible && b.visible) {
-          ctx.moveTo(a.screenX, a.screenY);
-          ctx.lineTo(b.screenX, b.screenY);
-        }
-      }
-      ctx.stroke();
-      ctx.restore();
-    });
-
-    // 4. Draw Stars (Sorted by depth)
-    const sortedStars = [...projectedStars].sort((a, b) => b.depth - a.depth);
-
-    sortedStars.forEach((star) => {
-      if (!star.visible) return;
-
-      const spectral = getStarSpectralStatus(star);
-      const isSelected = selectedStarId === star.id;
-      const isHovered = hoveredStarId === star.id;
-
-      const baseStarRadius = (4.5 / star.celestial.magnitude) * (dimension === '3d' ? star.scale : 1);
-      const starRadius = Math.max(3, Math.min(14, baseStarRadius));
-
-      ctx.save();
-
-      // Atmospheric Halo for Selected or Shifted star
-      if (isSelected || isHovered) {
-        ctx.beginPath();
-        ctx.arc(star.screenX, star.screenY, starRadius + 7, 0, Math.PI * 2);
-        ctx.fillStyle = isSelected ? 'rgba(37, 93, 54, 0.2)' : 'rgba(87, 83, 78, 0.12)';
-        ctx.fill();
-        ctx.strokeStyle = spectral.color;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([2, 2]);
-        ctx.stroke();
-      }
-
-      // Star Core
-      ctx.beginPath();
-      ctx.arc(star.screenX, star.screenY, starRadius, 0, Math.PI * 2);
-      ctx.fillStyle = spectral.color;
-      ctx.fill();
-      ctx.strokeStyle = '#FAF8F5';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      // Star Cross / Flare (Naturalist star symbol for high-magnitude roots)
-      if (star.celestial.magnitude <= 1.1) {
-        ctx.strokeStyle = spectral.color;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(star.screenX - starRadius - 4, star.screenY);
-        ctx.lineTo(star.screenX + starRadius + 4, star.screenY);
-        ctx.moveTo(star.screenX, star.screenY - starRadius - 4);
-        ctx.lineTo(star.screenX, star.screenY + starRadius + 4);
-        ctx.stroke();
-      }
-
-      // Root Headword Label
-      ctx.font = `600 ${Math.max(9, Math.round(11 * (dimension === '3d' ? star.scale : 1)))}px "Noto Sans", sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillStyle = isSelected ? '#1C1917' : '#57534E';
-      ctx.fillText(star.root, star.screenX, star.screenY + starRadius + 4);
-
-      ctx.restore();
-    });
-  }, [
-    dimension,
-    filteredStars,
-    selectedStarId,
-    hoveredStarId,
-    camera,
-    getStarSpectralStatus,
-  ]);
-
-  // Handle Resize
-  useEffect(() => {
-    const handleResize = () => {
-      const canvas = canvasRef.current;
-      const container = containerRef.current;
-      if (!canvas || !container) return;
-
-      const rect = container.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.scale(dpr, dpr);
-      }
-      renderCanvas();
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [renderCanvas]);
-
-  useEffect(() => {
-    renderCanvas();
-  }, [renderCanvas]);
-
-  // Mouse & Touch Orbit Handlers
-  const handlePointerDown = (e: React.PointerEvent) => {
-    isDraggingRef.current = true;
-    lastMouseRef.current = { x: e.clientX, y: e.clientY };
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    if (src.status === 'shifted' || tgt.status === 'shifted' || (src.gloss && tgt.gloss && src.gloss !== tgt.gloss)) {
+      return { status: 'shifted', label: 'Semantic Shift · False Friend', color: 'text-falsefriend-ink bg-falsefriend-bg border-falsefriend-border' };
+    }
+    if (src.status === 'cognate' && tgt.status === 'cognate') {
+      return { status: 'cognate', label: 'True Cognate · Identical', color: 'text-cognate-ink bg-cognate-bg border-cognate-border' };
+    }
+    return { status: 'replaced', label: 'Lexical Replacement', color: 'text-ink-muted bg-page-muted border-book-rule' };
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const hitStar = filteredStars.find((star) => {
-      let x = 0;
-      let y = 0;
-      if (dimension === '3d') {
-        const cartesian = celestialToCartesian(star.celestial.ra, star.celestial.dec, 220);
-        const proj = project3D(cartesian, rect.width, rect.height, camera);
-        x = proj.x2d;
-        y = proj.y2d;
-      } else {
-        const raRad = (star.celestial.ra * Math.PI) / 180;
-        const decDist = (90 - star.celestial.dec) * 2.4;
-        x = rect.width / 2 + decDist * Math.cos(raRad);
-        y = rect.height / 2 + decDist * Math.sin(raRad);
-      }
-      return Math.hypot(mouseX - x, mouseY - y) <= 12;
-    });
-
-    if (hitStar) {
-      setHoveredStarId(hitStar.id);
-    } else if (hoveredStarId !== null) {
-      setHoveredStarId(null);
-    }
-
-    if (isDraggingRef.current && dimension === '3d') {
-      const dx = e.clientX - lastMouseRef.current.x;
-      const dy = e.clientY - lastMouseRef.current.y;
-      lastMouseRef.current = { x: e.clientX, y: e.clientY };
-
-      setCamera((prev) => ({
-        ...prev,
-        yaw: prev.yaw + dx * 0.007,
-        pitch: Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, prev.pitch + dy * 0.007)),
-      }));
-    }
-  };
-
-  const handlePointerUp = (e: React.PointerEvent) => {
-    isDraggingRef.current = false;
-    try {
-      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-    } catch {
-      // Ignore
-    }
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const hitStar = filteredStars.find((star) => {
-      let x = 0;
-      let y = 0;
-      if (dimension === '3d') {
-        const cartesian = celestialToCartesian(star.celestial.ra, star.celestial.dec, 220);
-        const proj = project3D(cartesian, rect.width, rect.height, camera);
-        x = proj.x2d;
-        y = proj.y2d;
-      } else {
-        const raRad = (star.celestial.ra * Math.PI) / 180;
-        const decDist = (90 - star.celestial.dec) * 2.4;
-        x = rect.width / 2 + decDist * Math.cos(raRad);
-        y = rect.height / 2 + decDist * Math.sin(raRad);
-      }
-      return Math.hypot(mouseX - x, mouseY - y) <= 12;
-    });
-
-    if (hitStar) {
-      setSelectedStarId(hitStar.id);
-    }
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    if (dimension !== '3d') return;
-    e.preventDefault();
-    const zoomDelta = e.deltaY * -0.0012;
-    setCamera((prev) => ({
-      ...prev,
-      zoom: Math.max(0.5, Math.min(2.4, prev.zoom + zoomDelta)),
-    }));
-  };
-
-  const selectedSpectral = getStarSpectralStatus(selectedStar);
+  const currentLensInfo = selectedRoot ? getLensStatus(selectedRoot) : null;
 
   return (
-    <div className="space-y-4">
-      {/* Control Plate: Constellations & Spectral Lens */}
-      <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
-        {/* Left: Projection & Constellation Filter */}
-        <div className="flex items-center gap-4 flex-wrap">
-          {/* Projection Toggle */}
-          <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Projection:</span>
-            <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
+    <div className="space-y-4 font-serif">
+      {/* Scalability & Methodology Advisory Banner */}
+      <div className="border border-book-rule bg-page-muted/30 p-3 sm:p-3.5 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-start gap-2.5">
+          <MaterialSymbol icon="account_tree" size={20} className="text-cognate-ink shrink-0 mt-0.5" />
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-semibold text-ink-main">Hierarchical Ancestral Root Architecture</span>
+              <span className="px-1.5 py-0.2 bg-page-surface border border-book-rule rounded-xs typo-subscript text-2xs text-cognate-ink font-medium">
+                Multi-Family Scalable
+              </span>
+            </div>
+            <p className="text-ink-muted leading-relaxed">
+              Replaces the celestial sphere with structured genealogical trees. Indo-European branches unite under PIE roots; non-Indo-European languages (like Finnish) plug in via Proto-Uralic under universal semantic concepts.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5 shrink-0 bg-page-surface px-2.5 py-1 border border-book-rule rounded-xs text-2xs text-ink-muted font-mono">
+          <span>PIE</span>
+          <span>→</span>
+          <span>Proto-Germanic</span>
+          <span>→</span>
+          <span>Modern Germanic</span>
+        </div>
+      </div>
+
+      {/* Control Plate: Proto-Language Tier, Semantic Domain, and Comparative Lens */}
+      <div className="border border-book-rule bg-page-surface p-3.5 sm:p-4 rounded-xs space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Proto-Language Filter */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="typo-sublabel text-ink-muted">Ancestor Level:</span>
+            <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs flex-wrap">
               <button
                 type="button"
-                onClick={() => setDimension('2d')}
-                className={`px-2.5 py-1 rounded-xs typo-sublabel font-medium transition-all cursor-pointer ${
-                  dimension === '2d'
-                    ? 'bg-page-surface border border-book-rule-strong text-ink-main shadow-2xs font-semibold'
+                onClick={() => setProtoFilter('all')}
+                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                  protoFilter === 'all'
+                    ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
-                2D Map
+                All Ancestors
               </button>
               <button
                 type="button"
-                onClick={() => setDimension('3d')}
-                className={`px-2.5 py-1 rounded-xs typo-sublabel font-medium transition-all cursor-pointer inline-flex items-center gap-1 ${
-                  dimension === '3d'
-                    ? 'bg-page-surface border border-book-rule-strong text-ink-main shadow-2xs font-semibold'
+                onClick={() => setProtoFilter('proto-indo-european')}
+                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                  protoFilter === 'proto-indo-european'
+                    ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
+                title="Macro roots uniting Germanic, Romance, and Slavic"
               >
-                <MaterialSymbol icon="public" size={14} />
-                3D Sphere
+                Proto-Indo-European (Macro)
+              </button>
+              <button
+                type="button"
+                onClick={() => setProtoFilter('proto-germanic')}
+                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                  protoFilter === 'proto-germanic'
+                    ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
+                    : 'text-ink-muted hover:text-ink-main'
+                }`}
+                title="Direct ancestor of English, German, Swedish, Dutch, etc."
+              >
+                Proto-Germanic
+              </button>
+              <button
+                type="button"
+                onClick={() => setProtoFilter('latin-italic')}
+                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                  protoFilter === 'latin-italic'
+                    ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
+                    : 'text-ink-muted hover:text-ink-main'
+                }`}
+                title="Romance family roots (French, Spanish, Latin)"
+              >
+                Latin / Italic
+              </button>
+              <button
+                type="button"
+                onClick={() => setProtoFilter('proto-uralic')}
+                className={`px-2 py-1 rounded-xs typo-sublabel transition-all cursor-pointer ${
+                  protoFilter === 'proto-uralic'
+                    ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
+                    : 'text-ink-muted hover:text-ink-main'
+                }`}
+                title="Non-Indo-European family roots (Finnish, Estonian, Hungarian)"
+              >
+                Proto-Uralic (Finnish)
               </button>
             </div>
           </div>
 
-          {/* Topic Group Filter */}
-          <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Topic:</span>
-            <select
-              value={activeConstellation}
-              onChange={(e) => setActiveConstellation(e.target.value)}
-              className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
-            >
-              <option value="all">All Topics</option>
-              <option value="Cosmos & Elements">Nature & Elements</option>
-              <option value="Kinship & Person">Family & People</option>
-              <option value="Living World & Body">Body & Animals</option>
-              <option value="Vital Action">Basic Actions</option>
-              <option value="Material & Craft">Tools & Crafts</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Right: Language Pair Filter */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="typo-sublabel text-ink-muted inline-flex items-center gap-1">
-            <MaterialSymbol icon="compare_arrows" size={14} className="text-shifted-ink" />
-            Compare:
-          </span>
-          <div className="inline-flex items-center gap-1.5 bg-page-muted/40 border border-book-rule px-2 py-0.5 rounded-xs">
+          {/* Comparative Lens Selector */}
+          <div className="flex items-center gap-2 text-xs">
+            <span className="typo-sublabel text-ink-muted">Compare:</span>
             <select
               value={lensSource}
               onChange={(e) => setLensSource(e.target.value)}
-              className="bg-transparent typo-sublabel text-ink-main font-semibold focus:outline-none cursor-pointer"
+              className="border border-book-rule bg-page-bg px-2 py-1 typo-sublabel text-ink-main rounded-xs focus:outline-none cursor-pointer"
             >
               {GALLERY_LANGUAGES.map((l) => (
                 <option key={l.code} value={l.code}>
@@ -442,7 +255,7 @@ export const StarfieldView: React.FC = () => {
             <select
               value={lensTarget}
               onChange={(e) => setLensTarget(e.target.value)}
-              className="bg-transparent typo-sublabel text-ink-main font-semibold focus:outline-none cursor-pointer"
+              className="border border-book-rule bg-page-bg px-2 py-1 typo-sublabel text-ink-main rounded-xs focus:outline-none cursor-pointer"
             >
               {GALLERY_LANGUAGES.map((l) => (
                 <option key={l.code} value={l.code}>
@@ -451,160 +264,229 @@ export const StarfieldView: React.FC = () => {
               ))}
             </select>
           </div>
+        </div>
 
-          {dimension === '3d' && (
-            <button
-              type="button"
-              onClick={() => setCamera({ ...DEFAULT_CAMERA, yaw: 0.85, pitch: 0.22, zoom: 1.1 })}
-              className="px-2 py-0.5 border border-book-rule bg-page-surface hover:bg-page-muted rounded-xs typo-subscript text-ink-muted transition-colors cursor-pointer"
-            >
-              Reset View
-            </button>
+        {/* Semantic Concept Filter */}
+        <div className="flex items-center gap-1.5 flex-wrap pt-2 border-t border-book-rule/60 text-xs">
+          <span className="typo-sublabel text-ink-muted">Domain:</span>
+          {(['all', 'Cosmos & Elements', 'Kinship & Person', 'Living World & Body', 'Vital Action'] as const).map(
+            (domain) => {
+              const isActive = activeConstellation === domain;
+              return (
+                <button
+                  key={domain}
+                  type="button"
+                  onClick={() => setActiveConstellation(domain)}
+                  className={`px-2 py-0.5 rounded-xs typo-subscript font-medium transition-all cursor-pointer border ${
+                    isActive
+                      ? 'border-ink-main bg-page-surface text-ink-main font-semibold shadow-2xs'
+                      : 'border-book-rule/60 bg-page-bg text-ink-muted hover:text-ink-main hover:bg-page-muted'
+                  }`}
+                >
+                  {domain === 'all' ? 'All Domains' : domain}
+                </button>
+              );
+            },
           )}
         </div>
       </div>
 
-      {/* Main Stage & Details Drawer */}
+      {/* Main Two-Column Root Explorer */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* Roots Canvas */}
-        <div
-          ref={containerRef}
-          className="lg:col-span-8 relative h-[560px] border border-book-rule bg-page-surface overflow-hidden shadow-xs select-none"
-        >
-          <canvas
-            ref={canvasRef}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onClick={handleClick}
-            onWheel={handleWheel}
-            className={`w-full h-full touch-none ${dimension === '3d' ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
-          />
-
-          {/* Canvas Key */}
-          <div className="absolute top-3 left-3 bg-page-surface/90 border border-book-rule/80 px-2.5 py-1.5 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none space-y-1">
-            <span className="typo-overline block text-ink-main">
-              Proto-Germanic Roots
+        {/* Left Column: Root Cards List */}
+        <div className="lg:col-span-5 border border-book-rule bg-page-surface p-3.5 sm:p-4 rounded-xs space-y-2.5 max-h-[640px] overflow-y-auto">
+          <div className="flex items-center justify-between pb-1.5 border-b border-book-rule">
+            <span className="typo-overline text-ink-main">
+              Attested Roots ({filteredRoots.length})
             </span>
-            <div className="flex items-center gap-3 text-2xs pt-0.5">
-              <span className="inline-flex items-center gap-1 text-cognate-ink font-medium">
-                <span className="w-2 h-2 rounded-full bg-cognate-ink inline-block"></span>
-                Same Meaning (Cognate)
-              </span>
-              <span className="inline-flex items-center gap-1 text-falsefriend-ink font-medium">
-                <span className="w-2 h-2 rounded-full bg-falsefriend-ink inline-block"></span>
-                Shifted Meaning
-              </span>
-              <span className="inline-flex items-center gap-1 text-ink-muted">
-                <span className="w-2 h-2 rounded-full bg-stone-400 inline-block"></span>
-                Replaced / Lost
-              </span>
-            </div>
+            <span className="typo-subscript text-ink-muted">
+              Select to inspect descendants
+            </span>
           </div>
 
-          {/* Quick HUD Tip */}
-          <div className="absolute bottom-3 left-3 bg-page-surface/90 border border-book-rule/80 px-3 py-1 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none">
-            <span className="typo-subscript text-2xs">
-              Click any root to see how it appears across all 7 living Germanic languages
-            </span>
+          <div className="space-y-2">
+            {filteredRoots.map((root) => {
+              const isSelected = root.id === selectedRoot?.id;
+              const lens = getLensStatus(root);
+
+              return (
+                <button
+                  key={root.id}
+                  type="button"
+                  onClick={() => setSelectedRootId(root.id)}
+                  className={`w-full text-left p-3 rounded-xs border transition-all cursor-pointer space-y-1.5 ${
+                    isSelected
+                      ? 'border-ink-main bg-page-muted/80 shadow-xs'
+                      : 'border-book-rule/70 bg-page-bg hover:border-book-rule-strong hover:bg-page-muted/30'
+                  }`}
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="typo-headword-row font-deck text-ink-main text-base font-bold italic">
+                      {root.root}
+                    </span>
+                    <span className="typo-subscript px-1.5 py-0.2 rounded-xs border border-book-rule bg-page-surface text-ink-muted">
+                      {root.protoLanguage}
+                    </span>
+                  </div>
+
+                  <p className="typo-gloss text-xs text-ink-muted line-clamp-1">
+                    &ldquo;{root.reconstructedMeaning}&rdquo;
+                  </p>
+
+                  <div className="flex items-center justify-between pt-1 border-t border-book-rule/40 text-2xs">
+                    <span className="text-ink-muted font-sans">{root.constellation}</span>
+                    <span className={`px-1.5 py-0.2 rounded-xs border font-medium ${lens.color}`}>
+                      {lens.status === 'cognate' ? 'True Cognate' : lens.status === 'shifted' ? 'False Friend' : 'Replaced'}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Root Details Drawer */}
-        <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
-          {/* Header */}
-          <div className="border-b border-book-rule pb-3">
-            <div className="flex items-center justify-between">
-              <span className="typo-overline text-shifted-ink block">
-                Root Word Details
-              </span>
-              <span
-                className={`px-1.5 py-0.5 typo-badge rounded-xs font-semibold text-2xs ${
-                  selectedSpectral.status === 'cognate'
-                    ? 'bg-cognate-bg text-cognate-ink border border-cognate-border'
-                    : selectedSpectral.status === 'shifted'
-                    ? 'bg-falsefriend-bg text-falsefriend-ink border border-falsefriend-border'
-                    : 'bg-page-muted text-ink-muted border border-book-rule'
-                }`}
-              >
-                {selectedSpectral.label}
-              </span>
-            </div>
+        {/* Right Column: Detailed Genealogical Tree & Daughter Words */}
+        <div className="lg:col-span-7 border border-book-rule bg-page-surface p-5 rounded-xs space-y-5">
+          {selectedRoot ? (
+            <div className="space-y-5">
+              {/* Root Plate Header */}
+              <div className="border-b border-book-rule pb-4 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="typo-overline text-cognate-ink">
+                    Reconstructed Ancestral Form
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-page-muted border border-book-rule text-ink-muted typo-subscript font-mono">
+                    {selectedRoot.protoLanguage}
+                  </span>
+                </div>
 
-            <div className="mt-1">
-              <h2 className="typo-page-title text-ink-main">
-                {selectedStar.root}
-              </h2>
-              <p className="typo-gloss text-ink-main mt-0.5">
-                &ldquo;{selectedStar.reconstructedMeaning}&rdquo;
-              </p>
-              <span className="typo-subscript block text-ink-muted mt-1">
-                Topic: <strong className="text-ink-main font-semibold">{selectedStar.constellation}</strong>
-              </span>
-            </div>
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <h3 className="typo-headword-display text-ink-main text-2xl sm:text-3xl font-bold italic">
+                    {selectedRoot.root}
+                  </h3>
+                </div>
 
-            {/* Commentary */}
-            <p className="typo-note text-ink-muted leading-relaxed mt-2.5 pt-2 border-t border-book-rule/40 italic">
-              {selectedStar.etymologicalNote}
-            </p>
-          </div>
+                <p className="typo-gloss text-ink-muted text-sm">
+                  Reconstructed meaning: &ldquo;{selectedRoot.reconstructedMeaning}&rdquo;
+                </p>
 
-          {/* Daughter Forms Across the Germanic Tree */}
-          <div className="space-y-2">
-            <span className="typo-sublabel block font-semibold text-ink-main">
-              Words in Modern Languages
-            </span>
-            <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-1">
-              {Object.entries(selectedStar.daughters).map(([langCode, d]) => {
-                const isSource = langCode === lensSource;
-                const isTarget = langCode === lensTarget;
-                const isHighlighted = isSource || isTarget;
+                {/* Comparative lens banner for this root */}
+                {currentLensInfo && (
+                  <div className={`mt-2 p-2.5 rounded-xs border flex items-center justify-between text-xs ${currentLensInfo.color}`}>
+                    <span className="font-semibold">
+                      {getLanguageName(lensSource)} ↔ {getLanguageName(lensTarget)} relation:
+                    </span>
+                    <span>{currentLensInfo.label}</span>
+                  </div>
+                )}
+              </div>
 
-                return (
-                  <div
-                    key={langCode}
-                    className={`border px-2.5 py-2 rounded-xs transition-colors flex items-start justify-between gap-2 ${
-                      isHighlighted
-                        ? 'border-cognate-border/90 bg-cognate-bg/25 shadow-2xs'
-                        : 'border-book-rule/60 bg-page-muted/15'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="typo-lang-code font-bold text-2xs">
-                          {langCode.toUpperCase()}
-                        </span>
-                        <strong className="typo-headword-row text-ink-main text-sm">
-                          {d.word}
-                        </strong>
-                        <Phonetic ipa={d.ipa} className="typo-ipa text-2xs" />
-                      </div>
-                      <span className="typo-gloss text-ink-muted text-xs block mt-0.5">
-                        &ldquo;{d.gloss}&rdquo;
-                      </span>
-                      {d.shiftNote && (
-                        <p className="typo-note text-2xs text-falsefriend-ink mt-0.5 italic">
-                          {d.shiftNote}
+              {/* Daughter Words Grid (Germanic Core) */}
+              <div className="space-y-2.5">
+                <span className="typo-overline text-ink-main block">
+                  Catalogued Modern Descendants
+                </span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {Object.entries(selectedRoot.daughters).map(([code, daughter]) => {
+                    const isSrc = code === lensSource;
+                    const isTgt = code === lensTarget;
+                    const isShifted = daughter.status === 'shifted';
+
+                    return (
+                      <div
+                        key={code}
+                        className={`p-3 rounded-xs border transition-colors space-y-1 ${
+                          isSrc || isTgt
+                            ? 'border-ink-main bg-page-muted/40 shadow-2xs'
+                            : 'border-book-rule bg-page-bg'
+                        }`}
+                      >
+                        <div className="flex items-baseline justify-between">
+                          <span className="typo-sublabel text-xs font-semibold text-ink-muted">
+                            {getLanguageName(code)}
+                          </span>
+                          <span className="typo-lang-code text-2xs uppercase">
+                            {code}
+                          </span>
+                        </div>
+
+                        <div className="flex items-baseline gap-2 pt-0.5">
+                          <strong className={`typo-headword-row text-base ${isShifted ? 'text-falsefriend-ink' : 'text-ink-main'}`}>
+                            {daughter.word}
+                          </strong>
+                          {daughter.ipa && <Phonetic ipa={daughter.ipa} className="text-xs text-ink-muted" />}
+                        </div>
+
+                        <p className="typo-gloss text-xs text-ink-muted">
+                          &ldquo;{daughter.gloss}&rdquo;
                         </p>
-                      )}
-                    </div>
 
-                    <span
-                      className={`typo-subscript text-2xs px-1 py-0.5 rounded-xs shrink-0 ${
-                        d.status === 'cognate'
-                          ? 'text-cognate-ink font-medium'
-                          : d.status === 'shifted'
-                          ? 'text-falsefriend-ink font-medium'
-                          : 'text-ink-muted'
-                      }`}
-                    >
-                      {d.status === 'cognate' ? 'Cognate' : d.status === 'shifted' ? 'Shifted' : 'Replaced'}
+                        {daughter.shiftNote && (
+                          <p className="typo-note text-2xs text-falsefriend-ink pt-0.5">
+                            {daughter.shiftNote}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Cross-Family Branches (Demonstrating Scalability to Romance / Slavic / Uralic) */}
+              {selectedRoot.externalDaughters && (
+                <div className="space-y-2.5 pt-3 border-t border-book-rule">
+                  <div className="flex items-center justify-between">
+                    <span className="typo-overline text-ink-main block">
+                      Cross-Family Cognates & Equivalent Roots
+                    </span>
+                    <span className="typo-subscript text-2xs text-ink-muted">
+                      Shows multi-family scalability
                     </span>
                   </div>
-                );
-              })}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {Object.entries(selectedRoot.externalDaughters).map(([code, ext]) => (
+                      <div key={code} className="p-3 rounded-xs border border-dashed border-book-rule bg-page-muted/20 space-y-1">
+                        <div className="flex items-baseline justify-between">
+                          <span className="typo-sublabel text-xs font-semibold text-ink-muted">
+                            {ext.langName}
+                          </span>
+                          <span className="typo-lang-code text-2xs uppercase">
+                            {code}
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-2 pt-0.5">
+                          <strong className="typo-headword-row text-base text-ink-main">
+                            {ext.word}
+                          </strong>
+                          {ext.ipa && <Phonetic ipa={ext.ipa} className="text-xs text-ink-muted" />}
+                        </div>
+                        <p className="typo-gloss text-xs text-ink-muted">
+                          &ldquo;{ext.gloss}&rdquo;
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Etymology & Historical Drift Note */}
+              <div className="p-3.5 bg-page-muted/40 border border-book-rule rounded-xs space-y-1">
+                <span className="typo-overline text-2xs text-ink-muted block">
+                  Etymological Note
+                </span>
+                <p className="typo-body text-xs text-ink-main leading-relaxed">
+                  {selectedRoot.etymologicalNote}
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="py-20 text-center text-ink-muted space-y-2">
+              <MaterialSymbol icon="search" size={32} className="text-ink-muted/50" />
+              <p className="typo-body text-sm font-medium">No root matches current filter</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
