@@ -48,17 +48,18 @@ export const Header: React.FC = () => {
     { to: '/lexicon', label: 'Comparative Lexicon', icon: 'menu_book' },
     { to: '/quiz', label: 'False Friends Quiz', icon: 'quiz' },
     { to: '/inspector', label: 'Text Inspector', icon: 'text_snippet' },
+    { to: '/gallery', label: 'Concept Lab', icon: 'science' },
   ];
 
   return (
     <header className="sticky top-0 z-40 border-b border-book-rule bg-page-bg/95 backdrop-blur-xs w-full">
-      <div className="w-full flex items-center justify-between px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4">
+      <div className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
         {/* Application title & mobile burger toggle */}
         <div className="flex-none flex items-center gap-2 sm:gap-2.5">
           <button
             type="button"
             onClick={() => setMobileNavOpen((prev) => !prev)}
-            className="md:hidden flex items-center justify-center p-1.5 -ml-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
+            className="lg:hidden flex items-center justify-center p-1.5 -ml-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
             aria-label={mobileNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileNavOpen}
           >
@@ -69,7 +70,7 @@ export const Header: React.FC = () => {
             <img
               src={logoUrl}
               alt="Linduistics Logo"
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover group-hover:opacity-80 transition-opacity"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover group-hover:opacity-80 transition-opacity"
             />
             <h1 className="typo-page-title tracking-tight text-ink-main group-hover:opacity-80 transition-opacity">
               Linduistics
@@ -78,7 +79,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:flex items-center justify-center gap-8 flex-1 px-4">
+        <nav className="hidden lg:flex items-center flex-wrap justify-center gap-8 flex-1 px-4">
           {navLinks.map((link) => {
             const isActive =
               currentPath === link.to ||
@@ -88,11 +89,10 @@ export const Header: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`typo-nav transition-colors ${
-                  isActive
-                    ? 'text-ink-main underline decoration-2 underline-offset-8 decoration-cognate-ink'
-                    : 'text-ink-muted hover:text-ink-main'
-                }`}
+                className={`typo-nav whitespace-nowrap transition-colors ${isActive
+                  ? 'text-ink-main underline decoration-2 underline-offset-8 decoration-cognate-ink'
+                  : 'text-ink-muted hover:text-ink-main'
+                  }`}
               >
                 {link.label}
               </Link>
@@ -181,12 +181,12 @@ export const Header: React.FC = () => {
                     {item.category === 'true_cognate' || item.category === 'cognate'
                       ? 'True Cognate'
                       : item.category === 'false_friend'
-                      ? 'False Friend'
-                      : item.category === 'partial_cognate' || item.category === 'cousin' || item.category === 'sound_shift'
-                      ? 'Partial Cognate'
-                      : item.category === 'translation_pair' || item.category === 'schism'
-                      ? 'Translation Pair'
-                      : 'Other'}
+                        ? 'False Friend'
+                        : item.category === 'partial_cognate' || item.category === 'cousin' || item.category === 'sound_shift'
+                          ? 'Partial Cognate'
+                          : item.category === 'translation_pair' || item.category === 'schism'
+                            ? 'Translation Pair'
+                            : 'Other'}
                   </div>
                 </div>
               ))}
@@ -205,30 +205,27 @@ export const Header: React.FC = () => {
       {typeof document !== 'undefined' &&
         createPortal(
           <div
-            className={`fixed inset-0 z-50 md:hidden ${
-              mobileNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
-            }`}
+            className={`fixed inset-0 z-50 md:hidden ${mobileNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
+              }`}
             aria-hidden={!mobileNavOpen}
           >
             {/* Backdrop */}
             <div
-              className={`fixed inset-0 bg-ink-main/40 backdrop-blur-xs transition-opacity duration-300 ${
-                mobileNavOpen ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`fixed inset-0 bg-ink-main/40 backdrop-blur-xs transition-opacity duration-300 ${mobileNavOpen ? 'opacity-100' : 'opacity-0'
+                }`}
               onClick={() => setMobileNavOpen(false)}
             />
 
             {/* Panel */}
             <aside
-              className={`fixed inset-y-0 left-0 w-72 max-w-[85vw] h-full h-dvh bg-page-surface border-r border-book-rule shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
-                mobileNavOpen ? 'translate-x-0' : '-translate-x-full'
-              }`}
+              className={`fixed inset-y-0 left-0 w-72 max-w-[85vw] h-full h-dvh bg-page-surface border-r border-book-rule shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${mobileNavOpen ? 'translate-x-0' : '-translate-x-full'
+                }`}
               role="dialog"
               aria-modal={mobileNavOpen}
               aria-label="Mobile navigation"
             >
               {/* Drawer header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-book-rule bg-page-bg shrink-0">
+              <div className="flex items-center justify-between px-4 py-2.5 border-b border-book-rule bg-page-bg shrink-0">
                 <Link
                   to="/orbit"
                   onClick={() => setMobileNavOpen(false)}
@@ -237,7 +234,7 @@ export const Header: React.FC = () => {
                   <img
                     src={logoUrl}
                     alt="Linduistics Logo"
-                    className="w-7 h-7 rounded-full object-cover group-hover:opacity-80 transition-opacity"
+                    className="w-10 h-10 rounded-full object-cover group-hover:opacity-80 transition-opacity"
                   />
                   <span className="typo-page-title tracking-tight text-ink-main group-hover:opacity-80 transition-opacity">
                     Linduistics
@@ -265,11 +262,10 @@ export const Header: React.FC = () => {
                       key={link.to}
                       to={link.to}
                       onClick={() => setMobileNavOpen(false)}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors typo-nav ${
-                        isActive
-                          ? 'bg-page-muted text-ink-main font-semibold border-l-2 border-cognate-ink pl-2.5'
-                          : 'text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-                      }`}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors typo-nav ${isActive
+                        ? 'bg-page-muted text-ink-main font-semibold border-l-2 border-cognate-ink pl-2.5'
+                        : 'text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+                        }`}
                     >
                       <MaterialSymbol
                         icon={link.icon}

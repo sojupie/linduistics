@@ -24,6 +24,9 @@ const InspectorLazy = React.lazy(() =>
 const QuizLazy = React.lazy(() =>
   import('../routes/quiz.lazy').then((m) => ({ default: m.QuizRouteComponent })),
 );
+const GalleryLazy = React.lazy(() =>
+  import('../routes/gallery.lazy').then((m) => ({ default: m.GalleryRouteComponent })),
+);
 
 // Zod search param validation schemas
 const orbitSearchSchema = z.object({
@@ -104,6 +107,16 @@ export const inspectorRoute = createRoute({
   ),
 });
 
+export const galleryRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/gallery',
+  component: () => (
+    <Suspense fallback={<LoadingIndicator />}>
+      <GalleryLazy />
+    </Suspense>
+  ),
+});
+
 const routeTree = RootRoute.addChildren([
   indexRoute,
   orbitRoute,
@@ -111,6 +124,7 @@ const routeTree = RootRoute.addChildren([
   lexiconRoute,
   quizRoute,
   inspectorRoute,
+  galleryRoute,
 ]);
 
 export const router = createRouter({
