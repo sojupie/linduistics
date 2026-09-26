@@ -426,11 +426,11 @@ export interface StratumLayer {
 export const STRATIGRAPHY_LAYERS: StratumLayer[] = [
   {
     id: 'stratum-bedrock',
-    name: 'Proto-Germanic Archaic Bedrock',
+    name: 'Ancient Germanic Roots',
     era: 'c. 500 BCE – 200 CE',
     depthRank: 1,
-    description: 'The primordial inherited core vocabulary of Common Germanic. Primary kin, anatomical parts, elements, vital verbs, and closed-class pronouns.',
-    linguisticSignificance: 'Virtually 100% cognate conservation across all daughter languages; the grammatical and lexical skeleton.',
+    description: 'The inherited core vocabulary shared across all Germanic languages: family, body parts, nature, everyday verbs, and pronouns.',
+    linguisticSignificance: 'Nearly 100% cognate retention across all daughter languages; the foundation of every branch.',
     volumes: {
       is: 68,
       sv: 46,
@@ -438,39 +438,39 @@ export const STRATIGRAPHY_LAYERS: StratumLayer[] = [
       da: 44,
       de: 42,
       nl: 43,
-      en: 26, // Drastically reduced relative share due to Romance borrowing, but still forms 85% of spoken frequency!
+      en: 26, // English has a lower percentage share due to heavy French/Latin borrowing, but these still form most everyday speech.
     },
     specimens: [
       {
         protoOrOrigin: '*fadēr, *mōdēr, *brōþēr',
         examples: { sv: 'far, mor, bror', is: 'faðir, móðir, bróðir', de: 'Vater, Mutter, Bruder', nl: 'vader, moeder, broeder', en: 'father, mother, brother' },
-        note: 'Kinship bedrock unbroken across 2,500 years.',
+        note: 'Basic family words preserved across 2,500 years.',
       },
       {
         protoOrOrigin: '*hūsan, *landą, *watan',
         examples: { sv: 'hus, land, vatten', is: 'hús, land, vatn', de: 'Haus, Land, Wasser', nl: 'huis, land, water', en: 'house, land, water' },
-        note: 'Primary ecological and settlement terms.',
+        note: 'Everyday physical surroundings and settlement terms.',
       },
       {
         protoOrOrigin: '*etaną, *drinkaną, *sehwana',
         examples: { sv: 'äta, dricka, se', is: 'éta, drekka, sjá', de: 'essen, trinken, sehen', nl: 'eten, drinken, zien', en: 'eat, drink, see' },
-        note: 'Strong verbs with conserved ablaut alternations.',
+        note: 'Essential verbs with preserved vowel patterns.',
       },
     ],
   },
   {
     id: 'stratum-faults',
-    name: 'Phonological Shear Faults (Grimm & High German)',
+    name: 'High German Sound Shift',
     era: 'c. 400 – 800 CE',
     depthRank: 2,
-    description: 'The monumental sound shifts that cracked the physical appearance of cognates without breaking their underlying root lineage.',
-    linguisticSignificance: 'The High German Consonant Shift (p->pf/f, t->z/ss, k->ch) sheared southern West Germanic away from the Lowlands and Scandinavia.',
+    description: 'A sound change in southern Germany where consonants shifted (p became pf/f, t became z/ss, k became ch).',
+    linguisticSignificance: 'Separated High German from Dutch, English, and the Scandinavian languages.',
     volumes: {
-      is: 0, // Unaffected by High German shift
+      is: 0, // Unaffected
       sv: 0,
       no: 0,
       da: 0,
-      de: 32, // Huge proportion of German vocabulary altered
+      de: 32, // Large share of German vocabulary was modified by this shift
       nl: 8,
       en: 4,
     },
@@ -478,61 +478,61 @@ export const STRATIGRAPHY_LAYERS: StratumLayer[] = [
       {
         protoOrOrigin: '*tīdiz (time / tide)',
         examples: { sv: 'tid', is: 'tíð', de: 'Zeit (t -> z)', nl: 'tijd', en: 'tide / time' },
-        note: 'High German shifted initial /t/ to affricate /ts/ (written Z).',
+        note: 'German shifted initial t to z (pronounced ts).',
       },
       {
         protoOrOrigin: '*pundą (pound / weight)',
         examples: { sv: 'pund', is: 'pund', de: 'Pfund (p -> pf)', nl: 'pond', en: 'pound' },
-        note: 'High German shifted initial /p/ to affricate /pf/.',
+        note: 'German shifted initial p to pf.',
       },
       {
         protoOrOrigin: '*etaną (to eat)',
         examples: { sv: 'äta', is: 'éta', de: 'essen (t -> ss)', nl: 'eten', en: 'eat' },
-        note: 'Medial /t/ became double sibilant /ss/ in German.',
+        note: 'Middle t became double ss in German.',
       },
     ],
   },
   {
     id: 'stratum-hanseatic',
-    name: 'The Hanseatic / Middle Low German Silt',
+    name: 'Low German Trade Borrowings',
     era: 'c. 1250 – 1550 CE',
     depthRank: 3,
-    description: 'Massive mercantile language contact layer. Middle Low German (Lübeck trade lingua franca) flooded Scandinavia and the Low Countries.',
-    linguisticSignificance: 'Created an artificial secondary bridge between North and West Germanic, injecting thousands of administrative, craft, and abstract words.',
+    description: 'Hanseatic merchants from northern Germany dominated Baltic and North Sea trade, introducing thousands of words into Scandinavian languages.',
+    linguisticSignificance: 'Added words for crafts, trade, cities, and administration, plus prefixes like be-, ge-, and för-.',
     volumes: {
-      is: 2,  // Icelandic famously shielded itself and purged trade loans
-      sv: 28, // Up to 30% of standard Swedish vocabulary is Middle Low German!
+      is: 2,  // Icelandic resisted foreign trade borrowings
+      sv: 28, // About 25-30% of Swedish vocabulary comes from Low German
       no: 27,
       da: 31,
       de: 12,
       nl: 18,
-      en: 5,  // English had minimal Hanseatic contact compared to Scandinavia
+      en: 5,  // English had far less Hanseatic contact
     },
     specimens: [
       {
         protoOrOrigin: 'MLG betalen / betālen',
-        examples: { sv: 'betala', da: 'betale', no: 'betale', is: 'borga (native)', de: 'bezahlen', nl: 'betalen', en: 'pay (Romance loan)' },
-        note: 'Completely replaced the native Old Norse word *gjalda / borga in Mainland Scandinavia.',
+        examples: { sv: 'betala', da: 'betale', no: 'betale', is: 'borga (native)', de: 'bezahlen', nl: 'betalen', en: 'pay (French loan)' },
+        note: 'Replaced the older Norse word in mainland Scandinavia.',
       },
       {
         protoOrOrigin: 'MLG blīven (to remain)',
-        examples: { sv: 'bliva / bli', da: 'blive', no: 'bli', is: 'verða (native)', de: 'bleiben', nl: 'blijven', en: 'remain (Romance loan)' },
-        note: 'Suppplanted native *werþaną auxiliary in everyday Scandinavian speech.',
+        examples: { sv: 'bliva / bli', da: 'blive', no: 'bli', is: 'verða (native)', de: 'bleiben', nl: 'blijven', en: 'remain (French loan)' },
+        note: 'Became the everyday word for stay/become in Scandinavian.',
       },
       {
         protoOrOrigin: 'Prefixes be-, ge-, för- (ver-)',
         examples: { sv: 'beskriva, förstå', da: 'beskrive, forstå', is: 'lýsa, skilja (native)', de: 'beschreiben, verstehen', nl: 'beschrijven, verstaan', en: 'describe, understand' },
-        note: 'Reshaped Scandinavian morphological derivation patterns completely.',
+        note: 'Standard word-building prefixes borrowed into Swedish, Danish, and Norwegian.',
       },
     ],
   },
   {
     id: 'stratum-drift',
-    name: 'Modern Semantic Drift & False Friend Divergence',
+    name: 'Meaning Shifts & False Friends',
     era: 'c. 1500 – 1900 CE',
     depthRank: 4,
-    description: 'Centuries of cultural separation where identical inherited forms drifted into contradictory or specialized meanings.',
-    linguisticSignificance: 'The core subject matter of the False Friends Quiz: lexical deception hiding beneath morphological familiarity.',
+    description: 'Words with shared origins that gradually evolved different meanings in each language over centuries.',
+    linguisticSignificance: 'The source of most false friends: words that look or sound similar but mean different things.',
     volumes: {
       is: 12,
       sv: 14,
@@ -545,49 +545,49 @@ export const STRATIGRAPHY_LAYERS: StratumLayer[] = [
     specimens: [
       {
         protoOrOrigin: '*kunnaną (to know / can)',
-        examples: { sv: 'känna (feel/know person)', de: 'kennen (know person)', nl: 'kennen', en: 'can (ability) / ken (archaic)' },
-        note: 'Divergence between epistemic knowledge, mental acquaintance, and raw physical ability.',
+        examples: { sv: 'känna (feel/know person)', de: 'kennen (know person)', nl: 'kennen', en: 'can (ability)' },
+        note: 'Split between physical ability, knowing a person, and knowing a fact.',
       },
       {
-        protoOrOrigin: '*tūnaz (enclosure -> town / garden)',
-        examples: { sv: 'tun (farmyard enclosure)', is: 'tún (hayfield/home meadow)', de: 'Zaun (hedge, fence)', nl: 'tuin (garden)', en: 'town (urban settlement)' },
-        note: 'From Celtic *dūnom (fort). Staggering semantic spread: English grew to city, German shrank to fence, Dutch became garden!',
+        protoOrOrigin: '*tūnaz (enclosure)',
+        examples: { sv: 'tun (farmyard)', is: 'tún (hayfield)', de: 'Zaun (fence)', nl: 'tuin (garden)', en: 'town (city)' },
+        note: 'Shifted in completely different directions: fence in German, garden in Dutch, city in English.',
       },
     ],
   },
   {
     id: 'stratum-romance',
-    name: 'The Romance & Latinate Overburden',
+    name: 'Latin & French Borrowings',
     era: 'c. 1066 – 1800 CE',
     depthRank: 5,
-    description: 'Post-Conquest Norman French, Church Latin, and Renaissance Greek academic borrowings deposited atop the Germanic core.',
-    linguisticSignificance: 'English became a hybrid double-register language (Germanic concrete vs Latinate abstract). Icelandic near-zero via purism.',
+    description: 'Words borrowed from French after 1066, Church Latin, and Renaissance scholarship.',
+    linguisticSignificance: 'Gave English its dual vocabulary (Germanic everyday words vs French/Latin formal words). Swedish and Danish also borrowed 18th-century French culture words.',
     volumes: {
-      is: 3,  // Strict linguistic purism replaced international loans with native coinages
-      sv: 10, // French 18th century court loans (fåtölj, trottoar) + Latin
+      is: 3,  // Icelandic used native coinages instead
+      sv: 10, // French court borrowings (fåtölj, trottoar) plus Latin
       no: 11,
       da: 10,
       de: 12,
       nl: 14,
-      en: 58, // Almost 60% of total English lexicon is French/Latin!
+      en: 58, // Over half of English vocabulary is from French or Latin
     },
     specimens: [
       {
-        protoOrOrigin: 'Law, Justice, Statecraft',
-        examples: { sv: 'lag, rättvisa, domstol', is: 'lög, réttlæti, dómstóll', de: 'Gesetz, Gerechtigkeit, Gericht', nl: 'wet, gerechtigheid, rechtbank', en: 'law (Norse!), justice (French), court (French)' },
-        note: 'English layered French terms over native Germanic concepts, creating the famous dual-register vocabulary.',
+        protoOrOrigin: 'Law, Justice, Government',
+        examples: { sv: 'lag, rättvisa, domstol', is: 'lög, réttlæti, dómstóll', de: 'Gesetz, Gerechtigkeit, Gericht', nl: 'wet, gerechtigheid, rechtbank', en: 'law (Norse), justice (French), court (French)' },
+        note: 'English layered French terms over older Germanic words.',
       },
       {
-        protoOrOrigin: 'Meat vs Living Animal',
-        examples: { sv: 'oxe / nötkött', is: 'uxi / nautakjöt', de: 'Rind / Rindfleisch', nl: 'rund / rundvlees', en: 'cow (Germanic) vs beef (Norman bœuf)' },
-        note: 'Iconic English sociological register split between Saxon field labor and Norman dining tables.',
+        protoOrOrigin: 'Animal vs Meat',
+        examples: { sv: 'oxe / nötkött', is: 'uxi / nautakjöt', de: 'Rind / Rindfleisch', nl: 'rund / rundvlees', en: 'cow (Germanic) vs beef (French bœuf)' },
+        note: 'English pairs Germanic names for animals with French names for meat.',
       },
     ],
   },
 ];
 
 // ---------------------------------------------------------------------------
-// 3. Johannes Schmidt Wave Topography (Wellentheorie)
+// 3. Sound Shift Waves
 // ---------------------------------------------------------------------------
 
 export interface IsoglossWave {
@@ -607,84 +607,84 @@ export interface IsoglossWave {
 export const ISOGLOSS_WAVES: IsoglossWave[] = [
   {
     id: 'wave-high-german',
-    name: 'Second (High German) Consonant Shift',
+    name: 'High German Consonant Shift',
     historicalPeriod: 'c. 500 – 750 CE',
-    epicenter: 'Alpine Highlands (Southern Germany / Austria / Switzerland)',
+    epicenter: 'Southern Germany & Alpine region',
     epicenterCoord: { x: -35, y: 70 },
     radius: 55,
     affectedLanguages: ['de'],
     marginalLanguages: ['nl'],
-    description: 'The monumental wave that severed High German from the remaining Germanic continuum. Voiceless stops became affricates or fricatives, halting at the Benrath Line (*maken* vs *machen*).',
+    description: 'Consonants shifted across southern Germany: p became pf/f, t became z/ss, and k became ch. This split High German from all other Germanic languages.',
     phonologicalRule: 'p -> pf / f,  t -> ts (z) / ss,  k -> ch,  d -> t',
     specimenPairs: [
-      { word: 'apple / Apfel', shifted: 'Apfel (de)', unshifted: 'äpple (sv), æble (da), eple (no), epli (is), appel (nl), apple (en)', note: 'p -> pf initial shift' },
-      { word: 'water / Wasser', shifted: 'Wasser (de)', unshifted: 'vatten (sv), vand (da), vann (no), vatn (is), water (nl), water (en)', note: 't -> ss medial shift' },
-      { word: 'two / zwei', shifted: 'zwei / zwo (de)', unshifted: 'två (sv), to (da/no), tveir (is), twee (nl), two (en)', note: 't -> ts (z) initial affrication' },
+      { word: 'apple / Apfel', shifted: 'Apfel (de)', unshifted: 'äpple (sv), æble (da), eple (no), epli (is), appel (nl), apple (en)', note: 'Initial p became pf' },
+      { word: 'water / Wasser', shifted: 'Wasser (de)', unshifted: 'vatten (sv), vand (da), vann (no), vatn (is), water (nl), water (en)', note: 'Middle t became ss' },
+      { word: 'two / zwei', shifted: 'zwei / zwo (de)', unshifted: 'två (sv), to (da/no), tveir (is), twee (nl), two (en)', note: 'Initial t became z (ts)' },
     ],
   },
   {
     id: 'wave-ingvaeonic',
-    name: 'Ingvaeonic (North Sea) Nasal Spirant Law',
+    name: 'North Sea Nasal Shift (Ingvaeonic)',
     historicalPeriod: 'c. 400 – 600 CE',
-    epicenter: 'North Sea Littoral (Frisia, Low Saxony, Eastern Britain)',
+    epicenter: 'North Sea coast (Frisia, Low Germany, Britain)',
     epicenterCoord: { x: -40, y: 5 },
     radius: 48,
     affectedLanguages: ['en', 'nl'],
     marginalLanguages: ['de'],
-    description: 'Nasal consonants (/m/, /n/) dropped before voiceless fricatives (/f/, /s/, /θ/), producing lengthening of the preceding vowel across Anglo-Frisian and Old Saxon.',
-    phonologicalRule: 'V + [n,m] + [f,s,θ]  ->  V̄ + [f,s,θ]',
+    description: 'The nasal sounds /m/ and /n/ dropped before /f/, /s/, or /th/, lengthening the preceding vowel in English and Dutch.',
+    phonologicalRule: 'V + [n,m] + [f,s,θ]  ->  long vowel + [f,s,θ]',
     specimenPairs: [
-      { word: 'five / fünf', shifted: 'five (en), vijf (nl)', unshifted: 'fünf (de), fem (sv/da/no), fimm (is)', note: 'Loss of /n/ before /f/ with compensatory vowel lengthening' },
-      { word: 'goose / Gans', shifted: 'goose (en), gans/does (nl)', unshifted: 'Gans (de), gås (sv/da/no), gæs (is)', note: 'Loss of /n/ before /s/' },
-      { word: 'mouth / Mund', shifted: 'mouth (en), mond (nl - analogical)', unshifted: 'Mund (de), mun (sv/no/da), munnur (is)', note: 'Loss of /n/ before dental fricative /θ/' },
+      { word: 'five / fünf', shifted: 'five (en), vijf (nl)', unshifted: 'fünf (de), fem (sv/da/no), fimm (is)', note: 'Lost /n/ before /f/ (compare English five vs German fünf)' },
+      { word: 'goose / Gans', shifted: 'goose (en), gans/does (nl)', unshifted: 'Gans (de), gås (sv/da/no), gæs (is)', note: 'Lost /n/ before /s/ in English' },
+      { word: 'mouth / Mund', shifted: 'mouth (en), mond (nl)', unshifted: 'Mund (de), mun (sv/no/da), munnur (is)', note: 'Lost /n/ before /th/ in English' },
     ],
   },
   {
     id: 'wave-syncope',
-    name: 'North Germanic Syncope & Vowel Fracture',
+    name: 'Scandinavian Vowel Shortening (Syncope)',
     historicalPeriod: 'c. 600 – 850 CE',
-    epicenter: 'Scandinavia (Kattegat / Skagerrak)',
+    epicenter: 'Scandinavia',
     epicenterCoord: { x: 35, y: -45 },
     radius: 52,
     affectedLanguages: ['sv', 'da', 'no', 'is'],
     marginalLanguages: [],
-    description: 'Violent contraction wave that deleted short unaccented vowels in medial/final syllables and caused extensive u-umlaut and breaking, radically shortening Scandinavian headwords.',
-    phonologicalRule: 'Unaccented V -> ∅; root vowels fracture before back vowels (e -> ja, io)',
+    description: 'Unstressed middle and final vowels dropped across the Nordic languages, shortening words and causing vowel changes (breaking).',
+    phonologicalRule: 'Unstressed vowels drop; root vowels shift before back vowels (e -> ja)',
     specimenPairs: [
-      { word: 'arm / ear', shifted: 'arm, öra (sv), øre (da/no), eyra (is)', unshifted: 'Ohr (de), oor (nl), ear (en)', note: 'Diphthongal mutations and r-hotacism' },
-      { word: 'heart / hjärta', shifted: 'hjärta (sv), hjerte (da/no), hjarta (is)', unshifted: 'Herz (de), hart (nl), heart (en)', note: 'Fracture of Proto-Germanic *hertô into /hj-/' },
+      { word: 'arm / ear', shifted: 'arm, öra (sv), øre (da/no), eyra (is)', unshifted: 'Ohr (de), oor (nl), ear (en)', note: 'Scandinavian vowel shifts and sound shortening' },
+      { word: 'heart / hjärta', shifted: 'hjärta (sv), hjerte (da/no), hjarta (is)', unshifted: 'Herz (de), hart (nl), heart (en)', note: 'Proto-Germanic *hertô fractured into Nordic hj-' },
     ],
   },
   {
     id: 'wave-clitic-article',
-    name: 'Continental Scandinavian Postposed Definite Article',
+    name: 'Scandinavian Suffix Article (-en, -et)',
     historicalPeriod: 'c. 900 – 1200 CE',
     epicenter: 'Central Scandinavia',
     epicenterCoord: { x: 35, y: -40 },
     radius: 46,
     affectedLanguages: ['sv', 'da', 'no', 'is'],
     marginalLanguages: [],
-    description: 'The demonstrative pronoun *hinn fused onto the rear of nouns as an enclitic suffix (-en, -et, -na), creating a synthetic definite noun form unique to North Germanic.',
+    description: 'The demonstrative *hinn attached to the end of nouns as a suffix (-en, -et), creating the definite form unique to North Germanic.',
     phonologicalRule: 'Noun + *hinn  ->  Noun-en / Noun-et',
     specimenPairs: [
-      { word: 'the house', shifted: 'huset (sv/da/no/is)', unshifted: 'das Haus (de), het huis (nl), the house (en)', note: 'Fused enclitic suffix vs West Germanic preposed independent article' },
-      { word: 'the day', shifted: 'dagen (sv/da/no/is)', unshifted: 'der Tag (de), de dag (nl), the day (en)', note: 'Complete morphological divide across the Germanic family' },
+      { word: 'the house', shifted: 'huset (sv/da/no/is)', unshifted: 'das Haus (de), het huis (nl), the house (en)', note: 'Attached ending (-et) vs separate word (the / das / het)' },
+      { word: 'the day', shifted: 'dagen (sv/da/no/is)', unshifted: 'der Tag (de), de dag (nl), the day (en)', note: 'Attached ending (-en) vs separate word (the / der / de)' },
     ],
   },
   {
     id: 'wave-hanseatic-trade',
-    name: 'Middle Low German Mercantile Diffusion Wave',
+    name: 'Low German Trade Words (Hanseatic)',
     historicalPeriod: 'c. 1300 – 1550 CE',
-    epicenter: 'Lübeck / Baltic Sea Coast',
+    epicenter: 'Northern German ports (Lübeck, Baltic)',
     epicenterCoord: { x: -10, y: 5 },
     radius: 68,
     affectedLanguages: ['sv', 'da', 'no', 'nl'],
     marginalLanguages: ['de'],
-    description: 'A socio-economic lexical tsunami. Hanseatic merchants dominated Nordic ports, forcing Low German vocabulary into every sector of Scandinavian urban life.',
-    phonologicalRule: 'Direct lexical borrowing of prefixes (be-, ge-, för-), craft, trade, and legal terms',
+    description: 'Hanseatic trade introduced thousands of Low German words and prefixes into Swedish, Danish, and Norwegian.',
+    phonologicalRule: 'Direct borrowing of prefixes (be-, ge-, för-), craft, trade, and legal vocabulary',
     specimenPairs: [
-      { word: 'to question / ask', shifted: 'fråga (sv), spørge (da), spørre (no)', unshifted: 'spørja (is - native), fragen (de), vragen (nl), ask (en)', note: 'Low German *vrāgen supplanted native Nordic *fregna' },
-      { word: 'language / speech', shifted: 'språk (sv/no), sprog (da)', unshifted: 'tunga/mál (is - native), Sprache (de), spraak (nl), speech/language (en)', note: 'Low German *sprāke replaced native Nordic *mál' },
+      { word: 'to ask', shifted: 'fråga (sv), spørge (da), spørre (no)', unshifted: 'spørja (is), fragen (de), vragen (nl), ask (en)', note: 'Low German *vrāgen replaced older Nordic *fregna' },
+      { word: 'language', shifted: 'språk (sv/no), sprog (da)', unshifted: 'tunga/mál (is), Sprache (de), spraak (nl), speech/language (en)', note: 'Low German *sprāke replaced older Nordic *mál' },
     ],
   },
 ];
@@ -708,35 +708,35 @@ export interface PairwiseCell {
 
 export const PAIRWISE_FRICTION_MATRIX: PairwiseCell[] = [
   // Swedish comparisons
-  { source: 'sv', target: 'da', phoneticSim: 0.62, orthographicSim: 0.89, semanticSim: 0.88, pairCount: 1840, falseFriendRatio: 0.12, trueCognateRatio: 0.68, riftIndex: 0.27, asymmetryNote: 'The classic Danish Rift: written text is near-transparent, but Danish glottal stød and vowel reduction severely impede acoustic recognition.' },
-  { source: 'sv', target: 'no', phoneticSim: 0.86, orthographicSim: 0.84, semanticSim: 0.91, pairCount: 1920, falseFriendRatio: 0.08, trueCognateRatio: 0.76, riftIndex: 0.02, asymmetryNote: 'Highest mutual intelligibility in the Germanic family. Symmetric spoken and written transparency.' },
-  { source: 'sv', target: 'is', phoneticSim: 0.44, orthographicSim: 0.58, semanticSim: 0.72, pairCount: 980, falseFriendRatio: 0.19, trueCognateRatio: 0.48, riftIndex: 0.14, asymmetryNote: 'Icelandic archaisms and purisms shield it from mainland Hanseatic loans, but bedrock strong verbs remain visible.' },
-  { source: 'sv', target: 'de', phoneticSim: 0.58, orthographicSim: 0.64, semanticSim: 0.78, pairCount: 2150, falseFriendRatio: 0.24, trueCognateRatio: 0.42, riftIndex: 0.06, asymmetryNote: 'High semantic overlap due to shared Hanseatic layer, but riddled with deceptive false friends (*gift*, *rolig*, *art*, *semester*).' },
-  { source: 'sv', target: 'nl', phoneticSim: 0.54, orthographicSim: 0.61, semanticSim: 0.75, pairCount: 1650, falseFriendRatio: 0.18, trueCognateRatio: 0.46, riftIndex: 0.07, asymmetryNote: 'Close lexical sisterhood mediated by Low German maritime terminology.' },
-  { source: 'sv', target: 'en', phoneticSim: 0.48, orthographicSim: 0.52, semanticSim: 0.68, pairCount: 2450, falseFriendRatio: 0.21, trueCognateRatio: 0.38, riftIndex: 0.04, asymmetryNote: 'Bedrock cognates plus Danelaw Old Norse imports into Northern English.' },
+  { source: 'sv', target: 'da', phoneticSim: 0.62, orthographicSim: 0.89, semanticSim: 0.88, pairCount: 1840, falseFriendRatio: 0.12, trueCognateRatio: 0.68, riftIndex: 0.27, asymmetryNote: 'Danish spelling is easy for Swedes to read, but spoken Danish sounds quite different due to vowel reduction and the stød.' },
+  { source: 'sv', target: 'no', phoneticSim: 0.86, orthographicSim: 0.84, semanticSim: 0.91, pairCount: 1920, falseFriendRatio: 0.08, trueCognateRatio: 0.76, riftIndex: 0.02, asymmetryNote: 'Highest mutual intelligibility. Both written text and everyday speech are easily understood in both directions.' },
+  { source: 'sv', target: 'is', phoneticSim: 0.44, orthographicSim: 0.58, semanticSim: 0.72, pairCount: 980, falseFriendRatio: 0.19, trueCognateRatio: 0.48, riftIndex: 0.14, asymmetryNote: 'Icelandic preserves older forms and avoided Low German borrowings, but shared basic words remain recognizable.' },
+  { source: 'sv', target: 'de', phoneticSim: 0.58, orthographicSim: 0.64, semanticSim: 0.78, pairCount: 2150, falseFriendRatio: 0.24, trueCognateRatio: 0.42, riftIndex: 0.06, asymmetryNote: 'Shared historical trade vocabulary, but with frequent false friends (e.g. gift, rolig, art, semester).' },
+  { source: 'sv', target: 'nl', phoneticSim: 0.54, orthographicSim: 0.61, semanticSim: 0.75, pairCount: 1650, falseFriendRatio: 0.18, trueCognateRatio: 0.46, riftIndex: 0.07, asymmetryNote: 'Close vocabulary overlap, especially in maritime, trade, and everyday Germanic words.' },
+  { source: 'sv', target: 'en', phoneticSim: 0.48, orthographicSim: 0.52, semanticSim: 0.68, pairCount: 2450, falseFriendRatio: 0.21, trueCognateRatio: 0.38, riftIndex: 0.04, asymmetryNote: 'Basic Germanic cognates, plus Scandinavian words borrowed into English during the Viking Age.' },
 
   // Danish comparisons
-  { source: 'da', target: 'no', phoneticSim: 0.72, orthographicSim: 0.93, semanticSim: 0.92, pairCount: 1980, falseFriendRatio: 0.07, trueCognateRatio: 0.81, riftIndex: 0.21, asymmetryNote: 'Bokmål is historically Dano-Norwegian; written forms are almost identical, while phonetics split along Norwegian musical pitch.' },
+  { source: 'da', target: 'no', phoneticSim: 0.72, orthographicSim: 0.93, semanticSim: 0.92, pairCount: 1980, falseFriendRatio: 0.07, trueCognateRatio: 0.81, riftIndex: 0.21, asymmetryNote: 'Bokmål writing developed directly from Danish, so written forms are nearly identical while spoken pronunciation differs.' },
   { source: 'da', target: 'is', phoneticSim: 0.42, orthographicSim: 0.56, semanticSim: 0.70, pairCount: 940, falseFriendRatio: 0.17, trueCognateRatio: 0.46, riftIndex: 0.14 },
   { source: 'da', target: 'de', phoneticSim: 0.56, orthographicSim: 0.63, semanticSim: 0.76, pairCount: 2050, falseFriendRatio: 0.22, trueCognateRatio: 0.44, riftIndex: 0.07 },
   { source: 'da', target: 'nl', phoneticSim: 0.52, orthographicSim: 0.60, semanticSim: 0.74, pairCount: 1580, falseFriendRatio: 0.17, trueCognateRatio: 0.47, riftIndex: 0.08 },
   { source: 'da', target: 'en', phoneticSim: 0.47, orthographicSim: 0.51, semanticSim: 0.67, pairCount: 2380, falseFriendRatio: 0.19, trueCognateRatio: 0.39, riftIndex: 0.04 },
 
   // Norwegian comparisons
-  { source: 'no', target: 'is', phoneticSim: 0.49, orthographicSim: 0.61, semanticSim: 0.74, pairCount: 1020, falseFriendRatio: 0.16, trueCognateRatio: 0.51, riftIndex: 0.12, asymmetryNote: 'Old Norse ancestor link: Western Norwegian dialects still mirror Icelandic phonology.' },
+  { source: 'no', target: 'is', phoneticSim: 0.49, orthographicSim: 0.61, semanticSim: 0.74, pairCount: 1020, falseFriendRatio: 0.16, trueCognateRatio: 0.51, riftIndex: 0.12, asymmetryNote: 'Direct descent from Old Norse; western Norwegian dialects still share phonetic features with Icelandic.' },
   { source: 'no', target: 'de', phoneticSim: 0.57, orthographicSim: 0.62, semanticSim: 0.77, pairCount: 2010, falseFriendRatio: 0.23, trueCognateRatio: 0.43, riftIndex: 0.05 },
   { source: 'no', target: 'nl', phoneticSim: 0.53, orthographicSim: 0.59, semanticSim: 0.73, pairCount: 1520, falseFriendRatio: 0.18, trueCognateRatio: 0.45, riftIndex: 0.06 },
   { source: 'no', target: 'en', phoneticSim: 0.49, orthographicSim: 0.53, semanticSim: 0.69, pairCount: 2400, falseFriendRatio: 0.20, trueCognateRatio: 0.40, riftIndex: 0.04 },
 
   // Icelandic comparisons
-  { source: 'is', target: 'de', phoneticSim: 0.38, orthographicSim: 0.46, semanticSim: 0.62, pairCount: 880, falseFriendRatio: 0.25, trueCognateRatio: 0.35, riftIndex: 0.08, asymmetryNote: 'Archaic morphology parallels (4 cases, strong noun declensions) despite wide phonetic distance.' },
+  { source: 'is', target: 'de', phoneticSim: 0.38, orthographicSim: 0.46, semanticSim: 0.62, pairCount: 880, falseFriendRatio: 0.25, trueCognateRatio: 0.35, riftIndex: 0.08, asymmetryNote: 'Both retain four noun cases and strong declensions, but pronunciation is distant.' },
   { source: 'is', target: 'nl', phoneticSim: 0.36, orthographicSim: 0.44, semanticSim: 0.60, pairCount: 810, falseFriendRatio: 0.22, trueCognateRatio: 0.36, riftIndex: 0.08 },
   { source: 'is', target: 'en', phoneticSim: 0.39, orthographicSim: 0.43, semanticSim: 0.58, pairCount: 1100, falseFriendRatio: 0.26, trueCognateRatio: 0.32, riftIndex: 0.04 },
 
   // German comparisons
-  { source: 'de', target: 'nl', phoneticSim: 0.74, orthographicSim: 0.78, semanticSim: 0.89, pairCount: 2600, falseFriendRatio: 0.28, trueCognateRatio: 0.58, riftIndex: 0.04, asymmetryNote: 'Highest mutual intelligibility in West Germanic, but the dense false-friend minefield (*bellen*, *monster*, *slim*, *zee/See*).' },
-  { source: 'de', target: 'en', phoneticSim: 0.49, orthographicSim: 0.55, semanticSim: 0.66, pairCount: 2950, falseFriendRatio: 0.29, trueCognateRatio: 0.34, riftIndex: 0.06, asymmetryNote: 'Heaviest cognitive trap pair (*gift*, *become/bekommen*, *eventually/eventuell*, *aktuell/actual*).' },
+  { source: 'de', target: 'nl', phoneticSim: 0.74, orthographicSim: 0.78, semanticSim: 0.89, pairCount: 2600, falseFriendRatio: 0.28, trueCognateRatio: 0.58, riftIndex: 0.04, asymmetryNote: 'Closest living neighbors in West Germanic, with many false friends (e.g. bellen, monster, slim, zee/See).' },
+  { source: 'de', target: 'en', phoneticSim: 0.49, orthographicSim: 0.55, semanticSim: 0.66, pairCount: 2950, falseFriendRatio: 0.29, trueCognateRatio: 0.34, riftIndex: 0.06, asymmetryNote: 'Frequent false friends (e.g. gift, become/bekommen, eventually/eventuell, aktuell/actual).' },
 
   // Dutch comparisons
-  { source: 'nl', target: 'en', phoneticSim: 0.61, orthographicSim: 0.64, semanticSim: 0.74, pairCount: 2700, falseFriendRatio: 0.22, trueCognateRatio: 0.47, riftIndex: 0.03, asymmetryNote: 'Dutch is the closest major relative to English after Frisian. High structural and lexical transparency.' },
+  { source: 'nl', target: 'en', phoneticSim: 0.61, orthographicSim: 0.64, semanticSim: 0.74, pairCount: 2700, falseFriendRatio: 0.22, trueCognateRatio: 0.47, riftIndex: 0.03, asymmetryNote: 'Dutch is the closest major relative to English after Frisian, with clear word and sentence parallels.' },
 ];

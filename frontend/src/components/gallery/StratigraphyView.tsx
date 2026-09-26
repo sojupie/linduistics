@@ -53,7 +53,7 @@ export const StratigraphyView: React.FC = () => {
       {/* Control Plate */}
       <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
-          <span className="typo-sublabel text-ink-muted">View Mode:</span>
+          <span className="typo-sublabel text-ink-muted">View:</span>
           <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
             <button
               type="button"
@@ -64,7 +64,7 @@ export const StratigraphyView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Geological Cross-Section
+              Timeline View
             </button>
             <button
               type="button"
@@ -75,14 +75,14 @@ export const StratigraphyView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Lexical Share (% Breakdown)
+              Percentage Breakdown
             </button>
           </div>
         </div>
 
         {/* Layer Selector Chips */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="typo-sublabel text-ink-muted">Historical Layer:</span>
+          <span className="typo-sublabel text-ink-muted">Period:</span>
           {STRATIGRAPHY_LAYERS.map((layer) => {
             const isSelected = layer.id === selectedStratumId;
             return (
@@ -96,7 +96,7 @@ export const StratigraphyView: React.FC = () => {
                     : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main hover:bg-page-muted'
                 }`}
               >
-                {layer.name.split(' (')[0]}
+                {layer.name}
               </button>
             );
           })}
@@ -105,19 +105,19 @@ export const StratigraphyView: React.FC = () => {
 
       {/* Main Stratigraphic Stage */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* Visual Geological Columns */}
+        {/* Visual Columns */}
         <div className="lg:col-span-8 border border-book-rule bg-page-surface p-4 sm:p-6 rounded-xs space-y-4 shadow-xs">
           <div className="flex items-center justify-between border-b border-book-rule pb-2">
             <div>
               <span className="typo-overline text-ink-muted block">
-                Historical Depth Column Plate
+                Vocabulary by Era
               </span>
               <p className="typo-gloss text-ink-main text-xs mt-0.5">
-                Lexical strata from Proto-Germanic archaic bedrock (500 BCE) to modern international overburden.
+                How each language's vocabulary breaks down across time, from ancient roots to later borrowings.
               </p>
             </div>
             <span className="typo-subscript font-mono text-ink-muted text-2xs">
-              SCALE: 500 BCE ➔ 1900 CE
+              500 BCE – 1900 CE
             </span>
           </div>
 
@@ -276,12 +276,12 @@ export const StratigraphyView: React.FC = () => {
           )}
         </div>
 
-        {/* Stratum Detailed Inspection Plate */}
+        {/* Period Detailed Drawer */}
         <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
           <div className="border-b border-book-rule pb-3">
             <div className="flex items-center justify-between">
               <span className="typo-overline text-ink-muted">
-                Stratum Inspection Plate · Level {selectedStratum.depthRank}
+                Historical Period Details
               </span>
               <span className="typo-subscript font-mono text-ink-muted text-2xs">
                 {selectedStratum.era}
@@ -295,17 +295,17 @@ export const StratigraphyView: React.FC = () => {
               {selectedStratum.description}
             </p>
             <div className="mt-2.5 p-2 bg-page-muted/40 border border-book-rule rounded-xs">
-              <span className="typo-overline text-2xs text-ink-main block">Linguistic Shear</span>
+              <span className="typo-overline text-2xs text-ink-main block">Key Effect</span>
               <p className="typo-gloss text-2xs text-ink-muted mt-0.5 leading-normal">
                 {selectedStratum.linguisticSignificance}
               </p>
             </div>
           </div>
 
-          {/* Illustrative Specimen Rows */}
+          {/* Example Words */}
           <div className="space-y-2.5">
             <span className="typo-sublabel block font-semibold text-ink-main">
-              Diagnostic Specimen Formations
+              Example Words
             </span>
             <div className="space-y-2 max-h-[340px] overflow-y-auto pr-1">
               {selectedStratum.specimens.map((spec, idx) => (
@@ -318,7 +318,7 @@ export const StratigraphyView: React.FC = () => {
                       {spec.protoOrOrigin}
                     </strong>
                     <span className="typo-subscript text-2xs text-ink-muted">
-                      Specimen #{idx + 1}
+                      Example {idx + 1}
                     </span>
                   </div>
 

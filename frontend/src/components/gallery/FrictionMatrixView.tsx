@@ -168,7 +168,7 @@ export const FrictionMatrixView: React.FC = () => {
       <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Metric Mode Selector */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="typo-sublabel text-ink-muted">Matrix Metric:</span>
+          <span className="typo-sublabel text-ink-muted">Metric:</span>
           <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs flex-wrap">
             <button
               type="button"
@@ -178,9 +178,9 @@ export const FrictionMatrixView: React.FC = () => {
                   ? 'bg-page-surface border border-book-rule-strong text-ink-main shadow-2xs font-semibold'
                   : 'text-ink-muted hover:text-ink-main'
               }`}
-              title="Difference between written orthography and spoken phonetics"
+              title="Difference between written spelling and spoken pronunciation"
             >
-              Phonetic vs Orthographic Rift
+              Spelling vs Speech Gap
             </button>
             <button
               type="button"
@@ -190,9 +190,9 @@ export const FrictionMatrixView: React.FC = () => {
                   ? 'bg-page-surface border border-book-rule-strong text-ink-main shadow-2xs font-semibold'
                   : 'text-ink-muted hover:text-ink-main'
               }`}
-              title="Density of cognitive false friend traps"
+              title="Percentage of false friends"
             >
-              False Friend Hazard %
+              False Friends %
             </button>
             <button
               type="button"
@@ -203,7 +203,7 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Spoken Transparency
+              Pronunciation Match
             </button>
             <button
               type="button"
@@ -214,7 +214,7 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Written Transparency
+              Spelling Match
             </button>
             <button
               type="button"
@@ -225,14 +225,14 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Shared Pairs Volume
+              Total Word Pairs
             </button>
           </div>
         </div>
 
         {/* Display Toggle: Grid vs Chord Flow */}
         <div className="flex items-center gap-1.5">
-          <span className="typo-sublabel text-ink-muted">Display:</span>
+          <span className="typo-sublabel text-ink-muted">View:</span>
           <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
             <button
               type="button"
@@ -243,7 +243,7 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Symmetric Grid
+              Table View
             </button>
             <button
               type="button"
@@ -254,31 +254,31 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Chord Tension Flow
+              Chord View
             </button>
           </div>
         </div>
       </div>
 
-      {/* Main Grid Stage & Bilateral Inspection Card */}
+      {/* Main Stage & Details Card */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Heat Grid / Chord Diagram */}
         <div className="lg:col-span-8 border border-book-rule bg-page-surface p-4 sm:p-6 rounded-xs space-y-4 shadow-xs overflow-x-auto">
           <div className="flex items-center justify-between border-b border-book-rule pb-2">
             <div>
               <span className="typo-overline text-ink-muted block">
-                Symmetric Bilateral Tensor Matrix
+                Language Pair Comparison
               </span>
               <p className="typo-gloss text-ink-main text-xs mt-0.5">
-                {activeMetric === 'rift' && 'Highlights linguistic deception: written proximity vs acoustic opacity (Danish-Swedish rift).'}
-                {activeMetric === 'false_friends' && 'Ranks cognitive hazard corridors across language pairs.'}
-                {activeMetric === 'phonetic' && 'Acoustic intelligibility of spoken headwords.'}
-                {activeMetric === 'orthographic' && 'Visual recognizability of written headwords.'}
-                {activeMetric === 'volume' && 'Total overlapping word pair records in the Linduistics catalog.'}
+                {activeMetric === 'rift' && 'Difference between written spelling and spoken pronunciation (e.g. Danish vs Swedish).'}
+                {activeMetric === 'false_friends' && 'Percentage of deceptive false friends among shared words.'}
+                {activeMetric === 'phonetic' && 'How similar the spoken words sound.'}
+                {activeMetric === 'orthographic' && 'How similar the written words look.'}
+                {activeMetric === 'volume' && 'Total shared word pairs in the catalog.'}
               </p>
             </div>
             <span className="typo-subscript text-2xs font-mono text-ink-muted">
-              DIMENSION: 7 × 7 TENSOR
+              7 LANGUAGES
             </span>
           </div>
 
@@ -388,12 +388,12 @@ export const FrictionMatrixView: React.FC = () => {
 
                 {/* Center Core */}
                 <div className="text-center p-3 max-w-[160px] z-10 bg-page-surface/90 border border-book-rule rounded-full backdrop-blur-xs shadow-xs">
-                  <span className="typo-overline text-2xs text-ink-muted block">Focused Pair</span>
+                  <span className="typo-overline text-2xs text-ink-muted block">Selected Pair</span>
                   <strong className="typo-headword-row text-xs text-ink-main block mt-0.5">
                     {selectedPair.source.toUpperCase()} ↔ {selectedPair.target.toUpperCase()}
                   </strong>
                   <span className="typo-metric text-xs text-falsefriend-ink font-bold block mt-0.5">
-                    {Math.round(selectedPair.riftIndex * 100)}% Rift
+                    {Math.round(selectedPair.riftIndex * 100)}% Gap
                   </span>
                 </div>
 
@@ -437,11 +437,11 @@ export const FrictionMatrixView: React.FC = () => {
           )}
         </div>
 
-        {/* Detailed Bilateral Friction Dossier */}
+        {/* Detailed Pair Drawer */}
         <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
           <div className="border-b border-book-rule pb-3">
             <span className="typo-overline text-ink-muted block">
-              Bilateral Tension Dossier
+              Pair Details
             </span>
             <div className="flex items-baseline justify-between mt-1">
               <h3 className="typo-section-header text-ink-main">
@@ -458,21 +458,21 @@ export const FrictionMatrixView: React.FC = () => {
               </p>
             ) : (
               <p className="typo-gloss text-xs text-ink-muted mt-2 leading-relaxed italic border-t border-book-rule/40 pt-2">
-                Continuous Germanic genetic sisterhood with shared vocabulary overlap.
+                Shared vocabulary across the Germanic language family.
               </p>
             )}
           </div>
 
-          {/* Metric gauges */}
+          {/* Metric scores */}
           <div className="space-y-3">
             <span className="typo-sublabel block font-semibold text-ink-main">
-              Comparative Friction Indices
+              Comparison Scores
             </span>
 
-            {/* Phonetic vs Orthographic Gap */}
+            {/* Spelling vs Speech Gap */}
             <div className="p-2.5 bg-page-muted/30 border border-book-rule rounded-xs space-y-1.5">
               <div className="flex items-center justify-between text-xs">
-                <span className="typo-sublabel text-ink-main font-medium">Divergence Gap (Rift)</span>
+                <span className="typo-sublabel text-ink-main font-medium">Spelling vs Speech Gap</span>
                 <strong className="typo-metric font-bold text-falsefriend-ink">
                   {Math.round(selectedPair.riftIndex * 100)}%
                 </strong>
@@ -484,14 +484,14 @@ export const FrictionMatrixView: React.FC = () => {
                 />
               </div>
               <span className="typo-subscript text-2xs text-ink-muted block">
-                Absolute gap between spoken intelligibility and written readability.
+                How much words look recognizable in writing while sounding different when spoken.
               </span>
             </div>
 
-            {/* False Friend Hazard */}
+            {/* False Friends */}
             <div className="p-2.5 bg-page-muted/30 border border-book-rule rounded-xs space-y-1.5">
               <div className="flex items-center justify-between text-xs">
-                <span className="typo-sublabel text-ink-main font-medium">False Friend Hazard</span>
+                <span className="typo-sublabel text-ink-main font-medium">False Friends</span>
                 <strong className="typo-metric font-bold text-shifted-ink">
                   {Math.round(selectedPair.falseFriendRatio * 100)}%
                 </strong>
@@ -503,14 +503,14 @@ export const FrictionMatrixView: React.FC = () => {
                 />
               </div>
               <span className="typo-subscript text-2xs text-ink-muted block">
-                Proportion of deceptive lookalikes in shared vocabulary.
+                Share of similar-looking or similar-sounding words with different meanings.
               </span>
             </div>
 
-            {/* True Cognates Ratio */}
+            {/* Shared Cognates */}
             <div className="p-2.5 bg-page-muted/30 border border-book-rule rounded-xs space-y-1.5">
               <div className="flex items-center justify-between text-xs">
-                <span className="typo-sublabel text-ink-main font-medium">True Cognate Bedrock</span>
+                <span className="typo-sublabel text-ink-main font-medium">Shared Cognates</span>
                 <strong className="typo-metric font-bold text-cognate-ink">
                   {Math.round(selectedPair.trueCognateRatio * 100)}%
                 </strong>
@@ -522,7 +522,7 @@ export const FrictionMatrixView: React.FC = () => {
                 />
               </div>
               <span className="typo-subscript text-2xs text-ink-muted block">
-                Pure unbroken cognates with preserved form and meaning.
+                Words sharing the same ancestral root and meaning.
               </span>
             </div>
           </div>

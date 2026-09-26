@@ -385,7 +385,7 @@ export const StarfieldView: React.FC = () => {
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
-                2D Star Chart
+                2D Map
               </button>
               <button
                 type="button"
@@ -397,34 +397,34 @@ export const StarfieldView: React.FC = () => {
                 }`}
               >
                 <MaterialSymbol icon="public" size={14} />
-                3D Celestial Globe
+                3D Sphere
               </button>
             </div>
           </div>
 
-          {/* Semantic Domain Filter */}
+          {/* Topic Group Filter */}
           <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Constellation:</span>
+            <span className="typo-sublabel text-ink-muted">Topic:</span>
             <select
               value={activeConstellation}
               onChange={(e) => setActiveConstellation(e.target.value)}
               className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
             >
-              <option value="all">All Domains (Entire Sky)</option>
-              <option value="Cosmos & Elements">Cosmos & Elements</option>
-              <option value="Kinship & Person">Kinship & Person</option>
-              <option value="Living World & Body">Living World & Body</option>
-              <option value="Vital Action">Vital Action</option>
-              <option value="Material & Craft">Material & Craft</option>
+              <option value="all">All Topics</option>
+              <option value="Cosmos & Elements">Nature & Elements</option>
+              <option value="Kinship & Person">Family & People</option>
+              <option value="Living World & Body">Body & Animals</option>
+              <option value="Vital Action">Basic Actions</option>
+              <option value="Material & Craft">Tools & Crafts</option>
             </select>
           </div>
         </div>
 
-        {/* Right: Comparative Spectral Filter Lens */}
+        {/* Right: Language Pair Filter */}
         <div className="flex items-center gap-2 flex-wrap">
           <span className="typo-sublabel text-ink-muted inline-flex items-center gap-1">
-            <MaterialSymbol icon="filter_vintage" size={14} className="text-shifted-ink" />
-            Spectral Lens:
+            <MaterialSymbol icon="compare_arrows" size={14} className="text-shifted-ink" />
+            Compare:
           </span>
           <div className="inline-flex items-center gap-1.5 bg-page-muted/40 border border-book-rule px-2 py-0.5 rounded-xs">
             <select
@@ -458,15 +458,15 @@ export const StarfieldView: React.FC = () => {
               onClick={() => setCamera({ ...DEFAULT_CAMERA, yaw: 0.85, pitch: 0.22, zoom: 1.1 })}
               className="px-2 py-0.5 border border-book-rule bg-page-surface hover:bg-page-muted rounded-xs typo-subscript text-ink-muted transition-colors cursor-pointer"
             >
-              Reset Globe
+              Reset View
             </button>
           )}
         </div>
       </div>
 
-      {/* Main Celestial Stage & Specimen Dossier Drawer */}
+      {/* Main Stage & Details Drawer */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* Celestial Starfield Canvas */}
+        {/* Roots Canvas */}
         <div
           ref={containerRef}
           className="lg:col-span-8 relative h-[560px] border border-book-rule bg-page-surface overflow-hidden shadow-xs select-none"
@@ -481,19 +481,19 @@ export const StarfieldView: React.FC = () => {
             className={`w-full h-full touch-none ${dimension === '3d' ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
           />
 
-          {/* Canvas Spectral Key */}
+          {/* Canvas Key */}
           <div className="absolute top-3 left-3 bg-page-surface/90 border border-book-rule/80 px-2.5 py-1.5 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none space-y-1">
             <span className="typo-overline block text-ink-main">
-              Proto-Germanic Root Celestial Field
+              Proto-Germanic Roots
             </span>
             <div className="flex items-center gap-3 text-2xs pt-0.5">
               <span className="inline-flex items-center gap-1 text-cognate-ink font-medium">
                 <span className="w-2 h-2 rounded-full bg-cognate-ink inline-block"></span>
-                Conserved Cognate
+                Same Meaning (Cognate)
               </span>
               <span className="inline-flex items-center gap-1 text-falsefriend-ink font-medium">
                 <span className="w-2 h-2 rounded-full bg-falsefriend-ink inline-block"></span>
-                Semantic Drift / False Friend
+                Shifted Meaning
               </span>
               <span className="inline-flex items-center gap-1 text-ink-muted">
                 <span className="w-2 h-2 rounded-full bg-stone-400 inline-block"></span>
@@ -505,18 +505,18 @@ export const StarfieldView: React.FC = () => {
           {/* Quick HUD Tip */}
           <div className="absolute bottom-3 left-3 bg-page-surface/90 border border-book-rule/80 px-3 py-1 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none">
             <span className="typo-subscript text-2xs">
-              Click any root star to inspect its daughter forms across all 7 living Germanic languages
+              Click any root to see how it appears across all 7 living Germanic languages
             </span>
           </div>
         </div>
 
-        {/* Etymological Root Specimen Plate */}
+        {/* Root Details Drawer */}
         <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
           {/* Header */}
           <div className="border-b border-book-rule pb-3">
             <div className="flex items-center justify-between">
               <span className="typo-overline text-shifted-ink block">
-                Etymological Star Dossier
+                Root Word Details
               </span>
               <span
                 className={`px-1.5 py-0.5 typo-badge rounded-xs font-semibold text-2xs ${
@@ -539,7 +539,7 @@ export const StarfieldView: React.FC = () => {
                 &ldquo;{selectedStar.reconstructedMeaning}&rdquo;
               </p>
               <span className="typo-subscript block text-ink-muted mt-1">
-                Domain: <strong className="text-ink-main font-semibold">{selectedStar.constellation}</strong>
+                Topic: <strong className="text-ink-main font-semibold">{selectedStar.constellation}</strong>
               </span>
             </div>
 
@@ -552,7 +552,7 @@ export const StarfieldView: React.FC = () => {
           {/* Daughter Forms Across the Germanic Tree */}
           <div className="space-y-2">
             <span className="typo-sublabel block font-semibold text-ink-main">
-              Surviving Modern Daughter Forms
+              Words in Modern Languages
             </span>
             <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-1">
               {Object.entries(selectedStar.daughters).map(([langCode, d]) => {
@@ -598,7 +598,7 @@ export const StarfieldView: React.FC = () => {
                           : 'text-ink-muted'
                       }`}
                     >
-                      {d.status === 'cognate' ? 'Cognate' : d.status === 'shifted' ? 'Shifted' : 'Loss'}
+                      {d.status === 'cognate' ? 'Cognate' : d.status === 'shifted' ? 'Shifted' : 'Replaced'}
                     </span>
                   </div>
                 );

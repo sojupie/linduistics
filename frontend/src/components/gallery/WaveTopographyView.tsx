@@ -276,7 +276,7 @@ export const WaveTopographyView: React.FC = () => {
 
         {/* Isogloss Wave Multi-Selector */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="typo-sublabel text-ink-muted">Active Waves:</span>
+          <span className="typo-sublabel text-ink-muted">Active Shifts:</span>
           {ISOGLOSS_WAVES.map((wave) => {
             const isActive = activeWaveIds.includes(wave.id);
             const isSelected = selectedWaveId === wave.id;
@@ -312,39 +312,39 @@ export const WaveTopographyView: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Topographical Canvas & Wave Specimen Drawer */}
+      {/* Main Canvas & Details Drawer */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* Topographic Isogloss Canvas */}
+        {/* Isogloss Canvas */}
         <div
           ref={containerRef}
           className="lg:col-span-8 relative h-[560px] border border-book-rule bg-page-surface overflow-hidden shadow-xs select-none"
         >
           <canvas ref={canvasRef} className="w-full h-full cursor-default" />
 
-          {/* Topographic Legend */}
+          {/* Legend */}
           <div className="absolute top-3 left-3 bg-page-surface/90 border border-book-rule/80 px-2.5 py-1.5 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none space-y-0.5">
             <span className="typo-overline block text-ink-main">
-              Johannes Schmidt Wellentheorie (Wave Model, 1872)
+              Sound Shift Waves
             </span>
             <span className="typo-subscript block text-2xs">
-              Concentric isogloss envelopes depict the spatial spread of sound shifts and morphological innovations
+              Rings show how sound shifts spread from an origin to neighboring dialects
             </span>
           </div>
 
           {/* Quick HUD Hint */}
           <div className="absolute bottom-3 left-3 bg-page-surface/90 border border-book-rule/80 px-3 py-1 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none">
             <span className="typo-subscript text-2xs">
-              Highlighted nodes show languages enveloped by the focused wave: {selectedWave.name}
+              Highlighted languages adopted this shift: {selectedWave.name}
             </span>
           </div>
         </div>
 
-        {/* Selected Wave Linguistic Dossier */}
+        {/* Selected Wave Drawer */}
         <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
           <div className="border-b border-book-rule pb-3">
             <div className="flex items-center justify-between">
               <span className="typo-overline text-ink-muted">
-                Isogloss Wave Dossier
+                Sound Shift Details
               </span>
               <span className="typo-subscript font-mono text-ink-muted text-2xs">
                 {selectedWave.historicalPeriod}
@@ -355,12 +355,12 @@ export const WaveTopographyView: React.FC = () => {
               {selectedWave.name}
             </h3>
             <span className="typo-subscript text-ink-muted block mt-0.5">
-              Epicenter: <strong className="text-ink-main font-semibold">{selectedWave.epicenter}</strong>
+              Origin: <strong className="text-ink-main font-semibold">{selectedWave.epicenter}</strong>
             </span>
 
-            {/* Phonological Rule Formulation */}
+            {/* Sound Change Rule */}
             <div className="mt-2.5 p-2.5 bg-page-muted/50 border border-book-rule rounded-xs">
-              <span className="typo-overline text-2xs text-ink-main block">Phonological Rule</span>
+              <span className="typo-overline text-2xs text-ink-main block">Sound Change Rule</span>
               <code className="typo-metric text-xs text-falsefriend-ink font-bold block mt-0.5">
                 {selectedWave.phonologicalRule}
               </code>
@@ -371,10 +371,10 @@ export const WaveTopographyView: React.FC = () => {
             </p>
           </div>
 
-          {/* Diagnostic Word Pair Specimens */}
+          {/* Example Words */}
           <div className="space-y-2">
             <span className="typo-sublabel block font-semibold text-ink-main">
-              Diagnostic Specimen Shifts
+              Example Words
             </span>
             <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
               {selectedWave.specimenPairs.map((pair, idx) => (
@@ -388,7 +388,7 @@ export const WaveTopographyView: React.FC = () => {
                   <div className="space-y-1 text-2xs">
                     <div className="flex items-baseline gap-1.5">
                       <span className="typo-subscript font-bold text-falsefriend-ink shrink-0">
-                        Shifted (Inside Wave):
+                        Shifted:
                       </span>
                       <span className="typo-definition text-ink-main font-semibold truncate">
                         {pair.shifted}
@@ -396,7 +396,7 @@ export const WaveTopographyView: React.FC = () => {
                     </div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="typo-subscript font-bold text-cognate-ink shrink-0">
-                        Unshifted (Outside):
+                        Unchanged:
                       </span>
                       <span className="typo-definition text-ink-muted truncate">
                         {pair.unshifted}

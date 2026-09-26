@@ -22,88 +22,75 @@ interface PrototypeTab {
   icon: string;
   conceptHeading: string;
   conceptDeck: string;
-  linguisticMetaphor: string;
-  dataDimensions: string;
+  whatItShows: string;
 }
 
 const PROTOTYPES: PrototypeTab[] = [
   {
     id: 'constellation',
-    label: '1. Dialect Constellation',
+    label: '1. Language Map',
     badge: '2D / 3D Network',
     icon: 'hub',
-    conceptHeading: 'The Dialect Constellation (2D/3D Proximity Mesh)',
+    conceptHeading: 'Relative Language Distances',
     conceptDeck:
-      'Solves the 1-to-N reductionism by placing all languages simultaneously into an intrinsic 2D or 3D linguistic space based on their mutual phonetic and orthographic distance matrix.',
-    linguisticMetaphor:
-      'Nautical & astronomical triangulation plate (naturalist cartography).',
-    dataDimensions:
-      'Symmetric N×N phonetic/orthographic distance matrix, catalogued vocabulary volume, cognate bridge strength, false friend tension faults.',
+      'Places all 7 languages together in 2D or 3D space. Languages with similar pronunciation, spelling, or vocabulary sit closer together, and circle size shows catalogued vocabulary volume.',
+    whatItShows:
+      'Mutual distances between all 7 languages, vocabulary count, shared cognates, and false friend pairs.',
   },
   {
     id: 'starfield',
-    label: '2. Proto-Root Starfield',
-    badge: '2D / 3D Celestial',
+    label: '2. Proto-Germanic Roots',
+    badge: '2D / 3D Roots',
     icon: 'flare',
-    conceptHeading: 'The Proto-Root Celestial Field & Spectral Lens',
+    conceptHeading: 'Ancestral Roots & Surviving Words',
     conceptDeck:
-      'Fulfills the original sky-chart aspiration by turning ancestral Proto-Germanic roots into celestial stars grouped by semantic constellations, using languages as comparative spectral filters.',
-    linguisticMetaphor:
-      '19th-century astronomical star chart with spectral refraction filters.',
-    dataDimensions:
-      'Proto-Germanic roots, semantic constellations, daughter words across all 7 living branches, conserved vs shifted spectral statuses.',
+      'Maps Proto-Germanic root words grouped by topic (nature, body, society, motion). Pick any language to see which roots survived intact, shifted in meaning, or were replaced by other words.',
+    whatItShows:
+      'Proto-Germanic roots, semantic groups, modern forms across all 7 languages, and cognate vs false friend status.',
   },
   {
     id: 'stratigraphy',
-    label: '3. Lexical Stratigraphy',
-    badge: 'Geological Strata',
+    label: '3. Historical Layers',
+    badge: 'Chronology',
     icon: 'layers',
-    conceptHeading: 'Lexical Stratigraphy (Geological Cross-Section)',
+    conceptHeading: 'Vocabulary by Historical Era',
     conceptDeck:
-      'Models language history as geological strata: unbroken archaic Proto-Germanic bedrock (500 BCE) at the base, sheared by phonological sound-shift faults, layered with Hanseatic trade silt, and capped by modern Latinate/Romance overburden.',
-    linguisticMetaphor:
-      'Charles Lyell geological cross-section and stratum shear analysis.',
-    dataDimensions:
-      'Historical chronological depth (500 BCE to 1900 CE), percentage volume share per language, unbroken vs sheared stratum fault lines.',
+      'Shows where words in each language come from across time: ancient Germanic roots (500 BCE), sound shift divergence, Low German trade borrowings, and later Latin/French loanwords.',
+    whatItShows:
+      'Vocabulary composition from 500 BCE to 1900 CE, unbroken roots vs borrowings, and percentage share per language.',
   },
   {
     id: 'wave',
-    label: '4. Wave Topography',
-    badge: 'Wellentheorie',
+    label: '4. Sound Shift Waves',
+    badge: 'Regional Shifts',
     icon: 'waves',
-    conceptHeading: 'Johannes Schmidt Wellentheorie (Wave Model, 1872)',
+    conceptHeading: 'How Sound Shifts Spread',
     conceptDeck:
-      'Replaces the rigid family tree with propagating sound-shift and morphological waves. Explains dialect continua by observing which languages are caught inside overlapping isogloss ripple envelopes.',
-    linguisticMetaphor:
-      'Topographical contour elevation map & wave interference rings.',
-    dataDimensions:
-      'Historical innovation epicenters, propagation reach, phonological sound-shift rules, participating vs unshifted languages.',
+      'Shows historical sound shifts spreading across regions like ripples. Languages inside the circle adopted the shift, while languages outside kept older sounds.',
+    whatItShows:
+      'Historical spread of sound changes, timeline from 400 to 1600 CE, and affected vs unaffected languages.',
   },
   {
     id: 'matrix',
-    label: '5. Friction Matrix',
-    badge: 'Heat Grid & Chords',
+    label: '5. Pair Comparison Matrix',
+    badge: 'Table & Chords',
     icon: 'grid_view',
-    conceptHeading: 'Cross-Linguistic Intelligibility & Friction Matrix',
+    conceptHeading: 'Language Pair Comparison',
     conceptDeck:
-      'A full symmetric 7×7 bilateral tensor matrix exposing cross-language friction: acoustic vs written divergence gaps (the Danish Rift), false friend hazard densities, and circular chord tension flows.',
-    linguisticMetaphor:
-      'William Playfair high-density engraved statistical plate & circular chord ribbons.',
-    dataDimensions:
-      'Full 7×7 symmetric pairwise tensor, divergence gap (|orthography - phonetics|), cognitive trap hazard ratios, shared vocabulary volume.',
+      'A direct side-by-side comparison of all 7 languages. Compare pronunciation, spelling, the gap between spelling and speech (e.g. Danish vs Swedish), and false friend rates.',
+    whatItShows:
+      '7×7 pair comparisons, sound vs spelling gap, false friend percentages, and shared word counts.',
   },
   {
     id: 'legacy',
-    label: '6. Legacy Orbit (Baseline)',
+    label: '6. Original Orbit (Baseline)',
     badge: 'Original Orbit',
     icon: 'history',
-    conceptHeading: 'Legacy Language Orbit (Comparative Baseline)',
+    conceptHeading: 'Original Orbit Page',
     conceptDeck:
-      'The original prototype: languages orbit on concentric circular tracks around a single anchor. Provided here for direct visual and functional side-by-side comparison with the new relational models.',
-    linguisticMetaphor:
-      'Ego-centric Keplerian planetary solar system.',
-    dataDimensions:
-      '1-to-N radial distance from single anchor, arbitrary continuous angular velocity.',
+      'The original design where other languages orbit a single selected center on concentric circles. Kept here for direct side-by-side comparison.',
+    whatItShows:
+      'Distance from one selected language, fixed orbital rings.',
   },
 ];
 
@@ -118,17 +105,17 @@ export const GalleryPage: React.FC = () => {
       <div className="border-b border-book-rule pb-4 space-y-2">
         <div className="flex items-center gap-2">
           <span className="typo-overline text-cognate-ink">
-            Comparative Linguistic Architecture Lab
+            Exploration
           </span>
           <span className="px-1.5 py-0.2 bg-page-muted border border-book-rule rounded-xs typo-subscript text-2xs text-ink-muted">
-            Experimental Studio
+            Prototypes
           </span>
         </div>
         <h1 className="typo-page-title tracking-tight">
-          Visualization Lab & Paradigm Gallery
+          Visualization Concepts
         </h1>
         <p className="typo-page-deck text-ink-muted max-w-3xl leading-relaxed">
-          Exploring multi-dimensional alternatives to the legacy radial orbit model. Every prototype below incorporates genuine volume, mutual N×N language kinship, etymological bedrock, or historical sound-shift propagation.
+          Prototypes exploring alternatives to the circular orbit view. Instead of orbiting around a single language, these concepts show mutual distances, shared roots, historical layers, and sound shifts.
         </p>
       </div>
 
@@ -166,23 +153,18 @@ export const GalleryPage: React.FC = () => {
       </div>
 
       {/* Concept Dossier Card */}
-      <div className="border border-book-rule bg-page-muted/20 p-4 sm:p-5 rounded-xs space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-book-rule/60 pb-2">
-          <h2 className="typo-section-header text-ink-main">
-            {currentTab.conceptHeading}
-          </h2>
-          <span className="typo-subscript text-2xs font-mono text-ink-muted">
-            {currentTab.linguisticMetaphor}
-          </span>
-        </div>
+      <div className="border border-book-rule bg-page-muted/20 p-4 sm:p-5 rounded-xs space-y-2.5">
+        <h2 className="typo-section-header text-ink-main">
+          {currentTab.conceptHeading}
+        </h2>
 
         <p className="typo-body text-xs text-ink-muted leading-relaxed max-w-4xl">
           {currentTab.conceptDeck}
         </p>
 
-        <div className="flex items-center gap-2 text-2xs text-ink-muted pt-1">
-          <strong className="text-ink-main font-semibold">Dimensions Captured:</strong>
-          <span>{currentTab.dataDimensions}</span>
+        <div className="flex items-center gap-2 text-2xs text-ink-muted pt-0.5">
+          <strong className="text-ink-main font-semibold">Shows:</strong>
+          <span>{currentTab.whatItShows}</span>
         </div>
       </div>
 

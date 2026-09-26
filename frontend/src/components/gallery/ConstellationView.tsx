@@ -462,11 +462,11 @@ export const ConstellationView: React.FC = () => {
     <div className="space-y-4">
       {/* Control Plate */}
       <div className="border border-book-rule bg-page-surface p-3 sm:p-4 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
-        {/* Dimension & Metric Controls */}
+        {/* View & Position Controls */}
         <div className="flex items-center gap-4 flex-wrap">
           {/* 2D vs 3D Selector */}
           <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Projection:</span>
+            <span className="typo-sublabel text-ink-muted">View:</span>
             <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
               <button
                 type="button"
@@ -477,7 +477,7 @@ export const ConstellationView: React.FC = () => {
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
               >
-                2D Field Chart
+                2D Map
               </button>
               <button
                 type="button"
@@ -489,14 +489,14 @@ export const ConstellationView: React.FC = () => {
                 }`}
               >
                 <MaterialSymbol icon="view_in_ar" size={14} />
-                3D Spatial Mesh
+                3D Space
               </button>
             </div>
           </div>
 
-          {/* Metric Space Selector */}
+          {/* Metric Selector */}
           <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Metric Space:</span>
+            <span className="typo-sublabel text-ink-muted">Position by:</span>
             <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
               <button
                 type="button"
@@ -506,9 +506,9 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions nodes by acoustic phonetic distance"
+                title="Positions languages by how similar their words sound"
               >
-                Phonetic Space
+                Pronunciation
               </button>
               <button
                 type="button"
@@ -518,9 +518,9 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions nodes by written orthographic distance"
+                title="Positions languages by how similar their spelling looks"
               >
-                Orthographic Space
+                Spelling
               </button>
               <button
                 type="button"
@@ -530,9 +530,9 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions nodes by overall semantic vocabulary overlap"
+                title="Positions languages by shared vocabulary overlap"
               >
-                Semantic Overlap
+                Shared Vocabulary
               </button>
             </div>
           </div>
@@ -548,7 +548,7 @@ export const ConstellationView: React.FC = () => {
               className="accent-cognate-ink"
             />
             <span className="inline-block w-2.5 h-0.5 bg-cognate-ink rounded-full"></span>
-            Cognate Bridges
+            Cognates
           </label>
 
           <label className="flex items-center gap-1.5 typo-sublabel text-ink-main cursor-pointer">
@@ -559,7 +559,7 @@ export const ConstellationView: React.FC = () => {
               className="accent-falsefriend-ink"
             />
             <span className="inline-block w-2.5 h-0.5 border-b border-dashed border-falsefriend-ink"></span>
-            False Friend Faults
+            False Friends
           </label>
 
           {dimension === '3d' && (
@@ -594,12 +594,12 @@ export const ConstellationView: React.FC = () => {
           {/* Canvas HUD Legend */}
           <div className="absolute top-3 left-3 bg-page-surface/90 border border-book-rule/80 px-2.5 py-1.5 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none space-y-0.5">
             <span className="typo-overline block text-ink-main">
-              {dimension === '3d' ? '3D Spatial Constellation' : '2D Triangulation Map'}
+              {dimension === '3d' ? 'Language Network (3D)' : 'Language Map (2D)'}
             </span>
             <span className="typo-subscript block text-2xs">
               {dimension === '3d'
-                ? 'Drag to rotate coordinate orbit · Wheel to zoom'
-                : 'Static intrinsic linguistic plane'}
+                ? 'Drag to rotate · Scroll to zoom'
+                : 'Layout based on similarity distance'}
             </span>
           </div>
 
@@ -607,20 +607,20 @@ export const ConstellationView: React.FC = () => {
           <div className="absolute bottom-3 left-3 bg-page-surface/90 border border-book-rule/80 px-3 py-1 rounded-xs backdrop-blur-xs text-ink-muted pointer-events-none">
             <span className="typo-subscript text-2xs">
               {selectedLang
-                ? `Focusing on ${getLanguageName(selectedLang)} (click node again to deselect)`
-                : 'Click any language node to illuminate mutual tension vectors'}
+                ? `Showing connections for ${getLanguageName(selectedLang)} (click again to clear)`
+                : 'Click any language to see its connections'}
             </span>
           </div>
         </div>
 
-        {/* Bilateral Specimen Inspection Card */}
+        {/* Language Details Drawer */}
         <div className="lg:col-span-4 border border-book-rule bg-page-surface p-4 sm:p-5 rounded-xs space-y-4 shadow-xs">
           {selectedLangData ? (
             <div className="space-y-4">
               {/* Header */}
               <div className="border-b border-book-rule pb-3">
                 <span className="typo-overline text-cognate-ink block">
-                  Focused Specimen Node
+                  Selected Language
                 </span>
                 <div className="flex items-baseline justify-between mt-0.5">
                   <h3 className="typo-section-header text-ink-main">
@@ -630,15 +630,15 @@ export const ConstellationView: React.FC = () => {
                     {selectedLangData.branch}
                   </span>
                 </div>
-                <p className="typo-gloss text-ink-muted mt-1">
-                  Catalogued overlap: ~{selectedLangData.approxLexiconSize.toLocaleString()} headwords across the Germanic continuum.
+                <p className="typo-gloss text-ink-muted mt-1 text-xs">
+                  ~{selectedLangData.approxLexiconSize.toLocaleString()} catalogued words.
                 </p>
               </div>
 
-              {/* Bilateral Relations Tensor List */}
+              {/* Pair list */}
               <div className="space-y-2">
                 <span className="typo-sublabel block font-semibold text-ink-main">
-                  Mutual Relational Vectors
+                  Connections with Other Languages
                 </span>
                 <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
                   {selectedRelations.map((rel) => {
@@ -666,19 +666,19 @@ export const ConstellationView: React.FC = () => {
                         {/* Comparative metrics */}
                         <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-book-rule/40 text-center">
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted">Phonetic</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted">Pronunciation</span>
                             <strong className="typo-metric text-xs text-ink-main">
                               {Math.round(rel.phon * 100)}%
                             </strong>
                           </div>
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted">Orthographic</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted">Spelling</span>
                             <strong className="typo-metric text-xs text-ink-main">
                               {Math.round(rel.ortho * 100)}%
                             </strong>
                           </div>
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted">Trap Hazard</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted">False Friends</span>
                             <strong
                               className={`typo-metric text-xs font-semibold ${
                                 isTrapHeavy ? 'text-falsefriend-ink' : 'text-cognate-ink'
@@ -689,7 +689,7 @@ export const ConstellationView: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Asymmetry Note if present */}
+                        {/* Note if present */}
                         {rel.asymmetryNote && (
                           <p className="typo-note mt-2 pt-1.5 border-t border-book-rule/30 text-2xs leading-relaxed text-ink-muted italic">
                             {rel.asymmetryNote}
@@ -706,7 +706,7 @@ export const ConstellationView: React.FC = () => {
               <MaterialSymbol icon="touch_app" size={32} className="text-ink-muted/50" />
               <p className="typo-body text-sm font-medium">No language selected</p>
               <p className="typo-gloss text-xs">
-                Select any language node on the canvas to inspect its mutual distance vectors, phonetic rifts, and cognate bridges.
+                Click any language node on the canvas to see how closely it connects to other languages.
               </p>
             </div>
           )}

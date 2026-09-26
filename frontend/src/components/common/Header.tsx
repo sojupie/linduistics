@@ -48,7 +48,7 @@ export const Header: React.FC = () => {
     { to: '/lexicon', label: 'Comparative Lexicon', icon: 'menu_book' },
     { to: '/quiz', label: 'False Friends Quiz', icon: 'quiz' },
     { to: '/inspector', label: 'Text Inspector', icon: 'text_snippet' },
-    { to: '/gallery', label: 'Concept Lab', icon: 'science' },
+    { to: '/gallery', label: 'Concepts', icon: 'science' },
   ];
 
   return (

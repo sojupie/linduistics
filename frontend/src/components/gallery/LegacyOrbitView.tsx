@@ -11,21 +11,21 @@ export const LegacyOrbitView: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      {/* Critique Banner */}
+      {/* Description Banner */}
       <div className="border border-book-rule bg-page-muted/30 p-3 sm:p-4 rounded-xs text-xs space-y-1">
         <span className="typo-overline text-ink-muted block">
-          Baseline Reference · Original Concentric Orbit Model
+          Original Orbit Page (Baseline)
         </span>
         <p className="typo-body text-xs text-ink-muted leading-relaxed">
-          This was the initial exploration: languages orbit as equal-sized satellites along concentric Keplerian tracks around a single anchor.
-          Notice the core limitations: mutual distance between satellites is arbitrary, non-anchor relationships are unexpressed, and continuous orbital rotation interferes with comparative measurement.
+          The original design for the site: other languages orbit around a single chosen language on circular tracks.
+          Included here to compare directly with the new concepts above.
         </p>
       </div>
 
       {/* Orbit Toolbar Controls */}
       <div className="border border-book-rule bg-page-surface p-3 rounded-xs flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
-          <span className="typo-sublabel text-ink-muted">Anchor Language:</span>
+          <span className="typo-sublabel text-ink-muted">Center Language:</span>
           <select
             value={anchorCode}
             onChange={(e) => setAnchorCode(e.target.value)}
@@ -45,7 +45,7 @@ export const LegacyOrbitView: React.FC = () => {
             onClick={() => setModality(modality === 'phonetic' ? 'spelling' : 'phonetic')}
             className="px-2.5 py-1 border border-book-rule bg-page-surface rounded-xs typo-sublabel font-medium hover:bg-page-muted cursor-pointer"
           >
-            Modality: <strong className="text-ink-main capitalize">{modality}</strong>
+            Distance by: <strong className="text-ink-main capitalize">{modality}</strong>
           </button>
 
           <button
@@ -53,7 +53,7 @@ export const LegacyOrbitView: React.FC = () => {
             onClick={() => setIsPaused(!isPaused)}
             className="px-2.5 py-1 border border-book-rule bg-page-surface rounded-xs typo-sublabel font-medium hover:bg-page-muted cursor-pointer"
           >
-            {isPaused ? 'Resume Rotation' : 'Pause Rotation'}
+            {isPaused ? 'Resume Animation' : 'Pause Animation'}
           </button>
         </div>
       </div>
