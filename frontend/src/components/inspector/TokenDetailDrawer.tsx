@@ -349,7 +349,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                         onClick={() => onSubstitute(tokenAnalysis, alt.form)}
                         className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1"
                       >
-                        <span>Use alternate</span>
+                        <span>Substitute word</span>
                         <MaterialSymbol icon="swap_horiz" size={15} />
                       </button>
                     )}
@@ -378,14 +378,14 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                     <span className="text-book-rule-strong select-none">•</span>
 
                     <span>
-                      {matchEntries.length} {matchEntries.length === 1 ? 'target' : 'targets'} attested
+                      Attested in {matchEntries.length} {matchEntries.length === 1 ? 'target language' : 'target languages'}
                     </span>
 
                     {typeof alt.context_fit === 'number' && (
                       <>
                         <span className="text-book-rule-strong select-none">•</span>
                         <span title="Contextual semantic fit based on sentence context">
-                          {Math.round(alt.context_fit * 100)}% context fit
+                          {Math.round(alt.context_fit * 100)}% contextual fit
                         </span>
                       </>
                     )}
@@ -420,7 +420,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
       {/* 3. Cross-Lingual Correspondences */}
       <div className={`space-y-2 ${matches.length > 0 ? 'flex-1 min-h-0 flex flex-col' : 'shrink-0'}`}>
         <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
-          <span>Cross-Lingual Correspondences</span>
+          <span>Cross-Lingual Cognates & Equivalents</span>
           <span className="typo-metric-table text-ink-muted">{matches.length}</span>
         </div>
 

@@ -164,7 +164,7 @@ export const TextInspector: React.FC = () => {
             )}
           </div>
           <p className="typo-page-deck mt-1.5">
-            Multilingual sentence parser tracking cross-lingual cognacy, syntactic dependencies, and calques.
+            Sentence analysis tracking cross-lingual cognates, syntactic dependencies, and lexical calques.
           </p>
         </div>
 
@@ -307,7 +307,7 @@ export const TextInspector: React.FC = () => {
                   Lexical Calques
                 </span>
                 <span className="typo-note text-ink-muted">
-                  Cognate substitution without syntactic reordering
+                  Cognate substitution preserving source sentence structure
                 </span>
               </div>
               <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 divide-y divide-book-rule/60 border-t border-b border-book-rule">

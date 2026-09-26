@@ -102,7 +102,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             Language Overview
           </h1>
           <p className="typo-page-deck mt-1.5">
-            Pairwise comparative statistics showing phonetic distance, spelling variation, and lexical composition derived from cataloged word pairs.
+            Pairwise comparisons showing phonetic distance, orthographic variance, and lexical composition across cataloged word pairs.
           </p>
         </div>
 
@@ -125,33 +125,30 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('name')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'name'
-              ? 'border-ink-main bg-page-muted text-ink-main'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'name'
+            ? 'border-ink-main bg-page-muted text-ink-main'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
+            }`}
         >
           Target language
         </button>
         <button
           type="button"
           onClick={() => handleSort('pairs')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'pairs'
-              ? 'border-ink-main bg-page-muted text-ink-main'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'pairs'
+            ? 'border-ink-main bg-page-muted text-ink-main'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
+            }`}
         >
           Word pairs
         </button>
         <button
           type="button"
           onClick={() => handleSort('phonetic')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'phonetic'
-              ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'phonetic'
+            ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
+            }`}
           title="Sort by pronunciation similarity (lowest phonetic distance first)"
         >
           Pronunciation distance
@@ -159,11 +156,10 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('spelling')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'spelling'
-              ? 'border-divergent-ink bg-divergent-bg text-divergent-ink'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-divergent-ink'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'spelling'
+            ? 'border-divergent-ink bg-divergent-bg text-divergent-ink'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-divergent-ink'
+            }`}
           title="Sort by spelling similarity (lowest orthographic distance first)"
         >
           Spelling distance
@@ -171,11 +167,10 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('ease')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'ease'
-              ? 'border-ink-main bg-page-muted text-ink-main'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'ease'
+            ? 'border-ink-main bg-page-muted text-ink-main'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
+            }`}
           title="Sort by definition overlap (lowest semantic distance first)"
         >
           Semantic distance
@@ -183,22 +178,20 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
         <button
           type="button"
           onClick={() => handleSort('cognates')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'cognates'
-              ? 'border-shifted-ink bg-shifted-bg text-shifted-ink'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-shifted-ink'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'cognates'
+            ? 'border-shifted-ink bg-shifted-bg text-shifted-ink'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-shifted-ink'
+            }`}
         >
           Cognates %
         </button>
         <button
           type="button"
           onClick={() => handleSort('minefield')}
-          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${
-            activeSort === 'minefield'
-              ? 'border-falsefriend-ink bg-falsefriend-bg text-falsefriend-ink'
-              : 'border-book-rule bg-page-surface text-ink-muted hover:text-falsefriend-ink'
-          }`}
+          className={`px-2.5 py-1 border typo-sublabel cursor-pointer transition-colors ${activeSort === 'minefield'
+            ? 'border-falsefriend-ink bg-falsefriend-bg text-falsefriend-ink'
+            : 'border-book-rule bg-page-surface text-ink-muted hover:text-falsefriend-ink'
+            }`}
         >
           False friends %
         </button>
@@ -289,11 +282,10 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                   <tr
                     key={lang.code}
                     onClick={() => setSelectedLangCode(lang.code)}
-                    className={`cursor-pointer transition-colors ${
-                      isSelected
-                        ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
-                        : 'hover:bg-page-muted/40'
-                    }`}
+                    className={`cursor-pointer transition-colors ${isSelected
+                      ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
+                      : 'hover:bg-page-muted/40'
+                      }`}
                   >
                     <td className="py-3 px-3 typo-metric-table text-ink-light text-center">
                       {idx + 1}
@@ -350,12 +342,9 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <h3 className="typo-headword-display text-ink-main">
                   {selectedLang.name}
                 </h3>
-                <span className="typo-lang-code cursor-help" title={selectedLang.name}>
-                  {selectedLang.code.toUpperCase()}
-                </span>
               </div>
               <p className="typo-note mt-1">
-                {selectedLang.pairCount.toLocaleString()} evaluated word pairs with {anchorName}
+                {selectedLang.pairCount.toLocaleString()} cataloged word pairs with {anchorName}
               </p>
             </div>
             <Link
@@ -371,7 +360,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
           {/* Detailed ratio legend bar */}
           <div className="pt-1">
             <div className="typo-sublabel mb-2">
-              Vocabulary composition for {selectedLang.name}:
+              Vocabulary breakdown for {selectedLang.name}:
             </div>
             <TaxonomyRatioBar ratios={selectedLang.ratios} compact={false} />
           </div>
@@ -394,7 +383,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <strong className="text-ink-main font-medium">
                   {(selectedLang.ratios.trueCognates * 100).toFixed(0)}%
                 </strong>{' '}
-                of words share direct ancestral roots and unchanged definitions with {anchorName}. These represent intuitive cross-linguistic vocabulary anchors with minimal semantic friction.
+                of words share verified common ancestry and retain equivalent definitions with {anchorName}.
               </p>
             </div>
 
@@ -414,7 +403,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <strong className="text-ink-main font-medium">
                   {(selectedLang.ratios.partialCognates * 100).toFixed(0)}%
                 </strong>{' '}
-                of pairs stem from common etymological origins but have undergone semantic specialization, broadening, or sound shifts, leaving only partial definition overlap with {anchorName}.
+                of pairs stem from common etymological origins but leave partial definition overlap due to semantic shift, broadening, or sound changes.
               </p>
             </div>
 
@@ -434,7 +423,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <strong className="text-ink-main font-medium">
                   {(selectedLang.ratios.falseFriends * 100).toFixed(0)}%
                 </strong>{' '}
-                of similar-sounding or looking words between {anchorName} and {selectedLang.name} are deceptive lookalikes with divergent definitions, arising from semantic drift or surface collisions.
+                of similar-sounding or looking words diverge in definition due to independent semantic drift or coincidental surface similarity.
               </p>
             </div>
 
@@ -454,7 +443,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <strong className="text-ink-main font-medium">
                   {(selectedLang.ratios.translationPairs * 100).toFixed(0)}%
                 </strong>{' '}
-                of words serve as direct functional equivalents despite descending from completely distinct root words, reflecting standard cross-linguistic lexical divergence.
+                of words translate each other directly despite descending from unrelated ancestral roots.
               </p>
             </div>
 
@@ -501,7 +490,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                   </span>
                 </div>
                 <p>
-                  Average definition divergence across cataloged word pairs. Meanings are compared using multilingual sentence embeddings across all senses; lower distance indicates high conceptual overlap, while higher values reflect semantic drift and specialization.
+                  Average semantic divergence across cataloged pairs. Lower distance indicates high definition overlap; higher values reflect semantic drift or specialization.
                 </p>
               </div>
 
@@ -519,7 +508,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                   </span>
                 </div>
                 <p>
-                  Phonetic divergence calculated via articulatory feature alignment (manner, place, and voicing) over IPA transcriptions, tracking regular historical sound shifts rather than raw character mismatches.
+                  Phonetic divergence based on articulatory feature alignment over IPA transcriptions, tracking historical sound shifts rather than surface spelling.
                 </p>
               </div>
 
@@ -537,7 +526,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                   </span>
                 </div>
                 <p>
-                  Normalized orthographic edit distance across written headwords, reflecting orthographic modernization and spelling variance between {anchorName} and {selectedLang.name}.
+                  Normalized orthographic edit distance across written headwords, reflecting spelling variance between {anchorName} and {selectedLang.name}.
                 </p>
               </div>
             </div>

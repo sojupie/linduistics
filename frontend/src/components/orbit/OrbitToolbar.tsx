@@ -82,7 +82,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
               : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
           }`}
         >
-          {isPaused ? 'Resume motion' : 'Pause motion'}
+          {isPaused ? 'Resume animation' : 'Pause animation'}
         </button>
       </div>
     </div>

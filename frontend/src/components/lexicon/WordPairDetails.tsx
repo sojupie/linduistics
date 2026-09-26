@@ -194,8 +194,8 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {pair.category === 'false_friend' && (
           <div className="pt-3 border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {pair.falseFriendType === 'etymological_shift'
-              ? 'Shared Roots: Both headwords share a verified common ancestral root (Proto-Germanic or Latinate ancestor), but independent semantic drift has rendered their modern definitions divergent or mutually deceptive.'
-              : 'Accidental Lookalike: Headwords represent historically unrelated roots that have coincidentally converged in spelling or pronunciation.'}
+              ? 'Shared root: Both headwords descend from a common ancestral root, but independent semantic drift has diverged their modern definitions.'
+              : 'Accidental lookalike: Headwords descend from unrelated roots and converge only through coincidental spelling or phonetic similarity.'}
           </div>
         )}
       </div>
@@ -203,7 +203,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       {/* 2. Similarity Coefficients */}
       <div className="border-y border-book-rule py-3 px-2 space-y-2 bg-page-muted/30">
         <div className="typo-section-header">
-          Similarity Coefficients
+          Similarity Metrics
         </div>
         <div className="grid grid-cols-3 gap-2 text-center divide-x divide-book-rule">
           <div className="px-2">
@@ -363,7 +363,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       {/* 4. Sense Inventory & Definitions */}
       <div className="space-y-5 pb-6">
         <div className="typo-section-header border-b border-book-rule pb-1.5">
-          Sense Inventory & Definitions
+          Senses & Definitions
         </div>
 
         {/* Source Language Senses */}
@@ -392,7 +392,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
@@ -433,7 +433,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned Sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (

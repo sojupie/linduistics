@@ -207,14 +207,14 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
                 <span className="typo-pos">Δ<sub className="typo-subscript">s</sub></span>
               </th>
-              <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Active Aligned Meaning</th>
+              <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Aligned Sense / Meaning</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-book-rule/50">
             {isLoading ? (
               <tr>
                 <td colSpan={7} className="py-12 text-center typo-gloss">
-                  Scanning lexicon...
+                  Loading word pairs...
                 </td>
               </tr>
             ) : pairs.length === 0 ? (

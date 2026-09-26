@@ -359,19 +359,19 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
       {/* Legend */}
       <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm typo-sublabel shadow-xs">
         <div className="border-b border-book-rule pb-2 font-bold text-ink-main">
-          Language Proximity Map
+          Lexical Distance Map
         </div>
         <div className="mt-2.5 space-y-2 text-ink-muted">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-cognate-ink" />
-            <span>High lexical proximity</span>
+            <span>Close lexical distance</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-shifted-ink" />
             <span>Greater lexical distance</span>
           </div>
           <p className="pt-1 text-ink-light">
-            Click any language to inspect comparative metrics.
+            Click any language to view comparative metrics.
           </p>
         </div>
       </div>
@@ -426,7 +426,7 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
                 {activeDetails.name}
               </h3>
               <p className="typo-note mt-0.5">
-                {activeDetails.pairCount.toLocaleString()} evaluated word pairs with {anchorName}
+                {activeDetails.pairCount.toLocaleString()} cataloged word pairs with {anchorName}
               </p>
             </div>
             <button

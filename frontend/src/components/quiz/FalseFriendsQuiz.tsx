@@ -201,9 +201,9 @@ export const FalseFriendsQuiz: React.FC = () => {
       {/* Quiz Header & Language Pair Selection (same section, under the text) */}
       <div className="pb-4 mb-4 border-b border-book-rule space-y-3">
         <div>
-          <h1 className="typo-page-title">False Friends Decryption</h1>
+          <h1 className="typo-page-title">False Friends Quiz</h1>
           <p className="typo-page-deck mt-1.5">
-            Test your lexical immunity against deceptive lookalikes across Germanic pairs.
+            Identify true definitions and distinguish false friends across Germanic language pairs.
           </p>
         </div>
 
@@ -350,7 +350,7 @@ export const FalseFriendsQuiz: React.FC = () => {
       {/* Main Specimen Card */}
       {quizLoading ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
-          Assembling deceptive false friend specimen...
+          Loading quiz items...
         </div>
       ) : !currentQuizItem ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
@@ -368,12 +368,12 @@ export const FalseFriendsQuiz: React.FC = () => {
           <div className="border-b border-book-rule pb-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
             <div>
               <span className="typo-overline text-ink-muted block">
-                Batch Assessment · {getLanguageName(sourceLang)}{' '}
+                Round Summary · {getLanguageName(sourceLang)}{' '}
                 <MaterialSymbol icon="arrow_forward" size={12} className="inline-block text-ink-muted align-middle mx-0.5" />{' '}
                 {getLanguageName(targetLang)}
               </span>
               <h2 className="typo-section-header mt-0.5">
-                Decryption Assessment Complete
+                Quiz Complete
               </h2>
             </div>
             {hintsUsed > 0 && (
@@ -386,10 +386,10 @@ export const FalseFriendsQuiz: React.FC = () => {
           {/* Assessment Verdict */}
           <p className="typo-page-deck leading-relaxed text-ink-muted">
             {Math.round((quizScore / (quizData?.length || 1)) * 100) >= 80
-              ? 'High Lexical Immunity — You consistently distinguished true target definitions from deceptive cognate traps.'
+              ? 'High accuracy — You consistently distinguished true target definitions from false friend traps.'
               : Math.round((quizScore / (quizData?.length || 1)) * 100) >= 50
-              ? 'Moderate Lexical Awareness — Some surface lookalikes misled your interpretation across the pair.'
-              : 'Significant Trap Susceptibility — Cognate lookalikes frequently overrode true target meanings.'}
+              ? 'Moderate accuracy — Some lookalikes misled your interpretation across the pair.'
+              : 'Low accuracy — False friend lookalikes frequently caught you out.'}
           </p>
 
           {/* Responsive Metric Cards */}
@@ -442,7 +442,7 @@ export const FalseFriendsQuiz: React.FC = () => {
             <div className="border-t border-book-rule pt-5 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="typo-overline text-ink-main font-medium">
-                  Tested Specimen Review ({roundHistory.length})
+                  Item Review ({roundHistory.length})
                 </span>
                 <span className="typo-note hidden sm:inline">
                   Click entry to inspect etymology
@@ -544,7 +544,7 @@ export const FalseFriendsQuiz: React.FC = () => {
               onClick={handleRestartQuiz}
               className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-5 py-2 transition-all active:translate-y-px cursor-pointer inline-flex items-center gap-2"
             >
-              <span>Play Another Batch</span>
+              <span>Start New Round</span>
               <MaterialSymbol icon="arrow_forward" size={18} />
             </button>
           </div>
@@ -618,10 +618,10 @@ export const FalseFriendsQuiz: React.FC = () => {
               {viewingMode === 'target_only' && selectedOption === null ? (
                 <div className="flex flex-col justify-center items-center text-center p-3 sm:p-4 border border-dashed border-book-rule/70 bg-page-muted/15 space-y-1">
                   <span className="typo-overline text-ink-muted">
-                    Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
+                    Source Word ({getLanguageName(currentQuizItem.lang_a)})
                   </span>
                   <span className="typo-note text-ink-muted">
-                    [Counterpart hidden to eliminate triangulation]
+                    [Source counterpart hidden in target-only mode]
                   </span>
                   <button
                     type="button"
@@ -635,7 +635,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="typo-overline text-ink-muted">
-                      Source Counterpart ({getLanguageName(currentQuizItem.lang_a)})
+                      Source Word ({getLanguageName(currentQuizItem.lang_a)})
                     </span>
                     <span
                       className="typo-lang-code cursor-help"
@@ -680,7 +680,7 @@ export const FalseFriendsQuiz: React.FC = () => {
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="typo-overline text-falsefriend-ink font-medium">
-                    Target Deceiver ({getLanguageName(currentQuizItem.lang_b)})
+                    Target Word ({getLanguageName(currentQuizItem.lang_b)})
                   </span>
                   <span
                     className="typo-lang-code cursor-help"
@@ -796,7 +796,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                   onClick={() => setShowAutopsy(!showAutopsy)}
                   className="typo-sublabel text-ink-muted hover:text-ink-main flex items-center gap-1 cursor-pointer underline"
                 >
-                  <span>{showAutopsy ? 'Hide Etymological Autopsy' : 'Show Etymological Autopsy'}</span>
+                  <span>{showAutopsy ? 'Hide Etymological Analysis' : 'Show Etymological Analysis'}</span>
                   <MaterialSymbol icon={showAutopsy ? 'arrow_drop_up' : 'arrow_drop_down'} size={22} />
                 </button>
 
