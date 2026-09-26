@@ -56,11 +56,11 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
     return list.sort((a, b) => {
       switch (activeSort) {
         case 'ease':
-          return a.semanticDistance - b.semanticDistance;
+          return b.semanticSimilarity - a.semanticSimilarity;
         case 'minefield':
           return b.ratios.falseFriends - a.ratios.falseFriends;
         case 'phonetic':
-          return a.phoneticDistance - b.phoneticDistance;
+          return b.phoneticSimilarity - a.phoneticSimilarity;
         case 'cognates':
           return (
             b.ratios.trueCognates +
@@ -68,7 +68,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             (a.ratios.trueCognates + a.ratios.partialCognates)
           );
         case 'spelling':
-          return a.spellingDistance - b.spellingDistance;
+          return b.spellingSimilarity - a.spellingSimilarity;
         case 'pairs':
           return b.pairCount - a.pairCount;
         case 'name':
@@ -102,7 +102,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             Language Overview
           </h1>
           <p className="typo-page-deck mt-1.5">
-            Pairwise comparisons showing phonetic distance, orthographic variance, and lexical composition across cataloged word pairs.
+            Pairwise comparisons showing phonetic similarity, spelling overlap, and lexical composition across cataloged word pairs.
           </p>
         </div>
 
@@ -149,9 +149,9 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
             : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
             }`}
-          title="Sort by pronunciation similarity (lowest phonetic distance first)"
+          title="Sort by pronunciation similarity (highest first)"
         >
-          Pronunciation distance
+          Pronunciation similarity
         </button>
         <button
           type="button"
@@ -160,9 +160,9 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             ? 'border-divergent-ink bg-divergent-bg text-divergent-ink'
             : 'border-book-rule bg-page-surface text-ink-muted hover:text-divergent-ink'
             }`}
-          title="Sort by spelling similarity (lowest orthographic distance first)"
+          title="Sort by spelling similarity (highest first)"
         >
-          Spelling distance
+          Spelling similarity
         </button>
         <button
           type="button"
@@ -171,9 +171,9 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             ? 'border-ink-main bg-page-muted text-ink-main'
             : 'border-book-rule bg-page-surface text-ink-muted hover:text-ink-main'
             }`}
-          title="Sort by definition overlap (lowest semantic distance first)"
+          title="Sort by definition overlap (highest first)"
         >
-          Semantic distance
+          Semantic similarity
         </button>
         <button
           type="button"
@@ -234,23 +234,23 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <th
                   onClick={() => handleSort('phonetic')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
-                  title="Average phonetic distance based on articulatory feature alignment"
+                  title="Average phonetic similarity based on articulatory feature alignment"
                 >
-                  Pronunciation dist.{renderSortIndicator('phonetic')}
+                  Pronunciation sim.{renderSortIndicator('phonetic')}
                 </th>
                 <th
                   onClick={() => handleSort('spelling')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
-                  title="Average orthographic edit distance across headword spellings"
+                  title="Average orthographic similarity across headword spellings"
                 >
-                  Spelling dist.{renderSortIndicator('spelling')}
+                  Spelling sim.{renderSortIndicator('spelling')}
                 </th>
                 <th
                   onClick={() => handleSort('ease')}
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
-                  title="Average definition divergence based on cross-lingual sentence embeddings"
+                  title="Average definition overlap based on sentence embeddings"
                 >
-                  Semantic dist.{renderSortIndicator('ease')}
+                  Semantic sim.{renderSortIndicator('ease')}
                 </th>
                 <th
                   onClick={() => handleSort('cognates')}
@@ -302,17 +302,17 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                       {lang.pairCount.toLocaleString()}
                     </td>
                     <td className="py-3 px-3 typo-metric-table text-right text-cognate-ink">
-                      {(lang.phoneticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      {(lang.phoneticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                         REGISTER_CONFIG.PRECISION,
                       )}%
                     </td>
                     <td className="py-3 px-3 typo-metric-table text-right text-divergent-ink">
-                      {(lang.spellingDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      {(lang.spellingSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                         REGISTER_CONFIG.PRECISION,
                       )}%
                     </td>
                     <td className="py-3 px-3 typo-metric-table text-right text-ink-main">
-                      {(lang.semanticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                      {(lang.semanticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                         REGISTER_CONFIG.PRECISION,
                       )}%
                     </td>
@@ -473,60 +473,60 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
           {/* Distance & divergence metrics breakdown */}
           <div className="border-t border-book-rule pt-5">
             <div className="typo-sublabel mb-3">
-              Comparative distance metrics for {selectedLang.name}:
+              Comparative similarity metrics for {selectedLang.name}:
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 typo-body text-ink-muted">
-              {/* Semantic Distance */}
+              {/* Semantic Similarity */}
               <div>
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-ink-main" />
-                    <span>Semantic distance</span>
+                    <span>Semantic similarity</span>
                   </span>
                   <span className="typo-metric-table text-ink-main font-semibold">
-                    {(selectedLang.semanticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                    {(selectedLang.semanticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                       REGISTER_CONFIG.PRECISION,
                     )}%
                   </span>
                 </div>
                 <p>
-                  Average semantic divergence across cataloged pairs. Lower distance indicates high definition overlap; higher values reflect semantic drift or specialization.
+                  Average definition overlap across cataloged pairs. Higher values indicate shared meanings; lower values reflect semantic drift or specialization.
                 </p>
               </div>
 
-              {/* Pronunciation Distance */}
+              {/* Pronunciation Similarity */}
               <div>
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
-                    <span>Pronunciation distance</span>
+                    <span>Pronunciation similarity</span>
                   </span>
                   <span className="typo-metric-table text-cognate-ink font-semibold">
-                    {(selectedLang.phoneticDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                    {(selectedLang.phoneticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                       REGISTER_CONFIG.PRECISION,
                     )}%
                   </span>
                 </div>
                 <p>
-                  Phonetic divergence based on articulatory feature alignment over IPA transcriptions, tracking historical sound shifts rather than surface spelling.
+                  Phonetic similarity based on articulatory feature alignment over IPA transcriptions. Higher values reflect mutual spoken intelligibility.
                 </p>
               </div>
 
-              {/* Spelling Distance */}
+              {/* Spelling Similarity */}
               <div>
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" />
-                    <span>Spelling distance</span>
+                    <span>Spelling similarity</span>
                   </span>
                   <span className="typo-metric-table text-divergent-ink font-semibold">
-                    {(selectedLang.spellingDistance * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
+                    {(selectedLang.spellingSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
                       REGISTER_CONFIG.PRECISION,
                     )}%
                   </span>
                 </div>
                 <p>
-                  Normalized orthographic edit distance across written headwords, reflecting spelling variance between {anchorName} and {selectedLang.name}.
+                  Orthographic similarity across headword spellings. Higher values indicate immediately recognizable written cognates between {anchorName} and {selectedLang.name}.
                 </p>
               </div>
             </div>

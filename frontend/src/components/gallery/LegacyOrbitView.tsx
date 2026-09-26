@@ -45,7 +45,7 @@ export const LegacyOrbitView: React.FC = () => {
             onClick={() => setModality(modality === 'phonetic' ? 'spelling' : 'phonetic')}
             className="px-2.5 py-1 border border-book-rule bg-page-surface rounded-xs typo-sublabel font-medium hover:bg-page-muted cursor-pointer"
           >
-            Distance by: <strong className="text-ink-main capitalize">{modality}</strong>
+            Modality: <strong className="text-ink-main capitalize">{modality}</strong>
           </button>
 
           <button

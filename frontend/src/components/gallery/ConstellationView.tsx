@@ -93,9 +93,9 @@ export const ConstellationView: React.FC = () => {
           const key = `${codes[i]}-${codes[j]}`;
           const pair = pairMap.get(key);
           if (pair) {
-            if (activeMetric === 'phonetic') distMatrix[i][j] = pair.phon;
-            else if (activeMetric === 'orthographic') distMatrix[i][j] = pair.ortho;
-            else distMatrix[i][j] = pair.sem;
+            if (activeMetric === 'phonetic') distMatrix[i][j] = Math.max(0.04, 1.0 - pair.phon);
+            else if (activeMetric === 'orthographic') distMatrix[i][j] = Math.max(0.04, 1.0 - pair.ortho);
+            else distMatrix[i][j] = Math.max(0.04, 1.0 - pair.sem);
           } else {
             distMatrix[i][j] = 0.5;
           }
@@ -184,6 +184,7 @@ export const ConstellationView: React.FC = () => {
       ctx.lineWidth = 1;
       ctx.setLineDash([3, 5]);
 
+      const ringLabels = ['Close (~80% sim)', 'Mid (~60% sim)', 'Divergent (~40% sim)'];
       [80, 160, 240].forEach((r, idx) => {
         ctx.beginPath();
         ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
@@ -192,7 +193,7 @@ export const ConstellationView: React.FC = () => {
         ctx.font = '10px "Noto Sans Mono", monospace';
         ctx.fillStyle = '#A8A29E';
         ctx.textAlign = 'right';
-        ctx.fillText(`${(idx + 1) * 20}% dist`, centerX + r - 4, centerY - 6);
+        ctx.fillText(ringLabels[idx], centerX + r - 4, centerY - 6);
       });
       ctx.setLineDash([]);
 
@@ -617,7 +618,7 @@ export const ConstellationView: React.FC = () => {
 
           {/* Metric Selector */}
           <div className="flex items-center gap-1.5">
-            <span className="typo-sublabel text-ink-muted">Distance metric:</span>
+            <span className="typo-sublabel text-ink-muted">Modality:</span>
             <div className="inline-flex items-center border border-book-rule bg-page-muted/40 p-0.5 rounded-xs">
               <button
                 type="button"
@@ -627,7 +628,7 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by pronunciation distance"
+                title="Positions languages by pronunciation similarity"
               >
                 Pronunciation
               </button>
@@ -639,7 +640,7 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by spelling distance"
+                title="Positions languages by spelling similarity"
               >
                 Spelling
               </button>
@@ -759,7 +760,7 @@ export const ConstellationView: React.FC = () => {
               {/* Pair list */}
               <div className="space-y-2">
                 <span className="typo-sublabel block font-semibold text-ink-main">
-                  Distance to Other Languages
+                  Similarity to Other Languages
                 </span>
                 <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
                   {selectedRelations.map((rel) => {
@@ -787,13 +788,13 @@ export const ConstellationView: React.FC = () => {
                         {/* Comparative metrics */}
                         <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-book-rule/40 text-center">
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted">Pronunciation</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted" title="Pronunciation similarity">Sound Sim.</span>
                             <strong className="typo-metric text-xs text-ink-main">
                               {Math.round(rel.phon * 100)}%
                             </strong>
                           </div>
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted">Spelling</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted" title="Spelling similarity">Spelling Sim.</span>
                             <strong className="typo-metric text-xs text-ink-main">
                               {Math.round(rel.ortho * 100)}%
                             </strong>

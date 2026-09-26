@@ -169,7 +169,8 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_RING_LABEL_PX}px ${TYPOGRAPHY.FONT_MONO}`;
         ctx.fillStyle = PALETTE.CANVAS_TEXT_MUTED;
         ctx.textAlign = 'center';
-        ctx.fillText(`${(step * 100).toFixed(0)}% distance`, centerX + r, centerY - 8);
+        const simLabel = `${Math.round((1 - step) * 100)}% sim`;
+        ctx.fillText(simLabel, centerX + r, centerY - 8);
       });
 
       // Update and draw bodies
@@ -229,16 +230,16 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
         ctx.fillStyle = PALETTE.CANVAS_TEXT;
         ctx.fillText(body.profile.name, x, y + body.size + ORBIT_CONFIG.SATELLITE_LABEL_OFFSET_Y_PX);
 
-        // Distance value
-        const distValue =
+        // Similarity value
+        const simValue =
           modality === 'phonetic'
-            ? body.profile.phoneticDistance
-            : body.profile.spellingDistance;
+            ? body.profile.phoneticSimilarity
+            : body.profile.spellingSimilarity;
 
         ctx.font = `${ORBIT_CONFIG.FONT_SIZE_METRIC_PX}px ${TYPOGRAPHY.FONT_MONO}`;
         ctx.fillStyle = body.color;
         ctx.fillText(
-          `${(distValue * 100).toFixed(0)}%`,
+          `${(simValue * 100).toFixed(0)}%`,
           x,
           y + body.size + ORBIT_CONFIG.SATELLITE_DISTANCE_OFFSET_Y_PX,
         );
@@ -359,16 +360,16 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
       {/* Legend */}
       <div className="pointer-events-none absolute bottom-6 left-6 rounded border border-book-rule bg-page-surface p-4 max-w-sm typo-sublabel shadow-xs">
         <div className="border-b border-book-rule pb-2 font-bold text-ink-main">
-          Lexical Distance Map
+          Linguistic Similarity Orbit
         </div>
         <div className="mt-2.5 space-y-2 text-ink-muted">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-cognate-ink" />
-            <span>Close lexical distance</span>
+            <span>High mutual similarity (closer)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-shifted-ink" />
-            <span>Greater lexical distance</span>
+            <span>Divergent languages (outer orbit)</span>
           </div>
           <p className="pt-1 text-ink-light">
             Click any language to view comparative metrics.
@@ -390,15 +391,15 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
 
           <div className="mt-3 grid grid-cols-2 gap-3 typo-sublabel text-ink-muted">
             <div>
-              <span className="block text-ink-light">Pronunciation distance:</span>
+              <span className="block text-ink-light">Pronunciation similarity:</span>
               <span className="typo-metric font-bold text-ink-main">
-                {(hoveredBody.profile.phoneticDistance * 100).toFixed(0)}%
+                {(hoveredBody.profile.phoneticSimilarity * 100).toFixed(0)}%
               </span>
             </div>
             <div>
-              <span className="block text-ink-light">Spelling distance:</span>
+              <span className="block text-ink-light">Spelling similarity:</span>
               <span className="typo-metric font-bold text-ink-main">
-                {(hoveredBody.profile.spellingDistance * 100).toFixed(0)}%
+                {(hoveredBody.profile.spellingSimilarity * 100).toFixed(0)}%
               </span>
             </div>
             <div>

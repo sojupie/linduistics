@@ -70,6 +70,9 @@ export interface LanguageProfile {
   phoneticDistance: number;
   spellingDistance: number;
   semanticDistance: number;
+  phoneticSimilarity: number;
+  spellingSimilarity: number;
+  semanticSimilarity: number;
   ratios: {
     trueCognates: number;
     partialCognates: number;

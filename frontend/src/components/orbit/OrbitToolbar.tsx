@@ -54,7 +54,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
             {modality === 'phonetic' && (
               <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
             )}
-            <span>Phonetic distance</span>
+            <span>Phonetic similarity</span>
           </button>
           <button
             type="button"
@@ -68,7 +68,7 @@ export const OrbitToolbar: React.FC<OrbitToolbarProps> = ({
             {modality === 'spelling' && (
               <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
             )}
-            <span>Orthographic distance</span>
+            <span>Orthographic similarity</span>
           </button>
         </div>
 
