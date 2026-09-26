@@ -199,13 +199,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Orthographic Similarity">
-                <span className="typo-pos">Δ<sub className="typo-subscript">o</sub></span>
+                <span className="typo-pos">Δₒ</span>
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Phonetic Similarity">
-                <span className="typo-pos">Δ<sub className="typo-subscript">p</sub></span>
+                <span className="typo-pos">Δₚ</span>
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
-                <span className="typo-pos">Δ<sub className="typo-subscript">s</sub></span>
+                <span className="typo-pos">Δₛ</span>
               </th>
               <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Aligned Sense / Meaning</th>
             </tr>

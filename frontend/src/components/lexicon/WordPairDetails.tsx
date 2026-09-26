@@ -212,7 +212,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="typo-pos text-ink-main">
-                Δ<sub className="typo-subscript">o</sub>
+                Δₒ
               </span>
               <span className="typo-metric">
                 {pair.orthographicSim.toFixed(2)}
@@ -225,7 +225,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="typo-pos text-ink-main">
-                Δ<sub className="typo-subscript">p</sub>
+                Δₚ
               </span>
               <span className="typo-metric">
                 {pair.phoneticSim.toFixed(2)}
@@ -238,7 +238,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="typo-pos text-ink-main">
-                Δ<sub className="typo-subscript">s</sub>
+                Δₛ
               </span>
               <span className="typo-metric">
                 {pair.semanticSim.toFixed(2)}
@@ -392,7 +392,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
@@ -433,7 +433,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned sense · Δ<sub className="typo-subscript">s</sub> {s.similarity_to_counterpart.toFixed(2)}
+                        Aligned sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
                       </span>
                     )}
                     {!s.is_active && (
