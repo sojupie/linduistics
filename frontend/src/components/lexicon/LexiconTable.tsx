@@ -263,7 +263,7 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
                     </td>
 
                     {/* Orthographic Similarity */}
-                    <td className="py-3 px-2 text-center typo-metric-table text-ink-muted">
+                    <td className="py-3 px-2 text-center typo-metric-table text-ink-main">
                       {pair.orthographicSim.toFixed(2)}
                     </td>
 
