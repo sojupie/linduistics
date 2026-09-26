@@ -200,13 +200,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Orthographic Similarity">
-                <DeltaSymbol symbol="o" className="text-sm font-medium" />
+                <DeltaSymbol symbol="o" className="text-[15px] font-bold" />
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Phonetic Similarity">
-                <DeltaSymbol symbol="p" className="text-sm font-medium" />
+                <DeltaSymbol symbol="p" className="text-[15px] font-bold" />
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
-                <DeltaSymbol symbol="s" className="text-sm font-medium" />
+                <DeltaSymbol symbol="s" className="text-[15px] font-bold" />
               </th>
               <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Aligned Sense / Meaning</th>
             </tr>
@@ -231,11 +231,10 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
                   <tr
                     key={pair.id}
                     onClick={() => onSelectPair(pair)}
-                    className={`cursor-pointer transition-colors ${
-                      isSelected
-                        ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
-                        : 'hover:bg-page-muted/40'
-                    }`}
+                    className={`cursor-pointer transition-colors ${isSelected
+                      ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
+                      : 'hover:bg-page-muted/40'
+                      }`}
                   >
                     {/* Source Headword */}
                     <td className="py-3 px-3.5 font-serif">

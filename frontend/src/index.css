@@ -252,7 +252,7 @@ button:not(:disabled),
 
   .typo-delta > sub {
     font-size: 0.72em;
-    font-weight: 600;
+    font-weight: inherit;
     text-transform: lowercase;
     font-style: normal;
     line-height: 1;
