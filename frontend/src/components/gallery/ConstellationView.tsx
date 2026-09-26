@@ -628,9 +628,9 @@ export const ConstellationView: React.FC = () => {
                     ? 'bg-page-surface border border-book-rule-strong text-ink-main font-semibold shadow-2xs'
                     : 'text-ink-muted hover:text-ink-main'
                 }`}
-                title="Positions languages by pronunciation similarity"
+                title="Positions languages by phonetic similarity"
               >
-                Pronunciation
+                Phonetic
               </button>
               <button
                 type="button"
@@ -788,7 +788,7 @@ export const ConstellationView: React.FC = () => {
                         {/* Comparative metrics */}
                         <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-book-rule/40 text-center">
                           <div>
-                            <span className="typo-subscript block text-2xs text-ink-muted" title="Pronunciation similarity">Sound Sim.</span>
+                            <span className="typo-subscript block text-2xs text-ink-muted" title="Phonetic similarity">Phonetic Sim.</span>
                             <strong className="typo-metric text-xs text-ink-main">
                               {Math.round(rel.phon * 100)}%
                             </strong>

@@ -228,7 +228,7 @@ export const FrictionMatrixView: React.FC = () => {
                   : 'text-ink-muted hover:text-ink-main'
               }`}
             >
-              Pronunciation Match
+              Phonetic Similarity
             </button>
             <button
               type="button"

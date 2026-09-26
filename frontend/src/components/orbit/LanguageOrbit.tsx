@@ -391,7 +391,7 @@ export const LanguageOrbit: React.FC<LanguageOrbitProps> = ({
 
           <div className="mt-3 grid grid-cols-2 gap-3 typo-sublabel text-ink-muted">
             <div>
-              <span className="block text-ink-light">Pronunciation similarity:</span>
+              <span className="block text-ink-light">Phonetic similarity:</span>
               <span className="typo-metric font-bold text-ink-main">
                 {(hoveredBody.profile.phoneticSimilarity * 100).toFixed(0)}%
               </span>

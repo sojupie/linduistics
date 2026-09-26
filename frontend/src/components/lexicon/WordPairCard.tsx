@@ -116,7 +116,7 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
           </strong>
         </span>
         <span>
-          Pronunciation similarity:{' '}
+          Phonetic similarity:{' '}
           <strong className="typo-metric text-cognate-ink font-normal">
             {(pair.phoneticSim * LEXICON_CONFIG.SIMILARITY_SCALE).toFixed(
               LEXICON_CONFIG.SIMILARITY_PRECISION,

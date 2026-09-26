@@ -33,7 +33,7 @@ const PROTOTYPES: PrototypeTab[] = [
     icon: 'hub',
     conceptHeading: 'Pairwise Language Distances (MDS)',
     conceptDeck:
-      'Projects live mutual distances between all languages onto mathematically justified axes using Classical Multidimensional Scaling (MDS). Axis 1 separates North vs West Germanic; Axis 2 separates Insular vs Continental languages. Languages with closer pronunciation, spelling, and vocabulary cluster together with concentric distance rings.',
+      'Projects live mutual distances between all languages onto mathematically justified axes using Classical Multidimensional Scaling (MDS). Axis 1 separates North vs West Germanic; Axis 2 separates Insular vs Continental languages. Languages with closer phonetic, orthographic, and lexical alignment cluster together with concentric distance rings.',
     whatItShows:
       'Mathematically justified relative distances (MDS), scale rings, vocabulary count, shared cognates, and false friends.',
   },

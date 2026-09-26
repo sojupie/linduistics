@@ -149,9 +149,9 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
             ? 'border-cognate-ink bg-cognate-bg text-cognate-ink'
             : 'border-book-rule bg-page-surface text-ink-muted hover:text-cognate-ink'
             }`}
-          title="Sort by pronunciation similarity (highest first)"
+          title="Sort by phonetic similarity (highest first)"
         >
-          Pronunciation similarity
+          Phonetic similarity
         </button>
         <button
           type="button"
@@ -236,7 +236,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                   className="py-3.5 px-3 text-right cursor-pointer hover:text-ink-main transition-colors"
                   title="Average phonetic similarity based on articulatory feature alignment"
                 >
-                  Pronunciation sim.{renderSortIndicator('phonetic')}
+                  Phonetic sim.{renderSortIndicator('phonetic')}
                 </th>
                 <th
                   onClick={() => handleSort('spelling')}
@@ -494,12 +494,12 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 </p>
               </div>
 
-              {/* Pronunciation Similarity */}
+              {/* Phonetic Similarity */}
               <div>
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
-                    <span>Pronunciation similarity</span>
+                    <span>Phonetic similarity</span>
                   </span>
                   <span className="typo-metric-table text-cognate-ink font-semibold">
                     {(selectedLang.phoneticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
