@@ -239,6 +239,27 @@ button:not(:disabled),
     font-style: normal;
   }
 
+  .typo-delta {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: baseline;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-delta > sub {
+    font-size: 0.65em;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.14em;
+    margin-left: 0.05em;
+  }
+
   /* 3. Metadata & Labels */
   .typo-overline {
     font-family: var(--font-deck);

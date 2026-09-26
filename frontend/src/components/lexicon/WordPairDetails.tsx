@@ -5,6 +5,7 @@ import { useClusterByRootQuery } from '../../services/queries';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos, parseEtymRoot } from '../../utils/formatters';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { DeltaSymbol } from '../common/DeltaSymbol';
 
 interface WordPairDetailsProps {
   pair: WordPair | null;
@@ -211,9 +212,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               Orthographic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="typo-pos text-ink-main">
-                Δₒ
-              </span>
+              <DeltaSymbol symbol="o" className="text-ink-main" />
               <span className="typo-metric">
                 {pair.orthographicSim.toFixed(2)}
               </span>
@@ -224,9 +223,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               Phonetic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="typo-pos text-ink-main">
-                Δₚ
-              </span>
+              <DeltaSymbol symbol="p" className="text-ink-main" />
               <span className="typo-metric">
                 {pair.phoneticSim.toFixed(2)}
               </span>
@@ -237,9 +234,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               Semantic
             </span>
             <div className="flex items-baseline justify-center gap-1.5">
-              <span className="typo-pos text-ink-main">
-                Δₛ
-              </span>
+              <DeltaSymbol symbol="s" className="text-ink-main" />
               <span className="typo-metric">
                 {pair.semanticSim.toFixed(2)}
               </span>
@@ -391,8 +386,8 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                      <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
+                        <span>Aligned sense ·</span> <DeltaSymbol symbol="s" /> <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
                     )}
                     {!s.is_active && (
@@ -432,8 +427,8 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
-                        Aligned sense · Δₛ {s.similarity_to_counterpart.toFixed(2)}
+                      <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-1.5 py-0.5 rounded whitespace-nowrap">
+                        <span>Aligned sense ·</span> <DeltaSymbol symbol="s" /> <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
                     )}
                     {!s.is_active && (
