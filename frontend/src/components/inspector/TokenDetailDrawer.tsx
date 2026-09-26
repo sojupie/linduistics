@@ -308,7 +308,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
       {alternatives.length > 0 && (
         <div className="flex-1 min-h-0 flex flex-col space-y-2">
           <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
-            <span>Attested Alternates</span>
+            <span>Alternative Substitutions</span>
             <span className="typo-metric-table text-ink-muted">{alternatives.length}</span>
           </div>
 
@@ -420,7 +420,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
       {/* 3. Cross-Lingual Correspondences */}
       <div className={`space-y-2 ${matches.length > 0 ? 'flex-1 min-h-0 flex flex-col' : 'shrink-0'}`}>
         <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
-          <span>Cross-Lingual Cognates & Equivalents</span>
+          <span>Multilingual Cognates</span>
           <span className="typo-metric-table text-ink-muted">{matches.length}</span>
         </div>
 

@@ -307,7 +307,7 @@ export const TextInspector: React.FC = () => {
                   Lexical Calques
                 </span>
                 <span className="typo-note text-ink-muted">
-                  Cognate substitution preserving source sentence structure
+                  Word replacements using the same sentence layout
                 </span>
               </div>
               <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 divide-y divide-book-rule/60 border-t border-b border-book-rule">
@@ -316,7 +316,7 @@ export const TextInspector: React.FC = () => {
                     key={lang}
                     className="py-3 flex items-start justify-between gap-4 hover:bg-page-surface/40 transition-colors"
                   >
-                    <div className="space-y-1 min-w-0">
+                    <div className="space-y-1 min-w-0 flex items-baseline gap-2.5 flex-wrap">
                       <span
                         className="typo-lang-code inline-block mb-0.5 cursor-help"
                         title={getLanguageName(lang)}

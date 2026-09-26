@@ -1,0 +1,11 @@
+﻿1. wordpairdetails.tsx
+``{/* Pan-Germanic Sister Cognates */}
+this should be made to be generic and support and root and language.
+
+2. In this case, the text isn't actually citing conflicting sources or paths for the German word. Instead, it is tracing one single linear descent for German Ost (East) from Proto-Germanic *austrą, and then saying: "Hey, look at all these other modern languages that also inherited this exact same root" (English east, Dutch oost, Norwegian øst, etc.).Because Danish ost (cheese) traces back to a completely different Proto-Germanic branch (*jūstaz), they are still independent lines that just happened to collide phonetically over thousands of years.If your database parses these paragraphs automatically to find matching language strings, it might be accidentally tripping over the fact that "Norwegian Bokmål øst" or "Proto-Germanic" appears in both blocks, leading the parser to incorrectly flag them as a "Shared Root."Are you using a regex script or an LLM pipeline to automatically categorize these pairs from the raw text blocks? I can help you refine the logic to avoid these false matches.
+![img.png](img.png)
+
+3. "this is what false friend look alike (to be changed into false cognate) looks like currently"
+   Looking closely at this view, it highlights exactly why changing the label to False Cognate is necessary, but it also reveals a structural layout problem when dealing with these lookalikes.Even though the red alert box correctly notes that the words descend from unrelated roots, the UI below it is still trying to force them into a single "Reconstructed Ancestral Root" card (*rēdaz) and a single "Cognate Cluster" box.Because they are unrelated, Danish rat (wheel, from Proto-Germanic *radą) and German Rat (counsel, from Proto-Germanic *rēdaz) shouldn't share a single ancestral box or a single cluster list (which has also accidentally sucked in completely unrelated words like Fijian ratu and French raté due to string matching).
+When a pair is a False Cognate, displaying a single ancestral root is incorrect. You need to conditionally split this block to show both separate lineages side-by-side or stacked, instead of forcing a false unified descent.
+![img_1.png](img_1.png)

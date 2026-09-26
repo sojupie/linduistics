@@ -6,6 +6,7 @@ import { StratigraphyView } from './StratigraphyView';
 import { WaveTopographyView } from './WaveTopographyView';
 import { FrictionMatrixView } from './FrictionMatrixView';
 import { LegacyOrbitView } from './LegacyOrbitView';
+import { TopologyOverlapView } from './TopologyOverlapView';
 
 export type GalleryPrototypeId =
   | 'constellation'
@@ -13,6 +14,7 @@ export type GalleryPrototypeId =
   | 'stratigraphy'
   | 'wave'
   | 'matrix'
+  | 'topology'
   | 'legacy';
 
 interface PrototypeTab {
@@ -82,8 +84,19 @@ const PROTOTYPES: PrototypeTab[] = [
       '7×7 mutual distance matrix, spelling vs sound gap, false friend percentages, and direct pair drilldown.',
   },
   {
+    id: 'topology',
+    label: '6. Lexical Overlap Topology',
+    badge: 'Radial / Euler / UpSet',
+    icon: 'pie_chart',
+    conceptHeading: 'Multi-Language Lexical Overlap Topology',
+    conceptDeck:
+      'Visualizes vocabulary overlap beyond 1:1 pairs. Features Segmented Radial Hub, Proportional Euler, UpSet Matrix, and Chord Flow models scaled by dictionary volume. Analyzes multi-language cores (X ∩ Y ∩ Z), exclusive shared pools, and category composition (cognates vs false friends).',
+    whatItShows:
+      'Triple-language core overlap, exclusive shared sets, dictionary volume scaling, category distribution, and live specimen inspection.',
+  },
+  {
     id: 'legacy',
-    label: '6. Original Orbit (Baseline)',
+    label: '7. Original Orbit (Baseline)',
     badge: 'Baseline',
     icon: 'history',
     conceptHeading: 'Original Orbit Page',
@@ -175,6 +188,7 @@ export const GalleryPage: React.FC = () => {
         {activeTab === 'stratigraphy' && <StratigraphyView />}
         {activeTab === 'wave' && <WaveTopographyView />}
         {activeTab === 'matrix' && <FrictionMatrixView />}
+        {activeTab === 'topology' && <TopologyOverlapView />}
         {activeTab === 'legacy' && <LegacyOrbitView />}
       </div>
     </div>

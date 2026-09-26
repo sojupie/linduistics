@@ -367,13 +367,8 @@ export const FalseFriendsQuiz: React.FC = () => {
           {/* Header */}
           <div className="border-b border-book-rule pb-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
             <div>
-              <span className="typo-overline text-ink-muted block">
-                Round Summary · {getLanguageName(sourceLang)}{' '}
-                <MaterialSymbol icon="arrow_forward" size={12} className="inline-block text-ink-muted align-middle mx-0.5" />{' '}
-                {getLanguageName(targetLang)}
-              </span>
               <h2 className="typo-section-header mt-0.5">
-                Quiz Complete
+                Round Summary
               </h2>
             </div>
             {hintsUsed > 0 && (
@@ -637,12 +632,6 @@ export const FalseFriendsQuiz: React.FC = () => {
                     <span className="typo-overline text-ink-muted">
                       Source Word ({getLanguageName(currentQuizItem.lang_a)})
                     </span>
-                    <span
-                      className="typo-lang-code cursor-help"
-                      title={getLanguageName(currentQuizItem.lang_a)}
-                    >
-                      {currentQuizItem.lang_a.toUpperCase()}
-                    </span>
                   </div>
                   <div className="flex items-baseline gap-2 flex-wrap">
                     <span className="typo-headword-display text-ink-main">
@@ -681,12 +670,6 @@ export const FalseFriendsQuiz: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span className="typo-overline text-falsefriend-ink font-medium">
                     Target Word ({getLanguageName(currentQuizItem.lang_b)})
-                  </span>
-                  <span
-                    className="typo-lang-code cursor-help"
-                    title={getLanguageName(currentQuizItem.lang_b)}
-                  >
-                    {currentQuizItem.lang_b.toUpperCase()}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-2 flex-wrap">
@@ -814,7 +797,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                 <div className="pt-2 space-y-2.5 typo-body animate-in fade-in duration-200">
                   <div className="flex items-baseline justify-between border-b border-book-rule/60 pb-1.5">
                     <span className="typo-overline text-ink-main font-medium">
-                      Etymological Comparison
+                      Etymology
                     </span>
                     {currentQuizItem.false_friend_type && (
                       <span className="typo-subscript text-ink-muted uppercase tracking-wider">

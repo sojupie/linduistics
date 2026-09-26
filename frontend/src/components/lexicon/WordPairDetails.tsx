@@ -196,7 +196,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
           <div className="pt-3 border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {pair.falseFriendType === 'etymological_shift'
               ? 'Shared root: Both headwords descend from a common ancestral root, but independent semantic drift has diverged their modern definitions.'
-              : 'Accidental lookalike: Headwords descend from unrelated roots and converge only through coincidental spelling or phonetic similarity.'}
+              : 'Headwords descend from completely unrelated ancestral roots and converge only through coincidental spelling or phonetic similarity.'}
           </div>
         )}
       </div>
@@ -296,7 +296,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {pair.etymTextA && (
           <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="typo-sublabel block">
-              {sourceName} Historical Descent:
+              {sourceName}:
             </span>
             <p>{pair.etymTextA}</p>
           </div>
@@ -305,7 +305,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {pair.etymTextB && (
           <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">
             <span className="typo-sublabel block">
-              {targetName} Historical Descent:
+              {targetName}:
             </span>
             <p>{pair.etymTextB}</p>
           </div>
@@ -313,14 +313,14 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
 
         {/* Pan-Germanic Sister Cognates */}
         {cognateCluster && cognateCluster.members && cognateCluster.members.length > 0 && (
-          <div className="pt-2 space-y-2">
-            <div className="flex items-center justify-between typo-sublabel text-ink-main border-b border-book-rule/60 pb-1.5">
-              <span>Pan-Germanic Sister Cognates ({cognateCluster.language_count} Languages)</span>
-              <span className="typo-note text-ink-muted normal-case font-normal">
+            <div className="pt-2 space-y-2">
+              <div className="flex items-center justify-between typo-sublabel text-ink-main border-b border-book-rule/60 pb-1.5">
+                <span>Cognate Cluster ({cognateCluster.language_count} Languages)</span>
+                <span className="typo-note text-ink-muted normal-case font-normal">
                 {cognateCluster.proto_language}
               </span>
-            </div>
-            <div className="space-y-1 divide-y divide-book-rule/40">
+              </div>
+              <div className="space-y-1 divide-y divide-book-rule/40">
               {cognateCluster.members.map((m, idx) => {
                 const sisterPos = formatPos(m.pos);
                 return (
@@ -364,7 +364,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {/* Source Language Senses */}
         <div className="space-y-3">
           <div className="typo-sublabel border-b border-book-rule/60 pb-1">
-            <span>{sourceName} Senses ({sensesListA.length})</span>
+            <span>{sourceName} ({sensesListA.length})</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListA.map((s, idx) => {
@@ -387,8 +387,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-2 py-0.5 rounded whitespace-nowrap">
-                        <span>Aligned sense ·</span>
-                        <DeltaSymbol symbol="s" />
+                        <span>Semantic Match ·</span>
                         <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
                     )}
@@ -407,7 +406,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {/* Target Language Senses */}
         <div className="space-y-3 pt-2">
           <div className="typo-sublabel border-b border-book-rule/60 pb-1">
-            <span>{targetName} Senses ({sensesListB.length})</span>
+            <span>{targetName} ({sensesListB.length})</span>
           </div>
           <div className="space-y-3 pt-1">
             {sensesListB.map((s, idx) => {
@@ -430,8 +429,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                     </span>
                     {s.is_active_match && (
                       <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-2 py-0.5 rounded whitespace-nowrap">
-                        <span>Aligned sense ·</span>
-                        <DeltaSymbol symbol="s" />
+                        <span>Semantic Match ·</span>
                         <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
                     )}

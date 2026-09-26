@@ -481,7 +481,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-ink-main" />
-                    <span>Semantic similarity</span>
+                    <span>Semantic</span>
                   </span>
                   <span className="typo-metric-table text-ink-main font-semibold">
                     {(selectedLang.semanticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
@@ -499,7 +499,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" />
-                    <span>Phonetic similarity</span>
+                    <span>Phonetic</span>
                   </span>
                   <span className="typo-metric-table text-cognate-ink font-semibold">
                     {(selectedLang.phoneticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
@@ -517,7 +517,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({
                 <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" />
-                    <span>Spelling similarity</span>
+                    <span>Spelling</span>
                   </span>
                   <span className="typo-metric-table text-divergent-ink font-semibold">
                     {(selectedLang.spellingSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(
