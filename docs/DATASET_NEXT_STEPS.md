@@ -409,3 +409,23 @@ pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --ou
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_relation_targets.jsonl --output pipeline\data\source_claim_inventory_relation_targets.json --force
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_relation_targets.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_relation_targets.jsonl --force
 ```
+
+## Use template language arguments for source forms (2026-09-28)
+
+The next full-export scan found that several template normalizers read the source form from argument 2 but assigned the page language as the source language. Wiktionary's template documentation defines argument 1 as the language of the source term for [deverbals](https://en.wiktionary.org/wiki/Template:deverbal/documentation), [clippings](https://en.wiktionary.org/wiki/Template:clipping/documentation), [back-formations](https://en.wiktionary.org/wiki/Template:back-formation/documentation), [abbreviations](https://en.wiktionary.org/wiki/Template:abbreviation/documentation), [acronyms](https://en.wiktionary.org/wiki/Template:acronym/documentation), and [initialisms](https://en.wiktionary.org/wiki/Template:initialism). The same rule applies to the `init` and `acro` aliases. Alternate display text is not used as a source form.
+
+The normalizer now uses that argument for these templates. It only accepts language-code-shaped values in this template family; the raw argument remains in the claim either way. Eight `abbr` records use values such as `2sg`, `q.v.`, or `lit.` in argument 1, so the export leaves their source endpoint unresolved rather than substituting the page language. This is conservative normalization, not a judgment about those words' histories.
+
+The full export still has 710,110 source records, 978,265 source-sense records, and 1,148,705 claims. A line-by-line comparison against the previous corrected export found **210 changed claims in 205 entries**. In 117 existing mapped claims, the target language now follows argument 1; 80 `init` and five `acro` claims now expose their previously missing target fields; eight invalid `abbr` argument values are no longer misread as source languages. Every difference is limited to `related_language` or `related_form`. The relation totals are unchanged.
+
+The refreshed all-pair matcher still has 20,354 rows and 406 ambiguous target identities. It does not use these abbreviation and word-formation relations to alter comparison categories, and the database was not updated. The inventory reports the same 1,053,726 claims with normalized relations and 94,979 records without a normalized relation; many of those are formatting or metadata templates, not missing historical links. The full pipeline suite passes **111 tests**.
+
+The new export is `pipeline/data/etymology_records_source_languages_ordered.jsonl`, SHA-256 `fce0c4f677a8b247feb8bcae4c20c5abb09a8c5cd1628130ab3b8df01fc24340`. Its inventory is `pipeline/data/source_claim_inventory_source_languages.json`. The all-pair join is `pipeline/data/candidate_source_claim_matches_source_languages.jsonl`, SHA-256 `c73f8e332fe445a8d0824bb8f70c704ec2b0b0a8ba77d799295062769448885a`. These are separate ignored artifacts; the earlier snapshots remain available for comparison.
+
+Rebuild the corrected export and audits from the local five-language dumps:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --input-dir pipeline\data --languages sv da nb de en --output pipeline\data\etymology_records_source_languages_ordered.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_languages_ordered.jsonl --output pipeline\data\source_claim_inventory_source_languages.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_languages_ordered.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_languages.jsonl --force
+```

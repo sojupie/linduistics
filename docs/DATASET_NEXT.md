@@ -6,6 +6,12 @@ Keep building the source and transformation pipeline as the project. A useful re
 
 The next work should make it possible to follow a result from the source entry and sense, through the extracted claims and our calculations, to the interpretation shown by the site. It should also make gaps and uncertain links visible instead of turning them into confident labels.
 
+## Current checkpoint
+
+The first source-template pass corrected target-language extraction for derivation, clipping, back-formation, abbreviation, acronym, and initialism templates. It also covers the `init` and `acro` aliases. The full export comparison changed only claim target fields; relation counts, source identities, comparison candidates, and the database stayed unchanged. See [the extraction audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28).
+
+Next, keep auditing templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Then follow the current focused word cases through source-entry matching and interpretation.
+
 ## Work in this order
 
 ### 1. Finish checking the source extraction rules
