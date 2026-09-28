@@ -28,6 +28,7 @@ def test_target_entry_links_preserve_homographs_form_links_and_case_ambiguity(tm
             "word": "går",
             "pos": "verb",
             "etymology_text": "From Old Norse.",
+            "etymology_templates": [{"name": "com", "args": {"1": "nb", "2": "gå", "3": "r"}}],
             "senses": [
                 {
                     "id": "nb-gå-verb-present",
@@ -58,6 +59,8 @@ def test_target_entry_links_preserve_homographs_form_links_and_case_ambiguity(tm
     assert records[0]["casefold_translation_forms"] == ["GÅR"]
     assert records[0]["target_senses"][0]["form_of"] == [{"word": "gå"}]
     assert records[0]["target_etymology_text"] == "From Old Norse."
+    assert records[0]["target_etymology_claims"][0]["relation"] == "compound_of"
+    assert records[0]["target_etymology_claims"][0]["components"] == ["gå", "r"]
     assert manifest["resolution_by_language"]["nb"] == {
         "translation_claims": 4,
         "claims_without_target_form": 1,

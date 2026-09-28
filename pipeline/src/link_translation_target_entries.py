@@ -11,7 +11,7 @@ from pathlib import Path
 
 import orjson
 
-from extract_etymology_records import source_entry_key
+from extract_etymology_records import source_entry_key, source_record
 from extract_translation_claims import _normalize_lang
 
 TARGET_LANGS = ("da", "de", "nb", "sv")
@@ -41,16 +41,18 @@ def _read_claims(path: Path):
 
 
 def _target_entry(entry: dict, lang: str, source_file: str, line_number: int) -> dict:
+    etymology = source_record(entry, source_file)
     return {
         "source_file": source_file,
         "source_line": line_number,
-        "source_entry_key": source_entry_key(entry),
+        "source_entry_key": etymology["source_entry_key"] if etymology else source_entry_key(entry),
         "target_lang": lang,
         "target_word": entry["word"],
         "target_pos": entry.get("pos"),
         "target_etymology_number": entry.get("etymology_number"),
         "target_etymology_text": entry.get("etymology_text"),
         "target_etymology_templates": entry.get("etymology_templates", []),
+        "target_etymology_claims": etymology["claims"] if etymology else [],
         "target_senses": [
             {key: sense[key] for key in ENTRY_FIELDS if key in sense}
             for sense in entry.get("senses", [])
