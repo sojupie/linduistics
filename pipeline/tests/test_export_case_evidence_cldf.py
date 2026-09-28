@@ -79,6 +79,12 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
             "evidence": [{"template_index": 1, "template_name": "com", "args": {"1": "sv", "2": "flee", "3": "ce"}}],
         }],
     }, ensure_ascii=False) + "\n", encoding="utf-8")
+    source.with_suffix(source.suffix + ".manifest.json").write_text(json.dumps({
+        "inputs": {"etymology_records_test.jsonl": "source-hash"},
+    }), encoding="utf-8")
+    (tmp_path / "etymology_records_test.jsonl.manifest.json").write_text(json.dumps({
+        "languages": {"sv": {"source_file": "kaikki_sv.jsonl", "source_file_sha256": "dump-hash"}},
+    }), encoding="utf-8")
 
     output = tmp_path / "cldf"
     manifest = export_slice(source, output)
@@ -86,6 +92,7 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     assert manifest["tables"]["entries.csv"]["rows"] == 2
     assert manifest["tables"]["comparisons.csv"]["rows"] == 1
     assert manifest["tables"]["claim-matches.csv"]["rows"] == 1
+    assert manifest["source_dump_files"]["sv"]["source_file_sha256"] == "dump-hash"
     metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
     assert metadata["dc:conformsTo"].endswith("#Generic")
     tables = {table["url"]: table for table in metadata["tables"]}

@@ -392,12 +392,25 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
 
     source_manifest_path = source_path.with_suffix(source_path.suffix + ".manifest.json")
     source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8")) if source_manifest_path.exists() else None
+    source_data_manifest = None
+    if source_manifest:
+        source_export_name = next((name for name in source_manifest.get("inputs", {}) if name.startswith("etymology_records_")), None)
+        source_data_path = source_path.parent / f"{source_export_name}.manifest.json" if source_export_name else None
+        if source_data_path and source_data_path.exists():
+            source_data_manifest = json.loads(source_data_path.read_text(encoding="utf-8"))
     manifest = {
         "source": source_path.name,
         "source_sha256": digest(source_path),
         "source_manifest": source_manifest_path.name if source_manifest else None,
         "source_manifest_sha256": digest(source_manifest_path) if source_manifest else None,
         "upstream_inputs": source_manifest.get("inputs", {}) if source_manifest else {},
+        "source_dump_files": {
+            code: {
+                key: detail.get(key)
+                for key in ("source_file", "source_file_sha256", "source_file_mtime", "source_file_size")
+            }
+            for code, detail in (source_data_manifest or {}).get("languages", {}).items()
+        },
         "metadata": "metadata.json",
         "metadata_sha256": digest(output_dir / "metadata.json"),
         "tables": {filename: {"rows": len(rows), "sha256": digest(output_dir / filename)} for filename, _, rows in tables},
