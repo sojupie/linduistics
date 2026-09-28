@@ -4,11 +4,13 @@
 
 Keep building the source and transformation pipeline as the project. A useful result can be a small dataset that one or two people can inspect and reuse. Wiktionary remains the main source for now. CLDF is an optional export format, not the internal model or the goal by itself.
 
+Keep the work hands-on and exploratory: sourcing, transforming, and checking the data is part of the fun. This does not need to become formal linguistic research to be useful.
+
 The next work should make it possible to follow a result from the source entry and sense, through the extracted claims and our calculations, to the interpretation shown by the site. It should also make gaps and uncertain links visible instead of turning them into confident labels.
 
 ## Current checkpoint
 
-The source-template audit now covers three passes: target-language extraction, missing word-formation aliases, and process-specific formation data. The latest full export recognizes back-formation, reduplication, univerbation, contraction, apheresis, apocope, syncope, rebracketing, infixation, and metathesis without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28) and [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28).
+The source-template audit now covers four passes: target-language extraction, missing word-formation aliases, process-specific formation data, and explicit clipping, inflection, and PIE-word links. These additions preserve source claims without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28), [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28), and [clipping, inflection, and PIE-word audit](DATASET_NEXT_STEPS.md#retain-clipping-inflection-and-pie-word-links-2026-09-28).
 
 Next, keep auditing templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Then follow the current focused word cases through source-entry matching and interpretation.
 

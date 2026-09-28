@@ -449,3 +449,21 @@ pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --in
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_formation_processes.jsonl --output pipeline\data\source_claim_inventory_formation_processes.json --force
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_formation_processes.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_formation_processes.jsonl --force
 ```
+
+## Retain clipping, inflection, and PIE-word links (2026-09-28)
+
+The next scan found three useful templates whose raw arguments were kept but not normalized. Wiktionary defines `clipping of` as a form made by clipping one or more terms, with the language in argument 1 and the source term in argument 2 ([template documentation](https://en.wiktionary.org/wiki/Template:clipping_of/documentation)). `past participle of` links an inflected form to its lemma using the same argument order; Wiktionary explicitly describes it as a definition-line template, not an etymology template ([documentation](https://en.wiktionary.org/wiki/Template:past_participle_of/documentation)). The `PIE word` template identifies a Proto-Indo-European word associated with an entry, using argument 2 for the PIE form, and places it in Wiktionary's "terms derived from Proto-Indo-European words" categories ([template documentation](https://en.wiktionary.org/wiki/Template:PIE_word)).
+
+The extractor now records `clipping of` and its `clip of` alias as `clipped_from`, `past participle of` as `inflectional_form_of`, and `PIE word` as `derived_from` with language `ine-pro` and the reconstructed form prefixed by `*`. A PIE link represents the source's broader derivation claim; it does not prove that the PIE form was the immediate source. An inflection link describes a grammatical form relation, not an etymological descent. Raw template names and arguments remain on every claim.
+
+The full export still has 710,110 source entries and 1,148,705 claims. Compared line by line with the previous export, **823 claims in 778 entries changed**: 59 clipping claims (45 `clipping of`, 14 `clip of`), 42 inflection links, and 722 PIE-word claims. Normalized relation counts rise to **1,055,410**. The all-pair candidate matcher remains exactly **20,354 rows**, with no old or new match IDs; this pass adds inspectable source relationships without changing comparison scores, categories, or the database. The full suite passes **115 tests**.
+
+The new ignored local export is `pipeline/data/etymology_records_source_relations_complete.jsonl`, SHA-256 `d234d59d893b3aa93e3b9955e59ace9f862eb2059e276bf51c26c40ff736f94a`. Its inventory is `pipeline/data/source_claim_inventory_source_relations_complete.json`. The candidate match export is `pipeline/data/candidate_source_claim_matches_source_relations_complete.jsonl`, SHA-256 `3bc2ec6f03c79f2672c65372bc59ba536f55c2dc7dfb0076444782d4deaeb0c86`.
+
+Rebuild these artifacts from the five local Wiktionary-derived dumps:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --input-dir pipeline\data --languages sv da nb de en --output pipeline\data\etymology_records_source_relations_complete.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_relations_complete.jsonl --output pipeline\data\source_claim_inventory_source_relations_complete.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_relations_complete.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_relations_complete.jsonl --force
+```
