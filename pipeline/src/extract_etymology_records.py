@@ -317,6 +317,15 @@ def source_record(entry: dict[str, Any], source_file: str) -> dict[str, Any] | N
             for sense in entry.get("senses", [])
             if isinstance(sense, dict) and isinstance(sense.get("id"), str)
         ],
+        "source_senses": [
+            {
+                key: sense[key]
+                for key in ("id", "glosses", "raw_glosses", "tags")
+                if key in sense
+            }
+            for sense in entry.get("senses", [])
+            if isinstance(sense, dict) and isinstance(sense.get("id"), str)
+        ],
         "etymology_text": etymology_text,
         "templates": templates,
         "claims": normalized,
@@ -334,7 +343,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
         "source": "Wiktionary via Kaikki/Wiktextract",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "languages": {},
-        "totals": {"source_records": 0, "template_records": 0, "claim_records": 0},
+        "totals": {"source_records": 0, "source_sense_records": 0, "template_records": 0, "claim_records": 0},
         "templates": {},
         "normalized_relations": {},
         "unmapped_templates": {},
@@ -348,7 +357,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                     raise FileNotFoundError(source_path)
 
                 digest = hashlib.sha256()
-                counts = {"source_records": 0, "template_records": 0, "claim_records": 0}
+                counts = {"source_records": 0, "source_sense_records": 0, "template_records": 0, "claim_records": 0}
                 template_counts: Counter[str] = Counter()
                 relation_counts: Counter[str] = Counter()
                 unmapped: Counter[str] = Counter()
@@ -369,6 +378,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
 
                         destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
                         counts["source_records"] += 1
+                        counts["source_sense_records"] += len(record["source_senses"])
                         for claim in record["claims"]:
                             counts["claim_records"] += 1
                             if claim["relation"]:
@@ -394,6 +404,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                     "unmapped_templates": dict(sorted(unmapped.items())),
                 }
                 summary["totals"]["source_records"] += counts["source_records"]
+                summary["totals"]["source_sense_records"] += counts["source_sense_records"]
                 summary["totals"]["template_records"] += counts["template_records"]
                 summary["totals"]["claim_records"] += counts["claim_records"]
                 for name, count in template_counts.items():

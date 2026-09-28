@@ -29,6 +29,22 @@ class EtymologyRecordTests(unittest.TestCase):
         self.assertEqual(record["claims"][0]["related_form"], "fleece")
         self.assertEqual(record["templates"][0]["args"]["2"], "en")
         self.assertIn("#Swedish", record["source_url"])
+        self.assertEqual(record["source_senses"], [{"id": "en-fleece-sv-noun-example"}])
+
+    def test_preserves_compact_sense_glosses_and_tags_for_audit_linking(self):
+        record = source_record(
+            {
+                "lang_code": "sv", "lang": "Swedish", "word": "besök", "pos": "noun",
+                "senses": [{"id": "source-sense-1", "glosses": ["a visit"], "raw_glosses": ["a visit"],
+                            "tags": ["neuter"], "examples": [{"text": "not retained"}] }],
+                "etymology_templates": [], "etymology_text": "Cognate with Danish besøg.",
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(record["source_senses"], [{
+            "id": "source-sense-1", "glosses": ["a visit"], "raw_glosses": ["a visit"], "tags": ["neuter"],
+        }])
 
     def test_keeps_compound_components_as_a_separate_claim(self):
         record = source_record(

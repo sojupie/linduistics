@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import random
+import unicodedata
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -48,6 +49,42 @@ def select_source_entries_by_pos(entries: list[dict], pos: str | None) -> tuple[
         return [], "comparison_pos_missing"
     selected = [entry for entry in entries if str(entry.get("part_of_speech", "")).casefold() == pos.casefold()]
     return selected, "matched_pos" if selected else "no_source_entry_for_comparison_pos"
+
+
+def match_source_senses(comparison_senses: list[dict], entries: list[dict]) -> list[dict]:
+    """Link only exact normalized glosses; leave paraphrases for review instead of guessing."""
+    if not isinstance(comparison_senses, list):
+        return []
+    source_by_gloss: dict[str, list[dict]] = defaultdict(list)
+    for entry in entries:
+        for sense in entry.get("source_senses", []):
+            if not isinstance(sense, dict):
+                continue
+            glosses = sense.get("glosses", [])
+            if not isinstance(glosses, list):
+                continue
+            for gloss in glosses:
+                if isinstance(gloss, str) and gloss.strip():
+                    key = " ".join(unicodedata.normalize("NFC", gloss).casefold().split())
+                    source_by_gloss[key].append({
+                        "source_entry_key": entry["source_entry_key"],
+                        "source_sense_id": sense["id"],
+                        "source_gloss": gloss,
+                    })
+
+    matches = []
+    for sense in comparison_senses:
+        if not isinstance(sense, dict):
+            continue
+        gloss = sense.get("gloss")
+        key = " ".join(unicodedata.normalize("NFC", gloss).casefold().split()) if isinstance(gloss, str) else ""
+        matches.append({
+            "comparison_sense_id": sense.get("sense_id"),
+            "comparison_gloss": gloss,
+            "match_method": "exact_gloss" if key and key in source_by_gloss else "unmatched",
+            "source_senses": source_by_gloss.get(key, []) if key else [],
+        })
+    return matches
 
 
 def _claim_reference(entry: dict, claim: dict) -> dict:
@@ -168,6 +205,8 @@ def audit_record(
     source_entries_b, source_match_b = matching_source_entries(entries, target, word_b)
     selected_a, pos_match_a = select_source_entries_by_pos(source_entries_a, comparison.get("pos_a") if comparison else None)
     selected_b, pos_match_b = select_source_entries_by_pos(source_entries_b, comparison.get("pos_b") if comparison else None)
+    comparison_senses_a = comparison.get("senses_a", []) if comparison else []
+    comparison_senses_b = comparison.get("senses_b", []) if comparison else []
     return {
         "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
@@ -181,6 +220,10 @@ def audit_record(
         },
         "source_pos_entry_count": {source: len(selected_a), target: len(selected_b)},
         "source_pos_entry_match": {source: pos_match_a, target: pos_match_b},
+        "source_sense_matches": {
+            source: match_source_senses(comparison_senses_a, selected_a),
+            target: match_source_senses(comparison_senses_b, selected_b),
+        },
         "source_derived_relationships": derive_pair_source_evidence(
             selected_a, selected_b, source, word_a, target, word_b
         ),

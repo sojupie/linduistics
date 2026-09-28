@@ -81,6 +81,24 @@ class SourcePairAuditTests(unittest.TestCase):
         claims = result["source_derived_relationships"][0]["claims_a"]
         self.assertEqual([claim["source_entry_key"] for claim in claims], ["sv|gift|noun||a"])
 
+    def test_sense_linking_requires_exact_gloss_after_case_and_space_normalization(self):
+        entries = {
+            ("sv", "besök"): [{
+                "source_entry_key": "sv|besök|noun||a", "word": "besök", "part_of_speech": "noun",
+                "source_senses": [{"id": "sv-sense-1", "glosses": ["a visit"]}],
+            }],
+            ("da", "besøg"): [],
+        }
+        result = audit_record("besök", "besøg", "sv", "da", {
+            "pos_a": "noun", "pos_b": "noun",
+            "senses_a": [{"sense_id": 1, "gloss": "A   VISIT"}, {"sense_id": 2, "gloss": "appointment"}],
+        }, entries)
+
+        linked = result["source_sense_matches"]["sv"]
+        self.assertEqual(linked[0]["match_method"], "exact_gloss")
+        self.assertEqual(linked[0]["source_senses"][0]["source_sense_id"], "sv-sense-1")
+        self.assertEqual(linked[1]["match_method"], "unmatched")
+
     def test_source_evidence_distinguishes_direct_loan_from_shared_donor(self):
         sv_fleece = {
             "source_entry_key": "sv|fleece|noun||sv1", "word": "fleece",
