@@ -78,6 +78,9 @@ def test_audit_counts_pair_specific_claims_once_across_directed_rows(tmp_path):
     assert manifest["evidence_rows_by_candidate_category"] == {"other": 2}
     assert manifest["unique_candidates_with_source_claim_by_category"] == {"other": 2}
     assert manifest["evidence_rows_by_target_identity"] == {"available": 1, "missing_entry": 1}
+    assert manifest["unique_candidates_with_source_claim_by_category_and_relation"] == {
+        "other": {"borrowed_from": 1, "cognate_mention": 1},
+    }
     assert "does not assert that they apply to the selected target sense" in manifest["matching_rule"]
 
 

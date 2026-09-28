@@ -235,9 +235,13 @@ def audit_coverage(
     result = {"cognate_mentions": dict(cognate_counts), "other_candidates": dict(other_candidates)}
     if matches_output and manifest_path:
         unique_candidates_by_category = defaultdict(int)
+        unique_candidates_by_category_and_relation = defaultdict(lambda: defaultdict(int))
         for candidate, relations in relations_by_candidate.items():
             if relations:
-                unique_candidates_by_category[candidate_meta[candidate][1]] += 1
+                category = candidate_meta[candidate][1]
+                unique_candidates_by_category[category] += 1
+                for relation in relations:
+                    unique_candidates_by_category_and_relation[category][relation] += 1
         output_hash = hashlib.sha256()
         with matches_output.open("rb") as generated:
             for block in iter(lambda: generated.read(1024 * 1024), b""):
@@ -265,6 +269,10 @@ def audit_coverage(
             "evidence_rows_by_target_identity": dict(sorted(match_counts_by_target_identity.items())),
             "evidence_rows_by_form_match_method": dict(sorted(match_counts_by_form_match.items())),
             "unique_candidates_with_source_claim_by_category": dict(sorted(unique_candidates_by_category.items())),
+            "unique_candidates_with_source_claim_by_category_and_relation": {
+                category: dict(sorted(relations.items()))
+                for category, relations in sorted(unique_candidates_by_category_and_relation.items())
+            },
             "matching_rule": (
                 "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its "
                 "related language and exact target-form spelling match the candidate. Case-folded matching is used only "
