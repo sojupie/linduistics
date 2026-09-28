@@ -763,3 +763,18 @@ pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --in
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --output pipeline\data\source_claim_inventory_source_claim_kinds.json --force
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
+# Resolve form-level source claims to local target entries (2026-09-28)
+
+The case-slice audit `pipeline/src/audit_case_claim_target_entries.py` scans the five local Kaikki/Wiktextract dumps (`da`, `de`, `en`, `nb`, `sv`) for each distinct source claim with a related form. It preserves all exact spelling matches, including separate parts of speech and etymology sections, along with source entry keys, source URLs, etymology text, senses, and normalized claims. Case-folded candidates are a fallback only when no exact spelling exists. This resolves candidate entries, not target senses.
+
+For the 13-case slice, the manifest reports **495 distinct form-level claims**: **78** with exact target entries, **415** whose language codes are not represented by the five dumps, and **2** without a matching spelling in the recorded dump. The exact matches produce **152 candidate-entry links** across **105 unique candidate entries**. No case-fold-only match occurred. These figures describe only this selected slice; they are not vocabulary coverage, relationship accuracy, or a language-pair cognate rate.
+
+The *fleece* and *clown* claims each match both English noun and verb entries. That is evidence that spelling can leave target-entry identity ambiguous; it does not authorize choosing an entry from the comparison's selected sense. The Danish *berøve* target resolves locally. The equivalent Norwegian claim uses code `no`, while the available dump is Bokmål `nb`, so the result is correctly `language_not_indexed`; the two varieties must not be silently equated. Two unmatched forms are literal `-` values in source cognate templates and remain unmodified.
+
+The ignored output is `pipeline/data/case_claim_target_entries.jsonl`, with `pipeline/data/case_claim_target_entries.jsonl.manifest.json`. The manifest hashes the case slice and each input dump. Rebuild with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
+```
+
+The next check is to inspect the target-side source claims for multi-entry matches—starting with *fleece*, *clown*, and the *bank* cases—and record whether source wording supports one entry, several entries, or only the written form. If Wiktionary itself leaves a homograph unresolved, preserve the candidate set and ambiguity. Do not force a target sense from the comparison alignment. This will determine whether to export multivalued entry candidates to CLDF or retain an explicit unresolved form-level link.

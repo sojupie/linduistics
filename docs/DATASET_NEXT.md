@@ -35,11 +35,25 @@ The Swedish and German entries each have a `borrowed_from(en, fleece)` claim. Th
 
 The CLDF export now records that source scope on `source-claims.csv`. `claim-matches.csv` names its sense IDs `Comparison_Source_Sense_ID` and `Comparison_Target_Sense_ID`, so they are not mistaken for source-attested sense links. This keeps the actual borrowing claim separate from the comparison candidate it matched.
 
-### 1. Resolve form-level claims to all exact target entries
+### Completed: find every local target entry for a form-level claim
 
-For a source claim such as `borrowed_from(en, fleece)`, find every exact English source entry for the related form and preserve all candidates, including distinct homographs and etymology sections. Keep target-form resolution separate from target-sense resolution. A comparison’s selected sense can be shown as context, but it cannot break a tie unless the source itself provides sense evidence.
+The case-slice audit scans all five local dumps and retains every exact spelling match, including separate parts of speech and etymology sections. It keeps target-form matching separate from target-sense identity. Exact spelling is only a candidate link; the source claim does not identify one of those senses.
 
-Use the five local dumps first. Record exact versus case-only matches and unresolved forms. Reuse the existing source-entry indexing patterns; do not infer that no match means unrelated origins. The result should let the *fleece*, *bank*, and *gift* cases show when a written form reaches multiple possible source entries.
+Across 495 distinct form-level claims, 78 resolved to one or more exact target entries, 415 use language codes outside the five local dumps, and two did not occur in the recorded dump snapshot. The audit retained 152 candidate-entry links across 105 unique entries. These are counts within the 13-case slice, not coverage or rates for Wiktionary or any language. There were no case-fold-only results in this slice.
+
+The *fleece* and *clown* claims each reach English noun and verb entries, demonstrating that spelling alone cannot identify a target entry. The Danish *berøve* claim resolves to its local Danish entry. The corresponding Norwegian claim uses Wiktionary code `no`, whereas the local dump is Norwegian Bokmål (`nb`); it is reported as `language_not_indexed`, not as a failed Bokmål lookup. Two missing forms are literal `-` values in source cognate templates; preserve them as source data rather than silently repairing them.
+
+The reproducible local artifact is `pipeline/data/case_claim_target_entries.jsonl`; its manifest records the case-slice and five dump hashes. Rebuild it with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
+```
+
+### 1. Test whether the source can distinguish target entries
+
+Take the multi-entry matches first (*fleece*, *clown*, then the *bank* cases) and inspect the target entries' own etymology claims and source wording. Ask whether those records identify a specific target entry, support more than one, or leave the target at form level. Do not use the comparison's selected sense as evidence unless Wiktionary links the claim to that sense.
+
+Record the outcome as a source-supported entry link, a set of candidate entries, or unresolved at form level. If the source does not distinguish homographs, preserve that ambiguity; do not invent a single target identity. This will tell us whether the useful next transformation is reciprocal-claim evidence, a multivalued source-entry link in CLDF, or simply a clearly recorded unresolved link.
 
 ### 2. Fix only a demonstrated loss
 
