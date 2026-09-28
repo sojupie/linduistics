@@ -1,0 +1,190 @@
+{
+  "case_groups": [
+    "arbeit",
+    "bank",
+    "bankman",
+    "bereave",
+    "blive",
+    "clown",
+    "fleece",
+    "gut",
+    "kurv",
+    "ombudsman",
+    "oversatta",
+    "ramslog",
+    "sandbank",
+    "stepdaughter",
+    "wall_road"
+  ],
+  "source": "named_case_evidence_slice_dercat_fix.jsonl",
+  "source_sha256": "bfb6b32d7c03a2f0f08f2acf57439c4ceba69d923fd161492043918d4e0ae46d",
+  "source_manifest": "named_case_evidence_slice_dercat_fix.jsonl.manifest.json",
+  "source_manifest_sha256": "bebd80c76593a4c6d43ef50bb6f7ecd06651ff0de2c5c2b3163375d210a6f3d9",
+  "target_entry_lookup": {
+    "file": "case_claim_target_entries.jsonl",
+    "sha256": "b6d9bb47fc4e70f3762b613ee1e1e2327c8731035dc621a4c9a411192616301d",
+    "manifest": "case_claim_target_entries.jsonl.manifest.json",
+    "manifest_sha256": "215f0a321c3110a043ef00bff08169e793670c79eeea895af007deb80c6ab663"
+  },
+  "upstream_inputs": {
+    "all_comparisons_dercat_fix.parquet": "1d85f6f65f3ca45d11a95065998c929fa21b3e8bc5e03408be29377ad26267b9",
+    "etymology_records_source_origin_status.jsonl": "717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961",
+    "candidate_source_claim_matches_dercat_fix.jsonl": "abe0cf02c2de7ca54d756c77118218a0a4cb806e853901890183f0fb2d7bfde4",
+    "component_entry_candidates_source_identity.jsonl.gz": "294cb74914db90fb349e66b0552fb15fb115dd3a259193b52229a925d46a8013",
+    "component_shared_ancestor_candidates_source_identity.jsonl.gz": "c40dba70718b167a09d2b27eb4c318282ddee72fdbb5e7dc2e8f3779d0433ae7"
+  },
+  "source_snapshot": {
+    "provider": "Wiktionary via Kaikki/Wiktextract",
+    "provider_url": "https://kaikki.org/dictionary/rawdata.html",
+    "extraction_manifest_generated_at": "2026-09-28T14:32:20.722000+00:00",
+    "entry_revision_ids": "not available for every entry; use Source_URL to inspect the current article and history"
+  },
+  "source_dump_files": {
+    "sv": {
+      "source_file": "kaikki_sv.jsonl",
+      "source_file_sha256": "89faff8e49dccc32cbea87de565656a77cc2a775ce50fea7757ab71707a49bd7",
+      "source_file_mtime": "2026-09-18T16:04:04.917077+00:00",
+      "source_file_size": 353587315
+    },
+    "da": {
+      "source_file": "kaikki_da.jsonl",
+      "source_file_sha256": "c1782b489514765b960408c1b1fdc21f343c3ba4823ec9af709f39b01a8abc7a",
+      "source_file_mtime": "2026-09-18T19:11:18.112984+00:00",
+      "source_file_size": 95556980
+    },
+    "nb": {
+      "source_file": "kaikki_nb.jsonl",
+      "source_file_sha256": "8aefc87034058ea2276eea9779f67b2ce122f646841e92955446f4b6ab2ee9ad",
+      "source_file_mtime": "2026-09-18T19:11:26.906327+00:00",
+      "source_file_size": 85047177
+    },
+    "de": {
+      "source_file": "kaikki_de.jsonl",
+      "source_file_sha256": "db551663e13e917884a90bdf89f01d5d09e7c3dd46eeaa8d6b3deb904c75917e",
+      "source_file_mtime": "2026-09-18T19:12:32.085599+00:00",
+      "source_file_size": 1076822474
+    },
+    "en": {
+      "source_file": "kaikki_en.jsonl",
+      "source_file_sha256": "e38fe0e9b53e3387673fe46429a02b3dcecfd3e5bf5771d7766c5afa6fd41f25",
+      "source_file_mtime": "2026-09-18T16:06:14.166745+00:00",
+      "source_file_size": 3245973435
+    }
+  },
+  "transformation_files": {
+    "pipeline/src/build_case_evidence_slice.py": "b6deab16843c3401faa4266e24cc05a41fe01abb29b89a9f061c46695756cbbd",
+    "pipeline/src/audit_case_claim_target_entries.py": "108790e49185f5c65d594e8fa3ac8001f74eab515b3acc7933faa8225783da47",
+    "pipeline/src/export_case_evidence_cldf.py": "26bc0d79b651f6ef25e6820e808f0598c7b57e3079826c2c1790b6de65994fb2"
+  },
+  "metadata": "metadata.json",
+  "metadata_sha256": "f156013996b6904f06715ac727514558131909b6b785eaa6b8af172ac3812300",
+  "tables": {
+    "languages.csv": {
+      "rows": 5,
+      "sha256": "b3c858de2e711a0a67f00a16e8175ec78444d1bd2046bc1cce015fc359025a83"
+    },
+    "entries.csv": {
+      "rows": 173,
+      "sha256": "456d99176942fbcdb08faf37280398328f5aadf2d8e6d420695af16587017aa2"
+    },
+    "senses.csv": {
+      "rows": 664,
+      "sha256": "ed292b9f13f7ba90d6ee4d83fbda09a803f0b0ada48f5c543aa2e347c109fc41"
+    },
+    "forms.csv": {
+      "rows": 49,
+      "sha256": "57a48e3897f5530d62da518cd40d9edaf8038e77c0d5f6a5a2dc893c0d194220"
+    },
+    "source-relation-targets.csv": {
+      "rows": 1373,
+      "sha256": "3e4a52d11e96af9c836c53c1e26bb2ce2df5b894d2819280a738b7f5db5c4760"
+    },
+    "source-claims.csv": {
+      "rows": 1556,
+      "sha256": "458206d15e6295e18ddc12362acc8cde7a69ebd6bdc595814b640722c5190f61"
+    },
+    "component-links.csv": {
+      "rows": 30,
+      "sha256": "430c81aca0a0ef30fd367d05504c3e143f211ad106e2f2c3c921eae5fe9a8fa2"
+    },
+    "shared-component-ancestor-candidates.csv": {
+      "rows": 12,
+      "sha256": "130da6b11e00d027f35844703b7a468de2242b80131cdf9191cc48b2718bc40d"
+    },
+    "comparisons.csv": {
+      "rows": 30,
+      "sha256": "8cb6f08c1de31baf69e4ada061a460a0c624b0accb067e8c44f6fe70111f5baa"
+    },
+    "claim-matches.csv": {
+      "rows": 26,
+      "sha256": "d95957fb1c8d2f0b395c6c6aa0e3000985aa6b18420531bf61072f63ed2712c6"
+    },
+    "claim-target-resolutions.csv": {
+      "rows": 499,
+      "sha256": "11490129b627bbab1911b665644d387f3855096b319abb61dc11b2b51953593b"
+    },
+    "claim-target-candidates.csv": {
+      "rows": 173,
+      "sha256": "036d43a95b54b9708010687ef116afc42484889893a4c4993ad863b040972615"
+    },
+    "claim-target-cross-references.csv": {
+      "rows": 57,
+      "sha256": "cc08305291c16f0bdee52f226797b26a0e2bd5c3253103ec1e807e71d6a65a91"
+    }
+  },
+  "summary": {
+    "comparisons_by_legacy_label": {
+      "false_friend": 2,
+      "other": 17,
+      "partial_cognate": 7,
+      "true_cognate": 4
+    },
+    "component_candidate_resolution": {
+      "no_candidates": 1,
+      "partially_resolved": 1,
+      "resolved": 27,
+      "unresolved": 1
+    },
+    "source_claim_records": 1556,
+    "source_template_occurrences": 1462,
+    "relation_claim_records": 1420,
+    "normalized_relation_targets": 1373,
+    "repeated_relation_claim_records_per_target": 47,
+    "matched_source_claim_records_by_legacy_label": {
+      "false_friend": {
+        "derived_from:available": 1
+      },
+      "other": {
+        "borrowed_from:available": 7,
+        "cognate_mention:ambiguous": 1,
+        "cognate_mention:available": 4
+      },
+      "partial_cognate": {
+        "borrowed_from:available": 1,
+        "cognate_mention:available": 6
+      },
+      "true_cognate": {
+        "borrowed_from:available": 1,
+        "cognate_mention:available": 5
+      }
+    },
+    "target_claim_cross_references": 57,
+    "target_claim_cross_references_by_relation_pair": {
+      "borrowed_from->cognate_mention": 6,
+      "cognate_mention->cognate_mention": 40,
+      "doublet_of->doublet_of": 11
+    }
+  },
+  "limits": [
+    "The 15 case groups are deliberate diagnostics, not a representative sample.",
+    "Per-entry Wiktionary revision IDs are unavailable for some records; source dump names and hashes identify the local snapshot.",
+    "Wiktionary entries can contain externally sourced material with separate terms; this selected export has not been checked for that material entry by entry and is not cleared for redistribution.",
+    "The official CLDF validator has not been run; only the exporter's ID and declared foreign-key checks have passed.",
+    "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
+    "Component candidate entry keys are candidates, not confirmed component-sense links.",
+    "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
+    "Target-entry resolution and candidate tables come from a separate spelling lookup. They preserve all candidates and do not resolve target senses or confirm the source claim.",
+    "Shared-component ancestor rows are projections from recorded component candidates; they are not confirmed whole-word relationships.",
+    "Legacy_Candidate_Label and Legacy_Root_Match_Status preserve old classifier output only."
+  ]
+}

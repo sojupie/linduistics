@@ -1,0 +1,31 @@
+ID,Case_ID,Form_A_ID,Form_B_ID,Recorded_Root_A,Recorded_Root_B,Spelling_Similarity,Phonetic_Similarity,Semantic_Similarity,Legacy_Candidate_Label,Legacy_Root_Match_Status,Directed_Row_Count
+comparison_019dfbcdb37808dbaf12,bank,form_82f7f00c1f671728dc53,form_cb4fceb0fbe925259e1b,,Proto-Germanic *bankiz,1.0,0.7472222328186036,0.47896796464920044,other,unknown,2
+comparison_04b5f336566e4e40f3ef,sandbank,form_84f3fb851e5f640ca90d,form_a183f4eb5e82449ed935,,,1.0,0.9312499985098839,0.4649805426597595,other,unknown,2
+comparison_05bf8e164799bb3ac46b,ombudsman,form_356115412d690e4a812e,form_3a410f421fc3dca4c134,Old Norse umboðsmaðr,,0.9,0.8431250154972076,0.42705363035202026,other,unknown,2
+comparison_0607ddc575cba7916891,sandbank,form_85356d1a0ec4a3e98f2b,form_a183f4eb5e82449ed935,,,0.8888888888888888,0.796913570827908,0.6013859510421753,other,unknown,2
+comparison_066a170f5e957c1b921c,ramslog,form_894f455e8a4d55613a46,form_e62fbff922db9293b029,Proto-West Germanic *hramusō,Proto-West Germanic *hramusō,0.8571428571428572,0.8186507906232561,0.3421778082847595,partial_cognate,cognate,2
+comparison_1318a06660830628becd,stepdaughter,form_116b038a4dff45673384,form_54c750ac13d3d67a1787,Proto-Germanic *steupaduhtēr,Proto-Germanic *steupaduhtēr,0.5,0.8223456806606717,0.49446624517440796,partial_cognate,cognate,2
+comparison_138bdd895ad72b4117cd,bereave,form_08dea81dc15985762003,form_23d6d63a1179c591adf7,Proto-Germanic *biraubōną,Proto-Germanic *biraubōną,0.5,0.6244444506508964,0.6162728071212769,partial_cognate,cognate,2
+comparison_1c44dce692b86d860b16,ombudsman,form_356115412d690e4a812e,form_8b96f0ce3ff655d21aaf,Old Norse umboðsmaðr,Old Norse umboðsmaðr,0.9,0.7904321087731255,0.42705363035202026,partial_cognate,cognate,2
+comparison_239c717b42428a3b83c8,clown,form_958b208424af39d04196,form_c9a1b1fb61d28eadc243,Proto-Indo-European *gel-,,0.6,0.7631111145019531,0.5753331184387207,other,unknown,2
+comparison_2a37acfa7d1614443963,bank,form_023376e275d45a71f3a9,form_1e33ff9a3d5eed2550de,Proto-Germanic *bankô,Proto-Germanic *bankiz,1.0,0.9812499992549419,0.8741471767425537,other,unknown,2
+comparison_44fd08bfed8027d417b8,kurv,form_2871b102789025ab4650,form_54f5e08734b51d205869,Proto-West Germanic *korb,Proto-West Germanic *korb,1.0,0.772000002861023,0.7488054037094116,partial_cognate,cognate,2
+comparison_4625dab2c2ba5bb2b404,bank,form_4ddb64abf42cdfb63359,form_be03eeb00953fa042fe0,Proto-Germanic *bankiz,,1.0,0.9812499992549419,0.7674278616905212,other,unknown,2
+comparison_482955a5f869a16dd7dc,fleece,form_307822960a94fdc6911f,form_ef82655bc0b13e20be1d,,Proto-West Germanic *fleus,1.0,1.0,0.6092986464500427,other,unknown,2
+comparison_4bc02dbfe8ff25af5dc0,arbeit,form_704e13ff534b169a43c8,form_94a8f0cd6932a6e9a45d,,,0.7142857142857143,0.7964285782405308,0.9657497406005859,other,unknown,2
+comparison_5165d706e194ad524d90,blive,form_7c4ed3b4a5ac0dc7af3f,form_d0baf17f83cc9203d07b,Proto-Germanic *bilībaną,Proto-Germanic *bilībaną,1.0,0.8049999952316285,0.29890912771224976,false_friend,cognate,2
+comparison_5db42397c2eace0ad983,clown,form_958b208424af39d04196,form_be4ac21fea0c10262c6b,Proto-Indo-European *gel-,,0.6,0.7254444599151612,0.6764191389083862,other,unknown,2
+comparison_6241c6dce9a2104965c7,gut,form_11aeca7ff0614c98a544,form_b8e25617ca9d335dff82,Proto-Germanic *gōdaz,Proto-Germanic *gōdaz,0.33333333333333337,0.7208333313465118,0.767217755317688,true_cognate,cognate,2
+comparison_65d3eaaa94f7e68fab2e,fleece,form_bda0e6d400fec1cd0458,form_ef82655bc0b13e20be1d,,Proto-West Germanic *fleus,1.0,1.0,0.19838696718215942,other,unknown,2
+comparison_6a24690a4b657f7b1fc8,gut,form_5e6cb5dc590582ff8af5,form_f154071acec10d414ec4,Proto-Germanic *gōdaz,Proto-Germanic *gōdaz,0.25,0.875,0.9041375517845154,true_cognate,cognate,2
+comparison_6c578947a77d212e6165,sandbank,form_a183f4eb5e82449ed935,form_b2814ead6e1d847ab18f,,,1.0,0.859027773141861,0.5175070762634277,other,unknown,2
+comparison_6ee921d2fa5f194cebf3,clown,form_75c157a0c4204b45e2c0,form_958b208424af39d04196,,Proto-Indo-European *gel-,1.0,1.0,1.0,other,unknown,2
+comparison_758912e89766e6b7de14,bank,form_3f8097bb130484836748,form_cb4fceb0fbe925259e1b,,Proto-Germanic *bankiz,1.0,0.8812500014901161,0.517333447933197,other,unknown,2
+comparison_935143f29bf1464e069b,ombudsman,form_356115412d690e4a812e,form_e6dbcefc32e9711182df,Old Norse umboðsmaðr,Old Norse umboðsmaðr,1.0,0.7988888952467177,1.0,true_cognate,cognate,2
+comparison_b146a1a29e74d60b2293,clown,form_0951d7792a98c4113b0c,form_958b208424af39d04196,,Proto-Indo-European *gel-,1.0,1.0,0.5525377988815308,other,unknown,2
+comparison_b790cadb0479463b6067,oversatta,form_0070b61edcd88d259760,form_f1df9f0812446b1a00cc,Proto-West Germanic *ubarsattjan,Proto-West Germanic *ubarsattjan,0.7777777777777778,0.6576388776302338,0.7132165431976318,partial_cognate,cognate,2
+comparison_c29a41f7b8ef766d62b5,gut,form_802ea90dae0a1ad87921,form_f154071acec10d414ec4,Proto-Germanic *gōdaz,Proto-Germanic *gōdaz,0.33333333333333337,0.9333333323399226,0.8058066964149475,true_cognate,cognate,2
+comparison_c5072d862373a40d060a,bankman,form_079e0562e1df3abe268c,form_226f7d80d974040adc0f,,,1.0,0.8857142840112958,0.23940971493721008,other,unknown,2
+comparison_cb2d441e18156c6562be,gut,form_08a22e69e2ee32828c7a,form_37d22d8325a9468302ff,Old High German guot,Proto-Germanic *gōdą,0.25,0.875,0.38953468203544617,other,unknown,2
+comparison_d2d793ffa82c37a496b6,wall_road,form_3e69f92de8b4a6f7d478,form_5cc8583f3959aa28c3df,Proto-Germanic *wajjuz,Proto-Germanic *wegaz,1.0,0.7650000005960464,0.2997792661190033,false_friend,unknown,2
+comparison_e60a062fab9cd724fab8,ombudsman,form_356115412d690e4a812e,form_9c5c0ac944ae2af2fcad,Old Norse umboðsmaðr,Old Norse umboðsmaðr,0.9,0.7988888952467177,0.6639548540115356,partial_cognate,cognate,2

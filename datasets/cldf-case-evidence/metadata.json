@@ -1,0 +1,987 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "dc:conformsTo": "http://cldf.clld.org/v1.0/terms.rdf#Generic",
+  "dc:title": "Linduistics source-linked lexical case slice",
+  "dc:description": "A bounded diagnostic export of source entries, senses, normalized relation targets, template-level claim evidence, component analyses, form-level target-entry candidates and their exact return-mention cross-references, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
+  "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
+  "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "tables": [
+    {
+      "url": "languages.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Name",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#name"
+          }
+        ],
+        "primaryKey": "ID"
+      }
+    },
+    {
+      "url": "entries.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Language_ID",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#languageReference"
+          },
+          {
+            "name": "Headword",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#headword"
+          },
+          {
+            "name": "Part_Of_Speech",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Entry_Key",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Etymology_Number",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Origin_Status",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Etymology_Text",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Source etymology text for this entry when present in the selected case data or target-entry lookup."
+          },
+          {
+            "name": "Source_URL",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_File",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Line",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "One-based line number in the recorded local source dump; populated for entries added from the target-entry lookup."
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Language_ID"
+            ],
+            "reference": {
+              "resource": "languages.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "senses.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Entry_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Sense_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Glosses_JSON",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Raw_Glosses_JSON",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Tags_JSON",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "forms.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Language_ID",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#languageReference"
+          },
+          {
+            "name": "Form",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#form"
+          },
+          {
+            "name": "Part_Of_Speech",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Entry_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Entry_Key",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Sense_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Gloss",
+            "datatype": "string",
+            "required": false,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#gloss"
+          },
+          {
+            "name": "Source_Identity_Status",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Language_ID"
+            ],
+            "reference": {
+              "resource": "languages.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "source-relation-targets.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Entry_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Claim_Source_Scope",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "The source etymology claim is attached to this lexical entry, not to an individually identified sense."
+          },
+          {
+            "name": "Claim_Target_Scope",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "The normalized claim target is a form, entity, component list, language only, or no target; form-level claims do not identify one target sense."
+          },
+          {
+            "name": "Relation",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Language_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Form",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Entity_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Normalized entity reference when the source claim points to an entity rather than a plain related form."
+          },
+          {
+            "name": "Components_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Normalized component references carried by this source claim; component candidate matching is detailed in component-links.csv."
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "source-claims.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Template_Occurrence_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Stable identity for the raw source template and its arguments; one template can expand to multiple normalized target claims."
+          },
+          {
+            "name": "Source_Relation_Target_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv."
+          },
+          {
+            "name": "Entry_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Claim_Source_Scope",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "The source etymology claim is attached to this lexical entry, not to an individually identified sense."
+          },
+          {
+            "name": "Claim_Target_Scope",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "The normalized claim target is a form, entity, component list, language only, or no target; form-level claims do not identify one target sense."
+          },
+          {
+            "name": "Relation",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Language_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Form",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Related_Entity_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Normalized entity reference when the source claim points to an entity rather than a plain related form."
+          },
+          {
+            "name": "Components_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Normalized component references carried by this source claim; component candidate matching is detailed in component-links.csv."
+          },
+          {
+            "name": "Source_Uncertain",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Uncertainty flag attached to this template occurrence; missing and explicit false remain distinct."
+          },
+          {
+            "name": "Template_Name",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Wiktionary template occurrence preserved from the source etymology data."
+          },
+          {
+            "name": "Template_Index",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Position of this template occurrence within the source entry."
+          },
+          {
+            "name": "Template_Arguments_JSON",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_URL",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Relation_Target_ID"
+            ],
+            "reference": {
+              "resource": "source-relation-targets.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "component-links.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Parent_Entry_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Relation",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Component_Index",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Component_Form",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Raw_Forms_JSON",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Match_Status",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Result of exact-form lookup in the recorded local dumps; it resolves candidate entries, not senses or historical truth."
+          },
+          {
+            "name": "Candidate_Entry_Keys_JSON",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Candidate_Entry_IDs_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Exported entry IDs for component-entry candidates; compare with the raw keys and resolution status to identify missing source records."
+          },
+          {
+            "name": "Candidate_Entry_Resolution",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Whether every raw component candidate entry key resolved to a source entry in this export."
+          },
+          {
+            "name": "Evidence_JSON",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Parent_Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "shared-component-ancestor-candidates.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Case_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Ancestor_Language_Code",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Ancestor_Form",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Candidate_Basis",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Rule used to project recorded component ancestry across language-specific parent forms."
+          },
+          {
+            "name": "Matched_Uses_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Component uses linked to exported parent and component entry IDs; candidate evidence, not a confirmed whole-word relationship."
+          }
+        ],
+        "primaryKey": "ID"
+      }
+    },
+    {
+      "url": "comparisons.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Case_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Form_A_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Form_B_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Recorded_Root_A",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Recorded_Root_B",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Spelling_Similarity",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Phonetic_Similarity",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Semantic_Similarity",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Legacy_Candidate_Label",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Legacy_Root_Match_Status",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Directed_Row_Count",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Form_A_ID"
+            ],
+            "reference": {
+              "resource": "forms.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Form_B_ID"
+            ],
+            "reference": {
+              "resource": "forms.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "claim-matches.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Claim_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Relation_Target_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv."
+          },
+          {
+            "name": "Comparison_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Comparison_Source_Sense_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Active source sense selected for the linked comparison; the entry-level source claim is not asserted to apply only to this sense."
+          },
+          {
+            "name": "Comparison_Target_Sense_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Active target sense selected for the linked comparison; the form-level source claim does not identify this sense."
+          },
+          {
+            "name": "Target_Identity_Status",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Target_Entry_Key",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Form_Match_Method",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_URL",
+            "datatype": "string",
+            "required": false
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Claim_ID"
+            ],
+            "reference": {
+              "resource": "source-claims.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Relation_Target_ID"
+            ],
+            "reference": {
+              "resource": "source-relation-targets.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Comparison_ID"
+            ],
+            "reference": {
+              "resource": "comparisons.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "claim-target-resolutions.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Claim_ID",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Source_Relation_Target_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv."
+          },
+          {
+            "name": "Target_Language_Code",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Language code named by the source claim; it may be absent from the local dump set and is not a language-table foreign key."
+          },
+          {
+            "name": "Claimed_Form",
+            "datatype": "string",
+            "required": false
+          },
+          {
+            "name": "Match_Status",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Result of exact-form lookup in the recorded local dumps; it resolves candidate entries, not senses or historical truth."
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Claim_ID"
+            ],
+            "reference": {
+              "resource": "source-claims.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Relation_Target_ID"
+            ],
+            "reference": {
+              "resource": "source-relation-targets.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "claim-target-candidates.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Resolution_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Form-level source-claim lookup result referenced by this candidate entry."
+          },
+          {
+            "name": "Target_Entry_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Source entry identified as a spelling candidate; this link does not establish a target sense or relationship."
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Resolution_ID"
+            ],
+            "reference": {
+              "resource": "claim-target-resolutions.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Target_Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "claim-target-cross-references.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "ID",
+            "datatype": "string",
+            "required": true,
+            "propertyUrl": "http://cldf.clld.org/v1.0/terms.rdf#id"
+          },
+          {
+            "name": "Resolution_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Form-level source-claim lookup result referenced by this candidate entry."
+          },
+          {
+            "name": "Source_Claim_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Target-specific source claim that initiated the form lookup."
+          },
+          {
+            "name": "Source_Relation_Target_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv."
+          },
+          {
+            "name": "Target_Entry_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Source entry identified as a spelling candidate; this link does not establish a target sense or relationship."
+          },
+          {
+            "name": "Target_Claim_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Target-entry claim that points back to the source entry's exact language and form; this is an internal source cross-reference, not independent confirmation."
+          },
+          {
+            "name": "Target_Relation_Target_ID",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Normalized relation-and-target record for the target-entry cross-reference."
+          }
+        ],
+        "primaryKey": "ID",
+        "foreignKeys": [
+          {
+            "columnReference": [
+              "Resolution_ID"
+            ],
+            "reference": {
+              "resource": "claim-target-resolutions.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Claim_ID"
+            ],
+            "reference": {
+              "resource": "source-claims.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Source_Relation_Target_ID"
+            ],
+            "reference": {
+              "resource": "source-relation-targets.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Target_Entry_ID"
+            ],
+            "reference": {
+              "resource": "entries.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Target_Claim_ID"
+            ],
+            "reference": {
+              "resource": "source-claims.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          },
+          {
+            "columnReference": [
+              "Target_Relation_Target_ID"
+            ],
+            "reference": {
+              "resource": "source-relation-targets.csv",
+              "columnReference": [
+                "ID"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

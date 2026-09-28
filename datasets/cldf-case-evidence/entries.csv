@@ -1,0 +1,554 @@
+ID,Language_ID,Headword,Part_Of_Speech,Source_Entry_Key,Etymology_Number,Origin_Status,Etymology_Text,Source_URL,Source_File,Source_Line
+entry_00215885f51dc2da51de,de,Ombudsmann,noun,de|Ombudsmann|noun||en-Ombudsmann-de-noun-RJkMZc0g,,,Borrowed from Swedish ombudsman.,https://en.wiktionary.org/wiki/Ombudsmann#German,kaikki_de.jsonl,
+entry_02dd555b9b2a2c614bbe,da,over,noun,da|over|noun|3|en-over-da-noun-SCaypcHD,3,,Shortening of overkrydder.,https://en.wiktionary.org/wiki/over#Danish,kaikki_da.jsonl,
+entry_05e3ab895eda94f6f307,sv,översätta,verb,sv|översätta|verb||en-översätta-sv-verb-3RsWk52I,,,"From Middle Low German ȫversetten, ōversetten, from Old Saxon *ovarsettian, from Proto-West Germanic *ubarsattjan. Equivalent to över + sätta. Cognate with English overset, German übersetzen.",https://en.wiktionary.org/wiki/%C3%B6vers%C3%A4tta#Swedish,kaikki_sv.jsonl,4387
+entry_06b44738bf08aaa1cb87,en,bank,noun,"en|bank|noun|1|en-bank-en-noun-4BFH2~~Y,en-bank-en-noun-DFMXz1F1,en-bank-en-noun-EbsVZYKY,en-bank-en-noun-NOhGOQ-0,en-bank-en-noun-OK68VL0o,en-bank-en-noun-QXMVVvXJ,en-bank-en-noun-SHSEmh-M,en-bank-en-noun-V50rhbbK,en-bank-en-noun-en:Q22687,en-bank-en-noun-kislwFpU",1,,"Etymology tree
+Proto-Indo-European *bʰeg-der.
+Proto-Germanic *bankiz
+Proto-West Germanic *banki
+Lombardic bankbor.
+Italian bancabor.
+Middle French banqueder.
+English bank
+Inherited from Middle English banke, from Middle French banque, from Italian banca (“counter, moneychanger's bench or table”), from Lombardic bank (“bench, counter”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz (“bench, counter”), from Proto-Indo-European *bʰeg- (“to turn, curve, bend, bow”). Doublet of bench, banc, and banco.
+For the bench-bank relation, compare typologically Russian ла́вка (lávka), прила́вок (prilávok).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_0770e59a427bdeb1a028,da,sand,noun,da|sand|noun|2|en-sand-da-noun-4UY59uDI,2,,"From Old Norse sandr, from Proto-Germanic *samdaz/",https://en.wiktionary.org/wiki/sand#Danish,kaikki_da.jsonl,646
+entry_08b8ca425bd4b1cf67fe,en,way,verb,en|way|verb|1|en-way-en-verb-N745n6lG,1,,"Etymology tree
+Proto-Indo-European *weǵʰ-der.
+Proto-Germanic *wegaz
+Proto-West Germanic *weg
+Old English weġ
+Middle English wey
+English way
+From Middle English way, wey, from Old English weġ, from Proto-West Germanic *weg, from Proto-Germanic *wegaz, from Proto-Indo-European *weǵʰ-. Doublet of voe and possibly via.
+Cognates
+Cognate with North Frisian wai, wäi (“way”), Saterland Frisian Wai (“way”), West Frisian wei (“road; way”), Central Franconian Wääch (“way”), Cimbrian bege, bèg (“way”), Dutch weg (“way”), German, Low German Weg (“way”), Limburgish waeg (“way”), Luxembourgish Wee (“way”), Mòcheno be (“way”), Yiddish וועג (veg, “way”), Danish vej (“way”), Faroese and Icelandic vegur (“way”), Norwegian Bokmål veg, vei (“way”), Norwegian Nynorsk veg (“way”), Swedish väg (“way”), Gothic 𐍅𐌹𐌲𐍃 (wigs, “path; road”).",https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12973
+entry_091c25edfaf84e8ba21f,de,Sandbank,noun,de|Sandbank|noun||en-Sandbank-de-noun-vbAn86cC,,,From Sand (“sand”) + Bank (“bank”).,https://en.wiktionary.org/wiki/Sandbank#German,kaikki_de.jsonl,46687
+entry_09f7439e76cb1386b53e,de,bleiben,verb,"de|bleiben|verb||en-bleiben-de-verb-Fc8Mk5jo,en-bleiben-de-verb-IbxceEyu,en-bleiben-de-verb-Opdue8dB,en-bleiben-de-verb-RQTxZiXu,en-bleiben-de-verb-U8IfyViv,en-bleiben-de-verb-bL4iRYVW,en-bleiben-de-verb-e1PDOVDi",,,"From Middle High German blīben, belīben (“to remain in the same position, pause, blin”), from Old High German bilīban (“to remain”), from Proto-Germanic *bilībaną (“to remain”), from Proto-Indo-European *leyp- (“to stick, glue”). Cognate with Dutch blijven (“to remain”), English belive (“to remain, stay”). More at belive.",https://en.wiktionary.org/wiki/bleiben#German,kaikki_de.jsonl,8094
+entry_0bb86269b5fa382a0edd,de,Sand,noun,de|Sand|noun||en-Sand-de-noun-vdam3gkV,,,"From Middle High German sant, from Old High German sant, from Proto-West Germanic *sand, *samd, from Proto-Germanic *sandaz, *samdaz.
+The forms with -n- are due to early assimilation. The more original form with -m- is attested in Middle High German sambt, sampt, which survives in some Bavarian dialects and in Yiddish זאַמד (zamd). Further cognate with Dutch zand, Low German Sand, English sand, Danish sand.",https://en.wiktionary.org/wiki/Sand#German,kaikki_de.jsonl,5161
+entry_0c87d2fac2909d9070a3,en,over,adj,"en|over|adj|1|en-over-en-adj--GfFkdFR,en-over-en-adj-E-Ds6Aoj,en-over-en-adj-YrRNpUZd,en-over-en-adj-YybIq1Hb,en-over-en-adj-bfKqt9u9,en-over-en-adj-en:hopeless,en-over-en-adj-jXETW19d,en-over-en-adj-o5kj3Unf",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20988
+entry_0cc4b9e2eeed10bd6e91,de,Gut,noun,de|Gut|noun|2|en-Gut-de-noun-miLyXQuz,2,,From the adjective gut (“good”).,https://en.wiktionary.org/wiki/Gut#German,kaikki_de.jsonl,4017
+entry_0cc7112e4dfb330267c3,de,Clown,noun,de|Clown|noun||en-Clown-de-noun-1hgg1T-f,,,Borrowed from English clown.,https://en.wiktionary.org/wiki/Clown#German,kaikki_de.jsonl,
+entry_0cf70e52a36e4c6924df,sv,man,pron,"sv|man|pron|1|en-man-sv-pron-GaqWCqo-,en-man-sv-pron-sv:one",1,,"From Old Swedish maþer, mander, from Old Norse maðr, from Proto-Germanic *mann-.",https://en.wiktionary.org/wiki/man#Swedish,kaikki_sv.jsonl,86
+entry_0e218055d6bfd5ccb7d6,en,corf,noun,"en|corf|noun||en-corf-en-noun-Cc5kYeBM,en-corf-en-noun-IR6uzTgJ,en-corf-en-noun-uRoEa-hn",,,"From Middle English corf, borrowed from Middle Low German korf or Middle Dutch korf, ultimately from Proto-West Germanic *korb.",https://en.wiktionary.org/wiki/corf#English,kaikki_en.jsonl,231521
+entry_0f36ee63f8f9a7a7aada,en,bench,noun,"en|bench|noun|1|en-bench-en-noun-1fl9XHcN,en-bench-en-noun-3S-pPte-,en-bench-en-noun-A9HbpuTy,en-bench-en-noun-B6xbRWkH,en-bench-en-noun-C0~jJVvd,en-bench-en-noun-Dpi3GB5m,en-bench-en-noun-EPchqeTN,en-bench-en-noun-NwnPk86c,en-bench-en-noun-WvqQ6Sz-,en-bench-en-noun-cl9sdOkx,en-bench-en-noun-en:Q204776,en-bench-en-noun-hAISMtZ0,en-bench-en-noun-sIl3aVwF,en-bench-en-noun-ss-JN8LE,en-bench-en-noun-ul45SLJs,en-bench-en-noun-xc631bqj",1,,"From Middle English bench, benk, bynk, from Old English benċ (“bench”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz (“bench”), from Proto-Indo-European *bʰeg-.
+Cognate with Scots benk, bink (“bench”), West Frisian bank (“bench”), Dutch bank (“bench”), German Bank (“bench”), Danish bænk (“bench”), Swedish bänk (“bench”), Icelandic bekkur (“bench”). Doublet of banc, banco, and bank.",https://en.wiktionary.org/wiki/bench#English,kaikki_en.jsonl,2806
+entry_103253551ae7234d5a66,en,step-,prefix,en|step-|prefix||en-step--en-prefix-FoH2ZpNV,,,"From Middle English step-, from Old English stēop- (“deprived of a relative, step-”, prefix), from Proto-West Germanic *steupa-, from Proto-Germanic *steupa- (“orphaned, step-”), from Proto-Indo-European *(s)tewp- (“to push, strike”).
+Cognate with Scots step- (“step-”), West Frisian stiep- (“step-”), Dutch stief- (“step-”), Low German steef- (“step-”), German stief- (“step-”), Swedish styv- (“step-”), Icelandic stjúp- (“step-”). Related to Old English stīepan (“to deprive, bereave”). Not, however, related to the familiar English noun or verb step.",https://en.wiktionary.org/wiki/step-#English,kaikki_en.jsonl,14021
+entry_11529eb08e2615f323fd,en,way,noun,en|way|noun|2|en-way-en-noun-en:glass,2,,Apheresis of away.,https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12976
+entry_1179fe034250d6e717d9,en,set,adj,"en|set|adj|3|en-set-en-adj-1ElNGek6,en-set-en-adj-5WwBZeiu,en-set-en-adj-AgIrtOJJ,en-set-en-adj-IdBzwCnB,en-set-en-adj-ihGkl4bq,en-set-en-adj-lZSpau3r,en-set-en-adj-lyYT2ETv",3,,"From Middle English sett, from Old English ġesett, past participle of settan.",https://en.wiktionary.org/wiki/set#English,kaikki_en.jsonl,7699
+entry_125ea856bd285af92e35,da,ombudsmand,noun,da|ombudsmand|noun||en-ombudsmand-da-noun-RJkMZc0g,,,"From ombud (“public duty”) + mand (“man”), from Old Danish umbuzman, from Old Norse umboðsmaðr (“commissary, steward”).",https://en.wiktionary.org/wiki/ombudsmand#Danish,kaikki_da.jsonl,
+entry_156430e03d49ab526f6b,da,mand,noun,"da|mand|noun||en-mand-da-noun-e~vwn0Ue,en-mand-da-noun-vtrl3M0o",,,"From Old Danish man, from Old Norse *mannʀ, (west) maðr, from Proto-Germanic *mannz, *man(n)ô, cognate with Norwegian mann, Swedish man, English man, German Mann. Doublet of man.",https://en.wiktionary.org/wiki/mand#Danish,kaikki_da.jsonl,
+entry_17e7d9a110b071746db5,en,set,noun,"en|set|noun|4|en-set-en-noun-5Uzn8ily,en-set-en-noun-5XKfaFSq,en-set-en-noun-Bv7pAMXk,en-set-en-noun-KHZE5vS8,en-set-en-noun-LUi-uOh4,en-set-en-noun-PQt1QFhO,en-set-en-noun-YfWtz4GN,en-set-en-noun-en:exercise,en-set-en-noun-en:matching_collection,en-set-en-noun-en:math_collection,en-set-en-noun-en:musical_performance_comprising_several_pieces,en-set-en-noun-en:tennis,en-set-en-noun-f3L3WgJN,en-set-en-noun-i9q7RF24,en-set-en-noun-n2YNV2VX,en-set-en-noun-nT6Jj~dd,en-set-en-noun-qvI5DdgW,en-set-en-noun-sAcFmYb5,en-set-en-noun-tQAtWW5B,en-set-en-noun-vxbpJiM6,en-set-en-noun-zCpBHBD0",4,,"From Middle English set, sete, sette (“that which is set, the act of setting, seat”), from Old English set (“setting, seat, a place where people remain, habitation, camp, entrenchment, a place where animals are kept, stall, fold”) and Old English seten (“a set, shoot, slip, branch; a nursery, plantation; that which is planted or set; a cultivated place; planting, cultivation; a setting, putting; a stopping; occupied land”), related to Old English settan (“to set”). Compare Middle Low German gesette (“a set, suite”), Old English gesetl (“assembly”). According to Skeat, in senses denoting a group of things or persons, representing an alteration of sept, from Old French sette (“a religious sect”), from Medieval Latin secta (“retinue”), from Latin secta (“a faction”). See sect. It is quite possible that the modern word is more of a merger between both, however.",https://en.wiktionary.org/wiki/set#English,kaikki_en.jsonl,7700
+entry_18ef1c0f6da5f89acf1c,da,berøve,verb,da|berøve|verb||en-berøve-da-verb-ST4IzVhe,,,"By surface analysis, be- + røve.
+From Middle Low German beroven, from Proto-Germanic *biraubōną.
+Cognate of Swedish beröva and Norwegian Bokmål berøve, Gothic 𐌱𐌹𐍂𐌰𐌿𐌱𐍉𐌽 (biraubōn), Dutch beroven, English bereave.",https://en.wiktionary.org/wiki/ber%C3%B8ve#Danish,kaikki_da.jsonl,52596
+entry_1e2da8ec574a5922b0a0,sv,ombudsman,noun,sv|ombudsman|noun||en-ombudsman-sv-noun-RJkMZc0g,,,"From Old Swedish umbuds man or ombud (“representative, proxy”) + man. The origin of the word is found in Old Norse umboðsmaðr and the word “umbuds man”, meaning representative. The first preserved use in Swedish is from 1552.",https://en.wiktionary.org/wiki/ombudsman#Swedish,kaikki_sv.jsonl,3593
+entry_1ee40804772dfb1e4eaa,en,way,noun,"en|way|noun|1|en-way-en-noun-1t0XQcM9,en-way-en-noun-6al9yOqD,en-way-en-noun-EA5hghRm,en-way-en-noun-GFXWLZi6,en-way-en-noun-MIxhhzGb,en-way-en-noun-RikzAkMn,en-way-en-noun-UTDJcPR-,en-way-en-noun-ViQr-keE,en-way-en-noun-aKneHHK5,en-way-en-noun-en:manner,en-way-en-noun-en:manner1,en-way-en-noun-hDw7unEz,en-way-en-noun-pYxBcS3i,en-way-en-noun-scz4Tmu5,en-way-en-noun-tsudnjdO",1,,"Etymology tree
+Proto-Indo-European *weǵʰ-der.
+Proto-Germanic *wegaz
+Proto-West Germanic *weg
+Old English weġ
+Middle English wey
+English way
+From Middle English way, wey, from Old English weġ, from Proto-West Germanic *weg, from Proto-Germanic *wegaz, from Proto-Indo-European *weǵʰ-. Doublet of voe and possibly via.
+Cognates
+Cognate with North Frisian wai, wäi (“way”), Saterland Frisian Wai (“way”), West Frisian wei (“road; way”), Central Franconian Wääch (“way”), Cimbrian bege, bèg (“way”), Dutch weg (“way”), German, Low German Weg (“way”), Limburgish waeg (“way”), Luxembourgish Wee (“way”), Mòcheno be (“way”), Yiddish וועג (veg, “way”), Danish vej (“way”), Faroese and Icelandic vegur (“way”), Norwegian Bokmål veg, vei (“way”), Norwegian Nynorsk veg (“way”), Swedish väg (“way”), Gothic 𐍅𐌹𐌲𐍃 (wigs, “path; road”).",https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12971
+entry_20913999c5967f6be128,en,man,noun,"en|man|noun|1|en-man-en-noun-3arccacy,en-man-en-noun-5vDC5hpX,en-man-en-noun-DgAbKv1E,en-man-en-noun-LpKdgIYO,en-man-en-noun-OWGvT5iL,en-man-en-noun-OgLUKp03,en-man-en-noun-RF~8s0Ql,en-man-en-noun-SD9Sd3fa,en-man-en-noun-TpN5NJyX,en-man-en-noun-en:Q5,en-man-en-noun-en:male_servant,en-man-en-noun-en:vocatively__with_friendliness_etc,en-man-en-noun-en:vocatively__with_impatience_etc,en-man-en-noun-hH5IMmxq,en-man-en-noun-hpjTZItK,en-man-en-noun-iOPniJzb,en-man-en-noun-pEZ1BPWN,en-man-en-noun-pkOzBOEN,en-man-en-noun-sYWqSi19,en-man-en-noun-xSyH8YP3,en-man-en-noun-zEg1swrY,en-man-en-noun-~RBFV3sb",1,,"From Middle English man, from Old English mann m (“human being, person, man”), from Proto-West Germanic *mann, from Proto-Germanic *mann- (“man”), from Proto-Indo-European *mon- (“human being, man”). Doublet of mann and Manu.
+Cognates
+This word has many cognates, in every Germanic language (whether extant or extinct), with similarities in form and meaning.
+Virtually all the words below mean “man” and “husband”, with some specific cases noted.
+In Ingvaeonic (the languages closest to English):
+:* Low German Mann
+:* North Frisian maan, man, moon, muon
+:* Saterland Frisian Mon
+:* Scots man
+:* West Frisian man
+:* Yola man
+In the remainder of West Germanic:
+:* Alemannic German ma, Maa, Mann, mo, mà, Mànn
+:* Bavarian Mo, mon, moon, Må, mònn
+:* Cimbrian man, mann, månn
+:* Dutch, Limburgish, and Zealandic man
+:* German and Luxembourgish Mann
+:* Mòcheno mònn
+:* Vilamovian maon, mon, mōn
+:* Yiddish מאַן (man)
+In East Germanic:
+:* Gothic 𐌼𐌰𐌽𐌽𐌰 (manna), which meant “man”, “human“ and “person”, but likely also “husband”
+In North Germanic:
+:* Danish mand
+:* Faroese and Icelandic maður, both additionally meaning “human” and “person”, as in Old Norse
+:* Gutnish and Swedish man
+:* Norn, Norwegian Bokmål, and Norwegian Nynorsk mann
+:* Norwegian Nynorsk mainnj
+:* Old Norse maðr
+Outside Germanic:
+: Indo-Iranian:
+::* Avestan 𐬨𐬀𐬥𐬎𐬱 (manuš, “human”)
+::* Sanskrit मनुस् (manus, “human”), मनु (manu, “human; humanity; thought”; “thinking; wise; intelligent”)
+::* Also Sanskrit म॒नु॒ष्य॑ (manuṣyà, “human; man; huband”, whence English manusya)
+: Slavic (all of these mean “man” and “husband”, though in some cases the former is no longer part of the modern standard):
+::* Belarusian, Russian, and Ukrainian муж (muž)
+::* Bulgarian мъж (măž)
+::* Czech and Slovak muž
+::* Macedonian маж (maž)
+::* Polish mąż (“husband”; the meaning “man” is obsolete, akin to English wife)
+::* Serbo-Croatian му̑ж, mȗž
+::* Slovene mož",https://en.wiktionary.org/wiki/man#English,kaikki_en.jsonl,1357
+entry_23d0a195628752be57c1,sv,bankman,noun,sv|bankman|noun||en-bankman-sv-noun-faUPxsdd,,,bank + man. Attested since 1878.,https://en.wiktionary.org/wiki/bankman#Swedish,kaikki_sv.jsonl,
+entry_240854356bd29c1459fb,de,gut,adj,"de|gut|adj||en-gut-de-adj--fUyS8HH,en-gut-de-adj-8yztZW1h,en-gut-de-adj-Fjfkq6kS,en-gut-de-adj-I-9TmtQS,en-gut-de-adj-jU2iEc2M,en-gut-de-adj-jr-9a6Xw",,,"Inherited from Middle High German guot, from Old High German guot, from Proto-West Germanic *gōd, from Proto-Germanic *gōdaz, from Proto-Indo-European *gʰedʰ- (“to unite, be associated, suit”).
+Cognates
+Cognate to Luxembourgish gutt, Silesian East Central German gutt, Dutch goed, West Frisian goed, Saterland Frisian goud, English good, Danish god, Norwegian god and Swedish god.",https://en.wiktionary.org/wiki/gut#German,kaikki_de.jsonl,724
+entry_25cb9d98d3e8335b9955,en,set,verb,en|set|verb|5|en-set-en-verb-2Oy5foaW,5,,"(This etymology is missing or incomplete. Please add to it, or discuss it at the Etymology scriptorium. )",https://en.wiktionary.org/wiki/set#English,kaikki_en.jsonl,7701
+entry_265ae13d9c2daa8481f4,en,banco,verb,en|banco|verb|2|en-banco-en-verb-Fw~~s~co,2,,"Borrowed from Italian banco. Doublet of banc, bank, and bench.",https://en.wiktionary.org/wiki/banco#English,kaikki_en.jsonl,56450
+entry_29ce1dcbea6fbf30a1d4,sv,god,adj,"sv|god|adj||en-god-sv-adj-0iza2YB0,en-god-sv-adj-E~68ILWk,en-god-sv-adj-KQP9DPSx,en-god-sv-adj-igEjiyJu,en-god-sv-adj-wQVoLDAH,en-god-sv-adj-y8K00e-k",,,"Inherited from Old Swedish gōþer, from Old Norse góðr, from Proto-Germanic *gōdaz, from Proto-Indo-European *gʰedʰ- (“to join, to unite”).",https://en.wiktionary.org/wiki/god#Swedish,kaikki_sv.jsonl,426
+entry_2d68d3bbdfcabbb60ab0,da,god,adj,da|god|adj||en-god-da-adj-dw5gdiTW,,,"Inherited from Old Danish gōþær, gothær, from Old Norse góðr (“good”), from Proto-Germanic *gōdaz. Cognate with English good and German gut.",https://en.wiktionary.org/wiki/god#Danish,kaikki_da.jsonl,365
+entry_30e0dd7524cd2283bcca,en,bank,noun,"en|bank|noun|2|en-bank-en-noun-5bPdnpz3,en-bank-en-noun-QoaLxiCo,en-bank-en-noun-VQhgaCZ~,en-bank-en-noun-XZqDo3Yx,en-bank-en-noun-YnQlvUwG,en-bank-en-noun-awcojz0N,en-bank-en-noun-en:Q2897058,en-bank-en-noun-en:shoal_such_as_sandbank,en-bank-en-noun-wU8LtJ-1",2,,"From Middle English bank, banke, from Old English *banca (“bench”) (attested in Old English hōbanca (“couch”) and Old English banc (“bank, hillock, embankment”), from Proto-West Germanic *bankō, from Proto-Germanic *bankô. Akin to Old Norse bakki (“elevation, hill”), Norwegian bakke (“slope, hill”).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_34e6cf99242ac08a4470,en,banco,adj,en|banco|adj|1|en-banco-en-adj-CnWR-wO-,1,,"From in banco, from Latin in banco.",https://en.wiktionary.org/wiki/banco#English,kaikki_en.jsonl,56448
+entry_35d9c8dd6366612388dc,de,rauben,verb,"de|rauben|verb||en-rauben-de-verb-BeVpFyoZ,en-rauben-de-verb-VE34Cl8d,en-rauben-de-verb-lyKlOgJh",,,"From Middle High German rouben, from Old High German roubōn, from Proto-West Germanic *raubōn, from Proto-Germanic *raubōną.",https://en.wiktionary.org/wiki/rauben#German,kaikki_de.jsonl,1265
+entry_361b343f2104d0d9f585,en,banc,noun,en|banc|noun|2|en-banc-en-noun-JkrK3RPr,2,,A respelling of bank.,https://en.wiktionary.org/wiki/banc#English,kaikki_en.jsonl,43781
+entry_37521c63f26c6ed3dfa0,en,way,intj,en|way|intj|1|en-way-en-intj-en:yes,1,,"Etymology tree
+Proto-Indo-European *weǵʰ-der.
+Proto-Germanic *wegaz
+Proto-West Germanic *weg
+Old English weġ
+Middle English wey
+English way
+From Middle English way, wey, from Old English weġ, from Proto-West Germanic *weg, from Proto-Germanic *wegaz, from Proto-Indo-European *weǵʰ-. Doublet of voe and possibly via.
+Cognates
+Cognate with North Frisian wai, wäi (“way”), Saterland Frisian Wai (“way”), West Frisian wei (“road; way”), Central Franconian Wääch (“way”), Cimbrian bege, bèg (“way”), Dutch weg (“way”), German, Low German Weg (“way”), Limburgish waeg (“way”), Luxembourgish Wee (“way”), Mòcheno be (“way”), Yiddish וועג (veg, “way”), Danish vej (“way”), Faroese and Icelandic vegur (“way”), Norwegian Bokmål veg, vei (“way”), Norwegian Nynorsk veg (“way”), Swedish väg (“way”), Gothic 𐍅𐌹𐌲𐍃 (wigs, “path; road”).",https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12972
+entry_3a4b95fc37d2fd78c57d,nb,kurv,noun,"nb|kurv|noun|1|en-kurv-nb-noun-0RKMu3tN,en-kurv-nb-noun-0zT2ybHL,en-kurv-nb-noun-4bCeNujo,en-kurv-nb-noun-5KrZnWku,en-kurv-nb-noun-DuvQWKpp,en-kurv-nb-noun-TJxFJl-0,en-kurv-nb-noun-TO8yeMWu,en-kurv-nb-noun-h3Pvk2WT,en-kurv-nb-noun-p97yDGWM",1,,"Borrowed from Danish kurv, from Old Danish korw, itself borrowed from Middle Low German korf, from Old Saxon *korf, from Proto-West Germanic *korb. The further origin is uncertain; a traditional connection with Latin corbis (“basket”) is disputed. The basketball sense is a semantic loan from English basket.
+Compare Norwegian Nynorsk korg, Faroese kurv, Icelandic korf, Swedish korg, Dutch korf and German Korb (“basket”), as well as English corf (“basket used in mining”).",https://en.wiktionary.org/wiki/kurv#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_3a5dabd0821c08a3c484,en,good,noun,"en|good|noun|3|en-good-en-noun-6QkHKcqR,en-good-en-noun-EMvGcC~G,en-good-en-noun-T2GrqCsj,en-good-en-noun-en:merchandise,en-good-en-noun-en:property",3,,"Inherited from Middle English good, god, from Old English gōd (“a good thing, advantage, benefit, gift; good, goodness, welfare; virtue, ability, doughtiness; goods, property, wealth”), from Proto-Germanic *gōdą (“goods, belongings”), from Proto-Indo-European *gʰedʰ-, *gʰodʰ- (“to unite, be associated, suit”). Compare German Gut (“item of merchandise; estate; property”).",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4086
+entry_3ae4e7081de1fac2a0a9,da,man,verb,da|man|verb|3|en-man-da-verb-mdFX5K5a,3,,See the etymology of the corresponding lemma form.,https://en.wiktionary.org/wiki/man#Danish,kaikki_da.jsonl,70
+entry_3b5a0164efafbd5ac802,en,sand,noun,en|sand|noun|3|en-sand-en-noun-n6CkRK2q,3,,,https://en.wiktionary.org/wiki/sand#English,kaikki_en.jsonl,9007
+entry_3c4d2c87a37847db24d9,de,Arbeit,noun,"de|Arbeit|noun||en-Arbeit-de-noun-1y4O2GkT,en-Arbeit-de-noun-QP2og64U,en-Arbeit-de-noun-UKyN4gIZ,en-Arbeit-de-noun-dxriq9jT,en-Arbeit-de-noun-romOMdls",,,"From Middle High German arbeit, from Old High German arbeit, from Proto-West Germanic *arbaiþi, from Proto-Germanic *arbaidiz, ultimately from Proto-Indo-European *h₃órbʰos (“orphan, servant, slave”), from which English orphan is also derived. Cognate with Yiddish אַרבעט (arbet), Middle English arveth.",https://en.wiktionary.org/wiki/Arbeit#German,kaikki_de.jsonl,8225
+entry_3d049d3b5fe50a678049,en,basket,noun,"en|basket|noun||en-basket-en-noun-01Bmitz3,en-basket-en-noun-0pKJZhx0,en-basket-en-noun-2TqH178s,en-basket-en-noun-7KQOXE56,en-basket-en-noun-GV-7OUP~,en-basket-en-noun-Gpq-dP2B,en-basket-en-noun-I9rAmFyb,en-basket-en-noun-OV-JbzKa,en-basket-en-noun-jCgmJBnr,en-basket-en-noun-jS6e~cbp,en-basket-en-noun-kwAN9LEB,en-basket-en-noun-mao~5Jdd,en-basket-en-noun-q329y1lB,en-basket-en-noun-s7QxgZI7,en-basket-en-noun-vCyG6sT2,en-basket-en-noun-w6PivlO~,en-basket-en-noun-w6RUK-ID,en-basket-en-noun-xCp5ywAs,en-basket-en-noun-x~1c8WQu,en-basket-en-noun-yDnlpWiC",,,"Etymology tree
+Proto-Celtic *baskis
+Proto-Brythonicder.
+Late Latin bascauda
+Anglo-Norman bascatbor.
+Middle English basket
+English basket
+From Middle English basket, from Anglo-Norman baschet, basket, bascat, from latin
+bascauda. Displaced native Old English mand.
+One theory is that it derives from Late Latin bascauda (“kettle, table-vessel”), from Proto-Brythonic (in Breton baskodenn), from Proto-Celtic *baskis (“bundle, load”), from purported Proto-Indo-European *bʰask- (“bundle”), but this is now widely viewed as a substrate word for phonetic reasons. Related to Latin fascis (“bundle, package, load”) (whence English fasces), Albanian bokshe (“bundle”), Breton bac'h (“bundle, load”), Ancient Greek φάκελος (phákelos) and βάσκιοι (báskioi) (“bundle (of sticks)”); see also faggot (“(originally) bundle of sticks”).",https://en.wiktionary.org/wiki/basket#English,kaikki_en.jsonl,7444
+entry_3dcb69ebdae5ca8b6246,sv,be-,prefix,sv|be-|prefix||en-be--sv-prefix-29Cotflc,,,,https://en.wiktionary.org/wiki/be-#Swedish,kaikki_sv.jsonl,12845
+entry_405a227537db4f912668,sv,ombud,noun,"sv|ombud|noun||en-ombud-sv-noun-7~o2AZfQ,en-ombud-sv-noun-D5upKqUQ,en-ombud-sv-noun-EVNrN4Hc",,,From Old Swedish umbuþ‚ from Old Norse umboð. Akin to om + bud.,https://en.wiktionary.org/wiki/ombud#Swedish,kaikki_sv.jsonl,
+entry_42b6271a923fe0047eb2,sv,över,adv,"sv|över|adv||en-över-sv-adv-5EnJOcTb,en-över-sv-adv-ChQd5aNY,en-över-sv-adv-PWrsBJGq,en-över-sv-adv-xKBQ6Qae",,,"From Old Swedish ivir, yvir, ø̄wer, from Runic Swedish ufiR, from Old Norse yfir, from Proto-Germanic *ubiri, from Proto-Indo-European *upéri, from *upér, from *upo.",https://en.wiktionary.org/wiki/%C3%B6ver#Swedish,kaikki_sv.jsonl,
+entry_4302caca5572c5014666,en,over,prep,"en|over|prep|1|en-over-en-prep--bWFZRdb,en-over-en-prep-5ylfWDoR,en-over-en-prep-6hCVL-5a,en-over-en-prep-Cmru0G3E,en-over-en-prep-DsLaZaiI,en-over-en-prep-HN~s50D5,en-over-en-prep-Hxg9LUnh,en-over-en-prep-Ka9THmcq,en-over-en-prep-MPc7oq1W,en-over-en-prep-MvmARFrA,en-over-en-prep-O31gZwIL,en-over-en-prep-RwRndSVP,en-over-en-prep-VDQ369xI,en-over-en-prep-bf3-z3pk,en-over-en-prep-ePhTGYdF,en-over-en-prep-jwpX7DDs,en-over-en-prep-odnaW5gB,en-over-en-prep-rf6ibwGL,en-over-en-prep-rxBr7-oM,en-over-en-prep-sAT3HQ3r,en-over-en-prep-ts6n6J-2,en-over-en-prep-wAmUrvkT,en-over-en-prep-yjPW1F3Z",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20991
+entry_455e88c4f6ddb7c6e26f,en,bereave,verb,"en|bereave|verb||en-bereave-en-verb-86bbIK6s,en-bereave-en-verb-UX6B8cd8,en-bereave-en-verb-dfXMm1wL,en-bereave-en-verb-nT51c~Sw,en-bereave-en-verb-ye8e~eAO",,,"Inherited from Middle English bireven, from Old English berēafian (“to bereave, deprive of, take away, seize, rob, despoil”), from Proto-Germanic *biraubōną, and Old English berēofan (“to bereave, deprive, rob of”); both equivalent to be- + reave. Cognate with Dutch beroven (“to rob, deprive, bereave”), German berauben (“to deprive, rob, bereave”), Danish berøve (“to deprive of”), Norwegian berøve (“to deprive”), Swedish beröva (“to rob”), Gothic 𐌱𐌹𐍂𐌰𐌿𐌱𐍉𐌽 (biraubōn).",https://en.wiktionary.org/wiki/bereave#English,kaikki_en.jsonl,41054
+entry_4b39928a17f3a20df164,en,bank,noun,"en|bank|noun|3|en-bank-en-noun-0zdZvE6j,en-bank-en-noun-VqUAyN2d,en-bank-en-noun-fO~o2GfJ,en-bank-en-noun-oVHXptK9",3,,"From Middle English bank, banke, from Old French banc (“bench”), from Frankish *banki, from Proto-Germanic *bankiz (“bench”). Akin to Old English benċ (“bench”).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_4ec32de11d4fb7b7797f,de,übersetzen,verb,"de|übersetzen|verb|2|en-übersetzen-de-verb-ZP4uDmFk,en-übersetzen-de-verb-jozdUu0R",2,,"From Middle High German übersetzen, from Old High German ubarsezzen, from Proto-West Germanic *ubarsattjan. Equivalent to über- + setzen. Cognates include Dutch overzetten and English overset.",https://en.wiktionary.org/wiki/%C3%BCbersetzen#German,kaikki_de.jsonl,1001
+entry_51096f8b7943890df5eb,sv,röva,verb,sv|röva|verb||en-röva-sv-verb-uUBNwX1O,,,"From Old Swedish röva, from Old Norse reyfa, from Proto-Germanic *raubijaną, with influence from Middle Low German rôven. Equivalent to rov + -a.",https://en.wiktionary.org/wiki/r%C3%B6va#Swedish,kaikki_sv.jsonl,20520
+entry_51c8695ff3b582a8956c,en,way,noun,en|way|noun|3|en-way-en-noun-y823ymPt,3,,"From the sound it represents, by analogy with other (velar) letters such as kay and gay.",https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12977
+entry_51f84fb893b260cfa344,da,bank,noun,da|bank|noun|1|en-bank-da-noun--Cc-6SxK,1,,"Borrowed from French banque, from Italian banco (“bench”).",https://en.wiktionary.org/wiki/bank#Danish,kaikki_da.jsonl,
+entry_5b7ab044e1a352ac84e1,sv,över,prep,"sv|över|prep||en-över-sv-prep-ChQd5aNY,en-över-sv-prep-VO8HwZn5,en-över-sv-prep-iMfwjQvl,en-över-sv-prep-u3hPUeK6",,,"From Old Swedish ivir, yvir, ø̄wer, from Runic Swedish ufiR, from Old Norse yfir, from Proto-Germanic *ubiri, from Proto-Indo-European *upéri, from *upér, from *upo.",https://en.wiktionary.org/wiki/%C3%B6ver#Swedish,kaikki_sv.jsonl,
+entry_5f96af4c5afa4271339a,da,man,pron,"da|man|pron|2|en-man-da-pron-Lj6IIh6~,en-man-da-pron-TyRhTsOt,en-man-da-pron-UHxbLIek",2,,The same word as the noun mand (“man”). Calque of German man.,https://en.wiktionary.org/wiki/man#Danish,kaikki_da.jsonl,69
+entry_5fadd1b476780c6d4174,en,good,adv,en|good|adv|2|en-good-en-adv-qs5Y~kfT,2,,"Inherited from Middle English goode (“good, well”, adverb), from the adjective. Compare Dutch goed (“good, well”, adverb), German gut (“good, well”, adverb), Danish godt (“good, well”, adverb), Swedish gott (“good, well”, adverb), all from the adjective.",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4085
+entry_5fe693697987f6f3fe77,en,man,verb,"en|man|verb|2|en-man-en-verb-2vYbU90h,en-man-en-verb-NQcnfVWN,en-man-en-verb-NcyISsbo,en-man-en-verb-XutjR-Cp,en-man-en-verb-en:falconry",2,,"From Middle English mannen, from Old English mannian, ġemannian (“to man, supply with men, populate, garrison”), from mann (“human being, man”).
+Cognates
+* Dutch bemannen (“to man”)
+* German bemannen (“to man”)
+* Danish bemande (“to man”)
+* Swedish bemanna (“to man”)
+* Icelandic manna (“to supply with men, to man”)",https://en.wiktionary.org/wiki/man#English,kaikki_en.jsonl,1360
+entry_60aa7b0251e4043992c2,nb,bli,verb,nb|bli|verb|2|en-bli-nb-verb-qRiJ~DVm,2,,See the etymology of the corresponding lemma form.,https://en.wiktionary.org/wiki/bli#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,4298
+entry_630ec1a21bcbdecfa302,en,banco,noun,"en|banco|noun|2|en-banco-en-noun--JnC-NlC,en-banco-en-noun-d06f5w88",2,,"Borrowed from Italian banco. Doublet of banc, bank, and bench.",https://en.wiktionary.org/wiki/banco#English,kaikki_en.jsonl,56449
+entry_6332e483100371fe0e93,sv,ramslök,noun,sv|ramslök|noun||en-ramslök-sv-noun-WSvWEpPD,,,"rams + lök. The first part is from Middle Low German ramese (“ramson”), from Old Saxon *hramuso, from Proto-West Germanic *hramusō.
+Cognate with Norwegian Nynorsk ramslauk and Danish ramsløg. Cognates amoung non-Scandinavian languages are Lithuanian kermùšė (and šermukšnis), Russian черемша (čeremša) (and черёмуха (čerjómuxa)), Czech střemcha, Slovene čemaž, Serbo-Croatian сремуш, Ancient Greek κρόμμυον (krómmuon) and Irish creamh.",https://en.wiktionary.org/wiki/ramsl%C3%B6k#Swedish,kaikki_sv.jsonl,132678
+entry_63d0ed0f2414f8d593cd,nb,god,adj,nb|god|adj||en-god-nb-adj-dw5gdiTW,,,"Inherited from Old Norse góðr, from Proto-Germanic *gōdaz, from Proto-Indo-European *gʰedʰ- (“to join, to unite”).",https://en.wiktionary.org/wiki/god#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,407
+entry_64b72c8555478bac89d9,sv,lök,noun,"sv|lök|noun||en-lök-sv-noun-27xPIvnv,en-lök-sv-noun-93hsQtyg,en-lök-sv-noun-KIlxZxaF,en-lök-sv-noun-b2ikNtpM,en-lök-sv-noun-h94gk8~t,en-lök-sv-noun-z3vPFZQT",,,"From Old Swedish lø̄ker, from Old Norse laukr, from Proto-Norse ᛚᚨᚢᚲᚨᛉ (laukaʀ), from Proto-Germanic *laukaz.",https://en.wiktionary.org/wiki/l%C3%B6k#Swedish,kaikki_sv.jsonl,
+entry_65a423ea894a8413458d,da,klovn,noun,da|klovn|noun||en-klovn-da-noun-~YzHebzk,,,Borrowed from English clown.,https://en.wiktionary.org/wiki/klovn#Danish,kaikki_da.jsonl,
+entry_66b228c16fcc06e90ab5,da,sidde,verb,"da|sidde|verb||en-sidde-da-verb-B~nvDpLM,en-sidde-da-verb-CvEgfuq9,en-sidde-da-verb-XICXyloH,en-sidde-da-verb-XSeCVgAL",,,"From Old Danish sitiæ, sitia, sitæ, from Old Norse sitja, from Proto-Germanic *sitjaną, cognate with English sit, German sitzen. The Germanic verb goes back to Proto-Indo-European *sed- (“sit”), cf. Latin sedeō.",https://en.wiktionary.org/wiki/sidde#Danish,kaikki_da.jsonl,17353
+entry_6837921581d55b47b7a4,sv,clown,noun,sv|clown|noun||en-clown-sv-noun-~YzHebzk,,,Borrowed from English clown.,https://en.wiktionary.org/wiki/clown#Swedish,kaikki_sv.jsonl,
+entry_6848133f2dc58619965b,sv,vägg,noun,sv|vägg|noun||en-vägg-sv-noun-u8Wz8xoR,,,"From Old Swedish væg f, vægger m, from Old Norse veggr, from Proto-Germanic *wajjuz. Cognate with Danish væg, Norwegian vegg, Icelandic veggur, Gothic *𐍅𐌰𐌳𐌳𐌾𐌿𐍃 (*waddjus).",https://en.wiktionary.org/wiki/v%C3%A4gg#Swedish,kaikki_sv.jsonl,13890
+entry_6a02b3d5cca3542b7bd0,nb,arbeid,noun,nb|arbeid|noun|1|en-arbeid-nb-noun-AOE-169V,1,,"Borrowed from Middle Low German arbeit, from Proto-Germanic *arbaidiz. Compare with Swedish arbete, Danish arbejde, and Faroese arbeiði.",https://en.wiktionary.org/wiki/arbeid#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,5071
+entry_6ae69afd25a221d5ba8c,sv,styv-,prefix,sv|styv-|prefix||en-styv--sv-prefix-W9wTbuLE,,,"From Old Swedish stiūp-, stiūf-, from the Old Norse stjúp-, from Proto-Germanic *steupa- (“orphaned, step-”).",https://en.wiktionary.org/wiki/styv-#Swedish,kaikki_sv.jsonl,68347
+entry_6b403c3ab39ace20c7de,de,berauben,verb,"de|berauben|verb||en-berauben-de-verb-ST4IzVhe,en-berauben-de-verb-wq-mc5me",,,"From Middle High German berouben, from Old High German biroubon, from Proto-Germanic *biraubōną; equivalent to be- + rauben. Cognate with Dutch beroven, English bereave, Danish berøve, Norwegian berøve, Swedish beröva.",https://en.wiktionary.org/wiki/berauben#German,kaikki_de.jsonl,205238
+entry_6c8bf4a0e38562116520,en,over,noun,"en|over|noun|1|en-over-en-noun-BYVSNKoi,en-over-en-noun-ixGDFlua,en-over-en-noun-na36yef9,en-over-en-noun-sA3Q85XS",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20990
+entry_72167f7042c650845141,en,bench,noun,en|bench|noun|2|en-bench-en-noun-gcaoxzMA,2,,From bench press by shortening.,https://en.wiktionary.org/wiki/bench#English,kaikki_en.jsonl,2809
+entry_76916792aa82b4e389ae,nb,bli,verb,"nb|bli|verb|1|en-bli-nb-verb-515xqVuW,en-bli-nb-verb-CvEgfuq9,en-bli-nb-verb-ECyQK9DL,en-bli-nb-verb-ipHVs6t5,en-bli-nb-verb-lWrySXms",1,,"Short form of blive, from Danish blive, from Middle Low German bliven. Meanings 2, 3 and 4 are taken from Old Norse verða, which also has given rise to the dated vorde. In several dialects, the Low German word did not displace the Old Norse word completely. As a result, vart was allowed in past tense besides ble(i) between 1938 and 2005.
+Cognates include German bleiben, Dutch bljiven, and English belive.",https://en.wiktionary.org/wiki/bli#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,4297
+entry_7ce57e6a83f460e1ab27,nb,sand,noun,nb|sand|noun||en-sand-nb-noun-9519JFWD,,,"From Old Norse sandr (“sand, sandy ground, sandbanks”), from Proto-Germanic *samdaz (“sand”).",https://en.wiktionary.org/wiki/sand#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,612
+entry_7d69c0bbcf039d3254e3,de,Tochter,noun,"de|Tochter|noun||en-Tochter-de-noun-TtKPgsqW,en-Tochter-de-noun-w9usb177",,,"Inherited from Old High German tohter. Compare Dutch dochter, English daughter, Swedish dotter.
+* (subsidiary): ellipsis of Tochtergesellschaft",https://en.wiktionary.org/wiki/Tochter#German,kaikki_de.jsonl,
+entry_7dff2285e709ffd3285c,nb,klovn,noun,"nb|klovn|noun||en-klovn-nb-noun-B63fpms-,en-klovn-nb-noun-LfVo7uql",,,Borrowed from English clown.,https://en.wiktionary.org/wiki/klovn#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_7f0c6dacf6ed81e0b7e5,en,reave,verb,en|reave|verb|2|en-reave-en-verb-90OVu4JT,2,,Alteration of rive by confusion with the above.,https://en.wiktionary.org/wiki/reave#English,kaikki_en.jsonl,
+entry_7f19779ee36107bb4116,de,Bank,noun,"de|Bank|noun|2|en-Bank-de-noun-JRXxHRXW,en-Bank-de-noun-~nA5QUWk",2,,"15th century, semantically after Italian banco, banca (“bench” and “bank”), from Old High German bank (etymology 1 above). The Italianized form Banco is attested in German texts alongside native Bank, Bänke. Since the 18th century, a third form Banque, Banquen arises under influence of French banque, itself from the Italian. This then leads to the contemporary situation with identical singulars but distinct plural forms.",https://en.wiktionary.org/wiki/Bank#German,kaikki_de.jsonl,3391
+entry_7f94c35ccc09d036481b,en,fleece,verb,"en|fleece|verb||en-fleece-en-verb-QJECDL7D,en-fleece-en-verb-nJDrZOMD,en-fleece-en-verb-~tSshEEi",,,"From Middle English fles, flees, flese, from Old English flēos, flīes, flȳs, from Proto-West Germanic *fleus.",https://en.wiktionary.org/wiki/fleece#English,kaikki_en.jsonl,23861
+entry_808797d5953015c8a7c4,da,over,noun,da|over|noun|4|en-over-da-noun-HLlrEwoP,4,,Borrowed from English over.,https://en.wiktionary.org/wiki/over#Danish,kaikki_da.jsonl,
+entry_83599add68d9020d8e11,da,ramsløg,noun,da|ramsløg|noun||en-ramsløg-da-noun-oQHe6t9h,,,"From rams + løg (“leek, onion”), borrowed from Middle Low German ramese (“ramson”), from Old Saxon *hramuso, from Proto-West Germanic *hramusō.
+Cognate with Norwegian Nynorsk ramslauk and Swedish ramslök. Cognates amoung non-Scandinavian languages are Lithuanian kermùšė (and šermukšnis), Russian черемша (čeremša) (and черёмуха (čerjómuxa)), Czech střemcha, Slovene čemaž, Serbo-Croatian сремуш, Ancient Greek κρόμμυον (krómmuon) and Irish creamh.",https://en.wiktionary.org/wiki/ramsl%C3%B8g#Danish,kaikki_da.jsonl,43762
+entry_8381850d00f09ab7f89b,en,bench,verb,en|bench|verb|3|en-bench-en-verb-p0Wjh78d,3,,See bentsh.,https://en.wiktionary.org/wiki/bench#English,kaikki_en.jsonl,2810
+entry_84e1ec3cb36b8b380999,de,übersetzen,verb,"de|übersetzen|verb|1|en-übersetzen-de-verb-H4oVG0hn,en-übersetzen-de-verb-JWsHbK8m,en-übersetzen-de-verb-KAPHClwq,en-übersetzen-de-verb-P9-0ALFi",1,,"16th century, from über- (“over”) + setzen (“to set”), probably modeled on Latin trādūcere, perhaps through Middle Low German ōversetten (15th c.).",https://en.wiktionary.org/wiki/%C3%BCbersetzen#German,kaikki_de.jsonl,1000
+entry_84e45d703e975ccb9a2f,da,be-,prefix,"da|be-|prefix||en-be--da-prefix-ZCCyRz3c,en-be--da-prefix-jXg10kwR,en-be--da-prefix-mOaVGQC1",,,"From Middle Low German be-, from Old Saxon bi-.",https://en.wiktionary.org/wiki/be-#Danish,kaikki_da.jsonl,7538
+entry_86afb93e9d00fc1d4851,da,væg,noun,da|væg|noun||en-væg-da-noun-TYqqZPaF,,,"From Old Danish wæg, from Old Norse veggr m (“wall”), from Proto-Germanic *wajjuz. Cognates include Swedish vägg, Norwegian vegg, Faroese and Icelandic veggur, Old English wāg (“wall”), and Gothic *𐍅𐌰𐌳𐌳𐌾𐌿𐍃 (*waddjus).",https://en.wiktionary.org/wiki/v%C3%A6g#Danish,kaikki_da.jsonl,
+entry_87182cb3506c64ec30b9,da,over,adv,"da|over|adv|2|en-over-da-adv-3rU4tQy2,en-over-da-adv-UyJ2DwaN",2,,From Old Norse ofar.,https://en.wiktionary.org/wiki/over#Danish,kaikki_da.jsonl,
+entry_8939e6f78b5f4e73e7fe,da,røve,noun,da|røve|noun|2|en-røve-da-noun-M1q1yba~,2,,See the etymology of the corresponding lemma form.,https://en.wiktionary.org/wiki/r%C3%B8ve#Danish,kaikki_da.jsonl,14264
+entry_89c039fa5df16b470dca,sv,arbete,noun,"sv|arbete|noun||en-arbete-sv-noun-K0HuQRpN,en-arbete-sv-noun-WFA9UBxh,en-arbete-sv-noun-h9ZcqJqt",,,"From Old Swedish arbeide, from Middle Low German arbet, from Old Saxon arvēd.
+Compare Norwegian arbeid, Danish arbejde, Faroese arbeiði, German Arbeit, Dutch arbeid. Compare the doublet arvode, inherited from Old Swedish arvoþe, ærviþi, from Old Norse erfiði.",https://en.wiktionary.org/wiki/arbete#Swedish,kaikki_sv.jsonl,2580
+entry_8af7c085619e6f6045b2,de,be-,prefix,"de|be-|prefix||en-be--de-prefix-O6P7ZiQP,en-be--de-prefix-acz6I8at",,,"From Middle High German be-, from Old High German bi-, from Proto-Germanic *bi-, from Proto-Indo-European *h₁epi.",https://en.wiktionary.org/wiki/be-#German,kaikki_de.jsonl,16781
+entry_8d66a071fa8c087eba9b,sv,styvdotter,noun,sv|styvdotter|noun||en-styvdotter-sv-noun-q2ksmbMP,,,From styv- + dotter.,https://en.wiktionary.org/wiki/styvdotter#Swedish,kaikki_sv.jsonl,7012
+entry_8dffe052a6bc3b7d67f2,da,blive,verb,"da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",,,"From Middle Low German bliven, from Old Saxon bilīƀan, from Proto-Germanic *bilībaną, cognate with German bleiben (“to remain”). In the sense “to become"", it replaced native vorde.",https://en.wiktionary.org/wiki/blive#Danish,kaikki_da.jsonl,7955
+entry_8e1d6d6e746f60fcc9f3,sv,sätta,verb,"sv|sätta|verb||en-sätta-sv-verb-3R4efweN,en-sätta-sv-verb-3qUvof9v,en-sätta-sv-verb-9r83CpGe,en-sätta-sv-verb-JEavS6dv,en-sätta-sv-verb-UH4PJTKJ,en-sätta-sv-verb-Wgbq5yV6,en-sätta-sv-verb-l2LFPysp,en-sätta-sv-verb-mI6u5VXc,en-sätta-sv-verb-tJbqqDCZ,en-sätta-sv-verb-zsbXcHcR",,,"From Old Swedish sætia, from Old Norse setja, from Proto-Germanic *satjaną. Cognate with English set.",https://en.wiktionary.org/wiki/s%C3%A4tta#Swedish,kaikki_sv.jsonl,
+entry_8e1ee94c1d9353b96bc2,da,arbejde,verb,da|arbejde|verb|2|en-arbejde-da-verb-4k23NJF4,2,,"From Middle Low German arbeiden, cf. also German arbeiten (“to work”) and Gothic 𐌰𐍂𐌱𐌰𐌹𐌳𐌾𐌰𐌽 (arbaidjan). Derived from the noun (see Etymology 1 above).",https://en.wiktionary.org/wiki/arbejde#Danish,kaikki_da.jsonl,5955
+entry_8ece96453f6e49fccab9,en,man,name,en|man|name|3|en-man-en-name-en:unix,3,,Clipping of manual.,https://en.wiktionary.org/wiki/man#English,kaikki_en.jsonl,1361
+entry_90fca5771051375d8d9d,sv,kluns,noun,"sv|kluns|noun||en-kluns-sv-noun-HUPl7g-f,en-kluns-sv-noun-axatp0qb",,,,https://en.wiktionary.org/wiki/kluns#Swedish,kaikki_sv.jsonl,102783
+entry_91df92e0541575f3f60a,de,Gut,noun,"de|Gut|noun|1|en-Gut-de-noun-PKOpunNz,en-Gut-de-noun-yqE2KRBm",1,,From Middle High German and Old High German guot (“good”).,https://en.wiktionary.org/wiki/Gut#German,kaikki_de.jsonl,4016
+entry_92cfba5f4798d69b98bc,sv,sand,noun,sv|sand|noun||en-sand-sv-noun-4UY59uDI,,,"From Old Swedish sander, from Old Norse sandr, from Proto-Germanic *samdaz.",https://en.wiktionary.org/wiki/sand#Swedish,kaikki_sv.jsonl,731
+entry_93cc80d452eedd202bec,de,Mann,noun,"de|Mann|noun||en-Mann-de-noun-n-6PiLk6,en-Mann-de-noun-~x-jCsyC",,,"From Middle High German man, from Old High German man, from Proto-West Germanic *mann, from Proto-Germanic *mann-, from Proto-Indo-European *mon-. Doublet of man.",https://en.wiktionary.org/wiki/Mann#German,kaikki_de.jsonl,4465
+entry_9466a18bbefefaf2bbef,en,set,noun,"en|set|noun|2|en-set-en-noun-10Sh~8V-,en-set-en-noun-1NKLxb8s,en-set-en-noun-2BEzA7cx,en-set-en-noun-55xp~tqa,en-set-en-noun-5TstCFaY,en-set-en-noun-BT7CKttU,en-set-en-noun-DSX9NimB,en-set-en-noun-H9VhI7AF,en-set-en-noun-IJO0A~9a,en-set-en-noun-S3CW4SMZ,en-set-en-noun-ZkCv7TlR,en-set-en-noun-en:series_or_group,en-set-en-noun-fjNf1GK7,en-set-en-noun-hVpSw4ow,en-set-en-noun-kF1XrFy1,en-set-en-noun-lu0X8yeO,en-set-en-noun-r7M-yV~f,en-set-en-noun-v5TcPVPi,en-set-en-noun-vhsCuflM,en-set-en-noun-vtBxwmfV",2,,"From Middle English set, sette, from Old English set (“seat, place of residence, camp, settlement, entrenchment, stable, pen”), from Proto-West Germanic *set (“seat”), from Proto-Germanic *setą (“seat”).",https://en.wiktionary.org/wiki/set#English,kaikki_en.jsonl,7698
+entry_95a8e13cb7dd3f0e7e90,nb,sandbanke,noun,nb|sandbanke|noun||en-sandbanke-nb-noun-03flC6jG,,,From sand + banke.,https://en.wiktionary.org/wiki/sandbanke#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_98458dab534c2bd4ba7d,en,sand,adj,en|sand|adj|1|en-sand-en-adj-nmrnr8A2,1,,"Etymology tree
+substratebor.
+Proto-Indo-European *sámdʰos?
+Proto-Germanic *samdaz
+Proto-West Germanic *samd
+Old English sand
+Middle English sond
+English sand
+Inherited from Middle English sond, sand, from Old English sand, from Proto-West Germanic *samd, from Proto-Germanic *samdaz.
+See also North Frisian sun, Sön, sönj (“sand”), Saterland Frisian Sound (“sand”), West Frisian sân (“sand”), Dutch zand (“sand”), German and Luxembourgish Sand (“sand”), Yiddish זאַמד (zamd, “sand”), Danish, Norwegian Bokmål, Norwegian Nynorsk, and Swedish sand (“sand”), Faroese and Icelandic sandur (“sand”), Latin sabulum (“sand, gravel”), Ancient Greek ἄμαθος (ámathos, “sand”), English dialectal samel (“sand bottom”), Old Irish do·essim (“to pour out”), Latin sentina (“bilge water”), Lithuanian sémti (“to scoop”), Ancient Greek ἀμάω (amáō, “to gather”), ἄμη (ámē, “water bucket”).",https://en.wiktionary.org/wiki/sand#English,kaikki_en.jsonl,9005
+entry_99a9aa345145f3bba9b7,da,sand,adj,da|sand|adj|1|en-sand-da-adj-tb6kG2xi,1,,"From Old Norse sannr, saðr, from Proto-Germanic *sanþaz, from Proto-Indo-European *h₁sónts (“being, existing”), the present participle of *h₁es- (“to be”).",https://en.wiktionary.org/wiki/sand#Danish,kaikki_da.jsonl,645
+entry_9cef5edd84502ce610bd,en,overset,adj,"en|overset|adj||en-overset-en-adj-5Hgj~xBx,en-overset-en-adj-~AgHI27P",,,"PIE word
+ *upér
+The verb is derived from Middle English oversetten (“to place or set over, cover; to assail; to defeat, overcome, overpower, overthrow; to defer; to discredit, refute; to disregard, overlook, set aside; to hinder; to oppress; to repulse”), from Old English ofersettan (“to put in a position of authority; to overcome or be overcome; to set over”), from Proto-West Germanic *ubarsattjan (“to place above, set over; to establish, install”), from *ubarsittjan (“to abstain from, neglect; to occupy, possess; to sit over or upon”), from *ubar- (prefix meaning ‘above, over’) + *sittjan (“to sit”) (from Proto-Germanic *sitjaną (“to sit”), ultimately from Proto-Indo-European *sed- (“to sit”)). By surface analysis, over- (prefix meaning ‘above, higher; excessive, excessively’) + set (verb). Doublet of oversit.
+Verb sense 1.2.3 (“to translate (a text)”) is probably a calque of German übersetzen.
+The adjective is derived from overset, the past participle form of the verb. The noun is also derived from the verb.
+cognates
+* Dutch overzetten (“to ferry, transport, translate”)
+* Old High German ubarsezzen (Middle High German übersetzen, modern German übersetzen (“to cross over, translate”))
+* Saterland Frisian uursätte (“to cross over, translate”)
+* Swedish översätta (“to translate”)
+* West Frisian oersette (“to translate”)",https://en.wiktionary.org/wiki/overset#English,kaikki_en.jsonl,374242
+entry_9dee6619b26cf14c9fcc,en,fleece,noun,"en|fleece|noun||en-fleece-en-noun-47oUpfnM,en-fleece-en-noun-5CC0LI1U,en-fleece-en-noun-HcbNjmXU,en-fleece-en-noun-dacmJGik,en-fleece-en-noun-foRv88yW,en-fleece-en-noun-jphy1RSr,en-fleece-en-noun-okEAxXE1",,,"From Middle English fles, flees, flese, from Old English flēos, flīes, flȳs, from Proto-West Germanic *fleus.",https://en.wiktionary.org/wiki/fleece#English,kaikki_en.jsonl,23860
+entry_9ef50e22f23c65052544,en,bank,verb,"en|bank|verb|1|en-bank-en-verb-G-8JfUpt,en-bank-en-verb-kXpyadQv,en-bank-en-verb-sujux0Yn,en-bank-en-verb-v-jCpx4v,en-bank-en-verb-wW0vlpYf",1,,"Etymology tree
+Proto-Indo-European *bʰeg-der.
+Proto-Germanic *bankiz
+Proto-West Germanic *banki
+Lombardic bankbor.
+Italian bancabor.
+Middle French banqueder.
+English bank
+Inherited from Middle English banke, from Middle French banque, from Italian banca (“counter, moneychanger's bench or table”), from Lombardic bank (“bench, counter”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz (“bench, counter”), from Proto-Indo-European *bʰeg- (“to turn, curve, bend, bow”). Doublet of bench, banc, and banco.
+For the bench-bank relation, compare typologically Russian ла́вка (lávka), прила́вок (prilávok).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_9fe9dcff1800951d7a56,sv,man,noun,"sv|man|noun|1|en-man-sv-noun-MrLdnnhe,en-man-sv-noun-e~vwn0Ue,en-man-sv-noun-kemOUVS9,en-man-sv-noun-sv:husband",1,,"From Old Swedish maþer, mander, from Old Norse maðr, from Proto-Germanic *mann-.",https://en.wiktionary.org/wiki/man#Swedish,kaikki_sv.jsonl,85
+entry_a08ea9f6a9db3675563c,nb,banke,noun,"nb|banke|noun|1|en-banke-nb-noun-TwuzQH9Q,en-banke-nb-noun-vdow3LZU",1,,From the noun bakke.,https://en.wiktionary.org/wiki/banke#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_a0c9a93d0187950e2578,da,oversætte,verb,da|oversætte|verb||en-oversætte-da-verb-VRxNHmW7,,,"From over (“over”) + sætte (“place, put, set”). From Middle Low German ȫversetten, ōversetten, from Old Saxon *ovarsettian, from Proto-West Germanic *ubarsattjan. Compare Swedish översätta and Norwegian Bokmål oversette.",https://en.wiktionary.org/wiki/overs%C3%A6tte#Danish,kaikki_da.jsonl,
+entry_a199cc10acaab2ba1621,en,sandbank,noun,en|sandbank|noun||en-sandbank-en-noun-SfvbSY7m,,,"From sand + bank. Compare Dutch zandbank (“sandbank, shoal”), German Sandbank (“sandbank, sandbar, shoal”), Swedish sandbank (“sandbank, bar”).",https://en.wiktionary.org/wiki/sandbank#English,kaikki_en.jsonl,
+entry_a5ea6b79919dabaa6f13,en,good,intj,en|good|intj|1|en-good-en-intj-B~DUv~xl,1,,"Inherited from Middle English good, from Old English gōd, from Proto-West Germanic *gōd, from Proto-Germanic *gōdaz (“good”), from Proto-Indo-European *gʰedʰ- (“to unite, be associated, suit, fit”).
+Related to gather and together, but not to god/God.
+Eclipsed non-native Middle English bon, bone, boon, boun (“good”) borrowed from Old French bon (“good”), from Latin bonus (“good”).
+Cognates
+Cognate with Scots gude, guid (“good”), Yola gayde, gooude, gude (“good”), North Frisian goud, gud, guid, gur, gödj, gööd (“good”), Saterland Frisian goud (“good”), West Frisian goed (“good”), Alemannic German guet (“good”), Bavarian guad (“good”), Central Franconian gut, jot, jott (“good”), Cimbrian guat, guut (“good”), Dutch goed (“good”), Dutch Low Saxon good (“good”), German gut (“good”), Limburgish good, gott (“good”), Low German god, goot, got, gued (“good”), Luxembourgish gutt (“good”), Mòcheno guat (“good”), Vilamovian güt (“good”), Yiddish גוט (gut, “good”), Danish, Norwegian Bokmål, Norwegian Nynorsk, and Swedish god (“good”), Elfdalian guoð (“good”), Faroese and Icelandic góður (“good”), Gothic 𐌲𐍉𐌸𐍃 (gōþs, “good”), Vandalic *guths (“good”); also Albanian nge (“chance, leisure, opportunity, time”), Latvian gods (“honor”), Lithuanian guõdas (“nobleness, virtue; glory, honour”), Belarusian го́дны (hódny, “worthy”), Bulgarian го́ден (góden, “fit, suitable”), Czech hodný (“good, kind”), Polish godny, godzien (“dignified, worthy”), Russian го́дный (gódnyj, “fit, well-suited, good for; (coll.) good”), Ukrainian гі́дний (hídnyj, “deserving, worthy”), го́дний (hódnyj, “fit, well-suited, good for; (coll.) good”).",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4084
+entry_a6d90daa8383faf0b3f6,en,man,intj,en|man|intj|1|en-man-en-intj-en:interjection,1,,"From Middle English man, from Old English mann m (“human being, person, man”), from Proto-West Germanic *mann, from Proto-Germanic *mann- (“man”), from Proto-Indo-European *mon- (“human being, man”). Doublet of mann and Manu.
+Cognates
+This word has many cognates, in every Germanic language (whether extant or extinct), with similarities in form and meaning.
+Virtually all the words below mean “man” and “husband”, with some specific cases noted.
+In Ingvaeonic (the languages closest to English):
+:* Low German Mann
+:* North Frisian maan, man, moon, muon
+:* Saterland Frisian Mon
+:* Scots man
+:* West Frisian man
+:* Yola man
+In the remainder of West Germanic:
+:* Alemannic German ma, Maa, Mann, mo, mà, Mànn
+:* Bavarian Mo, mon, moon, Må, mònn
+:* Cimbrian man, mann, månn
+:* Dutch, Limburgish, and Zealandic man
+:* German and Luxembourgish Mann
+:* Mòcheno mònn
+:* Vilamovian maon, mon, mōn
+:* Yiddish מאַן (man)
+In East Germanic:
+:* Gothic 𐌼𐌰𐌽𐌽𐌰 (manna), which meant “man”, “human“ and “person”, but likely also “husband”
+In North Germanic:
+:* Danish mand
+:* Faroese and Icelandic maður, both additionally meaning “human” and “person”, as in Old Norse
+:* Gutnish and Swedish man
+:* Norn, Norwegian Bokmål, and Norwegian Nynorsk mann
+:* Norwegian Nynorsk mainnj
+:* Old Norse maðr
+Outside Germanic:
+: Indo-Iranian:
+::* Avestan 𐬨𐬀𐬥𐬎𐬱 (manuš, “human”)
+::* Sanskrit मनुस् (manus, “human”), मनु (manu, “human; humanity; thought”; “thinking; wise; intelligent”)
+::* Also Sanskrit म॒नु॒ष्य॑ (manuṣyà, “human; man; huband”, whence English manusya)
+: Slavic (all of these mean “man” and “husband”, though in some cases the former is no longer part of the modern standard):
+::* Belarusian, Russian, and Ukrainian муж (muž)
+::* Bulgarian мъж (măž)
+::* Czech and Slovak muž
+::* Macedonian маж (maž)
+::* Polish mąż (“husband”; the meaning “man” is obsolete, akin to English wife)
+::* Serbo-Croatian му̑ж, mȗž
+::* Slovene mož",https://en.wiktionary.org/wiki/man#English,kaikki_en.jsonl,1358
+entry_a75c7a6dfff3ffa8aff0,de,Stieftochter,noun,de|Stieftochter|noun||en-Stieftochter-de-noun-f0pZwO8T,,,"From stief- (“step-”) + Tochter (“daughter”). From Middle High German stieftohter, from Old High German stioftohter, from Proto-Germanic *steupaduhtēr (“stepdaughter”), equivalent to stief- + Tochter.",https://en.wiktionary.org/wiki/Stieftochter#German,kaikki_de.jsonl,23772
+entry_a8c0ee0290627c8a66ed,en,reave,verb,"en|reave|verb|1|en-reave-en-verb-X~tcthFP,en-reave-en-verb-xQIX9-sH",1,,"From Middle English reven, from Old English rēafian, from Proto-West Germanic *raubōn.
+Germanic cognates include West Frisian rave, Old English rēaf (“spoils, booty”)), and Old English past participle rofen (“torn, broken”), Norwegian rjuva, German rauben, Danish røve, and Swedish röva. Outside of Germanic, related to Latin rumpō (“to break”), Lithuanian rùpti (“to roughen”), Sanskrit रोपयति (ropayati, “to make suffer”)). See rob and reif.",https://en.wiktionary.org/wiki/reave#English,kaikki_en.jsonl,
+entry_aa4827f0257d72b43406,de,Fleece,noun,de|Fleece|noun||en-Fleece-de-noun-SWV7gRpV,,,Borrowed from English fleece. Doublet of Vlies.,https://en.wiktionary.org/wiki/Fleece#German,kaikki_de.jsonl,
+entry_abee85f9880041b16f7a,da,kurv,verb,da|kurv|verb|2|en-kurv-da-verb-MwfeXeRp,2,,See the etymology of the corresponding lemma form.,https://en.wiktionary.org/wiki/kurv#Danish,kaikki_da.jsonl,7039
+entry_acf8b07f9c694f9f7d33,en,good,adj,"en|good|adj|1|en-good-en-adj-14ZwF8uH,en-good-en-adj-4ghG0gvN,en-good-en-adj-5SvqAh1Y,en-good-en-adj-6fskMeWY,en-good-en-adj-Ajj49j3c,en-good-en-adj-BFSYO00P,en-good-en-adj-DXjFgHa2,en-good-en-adj-Dsgg1NWr,en-good-en-adj-E1xge8mP,en-good-en-adj-EAWgiMma,en-good-en-adj-HBAakWT3,en-good-en-adj-HegLOE2n,en-good-en-adj-I4qINzIw,en-good-en-adj-JF5X6-c4,en-good-en-adj-KLboqsqy,en-good-en-adj-KosU7vfw,en-good-en-adj-LyPIDH0O,en-good-en-adj-PeGMmpHz,en-good-en-adj-QGkmJWTX,en-good-en-adj-UTHHEfnP,en-good-en-adj-V-VMYVAp,en-good-en-adj-cpa-fO7q,en-good-en-adj-dohfMxb0,en-good-en-adj-dwx6-DEy,en-good-en-adj-eUkWu25w,en-good-en-adj-fDZw0n4T,en-good-en-adj-oQ7DEpbG,en-good-en-adj-t~9Pyswf,en-good-en-adj-xnvBYGgR",1,,"Inherited from Middle English good, from Old English gōd, from Proto-West Germanic *gōd, from Proto-Germanic *gōdaz (“good”), from Proto-Indo-European *gʰedʰ- (“to unite, be associated, suit, fit”).
+Related to gather and together, but not to god/God.
+Eclipsed non-native Middle English bon, bone, boon, boun (“good”) borrowed from Old French bon (“good”), from Latin bonus (“good”).
+Cognates
+Cognate with Scots gude, guid (“good”), Yola gayde, gooude, gude (“good”), North Frisian goud, gud, guid, gur, gödj, gööd (“good”), Saterland Frisian goud (“good”), West Frisian goed (“good”), Alemannic German guet (“good”), Bavarian guad (“good”), Central Franconian gut, jot, jott (“good”), Cimbrian guat, guut (“good”), Dutch goed (“good”), Dutch Low Saxon good (“good”), German gut (“good”), Limburgish good, gott (“good”), Low German god, goot, got, gued (“good”), Luxembourgish gutt (“good”), Mòcheno guat (“good”), Vilamovian güt (“good”), Yiddish גוט (gut, “good”), Danish, Norwegian Bokmål, Norwegian Nynorsk, and Swedish god (“good”), Elfdalian guoð (“good”), Faroese and Icelandic góður (“good”), Gothic 𐌲𐍉𐌸𐍃 (gōþs, “good”), Vandalic *guths (“good”); also Albanian nge (“chance, leisure, opportunity, time”), Latvian gods (“honor”), Lithuanian guõdas (“nobleness, virtue; glory, honour”), Belarusian го́дны (hódny, “worthy”), Bulgarian го́ден (góden, “fit, suitable”), Czech hodný (“good, kind”), Polish godny, godzien (“dignified, worthy”), Russian го́дный (gódnyj, “fit, well-suited, good for; (coll.) good”), Ukrainian гі́дний (hídnyj, “deserving, worthy”), го́дний (hódnyj, “fit, well-suited, good for; (coll.) good”).",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4083
+entry_aed8ae7d5d40b38ff462,en,way,adj,en|way|adj|2|en-way-en-adj-sfdryBr6,2,,Apheresis of away.,https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12975
+entry_b04a9fb8bf66784754a7,da,røve,verb,"da|røve|verb|1|en-røve-da-verb-hDE-85sK,en-røve-da-verb-q9asWpnQ",1,,"From Old Norse reyfa (“to tear”), from Proto-Germanic *raubijaną, *raubōną. The Danish word has been influenced semantically by Middle Low German rōven, German rauben. The Germanic word was borrowed into Old French, French rober, whence English rob.",https://en.wiktionary.org/wiki/r%C3%B8ve#Danish,kaikki_da.jsonl,14263
+entry_b198747c4ec608c966df,en,set,verb,"en|set|verb|1|en-set-en-verb--E67bekv,en-set-en-verb-09Qsi2qq,en-set-en-verb-19wNrKC6,en-set-en-verb-5IBRHJHU,en-set-en-verb-5WaM6LdG,en-set-en-verb-71Dw0P5o,en-set-en-verb-7E10A-vI,en-set-en-verb-7h5b4gin,en-set-en-verb-8m2g7~eN,en-set-en-verb-AuewsXYs,en-set-en-verb-Ce2xiv-6,en-set-en-verb-EWjZ9Wh8,en-set-en-verb-G7CF5RdM,en-set-en-verb-GdDb1L~l,en-set-en-verb-H5vKgikC,en-set-en-verb-HlXgqZqe,en-set-en-verb-HoJ8i5Dj,en-set-en-verb-KlBMjV6j,en-set-en-verb-OpU7Blj1,en-set-en-verb-P5y8wa3t,en-set-en-verb-QEk1jy1r,en-set-en-verb-Qb3cMDIf,en-set-en-verb-QbG~D~BD,en-set-en-verb-QyMyW~QH,en-set-en-verb-T0nOuUUU,en-set-en-verb-TejX8Swu,en-set-en-verb-U~iKCV9h,en-set-en-verb-ZW1BIc~b,en-set-en-verb-a8PRZ~ir,en-set-en-verb-anspvtOz,en-set-en-verb-cLi1pS1h,en-set-en-verb-dlAjFET2,en-set-en-verb-e5TCEmdd,en-set-en-verb-en:determine,en-set-en-verb-en:hunting,en-set-en-verb-ezDiANTf,en-set-en-verb-gVbccxVT,en-set-en-verb-gtoJDbxb,en-set-en-verb-kUpNO7Kp,en-set-en-verb-lKWEpKfJ,en-set-en-verb-p5A568pc,en-set-en-verb-qs-gJFNT,en-set-en-verb-rO~CtdOl,en-set-en-verb-tiYYPHXU,en-set-en-verb-xayYUzWB,en-set-en-verb-xb3odvdM,en-set-en-verb-xiNRASTF,en-set-en-verb-zbd76rMu",1,,"Etymology tree
+Proto-Indo-European *sed-
+Proto-Indo-European *-yeti
+Proto-Indo-European *-éyeti
+Proto-Indo-European *sodéyeti
+Proto-Germanic *satjaną
+Proto-West Germanic *sattjan
+Old English settan
+Middle English setten
+English set
+From Middle English setten, from Old English settan, from Proto-West Germanic *sattjan, from Proto-Germanic *satjaną, from Proto-Indo-European *sodéyeti, causative of *sed- (“to sit”).
+Cognate with Dutch zetten, German setzen, Danish sætte, Norwegian Bokmål sette, Icelandic and Norwegian Nynorsk setja, Swedish sätta, Faroese seta.",https://en.wiktionary.org/wiki/set#English,kaikki_en.jsonl,7697
+entry_b283de62f08089e108f2,en,be-,prefix,"en|be-|prefix||en-be--en-prefix-en:adorned,en-be--en-prefix-en:around,en-be--en-prefix-en:away,en-be--en-prefix-en:contacting,en-be--en-prefix-en:doing,en-be--en-prefix-en:intensifying,en-be--en-prefix-en:near,en-be--en-prefix-en:regarding,en-be--en-prefix-en:thoroughly",,,"Etymology tree
+Proto-Indo-European *h₁ep-der.
+Proto-Indo-European *h₁épsder.
+Proto-Indo-European *h₁épider.
+Proto-Indo-European *h₁pi
+Proto-Germanic *bider.
+Proto-Germanic *bi-
+Proto-West Germanic *bi-
+Old English be-
+Middle English bi-
+English be-
+From Middle English be-, bi-, from Old English be- (“be-”), from Proto-Germanic *bi- (“be-”), from Proto-Germanic *bi (“near, by”), ultimately from Proto-Indo-European *h₁epi (“at, near”). See by, by-.
+Cognate with Saterland Frisian bi- (“be-”), West Frisian be- (“be-”), Dutch be- (“be-”), German Low German be- (“be-”), German be- (“be-”), Danish be- (“be-”), Swedish be- (“be-”).",https://en.wiktionary.org/wiki/be-#English,kaikki_en.jsonl,
+entry_b4ed3d675b01686c6cb4,en,bank,verb,en|bank|verb|3|en-bank-en-verb-wmngnTdB,3,,"From Middle English bank, banke, from Old French banc (“bench”), from Frankish *banki, from Proto-Germanic *bankiz (“bench”). Akin to Old English benċ (“bench”).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_b56b8fa161e9cd0a1a12,en,bank,verb,"en|bank|verb|2|en-bank-en-verb-6BSwyQvb,en-bank-en-verb-7G1tt-0a,en-bank-en-verb-H~fseb66,en-bank-en-verb-NcpI4qgd,en-bank-en-verb-ROImcivu,en-bank-en-verb-RpibfmZl,en-bank-en-verb-en:to_cause_banking,en-bank-en-verb-nSlsHUiV",2,,"From Middle English bank, banke, from Old English *banca (“bench”) (attested in Old English hōbanca (“couch”) and Old English banc (“bank, hillock, embankment”), from Proto-West Germanic *bankō, from Proto-Germanic *bankô. Akin to Old Norse bakki (“elevation, hill”), Norwegian bakke (“slope, hill”).",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_b5912696f7128f95d64d,de,Bank,noun,"de|Bank|noun|1|en-Bank-de-noun-2HVhWZ2a,en-Bank-de-noun-G7BQY0iT,en-Bank-de-noun-R7Gt4ZCx,en-Bank-de-noun-r9TmnE1N",1,,"From Middle High German and Old High German banc, bank (“height”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz. Related to Old Saxon bank.",https://en.wiktionary.org/wiki/Bank#German,kaikki_de.jsonl,3390
+entry_b6f14ccefc003bf36c57,en,banc,noun,"en|banc|noun|1|en-banc-en-noun-JkPlN-dH,en-banc-en-noun-sQxrpiug",1,,"From Middle English bank, from Old French banc. Doublet of banco, bank, and bench.",https://en.wiktionary.org/wiki/banc#English,kaikki_en.jsonl,43780
+entry_b761b5f06e4032ecd1c6,nb,blive,verb,nb|blive|verb||en-blive-nb-verb-K13rKmk8,,,"From the expression blive på sjøen (literally “to remain at sea”). Thus the same word as bli (“to remain, become”), from Danish blive, from Middle Low German blîven, from Proto-Germanic *bilībaną.",https://en.wiktionary.org/wiki/blive#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_b79af81ffdc5345ab71a,sv,fleece,noun,sv|fleece|noun||en-fleece-sv-noun-Ypsb2vY-,,,Borrowed from English fleece.,https://en.wiktionary.org/wiki/fleece#Swedish,kaikki_sv.jsonl,
+entry_b91590b080c630a91620,nb,oversette,verb,nb|oversette|verb||en-oversette-nb-verb-VRxNHmW7,,,"From over- + sette, compare with German übersetzen.",https://en.wiktionary.org/wiki/oversette#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,6690
+entry_b99a1059c491ff71fe73,de,gut,adv,"de|gut|adv||en-gut-de-adv-JgzaGZbJ,en-gut-de-adv-WvY8AAE4,en-gut-de-adv-~43qf9KR",,,"Inherited from Middle High German guot, from Old High German guot, from Proto-West Germanic *gōd, from Proto-Germanic *gōdaz, from Proto-Indo-European *gʰedʰ- (“to unite, be associated, suit”).
+Cognates
+Cognate to Luxembourgish gutt, Silesian East Central German gutt, Dutch goed, West Frisian goed, Saterland Frisian goud, English good, Danish god, Norwegian god and Swedish god.",https://en.wiktionary.org/wiki/gut#German,kaikki_de.jsonl,725
+entry_be5ce3aaa53832e921fe,da,sætte,verb,"da|sætte|verb||en-sætte-da-verb-6L5ZLbvI,en-sætte-da-verb-XJxhjRed,en-sætte-da-verb-nWHhvkk7,en-sætte-da-verb-~qflf9OL",,,"From Old Danish sættæ, sætiæ, from Old Norse setja, from Proto-Germanic *satjaną, cognate with English set, German setzen. A causative of the verb *sitjaną (“to sit”) (Danish sidde).",https://en.wiktionary.org/wiki/s%C3%A6tte#Danish,kaikki_da.jsonl,
+entry_c178afa71f2692575fbb,en,good,adj,en|good|adj|6|en-good-en-adj-lHRKgLaW,6,,"Coined in reference to the phrase the only good nigger is a dead nigger, a popular saying among white supremacists.",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4089
+entry_c3ad6a92155dfc35d354,nb,banke,verb,"nb|banke|verb|2|en-banke-nb-verb-1Ys-EbfD,en-banke-nb-verb-88v8AXbO,en-banke-nb-verb-iAN9WQ17,en-banke-nb-verb-vmubZ4wB",2,,From Old Norse banga.,https://en.wiktionary.org/wiki/banke#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_c5179a8fdbaf9110b49e,en,good,verb,en|good|verb|5|en-good-en-verb--KcWTqu6,5,,"From English dialectal, from Middle English *goden, of North Germanic origin, related to Swedish göda (“to fatten, fertilise, battle”), Danish gøde (“to fertilise, battle”), ultimately from the adjective. See above.",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4088
+entry_c551b764db14f65222e5,en,basket,verb,"en|basket|verb||en-basket-en-verb-KCxSQ60D,en-basket-en-verb-ZAJjJGpq",,,"Etymology tree
+Proto-Celtic *baskis
+Proto-Brythonicder.
+Late Latin bascauda
+Anglo-Norman bascatbor.
+Middle English basket
+English basket
+From Middle English basket, from Anglo-Norman baschet, basket, bascat, from latin
+bascauda. Displaced native Old English mand.
+One theory is that it derives from Late Latin bascauda (“kettle, table-vessel”), from Proto-Brythonic (in Breton baskodenn), from Proto-Celtic *baskis (“bundle, load”), from purported Proto-Indo-European *bʰask- (“bundle”), but this is now widely viewed as a substrate word for phonetic reasons. Related to Latin fascis (“bundle, package, load”) (whence English fasces), Albanian bokshe (“bundle”), Breton bac'h (“bundle, load”), Ancient Greek φάκελος (phákelos) and βάσκιοι (báskioi) (“bundle (of sticks)”); see also faggot (“(originally) bundle of sticks”).",https://en.wiktionary.org/wiki/basket#English,kaikki_en.jsonl,7445
+entry_c86490d6d7be71e92199,en,bank,noun,"en|bank|noun|4|en-bank-en-noun-29dohXxG,en-bank-en-noun-HX0O5Q3T,en-bank-en-noun-VMxpe6-P,en-bank-en-noun-YtnVvhS1,en-bank-en-noun-hjlbExtK",4,,"Probably from French banc. Of Germanic origin, and akin to English bench.",https://en.wiktionary.org/wiki/bank#English,kaikki_en.jsonl,
+entry_c91bfb0233f6d6c5a501,en,clown,noun,"en|clown|noun||en-clown-en-noun-4AfTOD6q,en-clown-en-noun-KpJ8EqDI,en-clown-en-noun-NdWfaHUB,en-clown-en-noun-X4bLDzxe,en-clown-en-noun-xClpyE83,en-clown-en-noun-zwgDv0Pa",,,"From earlier clowne, cloyne (“man of rustic or coarse manners, boor, peasant”); likely of North Germanic origin, akin to Icelandic klunni (“clumsy fellow, klutz”), Swedish kluns (“clumsy fellow”), all from Middle Low German klunz, from klunt (“pile, lump, something thick”); according to Pokorny, this could be related to a group of Germanic derivatives of Proto-Indo-European *gel- (“to ball up; amass”), such as Proto-West Germanic *klott (“lump”), Proto-Germanic *klūtaz (“clod, lump”), *kultaz (“lump, bundle”), etc.
+Alternatively, directly from Low German (compare North Frisian klönne (“clumsy fellow, klutz”), Dutch kluns (“clumsy fellow, klutz”), Dutch kloen (“uncouth person, lout”)), themselves from the same ultimate source as above.
+Unlikely from Latin colōnus (“colonist, farmer”), although learned awareness of this term may have influenced semantic development.",https://en.wiktionary.org/wiki/clown#English,kaikki_en.jsonl,25525
+entry_ce494af0e307ee60aa62,sv,väg,noun,"sv|väg|noun||en-väg-sv-noun-1mETzkw3,en-väg-sv-noun-VcQGE0c~,en-väg-sv-noun-mIawzIVt,en-väg-sv-noun-rpGAT5~0,en-väg-sv-noun-zAHArVwQ",,,"From Old Swedish vægher, from Old Norse vegr, from Proto-Germanic *wegaz, from Proto-Indo-European *weǵʰ-. Cognate with English way.",https://en.wiktionary.org/wiki/v%C3%A4g#Swedish,kaikki_sv.jsonl,
+entry_cfda133d174e777955ef,de,stief-,prefix,de|stief-|prefix||en-stief--de-prefix-om3DQwO3,,,"From Middle High German stief-, from Old High German stiof-, from Proto-West Germanic *steupa- (“bereft, pushed out”). Cognate with Dutch stief-, English step-.",https://en.wiktionary.org/wiki/stief-#German,kaikki_de.jsonl,38481
+entry_d397805a6f10c09b5b37,da,arbejde,noun,"da|arbejde|noun|1|en-arbejde-da-noun-AOE-169V,en-arbejde-da-noun-DUAh9JbA,en-arbejde-da-noun-IGR7ayl5",1,,"From Middle Low German arbeit, from Old Saxon arvēd.
+Compare Norwegian Bokmål arbeid, Swedish arbete, and Faroese arbeiði. A native form of the word is found in Old Danish æruæthæ, from Old Norse erfiði (still in Swedish arvode (“salary”)).",https://en.wiktionary.org/wiki/arbejde#Danish,kaikki_da.jsonl,5954
+entry_db074d08f1b0fbace99a,de,setzen,verb,"de|setzen|verb||en-setzen-de-verb-5SjNY6e1,en-setzen-de-verb-IPtrC0As,en-setzen-de-verb-JeEgpKj~,en-setzen-de-verb-Umo9oWM7,en-setzen-de-verb-lXVEeIW0",,,"From Middle High German setzen, from Old High German sezzen, from Proto-West Germanic *sattjan. Cognate with Hunsrik setze, English set, Dutch zetten, and Yiddish זעצן (zetsn).",https://en.wiktionary.org/wiki/setzen#German,kaikki_de.jsonl,8785
+entry_dc8a1a46ded25e590b7d,sv,över,postp,sv|över|postp||en-över-sv-postp-A0XSOcAE,,,"From Old Swedish ivir, yvir, ø̄wer, from Runic Swedish ufiR, from Old Norse yfir, from Proto-Germanic *ubiri, from Proto-Indo-European *upéri, from *upér, from *upo.",https://en.wiktionary.org/wiki/%C3%B6ver#Swedish,kaikki_sv.jsonl,
+entry_deb52e4ae91c940c3b17,da,løg,noun,"da|løg|noun||en-løg-da-noun-37DOB-35,en-løg-da-noun-KIlxZxaF",,,"From Old Norse laukr, from Proto-Norse ᛚᚨᚢᚲᚨᛉ (laukaʀ), from Proto-Germanic *laukaz.",https://en.wiktionary.org/wiki/l%C3%B8g#Danish,kaikki_da.jsonl,
+entry_e120ce950c29859732ba,sv,man,noun,sv|man|noun|2|en-man-sv-noun-0Pmo7Kd7,2,,"From Old Swedish man, from Old Norse mǫn, from Proto-Germanic *manō.",https://en.wiktionary.org/wiki/man#Swedish,kaikki_sv.jsonl,87
+entry_e1e85f4377760bfa473a,en,good,verb,"en|good|verb|4|en-good-en-verb-CZSR4H-0,en-good-en-verb-E8vhwLRA,en-good-en-verb-LSGLmfWc,en-good-en-verb-NS-IKflg,en-good-en-verb-PM70C-Vh,en-good-en-verb-YaqHU58k,en-good-en-verb-ZIKLmuXo",4,,"Inherited from Middle English goden, godien, from Old English gōdian (“to improve, get better; make better; endow, enrich”), from Proto-West Germanic *gōdōn (“to make better, improve”), from Proto-Germanic *gōdaz (“good, favorable”).",https://en.wiktionary.org/wiki/good#English,kaikki_en.jsonl,4087
+entry_e30db98274c96c0f8e14,en,over,adv,"en|over|adv|1|en-over-en-adv-3yBaLPpn,en-over-en-adv-8LhNod3g,en-over-en-adv-D1Y7HlZ8,en-over-en-adv-EHVPfyAW,en-over-en-adv-L4Eo0Jud,en-over-en-adv-Rp0tVqmb,en-over-en-adv-TjCeKzY5,en-over-en-adv-W6Z0nuJH,en-over-en-adv-WqTVKyki,en-over-en-adv-Y1rRv5Ga,en-over-en-adv-hIZ~2dzu,en-over-en-adv-jawKGcX8,en-over-en-adv-k00vCYzP,en-over-en-adv-nnQ4765-,en-over-en-adv-uSOTpmQF,en-over-en-adv-vHGsFLJq,en-over-en-adv-vKPQRTb0,en-over-en-adv-wIqfguEN,en-over-en-adv-wd1jp-1i,en-over-en-adv-yTNTnyJd",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20989
+entry_e4b4804846fa84cf60b9,en,stepdaughter,noun,en|stepdaughter|noun||en-stepdaughter-en-noun-XTCaU0tt,,,"From Middle English stepdoughter, stepdoghter, steopdohter, from Old English stēopdohtor (“stepdaughter”), from Proto-Germanic *steupaduhtēr (“stepdaughter”), equivalent to step- + daughter.
+Cognate with Saterland Frisian Stäifdochter (“stepdaughter”), West Frisian styfdochter (“stepdaughter”), Dutch stiefdochter (“stepdaughter”), German Low German Steevdochter (“stepdaughter”), German Stieftochter (“stepdaughter”), Danish steddatter (“stepdaughter”), Swedish styvdotter (“stepdaughter”), Icelandic stjúpdóttir (“stepdaughter”).",https://en.wiktionary.org/wiki/stepdaughter#English,kaikki_en.jsonl,
+entry_e5fb368ae3cc2a0d862a,en,sand,noun,"en|sand|noun|1|en-sand-en-noun-92uXLKHc,en-sand-en-noun-FJ40mVoU,en-sand-en-noun-H~MdpsZZ,en-sand-en-noun-U6T6nUGn,en-sand-en-noun-W1PKj0dv,en-sand-en-noun-ds~5kL7V,en-sand-en-noun-eNzOgajC,en-sand-en-noun-haapx-Jl,en-sand-en-noun-jbt9vIFA,en-sand-en-noun-qD~k1BZw,en-sand-en-noun-zYwHgdAe",1,,"Etymology tree
+substratebor.
+Proto-Indo-European *sámdʰos?
+Proto-Germanic *samdaz
+Proto-West Germanic *samd
+Old English sand
+Middle English sond
+English sand
+Inherited from Middle English sond, sand, from Old English sand, from Proto-West Germanic *samd, from Proto-Germanic *samdaz.
+See also North Frisian sun, Sön, sönj (“sand”), Saterland Frisian Sound (“sand”), West Frisian sân (“sand”), Dutch zand (“sand”), German and Luxembourgish Sand (“sand”), Yiddish זאַמד (zamd, “sand”), Danish, Norwegian Bokmål, Norwegian Nynorsk, and Swedish sand (“sand”), Faroese and Icelandic sandur (“sand”), Latin sabulum (“sand, gravel”), Ancient Greek ἄμαθος (ámathos, “sand”), English dialectal samel (“sand bottom”), Old Irish do·essim (“to pour out”), Latin sentina (“bilge water”), Lithuanian sémti (“to scoop”), Ancient Greek ἀμάω (amáō, “to gather”), ἄμη (ámē, “water bucket”).",https://en.wiktionary.org/wiki/sand#English,kaikki_en.jsonl,9004
+entry_e6bc59226d76cc26e636,en,man,pron,"en|man|pron|1|en-man-en-pron-4YyFP7UV,en-man-en-pron-ak919t8o,en-man-en-pron-tFXX4NlE",1,,"From Middle English man, from Old English mann m (“human being, person, man”), from Proto-West Germanic *mann, from Proto-Germanic *mann- (“man”), from Proto-Indo-European *mon- (“human being, man”). Doublet of mann and Manu.
+Cognates
+This word has many cognates, in every Germanic language (whether extant or extinct), with similarities in form and meaning.
+Virtually all the words below mean “man” and “husband”, with some specific cases noted.
+In Ingvaeonic (the languages closest to English):
+:* Low German Mann
+:* North Frisian maan, man, moon, muon
+:* Saterland Frisian Mon
+:* Scots man
+:* West Frisian man
+:* Yola man
+In the remainder of West Germanic:
+:* Alemannic German ma, Maa, Mann, mo, mà, Mànn
+:* Bavarian Mo, mon, moon, Må, mònn
+:* Cimbrian man, mann, månn
+:* Dutch, Limburgish, and Zealandic man
+:* German and Luxembourgish Mann
+:* Mòcheno mònn
+:* Vilamovian maon, mon, mōn
+:* Yiddish מאַן (man)
+In East Germanic:
+:* Gothic 𐌼𐌰𐌽𐌽𐌰 (manna), which meant “man”, “human“ and “person”, but likely also “husband”
+In North Germanic:
+:* Danish mand
+:* Faroese and Icelandic maður, both additionally meaning “human” and “person”, as in Old Norse
+:* Gutnish and Swedish man
+:* Norn, Norwegian Bokmål, and Norwegian Nynorsk mann
+:* Norwegian Nynorsk mainnj
+:* Old Norse maðr
+Outside Germanic:
+: Indo-Iranian:
+::* Avestan 𐬨𐬀𐬥𐬎𐬱 (manuš, “human”)
+::* Sanskrit मनुस् (manus, “human”), मनु (manu, “human; humanity; thought”; “thinking; wise; intelligent”)
+::* Also Sanskrit म॒नु॒ष्य॑ (manuṣyà, “human; man; huband”, whence English manusya)
+: Slavic (all of these mean “man” and “husband”, though in some cases the former is no longer part of the modern standard):
+::* Belarusian, Russian, and Ukrainian муж (muž)
+::* Bulgarian мъж (măž)
+::* Czech and Slovak muž
+::* Macedonian маж (maž)
+::* Polish mąż (“husband”; the meaning “man” is obsolete, akin to English wife)
+::* Serbo-Croatian му̑ж, mȗž
+::* Slovene mož",https://en.wiktionary.org/wiki/man#English,kaikki_en.jsonl,1359
+entry_e7aa5ef12e87ee2ab2aa,en,over,noun,en|over|noun|2|en-over-en-noun-TPeaNGaR,2,,"From Middle English over (“riverbank, seashore, brink”), from Old English ōfer (“riverbank, seashore, brink, edge, margin, border”), from Proto-Germanic *ōferaz. Cognate with Dutch oever (“riverbank, shore”), German Ufer (“shore, shoreline, riverbank”), Low German Över (“shore, riverbank”).",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20994
+entry_e859836fe0ee1124341d,en,overset,verb,"en|overset|verb||en-overset-en-verb-Evzhaf-m,en-overset-en-verb-GhWJHlPY,en-overset-en-verb-KGjVNZBG,en-overset-en-verb-LUm8ukA-,en-overset-en-verb-MLasIioj,en-overset-en-verb-OfVa~BSa,en-overset-en-verb-QCz9Gy2O,en-overset-en-verb-XXNM-2WH,en-overset-en-verb-ZI4TixId,en-overset-en-verb-en:translate,en-overset-en-verb-fM8gUP3v,en-overset-en-verb-kZsAEsAr,en-overset-en-verb-l-bTf9Ch,en-overset-en-verb-vH1ZDEVE,en-overset-en-verb-xVn6u6Oo,en-overset-en-verb-~tk2ah7T",,,"PIE word
+ *upér
+The verb is derived from Middle English oversetten (“to place or set over, cover; to assail; to defeat, overcome, overpower, overthrow; to defer; to discredit, refute; to disregard, overlook, set aside; to hinder; to oppress; to repulse”), from Old English ofersettan (“to put in a position of authority; to overcome or be overcome; to set over”), from Proto-West Germanic *ubarsattjan (“to place above, set over; to establish, install”), from *ubarsittjan (“to abstain from, neglect; to occupy, possess; to sit over or upon”), from *ubar- (prefix meaning ‘above, over’) + *sittjan (“to sit”) (from Proto-Germanic *sitjaną (“to sit”), ultimately from Proto-Indo-European *sed- (“to sit”)). By surface analysis, over- (prefix meaning ‘above, higher; excessive, excessively’) + set (verb). Doublet of oversit.
+Verb sense 1.2.3 (“to translate (a text)”) is probably a calque of German übersetzen.
+The adjective is derived from overset, the past participle form of the verb. The noun is also derived from the verb.
+cognates
+* Dutch overzetten (“to ferry, transport, translate”)
+* Old High German ubarsezzen (Middle High German übersetzen, modern German übersetzen (“to cross over, translate”))
+* Saterland Frisian uursätte (“to cross over, translate”)
+* Swedish översätta (“to translate”)
+* West Frisian oersette (“to translate”)",https://en.wiktionary.org/wiki/overset#English,kaikki_en.jsonl,374241
+entry_e923695f4dd191d09041,de,gut,intj,de|gut|intj||en-gut-de-intj-tVPSgITx,,,"Inherited from Middle High German guot, from Old High German guot, from Proto-West Germanic *gōd, from Proto-Germanic *gōdaz, from Proto-Indo-European *gʰedʰ- (“to unite, be associated, suit”).
+Cognates
+Cognate to Luxembourgish gutt, Silesian East Central German gutt, Dutch goed, West Frisian goed, Saterland Frisian goud, English good, Danish god, Norwegian god and Swedish god.",https://en.wiktionary.org/wiki/gut#German,kaikki_de.jsonl,726
+entry_eb205d5617cb37fe6896,nb,arbeid,verb,nb|arbeid|verb|2|en-arbeid-nb-verb-ibVHd-84,2,,,https://en.wiktionary.org/wiki/arbeid#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,5072
+entry_eb7061fefad6eccb9e63,de,Korb,noun,"de|Korb|noun||en-Korb-de-noun-65ojj7uO,en-Korb-de-noun-8k8XOkh0,en-Korb-de-noun-G6s08yXA,en-Korb-de-noun-SGK2yVHd,en-Korb-de-noun-U6Hu9xut,en-Korb-de-noun-dFje9g1x,en-Korb-de-noun-yXxPd-a~",,,"From Middle High German korp, from Old High German korb, chorp, from Proto-West Germanic *korb.
+The sense “rejection of a (romantic) request” is formed back from the expressions einen Korb geben (“to so reject”), einen Korb kriegen (“to be so rejected”). These derive from certain older customs, which involved a bottomless basket as a symbol of the end or inexistence of love. The further origin of this symbol seems uncertain, though it has been plausibly related to the apparent mediaeval practice of pulling a secret visitor up to one’s window in a basket. Compare the same in Dutch een korf krijgen, Swedish få korgen and Danish få en kurv.",https://en.wiktionary.org/wiki/Korb#German,kaikki_de.jsonl,8745
+entry_ec54ababa3122d141fc6,en,over,intj,"en|over|intj|1|en-over-en-intj-5bt9uoIn,en-over-en-intj-C9w4DdA0,en-over-en-intj-ZCkaOkX3",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20992
+entry_ec6d37f3160a31959f1e,en,way,adv,"en|way|adv|2|en-way-en-adv-BtnHblKu,en-way-en-adv-jCQlllvP,en-way-en-adv-wMebk6~E",2,,Apheresis of away.,https://en.wiktionary.org/wiki/way#English,kaikki_en.jsonl,12974
+entry_ed82a136329758123696,sv,bank,noun,"sv|bank|noun||en-bank-sv-noun-03flC6jG,en-bank-sv-noun-0Zbiqt~0,en-bank-sv-noun-fDuh1OIS,en-bank-sv-noun-p~fgiG6E",,,"From Dutch bank, German Bank or Low German bank, all from Italian banco, from Old High German banc, from Proto-West Germanic *banki, from Proto-Germanic *bankiz.",https://en.wiktionary.org/wiki/bank#Swedish,kaikki_sv.jsonl,
+entry_eda347477c2323743d13,da,man,noun,da|man|noun|1|en-man-da-noun-hY4cfZ3k,1,,"From Old Norse mǫn, from Proto-Germanic *manō (“mane”).",https://en.wiktionary.org/wiki/man#Danish,kaikki_da.jsonl,68
+entry_edc0ba9bf24e9efe0a2c,nb,bank,noun,nb|bank|noun|1|en-bank-nb-noun-7aSkvmid,1,,"Borrowed from French banque, from Italian banco (“bench”), banca.",https://en.wiktionary.org/wiki/bank#Norwegian_Bokm%C3%A5l,kaikki_nb.jsonl,
+entry_ee76d7bc9f7143637276,en,daughter,noun,"en|daughter|noun||en-daughter-en-noun-18deEpWp,en-daughter-en-noun-C93CteMq,en-daughter-en-noun-RURy~nyD,en-daughter-en-noun-WB2wUrF3,en-daughter-en-noun-YX6Ee7o9,en-daughter-en-noun-en:Q308194,en-daughter-en-noun-ni2062E7",,,"From Middle English doghter, doughter, from Old English dohtor (“daughter”), from Proto-West Germanic *dohter, from Proto-Germanic *duhtēr, from Proto-Indo-European *dʰugh₂tḗr.",https://en.wiktionary.org/wiki/daughter#English,kaikki_en.jsonl,3963
+entry_ef2849120bd1e4d6b840,sv,korg,noun,"sv|korg|noun||en-korg-sv-noun-VdaFRRY9,en-korg-sv-noun-yHY4YJ3I",,,"From Old Swedish korgher, from Old Norse kǫrf, karfa, from Middle Low German korf, from Old Saxon *korf, from Proto-West Germanic *korb.",https://en.wiktionary.org/wiki/korg#Swedish,kaikki_sv.jsonl,13996
+entry_ef680239c3e52366baef,sv,arvode,noun,sv|arvode|noun||en-arvode-sv-noun-8ypjyPQw,,,"From Old Swedish arvoþe (“work; chore”), from Old Norse erfiði (“toil; hard work”), from Proto-Germanic *arbaidiją (“toil; work; hardship”).
+Doublet of arbete.",https://en.wiktionary.org/wiki/arvode#Swedish,kaikki_sv.jsonl,118461
+entry_f0f0e10edf3402788ea5,sv,beröva,verb,sv|beröva|verb||en-beröva-sv-verb-ST4IzVhe,,,"Inherited from Old Swedish berøva, from Middle Low German beroven, from Proto-Germanic *biraubōną. By surface analysis, be- + röva.
+Cognate of Danish berøve, Gothic 𐌱𐌹𐍂𐌰𐌿𐌱𐍉𐌽 (biraubōn), Dutch beroven, English bereave.",https://en.wiktionary.org/wiki/ber%C3%B6va#Swedish,kaikki_sv.jsonl,120077
+entry_f24508a5a0f7339aed49,en,bench,verb,en|bench|verb|2|en-bench-en-verb-hWb-tD0L,2,,From bench press by shortening.,https://en.wiktionary.org/wiki/bench#English,kaikki_en.jsonl,2808
+entry_f311147b0be0538bf63d,en,bench,verb,"en|bench|verb|1|en-bench-en-verb-140A2YFg,en-bench-en-verb-96EuJgL2,en-bench-en-verb-CKoxfPJg,en-bench-en-verb-OpVoG915,en-bench-en-verb-bfp9AMxW",1,,"From Middle English bench, benk, bynk, from Old English benċ (“bench”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz (“bench”), from Proto-Indo-European *bʰeg-.
+Cognate with Scots benk, bink (“bench”), West Frisian bank (“bench”), Dutch bank (“bench”), German Bank (“bench”), Danish bænk (“bench”), Swedish bänk (“bench”), Icelandic bekkur (“bench”). Doublet of banc, banco, and bank.",https://en.wiktionary.org/wiki/bench#English,kaikki_en.jsonl,2807
+entry_f4ff3bcd360cabbb1278,da,kurv,noun,da|kurv|noun|1|en-kurv-da-noun--nbZmtlX,1,,"Inherited from Old Danish korw, borrowed from Middle Low German korf, from Old Saxon *korf, from Proto-West Germanic *korb.",https://en.wiktionary.org/wiki/kurv#Danish,kaikki_da.jsonl,7038
+entry_f72a9545f89dce137def,en,clown,verb,"en|clown|verb||en-clown-en-verb-JOp9czM8,en-clown-en-verb-v5pqi~Um",,,"From earlier clowne, cloyne (“man of rustic or coarse manners, boor, peasant”); likely of North Germanic origin, akin to Icelandic klunni (“clumsy fellow, klutz”), Swedish kluns (“clumsy fellow”), all from Middle Low German klunz, from klunt (“pile, lump, something thick”); according to Pokorny, this could be related to a group of Germanic derivatives of Proto-Indo-European *gel- (“to ball up; amass”), such as Proto-West Germanic *klott (“lump”), Proto-Germanic *klūtaz (“clod, lump”), *kultaz (“lump, bundle”), etc.
+Alternatively, directly from Low German (compare North Frisian klönne (“clumsy fellow, klutz”), Dutch kluns (“clumsy fellow, klutz”), Dutch kloen (“uncouth person, lout”)), themselves from the same ultimate source as above.
+Unlikely from Latin colōnus (“colonist, farmer”), although learned awareness of this term may have influenced semantic development.",https://en.wiktionary.org/wiki/clown#English,kaikki_en.jsonl,25526
+entry_f8d50b8a102aa59c1e86,en,over,verb,"en|over|verb|1|en-over-en-verb-IApHvTge,en-over-en-verb-mdsoNLsy",1,,"Etymology tree
+Proto-Indo-European *úp
+Proto-Indo-European *-er
+Proto-Indo-European *upér
+Proto-Germanic *uber
+Proto-West Germanic *obar
+Old English ofer
+Middle English over
+English over
+From Middle English over, from Old English ofer, ofor, ouer, from Proto-West Germanic *obar, from Proto-Germanic *uber (“over”), from Proto-Indo-European *upér (“above; over”).
+Cognates
+Cognate with Scots ower (“over”), Yola oer, ower, owr (“over”), Saterland Frisian uur (“over”), West Frisian oer (“over, across”), Cimbrian übar (“over”), Dutch over (“over”), German ober, über, ueber (“over, above”), Limburgish euver, övver (“over”), Low German över, üöver (“over”), Luxembourgish iwwer (“over”), Mòcheno iber (“over”), Yiddish איבער (iber, “over”), Danish and Norwegian Bokmål over (“over”), Elfdalian yvyr (“over”), Faroese yvir (“over”), Icelandic yfir (“over”), Norwegian Nynorsk over, yver, yvi (“over”), Swedish över (“over”), Gothic 𐌿𐍆𐌰𐍂 (ufar, “over”); also Breton and Cornish war (“on, over”), Irish ar (“on”), Manx er (“on”), Scottish Gaelic air (“on, upon”), Latin super (“above, over”), Ancient Greek ῠ̔πείρ (hŭpeír), ὑπέρ (hupér), ῠ̔́περ (hŭ́per, “above, over”), Albanian epër (“above, high, overhead, up, upward”), Armenian վեր (ver, “up”), Avestan 𐬎𐬞𐬀𐬌𐬭𐬌 (upaⁱri, “above, over”), Persian بر (bar, “on; onto; upon”), Sanskrit उपरि (upari, “above, over”).
+Doublet of uber, super, and hyper.",https://en.wiktionary.org/wiki/over#English,kaikki_en.jsonl,20993
+entry_f8e12ea46df07bbbcbae,en,ombudsman,noun,"en|ombudsman|noun||en-ombudsman-en-noun-ktXxkGn-,en-ombudsman-en-noun-r-RQ54LV",,,"Borrowed from Swedish ombudsman (equivalent to ombud (“representative, proxy”) + man), from Old Norse umboðsmaðr.",https://en.wiktionary.org/wiki/ombudsman#English,kaikki_en.jsonl,
+entry_f961b5bd0cc3e115fe7b,en,sand,verb,"en|sand|verb|2|en-sand-en-verb-07~hTrc6,en-sand-en-verb-SxGdWjvt,en-sand-en-verb-zrEeM1mg",2,,"From Middle English sanden, from the noun (see above).",https://en.wiktionary.org/wiki/sand#English,kaikki_en.jsonl,9006
+entry_fc29b446e3fb4df23c3f,sv,dotter,noun,sv|dotter|noun||en-dotter-sv-noun-8BDPg9aU,,,"Etymology tree
+Proto-Indo-European *dʰewgʰ-?
+Proto-Indo-European *-tḗr
+Proto-Indo-European *dʰugh₂tḗr
+Proto-Germanic *duhtēr
+Proto-Norse *ᛞᛟᚺᛏᛖᚱ (*dohter /⁠dohtēr⁠/)
+Old Norse dóttir
+Old Swedish dōttir
+Swedish dotter
+Inherited from Old Swedish dōttir, from Old Norse dóttir, from Proto-Norse *ᛞᛟᚺᛏᛖᚱ (*dohter /⁠dohtēr⁠/), from Proto-Germanic *duhtēr, from Proto-Indo-European *dʰugh₂tḗr, possibly from *dʰewgʰ- + *-tḗr.",https://en.wiktionary.org/wiki/dotter#Swedish,kaikki_sv.jsonl,7011
+entry_fc4cb53d5abad9b9a415,de,Vlies,noun,de|Vlies|noun||en-Vlies-de-noun-uVsOpvQ8,,,"16th century, at first only in reference to the Order of the Golden Fleece, from Middle Dutch vlies, from Proto-West Germanic *fleus. The later freer use for “fleece” was reinforced by inherited Low German forms, whereas the rare Middle High German vlius had no continuation. The spelling with V- follows the Dutch, but was supported by an unetymological association with Latin vellus. Doublet of Fleece, a later borrowing from English.",https://en.wiktionary.org/wiki/Vlies#German,kaikki_de.jsonl,191759
+entry_fccd92a19353845d2087,da,ombud,noun,da|ombud|noun||en-ombud-da-noun-avPuNGnB,,,From Old Danish umbuth‚ from Old Norse umboð.,https://en.wiktionary.org/wiki/ombud#Danish,kaikki_da.jsonl,
+entry_fcdcc81010103c265eb5,da,over,prep,"da|over|prep|1|en-over-da-prep-eaRVbGaO,en-over-da-prep-iMfwjQvl",1,,"From Old Danish ofær, from Old Norse yfir.",https://en.wiktionary.org/wiki/over#Danish,kaikki_da.jsonl,
+entry_ff1bc22c8edbb28c0093,sv,sandbank,noun,"sv|sandbank|noun||en-sandbank-sv-noun-hm0HLX80,en-sandbank-sv-noun-lBecH7ik",,,sand + bank,https://en.wiktionary.org/wiki/sandbank#Swedish,kaikki_sv.jsonl,7254
+entry_ff24b1e5cc2e56f30c8c,en,overset,noun,"en|overset|noun||en-overset-en-noun-Zb7Ocpry,en-overset-en-noun-v5XWIKlH,en-overset-en-noun-vLQt5Ceb",,,"PIE word
+ *upér
+The verb is derived from Middle English oversetten (“to place or set over, cover; to assail; to defeat, overcome, overpower, overthrow; to defer; to discredit, refute; to disregard, overlook, set aside; to hinder; to oppress; to repulse”), from Old English ofersettan (“to put in a position of authority; to overcome or be overcome; to set over”), from Proto-West Germanic *ubarsattjan (“to place above, set over; to establish, install”), from *ubarsittjan (“to abstain from, neglect; to occupy, possess; to sit over or upon”), from *ubar- (prefix meaning ‘above, over’) + *sittjan (“to sit”) (from Proto-Germanic *sitjaną (“to sit”), ultimately from Proto-Indo-European *sed- (“to sit”)). By surface analysis, over- (prefix meaning ‘above, higher; excessive, excessively’) + set (verb). Doublet of oversit.
+Verb sense 1.2.3 (“to translate (a text)”) is probably a calque of German übersetzen.
+The adjective is derived from overset, the past participle form of the verb. The noun is also derived from the verb.
+cognates
+* Dutch overzetten (“to ferry, transport, translate”)
+* Old High German ubarsezzen (Middle High German übersetzen, modern German übersetzen (“to cross over, translate”))
+* Saterland Frisian uursätte (“to cross over, translate”)
+* Swedish översätta (“to translate”)
+* West Frisian oersette (“to translate”)",https://en.wiktionary.org/wiki/overset#English,kaikki_en.jsonl,374243
+entry_ff71b2866baf660ab47a,da,steddatter,noun,da|steddatter|noun||en-steddatter-da-noun-f0pZwO8T,,,From sted- (“step”) + datter (“daughter”).,https://en.wiktionary.org/wiki/steddatter#Danish,kaikki_da.jsonl,57427
