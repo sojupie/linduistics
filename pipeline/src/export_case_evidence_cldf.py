@@ -208,6 +208,7 @@ def export_slice(
         raise FileExistsError(f"Output directory is not empty; pass --force to replace it: {output_dir}")
     output_dir.mkdir(parents=True, exist_ok=True)
     cases = read_jsonl(source_path)
+    case_ids = sorted({case["case_id"] for case in cases})
 
     entries_by_key: dict[str, dict] = {}
     senses_by_key: dict[tuple[str, str], dict] = {}
@@ -703,6 +704,12 @@ def export_slice(
         source_data_path = source_path.parent / f"{source_export_name}.manifest.json" if source_export_name else None
         if source_data_path and source_data_path.exists():
             source_data_manifest = json.loads(source_data_path.read_text(encoding="utf-8"))
+    project_root = Path(__file__).resolve().parents[2]
+    transformation_paths = (
+        project_root / "pipeline/src/build_case_evidence_slice.py",
+        project_root / "pipeline/src/audit_case_claim_target_entries.py",
+        Path(__file__).resolve(),
+    )
     claim_by_id = {row["ID"]: row for row in claims}
     comparison_by_id = {row["ID"]: row for row in comparisons}
     label_counts = Counter(row["Legacy_Candidate_Label"] for row in comparisons)
@@ -712,6 +719,7 @@ def export_slice(
         relation = claim_by_id[match["Claim_ID"]]["Relation"]
         matched_evidence[label][f"{relation}:{match['Target_Identity_Status']}"] += 1
     manifest = {
+        "case_groups": case_ids,
         "source": source_path.name,
         "source_sha256": digest(source_path),
         "source_manifest": source_manifest_path.name if source_manifest else None,
@@ -723,12 +731,22 @@ def export_slice(
             "manifest_sha256": digest(target_manifest_path) if target_manifest_path and target_manifest_path.exists() else None,
         } if target_entries_path is not None else None),
         "upstream_inputs": source_manifest.get("inputs", {}) if source_manifest else {},
+        "source_snapshot": {
+            "provider": (source_data_manifest or {}).get("source", "Wiktionary via Kaikki/Wiktextract"),
+            "provider_url": "https://kaikki.org/dictionary/rawdata.html",
+            "extraction_manifest_generated_at": (source_data_manifest or {}).get("generated_at"),
+            "entry_revision_ids": "not available for every entry; use Source_URL to inspect the current article and history",
+        },
         "source_dump_files": {
             code: {
                 key: detail.get(key)
                 for key in ("source_file", "source_file_sha256", "source_file_mtime", "source_file_size")
             }
             for code, detail in (source_data_manifest or {}).get("languages", {}).items()
+        },
+        "transformation_files": {
+            path.relative_to(project_root).as_posix(): digest(path)
+            for path in transformation_paths if path.is_file()
         },
         "metadata": "metadata.json",
         "metadata_sha256": digest(output_dir / "metadata.json"),
@@ -754,7 +772,10 @@ def export_slice(
             ).items())),
         },
         "limits": [
-            "The thirteen cases are deliberate diagnostics, not a representative sample.",
+            f"The {len(case_ids)} case groups are deliberate diagnostics, not a representative sample.",
+            "Per-entry Wiktionary revision IDs are unavailable for some records; source dump names and hashes identify the local snapshot.",
+            "Wiktionary entries can contain externally sourced material with separate terms; this selected export has not been checked for that material entry by entry and is not cleared for redistribution.",
+            "The official CLDF validator has not been run; only the exporter's ID and declared foreign-key checks have passed.",
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
             "Component candidate entry keys are candidates, not confirmed component-sense links.",
             "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
@@ -764,9 +785,10 @@ def export_slice(
         ],
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    case_group_label = "case group" if len(case_ids) == 1 else "case groups"
     (output_dir / "README.md").write_text(
         "# Linduistics source-linked lexical case slice\n\n"
-        "This is a small CLDF Generic export of thirteen deliberately chosen Wiktionary-derived cases. "
+        f"This CLDF Generic export contains {len(case_ids)} deliberately chosen Wiktionary-derived {case_group_label}. "
         "It keeps source entries and senses, normalized relation targets, source-template claim evidence, compound-component analyses, matched claim links, "
         "shared-component ancestor candidates, form-level target-entry candidates, and computed pair comparisons in separate tables.\n\n"
         "Source claims record their originating entry and one normalized target scope (form, entity, components, language, or none). A target template that expands into several claims retains one Template_Occurrence_ID across its rows. "
@@ -779,15 +801,19 @@ def export_slice(
         "not resolved component senses; `Candidate_Entry_Resolution` records whether each possible entry was included. "
         "Shared-component ancestor rows project those matches onto candidate roots; "
         "they are not confirmed component senses or whole-word histories. These cases are not representative of vocabulary coverage.\n\n"
-        "Source page URLs are retained in the entry and claim tables. The extracted Wiktionary-derived text and data "
-        "are attributed to Wiktionary contributors and are provided here under CC BY-SA 4.0; Wiktionary also offers "
-        "the GFDL option. See https://en.wiktionary.org/wiki/Wiktionary:Copyrights and "
-        "https://creativecommons.org/licenses/by-sa/4.0/. Confirm the project-wide redistribution terms before "
-        "publishing a larger release.\n\n"
-        "Rebuild the source-linked slice using the command in `docs/DATASET_NEXT_STEPS.md`, then run "
-        "`pipeline/.venv/Scripts/python.exe pipeline/src/audit_case_claim_target_entries.py --force` and "
-        "`pipeline/.venv/Scripts/python.exe pipeline/src/export_case_evidence_cldf.py --force`. "
-        "`manifest.json` records hashes for the slice, its inputs, and each exported table.\n",
+        "Source page URLs are retained in the entry and claim tables. This is an adapted selection of Wiktionary material extracted through Kaikki/Wiktextract; the Kaikki raw-data page, extraction-manifest date, and input dump hashes are in `manifest.json`, but individual entry revision IDs are not available for every record. "
+        "Attribution is to Wiktionary contributors, with changes made through extraction, normalization, linking, and comparison. This export is provided under CC BY-SA 4.0. "
+        "The article links let readers inspect the source and its history. See https://en.wiktionary.org/wiki/Wiktionary:Copyrights and "
+        "https://creativecommons.org/licenses/by-sa/4.0/. Kaikki/Wiktextract is the extraction route, not the original source. "
+        "Wiktionary entries may contain third-party material with separate terms; those entries have not been reviewed one by one, so this is a local release candidate and is not yet cleared for redistribution. "
+        "This dataset is not endorsed by Wiktionary or the Wikimedia Foundation.\n\n"
+        "Rebuild from the repository root after generating the local source records and comparison files described in `docs/DATASET_NEXT_STEPS.md`:\n\n"
+        "```powershell\n"
+        "python pipeline/src/build_case_evidence_slice.py --comparisons pipeline/data/all_comparisons_dercat_fix.parquet --source-records pipeline/data/etymology_records_source_origin_status.jsonl --claim-matches pipeline/data/candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline/data/component_entry_candidates_source_identity.jsonl.gz --shared-ancestor-candidates pipeline/data/component_shared_ancestor_candidates_source_identity.jsonl.gz --output pipeline/data/named_case_evidence_slice_dercat_fix.jsonl --force\n"
+        "python pipeline/src/audit_case_claim_target_entries.py --force\n"
+        "python pipeline/src/export_case_evidence_cldf.py --output-dir datasets/cldf-case-evidence --force\n"
+        "```\n\n"
+        "`manifest.json` records the input and table hashes, transformation-file hashes, case groups, and row counts. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run. The selected cases are diagnostic, not representative.\n",
         encoding="utf-8",
     )
     return manifest

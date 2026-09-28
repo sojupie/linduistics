@@ -111,16 +111,22 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     output = tmp_path / "cldf"
     manifest = export_slice(source, output)
 
+    assert manifest["case_groups"] == ["fleece"]
     assert manifest["tables"]["entries.csv"]["rows"] == 3
     assert manifest["tables"]["comparisons.csv"]["rows"] == 1
     assert manifest["tables"]["claim-matches.csv"]["rows"] == 1
     assert manifest["tables"]["shared-component-ancestor-candidates.csv"]["rows"] == 1
     assert manifest["source_dump_files"]["sv"]["source_file_sha256"] == "dump-hash"
+    assert manifest["source_snapshot"]["provider_url"] == "https://kaikki.org/dictionary/rawdata.html"
+    assert "pipeline/src/export_case_evidence_cldf.py" in manifest["transformation_files"]
     assert manifest["summary"]["comparisons_by_legacy_label"] == {"other": 1}
     assert manifest["summary"]["matched_source_claim_records_by_legacy_label"]["other"] == {"borrowed_from:available": 1}
     assert manifest["summary"]["normalized_relation_targets"] == 2
     metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
     assert metadata["dc:conformsTo"].endswith("#Generic")
+    readme = (output / "README.md").read_text(encoding="utf-8")
+    assert "1 deliberately chosen Wiktionary-derived case group" in readme
+    assert "individual entry revision IDs are not available for every record" in readme
     tables = {table["url"]: table for table in metadata["tables"]}
     assert "Source_Entry_ID" in {column["name"] for column in tables["forms.csv"]["tableSchema"]["columns"]}
 
