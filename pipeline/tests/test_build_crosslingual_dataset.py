@@ -1,8 +1,18 @@
 import json
 
 import numpy as np
+import pyarrow as pa
+import pyarrow.parquet as pq
 
-from build_crosslingual_dataset import align_pair_senses, build_pair_dataset
+from build_crosslingual_dataset import (
+    _lowercase_index,
+    _lookup_lemma,
+    align_pair_senses,
+    build_pair_dataset,
+    find_surface_collisions,
+    load_canonical_lexicons,
+    mine_translation_cliques,
+)
 
 
 class FixedMatcher:
@@ -141,3 +151,90 @@ def test_builder_does_not_fall_back_to_a_headword_root_when_matched_sense_has_no
     assert row["etymological_relation"] == "unknown"
     assert row["etym_root_a"] is None
     assert row["shared_etym_root"] is None
+
+
+def test_loader_preserves_case_distinct_lemmas_and_surface_matches_each(tmp_path):
+    for lang in ("en", "de", "sv", "da", "nb"):
+        words = ["gift"]
+        if lang == "de":
+            words = ["Gift", "gift"]
+        table = pa.table({
+            "word": words,
+            "pos": ["noun"] * len(words),
+            "ipa": [""] * len(words),
+            "glosses": [["poison"] if word == "Gift" else ["present"] for word in words],
+            "senses_json": ["[]"] * len(words),
+            "etym_root": [""] * len(words),
+            "etym_text": [""] * len(words),
+        })
+        pq.write_table(table, tmp_path / f"lemmas_{lang}.parquet")
+
+    lexicons = load_canonical_lexicons(tmp_path)
+
+    assert set(lexicons["de"]) == {"Gift", "gift"}
+    assert lexicons["de"]["Gift"]["glosses"] == ["poison"]
+    assert lexicons["de"]["gift"]["glosses"] == ["present"]
+
+    collisions = find_surface_collisions("de", "en", lexicons["de"], lexicons["en"], set())
+    assert {meta_a["word"] for meta_a, _, _, _ in collisions} == {"Gift", "gift"}
+
+
+def test_lowercase_lookup_requires_exact_or_unique_match():
+    lexicon = {word: {"word": word} for word in ("Gift", "gift")}
+    index = _lowercase_index(lexicon)
+
+    assert _lookup_lemma(lexicon, index, "Gift")["word"] == "Gift"
+    assert _lookup_lemma(lexicon, index, "GIFT") is None
+
+    german_forms = {word: {"word": word} for word in ("Maß", "Mass")}
+    german_index = _lowercase_index(german_forms)
+    assert _lookup_lemma(german_forms, german_index, "MASS")["word"] == "Mass"
+
+
+def test_translation_mining_prefers_exact_target_spelling_and_skips_ambiguous_fallback(tmp_path):
+    en_meta = {"word": "present"}
+    de_lexicon = {
+        "Gift": {"word": "Gift"},
+        "gift": {"word": "gift"},
+    }
+    lexicons = {
+        "en": {"present": en_meta},
+        "de": de_lexicon,
+        "sv": {},
+        "da": {},
+        "nb": {},
+    }
+    translation_dump = tmp_path / "translations.jsonl"
+    translation_dump.write_text(
+        '{"word":"present","senses":[{"translations":['
+        '{"code":"de","word":"GIFT"},{"code":"de","word":"Gift"}]}]}\n',
+        encoding="utf-8",
+    )
+
+    mined = mine_translation_cliques(translation_dump, lexicons)
+
+    assert mined[("de", "en")] == {("Gift", "present")}
+
+
+def test_builder_keeps_exact_case_identity_for_mined_pair():
+    matcher = FixedMatcher({"poison": [1.0, 0.0], "present": [0.0, 1.0]})
+    lexicons = {
+        "de": {
+            "Gift": {"word": "Gift", "pos": "noun", "ipa": "", "def": "poison",
+                     "glosses": ["poison"], "etym_root": "", "etym_text": "",
+                     "senses": [{"sense_id": 1, "gloss": "poison", "pos": "noun", "is_active": True}]},
+            "gift": {"word": "gift", "pos": "noun", "ipa": "", "def": "present",
+                     "glosses": ["present"], "etym_root": "", "etym_text": "",
+                     "senses": [{"sense_id": 1, "gloss": "present", "pos": "noun", "is_active": True}]},
+        },
+        "en": {
+            "gift": {"word": "gift", "pos": "noun", "ipa": "", "def": "present",
+                     "glosses": ["present"], "etym_root": "", "etym_text": "",
+                     "senses": [{"sense_id": 1, "gloss": "present", "pos": "noun", "is_active": True}]},
+        },
+    }
+
+    rows = build_pair_dataset("de", "en", {("Gift", "gift")}, lexicons, matcher)
+
+    assert rows[0]["word_a"] == "Gift"
+    assert rows[0]["word_b"] == "gift"

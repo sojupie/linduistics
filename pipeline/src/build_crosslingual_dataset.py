@@ -66,6 +66,23 @@ def _same_gloss_source_candidates(senses: list[dict], selected_index: int) -> li
     return candidates if len(identities) > 1 else []
 
 
+def _lowercase_index(lexicon: Dict[str, dict]) -> Dict[str, List[str]]:
+    index: Dict[str, List[str]] = defaultdict(list)
+    for word in lexicon:
+        index[word.lower()].append(word)
+    return index
+
+
+def _lookup_lemma(
+    lexicon: Dict[str, dict], lowercase_index: Dict[str, List[str]], word: str
+) -> Optional[dict]:
+    exact = lexicon.get(word)
+    if exact is not None:
+        return exact
+    matches = lowercase_index.get(word.lower(), [])
+    return lexicon[matches[0]] if len(matches) == 1 else None
+
+
 def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
     """Loads canonical lemma datasets for all target languages."""
     lexicons: Dict[str, Dict[str, dict]] = {}
@@ -96,7 +113,7 @@ def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
                 or [s["gloss"] for s in senses[:1]]
             )
 
-            lexicons[lang][w.lower()] = {
+            lexicons[lang][w] = {
                 "word": w,
                 "pos": poses[i] or (senses[0].get("pos") if senses else "noun"),
                 "ipa": ipas[i] or "",
@@ -125,6 +142,7 @@ def mine_translation_cliques(
     print(f"Streaming translations from {en_jsonl_path}...")
     start_time = time.perf_counter()
     en_lex = lexicons["en"]
+    lowercase_indexes = {lang: _lowercase_index(lexicon) for lang, lexicon in lexicons.items()}
 
     with open(en_jsonl_path, "rb") as f:
         for line in f:
@@ -133,8 +151,7 @@ def mine_translation_cliques(
             if not en_word or " " in en_word or "-" in en_word:
                 continue
 
-            en_lower = en_word.lower()
-            en_meta = en_lex.get(en_lower)
+            en_meta = _lookup_lemma(en_lex, lowercase_indexes["en"], en_word)
             if not en_meta:
                 continue
 
@@ -149,9 +166,11 @@ def mine_translation_cliques(
                     if target_lang in TARGET_LANGS and target_lang != "en":
                         tw = t.get("word", "").strip()
                         if tw and " " not in tw and "-" not in tw:
-                            tw_lower = tw.lower()
-                            if tw_lower in lexicons[target_lang]:
-                                canonical_tw = lexicons[target_lang][tw_lower]["word"]
+                            target_meta = _lookup_lemma(
+                                lexicons[target_lang], lowercase_indexes[target_lang], tw
+                            )
+                            if target_meta:
+                                canonical_tw = target_meta["word"]
                                 if canonical_tw not in targets[target_lang]:
                                     targets[target_lang].append(canonical_tw)
 
@@ -197,20 +216,29 @@ def find_surface_collisions(
     """Deterministically extracts ALL identical spelling collisions plus near-identical prefix collisions."""
     collisions: List[Tuple[dict, dict, float, float]] = []
 
-    # 1. Exact spelling intersections: include ALL exact matches!
-    common_lower = sorted(
-        list(set(lex_a.keys()) & set(lex_b.keys())),
-        key=lambda w: (
-            0 if (lex_a[w].get("etym_root") or lex_b[w].get("etym_root")) else 1,
-            len(w),
-            w,
-        ),
+    # 1. Case-insensitive exact spelling intersections. Keep each entry distinct.
+    index_a = _lowercase_index(lex_a)
+    index_b = _lowercase_index(lex_b)
+    common_spellings = sorted(set(index_a) & set(index_b))
+    exact_matches = [
+        (word_a, word_b)
+        for spelling in common_spellings
+        for word_a in index_a[spelling]
+        for word_b in index_b[spelling]
+    ]
+    exact_matches.sort(
+        key=lambda pair: (
+            0 if (lex_a[pair[0]].get("etym_root") or lex_b[pair[1]].get("etym_root")) else 1,
+            len(pair[0]) + len(pair[1]),
+            pair[0],
+            pair[1],
+        )
     )
-    for w in common_lower:
-        if (w, w) in seen_pairs:
+    for word_a, word_b in exact_matches:
+        if (word_a, word_b) in seen_pairs:
             continue
-        meta_a = lex_a[w]
-        meta_b = lex_b[w]
+        meta_a = lex_a[word_a]
+        meta_b = lex_b[word_b]
         s_orth = orthographic_similarity(meta_a["word"], meta_b["word"])
         s_phon = (
             phonetic_similarity(meta_a["ipa"], meta_b["ipa"])
@@ -218,7 +246,7 @@ def find_surface_collisions(
             else 0.0
         )
         collisions.append((meta_a, meta_b, s_orth, s_phon))
-        seen_pairs.add((w, w))
+        seen_pairs.add((word_a, word_b))
 
     # 2. 3-character prefix collisions for near-identical forms (dist <= 2)
     prefix_map_b: Dict[str, List[str]] = defaultdict(list)
@@ -426,10 +454,15 @@ def build_pair_dataset(
     candidate_items: List[Tuple[dict, dict, bool, float, float]] = []
 
     # 1.1 Mined translations prioritized deterministically by verified root and core lemma length
+    lowercase_a = _lowercase_index(lex_a)
+    lowercase_b = _lowercase_index(lex_b)
     sorted_mined = sorted(
         mined_pairs,
         key=lambda p: (
-            0 if (lex_a.get(p[0].lower(), {}).get("etym_root") or lex_b.get(p[1].lower(), {}).get("etym_root")) else 1,
+            0 if (
+                (_lookup_lemma(lex_a, lowercase_a, p[0]) or {}).get("etym_root")
+                or (_lookup_lemma(lex_b, lowercase_b, p[1]) or {}).get("etym_root")
+            ) else 1,
             len(p[0]) + len(p[1]),
             p[0],
             p[1],
@@ -437,11 +470,10 @@ def build_pair_dataset(
     )
     mined_list = sorted_mined[:max_translation_pairs]
     for w_a, w_b in mined_list:
-        lower_a, lower_b = w_a.lower(), w_b.lower()
-        if lower_a not in lex_a or lower_b not in lex_b:
+        meta_a = _lookup_lemma(lex_a, lowercase_a, w_a)
+        meta_b = _lookup_lemma(lex_b, lowercase_b, w_b)
+        if meta_a is None or meta_b is None:
             continue
-        meta_a = lex_a[lower_a]
-        meta_b = lex_b[lower_b]
         s_orth = orthographic_similarity(meta_a["word"], meta_b["word"])
         s_phon = (
             phonetic_similarity(meta_a["ipa"], meta_b["ipa"])
@@ -449,7 +481,7 @@ def build_pair_dataset(
             else 0.0
         )
         candidate_items.append((meta_a, meta_b, True, s_orth, s_phon))
-        seen_pairs.add((lower_a, lower_b))
+        seen_pairs.add((meta_a["word"], meta_b["word"]))
 
     # 1.2 Surface collisions
     collisions = find_surface_collisions(
