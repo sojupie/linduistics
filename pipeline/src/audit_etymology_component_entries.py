@@ -34,7 +34,7 @@ def audit_component_entry_coverage(
     """Count and project exact component-to-entry candidates across full source dumps."""
     if not force and candidates_output.exists():
         raise FileExistsError(f"Output already exists; pass --force to replace it: {candidates_output}")
-    entries_by_language_and_word: dict[tuple[str, str], set[str]] = defaultdict(set)
+    entries_by_language_and_word: dict[tuple[str, str], dict[str, dict]] = defaultdict(dict)
     dump_summaries = []
     for dump in entry_dumps:
         digest = hashlib.sha256()
@@ -53,7 +53,21 @@ def audit_component_entry_coverage(
                 language = entry.get("lang_code")
                 word = entry.get("word")
                 if language and isinstance(word, str):
-                    entries_by_language_and_word[(language, word)].add(source_entry_key(entry))
+                    key = source_entry_key(entry)
+                    entries_by_language_and_word[(language, word)][key] = {
+                        "source_entry_key": key,
+                        "part_of_speech": entry.get("pos"),
+                        "etymology_number": entry.get("etymology_number"),
+                        "senses": [
+                            {
+                                field: sense[field]
+                                for field in ("id", "glosses", "raw_glosses", "tags")
+                                if field in sense
+                            }
+                            for sense in entry.get("senses", [])
+                            if isinstance(sense, dict) and isinstance(sense.get("id"), str)
+                        ],
+                    }
         dump_summaries.append({
             "file": dump.name,
             "sha256": digest.hexdigest(),
@@ -118,7 +132,8 @@ def audit_component_entry_coverage(
                             relation, terms, uncertain, basis = key
                             component_records = []
                             for index, term in enumerate(terms):
-                                candidate_keys = sorted(entries_by_language_and_word.get((language, term), ())) if term else []
+                                candidates = entries_by_language_and_word.get((language, term), {}) if term else {}
+                                candidate_keys = sorted(candidates)
                                 match_status = (
                                     "one_exact_entry"
                                     if len(candidate_keys) == 1
@@ -132,6 +147,7 @@ def audit_component_entry_coverage(
                                     "raw_forms": sorted(group["raw_components"][index]),
                                     "match_status": match_status,
                                     "candidate_entry_keys": candidate_keys,
+                                    "candidate_entry_details": [candidates[key] for key in candidate_keys],
                                 })
                             destination.write(json.dumps({
                                 "source_entry_key": record.get("source_entry_key"),
@@ -151,7 +167,7 @@ def audit_component_entry_coverage(
                                 if not term:
                                     continue
                                 component_occurrences += 1
-                                candidate_count = len(entries_by_language_and_word.get((language, term), ()))
+                                candidate_count = len(entries_by_language_and_word.get((language, term), {}))
                                 status = (
                                     "one_exact_entry"
                                     if candidate_count == 1
@@ -195,7 +211,8 @@ def audit_component_entry_coverage(
         },
         "matching_rule": (
             "Exact language code and spelling among all source dump entries, after removing Wiktionary <t:...> gloss tags. "
-            "Counts exact source entry keys only; it does not resolve senses or establish a historical relationship."
+            "Retains all matched entry keys and their sense IDs/glosses for inspection; it does not select a component sense "
+            "or establish a historical relationship."
         ),
         "deduplication_rule": (
             "Repeated normalized component lists within one source entry are counted once, regardless of relation label."

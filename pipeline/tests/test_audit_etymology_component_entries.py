@@ -20,9 +20,9 @@ def test_component_coverage_counts_unique_exact_entry_candidates_without_claimin
     etymology_path.write_text("".join(json.dumps(record) + "\n" for record in etymology_records), encoding="utf-8")
     entry_dump = tmp_path / "kaikki_sv.jsonl"
     entries = [
-        {"lang_code": "sv", "word": "bank", "pos": "noun", "senses": [{"id": "bank-1"}]},
-        {"lang_code": "sv", "word": "man", "pos": "noun", "etymology_number": "1", "senses": [{"id": "man-1"}]},
-        {"lang_code": "sv", "word": "man", "pos": "noun", "etymology_number": "2", "senses": [{"id": "man-2"}]},
+        {"lang_code": "sv", "word": "bank", "pos": "noun", "senses": [{"id": "bank-1", "glosses": ["a financial institution"]}]},
+        {"lang_code": "sv", "word": "man", "pos": "noun", "etymology_number": "1", "senses": [{"id": "man-1", "glosses": ["an adult male"]}]},
+        {"lang_code": "sv", "word": "man", "pos": "noun", "etymology_number": "2", "senses": [{"id": "man-2", "glosses": ["a husband"]}]},
     ]
     entry_dump.write_text("".join(json.dumps(entry) + "\n" for entry in entries), encoding="utf-8")
     candidates_output = tmp_path / "component_candidates.jsonl.gz"
@@ -47,7 +47,7 @@ def test_component_coverage_counts_unique_exact_entry_candidates_without_claimin
             }
         },
     }
-    assert "does not resolve senses" in result["matching_rule"]
+    assert "does not select a component sense" in result["matching_rule"]
     assert result["candidate_output"]["records"] == 2
     with gzip.open(candidates_output, "rt", encoding="utf-8") as candidates:
         projected = [json.loads(line) for line in candidates]
@@ -59,3 +59,11 @@ def test_component_coverage_counts_unique_exact_entry_candidates_without_claimin
         "multiple_exact_entries",
         "no_exact_entry",
     ]
+    assert bankman["components"][0]["candidate_entry_details"][0]["senses"] == [
+        {"id": "bank-1", "glosses": ["a financial institution"]},
+    ]
+    assert [
+        sense["id"]
+        for candidate in bankman["components"][1]["candidate_entry_details"]
+        for sense in candidate["senses"]
+    ] == ["man-1", "man-2"]
