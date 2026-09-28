@@ -2,7 +2,15 @@ import csv
 import json
 import re
 
-from export_case_evidence_cldf import _validate_table_links, export_slice
+from export_case_evidence_cldf import _claim_target_scope, _validate_table_links, export_slice
+
+
+def test_claim_target_scope_distinguishes_forms_entities_components_languages_and_no_target():
+    assert _claim_target_scope({"related_form": "fleece"}) == "form"
+    assert _claim_target_scope({"related_entity": {"language_code": "gmw-pro", "form": "*fleus"}}) == "entity"
+    assert _claim_target_scope({"components": [{"form": "flee"}]}) == "components"
+    assert _claim_target_scope({"related_language": "gmw"}) == "language"
+    assert _claim_target_scope({}) == "none"
 
 
 def _entry(entry_key, language, word, sense_id, gloss, claims=None):
@@ -120,9 +128,15 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     assert {row["Relation"] for row in claims} == {"borrowed_from", "inherited_from"}
     borrowed_claim = next(row for row in claims if row["Relation"] == "borrowed_from")
     assert borrowed_claim["Source_Uncertain"] == "false"
+    assert borrowed_claim["Claim_Source_Scope"] == "entry"
+    assert borrowed_claim["Claim_Target_Scope"] == "form"
+    assert borrowed_claim["Related_Entity_JSON"] == "{}"
+    assert borrowed_claim["Components_JSON"] == "[]"
     with (output / "claim-matches.csv").open(encoding="utf-8", newline="") as stream:
         matches = list(csv.DictReader(stream))
     assert matches[0]["Target_Identity_Status"] == "available"
+    assert matches[0]["Comparison_Source_Sense_ID"] == "sense-sv"
+    assert matches[0]["Comparison_Target_Sense_ID"] == "sense-en"
     with (output / "component-links.csv").open(encoding="utf-8", newline="") as stream:
         components = list(csv.DictReader(stream))
     assert json.loads(components[0]["Evidence_JSON"])[0]["template_name"] == "com"
