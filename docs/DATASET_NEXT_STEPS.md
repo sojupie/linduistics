@@ -486,6 +486,24 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py -
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
 
+## Prefer exact target forms and keep active-sense evidence (2026-09-28)
+
+The candidate-to-source-claim audit previously used case-folded spellings as its only join key. That can merge distinct capitalized and lowercase entries when both exist. German *platt* (“flat”) and *Platt* (“Low German”) show why the distinction matters: English *plat* explicitly mentions German *platt* as a cognate, but the old crosswalk also attached that claim to the capitalized German noun. The audit now prefers an exact target spelling and uses case-fold matching only when there is no exact-form candidate for that source entry. It records which method matched each row.
+
+The crosswalk now carries the active comparison senses' glosses and extracted roots alongside their IDs. Its manifest records the generator's file hash as well as source and comparison input hashes, so a local artifact can be tied to both data and transformation code. No comparison labels or database rows were changed.
+
+On the current five-language inputs, the regenerated crosswalk has **20,188 evidence rows**: 18,500 exact-form matches and 1,688 case-fold fallbacks. It covers **17,594 unique candidate pairs**, with 405 target identities still ambiguous. Of these, **13,623** are `other` candidates, among 572,981 `other` form pairs. These are source-entry claim links, not pair-level verdicts.
+
+The root fields on **7,252 `cognate_mention` evidence rows** attached to `other` candidates expose another structural limitation: only 9 rows have equal recorded roots; 1,485 have roots recorded at different language levels, 755 have different roots at the same level, and 5,003 have at least one missing root. These are counts of selected active-sense evidence rows, not confirmed cognate counts. Different root levels and missing roots do not establish unrelatedness.
+
+English adjective *plat* and German adjective *platt* are a concrete case. The selected source senses gloss “flat” and “flat; level.” English Wiktionary explicitly lists German *platt* as a cognate, with “flat” as the gloss. The active English root field is Proto-Indo-European `*pleth₂-`; the German root field is Ancient Greek `πλατύς`. The English entry marks the deeper connection as uncertain/possible, so preserve the source claim and both paths without converting this one claim into automatic proof. The current candidate remains `other` / `unknown`; the mismatch makes it a good test for representing more than one point in an etymological path.
+
+Rebuild the local crosswalk from the preserved exports:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_origin_status.jsonl --force
+```
+
 ## Preserve source distinction between unknown and uncertain origins (2026-09-28)
 
 Wiktionary distinguishes two source status markers that our export previously left as untyped templates. `unknown` (shortcut `unk`) marks an etymology as unknown; `uncertain` (shortcut `unc`) marks an etymology as uncertain ([unknown template](https://en.wiktionary.org/wiki/Template:unknown), [uncertain template](https://en.wiktionary.org/wiki/Template:uncertain)). These markers describe the source editor's status for an entry's history; they do not imply that the entry contains no proposed paths or cognate mentions. For example, Swedish *torta* begins with “Unknown” and then lists Norwegian and Danish cognate forms.
