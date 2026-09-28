@@ -21,6 +21,7 @@ import pyarrow.parquet as pq
 
 from g2p_multilingual import g2p_fallback
 from ipa_normalizer import normalize_ipa
+from extract_etymology_records import source_entry_key
 
 # Words containing hyphens, spaces, or affix symbols are excluded
 _INVALID_WORD_PATTERN = re.compile(r"[\s\-\u2010\u2013\u2014]")
@@ -126,6 +127,11 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
     if "form-of" in top_tags:
         return None
 
+    # Keep source identity and etymology evidence on each sense. The lemma row
+    # can combine homographs, so its scalar root is not safe for classification.
+    etym_root, etym_text = extract_etym_root(raw)
+    entry_key = source_entry_key(raw)
+
     # Extract valid definition glosses and structured senses
     valid_active_glosses: List[str] = []
     structured_senses: List[dict] = []
@@ -152,10 +158,15 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
 
                 structured_senses.append({
                     "sense_id": len(structured_senses) + 1,
+                    "source_entry_key": entry_key,
+                    "source_sense_id": sense.get("id") if isinstance(sense.get("id"), str) else None,
+                    "etymology_number": raw.get("etymology_number"),
                     "gloss": cleaned_gloss,
                     "pos": pos,
                     "tags": sense_tags,
                     "is_active": is_active,
+                    "etym_root": etym_root,
+                    "etym_text": etym_text,
                 })
 
     # If no semantic glosses survived, entry is either pure inflection or empty
@@ -171,8 +182,6 @@ def parse_kaikki_entry(raw: dict, lang: Optional[str] = None) -> Optional[dict]:
             if cand_ipa:
                 normalized_ipa = cand_ipa
                 break
-
-    etym_root, etym_text = extract_etym_root(raw)
 
     return {
         "word": word,
@@ -204,7 +213,6 @@ def stream_kaikki_entries(
         stream = source
 
     lemmas: Dict[str, dict] = {}
-
     try:
         count = 0
         for line in stream:
@@ -232,30 +240,36 @@ def stream_kaikki_entries(
                     "etym_root": entry["etym_root"],
                     "etym_text": entry["etym_text"],
                     "lang": lang,
+                    "_etym_root_conflict": False,
+                    "_etym_text_conflict": False,
                 }
             else:
                 target = lemmas[word]
                 # Update missing IPA if newly found
                 if not target["ipa"] and entry["ipa"]:
                     target["ipa"] = entry["ipa"]
-                # Update etym_root if newly found or if entry has Proto-Germanic root and target does not
-                if entry["etym_root"] and (not target["etym_root"] or ("Proto-Germanic" in entry["etym_root"] and "Proto-Germanic" not in target["etym_root"])):
-                    target["etym_root"] = entry["etym_root"]
-                # Update etym_text if newly found
-                if not target["etym_text"] and entry["etym_text"]:
-                    target["etym_text"] = entry["etym_text"]
+                if not target["_etym_root_conflict"] and entry["etym_root"] != target["etym_root"]:
+                    target["etym_root"] = ""
+                    target["_etym_root_conflict"] = True
+                if not target["_etym_text_conflict"] and entry["etym_text"] != target["etym_text"]:
+                    target["etym_text"] = ""
+                    target["_etym_text_conflict"] = True
                 # Append unique active glosses
                 for g in entry["glosses"]:
                     if g not in target["glosses"]:
                         target["glosses"].append(g)
-                # Append senses with deduplication
-                existing_glosses = {s["gloss"] for s in target["senses"]}
+                # Deduplicate only repeated records for the same source sense.
+                existing_senses = {
+                    (s.get("source_entry_key"), s.get("source_sense_id"), s["gloss"])
+                    for s in target["senses"]
+                }
                 for s in entry["senses"]:
-                    if s["gloss"] not in existing_glosses:
+                    source_identity = (s.get("source_entry_key"), s.get("source_sense_id"), s["gloss"])
+                    if s.get("source_sense_id") is None or source_identity not in existing_senses:
                         s_copy = dict(s)
                         s_copy["sense_id"] = len(target["senses"]) + 1
                         target["senses"].append(s_copy)
-                        existing_glosses.add(s["gloss"])
+                        existing_senses.add(source_identity)
 
             count += 1
             if count % 25000 == 0:
@@ -265,6 +279,10 @@ def stream_kaikki_entries(
     finally:
         if close_stream:
             stream.close()
+
+    for lemma in lemmas.values():
+        lemma.pop("_etym_root_conflict")
+        lemma.pop("_etym_text_conflict")
 
     # Post-process: G2P fallback only for unique lemmas missing IPA
     missing_ipa = [w for w, item in lemmas.items() if not item["ipa"]]

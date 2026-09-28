@@ -136,7 +136,7 @@ def _language_codes(value: Any) -> list[str]:
     return [code.strip() for code in value.split(",") if code.strip()]
 
 
-def _entry_key(entry: dict[str, Any]) -> str:
+def source_entry_key(entry: dict[str, Any]) -> str:
     """Build a dump-local key that keeps homographs and etymologies apart."""
     sense_ids = sorted(
         sense["id"]
@@ -306,7 +306,7 @@ def source_record(entry: dict[str, Any], source_file: str) -> dict[str, Any] | N
         "source": "Wiktionary via Kaikki/Wiktextract",
         "source_file": source_file,
         "source_url": f"https://en.wiktionary.org/wiki/{page}#{section}",
-        "source_entry_key": _entry_key(entry),
+        "source_entry_key": source_entry_key(entry),
         "language_code": lang_code,
         "language_name": lang_name,
         "word": word,

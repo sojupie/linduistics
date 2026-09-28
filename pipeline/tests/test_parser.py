@@ -26,6 +26,59 @@ def test_parse_kaikki_entry_valid_lemma():
     assert result["glosses"] == ["dog (canine mammal)"]
 
 
+def test_parse_preserves_source_entry_sense_and_etymology_identity():
+    raw = {
+        "word": "gift",
+        "lang_code": "sv",
+        "pos": "noun",
+        "etymology_number": "1",
+        "etymology_templates": [
+            {"args": {"2": "gem-pro", "3": "giftiz"}}
+        ],
+        "senses": [{"id": "sv-gift-noun-1", "glosses": ["poison"]}],
+    }
+
+    entry = parse_kaikki_entry(raw)
+
+    assert entry is not None
+    sense = entry["senses"][0]
+    assert sense["source_entry_key"] == "sv|gift|noun|1|sv-gift-noun-1"
+    assert sense["source_sense_id"] == "sv-gift-noun-1"
+    assert sense["etymology_number"] == "1"
+    assert sense["etym_root"] == "Proto-Germanic *giftiz"
+
+
+def test_stream_keeps_same_gloss_from_distinct_entries_and_blanks_ambiguous_scalars():
+    lines = [
+        orjson.dumps({
+            "word": "gift",
+            "lang_code": "sv",
+            "pos": "noun",
+            "etymology_number": "1",
+            "etymology_templates": [{"args": {"2": "gem-pro", "3": "giftiz"}}],
+            "etymology_text": "Noun history.",
+            "senses": [{"id": "gift-n", "glosses": ["poison"]}],
+        }),
+        orjson.dumps({
+            "word": "gift",
+            "lang_code": "sv",
+            "pos": "adjective",
+            "etymology_number": "2",
+            "etymology_text": "Adjective history.",
+            "senses": [{"id": "gift-adj", "glosses": ["poison"]}],
+        }),
+    ]
+
+    lemma = stream_kaikki_entries(io.BytesIO(b"\n".join(lines)), lang="sv")["gift"]
+
+    assert len(lemma["senses"]) == 2
+    assert [sense["pos"] for sense in lemma["senses"]] == ["noun", "adjective"]
+    assert lemma["senses"][0]["etym_root"] == "Proto-Germanic *giftiz"
+    assert lemma["senses"][1]["etym_root"] == ""
+    assert lemma["etym_root"] == ""
+    assert lemma["etym_text"] == ""
+
+
 def test_etymology_text_sister_mentions_do_not_become_the_entry_root():
     raw = {
         "word": "ost",
