@@ -65,6 +65,8 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                 entry_key = entry.get("source_entry_key", entry.get("key"))
                                 comparison_sense_matches = []
                                 for sense_match in audit.get("source_sense_matches", {}).get(lang, []):
+                                    if sense_match.get("comparison_sense_is_active_match") is not True:
+                                        continue
                                     matched_senses = [
                                         sense for sense in sense_match.get("source_senses", [])
                                         if sense.get("source_entry_key") == entry_key
@@ -101,7 +103,6 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                             "etymology_number": entry.get("etymology_number"),
                                             "entry_key": entry_key,
                                             "etymology_text": entry.get("etymology_text", entry.get("text")),
-                                            "sense_ids": entry.get("sense_ids"),
                                             "comparison_sense_matches": comparison_sense_matches,
                                         },
                                         "edge": {
@@ -139,7 +140,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source_files": source_files,
             "output_file": output.name,
-            "schema_version": 2,
+            "schema_version": 3,
             "counts": {
                 "cases": case_count,
                 "unique_source_edges": edge_count,

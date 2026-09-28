@@ -109,7 +109,6 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
                 "etymology_number": 1,
                 "source_entry_key": "sv|bank|noun||source-id",
                 "etymology_text": "Borrowed from English bank.",
-                "sense_ids": ["sense-1"],
                 "claims": [{
                     "template_index": 0,
                     "template_name": "bor+",
@@ -127,7 +126,7 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     manifest = project_source_case_edges([audit], output)
 
     edge = json.loads(output.read_text(encoding="utf-8").splitlines()[0])
-    assert manifest["schema_version"] == 2
+    assert manifest["schema_version"] == 3
     assert edge["comparison"] == {
         "id": 12,
         "lang_a": "sv",
@@ -154,7 +153,6 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
         "etymology_number": 1,
         "entry_key": "sv|bank|noun||source-id",
         "etymology_text": "Borrowed from English bank.",
-        "sense_ids": ["sense-1"],
         "comparison_sense_matches": [{
             "comparison_sense_id": 1,
             "comparison_sense_is_active_match": True,
