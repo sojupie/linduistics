@@ -38,11 +38,25 @@ Rerun the coverage summary against these local snapshots with:
 pipeline\.venv\Scripts\python.exe pipeline/src/audit_translation_form_coverage.py --english-dump pipeline/data/kaikki_en.jsonl --lemma-dir pipeline/data/identity-rebuild --form-dir pipeline/data/form-identity-rebuild --output pipeline/data/form-identity-rebuild/coverage.json
 ```
 
+## Completed: preserve translation statements by source sense
+
+The new [extract_translation_claims.py](../pipeline/src/extract_translation_claims.py) exports each in-scope translation attached to an English Wiktionary sense. It keeps the exact source entry key and line, source sense ID and glosses, target language code and spelling, and the complete raw translation record. It does not call a translation a cognate or select a target lemma.
+
+Running it on the local English dump produced 302,640 claims: 152,113 German, 73,032 Swedish, 39,251 Danish, and 38,244 Norwegian Bokmål. The manifest records the input SHA-256 (`e38fe0e9b53e3387673fe46429a02b3dcecfd3e5bf5771d7766c5afa6fd41f25`), dump size, source-entry count, and claim counts. The generated JSONL and manifest are local ignored artifacts, not committed data.
+
+Rerun with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/extract_translation_claims.py --input pipeline/data/kaikki_en.jsonl --output pipeline/data/translation_claims_en.jsonl
+```
+
+The pipeline suite passes: 78 tests. This artifact is a source-preserving intermediate table; it is not a release dataset or evidence that a translation has a particular historical relationship.
+
 ## Do this next
 
-### 1. Keep translation surfaces and their source claims
+### 1. Connect translated forms to target source records
 
-Build a small source-level table from Wiktionary's English translation senses. Keep the English entry and sense IDs, the target language and exact translated form, and any target form-of links with their source sense IDs, parts of speech, and tags. Preserve multiple lemma candidates and unresolved links. Use the reviewed *trübe* and *tidigare* cases as tests. Only after those links are inspectable should we decide which unique form links can create comparison candidates.
+Use the exported claims to find exact target-language source entries for the translated forms. Attach form-of records with their source sense IDs, parts of speech, tags, and paths. Preserve multiple lemma candidates and unresolved links. Use *trübe* and *tidigare* as ambiguity checks. Only after these links are inspectable should we decide which unique form links can create comparison candidates.
 
 ### 2. Make a rerunnable, source-backed slice
 
