@@ -42,5 +42,6 @@ Source material is from Wiktionary contributors, available under [CC BY-SA 4.0](
 
 - These examples were chosen because they expose particular transformation risks; counts from this file must not be generalized to a language’s lexicon.
 - Relations have different scopes. `borrowed_from` connects a borrowing to a donor; `compound_component` connects a whole form to a component; `cognate_mention` records a source page’s explicit mention. None alone settles the relation between every sense of two headwords.
+- An exact target-form match can still resolve to several entries or parts of speech. In the `clown` case, `en:clown` matches both English noun and verb entries; the selected comparison noun is retained separately and is not silently treated as the source claim's unique target.
 - Proto-language forms and target spellings are stored as source-reported values. This file does not assert that equal or different root strings prove cognacy or non-cognacy.
 - The current seed contains 15 pinned page revisions, 34 structured assertions, and ten bounded pair checks. These records were reviewed for this release; this is not a complete audit of the source entries or the comparison population.
