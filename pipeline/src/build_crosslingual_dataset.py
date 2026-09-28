@@ -211,7 +211,6 @@ def find_surface_collisions(
     lex_a: Dict[str, dict],
     lex_b: Dict[str, dict],
     seen_pairs: Set[Tuple[str, str]],
-    max_prefix_candidates: int = 2500,
 ) -> List[Tuple[dict, dict, float, float]]:
     """Deterministically extracts ALL identical spelling collisions plus near-identical prefix collisions."""
     collisions: List[Tuple[dict, dict, float, float]] = []
@@ -264,7 +263,6 @@ def find_surface_collisions(
         ),
     )
 
-    prefix_count = 0
     for w_a in sorted_a:
         norm_a = normalize_orthography(w_a)
         cands = prefix_map_b.get(norm_a[:3], [])
@@ -284,9 +282,6 @@ def find_surface_collisions(
                 )
                 collisions.append((meta_a, meta_b, s_orth, s_phon))
                 seen_pairs.add((w_a, w_b))
-                prefix_count += 1
-                if prefix_count >= max_prefix_candidates:
-                    return collisions
 
     return collisions
 
@@ -440,8 +435,6 @@ def build_pair_dataset(
     mined_pairs: Set[Tuple[str, str]],
     lexicons: Dict[str, Dict[str, dict]],
     matcher: SemanticMatcher,
-    max_translation_pairs: int = 15000,
-    max_collision_candidates: int = 2500,
 ) -> List[dict]:
     """Constructs comparison records for (lang_a, lang_b) and its inverse."""
     lex_a = lexicons[lang_a]
@@ -453,23 +446,11 @@ def build_pair_dataset(
     # Step 1: Pre-collect candidate items
     candidate_items: List[Tuple[dict, dict, bool, float, float]] = []
 
-    # 1.1 Mined translations prioritized deterministically by verified root and core lemma length
+    # Keep every mined translation candidate. The comparison table is already
+    # candidate data, so an arbitrary cap would silently hide source links.
     lowercase_a = _lowercase_index(lex_a)
     lowercase_b = _lowercase_index(lex_b)
-    sorted_mined = sorted(
-        mined_pairs,
-        key=lambda p: (
-            0 if (
-                (_lookup_lemma(lex_a, lowercase_a, p[0]) or {}).get("etym_root")
-                or (_lookup_lemma(lex_b, lowercase_b, p[1]) or {}).get("etym_root")
-            ) else 1,
-            len(p[0]) + len(p[1]),
-            p[0],
-            p[1],
-        ),
-    )
-    mined_list = sorted_mined[:max_translation_pairs]
-    for w_a, w_b in mined_list:
+    for w_a, w_b in sorted(mined_pairs):
         meta_a = _lookup_lemma(lex_a, lowercase_a, w_a)
         meta_b = _lookup_lemma(lex_b, lowercase_b, w_b)
         if meta_a is None or meta_b is None:
@@ -490,7 +471,6 @@ def build_pair_dataset(
         lex_a=lex_a,
         lex_b=lex_b,
         seen_pairs=seen_pairs,
-        max_prefix_candidates=max_collision_candidates,
     )
     for meta_a, meta_b, s_orth, s_phon in collisions:
         candidate_items.append((meta_a, meta_b, False, s_orth, s_phon))

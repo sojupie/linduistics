@@ -179,6 +179,50 @@ def test_loader_preserves_case_distinct_lemmas_and_surface_matches_each(tmp_path
     assert {meta_a["word"] for meta_a, _, _, _ in collisions} == {"Gift", "gift"}
 
 
+def test_surface_collision_generation_keeps_candidates_past_previous_cap():
+    def entries(groups):
+        return {
+            f"abcdef{group}{letter}": {
+                "word": f"abcdef{group}{letter}",
+                "ipa": "",
+                "etym_root": "",
+            }
+            for group in groups
+            for letter in "abcdefghijklmnopqrstuvwxyz"
+        }
+
+    collisions = find_surface_collisions(
+        "sv", "da", entries("ab"), entries("cd"), set()
+    )
+
+    assert len(collisions) == 52 * 52
+
+
+def test_builder_keeps_translation_candidates_past_previous_cap():
+    count = 15_001
+    gloss = "same meaning"
+    senses = [{"sense_id": 1, "gloss": gloss, "pos": "noun", "tags": [], "is_active": True}]
+    words = [f"sv{index:05}" for index in range(count)]
+    lexicons = {
+        "sv": {
+            word: {"word": word, "pos": "noun", "ipa": "", "def": gloss,
+                   "glosses": [gloss], "senses": senses}
+            for word in words
+        },
+        "da": {
+            "target": {"word": "target", "pos": "noun", "ipa": "", "def": gloss,
+                       "glosses": [gloss], "senses": senses}
+        },
+    }
+    mined = {(word, "target") for word in words}
+    matcher = FixedMatcher({gloss: [1.0, 0.0]})
+
+    rows = build_pair_dataset("sv", "da", mined, lexicons, matcher)
+
+    assert len(rows) == count * 2
+    assert any(row["word_a"] == words[-1] and row["word_b"] == "target" for row in rows)
+
+
 def test_lowercase_lookup_requires_exact_or_unique_match():
     lexicon = {word: {"word": word} for word in ("Gift", "gift")}
     index = _lowercase_index(lexicon)
