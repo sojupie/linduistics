@@ -28,6 +28,7 @@ CASES = {
     "blive": [("da", "blive", "nb", "blive")],
     "wall_road": [("da", "væg", "sv", "väg")],
     "torta_tort": [("sv", "torta", "nb", "tort"), ("en", "tort", "nb", "tort")],
+    "dygn": [("sv", "dygn", "da", "døgn"), ("sv", "dygn", "nb", "døgn")],
 }
 
 COMPARISON_FIELDS = (

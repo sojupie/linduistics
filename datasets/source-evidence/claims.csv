@@ -38,3 +38,15 @@ tort-en-01,torta-tort,tort-current,en,tort,cognate_mention,nb,tort,entry,templat
 tort-en-02,torta-tort,tort-current,en,tort,root_recorded,Proto-Indo-European,*terkʷ-,entry,template,English > Etymology 1
 tort-nb-01,torta-tort,tort-current,nb,tort,borrowed_from,fr,tort,entry,template,Norwegian Bokmål > Etymology
 tort-nb-02,torta-tort,tort-current,nb,tort,derived_from,la,tortum,etymon,template,Norwegian Bokmål > Etymology
+dygn-sv-01,dygn,dygn-current,sv,dygn,inherited_from,Old Swedish,dygn,entry,template,Swedish > Etymology
+dygn-sv-02,dygn,dygn-current,sv,dygn,inherited_from,Old Norse,dœgn,entry,template,Swedish > Etymology
+dygn-sv-03,dygn,dygn-current,sv,dygn,inherited_from,Proto-Germanic,*dōgin-,entry,template,Swedish > Etymology
+dygn-sv-04,dygn,dygn-current,Proto-Germanic,*dōgin-,alternative_form_of,Proto-Germanic,*dōg-,etymon,entry_prose,Swedish > Etymology
+dygn-sv-05,dygn,dygn-current,sv,dygn,cognate_mention,da,døgn,entry,template,Swedish > Etymology > Cognates
+dygn-sv-06,dygn,dygn-current,sv,dygn,cognate_mention,nb,døgn,entry,template,Swedish > Etymology > Cognates
+døgn-da-01,dygn,døgn-current,da,døgn,inherited_from,Old Danish,døghn,entry,template,Danish > Etymology
+døgn-da-02,dygn,døgn-current,da,døgn,inherited_from,Old Norse,dœgn,entry,template,Danish > Etymology
+døgn-da-03,dygn,døgn-current,da,døgn,inherited_from,Proto-Germanic,*dōg-,entry,template,Danish > Etymology
+døgn-da-04,dygn,døgn-current,da,døgn,derived_from,Proto-Germanic,*dōgaz,entry,template,Danish > Etymology
+døgn-nb-01,dygn,døgn-current,nb,døgn,inherited_from,da,døgn,entry,template,Norwegian Bokmål > Etymology
+døgn-nb-02,dygn,døgn-current,nb,døgn,inherited_from,Old Norse,dǿgn,entry,template,Norwegian Bokmål > Etymology
