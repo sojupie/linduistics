@@ -17,14 +17,14 @@
     "wall_road"
   ],
   "source": "named_case_evidence_slice_dercat_fix.jsonl",
-  "source_sha256": "bfb6b32d7c03a2f0f08f2acf57439c4ceba69d923fd161492043918d4e0ae46d",
+  "source_sha256": "c1ac70447ee7558f1068ff622aa288e8d17343e577f1748e9ce84979961b082e",
   "source_manifest": "named_case_evidence_slice_dercat_fix.jsonl.manifest.json",
-  "source_manifest_sha256": "bebd80c76593a4c6d43ef50bb6f7ecd06651ff0de2c5c2b3163375d210a6f3d9",
+  "source_manifest_sha256": "b01a70e57057f959da1a1771e2ab9f6d94e107f00d3a1d92d5fa5c47c7956a6a",
   "target_entry_lookup": {
     "file": "case_claim_target_entries.jsonl",
-    "sha256": "b6d9bb47fc4e70f3762b613ee1e1e2327c8731035dc621a4c9a411192616301d",
+    "sha256": "ee978f3a9746d0b142d171dcc894f0a4bf2a27d7afd4f01eed7592985d65021a",
     "manifest": "case_claim_target_entries.jsonl.manifest.json",
-    "manifest_sha256": "215f0a321c3110a043ef00bff08169e793670c79eeea895af007deb80c6ab663"
+    "manifest_sha256": "6b0f51144a7b2e030dcfe2a1f52bc38e59f9a21c8397d1358d6c6ec982163b94"
   },
   "upstream_inputs": {
     "all_comparisons_dercat_fix.parquet": "1d85f6f65f3ca45d11a95065998c929fa21b3e8bc5e03408be29377ad26267b9",
@@ -72,64 +72,64 @@
     }
   },
   "transformation_files": {
-    "pipeline/src/build_case_evidence_slice.py": "b6deab16843c3401faa4266e24cc05a41fe01abb29b89a9f061c46695756cbbd",
+    "pipeline/src/build_case_evidence_slice.py": "e1ac1096c09b6baca71e5beff03288267a6b31dae08f6b78e9e9539a98e213f1",
     "pipeline/src/audit_case_claim_target_entries.py": "108790e49185f5c65d594e8fa3ac8001f74eab515b3acc7933faa8225783da47",
-    "pipeline/src/export_case_evidence_cldf.py": "26bc0d79b651f6ef25e6820e808f0598c7b57e3079826c2c1790b6de65994fb2"
+    "pipeline/src/export_case_evidence_cldf.py": "ef1a2a18cc3393d60b2fba731a604fd117ab71973c982d3e295197b5127413fe"
   },
   "metadata": "metadata.json",
-  "metadata_sha256": "f156013996b6904f06715ac727514558131909b6b785eaa6b8af172ac3812300",
+  "metadata_sha256": "afb63661bb59501380d5657ab74da8ad6bb2c525c406348ce1e093f2f6cc1720",
   "tables": {
     "languages.csv": {
       "rows": 5,
       "sha256": "b3c858de2e711a0a67f00a16e8175ec78444d1bd2046bc1cce015fc359025a83"
     },
     "entries.csv": {
-      "rows": 173,
-      "sha256": "456d99176942fbcdb08faf37280398328f5aadf2d8e6d420695af16587017aa2"
+      "rows": 179,
+      "sha256": "d6514bf2d676a46dee02440144bc203d58a4b3a4060e28e62a907389167f9de1"
     },
     "senses.csv": {
-      "rows": 664,
-      "sha256": "ed292b9f13f7ba90d6ee4d83fbda09a803f0b0ada48f5c543aa2e347c109fc41"
+      "rows": 677,
+      "sha256": "9eb49848e8539da31809302c172b14463499c316f63a994fb54b9eedc7751256"
     },
     "forms.csv": {
       "rows": 49,
-      "sha256": "57a48e3897f5530d62da518cd40d9edaf8038e77c0d5f6a5a2dc893c0d194220"
+      "sha256": "c7a0ca38fc20e519168f0cc4d8912f9903d5fb5c064d93784a765c3e1225e16b"
     },
     "source-relation-targets.csv": {
-      "rows": 1373,
-      "sha256": "3e4a52d11e96af9c836c53c1e26bb2ce2df5b894d2819280a738b7f5db5c4760"
+      "rows": 1395,
+      "sha256": "615ed360cfd912b983e67fbc28f3686f781782443c1330d2840c288577cb57c5"
     },
     "source-claims.csv": {
-      "rows": 1556,
-      "sha256": "458206d15e6295e18ddc12362acc8cde7a69ebd6bdc595814b640722c5190f61"
+      "rows": 1586,
+      "sha256": "68ce3b306d67f9a80f79595d7c48cda70dbcd1b40a020ed1146f813a2f5ab5c0"
     },
     "component-links.csv": {
-      "rows": 30,
-      "sha256": "430c81aca0a0ef30fd367d05504c3e143f211ad106e2f2c3c921eae5fe9a8fa2"
+      "rows": 35,
+      "sha256": "d94643b571f1793158411df1b743a826057b9bbbeb4126f63a1abf88420d4040"
     },
     "shared-component-ancestor-candidates.csv": {
       "rows": 12,
-      "sha256": "130da6b11e00d027f35844703b7a468de2242b80131cdf9191cc48b2718bc40d"
+      "sha256": "3ea74409df62f6ce47c0fbc62c2a2cd99ed1e2e58ac01e2e8e574f7e194ca9da"
     },
     "comparisons.csv": {
       "rows": 30,
-      "sha256": "8cb6f08c1de31baf69e4ada061a460a0c624b0accb067e8c44f6fe70111f5baa"
+      "sha256": "a1c3bc1f61ce3802f07bf94fdd6ac6de5a34e451067eeb54223d53a88aeb376c"
     },
     "claim-matches.csv": {
       "rows": 26,
-      "sha256": "d95957fb1c8d2f0b395c6c6aa0e3000985aa6b18420531bf61072f63ed2712c6"
+      "sha256": "040c5bd2155b0b7febd091efc23e625e43407db2bbfdd2a62dce6add035e56ae"
     },
     "claim-target-resolutions.csv": {
-      "rows": 499,
-      "sha256": "11490129b627bbab1911b665644d387f3855096b319abb61dc11b2b51953593b"
+      "rows": 524,
+      "sha256": "a8a1199d66394d2b3e431163f692ce86c843cf8258c693874ba3b7b027775a18"
     },
     "claim-target-candidates.csv": {
-      "rows": 173,
-      "sha256": "036d43a95b54b9708010687ef116afc42484889893a4c4993ad863b040972615"
+      "rows": 187,
+      "sha256": "3757d19b2dae80280ef1d7e900a9c2e9a13ffd57bb8a9ceb0eb4ad51fa17a4df"
     },
     "claim-target-cross-references.csv": {
-      "rows": 57,
-      "sha256": "cc08305291c16f0bdee52f226797b26a0e2bd5c3253103ec1e807e71d6a65a91"
+      "rows": 60,
+      "sha256": "670e9986501f27e9d340f03621bbf0bc51bee1dd97105b59c127501bc30c6fe9"
     }
   },
   "summary": {
@@ -142,14 +142,14 @@
     "component_candidate_resolution": {
       "no_candidates": 1,
       "partially_resolved": 1,
-      "resolved": 27,
+      "resolved": 32,
       "unresolved": 1
     },
-    "source_claim_records": 1556,
-    "source_template_occurrences": 1462,
-    "relation_claim_records": 1420,
-    "normalized_relation_targets": 1373,
-    "repeated_relation_claim_records_per_target": 47,
+    "source_claim_records": 1586,
+    "source_template_occurrences": 1492,
+    "relation_claim_records": 1446,
+    "normalized_relation_targets": 1395,
+    "repeated_relation_claim_records_per_target": 51,
     "matched_source_claim_records_by_legacy_label": {
       "false_friend": {
         "derived_from:available": 1
@@ -168,10 +168,10 @@
         "cognate_mention:available": 5
       }
     },
-    "target_claim_cross_references": 57,
+    "target_claim_cross_references": 60,
     "target_claim_cross_references_by_relation_pair": {
       "borrowed_from->cognate_mention": 6,
-      "cognate_mention->cognate_mention": 40,
+      "cognate_mention->cognate_mention": 43,
       "doublet_of->doublet_of": 11
     }
   },
@@ -181,6 +181,7 @@
     "Wiktionary entries can contain externally sourced material with separate terms; this selected export has not been checked for that material entry by entry and is not cleared for redistribution.",
     "The official CLDF validator has not been run; only the exporter's ID and declared foreign-key checks have passed.",
     "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
+    "Ambiguous comparison form identities retain candidate source entry and sense IDs; the export does not choose among them.",
     "Component candidate entry keys are candidates, not confirmed component-sense links.",
     "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
     "Target-entry resolution and candidate tables come from a separate spelling lookup. They preserve all candidates and do not resolve target senses or confirm the source claim.",

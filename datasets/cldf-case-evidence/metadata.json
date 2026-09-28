@@ -215,7 +215,14 @@
           {
             "name": "Source_Identity_Status",
             "datatype": "string",
-            "required": false
+            "required": false,
+            "dc:description": "Whether the comparison's selected sense resolves to one source entry and sense, remains ambiguous, or lacks a source link."
+          },
+          {
+            "name": "Source_Identity_Candidates_JSON",
+            "datatype": "string",
+            "required": false,
+            "dc:description": "Alternative source entry and sense identities retained when a comparison sense cannot be linked uniquely; Entry_ID and Sense_ID are populated only when those records are included in this slice."
           }
         ],
         "primaryKey": "ID",
