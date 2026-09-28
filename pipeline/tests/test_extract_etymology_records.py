@@ -406,6 +406,38 @@ class EtymologyRecordTests(unittest.TestCase):
         )
         self.assertEqual(record["claims"][-1]["components"], ["social", "-ism"])
 
+    def test_keeps_clipping_inflection_and_pie_word_links_distinct(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "example",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "clipping of", "args": {"1": "en", "2": "example word"}},
+                    {"name": "clip of", "args": {"1": "en", "2": "another example"}},
+                    {"name": "past participle of", "args": {"1": "sv", "2": "exemplifiera"}},
+                    {"name": "PIE word", "args": {"1": "sv", "2": "h\u2081n\u00f3mn\u0325"}},
+                    {"name": "PIE word", "args": {"1": "sv"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(
+            [
+                (claim["relation"], claim.get("related_language"), claim.get("related_form"))
+                for claim in record["claims"]
+            ],
+            [
+                ("clipped_from", "en", "example word"),
+                ("clipped_from", "en", "another example"),
+                ("inflectional_form_of", "sv", "exemplifiera"),
+                ("derived_from", "ine-pro", "*h\u2081n\u00f3mn\u0325"),
+                (None, None, None),
+            ],
+        )
+
     def test_keeps_person_attribution_and_formation_facts_out_of_lexical_edges(self):
         record = source_record(
             {

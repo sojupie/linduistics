@@ -51,7 +51,10 @@ RELATION_BY_TEMPLATE = {
     "suf": "formed_from",
     "blend": "blend_of",
     "clip": "clipped_from",
+    "clip of": "clipped_from",
     "clipping": "clipped_from",
+    "clipping of": "clipped_from",
+    "past participle of": "inflectional_form_of",
     "back-formation": "back_formed_from",
     "back-form": "back_formed_from",
     "bf": "back_formed_from",
@@ -318,6 +321,12 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         if related_entity:
             claim["related_entity"] = related_entity
         return [claim]
+    elif base_name == "PIE word":
+        form = args.get("2")
+        claim["relation"] = "derived_from" if form else None
+        claim["related_language"] = "ine-pro" if form else None
+        claim["related_form"] = f"*{form.lstrip('*')}" if form else None
+        return [claim]
     elif base_name in {"coin", "coined", "coinage"}:
         related_entity = _entity_reference(args.get("2"))
         if related_entity and args.get("2", "").casefold() != "unknown":
@@ -386,9 +395,9 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             for language in _language_codes(args.get("1"))
         ] or [claim]
     elif base_name in {
-        "deverbal", "denominal", "clip", "clipping", "back-formation", "back-form", "backform",
+        "deverbal", "denominal", "clip", "clip of", "clipping", "clipping of", "back-formation", "back-form", "backform",
         "backformation", "back formation", "bf", "abbrev", "abbr", "abbreviation", "acronym",
-        "acro", "initialism", "init", "redup", "reduplication",
+        "acro", "initialism", "init", "redup", "reduplication", "past participle of",
     }:
         return [
             {
