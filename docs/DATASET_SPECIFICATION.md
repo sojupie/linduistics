@@ -6,48 +6,17 @@ Dataset integrity and linguistic rigor take absolute precedence over user interf
 
 ---
 
-## 1. The Two Classes of False Friends
+## 1. False Friends and Etymological Relation
 
-A major source of lexicological distortion is conflating accidental surface collisions with true historical semantic divergence. The pipeline and database must distinguish between two explicit tiers of False Friends:
+**False friend** is the user-facing class for similar-looking or similar-sounding words whose meanings can mislead a learner. It does not establish ancestry.
 
-```
-                          ┌──────────────────────────────────────────────┐
-                          │   High Surface Overlap (S_orth/S_phon >= 0.70)│
-                          │   Disjoint / Low Meaning (S_sem <= 0.30)     │
-                          └──────────────────────┬───────────────────────┘
-                                                 │
-                     ┌───────────────────────────┴───────────────────────────┐
-                     ▼                                                       ▼
-      ┌─────────────────────────────┐                         ┌─────────────────────────────┐
-      │  Type A: Academic / Strict  │                         │  Type B: Casual / Deceptive │
-      │  (Etymological Divergence)  │                         │     (Surface Collision)     │
-      ├─────────────────────────────┤                         ├─────────────────────────────┤
-      │ • Verified common ancestor  │                         │ • Different ancestral roots │
-      │   (Proto-Germanic, Latin)   │                         │ • Accidental homographs     │
-      │ • Meaning drifted over time │                         │ • Unrelated loanword clashes│
-      │ • e.g., gift / gift         │                         │ • e.g., bra / bra           │
-      │   (poison vs. present, both │                         │   (Swedish 'good' vs.       │
-      │   from *giftiz 'to give')   │                         │   English 'brassiere')      │
-      │ • e.g., semester / semester │                         │ • e.g., mist / Mist         │
-      │   (holiday vs. academic     │                         │   (English 'fog' vs.        │
-      │   term, both from Latin)    │                         │   German 'manure')          │
-      └─────────────────────────────┘                         └─────────────────────────────┘
-```
+Every pair has an independent `etymological_relation`:
 
-### Type A: Academic / Etymological False Friends (`false_friend_etymological`)
-* **Definition:** Pairs that share a verified historical etymon (inherited from Proto-Germanic, Proto-Indo-European, or a common classical borrowing), but whose semantic paths diverged over centuries of linguistic evolution.
-* **Examples:**
-  * Swedish *gift* (poison) vs. English *gift* (present) $\leftarrow$ Proto-Germanic *\*giftiz* ("a giving / that which is given"). English preserved the positive gifting sense; High German and Scandinavian narrowed to euphemistic poison/dosage.
-  * Swedish *semester* (holiday / vacation) vs. English *semester* (academic term) $\leftarrow$ Latin *semestris* ("six-month period").
-  * German *bald* (soon) vs. English *bold* $\leftarrow$ Proto-Germanic *\*balþaz* (originally "brave", shifting in German via "promptly/hastily" to "soon").
+* `cognate`: both structured roots match at the same recorded ancestral-language level.
+* `false_cognate`: both roots are recorded at the same level but name different roots.
+* `unknown`: either root is missing or the recorded levels cannot be compared.
 
-### Type B: Casual / Deceptive Surface Collisions (`false_friend_collision`)
-* **Definition:** Pairs that look or sound nearly identical due to chance phonetic convergence, identical spelling of completely unrelated native roots, or borrowing from disparate third-party languages.
-* **Examples:**
-  * Swedish *bra* (good; $\leftarrow$ Italian *bravo* via Middle Low German) vs. English *bra* (brassiere; clipping of French *brassière*).
-  * German *Mist* (manure; native Germanic *\*mihstaz*) vs. English *mist* (light fog; native Germanic *\*mihstaz* / *\*mihstuz*, though distantly cognate, functioning in practical modern pedagogy as an accidental homograph).
-  * German *Hell* (bright) vs. English *hell* (underworld).
-  * German *Rat* (council, advice) vs. English *rat* (rodent).
+These are conservative, source-record classifications, not proof that Wiktionary's entries are complete or correct. Similarity scores and mentions in etymology prose do not establish ancestry. Terminology differs across linguistic and language-learning literature; this dataset uses the operational definitions above and keeps etymological relation separate from meaning overlap. [Sampedro Mella (2024)](https://onlinelibrary.wiley.com/doi/full/10.1111/stul.12225) summarizes this variation, including definitions that distinguish false cognates from false friends by origin and meaning.
 
 ---
 
@@ -67,7 +36,7 @@ In polysemous headwords, treating words as monolithic entities with a single def
 
 ### Strict Sense-Matching Rules
 1. **Sense Pair Integrity:** Any calculated semantic similarity score $S_{\text{sem}}$ must reflect a specific, verified sense pair $(i, j)$ where $\cos(\mathbf{e}_{A,i}, \mathbf{e}_{B,j})$ is maximized. The stored text `def_a` and `def_b` **must** be the exact texts of sense $i$ and sense $j$. Cross-wiring definitions across mismatched senses is strictly prohibited.
-2. **False Friend Disqualification Rule:** A headword pair $(W_A, W_B)$ **cannot** be classified as a global False Friend if there exists *any* active sense pair with $S_{\text{sem}} \ge 0.75$. If Swedish *halva* and English *halva* share the confection sense, the primary classification is `true_cognate` / `direct_borrowing`, with secondary divergent senses documented in the inspection drawer.
+2. **False Friend Disqualification Rule:** A headword pair $(W_A, W_B)$ **cannot** be classified as a global False Friend if there exists *any* active sense pair with $S_{\text{sem}} \ge 0.75$. High meaning similarity does not establish cognacy: `true_cognate` still requires matching structured roots; otherwise use `translation_pair` when surface similarity is low, or `other` when the evidence conflicts.
 3. **Contrastive Sense Storage:** For every pair, the pipeline must record:
    * `active_def_a`, `active_def_b`: The aligned definitions that produced the similarity score.
    * `primary_def_a`, `primary_def_b`: The primary (Sense 1) definitions of both headwords.
@@ -102,9 +71,9 @@ CREATE TABLE word_comparisons (
     -- Spatial Query Point
     sim_point POINT GENERATED ALWAYS AS (POINT(phonetic_sim, semantic_sim)) STORED,
     
-    -- Detailed Taxonomy
-    category VARCHAR(30) NOT NULL,             -- 'true_cognate', 'false_friend', 'partial_cognate', 'translation_pair'
-    false_friend_type VARCHAR(30),            -- 'etymological_shift', 'surface_collision', NULL
+    -- Similarity category plus an independent origin relation
+    category VARCHAR(30) NOT NULL,             -- true_cognate, partial_cognate, false_friend, translation_pair, other
+    etymological_relation VARCHAR(30) NOT NULL, -- cognate, false_cognate, unknown; independent of category
     
     -- Active Aligned Senses (The exact matching sense pair)
     def_a TEXT NOT NULL,
@@ -114,8 +83,10 @@ CREATE TABLE word_comparisons (
     senses_a JSONB NOT NULL DEFAULT '[]'::jsonb,
     senses_b JSONB NOT NULL DEFAULT '[]'::jsonb,
     
-    -- Etymological Lineage
-    etym_root VARCHAR(100),                   -- e.g., 'Proto-Germanic *giftiz'
+    -- Each word's root and a shared root only when both structured roots agree
+    etym_root_a VARCHAR(100),
+    etym_root_b VARCHAR(100),
+    shared_etym_root VARCHAR(100),
     etym_text_a TEXT,
     etym_text_b TEXT
 );
@@ -206,16 +177,39 @@ $$S_{\text{phon}}(P, Q) = 1.0 - \frac{\text{WagnerFischerCost}(P, Q)}{\max(|P|, 
 
 ## 6. Implementation Status Matrix
 
-The following table defines the current operational status across all architectural layers:
+The following records the local taxonomy refresh and application state verified on 2026-09-28. Aggregate checks establish consistency and counts, not linguistic correctness for each row; no individual pair review or manually labeled gold set was completed in this stage.
+
+Before the taxonomy refresh, the database contained 403,298 directed rows. Its category counts were 155,126 `true_cognate`, 33,720 `partial_cognate`, 21,310 `false_friend`, 173,008 `translation_pair`, and 20,134 `other`; the old root field was not reliable evidence of shared origin. Those rows are preserved in `word_comparisons_backup_20260928`.
+
+The refreshed live database contains 403,694 directed rows, regenerated from the five local Kaikki dumps using structured etymology templates for roots. Current categories are 18,514 `true_cognate`, 1,210 `partial_cognate`, 37,736 `false_friend`, 172,078 `translation_pair`, and 174,156 `other`. Across all categories, `etymological_relation` is `cognate` on 19,938 rows, `false_cognate` on 28,820, and `unknown` on 354,936.
+
+`other` remains a score-based similarity category, but it is no longer an origin-data bucket. Every row now carries a separate `etymological_relation`. That exposes the subset whose roots support a more specific origin label without confusing ancestry with modern meaning:
+
+| `other` rows | Origin relation | Semantic similarity | Count | Interpretation |
+| :--- | :--- | :--- | ---: | :--- |
+| `false_cognate` | Different structured roots recorded at the same level | ≥ 0.75 | 8,408 | Similar form and strong meaning match, but distinct recorded roots. Keep the evidence in the origin dimension; do not infer a shared origin from the meaning score. |
+| `false_cognate` | Different structured roots recorded at the same level | > 0.30 and < 0.75 | 3,820 | Similar form, partial meaning overlap, and distinct recorded roots. |
+| `unknown` | Missing or incomparable structured roots | ≥ 0.75 | 129,422 | Similar form and strong meaning match; origin remains unresolved. |
+| `unknown` | Missing or incomparable structured roots | > 0.30 and < 0.75 | 32,506 | Similar form, partial meaning overlap; neither ancestry nor a more specific meaning relation is established. |
+
+All `other` rows meet the current form-similarity threshold; none have matching structured roots. The 12,228 `false_cognate` relations are the `other` records that can be separated by recorded origin. The 161,928 `unknown` records cannot responsibly be renamed as cognates, partial cognates, or false cognates from these fields alone. The 137,830 high semantic-score rows are a useful review slice, not a new linguistic category: an embedding score does not establish equivalent senses. Keep `category = 'other'` until a more specific score-and-sense rule is supported by evidence; use `etymological_relation` to expose the origin distinction now.
 
 | Layer / Component | Status | Verified Capabilities | Active Limitations / Open Work |
 | :--- | :--- | :--- | :--- |
-| **Pipeline: Parser (`parser.py`)** | **Deployed** | Extracts full `senses` JSON (gloss, pos, tags, `is_active`); parses ancestral etymology templates (`gem-pro`, `ine-pro`, `la`) and regex fallbacks; fast CMU dict + rule fallback for English G2P; shields primary etymological root against overwriting by secondary rare homographs. | Obsolete sense classification relies strictly on Wiktextract tags (`obsolete`, `archaic`, `historical`, `dated`). |
-| **Pipeline: Alignment & Classifier (`build_crosslingual_dataset.py`, `classifier.py`, `articulatory_matrix.py`, `ipa_normalizer.py`)** | **Deployed** | Full $N \times M$ sense matrix alignment; argmax binding $(i^*, j^*)$ for `def_a`/`def_b`; False Friend Disqualification Rule ($S_{\text{sem}} \ge 0.75$ on active senses); Type A vs Type B tagging; exact-spelling collision inclusion (5,112/pair); **JIT-compiled Articulatory Feature Matrix & Weighted Wagner-Fischer phonetics**. | Loanword identity override requires exact string match between gloss and counterpart headword. |
-| **Database Schema (`003_add_polysemy_and_etymology.sql`, `004_create_cognate_clusters.sql`)** | **Deployed** | 403,298 pairs populated across 20 directed pairs; `senses_a` and `senses_b` JSONB columns; `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; unique constraint on `(lang_a, lang_b, word_a, word_b)`. **`cognate_clusters` table populated with 7,772 multi-language Proto-Germanic clusters (2,462 spanning 3+ languages, 689 spanning all 5 languages).** | Root matching operates on canonical string keys; spelling variants across sources are indexed via trigrams. |
-| **Backend API (`internal/repository/comparisons.go`, `internal/repository/clusters.go`)** | **Deployed** | Queries return `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; spatial GiST slider indexing; **`GET /api/clusters` and `GET /api/clusters/by-root` endpoints deployed with multi-language filters, trigram search, and 100% test pass rate.** | Pagination default 25 items, capped at 100 per query. |
-| **Frontend Types & API (`frontend/src/types/`, `frontend/src/services/`)** | **Deployed** | TypeScript interfaces synchronized with `senses_a`, `senses_b`, `false_friend_type`, `etym_root`, `etym_text_a`, `etym_text_b`; cluster queries and types (`CognateCluster`, `ClusterMember`) wired. | Zero type errors in production build. |
-| **Frontend UI (`frontend/src/components/specimens/`)** | **Deployed** | Dense, paginated register table (`SpecimenRegisterTable.tsx`) with Cardo typography and fixed columns; slide-out detail drawer (`SpecimenDetailDrawer.tsx`) with full Polysemous Contrast Matrix, etymological lineage, and **Pan-Germanic Sister Cognates clique visualizer.** | Detail drawer closes with ESC or backdrop click. |
+| **Pipeline: Parser (`parser.py`)** | **Updated and tested** | Structured source templates populate roots; prose is retained for display but is not used to infer roots. | A fallback still accepts a template argument beginning with `*`; template coverage and source quality need review. |
+| **Pipeline: Classifier (`classifier.py`)** | **Updated and tested** | Similar form plus low meaning similarity remains queryable as `false_friend`; origin is independently `cognate`, `false_cognate`, or `unknown` on every pair. | Similarity thresholds identify candidates; they do not prove ancestry or replace a sense-level audit. |
+| **Database/API** | **Migrations 007–008 applied and seeded** | Pair data distinguishes both per-word roots, an optional shared root, and `etymological_relation` on every row. API endpoints were checked after restarting the stale local Go process. | Rollback snapshots: `word_comparisons_backup_20260928` (pre-refresh) and `word_comparisons_backup_20260928_v007` (immediately before migration 008). |
+| **Frontend** | **Built locally** | Quiz/lexicon retain false-friend candidates and expose origin relation separately; Language Overview combines its existing table and breakdown with the new map and matrix. | Build verifies TypeScript and bundling; it is not a substitute for visual interaction review. |
+| **Routes and inspector** | **Updated locally** | Legacy Gallery and Language Orbit routes/pages were removed; inspector and lexicon layouts were adjusted for responsive use. | No production deployment is implied by the local build. |
+| **Language Overview and lexicon** | **Updated locally** | The overview combines its existing table and vocabulary breakdown with the relationship map and pair matrix. The lexicon exposes etymological relation and separate recorded roots. | The sister-cognate cluster section remains Pan-Germanic-specific; see `todo.md`. |
+
+### 6.1 Refresh procedure for taxonomy data
+
+The taxonomy refresh and migrations 007–008 were completed on 2026-09-28. The canonical local comparison artifact and database use the new schema; Parquet outputs and the local database are not committed to Git. For a future refresh, build into a staging directory, audit aggregate counts and invariants, and preserve the existing artifacts and database before promotion. Apply each migration only when the database has the immediately preceding schema; do not rerun them on the current schema. Then seed the validated comparison file and run `python pipeline/src/build_cognate_clusters.py` to refresh derived clusters.
+
+Validation completed in this stage: the complete pipeline suite passed (39 tests); Go packages compiled with `go test ./... -run '^$'`; and the frontend production build passed. Read-only database checks confirmed 403,694 rows, valid relation values, symmetric reverse-direction rows, and the category/relation counts above. Root-string checks must normalize case and optional asterisk formatting: 80 raw strings differ while describing the same normalized root. API checks returned HTTP 200 for health, languages, pairs, false-friends, search, clusters, cluster-by-root, and `POST /api/inspect`. The false-friends endpoint initially returned 500 because an old Go process still referenced the pre-migration column; restarting from current source resolved it.
+
+This is an aggregate validation pass, not proof that all 403,694 records are linguistically correct. The next correctness pass should extend `pipeline/tests` and `pipeline/src/audit_db.py`: add a small source-linked set of clear cognates, distinct-root lookalikes, missing/incomparable roots, and known edge cases, then review stratified examples from each large result group. This keeps validation inside the existing pipeline and does not require a separate project.
 
 ---
 
@@ -227,12 +221,12 @@ This section documents active boundary conditions, edge cases, algorithmic trade
 * **The Problem:** A single orthographic string in a language may represent two historically distinct words (homographs with different etymologies). For example, Swedish *gift* represents:
   1. *gift¹* (noun, neuter): poison $\leftarrow$ Middle Low German / German *Gift* ($\leftarrow$ Proto-Germanic *\*gifti*).
   2. *gift²* (adjective): married $\leftarrow$ Old Swedish *gipt* / Old Norse *gipta* ($\leftarrow$ Proto-Germanic *\*giftiz*).
-* **Dataset Decision:** Due to the strict primary invariant of **one row per headword pair** (`UNIQUE(lang_a, lang_b, word_a, word_b)`), both homographs share a single database record. When compared to English *gift* (noun: present, verb: give), the argmax sense evaluator selects Swedish *married* ($S_{\text{sem}} = 0.22$) over *poison* ($S_{\text{sem}} = 0.04$) because $0.22 > 0.04$. 
-* **Pedagogical Requirement:** While both senses satisfy $S_{\text{sem}} \le 0.30$ (preserving the Type A False Friend tag), the UI Specimen Detail Drawer must prominently surface the *poison* sense alongside *married* so learners understand the primary semantic collision.
+* **Dataset Decision:** Due to the strict primary invariant of **one row per headword pair** (`UNIQUE(lang_a, lang_b, word_a, word_b)`), both homographs share a single database record. When compared to English *gift* (noun: present, verb: give), the argmax sense evaluator selects Swedish *married* ($S_{\text{sem}} = 0.22$) over *poison* ($S_{\text{sem}} = 0.04$) because $0.22 > 0.04$. This edge case is not solved by the taxonomy refresh; it needs entry/sense identity in candidate generation and storage before multiple etymologies can be represented safely.
+* **Pedagogical Requirement:** While both senses satisfy $S_{\text{sem}} \le 0.30$, the pair remains a false-friend candidate. Its origin is labeled cognate only when the structured roots support that claim. The detail view should show each word's etymology separately.
 
 ### 7.2 Obsolete / Historical Sense Filtering & The Disqualification Rule
 * **The Problem:** If archaic or obsolete dictionary senses are treated as active meanings, legitimate modern False Friends would be disqualified. In historical Swedish, *gift* was once an obsolete noun meaning "a present" (attested from Proto-Germanic *\*giftiz*). If an unconstrained sense search evaluates this sense against English *gift*, $S_{\text{sem}}$ reaches $\approx 0.72$, falsely categorizing the pair as a cognate.
-* **Invariant:** Senses flagged with `obsolete`, `archaic`, `historical`, or `dated` tags in Wiktextract are tagged with `is_active: false`. The **False Friend Disqualification Rule** ($S_{\text{sem}} \ge 0.75$) checks **only active modern senses**. Obsolete senses are retained in `senses_a` and `senses_b` for historical inspection in the drawer, but are strictly barred from disqualifying modern False Friends.
+* **Invariant:** Senses flagged with `obsolete`, `archaic`, `historical`, or `dated` tags in Wiktextract are tagged with `is_active: false`. Classification checks only active senses. High semantic similarity can remove a pair from the false-friend class, but cannot by itself establish that the words are cognate. Obsolete senses remain in `senses_a` and `senses_b` for inspection.
 * **Caveat:** If a Wiktionary contributor neglected to tag an archaic meaning with appropriate template markup, that sense remains `is_active: true` and can artificially inflate $S_{\text{sem}}$.
 
 ### 7.3 Identity & Circular Definitions in Foreign Loanwords
@@ -247,12 +241,12 @@ This section documents active boundary conditions, edge cases, algorithmic trade
 
 ### 7.5 Etymology Template Coverage Asymmetry
 * **The Problem:** Wiktionary's crowd-sourced nature means etymology coverage is non-uniform. High-frequency words possess rich structured templates (`inh`, `der`, `gem-pro`), but rarer vocabulary may only have unstructured prose text or no etymology section at all.
-* **Behavior:** If a word lacks structured ancestral templates, `classifier.py` falls back to regex matching on `etymology_text`. If no ancestral link can be verified from the extracted text, a deceptive surface overlap defaults conservatively to Type B (`surface_collision`) rather than assuming historical cognacy.
-* **Caveat:** Some genuine historical cognates with unparsed prose etymologies may currently be classified as Type B rather than Type A.
+* **Behavior:** Structured Wiktionary etymology fields populate each word's own root. Prose is retained for display but is not parsed into a root because it can mention sister words or unrelated examples.
+* **Caveat:** Missing structured roots leave the origin relation `unknown`; they do not prove the words unrelated.
 
 ### 7.6 Pairwise Storage vs. Multi-Language Root Cliques
 * **Current State:** Data is currently indexed and queried pairwise across the 20 directed pairs in `word_comparisons`.
-* **Caveat:** While `etym_root` records ancestral roots (e.g., `Proto-Germanic *hundaz`), there is no first-class `cognate_cliques` table grouping all 5 languages into a single graph node. Cross-language universality is currently derived at query time via `GetByTokens`.
+* **Caveat:** Pair rows store both per-word roots and an optional `shared_etym_root`; the separate `cognate_clusters` table groups multi-language roots. Cross-language universality is currently derived at query time via `GetByTokens`.
 
 ### 7.7 Dual-Channel Candidate Recall Boundaries (Non-Identical Homophones)
 * **Current State:** Exact-spelling collisions are exhaustively captured (5,112 per language pair). Candidate generation for spelling-divergent pairs relies on:
@@ -264,20 +258,22 @@ This section documents active boundary conditions, edge cases, algorithmic trade
 * **Current State:** The database stores symmetrical rows (`A -> B` and `B -> A`).
 * **Caveat:** While continuous scores ($S_{\text{orth}}, S_{\text{phon}}, S_{\text{sem}}$) are symmetric, semantic polysemy is inherently directional. A headword in Language A may have 8 distinct senses while the counterpart in Language B has only 1. The argmax alignment captures the optimal intersection, but the proportion of unaligned semantic mass is asymmetric. Senses arrays (`senses_a`, `senses_b`) must be inspected to evaluate the full directional asymmetry.
 
-### 7.9 Semantic Blurring in Metaphorical and Figurative Senses ($0.30 < S_{\text{sem}} < 0.75$)
+### 7.9 Taxonomy Boundaries
+* **Cognate** describes a shared historical origin; similarity scores alone cannot establish it.
+* **False friend** describes a misleading cross-language form/meaning relationship and can be cognate or unrelated. `etymological_relation` records `cognate`, `false_cognate`, or `unknown` for every pair.
+* **False cognate** is reserved for similar forms with distinct recorded roots. Missing roots or roots at incomparable historical levels remain `unknown`.
+* **Translation pair** is a high-meaning-similarity, low-form-similarity candidate. **Partial cognate** is used only for a shared recorded root whose aligned meanings are not fully similar.
+
+### 7.10 Semantic Blurring in Metaphorical and Figurative Senses ($0.30 < S_{\text{sem}} < 0.75$)
 * **The Problem:** Many cognates retain a shared literal meaning but have developed divergent metaphorical extensions, or vice versa.
-* **Classification Impact:** Senses with cosine similarity between 0.30 and 0.75 fall into `partial_cognate`. If a headword's primary modern sense is deceptive but a secondary figurative sense produces a moderate similarity score (e.g., 0.35), the pair avoids the `false_friend` label. The threshold boundaries ($S_{\text{sem}} \le 0.30$ for False Friends; $S_{\text{sem}} \ge 0.75$ for True Cognates) are discrete cutoffs applied to continuous semantic distributions.
+* **Classification Impact:** Senses with cosine similarity between 0.30 and 0.75 become `partial_cognate` only when structured roots match. A moderate match without root evidence is not labeled cognate. Threshold boundaries remain candidate-screening cutoffs, not linguistic proof.
 
 ### 7.10 Translation Graph Mining Slicing & Core Lemma Prioritization
 * **The Problem:** The English Wiktionary translation graph contains $>66,000$ translation links between high-density language pairs like German and English. In naive candidate generators, converting raw Python sets to lists and applying unseeded head-slices (`[:10000]`) arbitrarily omits foundational core vocabulary (e.g. *water* $\leftrightarrow$ *Wasser*, *apple* $\leftrightarrow$ *Apfel*) depending on non-deterministic memory hash ordering.
-* **Invariant:** Mined translation links must be sorted deterministically prior to candidate bounding (`max_translation_pairs = 15000`), prioritizing pairs with verified ancestral etymological roots (`etym_root` present) and shorter lexical lengths (canonical core vocabulary over obscure multi-token or rare compounds).
+* **Invariant:** Mined translation links must be sorted deterministically prior to candidate bounding (`max_translation_pairs = 15000`), prioritizing pairs with available per-entry roots and shorter lexical lengths (canonical core vocabulary over obscure multi-token or rare compounds).
 
 ### 7.11 Multi-Language Cognate Clique Aggregation & Homograph Shielding
 * **The Problem:** Pairwise tables (`word_comparisons`) store edges ($A \leftrightarrow B$), but comparative Germanic philology models ancestral root nodes ($N$-way cliques: e.g. Proto-Germanic *\*hundaz* $\rightarrow$ English *hound*, German *Hund*, Swedish *hund*, Danish *hund*, Norwegian *hund*). Furthermore, polysemous headwords with multiple homograph entries (e.g. English *hound* noun: dog vs nautical mast timber from Proto-Germanic *\*hūnaz*) risked having primary ancestral roots overwritten by rare secondary homographs during ingestion.
 * **Invariants:**
-  1. Primary etymological roots are protected against subsequent secondary overwrites in `parser.py` (`not target["etym_root"] or ("Proto-Germanic" in entry["etym_root"] and "Proto-Germanic" not in target["etym_root"])`).
+  1. A lemma's structured root is protected against secondary overwrites in `parser.py`; pair-level shared roots are emitted only when both per-word roots match.
   2. Multi-language cognate cliques are materialized in `cognate_clusters` (indexed on `root`, `language_count`, `languages` via GIN, and trigram search), allowing the Specimen Detail Drawer to render all pan-Germanic siblings under their ancestral Proto-Germanic root node.
-
-
-
-

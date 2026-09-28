@@ -9,8 +9,8 @@ This document details the game design architecture, pedagogical goals, scoring m
 | Game Mode | Core Mechanic | Target Linguistic Competence | Primary Database Source | Difficulty Profile |
 | :--- | :--- | :--- | :--- | :--- |
 | **1. Definition Decryption** *(Active)* | 4-choice definition identification featuring the deceptive source meaning as an active cognitive trap. | Semantic disambiguation & resisting false transfer. | `word_comparisons` (`category = 'false_friend'`) | Introductory to Intermediate |
-| **2. The Minefield** *(Planned)* | High-speed binary classification: *True Cognate* vs. *False Friend*. | Rapid intuition calibration & phonetic/orthographic discernment. | `word_comparisons` (`true_cognate` + `false_friend`) | Fast-Paced / Arcade |
-| **3. Semantic Drift Detective** *(Planned)* | Trace how a shared Proto-Germanic root specialized into divergent modern senses. | Etymological comprehension & semantic shift mechanics. | `word_comparisons` (`partial_cognate`, `cousin`) + `cognate_clusters` | Advanced / Analytical |
+| **2. The Minefield** *(Planned)* | Identify whether a misleading pair has a shared origin or distinct recorded roots. | Etymological relation, separate from meaning overlap. | `word_comparisons` (`category = 'false_friend'`, `etymological_relation`) | Fast-Paced / Arcade |
+| **3. Semantic Drift Detective** *(Planned)* | Trace how a shared Proto-Germanic root specialized into divergent modern senses. | Etymological comprehension & semantic shift mechanics. | `word_comparisons` (`partial_cognate`) + `cognate_clusters` | Advanced / Analytical |
 | **4. The Absurd Cloze** *(Planned)* | Fill-in-the-blank contextual sentence where choosing the false friend results in a humorous mistranslation. | In-context reading comprehension and register verification. | `word_comparisons` + `word_inflections` + spaCy slot validation | Practical / Applied |
 
 ---
@@ -37,8 +37,9 @@ For a given false friend pair $(A, B)$ where $A \in \text{Lang}_A$ and $B \in \t
   - Unfolds below the answered question.
   - Displays the lineage for both words (`etym_text_a` and `etym_text_b`).
   - Explains the divergence archetype:
-    - `surface_collision`: Unrelated roots that accidentally collided phonetically or orthographically.
-    - `semantic_drift`: Common ancestral root whose meaning shifted along different cultural or semantic trajectories.
+    - `false_cognate`: Similar-looking words with distinct recorded roots.
+    - `cognate`: Historically related words whose modern meanings have diverged enough to mislead.
+    - `unknown`: Similar-looking words whose historical relationship remains unverified in the available records.
 
 ### 2.4 Viewing Modes (Preventing English Triangulation)
 When playing between two non-English languages (e.g. Danish $\leftrightarrow$ German), displaying English definitions upfront allows players to eliminate the trap purely by pattern-matching English strings. The quiz supports three viewing modes to preserve immersion and puzzle integrity:
@@ -48,16 +49,16 @@ When playing between two non-English languages (e.g. Danish $\leftrightarrow$ Ge
 
 ---
 
-## 3. Mode 2: The Minefield (Cognate or Deceiver?)
+## 3. Mode 2: The Minefield (Shared Root or False Cognate?)
 
 ### 3.1 Concept & Mechanics
-A rapid-fire, streak-oriented game testing initial recognition speed.
+A rapid-fire, streak-oriented game testing whether false-friend pairs share a recorded origin. False friends can be cognates, so the game does not treat those labels as opposites.
 - The player is presented with a word pair side-by-side:
   - Example 1: English *finger* $\leftrightarrow$ German *Finger*
   - Example 2: English *mist* $\leftrightarrow$ German *Mist* (German: "manure / dung")
 - **Player Actions**: Two primary buttons:
-  - `[Z] True Cognate` (Shared heritage and equivalent modern meaning)
-  - `[X] False Friend` (Deceptive lookalike or divergent meaning)
+  - `[Z] Cognate false friend` (Shared recorded root, divergent meanings)
+  - `[X] False cognate` (Similar forms with distinct recorded roots)
 - **Scoring**:
   - Timed round: 60 seconds or 20 items.
   - Multiplier increases with consecutive correct classifications.
