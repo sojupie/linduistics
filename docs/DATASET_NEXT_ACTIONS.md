@@ -22,7 +22,7 @@ One word pair may have more than one path. A source’s claim is evidence to pre
 - A separate 270-case audit keeps comparison senses, source claims, and their evidence links available for inspection. It is diagnostic, not representative.
 - Fresh per-language lemma tables are now built for all five local dumps. All 1,060,087 active sense records have source-entry and source-sense IDs; 222,272 senses have an extracted etymological root.
 - A rebuilt local comparison artifact contains 1,638,454 directed candidate rows across the 10 language pairs. It records 24,872 rows with equal extracted roots; the other 1,613,582 have unknown root relations. These are candidate-build counts, not vocabulary-wide percentages.
-- The rerun source-claim audit finds 9,268 evidence rows across 7,579 candidates, including 5,949 `other` candidates with a matching entry-level source claim. The 188 unselected target identities are ambiguous, not absent; their possible IDs are retained. See the [audit findings and source-aware rebuild](DATASET_NEXT_STEPS.md#candidate-to-source-claim-evidence-export-2026-09-28).
+- The all-pair source-claim audit finds 20,354 evidence rows across all 10 language pairs, including 13,143 `other` candidates with a matching entry-level source claim. It retains the possible IDs for 406 ambiguous target matches. See the [audit findings and source-aware rebuild](DATASET_NEXT_STEPS.md#candidate-to-source-claim-evidence-export-2026-09-28).
 - A demonstrated false-friend error is fixed: English *Bankman* “a surname” versus Swedish *bankman* “bank employee” remains an inspectable candidate but is no longer classified as a false friend. The full pipeline suite passes 102 tests. Generated data remains local and ignored; the live database has not been updated.
 
 These counts describe the current extracted files, not vocabulary coverage or the share of words with any historical relationship. The current `other` category is a candidate-builder remainder, not a linguistic conclusion.
@@ -43,7 +43,7 @@ Record which step loses, merges, or misapplies evidence. Fix demonstrated extrac
 
 ### 2. Keep building the evidence model from real source structures
 
-Continue expanding the extractor where Wiktionary contains structured evidence that the current export drops or flattens. Preserve the raw template and arguments beside each normalized claim. Keep source-supported claims distinct from our judgments and similarity scores. Support multiple etymologies, senses, component relations, and paths for the same spelling or pair.
+First check whether a suspected gap is in extraction or in linking. The cited *fleece*, *clown*, *bank*, and compound examples already have structured borrowing, derivation, or component claims in the source export. The audit now covers all ten language pairs. The next gap is linking those claims to comparison senses and keeping borrowing, components, and shared roots as distinct paths instead of reducing history to root equality. Preserve the raw template and arguments beside each claim.
 
 Treat unresolved source links as unresolved. Do not infer unrelated origins from an empty root field, a missing template, or a lack of a matched entry. Keep source claims queryable even when they do not map cleanly to a current comparison row.
 
