@@ -235,6 +235,82 @@ class EtymologyRecordTests(unittest.TestCase):
         self.assertNotIn("related_language", claim)
         self.assertNotIn("related_form", claim)
 
+    def test_normalizes_source_backformation_reduplication_and_multiword_formation_templates(self):
+        record = source_record(
+            {
+                "lang_code": "en",
+                "lang": "English",
+                "word": "examples",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "bf", "args": {"1": "sv", "2": "velig"}},
+                    {"name": "reduplication", "args": {"1": "sv", "2": "ja"}},
+                    {"name": "univerbation", "args": {"1": "sv", "2": "in", "3": "om"}},
+                    {"name": "contraction", "args": {"1": "en", "2": "do", "3": "not"}},
+                ],
+            },
+            "kaikki_en.jsonl",
+        )
+
+        self.assertEqual(
+            [claim["relation"] for claim in record["claims"]],
+            ["back_formed_from", "reduplicated_from", "univerbated_from", "contraction_of"],
+        )
+        self.assertEqual(
+            [(claim.get("related_language"), claim.get("related_form")) for claim in record["claims"][:2]],
+            [("sv", "velig"), ("sv", "ja")],
+        )
+        self.assertEqual(record["claims"][2]["components"], ["in", "om"])
+        self.assertEqual(record["claims"][3]["components"], ["do", "not"])
+
+    def test_normalizes_reduplication_marker_in_structured_etymon(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "jaja",
+                "pos": "interj",
+                "etymology_templates": [
+                    {"name": "ety", "args": {"1": "sv", "2": ":reduplication", "3": "ja"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        claim = record["claims"][0]
+        self.assertEqual((claim["relation"], claim["related_language"], claim["related_form"]), ("reduplicated_from", "sv", "ja"))
+
+    def test_separates_source_link_from_the_specific_word_formation_process(self):
+        record = source_record(
+            {
+                "lang_code": "en",
+                "lang": "English",
+                "word": "examples",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "apheretic form", "args": {"1": "en", "2": "escarp"}},
+                    {"name": "apocopic form", "args": {"1": "sv", "2": "bara"}},
+                    {"name": "syncopic form", "args": {"1": "sv", "2": "tiden"}},
+                    {"name": "rebracketing", "args": {"1": "sv", "2": "uppå"}},
+                    {"name": "infix", "args": {"1": "en", "2": "unbelievable", "3": "fucking"}},
+                    {"name": "metathesis", "args": {"1": "en"}},
+                ],
+            },
+            "kaikki_en.jsonl",
+        )
+
+        claims = record["claims"]
+        self.assertEqual(
+            [claim["formation_type"] for claim in claims],
+            ["apheresis", "apocope", "syncope", "rebracketing", "infixation", "metathesis"],
+        )
+        self.assertEqual([claim["relation"] for claim in claims], ["derived_from"] * 5 + [None])
+        self.assertEqual(
+            [(claim.get("related_language"), claim.get("related_form")) for claim in claims[:5]],
+            [("en", "escarp"), ("sv", "bara"), ("sv", "tiden"), ("sv", "uppå"), ("en", "unbelievable")],
+        )
+        self.assertEqual(claims[4]["formation_detail"], "fucking")
+
     def test_normalizes_nominalization_and_syllabic_abbreviation_source_languages(self):
         record = source_record(
             {

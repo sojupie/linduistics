@@ -26,6 +26,11 @@ RELATION_BY_TEMPLATE = {
     "uder": "derived_from",
     "deverbal": "derived_from",
     "denominal": "derived_from",
+    "apheretic form": "derived_from",
+    "apocopic form": "derived_from",
+    "syncopic form": "derived_from",
+    "rebracketing": "derived_from",
+    "infix": "derived_from",
     "cal": "calque_of",
     "calque": "calque_of",
     "clq": "calque_of",
@@ -49,6 +54,7 @@ RELATION_BY_TEMPLATE = {
     "clipping": "clipped_from",
     "back-formation": "back_formed_from",
     "back-form": "back_formed_from",
+    "bf": "back_formed_from",
     "backform": "back_formed_from",
     "backformation": "back_formed_from",
     "back formation": "back_formed_from",
@@ -93,6 +99,9 @@ RELATION_BY_TEMPLATE = {
     "ellip": "ellipsis_of",
     "acro": "acronym_of",
     "redup": "reduplicated_from",
+    "reduplication": "reduplicated_from",
+    "univerbation": "univerbated_from",
+    "contraction": "contraction_of",
     "nom": "nominalized_from",
     "sylabbr": "syllabically_abbreviated_from",
     "init": "initialism_of",
@@ -144,6 +153,7 @@ ETY_RELATIONS = {
     "ellip": "ellipsis_of",
     "acro": "acronym_of",
     "redup": "reduplicated_from",
+    "reduplication": "reduplicated_from",
     "nom": "nominalized_from",
     "sylabbr": "syllabically_abbreviated_from",
     "init": "initialism_of",
@@ -339,6 +349,10 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         if args.get("title"):
             claim["source_label"] = args["title"]
         return [claim]
+    elif base_name == "metathesis":
+        claim["relation"] = None
+        claim["formation_type"] = "metathesis"
+        return [claim]
     elif base_name == "named-after/list":
         # This template formats the occupation list for named-after; retain it in templates only.
         return []
@@ -373,9 +387,27 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         ] or [claim]
     elif base_name in {
         "deverbal", "denominal", "clip", "clipping", "back-formation", "back-form", "backform",
-        "backformation", "back formation", "abbrev", "abbr", "abbreviation", "acronym", "acro",
-        "initialism", "init",
+        "backformation", "back formation", "bf", "abbrev", "abbr", "abbreviation", "acronym",
+        "acro", "initialism", "init", "redup", "reduplication",
     }:
+        return [
+            {
+                **claim,
+                "related_language": language,
+                "related_form": args.get("2"),
+            }
+            for language in _source_language_codes(args.get("1"))
+        ] or [claim]
+    elif base_name in {"apheretic form", "apocopic form", "syncopic form", "rebracketing", "infix"}:
+        claim["formation_type"] = {
+            "apheretic form": "apheresis",
+            "apocopic form": "apocope",
+            "syncopic form": "syncope",
+            "rebracketing": "rebracketing",
+            "infix": "infixation",
+        }[base_name]
+        if base_name == "infix" and args.get("3"):
+            claim["formation_detail"] = args["3"]
         return [
             {
                 **claim,
@@ -399,7 +431,7 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             }
             for language in _language_codes(args.get("2"))
         ] or [claim]
-    elif base_name in {"compound", "com", "confix", "surf", "surface analysis", "af", "affix", "prefix", "pre", "suffix", "suf", "blend", "univ", "afeq"}:
+    elif base_name in {"compound", "com", "confix", "surf", "surface analysis", "af", "affix", "prefix", "pre", "suffix", "suf", "blend", "univ", "univerbation", "contraction", "afeq"}:
         claim["related_language"] = entry_lang
         claim["components"] = [
             value
