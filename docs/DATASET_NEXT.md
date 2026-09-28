@@ -29,17 +29,21 @@ The refreshed CLDF Generic preview has 5 languages, 79 entries, 262 senses, 45 c
 
 ## Next work
 
-### 1. Trace one real mismatch end to end: *fleece*
+### Completed: trace the *fleece* source claim to the comparison
 
-Use the English and Swedish entries to test exactly what the current dataset means when it shows a Proto-West Germanic root. Identify which entry, sense, and source claim supplies that root; trace the Swedish borrowing claim separately; then follow both through extraction, comparison matching, and the displayed result. The goal is to find the first step that loses or blurs the distinction between an inherited path and a borrowing path. Keep each path attached to the entry that asserts it. Do not infer that both words inherited the root directly just because the same deep form appears in the comparison view.
+The Swedish and German entries each have a `borrowed_from(en, fleece)` claim. The English entry has its own inheritance chain through Old English to Proto-West Germanic `*fleus`. In the comparison, that root belongs to the English side; it is not evidence that Swedish inherited the root directly. The source claim names an entry and a related form, not a specific target sense. The selected senses are comparison context only.
 
-Deliver a small rebuilt case slice that lets someone inspect both source histories, the direction of any borrowing, the selected senses, the computed similarity, and the transformation that joined them. If the existing evidence cannot establish a link, represent that limit instead of filling it by assumption.
+The CLDF export now records that source scope on `source-claims.csv`. `claim-matches.csv` names its sense IDs `Comparison_Source_Sense_ID` and `Comparison_Target_Sense_ID`, so they are not mistaken for source-attested sense links. This keeps the actual borrowing claim separate from the comparison candidate it matched.
 
-### 2. Fix only the demonstrated loss
+### 1. Resolve form-level claims to all exact target entries
 
-If the trace exposes a parser, identity, or linking bug, fix that transformation and add *fleece* as a regression case. Preserve separate claims and paths: borrowing, inheritance, derivation, calquing, and component formation can coexist in a word’s history. Keep computed similarity and project interpretation separate from source claims. Avoid a mutually exclusive pair label when the evidence supports several relations or does not settle one.
+For a source claim such as `borrowed_from(en, fleece)`, find every exact English source entry for the related form and preserve all candidates, including distinct homographs and etymology sections. Keep target-form resolution separate from target-sense resolution. A comparison’s selected sense can be shown as context, but it cannot break a tie unless the source itself provides sense evidence.
 
-Do not change bulk classifications unless the repaired rule has been checked against the purposeful case slice. Leave unresolved source identity and competing evidence visible.
+Use the five local dumps first. Record exact versus case-only matches and unresolved forms. Reuse the existing source-entry indexing patterns; do not infer that no match means unrelated origins. The result should let the *fleece*, *bank*, and *gift* cases show when a written form reaches multiple possible source entries.
+
+### 2. Fix only a demonstrated loss
+
+If this trace exposes a parser, identity, or linking bug, fix that transformation and add the affected case as a regression. Preserve separate paths: borrowing, inheritance, derivation, calquing, and component formation can coexist in a word’s history. Keep computed similarity and project interpretation separate from source claims. Do not bulk-change classifications from the case slice.
 
 ### 3. Make the next data slice reproducible and shareable
 

@@ -602,6 +602,12 @@ No score bug was reproduced. The remaining problem is interpretive and reproduci
 
 Next, add a comparison-build manifest with the model revision and a direct record of the sense restriction used for alignment, then test a replacement for `partial_cognate` against the current case slice. Keep the data rule separate from the presentation label and preserve the existing score as an observation.
 
+## Preserve the scope of source-claim matches (2026-09-28)
+
+The *fleece* source trace confirms that Swedish records `borrowed_from(en, fleece)` while English separately records its inherited path to Proto-West Germanic `*fleus`. The Swedish claim names a source entry and a related form; it does not specify a target sense. The comparison's selected English textile sense is useful context, but should not look like part of the source's borrowing claim.
+
+The CLDF export now records `Claim_Source_Scope=entry` and derives `Claim_Target_Scope` from the normalized claim target (`form`, `entity`, `components`, `language`, or `none`). In this 520-claim slice, 458 target forms, 17 component lists, two language-only derivations, and 43 claims with no normalized target are represented. Normalized entity and component references are retained as JSON. The linked selected senses are named `Comparison_Source_Sense_ID` and `Comparison_Target_Sense_ID`, with metadata descriptions that say they are comparison context. This is a representation correction; it does not change the source claim, candidate classification, similarity score, or live database. The rebuilt case preview retains the same 5 languages, 79 entries, 262 senses, 45 forms, 520 source claims, 30 component links, 12 shared-component ancestor candidates, 28 comparisons, and 25 claim matches.
+
 The local snapshots and manifests are:
 
 - `pipeline/data/all_comparisons_dercat_fix.parquet`, SHA-256 `1d85f6f65f3ca45d11a95065998c929fa21b3e8bc5e03408be29377ad26267b9`.
