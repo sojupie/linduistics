@@ -6,13 +6,29 @@ Keep building the data, source links, and transformations ourselves. The work is
 
 Wiktionary remains the first source, not the whole definition of the project. CLDF is a valid way to share compatible tables. It does not need to shape the internal pipeline, and we do not need a complete CLDF release before we have a useful data slice.
 
+## Completed: preserve case-distinct entries
+
+The comparison loader used lowercased headwords as dictionary keys. In the current German lemma file, that reduced 86,390 exact spellings to 85,093 keys, overwriting 1,297 entries. For example, translation mining could match Norwegian *TV* to lowercase German *fernsehen* (“to watch television”) instead of capitalized *Fernsehen* (“television”).
+
+The loader now keeps the exact headword. Lookups prefer exact spelling; they use lowercase fallback only when one entry matches. Ambiguous fallback matches are skipped instead of being attached to an arbitrary entry. Surface matching compares lowercase spellings while preserving each source entry as a separate candidate.
+
+Regression coverage checks entry retention, exact and ambiguous translation matching, surface candidates, and exact mined-pair selection. The pipeline suite passes: 75 tests.
+
+I rebuilt the local candidate output from the identity-aware lemma files. It contains 405,250 directed rows, compared with 403,952 from the same builder before this fix. A concrete changed match is German *Fernsehen*: the old candidate selected the verb sense “to watch television”; the exact target spelling now selects the noun sense “television.”
+
+These totals do not prove that the new classifications are all correct. The semantic model revision is not pinned, and the full build recomputes semantic matches. Keep the generated Parquet files local and do not treat category-count changes as caused only by the spelling fix. The live database remains untouched.
+
 ## Do this next
 
-### 1. Close the identity gap in the comparison builder
+### 1. Connect translation forms to lemmas without erasing the forms
 
-The lemma parser now keeps separate source entries and senses, but `load_canonical_lexicons()` still keys entries by lowercased spelling. That collapses German forms such as `Gift` and `gift` before comparison. Trace the dependent lookups, preserve exact entries, and make normalized lookups explicit about ambiguity instead of choosing one silently.
+A read-only scan of the current English translation dump shows a larger retrieval gap. After the builder's single-word filter, it scans 1,102,025 English source-entry records. The lemma tables resolve 632,935; 469,090 do not. These are entry occurrences, not unique spellings.
 
-Add a small regression case proving that both forms survive loading and that translation and surface-collision matching do not attach evidence to the wrong entry. Then rebuild the local candidate dataset and report how many rows and pairings changed. Keep the database untouched while checking the result.
+The existing word-form tables link 351,392 of those unmatched source-entry occurrences to one or more lemma records: 289,318 by exact form, 61,403 by a unique lowercase form, and 671 through an ambiguous lowercase form. The remaining 117,698 have no matching word-form record. Keep the source headword and its form-to-lemma link as separate evidence. Do not turn ambiguous links into a single lemma choice.
+
+From matched English source entries, the dump contains 214,450 eligible target translation occurrences. The lemma tables resolve 151,357. Among the other 63,093 occurrences, word-form tables link 7,362 to a lemma with a single exact or lowercase match, link 298 through an ambiguous lowercase form, and have no form record for 55,433. These are candidate links only: a form-to-lemma link does not prove that the translation senses match.
+
+Next, add a reproducible audit for these counts and inspect a sample of the form links against their source entries and senses. Then decide how the pipeline should represent translation claims from an inflected form: retain the actual surface form, link it to one or more lemma candidates, and keep unresolved links visible. Only feed a form-derived lemma into lexical comparison when the evidence identifies a usable sense; do not silently replace the surface form with its lemma.
 
 ### 2. Make a rerunnable, source-backed slice
 
@@ -41,7 +57,7 @@ Check whether CLDF's existing modules fit the released tables. Export the compat
 
 ## Done when
 
-- The identity regression passes, including the distinct German `Gift` and `gift` entries.
+- The identity regression passes, including separate records for case-distinct spellings.
 - The slice rebuilds from recorded local inputs and produces the same output for the same pipeline version.
 - A reader can trace a result to its source wording and see which steps are source claims versus computed values.
 - Unknown, conflicting, and ambiguous evidence stays visible instead of being converted to a confident label.
