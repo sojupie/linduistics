@@ -1,38 +1,38 @@
-claim_id,case_id,source_id,source_language_or_stage,source_form,claim_type,target_language_or_stage,target_form,scope
-blive-old-01,blive,blive-old,nb,blive,derived_from,da,blive,entry
-blive-current-01,blive,blive-current,nb,blive,inherited_from,Middle Norwegian,blífa,entry
-blive-current-02,blive,blive-current,Middle Norwegian,blífa,borrowed_from,Middle Low German,blîven,etymon
-blive-current-03,blive,blive-current,nb,blive,cognate_mention,da,blive,entry
-fleece-current-01,fleece,fleece-current,sv,fleece,borrowed_from,en,fleece,entry
-sandbank-current-01,sandbank,sandbank-current,sv,sandbank,compound_component,sv,sand,formation
-sandbank-current-02,sandbank,sandbank-current,sv,sandbank,compound_component,sv,bank,formation
-bankman-current-01,bankman,bankman-current,sv,bankman,compound_component,sv,bank,formation
-bankman-current-02,bankman,bankman-current,sv,bankman,compound_component,sv,man,formation
-bankman-current-03,bankman,bankman-current,en,bankman,alternative_form_of,en,banksman,entry
-væg-current-01,væg-väg,væg-current,da,væg,root_recorded,Proto-Germanic,*wajjuz,entry
-væg-current-02,væg-väg,væg-current,da,væg,cognate_mention,sv,vägg,entry
-väg-current-01,væg-väg,väg-current,sv,väg,root_recorded,Proto-Germanic,*wegaz,entry
-väg-current-02,væg-väg,väg-current,sv,väg,cognate_mention,en,way,entry
-vägg-current-01,væg-väg,vägg-current,sv,vägg,root_recorded,Proto-Germanic,*wajjuz,entry
-vägg-current-02,væg-väg,vägg-current,sv,vägg,cognate_mention,da,væg,entry
-ombudsman-en-01,ombudsman,ombudsman-current,en,ombudsman,borrowed_from,sv,ombudsman,entry
-ombudsman-en-02,ombudsman,ombudsman-current,en,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry
-ombudsman-sv-01,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,ombud,formation
-ombudsman-sv-02,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,man,formation
-ombudsman-sv-03,ombudsman,ombudsman-current,sv,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry
-ombudsmand-da-01,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,ombud,formation
-ombudsmand-da-02,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,mand,formation
-ombudsmand-da-03,ombudsman,ombudsmand-current,da,ombudsmand,historical_form,Old Danish,umbuzman,entry
-ombudsmand-da-04,ombudsman,ombudsmand-current,da,ombudsmand,root_recorded,Old Norse,umboðsmaðr,entry
-ombudsmann-nb-01,ombudsman,ombudsmann-current,nb,ombudsmann,inherited_from,Old Norse,umboðsmaðr,entry
-ombudsmann-nb-02,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,ombud,formation
-ombudsmann-nb-03,ombudsman,ombudsmann-current,nb,ombudsmann,interfix,nb,-s-,formation
-ombudsmann-nb-04,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,mann,formation
-Ombudsmann-de-01,ombudsman,Ombudsmann-current,de,Ombudsmann,borrowed_from,sv,ombudsman,entry
-clown-sv-01,clown,clown-current,sv,clown,borrowed_from,en,clown,entry
-clown-da-01,clown,klovn-current,da,klovn,borrowed_from,en,clown,entry
-clown-nb-01,clown,klovn-current,nb,klovn,borrowed_from,en,clown,entry
-clown-de-01,clown,Clown-current,de,Clown,borrowed_from,en,clown,entry
-torta-sv-01,torta-tort,torta-current,sv,torta,cognate_mention,Norwegian (variety unspecified),tort,entry
-tort-nb-01,torta-tort,tort-current,nb,tort,borrowed_from,fr,tort,entry
-tort-nb-02,torta-tort,tort-current,nb,tort,derived_from,la,tortum,etymon
+claim_id,case_id,source_id,source_language_or_stage,source_form,claim_type,target_language_or_stage,target_form,scope,assertion_basis,source_locator
+blive-old-01,blive,blive-old,nb,blive,derived_from,da,blive,entry,,
+blive-current-01,blive,blive-current,nb,blive,inherited_from,Middle Norwegian,blífa,entry,,
+blive-current-02,blive,blive-current,Middle Norwegian,blífa,borrowed_from,Middle Low German,blîven,etymon,,
+blive-current-03,blive,blive-current,nb,blive,cognate_mention,da,blive,entry,,
+fleece-current-01,fleece,fleece-current,sv,fleece,borrowed_from,en,fleece,entry,,
+sandbank-current-01,sandbank,sandbank-current,sv,sandbank,compound_component,sv,sand,formation,,
+sandbank-current-02,sandbank,sandbank-current,sv,sandbank,compound_component,sv,bank,formation,,
+bankman-current-01,bankman,bankman-current,sv,bankman,compound_component,sv,bank,formation,,
+bankman-current-02,bankman,bankman-current,sv,bankman,compound_component,sv,man,formation,,
+bankman-current-03,bankman,bankman-current,en,bankman,alternative_form_of,en,banksman,entry,,
+væg-current-01,væg-väg,væg-current,da,væg,root_recorded,Proto-Germanic,*wajjuz,entry,,
+væg-current-02,væg-väg,væg-current,da,væg,cognate_mention,sv,vägg,entry,,
+väg-current-01,væg-väg,väg-current,sv,väg,root_recorded,Proto-Germanic,*wegaz,entry,,
+väg-current-02,væg-väg,väg-current,sv,väg,cognate_mention,en,way,entry,,
+vägg-current-01,væg-väg,vägg-current,sv,vägg,root_recorded,Proto-Germanic,*wajjuz,entry,,
+vägg-current-02,væg-väg,vägg-current,sv,vägg,cognate_mention,da,væg,entry,,
+ombudsman-en-01,ombudsman,ombudsman-current,en,ombudsman,borrowed_from,sv,ombudsman,entry,,
+ombudsman-en-02,ombudsman,ombudsman-current,en,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry,,
+ombudsman-sv-01,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,ombud,formation,,
+ombudsman-sv-02,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,man,formation,,
+ombudsman-sv-03,ombudsman,ombudsman-current,sv,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry,,
+ombudsmand-da-01,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,ombud,formation,,
+ombudsmand-da-02,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,mand,formation,,
+ombudsmand-da-03,ombudsman,ombudsmand-current,da,ombudsmand,historical_form,Old Danish,umbuzman,entry,,
+ombudsmand-da-04,ombudsman,ombudsmand-current,da,ombudsmand,root_recorded,Old Norse,umboðsmaðr,entry,,
+ombudsmann-nb-01,ombudsman,ombudsmann-current,nb,ombudsmann,inherited_from,Old Norse,umboðsmaðr,entry,,
+ombudsmann-nb-02,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,ombud,formation,,
+ombudsmann-nb-03,ombudsman,ombudsmann-current,nb,ombudsmann,interfix,nb,-s-,formation,,
+ombudsmann-nb-04,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,mann,formation,,
+Ombudsmann-de-01,ombudsman,Ombudsmann-current,de,Ombudsmann,borrowed_from,sv,ombudsman,entry,,
+clown-sv-01,clown,clown-current,sv,clown,borrowed_from,en,clown,entry,,
+clown-da-01,clown,klovn-current,da,klovn,borrowed_from,en,clown,entry,,
+clown-nb-01,clown,klovn-current,nb,klovn,borrowed_from,en,clown,entry,,
+clown-de-01,clown,Clown-current,de,Clown,borrowed_from,en,clown,entry,,
+torta-sv-01,torta-tort,torta-current,sv,torta,cognate_mention,Norwegian (variety unspecified),tort,entry,entry_prose,Swedish > Etymology
+tort-nb-01,torta-tort,tort-current,nb,tort,borrowed_from,fr,tort,entry,template,Norwegian Bokmål > Etymology
+tort-nb-02,torta-tort,tort-current,nb,tort,derived_from,la,tortum,etymon,template,Norwegian Bokmål > Etymology
