@@ -246,7 +246,7 @@ The initial audit exposed cases that should become regression examples:
 
 ### Source-sense-aware refresh (2026-09-28)
 
-The 270 seeded comparisons were rejoined against the uncapped, source-sense-aware local candidate build. The audit loader originally required exact case for both forms, leaving three German–English rows without a comparison: *Haben–own*, *Fressen–fret*, and *Bis–till*. The candidate build contains each German form in lowercase. The loader now prefers exact spelling and uses a case-fold fallback only when exactly one candidate pair matches; it records `comparison_match_method` so the fallback is visible. If multiple candidates share the folded spelling, it leaves the row unresolved instead of choosing one.
+The 270 seeded comparisons were rejoined against the uncapped, source-sense-aware local candidate build. The audit loader originally required exact case for both forms, leaving three German–English rows without a comparison: *Haben–own*, *Fressen–fret*, and *Bis–till*. The candidate build contains each German form in lowercase. The loader now prefers exact spelling and uses a case-fold fallback only when exactly one candidate pair matches; it records `candidate_pair_match_method` so the fallback is visible. If multiple candidates share the folded spelling, it leaves the row unresolved instead of choosing one.
 
 After that correction, all 270 audited cases have a comparison row and active source-sense links on both sides. The three fallback rows retain the candidate's canonical forms and sense data while the audit key keeps the sampled spelling. All three translation-sense references were preserved:
 
@@ -258,7 +258,7 @@ After that correction, all 270 audited cases have a comparison row and active so
 
 These examples show why a translation statement must keep its source-sense ID. A target spelling can have claims from more than one source sense; only one may be the active comparison sense. The claims remain useful evidence, but the mismatched sense does not establish a relationship for the selected pair. The candidate's `other` value is still a pipeline bucket, not a conclusion about word history.
 
-The three audits project to 2,341 normalized source edges with 2,396 template-evidence records. The projection skips 292 claims that have no normalized relation; the original claim records remain in the audit files. The edge total is not a count of pair classifications: it includes entry-level claims, including claims that do not target the counterpart form or active sense.
+The three audits project to 2,341 normalized source edges with 2,396 template-evidence records. The schema-4 projection keeps translation-source sense IDs and the exact/case-fold pair-lookup method in comparison context. It skips 292 claims that have no normalized relation; the original claim records remain in the audit files. The edge total is not a count of pair classifications: it includes entry-level claims, including claims that do not target the counterpart form or active sense.
 
 The local uncapped candidate file contains 1,638,454 directed rows (608,101,499 bytes). All 23 previously flagged sampled spellings are found after case-fold matching: 20 exact forms and three lowercase candidate forms. Removing candidate caps changed retrieval coverage and the selected comparisons; it does not show that the output labels are correct or indicate vocabulary-level shares.
 
