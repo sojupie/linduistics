@@ -47,37 +47,43 @@ These counts describe the current extracted files, not vocabulary coverage or th
 
 ## Next work
 
-### 1. Make the source-to-result path work end to end
+This is a small data-engineering project, not a research program. The next goal is a compact result that another curious person can inspect and rerun—not expert adjudication of every word or a new general-purpose platform.
 
-The first source-to-result trace for *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank* is in the local case slice. Next, review the mismatches it exposes and make only demonstrated changes:
+### 1. Finish one traceable comparison slice
 
-1. the exact source entry and etymology;
-2. the selected sense or component entry, and whether its sense is known;
-3. the extracted source claim and its direction;
-4. the comparison candidate and computed observations;
-5. the pipeline transformation that produced the displayed result.
+Use cases already in the audit: *bank/bankman*, *sandbank*, *fleece*, *clown*, and *ombudsman*, plus cases that test shared ancestry, compounds, and misleading similarity. Carry each through the same path:
 
-Record which step loses, merges, or misapplies evidence. Fix demonstrated extraction or identity problems and add a regression example for each one. Do not manually relabel the bulk dataset from this small set.
+1. source entry and relevant sense, or an explicit note that the source does not identify a sense;
+2. source wording/template and its directed claim;
+3. target-entry candidates, retaining homographs and ambiguity;
+4. computed observations such as form, sound, and meaning similarity;
+5. any project interpretation, with the evidence and rule that produced it.
 
-### 2. Keep building the evidence model from real source structures
+First finish the current CLDF export work so repeated template occurrences can be counted as one normalized source relation without losing their separate provenance or uncertainty. Check that each occurrence links to one relation-target row, every relation-target row has an occurrence, and IDs remain stable across rebuilds. Then rebuild the case slice and verify the confusing examples end to end. Fix only failures reproduced by a case and add that case as a regression.
 
-First check whether a suspected gap is in extraction or in linking. The cited *fleece*, *clown*, *bank*, and compound examples already have structured borrowing, derivation, or component claims in the source export. The audit now covers all ten language pairs. The component audit shows that exact entry lookup often finds more than one possible component entry, and does not resolve senses. The next gap is linking claims to comparison senses and components without pretending an entry match settles its sense. Keep borrowing, components, and shared roots as distinct paths; preserve raw template evidence.
+### 2. Let real examples define the smallest useful data model
 
-Treat unresolved source links as unresolved. Do not infer unrelated origins from an empty root field, a missing template, or a lack of a matched entry. Keep source claims queryable even when they do not map cleanly to a current comparison row.
+Keep different questions in different records instead of squeezing them into one mutually exclusive pair label:
 
-### 3. Publish one small, rerunnable data slice
+- language-level genealogy, typology, and area/contact facts;
+- lexical entries, senses, forms, and components;
+- sourced historical paths such as inheritance, borrowing, derivation, calquing, and compound formation;
+- computed similarity and translation observations;
+- project interpretations, including a cognacy scale when evidence supports one.
 
-Make a release from the source-to-result slice above, not a copy of the entire raw dump. Include stable IDs, source and entry references, the claims and computed observations used, the transformation version, source-file hashes or revision details where available, a rebuild command, and clear limits on what the data supports.
+A word pair can have several paths at once. A modern loan may also share a deeper ancestor with its donor, and a compound may contain cognate components without the whole compound being inherited as a unit. Keep these relations queryable independently. Treat `other` as a legacy candidate-builder result, not a relationship; split it only when the evidence supports a more specific path. Missing or ambiguous evidence remains unresolved.
 
-Keep the readable JSONL/TSV form as the working baseline. A CLDF Generic preview already maps entries, forms, senses, source claims, component matches, shared-component ancestor candidates, comparisons, and claim matches into linked tables. Improve that export only when a concrete reuse or provenance need appears; do not block the data work on a perfect CLDF model.
+Do not build a complete linguistic ontology now. Add the minimum distinctions needed to preserve the source facts in the cases above, then expand only when another concrete example exposes a missing distinction.
 
-Check attribution, license, and redistribution terms before publishing source-derived content. Links and compact claims may be distributable where copied prose or dumps are not.
+### 3. Package a small, reproducible release
 
-### 4. Add another source when it adds a useful transformation challenge
+Release a deliberately chosen, clearly non-representative slice. It should let a reader trace a comparison from source records through transformations to computed observations and any project interpretation. Include stable identifiers, source links, input versions or hashes where available, transformation version, a rebuild command, and notes about unresolved links and limits. Do not present case counts as vocabulary percentages.
 
-Wiktionary can remain the main source without being the only source. First name the concrete information we want to add—for example, a stable language identifier, a missing historical form, or an independent account of a borrowing path. Then choose a source that can supply it and preserve its claims separately from Wiktionary’s.
+Keep JSONL/TSV as the convenient working form. Use CLDF as an exchange format if its linked tables help another person reuse the slice; it is fine to adapt the export, but it need not dictate the internal pipeline. Do not publish raw dumps or copied source prose until attribution and redistribution terms are checked.
 
-The point is not to import a finished answer and replace our pipeline. The point is to learn how sources differ, connect their records, and make those transformations inspectable. Keep genealogy, typology, and contact data as separate dimensions if we add them; do not fold them into a word-pair label.
+### 4. Expand by following a real gap
+
+Wiktionary remains the primary source for now because sourcing and transforming it is part of the project. When a case reveals a specific gap—such as a missing language identifier, unclear sense alignment, or a borrowing path that needs another account—find a source that can answer that question and preserve its evidence separately. Add genealogy, typology, or areal/contact data only when it supports a useful question about languages; do not mix it into lexical-history judgments.
 
 ## A useful first release
 
@@ -89,12 +95,13 @@ Someone should be able to pick a result and:
 4. see multiple paths, missing links, and uncertainty without a forced one-box label;
 5. rerun the transformation on the documented local inputs.
 
-That is enough for a useful public artifact. It does not need complete language coverage, expert review of every row, a new data platform, or a claim about the proportion of either language’s vocabulary that is cognate.
+That is enough for a useful public artifact, even if only a few people use it. It does not need complete language coverage, expert review of every row, a new data platform, or a claim about the proportion of either language’s vocabulary that is cognate.
 
 ## Defer
 
 - Reclassifying every current comparison before the source-to-result path is traceable.
 - Treating pair-candidate counts as vocabulary-wide rates.
+- Treating Wiktionary’s coverage or categories as the limits of the project.
 - Importing broad genealogy or typology data without a question the project will answer with it.
 - Building a general-purpose ontology or forcing CLDF to become the internal data model.
 - Adding sources solely to make the dataset look larger.
