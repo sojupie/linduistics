@@ -2,92 +2,74 @@
 
 ## Aim
 
-Keep making the data ourselves: source it, extract it, transform it, and inspect what the pipeline did. That is part of the fun and the point of the project. A small result that is useful to one or two people is a good result; this is a weekend project, not a claim to conduct formal linguistic research.
+Keep sourcing, extracting, and transforming lexical data ourselves. That work is part of the project. A small public dataset that one or two people find useful is a good outcome; this is a weekend project, not a formal research program.
 
-Wiktionary is the main source for the current work, not the definition of the project. Keep its claims and gaps visible. Add another source when a concrete case shows what information or transformation it can contribute. CLDF is fine as an exchange format; it should help someone reuse the data without dictating our internal pipeline.
+Wiktionary is the main source for the current work, not the boundary of the project. Use its entries and claims as material to inspect and transform. Bring in another source when a specific case shows what information Wiktionary does not provide. CLDF is welcome when it makes the output easier to exchange; it does not need to shape the internal pipeline.
 
-## Current checkpoint (2026-09-28)
+The first useful result should let someone follow a word comparison back through the source entries and claims, see what our pipeline calculated, and understand what remains uncertain. That is a modest but real contribution. It does not require a complete linguistic database or new labels for every record.
 
-The local source-linked slice now has 15 deliberate case groups, 60 directed comparison candidates, 83 unique source entries, 273 source senses, 26 pair-claim matches, and 12 shared-component ancestor candidates. It remains a local diagnostic; no live database rows changed. The current action plan and latest export counts are in [DATASET_NEXT_ACTIONS.md](DATASET_NEXT_ACTIONS.md).
+## Work from here
 
-Four new pairs were selected because the existing component audit found a shared reconstructed ancestor in one component on each side:
+### 1. Finish the bounded case slice
 
-| Pair | Legacy label and similarity | What the source entries record | Shared component candidate |
-| --- | --- | --- | --- |
-| Danish *oversætte* – Swedish *översätta* | `partial_cognate`, 0.713 | Both entries trace the full word through Middle Low German and Old Saxon to Proto-West Germanic `*ubarsattjan`; each also describes a form built with “over” and the equivalent of “set.” | Danish *sætte* and Swedish *sätta*, Proto-Germanic `*satjaną` |
-| Danish *ramsløg* – Swedish *ramslök* | `partial_cognate`, 0.342 | Both entries describe compounds; both record the first element through Middle Low German *ramese* and Proto-West Germanic `*hramusō*`. | Danish *løg* and Swedish *lök*, Proto-Germanic `*laukaz`; a second candidate is recorded with language code `gmq-pro` and a runic form, which still needs inspection. |
-| German *berauben* – English *bereave* | `partial_cognate`, 0.616 | Both entries trace the complete word to Proto-Germanic `*biraubōną` and describe the prefix *be-* plus a verb. | German *be-* and English *be-*, Proto-Germanic `*bi-` |
-| German *Stieftochter* – English *stepdaughter* | `partial_cognate`, 0.494 | Both entries trace the complete word to Proto-Germanic `*steupaduhtēr` and describe a prefix plus “daughter.” | German *stief-* and English *step-*, Proto-West Germanic `*steupa-` |
+Use the existing 15 case groups as a test bench, not as a representative sample. Keep the cases that exercise different data problems: loans, compounds, shared ancestors, homographs, sense alignment, misleading similarity, ambiguous links, and missing evidence.
 
-All four selected senses overlap exactly with the source senses retained for their comparison. The component audit also added Proto-Germanic `*samdaz` candidates for German *Sandbank* and Norwegian Bokmål *sandbanke*. These are pipeline candidates projected from source component records, not independent confirmation of a whole-word classification. The source dump also has separate candidate-generation bases; repeated ancestor forms under those bases are not separate evidence.
+For each case, make the path inspectable:
 
-The examples show a concrete meaning of the old `partial_cognate` label: the classifier assigns it when roots match and semantic similarity is below 0.75. It does not test whether only part of the word is cognate. The Danish and Swedish *ramsløg/ramslök* glosses both describe ramsons, yet their score is 0.342. That is a useful score/alignment case to investigate, not a reason to relabel this pair by guess.
+1. Identify the language-specific entry, etymology, sense, and form where the source supports them.
+2. Preserve the source claim, its direction, wording or template evidence, and source version.
+3. Keep all plausible target entries and senses when the source does not identify one.
+4. Store spelling, pronunciation, and meaning scores as calculated observations.
+5. Store project conclusions separately, with the rule and evidence that produced them.
 
-I re-encoded the selected senses with the current multilingual MiniLM default and the same alignment function. The four scores reproduce within 1.2e-7. For *berauben/bereave*, the unrestricted best gloss pair scores 0.624, while the stored 0.616 uses the English sense linked by source-translation evidence; applying that restriction reproduces the stored value. For *kurv/kurv*, the stored score is 0.749, just below the 0.75 cutoff. No score mismatch appeared in these examples, but the original model revision was not recorded, so the exact historical checkpoint is unverified.
+The recent Bokmål *ombudsmann* fix is a model for the standard: retain both candidate senses and their links instead of silently choosing one. Apply the same standard to other demonstrated identity or extraction failures.
 
-The refreshed CLDF Generic preview now includes exact target-entry candidates: 5 languages, 173 entries, 664 senses, 49 comparison forms, 1,556 expanded source-claim records representing 1,462 template occurrences, 1,373 normalized relation targets, 30 component links, 12 shared-component ancestor candidates, 30 unordered comparisons, and 26 comparison-claim matches. It preserves 499 unique target-form resolutions (91 exact, 406 outside the five indexed languages, and two not found), 173 candidate-entry links across 125 entries, and 57 exact return-mention cross-references. The cross-reference relation pairs are six borrowing→cognate mentions, 40 cognate mention→cognate mention, and 11 doublet→doublet; these are internal source links, not independent confirmation. The exporter checks stable IDs and declared foreign keys, including that every relation target is referenced; the official CLDF validator has not been run. The expanded export includes the current 15-case slice. The multi-target handling is described in [the source-claim audit](DATASET_NEXT_STEPS.md#preserve-multi-target-template-claims-2026-09-28).
+### 2. Fix one real pipeline failure at a time
 
-## Next work
+Take the next mismatch from the case ledger and reproduce it from the recorded inputs. Find the earliest stage where information is lost: source capture, parsing, identity matching, relation normalization, or comparison alignment. Fix that stage and add a small regression case tied to the source evidence. Rebuild the bounded slice and inspect the changed rows.
 
-### Completed: trace the *fleece* source claim to the comparison
+Do not bulk-relabel the database from selected examples. Do not turn absent source claims into evidence that two words are unrelated. Keep old and new source states when a page changes.
 
-The Swedish and German entries each have a `borrowed_from(en, fleece)` claim. The English entry has its own inheritance chain through Old English to Proto-West Germanic `*fleus`. In the comparison, that root belongs to the English side; it is not evidence that Swedish inherited the root directly. The source claim names an entry and a related form, not a specific target sense. The selected senses are comparison context only.
+### 3. Make one small release someone can inspect and reuse
 
-The CLDF export now records that source scope on `source-claims.csv`. `claim-matches.csv` names its sense IDs `Comparison_Source_Sense_ID` and `Comparison_Target_Sense_ID`, so they are not mistaken for source-attested sense links. This keeps the actual borrowing claim separate from the comparison candidate it matched.
+Once the slice rebuilds reliably, package its linked records with stable IDs, source and input fingerprints, transformation versions, rerun instructions, coverage, and limits. Check links and attribution. Run the CLDF validator when available. Keep source dumps and material with unclear redistribution terms out of the release.
 
-### Historical 13-case target lookup snapshot (superseded)
+Use plain linked tables or JSONL for the working data if that is clearer. Export the compatible records to CLDF when it helps other people load or compare them. Add a small project-specific table for evidence links if the standard tables do not express them cleanly. Do not redesign the pipeline just to fit an export format.
 
-The case-slice audit scans all five local dumps and retains every exact spelling match, including separate parts of speech and etymology sections. It keeps target-form matching separate from target-sense identity. Exact spelling is only a candidate link; the source claim does not identify one of those senses.
+### 4. Let real gaps choose the next source or dimension
 
-The first target-lookup pass covered 495 distinct form-level claims: 78 resolved to one or more exact target entries, 415 used language codes outside the five local dumps, and two did not occur in the recorded dump snapshot. It retained 152 candidate-entry links across 105 unique entries. These are historical counts within the 13-case slice, not coverage or rates for Wiktionary or any language. The expanded, target-aware audit supersedes them; see [the current plan](DATASET_NEXT_ACTIONS.md) and [multi-target audit](DATASET_NEXT_STEPS.md#preserve-multi-target-template-claims-2026-09-28).
+When a case cannot be resolved from Wiktionary, write down the exact missing fact first. Then look for a source that can answer that question. Keep language genealogy, typology, and areal/contact facts as separate, independently sourced data; they describe languages and do not settle the history of an individual word.
 
-The *fleece* and *clown* claims each reach English noun and verb entries, demonstrating that spelling alone cannot identify a target entry. The Danish *berøve* claim resolves to its local Danish entry. The corresponding Norwegian claim uses Wiktionary code `no`, whereas the local dump is Norwegian Bokmål (`nb`); it is reported as `language_not_indexed`, not as a failed Bokmål lookup. Two missing forms are literal `-` values in source cognate templates; preserve them as source data rather than silently repairing them.
+Do not add another source to make the project look authoritative. Add it because it helps answer a question or enables a useful transformation we cannot do with the current material.
 
-The reproducible local artifact is `pipeline/data/case_claim_target_entries.jsonl`; its manifest records the case-slice and five dump hashes. Rebuild it before the CLDF export with:
+### 5. Expand only after the same method works on new cases
 
-```powershell
-pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
-```
+Add a small batch that tests whether the extraction and evidence links generalize. Compare it with the first case slice, record failures, and improve the transformation. Grow the scope by rerunning tested steps, not by extrapolating labels from hand-picked examples.
 
-The 78 exact-form claims divide into **49 whole-entry claims** and **29 component-only claims** in their case context. Twenty whole-entry claims and 14 component claims reach multiple target entries; a single candidate entry can still contain several senses, so neither count establishes sense-level identity. A first source-side inspection found that *fleece* noun and verb entries share the same recorded history, *clown* noun and verb entries share the same recorded history, and German *Bank* has two distinct numbered etymologies while the Swedish claim names only the form `Bank`. These are candidate links, not grounds to pick one target sense.
+## Keep these facts separate
 
-Checking exact reverse language-and-form claims found a match for 29 of the 78 claims: 24 are cognate-mention rows (16 whole-entry, eight component), four are doublet rows (two whole-entry, two component), and one is a component borrowing claim whose target entry mentions the source as a cognate. Across candidates, these make 37 `cognate_mention`/`cognate_mention`, seven `doublet_of`/`doublet_of`, and six `borrowed_from`/`cognate_mention` observations. No whole-entry borrowing claim has an exact reverse claim, which is consistent with borrowing's direction. These are Wiktionary cross-references, not independent confirmation. The other 49 rows have no exact reverse claim; absence is not counterevidence.
+- **Language facts:** genealogy, contact or area, and typological properties.
+- **Lexical identities:** language-specific entries, etymologies, senses, forms, and components.
+- **Source claims:** directed assertions such as inheritance, borrowing, derivation, calquing, and compound formation.
+- **Computed observations:** form, sound, and meaning similarities, with the method and model recorded.
+- **Project interpretations:** conclusions derived from claims and observations under explicit rules.
 
-Correction to the prior scope tally: the earlier 12-component figure joined component status by source-entry key across cases. It counted the Swedish *bank* entry as a component in the *bankman* case and carried that scope into the separate whole-word *bank* case. Joining by both case and source-entry key gives 11 component-only rows among the 29 reverse matches.
+A word can have several historical paths. A loan can also share deeper ancestry; a compound can have cognate components without the whole compound being established as a cognate. Keep those claims queryable side by side rather than forcing them into one exclusive label. “Misleadingly similar” can describe a useful comparison pattern even when the historical path is borrowing, shared ancestry, or unresolved.
 
-### 1. Audit what supports each exact target link
+The current `other` value is a candidate-builder remainder, not a linguistic category. Do not use it as a claim about origin. Likewise, candidate counts do not establish the share of a language's vocabulary that is cognate.
 
-Review the 78 exact-form claims, starting with multi-entry matches (*fleece*, *clown*, and *bank*). Assess relation type and direction: a matching language and form is only a lead until the target-side statement actually supports the same historical path. Borrowing is directed, so lack of a reverse claim is expected; cognate mentions and doublets are different evidence patterns. Record whether source wording supports one candidate, several candidates, or only the written form. Keep these as audit outcomes, not public linguistic categories. Do not use the comparison's selected sense as evidence unless Wiktionary links the claim to that sense.
+## The first release is ready when
 
-For a source that does not distinguish homographs, preserve all candidates and the unresolved form-level claim. For a unique entry with multiple senses, keep the entry link but leave sense identity unresolved. This review will show whether reciprocal claims add evidence or whether the source genuinely stops at entry/form level; then decide whether CLDF should expose the candidate links as a multivalued relation.
+- The bounded slice rebuilds from recorded inputs with a documented command.
+- A reader can follow selected results to their source entries, source claims, and transformation output.
+- Ambiguous, conflicting, and missing evidence stays visible.
+- Computed similarity does not masquerade as historical proof.
+- The release states what it covers and what it cannot establish.
+- Its source terms and export format support sharing.
 
-### 2. Fix only a demonstrated loss
+## Current records
 
-If this trace exposes a parser, identity, or linking bug, fix that transformation and add the affected case as a regression. Preserve separate paths: borrowing, inheritance, derivation, calquing, and component formation can coexist in a word’s history. Keep computed similarity and project interpretation separate from source claims. Do not bulk-change classifications from the case slice.
-
-### 3. Make the next data slice reproducible and shareable
-
-Record input hashes, the transformation version, exact command, and model identifier and revision for the comparison build. Keep meaning similarity as an observation; do not let its 0.75 cutoff claim whole-word or partial cognacy. The four component cases reproduce with the current model, but the original model revision was not recorded. Check hashes and references in the rebuilt slice, then export CLDF if it makes that slice easier for someone else to use. Verify attribution and redistribution terms before sharing source-derived content.
-
-### 4. Add another evidence dimension when a case calls for it
-
-The useful dataset can grow beyond lexical history. Keep language genealogy, typological features, and areal/contact evidence as linked but separate dimensions, with their own sources and confidence. Add one when a concrete question or case needs it; do not import a broad catalog just to make the dataset larger. Wiktionary can stay the main source for lexical histories while another source fills a specific gap.
-
-### 5. Keep component work attached to source cases
-
-For the existing compounds, follow each projected ancestor to the exact component entry and its `inherited_from` claim. Keep component senses, source wording, and ancestor claims alongside the parent form. Investigate missing component identities and the runic `gmq-pro` candidate. A shared component root is evidence about part of a word, not by itself a whole-word verdict.
-
-## Guardrails
-
-- Do not treat missing evidence or the current `other` bucket as proof of unrelated origins.
-- Do not present candidate counts as the percentage of either language's vocabulary that is cognate.
-- Do not infer whole-word history from similar forms, shared components, or a deep root alone.
-- Do not build a general ontology or add infrastructure before a real data case needs it.
-- Keep generated review data local until checked; do not change live rows during this work.
-
-## Related notes
-
-- [Current data and near-term actions](DATASET_NEXT_ACTIONS.md)
-- [Source extraction and audit findings](DATASET_NEXT_STEPS.md)
-- [Reviewed example cases](DATASET_CASE_REVIEW.md)
-- [Dataset direction](DATASET_PROJECT_DIRECTION.md)
+- [Current data and near-term actions](DATASET_NEXT_ACTIONS.md) has the live status, counts, and next pipeline tasks.
+- [Detailed pipeline findings](DATASET_NEXT_STEPS.md) keeps the chronological audit trail.
+- [Reviewed example cases](DATASET_CASE_REVIEW.md) tracks the source-backed examples and their limits.
+- [Dataset direction](DATASET_PROJECT_DIRECTION.md) records the broader data model and scope.
