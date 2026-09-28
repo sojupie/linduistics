@@ -64,6 +64,12 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
             _entry(source_entry_key, "sv", "fleece", "sense-sv", "polar fleece", [claim]),
             _entry(target_entry_key, "en", "fleece", "sense-en", "a textile"),
         ],
+        "component_source_entries": [
+            _entry("sv|flee|verb||sense-flee", "sv", "flee", "sense-flee", "to flee", [{
+                "template_index": 0, "template_name": "inh", "relation": "inherited_from",
+                "related_language": "gem-pro", "related_form": "*fleus",
+            }]),
+        ],
         "pair_claim_matches": [{
             "match_id": "match-one",
             "candidate": {"forms": [{"language_code": "sv", "word": "fleece"}, {"language_code": "en", "word": "fleece"}]},
@@ -75,8 +81,16 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
         "component_links": [{
             "source_entry_key": source_entry_key,
             "relation": "compound_of",
-            "components": [{"index": 0, "surface_form": "flee", "raw_forms": ["flee"], "match_status": "one_exact_entry", "candidate_entry_keys": ["sv|flee|verb||candidate"]}],
+            "components": [{"index": 0, "surface_form": "flee", "raw_forms": ["flee"], "match_status": "one_exact_entry", "candidate_entry_keys": ["sv|flee|verb||sense-flee"]}],
             "evidence": [{"template_index": 1, "template_name": "com", "args": {"1": "sv", "2": "flee", "3": "ce"}}],
+        }],
+        "shared_component_ancestors": [{
+            "ancestor": {"language_code": "gem-pro", "form": "*fleus"},
+            "basis": "unique_exact_entry_only",
+            "matched_uses_by_language": {
+                "sv": [{"parent_entry_key": source_entry_key, "component_form": "flee", "component_entry_key": "sv|flee|verb||sense-flee"}],
+                "en": [{"parent_entry_key": target_entry_key, "component_form": "flee", "component_entry_key": "sv|flee|verb||sense-flee"}],
+            },
         }],
     }, ensure_ascii=False) + "\n", encoding="utf-8")
     source.with_suffix(source.suffix + ".manifest.json").write_text(json.dumps({
@@ -89,9 +103,10 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     output = tmp_path / "cldf"
     manifest = export_slice(source, output)
 
-    assert manifest["tables"]["entries.csv"]["rows"] == 2
+    assert manifest["tables"]["entries.csv"]["rows"] == 3
     assert manifest["tables"]["comparisons.csv"]["rows"] == 1
     assert manifest["tables"]["claim-matches.csv"]["rows"] == 1
+    assert manifest["tables"]["shared-component-ancestor-candidates.csv"]["rows"] == 1
     assert manifest["source_dump_files"]["sv"]["source_file_sha256"] == "dump-hash"
     assert manifest["summary"]["comparisons_by_legacy_label"] == {"other": 1}
     assert manifest["summary"]["matched_source_claims_by_legacy_label"]["other"] == {"borrowed_from:available": 1}
@@ -102,16 +117,25 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
 
     with (output / "source-claims.csv").open(encoding="utf-8", newline="") as stream:
         claims = list(csv.DictReader(stream))
-    assert claims[0]["Relation"] == "borrowed_from"
-    assert claims[0]["Source_Uncertain"] == "false"
+    assert {row["Relation"] for row in claims} == {"borrowed_from", "inherited_from"}
+    borrowed_claim = next(row for row in claims if row["Relation"] == "borrowed_from")
+    assert borrowed_claim["Source_Uncertain"] == "false"
     with (output / "claim-matches.csv").open(encoding="utf-8", newline="") as stream:
         matches = list(csv.DictReader(stream))
     assert matches[0]["Target_Identity_Status"] == "available"
     with (output / "component-links.csv").open(encoding="utf-8", newline="") as stream:
         components = list(csv.DictReader(stream))
     assert json.loads(components[0]["Evidence_JSON"])[0]["template_name"] == "com"
+    assert len(json.loads(components[0]["Candidate_Entry_IDs_JSON"])) == 1
+    assert components[0]["Candidate_Entry_Resolution"] == "resolved"
+    with (output / "shared-component-ancestor-candidates.csv").open(encoding="utf-8", newline="") as stream:
+        ancestors = list(csv.DictReader(stream))
+    assert ancestors[0]["Ancestor_Form"] == "*fleus"
+    matched_uses = json.loads(ancestors[0]["Matched_Uses_JSON"])
+    assert set(matched_uses) == {"en", "sv"}
+    assert matched_uses["sv"][0]["component_entry_id"]
     assert all(re.fullmatch(r"[A-Za-z0-9_-]+", row["ID"]) for rows in (
-        claims, matches, components,
+        claims, matches, components, ancestors,
     ) for row in rows)
 
 

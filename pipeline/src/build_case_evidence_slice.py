@@ -21,6 +21,10 @@ CASES = {
     "gut": [("de", "gut", "da", "god"), ("de", "gut", "sv", "god"), ("de", "gut", "en", "good")],
     "arbeit": [("da", "arbejde", "sv", "arbete")],
     "kurv": [("da", "kurv", "nb", "kurv")],
+    "oversatta": [("da", "oversætte", "sv", "översätta")],
+    "ramslog": [("da", "ramsløg", "sv", "ramslök")],
+    "bereave": [("de", "berauben", "en", "bereave")],
+    "stepdaughter": [("de", "Stieftochter", "en", "stepdaughter")],
 }
 
 COMPARISON_FIELDS = (
@@ -49,6 +53,7 @@ def build_slice(
     component_candidates: Path,
     output: Path,
     force: bool = False,
+    shared_ancestor_candidates: Path | None = None,
 ) -> dict:
     import pyarrow.parquet as pq
 
@@ -57,7 +62,7 @@ def build_slice(
         raise FileExistsError(f"Output already exists; pass --force to replace it: {output}")
 
     cases: dict[str, dict] = {
-        key: {"case_id": key, "comparisons": [], "source_entries": [], "pair_claim_matches": [], "component_links": []}
+        key: {"case_id": key, "comparisons": [], "source_entries": [], "component_source_entries": [], "pair_claim_matches": [], "component_links": [], "shared_component_ancestors": []}
         for key in CASES
     }
     active_entry_keys: dict[str, set[str]] = defaultdict(set)
@@ -87,23 +92,7 @@ def build_slice(
     for case_id, entry_keys in active_entry_keys.items():
         for entry_key in entry_keys:
             entry_cases[entry_key].add(case_id)
-    for line in source_records.open(encoding="utf-8"):
-        if not line.strip():
-            continue
-        record = json.loads(line)
-        entry_key = record.get("source_entry_key")
-        for case_id in entry_cases.get(entry_key, ()):
-            record_sense_ids = set(record.get("sense_ids", []))
-            active_ids = active_sense_ids[case_id][entry_key]
-            record = {
-                **record,
-                "comparison_sense_alignment": {
-                    "active_comparison_sense_ids": sorted(active_ids),
-                    "matched_source_sense_ids": sorted(active_ids & record_sense_ids),
-                    "status": "exact_sense_overlap" if active_ids & record_sense_ids else "entry_level_only",
-                },
-            }
-            cases[case_id]["source_entries"].append(record)
+    component_entry_cases: dict[str, set[str]] = defaultdict(set)
 
     with gzip.open(component_candidates, "rt", encoding="utf-8") as source:
         for line in source:
@@ -113,6 +102,50 @@ def build_slice(
             entry_key = record.get("source_entry_key")
             for case_id in entry_cases.get(entry_key, ()):
                 cases[case_id]["component_links"].append(record)
+                for component in record.get("components", []):
+                    for component_entry_key in component.get("candidate_entry_keys", []):
+                        component_entry_cases[component_entry_key].add(case_id)
+
+    if shared_ancestor_candidates:
+        with gzip.open(shared_ancestor_candidates, "rt", encoding="utf-8") as source:
+            for line in source:
+                if not line.strip():
+                    continue
+                candidate = json.loads(line)
+                for case_id, entry_keys in active_entry_keys.items():
+                    matched_uses = {
+                        language: [use for use in uses if use.get("parent_entry_key") in entry_keys]
+                        for language, uses in candidate.get("component_uses_by_language", {}).items()
+                    }
+                    matched_uses = {language: uses for language, uses in matched_uses.items() if uses}
+                    if len(matched_uses) >= 2:
+                        cases[case_id]["shared_component_ancestors"].append({
+                            "ancestor": candidate.get("ancestor", {}),
+                            "basis": candidate.get("basis", ""),
+                            "matched_uses_by_language": matched_uses,
+                        })
+                        for uses in matched_uses.values():
+                            for use in uses:
+                                component_entry_cases[use["component_entry_key"]].add(case_id)
+
+    for line in source_records.open(encoding="utf-8"):
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        entry_key = record.get("source_entry_key")
+        for case_id in entry_cases.get(entry_key, ()):
+            record_sense_ids = set(record.get("sense_ids", []))
+            active_ids = active_sense_ids[case_id][entry_key]
+            cases[case_id]["source_entries"].append({
+                **record,
+                "comparison_sense_alignment": {
+                    "active_comparison_sense_ids": sorted(active_ids),
+                    "matched_source_sense_ids": sorted(active_ids & record_sense_ids),
+                    "status": "exact_sense_overlap" if active_ids & record_sense_ids else "entry_level_only",
+                },
+            })
+        for case_id in component_entry_cases.get(entry_key, set()) - entry_cases.get(entry_key, set()):
+            cases[case_id]["component_source_entries"].append(record)
 
     with claim_matches.open(encoding="utf-8") as source:
         for line in source:
@@ -135,8 +168,14 @@ def build_slice(
         with temp_output.open("w", encoding="utf-8", newline="\n") as destination:
             for case in cases.values():
                 case["source_entries"].sort(key=lambda item: item.get("source_entry_key", ""))
+                case["component_source_entries"].sort(key=lambda item: item.get("source_entry_key", ""))
                 case["pair_claim_matches"].sort(key=lambda item: item.get("match_id", ""))
                 case["component_links"].sort(key=lambda item: (item.get("source_entry_key", ""), item.get("relation", "")))
+                case["shared_component_ancestors"].sort(key=lambda item: (
+                    item.get("ancestor", {}).get("language_code", ""),
+                    item.get("ancestor", {}).get("form", ""),
+                    item.get("basis", ""),
+                ))
                 destination.write(json.dumps(case, ensure_ascii=False, separators=(",", ":")) + "\n")
         temp_output.replace(output)
     except Exception:
@@ -153,15 +192,21 @@ def build_slice(
     manifest = {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "inputs": {path.name: digest(path) for path in (comparisons, source_records, claim_matches, component_candidates)},
+        "inputs": {
+            path.name: digest(path)
+            for path in (comparisons, source_records, claim_matches, component_candidates, shared_ancestor_candidates)
+            if path is not None
+        },
         "output": output.name,
         "output_sha256": digest(output),
         "case_counts": {
             case_id: {
                 "comparison_candidates": len(case["comparisons"]),
                 "source_entries": len(case["source_entries"]),
+                "component_source_entries": len(case["component_source_entries"]),
                 "pair_claim_matches": len(case["pair_claim_matches"]),
                 "component_claims": len(case["component_links"]),
+                "shared_component_ancestor_candidates": len(case["shared_component_ancestors"]),
             }
             for case_id, case in cases.items()
         },
@@ -184,10 +229,14 @@ def main() -> None:
     parser.add_argument("--source-records", type=Path, default=data / "etymology_records_all.jsonl")
     parser.add_argument("--claim-matches", type=Path, default=data / "candidate_source_claim_matches_all_pairs.jsonl")
     parser.add_argument("--component-candidates", type=Path, default=data / "component_entry_candidates_source_identity.jsonl.gz")
+    parser.add_argument("--shared-ancestor-candidates", type=Path, default=data / "component_shared_ancestor_candidates_source_identity.jsonl.gz")
     parser.add_argument("--output", type=Path, default=data / "named_case_evidence_slice.jsonl")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    manifest = build_slice(args.comparisons, args.source_records, args.claim_matches, args.component_candidates, args.output, args.force)
+    manifest = build_slice(
+        args.comparisons, args.source_records, args.claim_matches, args.component_candidates,
+        args.output, args.force, args.shared_ancestor_candidates,
+    )
     print(json.dumps(manifest["case_counts"], indent=2))
 
 

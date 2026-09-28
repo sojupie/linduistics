@@ -15,6 +15,10 @@ def test_case_lookup_preserves_language_pair_and_accepts_case_and_direction():
     assert case_for_candidate({"lang_a": "da", "word_a": "god", "lang_b": "de", "word_b": "gut"}) == "gut"
     assert case_for_candidate({"lang_a": "sv", "word_a": "arbete", "lang_b": "da", "word_b": "arbejde"}) == "arbeit"
     assert case_for_candidate({"lang_a": "nb", "word_a": "kurv", "lang_b": "da", "word_b": "kurv"}) == "kurv"
+    assert case_for_candidate({"lang_a": "sv", "word_a": "översätta", "lang_b": "da", "word_b": "oversætte"}) == "oversatta"
+    assert case_for_candidate({"lang_a": "da", "word_a": "ramsløg", "lang_b": "sv", "word_b": "ramslök"}) == "ramslog"
+    assert case_for_candidate({"lang_a": "de", "word_a": "berauben", "lang_b": "en", "word_b": "bereave"}) == "bereave"
+    assert case_for_candidate({"lang_a": "en", "word_a": "stepdaughter", "lang_b": "de", "word_b": "Stieftochter"}) == "stepdaughter"
 
 
 def test_slice_links_only_active_source_entries_and_keeps_component_candidates(tmp_path):
@@ -35,6 +39,8 @@ def test_slice_links_only_active_source_entries_and_keeps_component_candidates(t
         {"source_entry_key": "sv|fleece|noun||sv-fleece", "language_code": "sv", "word": "fleece", "sense_ids": ["sv-fleece"], "claims": [{"relation": "borrowed_from", "related_language": "en", "related_form": "fleece"}]},
         {"source_entry_key": "en|fleece|noun||en-fleece", "language_code": "en", "word": "fleece", "sense_ids": ["en-fleece"], "claims": [{"relation": "inherited_from", "related_language": "gmw-pro", "related_form": "*fleus"}]},
         {"source_entry_key": "sv|fleece|verb||sv-fleece-verb", "language_code": "sv", "word": "fleece", "sense_ids": ["sv-fleece-verb"], "claims": []},
+        {"source_entry_key": "sv|flee|verb||sv-flee", "language_code": "sv", "word": "flee", "sense_ids": ["sv-flee"], "claims": [{"relation": "inherited_from", "related_language": "gem-pro", "related_form": "*fleus"}]},
+        {"source_entry_key": "en|flee|verb||en-flee", "language_code": "en", "word": "flee", "sense_ids": ["en-flee"], "claims": [{"relation": "inherited_from", "related_language": "gem-pro", "related_form": "*fleus"}]},
     ]) + "\n", encoding="utf-8")
     components = tmp_path / "components.jsonl.gz"
     with gzip.open(components, "wt", encoding="utf-8") as stream:
@@ -46,9 +52,20 @@ def test_slice_links_only_active_source_entries_and_keeps_component_candidates(t
         "claim": {"relation": "borrowed_from"},
         "target_form_match": {"active_identity_status": "available"},
     }) + "\n", encoding="utf-8")
+    shared_ancestors = tmp_path / "shared_ancestors.jsonl.gz"
+    with gzip.open(shared_ancestors, "wt", encoding="utf-8") as stream:
+        stream.write(json.dumps({
+            "ancestor": {"language_code": "gem-pro", "form": "*fleus"},
+            "basis": "unique_exact_entry_only",
+            "component_uses_by_language": {
+                "sv": [{"parent_entry_key": "sv|fleece|noun||sv-fleece", "component_form": "flee", "component_entry_key": "sv|flee|verb||sv-flee"}],
+                "en": [{"parent_entry_key": "en|fleece|noun||en-fleece", "component_form": "flee", "component_entry_key": "en|flee|verb||en-flee"}],
+                "da": [{"parent_entry_key": "da|fleece|noun||unrelated", "component_form": "flee"}],
+            },
+        }) + "\n")
     output = tmp_path / "slice.jsonl"
 
-    manifest = build_slice(comparisons, source_records, claim_matches, components, output)
+    manifest = build_slice(comparisons, source_records, claim_matches, components, output, shared_ancestor_candidates=shared_ancestors)
 
     cases = {row["case_id"]: row for row in map(json.loads, output.read_text(encoding="utf-8").splitlines())}
     fleece = cases["fleece"]
@@ -57,4 +74,8 @@ def test_slice_links_only_active_source_entries_and_keeps_component_candidates(t
     assert fleece["pair_claim_matches"][0]["claim"]["relation"] == "borrowed_from"
     assert fleece["pair_claim_matches"][0]["target_form_match"]["active_identity_status"] == "available"
     assert len(fleece["component_links"]) == 1
-    assert manifest["case_counts"]["fleece"] == {"comparison_candidates": 1, "source_entries": 2, "pair_claim_matches": 1, "component_claims": 1}
+    assert len(fleece["shared_component_ancestors"]) == 1
+    assert fleece["shared_component_ancestors"][0]["ancestor"] == {"language_code": "gem-pro", "form": "*fleus"}
+    assert set(fleece["shared_component_ancestors"][0]["matched_uses_by_language"]) == {"sv", "en"}
+    assert {row["source_entry_key"] for row in fleece["component_source_entries"]} == {"sv|flee|verb||sv-flee", "en|flee|verb||en-flee"}
+    assert manifest["case_counts"]["fleece"] == {"comparison_candidates": 1, "source_entries": 2, "component_source_entries": 2, "pair_claim_matches": 1, "component_claims": 1, "shared_component_ancestor_candidates": 1}

@@ -139,6 +139,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
     senses_by_key: dict[tuple[str, str], dict] = {}
     claims_by_id: dict[str, dict] = {}
     components_by_id: dict[str, dict] = {}
+    shared_component_ancestors_by_id: dict[str, dict] = {}
     forms_by_id: dict[str, dict] = {}
     comparison_pairs: dict[str, dict] = {}
     pair_lookup: dict[tuple[str, str, str, str, str, str], str] = {}
@@ -146,7 +147,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
 
     for case in cases:
         case_id = case["case_id"]
-        for entry in case.get("source_entries", []):
+        for entry in case.get("source_entries", []) + case.get("component_source_entries", []):
             entry_key = entry.get("source_entry_key")
             if not entry_key:
                 continue
@@ -197,6 +198,13 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                 evidence = [evidence]
             for component in component_claim.get("components", []):
                 index = component.get("index", "")
+                candidate_keys = component.get("candidate_entry_keys") or []
+                candidate_ids = [entries_by_key[key]["ID"] for key in candidate_keys if key in entries_by_key]
+                resolution = (
+                    "no_candidates" if not candidate_keys else
+                    "resolved" if len(candidate_ids) == len(candidate_keys) else
+                    "partially_resolved" if candidate_ids else "unresolved"
+                )
                 component_id = stable_id(
                     "component", entry_key, component_claim.get("relation"),
                     _dump(evidence), index,
@@ -209,9 +217,37 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                     "Component_Form": component.get("surface_form", ""),
                     "Raw_Forms_JSON": _dump(component.get("raw_forms") or []),
                     "Match_Status": component.get("match_status", ""),
-                    "Candidate_Entry_Keys_JSON": _dump(component.get("candidate_entry_keys") or []),
+                    "Candidate_Entry_Keys_JSON": _dump(candidate_keys),
+                    "Candidate_Entry_IDs_JSON": _dump(candidate_ids),
+                    "Candidate_Entry_Resolution": resolution,
                     "Evidence_JSON": _dump(evidence),
                 }
+
+        for candidate in case.get("shared_component_ancestors", []):
+            ancestor = candidate.get("ancestor") or {}
+            uses = {
+                language: [
+                    {
+                        **use,
+                        "parent_entry_id": entries_by_key.get(use.get("parent_entry_key", ""), {}).get("ID", ""),
+                        "component_entry_id": entries_by_key.get(use.get("component_entry_key", ""), {}).get("ID", ""),
+                    }
+                    for use in language_uses
+                ]
+                for language, language_uses in (candidate.get("matched_uses_by_language") or {}).items()
+            }
+            candidate_id = stable_id(
+                "component_ancestor", case_id, ancestor.get("language_code", ""),
+                ancestor.get("form", ""), candidate.get("basis", ""),
+            )
+            shared_component_ancestors_by_id[candidate_id] = {
+                "ID": candidate_id,
+                "Case_ID": case_id,
+                "Ancestor_Language_Code": ancestor.get("language_code", ""),
+                "Ancestor_Form": ancestor.get("form", ""),
+                "Candidate_Basis": candidate.get("basis", ""),
+                "Matched_Uses_JSON": _dump(uses),
+            }
 
         for comparison in case.get("comparisons", []):
             form_rows = []
@@ -310,6 +346,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
     senses = sorted(senses_by_key.values(), key=lambda row: row["ID"])
     claims = sorted(claims_by_id.values(), key=lambda row: row["ID"])
     components = sorted(components_by_id.values(), key=lambda row: row["ID"])
+    shared_component_ancestors = sorted(shared_component_ancestors_by_id.values(), key=lambda row: row["ID"])
     forms = sorted(forms_by_id.values(), key=lambda row: row["ID"])
     for form in forms:
         form["Source_Entry_ID"] = entries_by_key.get(form["Source_Entry_Key"], {}).get("ID", "")
@@ -337,7 +374,8 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         ("senses.csv", ["ID", "Entry_ID", "Source_Sense_ID", "Glosses_JSON", "Raw_Glosses_JSON", "Tags_JSON"], senses),
         ("forms.csv", ["ID", "Language_ID", "Form", "Part_Of_Speech", "Source_Entry_ID", "Source_Entry_Key", "Source_Sense_ID", "Gloss", "Source_Identity_Status"], forms),
         ("source-claims.csv", ["ID", "Entry_ID", "Relation", "Related_Language_ID", "Related_Form", "Source_Uncertain", "Template_Name", "Template_Index", "Template_Arguments_JSON", "Source_URL"], claims),
-        ("component-links.csv", ["ID", "Parent_Entry_ID", "Relation", "Component_Index", "Component_Form", "Raw_Forms_JSON", "Match_Status", "Candidate_Entry_Keys_JSON", "Evidence_JSON"], components),
+        ("component-links.csv", ["ID", "Parent_Entry_ID", "Relation", "Component_Index", "Component_Form", "Raw_Forms_JSON", "Match_Status", "Candidate_Entry_Keys_JSON", "Candidate_Entry_IDs_JSON", "Candidate_Entry_Resolution", "Evidence_JSON"], components),
+        ("shared-component-ancestor-candidates.csv", ["ID", "Case_ID", "Ancestor_Language_Code", "Ancestor_Form", "Candidate_Basis", "Matched_Uses_JSON"], shared_component_ancestors),
         ("comparisons.csv", ["ID", "Case_ID", "Form_A_ID", "Form_B_ID", "Recorded_Root_A", "Recorded_Root_B", "Spelling_Similarity", "Phonetic_Similarity", "Semantic_Similarity", "Legacy_Candidate_Label", "Legacy_Root_Match_Status", "Directed_Row_Count"], comparisons),
         ("claim-matches.csv", ["ID", "Claim_ID", "Comparison_ID", "Source_Sense_ID", "Target_Identity_Status", "Target_Entry_Key", "Target_Sense_ID", "Form_Match_Method", "Source_URL"], claim_matches),
     ]
@@ -357,7 +395,13 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                 "Form": CLDF + "form",
                 "Gloss": CLDF + "gloss",
             }.get(field)
-            cols.append(_column(field, "string", required=field == "ID", property_url=prop))
+            description = {
+                "Candidate_Basis": "Rule used to project recorded component ancestry across language-specific parent forms.",
+                "Matched_Uses_JSON": "Component uses linked to exported parent and component entry IDs; candidate evidence, not a confirmed whole-word relationship.",
+                "Candidate_Entry_IDs_JSON": "Exported entry IDs for component-entry candidates; compare with the raw keys and resolution status to identify missing source records.",
+                "Candidate_Entry_Resolution": "Whether every raw component candidate entry key resolved to a source entry in this export.",
+            }.get(field)
+            cols.append(_column(field, "string", required=field == "ID", property_url=prop, description=description))
         fks = []
         references = {
             "entries.csv": {"Language_ID": ("languages.csv", "ID")},
@@ -376,7 +420,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
         "dc:conformsTo": CLDF + "Generic",
         "dc:title": "Linduistics source-linked lexical case slice",
-        "dc:description": "A bounded diagnostic export of source entries, senses, directed claims, component analyses, and candidate comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
+        "dc:description": "A bounded diagnostic export of source entries, senses, directed claims, component analyses, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
         "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
         "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "tables": metadata_tables,
@@ -424,27 +468,32 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "tables": {filename: {"rows": len(rows), "sha256": digest(output_dir / filename)} for filename, _, rows in tables},
         "summary": {
             "comparisons_by_legacy_label": dict(sorted(label_counts.items())),
+            "component_candidate_resolution": dict(sorted(Counter(row["Candidate_Entry_Resolution"] for row in components).items())),
             "matched_source_claims_by_legacy_label": {
                 label: dict(sorted(relations.items()))
                 for label, relations in sorted(matched_evidence.items())
             },
         },
         "limits": [
-            "The nine cases are deliberate diagnostics, not a representative sample.",
+            "The thirteen cases are deliberate diagnostics, not a representative sample.",
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
             "Component candidate entry keys are candidates, not confirmed component-sense links.",
+            "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
+            "Shared-component ancestor rows are projections from recorded component candidates; they are not confirmed whole-word relationships.",
             "Legacy_Candidate_Label and Legacy_Root_Match_Status preserve old classifier output only.",
         ],
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output_dir / "README.md").write_text(
         "# Linduistics source-linked lexical case slice\n\n"
-        "This is a small CLDF Generic export of nine deliberately chosen Wiktionary-derived cases. "
+        "This is a small CLDF Generic export of thirteen deliberately chosen Wiktionary-derived cases. "
         "It keeps source entries and senses, source claims, compound-component analyses, matched claim links, "
-        "and computed pair comparisons in separate linked tables.\n\n"
+        "shared-component ancestor candidates, and computed pair comparisons in separate tables.\n\n"
         "The `Legacy_Candidate_Label` and `Legacy_Root_Match_Status` fields preserve old pipeline output; "
         "they are not independently verified linguistic judgments. Candidate component entries are possible matches, "
-        "not resolved component senses. These cases are not representative of vocabulary coverage.\n\n"
+        "not resolved component senses; `Candidate_Entry_Resolution` records whether each possible entry was included. "
+        "Shared-component ancestor rows project those matches onto candidate roots; "
+        "they are not confirmed component senses or whole-word histories. These cases are not representative of vocabulary coverage.\n\n"
         "Source page URLs are retained in the entry and claim tables. The extracted Wiktionary-derived text and data "
         "are attributed to Wiktionary contributors and are provided here under CC BY-SA 4.0; Wiktionary also offers "
         "the GFDL option. See https://en.wiktionary.org/wiki/Wiktionary:Copyrights and "
