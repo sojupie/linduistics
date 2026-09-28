@@ -30,6 +30,10 @@ Do not start another project or rebuild the whole corpus. Use the existing extra
 
 For every example, someone can follow a source page or pinned revision to the extracted statement, see how it was normalized and linked, and rerun the slice. The artifact includes at least one missing or ambiguous link and one source-version change, so it demonstrates uncertainty rather than hiding it. It makes no vocabulary-wide cognate-rate claim. Only after this works should we expand the source coverage or automate larger refreshes.
 
+### First seed created
+
+[`datasets/source-evidence/`](../datasets/source-evidence/README.md) is an initial curated seed: eight pinned page revisions, 16 structured assertions, and two bounded pair reviews. It covers the *blive* revision change, borrowing, compounds, and the *væg/väg/vägg* distinction. The CSVs retain revision links and omit copied entry prose. This seed was transcribed from the pinned pages and reviewed local cases; fetching revisions and regenerating the CSVs are not automated yet. The next data-engineering step is to make that capture and export repeatable, then expand only where the existing cases reveal a concrete gap.
+
 ## Current state
 
 - The pipeline covers Danish, German, English, Norwegian Bokmål, and Swedish Wiktionary-derived data.
