@@ -2,7 +2,7 @@ import csv
 import json
 import re
 
-from export_case_evidence_cldf import _claim_id, _claim_target_scope, _validate_table_links, export_slice
+from export_case_evidence_cldf import _claim_id, _claim_target_scope, _template_occurrence_id, _validate_table_links, export_slice
 
 
 def test_claim_target_scope_distinguishes_forms_entities_components_languages_and_no_target():
@@ -83,7 +83,7 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
             "candidate": {"forms": [{"language_code": "sv", "word": "fleece"}, {"language_code": "en", "word": "fleece"}]},
             "source_entry": {"source_entry_key": source_entry_key, "language_code": "sv", "word": "fleece", "source_url": "https://en.wiktionary.org/wiki/fleece#Swedish"},
             "source_active_sense": {"source_sense_id": "sense-sv"},
-            "claim": {"relation": "borrowed_from", "evidence": {"template_index": 0, "template_name": "bor", "args": claim["args"]}},
+            "claim": {"relation": "borrowed_from", "related_language": "en", "related_form": "fleece", "evidence": {"template_index": 0, "template_name": "bor", "args": claim["args"]}},
             "target_form_match": {"active_identity_status": "available", "active_entry_key": target_entry_key, "active_sense_id": "sense-en", "form_match_method": "exact"},
         }],
         "component_links": [{
@@ -117,7 +117,8 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     assert manifest["tables"]["shared-component-ancestor-candidates.csv"]["rows"] == 1
     assert manifest["source_dump_files"]["sv"]["source_file_sha256"] == "dump-hash"
     assert manifest["summary"]["comparisons_by_legacy_label"] == {"other": 1}
-    assert manifest["summary"]["matched_source_claims_by_legacy_label"]["other"] == {"borrowed_from:available": 1}
+    assert manifest["summary"]["matched_source_claim_records_by_legacy_label"]["other"] == {"borrowed_from:available": 1}
+    assert manifest["summary"]["normalized_relation_targets"] == 2
     metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
     assert metadata["dc:conformsTo"].endswith("#Generic")
     tables = {table["url"]: table for table in metadata["tables"]}
@@ -172,14 +173,20 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
     claim = {
         "template_index": 0, "template_name": "bor", "relation": "borrowed_from",
         "args": {"1": "sv", "2": "en", "3": "fleece"},
-        "related_language": "en", "related_form": "fleece",
+        "related_language": "en", "related_form": "fleece", "source_uncertain": False,
+    }
+    duplicate_claim = {
+        **claim,
+        "template_index": 1,
+        "template_name": "bor+",
+        "source_uncertain": True,
     }
     candidate_key = "en|fleece|noun||candidate-sense-en"
     source = tmp_path / "slice.jsonl"
     source.write_text(json.dumps({
         "case_id": "fleece",
         "source_entries": [
-            _entry(source_key, "sv", "fleece", "sense-sv", "polar fleece", [claim]),
+            _entry(source_key, "sv", "fleece", "sense-sv", "polar fleece", [claim, duplicate_claim]),
             _entry(candidate_key, "en", "fleece", "candidate-sense-en", "wool"),
         ],
         "comparisons": [],
@@ -221,8 +228,11 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
         entries = list(csv.DictReader(stream))
     with (output / "source-claims.csv").open(encoding="utf-8", newline="") as stream:
         claims = list(csv.DictReader(stream))
+    with (output / "source-relation-targets.csv").open(encoding="utf-8", newline="") as stream:
+        relation_targets = list(csv.DictReader(stream))
 
     assert manifest["tables"]["claim-target-resolutions.csv"]["rows"] == 1
+    assert manifest["tables"]["source-relation-targets.csv"]["rows"] == 2
     assert resolutions[0]["Match_Status"] == "exact"
     assert resolutions[0]["Claimed_Form"] == "fleece"
     assert len(candidates) == 1
@@ -232,6 +242,46 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
     assert target_entry["Etymology_Text"].startswith("From Old English")
     assert target_entry["Source_Line"] == "42"
     assert any(row["Relation"] == "inherited_from" for row in claims)
+    borrowed_occurrences = [row for row in claims if row["Relation"] == "borrowed_from"]
+    assert len(borrowed_occurrences) == 2
+    assert borrowed_occurrences[0]["Source_Relation_Target_ID"] == borrowed_occurrences[1]["Source_Relation_Target_ID"]
+    assert {row["Source_Uncertain"] for row in borrowed_occurrences} == {"false", "true"}
+    assert resolutions[0]["Source_Relation_Target_ID"] == borrowed_occurrences[0]["Source_Relation_Target_ID"]
+    assert len(relation_targets) == 2
+
+
+def test_preserves_one_template_that_expands_to_multiple_normalized_claims(tmp_path):
+    source_key = "en|bank|noun|1|sense-bank"
+    base = {
+        "template_index": 4,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {"1": "en", "2": "da,sv", "3": "bank"},
+    }
+    claims = [
+        {**base, "related_language": "da", "related_form": "bank"},
+        {**base, "related_language": "sv", "related_form": "bank"},
+    ]
+    source = tmp_path / "slice.jsonl"
+    source.write_text(json.dumps({
+        "case_id": "bank",
+        "source_entries": [_entry(source_key, "en", "bank", "sense-bank", "financial institution", claims)],
+        "comparisons": [],
+    }) + "\n", encoding="utf-8")
+
+    output = tmp_path / "cldf"
+    manifest = export_slice(source, output)
+    with (output / "source-claims.csv").open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    with (output / "source-relation-targets.csv").open(encoding="utf-8", newline="") as stream:
+        targets = list(csv.DictReader(stream))
+
+    assert len(rows) == 2
+    assert len({row["ID"] for row in rows}) == 2
+    assert {row["Template_Occurrence_ID"] for row in rows} == {_template_occurrence_id(source_key, claims[0])}
+    assert {row["Source_Relation_Target_ID"] for row in rows} == {row["ID"] for row in targets}
+    assert manifest["summary"]["source_template_occurrences"] == 1
+    assert manifest["summary"]["normalized_relation_targets"] == 2
 
 
 def test_rejects_a_broken_table_reference():
@@ -245,3 +295,18 @@ def test_rejects_a_broken_table_reference():
         assert "Broken reference entries.csv.Language_ID" in str(error)
     else:
         raise AssertionError("Expected a foreign-key mismatch to fail validation")
+
+
+def test_rejects_an_unreferenced_relation_target():
+    tables = [
+        ("languages.csv", ["ID"], [{"ID": "en"}]),
+        ("entries.csv", ["ID", "Language_ID"], [{"ID": "entry-1", "Language_ID": "en"}]),
+        ("source-claims.csv", ["ID", "Source_Relation_Target_ID"], []),
+        ("source-relation-targets.csv", ["ID", "Entry_ID"], [{"ID": "target-1", "Entry_ID": "entry-1"}]),
+    ]
+    try:
+        _validate_table_links(tables)
+    except ValueError as error:
+        assert "Unreferenced normalized relation target" in str(error)
+    else:
+        raise AssertionError("Expected orphan normalized relation targets to fail validation")

@@ -70,15 +70,52 @@ def _form_identity(comparison: dict, side: str) -> tuple[dict, str]:
     }, sense
 
 
-def _claim_id(entry_key: str, claim: dict) -> str:
+def _template_occurrence_id(entry_key: str, claim: dict) -> str:
     return stable_id(
-        "claim",
+        "template_occurrence",
         entry_key,
         claim.get("template_index"),
         claim.get("template_name"),
         claim.get("relation"),
         claim.get("args") or {},
     )
+
+
+def _claim_id(entry_key: str, claim: dict) -> str:
+    return stable_id(
+        "claim",
+        _template_occurrence_id(entry_key, claim),
+        _relation_target_id(entry_key, claim),
+    )
+
+
+def _relation_target_id(entry_key: str, claim: dict) -> str:
+    if not claim.get("relation"):
+        return ""
+    return stable_id(
+        "relation_target",
+        entry_key,
+        claim.get("relation"),
+        _claim_target_scope(claim),
+        claim.get("related_language") or "",
+        claim.get("related_form") or "",
+        claim.get("related_entity") or {},
+        claim.get("components") or [],
+    )
+
+
+def _relation_target_row(entry_id: str, entry_key: str, claim: dict) -> dict:
+    return {
+        "ID": _relation_target_id(entry_key, claim),
+        "Entry_ID": entry_id,
+        "Claim_Source_Scope": "entry",
+        "Claim_Target_Scope": _claim_target_scope(claim),
+        "Relation": claim.get("relation", ""),
+        "Related_Language_ID": claim.get("related_language") or "",
+        "Related_Form": claim.get("related_form") or "",
+        "Related_Entity_JSON": _dump(claim.get("related_entity") or {}),
+        "Components_JSON": _dump(claim.get("components") or []),
+    }
 
 
 def _claim_target_scope(claim: dict) -> str:
@@ -110,11 +147,12 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
         "entries.csv": {"Language_ID": ("languages.csv", "ID")},
         "senses.csv": {"Entry_ID": ("entries.csv", "ID")},
         "forms.csv": {"Language_ID": ("languages.csv", "ID"), "Source_Entry_ID": ("entries.csv", "ID")},
-        "source-claims.csv": {"Entry_ID": ("entries.csv", "ID")},
+        "source-claims.csv": {"Entry_ID": ("entries.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
+        "source-relation-targets.csv": {"Entry_ID": ("entries.csv", "ID")},
         "component-links.csv": {"Parent_Entry_ID": ("entries.csv", "ID")},
         "comparisons.csv": {"Form_A_ID": ("forms.csv", "ID"), "Form_B_ID": ("forms.csv", "ID")},
-        "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
-        "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID")},
+        "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
+        "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
         "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
     }
     ids = {filename: {row["ID"] for row in rows} for filename, rows in rows_by_file.items()}
@@ -125,6 +163,14 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
             target_ids = {row[target_column] for row in rows_by_file[target_file]}
             if any(row[column] and row[column] not in target_ids for row in rows):
                 raise ValueError(f"Broken reference {filename}.{column} -> {target_file}.{target_column}")
+    relation_target_ids = ids.get("source-relation-targets.csv", set())
+    referenced_relation_target_ids = {
+        row["Source_Relation_Target_ID"]
+        for row in rows_by_file.get("source-claims.csv", [])
+        if row.get("Source_Relation_Target_ID")
+    }
+    if relation_target_ids - referenced_relation_target_ids:
+        raise ValueError("Unreferenced normalized relation target")
 
 
 def _column(name: str, datatype: str = "string", *, required: bool = False, property_url: str | None = None, description: str | None = None) -> dict:
@@ -158,6 +204,7 @@ def export_slice(
     entries_by_key: dict[str, dict] = {}
     senses_by_key: dict[tuple[str, str], dict] = {}
     claims_by_id: dict[str, dict] = {}
+    relation_targets_by_id: dict[str, dict] = {}
     components_by_id: dict[str, dict] = {}
     shared_component_ancestors_by_id: dict[str, dict] = {}
     forms_by_id: dict[str, dict] = {}
@@ -201,8 +248,14 @@ def export_slice(
                 }
             for claim in entry.get("claims", []):
                 claim_id = _claim_id(entry_key, claim)
+                relation_target = _relation_target_row(entry_id, entry_key, claim)
+                relation_target_id = relation_target["ID"]
+                if relation_target_id:
+                    relation_targets_by_id[relation_target_id] = relation_target
                 claims_by_id[claim_id] = {
                     "ID": claim_id,
+                    "Template_Occurrence_ID": _template_occurrence_id(entry_key, claim),
+                    "Source_Relation_Target_ID": relation_target_id,
                     "Entry_ID": entry_id,
                     "Claim_Source_Scope": "entry",
                     "Claim_Target_Scope": _claim_target_scope(claim),
@@ -332,6 +385,10 @@ def export_slice(
                 "template_name": evidence.get("template_name"),
                 "relation": source_claim.get("relation"),
                 "args": evidence.get("args") or {},
+                "related_language": source_claim.get("related_language"),
+                "related_form": source_claim.get("related_form"),
+                "related_entity": source_claim.get("related_entity"),
+                "components": source_claim.get("components"),
             }
             claim_id = _claim_id(source_key, source_claim_shape)
             forms = match.get("candidate", {}).get("forms", [])
@@ -369,6 +426,7 @@ def export_slice(
             output_resolution = {
                 "ID": resolution_id,
                 "Claim_ID": claim_id,
+                "Source_Relation_Target_ID": claims_by_id[claim_id]["Source_Relation_Target_ID"],
                 "Target_Language_Code": resolution.get("target_language", ""),
                 "Claimed_Form": resolution.get("claimed_form", ""),
                 "Match_Status": resolution.get("match_status", ""),
@@ -416,8 +474,14 @@ def export_slice(
                     })
                 for claim in target.get("source_claims", []):
                     target_claim_id = _claim_id(entry_key, claim)
+                    relation_target = _relation_target_row(entry_id, entry_key, claim)
+                    relation_target_id = relation_target["ID"]
+                    if relation_target_id:
+                        relation_targets_by_id[relation_target_id] = relation_target
                     claims_by_id.setdefault(target_claim_id, {
                         "ID": target_claim_id,
+                        "Template_Occurrence_ID": _template_occurrence_id(entry_key, claim),
+                        "Source_Relation_Target_ID": relation_target_id,
                         "Entry_ID": entry_id,
                         "Claim_Source_Scope": "entry",
                         "Claim_Target_Scope": _claim_target_scope(claim),
@@ -455,6 +519,7 @@ def export_slice(
     entries = sorted(entries_by_key.values(), key=lambda row: row["ID"])
     senses = sorted(senses_by_key.values(), key=lambda row: row["ID"])
     claims = sorted(claims_by_id.values(), key=lambda row: row["ID"])
+    relation_targets = sorted(relation_targets_by_id.values(), key=lambda row: row["ID"])
     components = sorted(components_by_id.values(), key=lambda row: row["ID"])
     shared_component_ancestors = sorted(shared_component_ancestors_by_id.values(), key=lambda row: row["ID"])
     forms = sorted(forms_by_id.values(), key=lambda row: row["ID"])
@@ -468,6 +533,7 @@ def export_slice(
         claim_matches.append({
             "ID": stable_id("match", match.get("match_id")),
             "Claim_ID": claim_id,
+            "Source_Relation_Target_ID": claims_by_id[claim_id]["Source_Relation_Target_ID"],
             "Comparison_ID": comparison_id,
             "Comparison_Source_Sense_ID": match.get("source_active_sense", {}).get("source_sense_id", ""),
             "Comparison_Target_Sense_ID": match.get("target_form_match", {}).get("active_sense_id", ""),
@@ -485,12 +551,13 @@ def export_slice(
         ("entries.csv", ["ID", "Language_ID", "Headword", "Part_Of_Speech", "Source_Entry_Key", "Etymology_Number", "Origin_Status", "Etymology_Text", "Source_URL", "Source_File", "Source_Line"], entries),
         ("senses.csv", ["ID", "Entry_ID", "Source_Sense_ID", "Glosses_JSON", "Raw_Glosses_JSON", "Tags_JSON"], senses),
         ("forms.csv", ["ID", "Language_ID", "Form", "Part_Of_Speech", "Source_Entry_ID", "Source_Entry_Key", "Source_Sense_ID", "Gloss", "Source_Identity_Status"], forms),
-        ("source-claims.csv", ["ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON", "Source_Uncertain", "Template_Name", "Template_Index", "Template_Arguments_JSON", "Source_URL"], claims),
+        ("source-relation-targets.csv", ["ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON"], relation_targets),
+        ("source-claims.csv", ["ID", "Template_Occurrence_ID", "Source_Relation_Target_ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON", "Source_Uncertain", "Template_Name", "Template_Index", "Template_Arguments_JSON", "Source_URL"], claims),
         ("component-links.csv", ["ID", "Parent_Entry_ID", "Relation", "Component_Index", "Component_Form", "Raw_Forms_JSON", "Match_Status", "Candidate_Entry_Keys_JSON", "Candidate_Entry_IDs_JSON", "Candidate_Entry_Resolution", "Evidence_JSON"], components),
         ("shared-component-ancestor-candidates.csv", ["ID", "Case_ID", "Ancestor_Language_Code", "Ancestor_Form", "Candidate_Basis", "Matched_Uses_JSON"], shared_component_ancestors),
         ("comparisons.csv", ["ID", "Case_ID", "Form_A_ID", "Form_B_ID", "Recorded_Root_A", "Recorded_Root_B", "Spelling_Similarity", "Phonetic_Similarity", "Semantic_Similarity", "Legacy_Candidate_Label", "Legacy_Root_Match_Status", "Directed_Row_Count"], comparisons),
-        ("claim-matches.csv", ["ID", "Claim_ID", "Comparison_ID", "Comparison_Source_Sense_ID", "Comparison_Target_Sense_ID", "Target_Identity_Status", "Target_Entry_Key", "Form_Match_Method", "Source_URL"], claim_matches),
-        ("claim-target-resolutions.csv", ["ID", "Claim_ID", "Target_Language_Code", "Claimed_Form", "Match_Status"], target_resolutions),
+        ("claim-matches.csv", ["ID", "Claim_ID", "Source_Relation_Target_ID", "Comparison_ID", "Comparison_Source_Sense_ID", "Comparison_Target_Sense_ID", "Target_Identity_Status", "Target_Entry_Key", "Form_Match_Method", "Source_URL"], claim_matches),
+        ("claim-target-resolutions.csv", ["ID", "Claim_ID", "Source_Relation_Target_ID", "Target_Language_Code", "Claimed_Form", "Match_Status"], target_resolutions),
         ("claim-target-candidates.csv", ["ID", "Resolution_ID", "Target_Entry_ID"], target_candidates),
     ]
     _validate_table_links(tables)
@@ -516,6 +583,11 @@ def export_slice(
                 "Candidate_Entry_Resolution": "Whether every raw component candidate entry key resolved to a source entry in this export.",
                 "Claim_Source_Scope": "The source etymology claim is attached to this lexical entry, not to an individually identified sense.",
                 "Claim_Target_Scope": "The normalized claim target is a form, entity, component list, language only, or no target; form-level claims do not identify one target sense.",
+                "Source_Relation_Target_ID": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv.",
+                "Template_Occurrence_ID": "Stable identity for the raw source template and its arguments; one template can expand to multiple normalized target claims.",
+                "Template_Name": "Wiktionary template occurrence preserved from the source etymology data.",
+                "Template_Index": "Position of this template occurrence within the source entry.",
+                "Source_Uncertain": "Uncertainty flag attached to this template occurrence; missing and explicit false remain distinct.",
                 "Related_Entity_JSON": "Normalized entity reference when the source claim points to an entity rather than a plain related form.",
                 "Components_JSON": "Normalized component references carried by this source claim; component candidate matching is detailed in component-links.csv.",
                 "Comparison_Source_Sense_ID": "Active source sense selected for the linked comparison; the entry-level source claim is not asserted to apply only to this sense.",
@@ -533,11 +605,12 @@ def export_slice(
             "entries.csv": {"Language_ID": ("languages.csv", "ID")},
             "senses.csv": {"Entry_ID": ("entries.csv", "ID")},
             "forms.csv": {"Language_ID": ("languages.csv", "ID"), "Source_Entry_ID": ("entries.csv", "ID")},
-            "source-claims.csv": {"Entry_ID": ("entries.csv", "ID")},
+            "source-claims.csv": {"Entry_ID": ("entries.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
+            "source-relation-targets.csv": {"Entry_ID": ("entries.csv", "ID")},
             "component-links.csv": {"Parent_Entry_ID": ("entries.csv", "ID")},
             "comparisons.csv": {"Form_A_ID": ("forms.csv", "ID"), "Form_B_ID": ("forms.csv", "ID")},
-            "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
-            "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID")},
+            "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
+            "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
             "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
         }.get(filename, {})
         for field, (resource, target_column) in references.items():
@@ -548,7 +621,7 @@ def export_slice(
         "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
         "dc:conformsTo": CLDF + "Generic",
         "dc:title": "Linduistics source-linked lexical case slice",
-        "dc:description": "A bounded diagnostic export of source entries, senses, directed claims, component analyses, form-level target-entry candidates, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
+        "dc:description": "A bounded diagnostic export of source entries, senses, normalized relation targets, template-level claim evidence, component analyses, form-level target-entry candidates, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
         "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
         "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "tables": metadata_tables,
@@ -607,7 +680,14 @@ def export_slice(
         "summary": {
             "comparisons_by_legacy_label": dict(sorted(label_counts.items())),
             "component_candidate_resolution": dict(sorted(Counter(row["Candidate_Entry_Resolution"] for row in components).items())),
-            "matched_source_claims_by_legacy_label": {
+            "source_claim_records": len(claims),
+            "source_template_occurrences": len({row["Template_Occurrence_ID"] for row in claims}),
+            "relation_claim_records": sum(bool(row["Source_Relation_Target_ID"]) for row in claims),
+            "normalized_relation_targets": len(relation_targets),
+            "repeated_relation_claim_records_per_target": (
+                sum(bool(row["Source_Relation_Target_ID"]) for row in claims) - len(relation_targets)
+            ),
+            "matched_source_claim_records_by_legacy_label": {
                 label: dict(sorted(relations.items()))
                 for label, relations in sorted(matched_evidence.items())
             },
@@ -626,9 +706,10 @@ def export_slice(
     (output_dir / "README.md").write_text(
         "# Linduistics source-linked lexical case slice\n\n"
         "This is a small CLDF Generic export of thirteen deliberately chosen Wiktionary-derived cases. "
-        "It keeps source entries and senses, source claims, compound-component analyses, matched claim links, "
+        "It keeps source entries and senses, normalized relation targets, source-template claim evidence, compound-component analyses, matched claim links, "
         "shared-component ancestor candidates, form-level target-entry candidates, and computed pair comparisons in separate tables.\n\n"
-        "Source claims record their originating entry and target scope (form, entity, components, language, or none). "
+        "Source claims record their originating entry and one normalized target scope (form, entity, components, language, or none). A target template that expands into several claims retains one Template_Occurrence_ID across its rows. "
+        "`source-relation-targets.csv` groups identical normalized relation targets within an entry; `source-claims.csv` retains each expanded claim, its template identity, uncertainty, and raw arguments. "
         "Sense IDs on claim-match rows identify "
         "the comparison's selected senses for context; they do not narrow the source claim to those senses. "
         "Claims without a single related form retain their normalized entity or component targets, or have target scope `none`.\n\n"

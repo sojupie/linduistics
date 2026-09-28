@@ -66,3 +66,37 @@ def test_links_all_exact_entries_and_keeps_casefold_fallbacks(tmp_path):
     assert not norwegian["candidate_entries"]
     assert manifest["counts"]["target_forms_by_match_status"] == {"casefold_only": 1, "exact": 1, "language_not_indexed": 2}
     assert manifest["counts"]["source_claims_by_scope"] == {"form": 4, "other": 1}
+
+
+def test_keeps_each_target_from_one_multiform_template(tmp_path):
+    source_key = "en|bank|noun|1|sense-bank"
+    template = {
+        "template_index": 0,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {"1": "en", "2": "da,sv", "3": "bank"},
+    }
+    case_slice = tmp_path / "case.jsonl"
+    case_slice.write_text(json.dumps({
+        "case_id": "bank",
+        "source_entries": [{"source_entry_key": source_key, "claims": [
+            {**template, "related_language": "da", "related_form": "bank"},
+            {**template, "related_language": "sv", "related_form": "bank"},
+        ]}],
+    }) + "\n", encoding="utf-8")
+    target_dir = tmp_path / "dumps"
+    target_dir.mkdir()
+    (target_dir / "kaikki_da.jsonl").write_text(json.dumps(_entry("bank", "da-bank", language="da")) + "\n", encoding="utf-8")
+    (target_dir / "kaikki_sv.jsonl").write_text(json.dumps(_entry("bank", "sv-bank", language="sv")) + "\n", encoding="utf-8")
+    for language in ("de", "en", "nb"):
+        (target_dir / f"kaikki_{language}.jsonl").write_text("", encoding="utf-8")
+
+    output = tmp_path / "claim_targets.jsonl"
+    audit_case_claim_targets(case_slice, target_dir, output)
+    rows = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
+
+    assert {(row["target_language"], row["claimed_form"], row["match_status"]) for row in rows} == {
+        ("da", "bank", "exact"),
+        ("sv", "bank", "exact"),
+    }
+    assert len({row["claim_id"] for row in rows}) == 2
