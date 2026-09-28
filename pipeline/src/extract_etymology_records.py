@@ -352,6 +352,15 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             }
             for language in _language_codes(args.get("1"))
         ] or [claim]
+    elif base_name in {"ellipsis", "ellip", "nom", "sylabbr"}:
+        return [
+            {
+                **claim,
+                "related_language": language,
+                "related_form": args.get("2"),
+            }
+            for language in _language_codes(args.get("1"))
+        ] or [claim]
     elif base_name in {
         "deverbal", "denominal", "clip", "clipping", "back-formation", "back-form", "backform",
         "backformation", "back formation", "abbrev", "abbr", "abbreviation", "acronym", "initialism",

@@ -190,6 +190,52 @@ class EtymologyRecordTests(unittest.TestCase):
         self.assertEqual((clipping["relation"], clipping["related_language"], clipping["related_form"]), ("clipped_from", "sv", "biograf"))
         self.assertEqual(calque["relation"], "partial_calque_of")
 
+    def test_normalizes_nominalization_and_syllabic_abbreviation_source_languages(self):
+        record = source_record(
+            {
+                "lang_code": "en",
+                "lang": "English",
+                "word": "test word",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "nom", "args": {"1": "la", "2": "testum"}},
+                    {"name": "sylabbr", "args": {"1": "en", "2": "test phrase"}},
+                ],
+            },
+            "kaikki_de.jsonl",
+        )
+
+        self.assertEqual(
+            [(claim["relation"], claim.get("related_language"), claim.get("related_form")) for claim in record["claims"]],
+            [
+                ("nominalized_from", "la", "testum"),
+                ("syllabically_abbreviated_from", "en", "test phrase"),
+            ],
+        )
+
+    def test_normalizes_ellipsis_target_without_treating_display_alt_as_source_form(self):
+        record = source_record(
+            {
+                "lang_code": "en",
+                "lang": "English",
+                "word": "latte",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "ellipsis", "args": {"1": "it", "2": "caffè latte", "3": "latte"}},
+                    {"name": "ellip", "args": {"1": "en", "2": "", "3": "display only"}},
+                ],
+            },
+            "kaikki_en.jsonl",
+        )
+
+        self.assertEqual(
+            [(claim["relation"], claim.get("related_language"), claim.get("related_form")) for claim in record["claims"]],
+            [
+                ("ellipsis_of", "it", "caffè latte"),
+                ("ellipsis_of", "en", ""),
+            ],
+        )
+
     def test_normalizes_verified_plain_language_relation_templates(self):
         record = source_record(
             {
