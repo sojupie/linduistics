@@ -23,6 +23,7 @@ One word pair may have more than one path. A source’s claim is evidence to pre
 - Fresh per-language lemma tables are now built for all five local dumps. All 1,060,087 active sense records have source-entry and source-sense IDs; 222,272 senses have an extracted etymological root.
 - A rebuilt local comparison artifact contains 1,638,454 directed candidate rows across the 10 language pairs. It records 24,872 rows with equal extracted roots; the other 1,613,582 have unknown root relations. These are candidate-build counts, not vocabulary-wide percentages.
 - The all-pair source-claim audit finds 20,354 evidence rows across all 10 language pairs, including 13,143 `other` candidates with a matching entry-level source claim. It retains the possible IDs for 406 ambiguous target matches. See the [audit findings and source-aware rebuild](DATASET_NEXT_STEPS.md#candidate-to-source-claim-evidence-export-2026-09-28).
+- The existing component audit indexed 2.3 million dump entries and checked 1,003,229 component occurrences. About 45% resolve to one exact source entry, 45% to multiple entries, and 10% to none; even a single entry match does not select a component sense. See the component-link findings in the same audit note.
 - A demonstrated false-friend error is fixed: English *Bankman* “a surname” versus Swedish *bankman* “bank employee” remains an inspectable candidate but is no longer classified as a false friend. The full pipeline suite passes 102 tests. Generated data remains local and ignored; the live database has not been updated.
 
 These counts describe the current extracted files, not vocabulary coverage or the share of words with any historical relationship. The current `other` category is a candidate-builder remainder, not a linguistic conclusion.
@@ -34,7 +35,7 @@ These counts describe the current extracted files, not vocabulary coverage or th
 Trace the compact case set—*fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*—through:
 
 1. the exact source entry and etymology;
-2. the selected sense or component, when available;
+2. the selected sense or component entry, and whether its sense is known;
 3. the extracted source claim and its direction;
 4. the comparison candidate and computed observations;
 5. the pipeline transformation that produced the displayed result.
@@ -43,7 +44,7 @@ Record which step loses, merges, or misapplies evidence. Fix demonstrated extrac
 
 ### 2. Keep building the evidence model from real source structures
 
-First check whether a suspected gap is in extraction or in linking. The cited *fleece*, *clown*, *bank*, and compound examples already have structured borrowing, derivation, or component claims in the source export. The audit now covers all ten language pairs. The next gap is linking those claims to comparison senses and keeping borrowing, components, and shared roots as distinct paths instead of reducing history to root equality. Preserve the raw template and arguments beside each claim.
+First check whether a suspected gap is in extraction or in linking. The cited *fleece*, *clown*, *bank*, and compound examples already have structured borrowing, derivation, or component claims in the source export. The audit now covers all ten language pairs. The component audit shows that exact entry lookup often finds more than one possible component entry, and does not resolve senses. The next gap is linking claims to comparison senses and components without pretending an entry match settles its sense. Keep borrowing, components, and shared roots as distinct paths; preserve raw template evidence.
 
 Treat unresolved source links as unresolved. Do not infer unrelated origins from an empty root field, a missing template, or a lack of a matched entry. Keep source claims queryable even when they do not map cleanly to a current comparison row.
 

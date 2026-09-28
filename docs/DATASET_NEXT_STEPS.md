@@ -295,4 +295,18 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py 
 
 The current manifest records source-record SHA-256 `1406623aa2bd12cdcf23eb19b575ed2f61f015759e2cb49e5144b49b5274be4b`, comparison SHA-256 `3e80e59c2229ba908bafc52e4f955f0035ef80e9f10c72961a8d0d8a80770943`, and all-pair evidence-export SHA-256 `287084ecff01540617cd2a9635007d63e4339dc1e4399675a111920be09076c7`. The full pipeline test suite passes 102 tests with the all-pair audit extension. Generated files remain local and ignored; the live database is unchanged.
 
-Next, connect the all-pair audit's existing directed claims to the selected comparison senses. Then project compound components to source entries where the form and identity resolve, while retaining unresolved links as unresolved. Recheck this case set before considering broader reclassification. A small machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
+### Component entry coverage
+
+I also ran the existing component-entry audit on the fresh source records and five local dumps. It indexed **2,315,293 dump entries** and checked **1,003,229 component occurrences** from 510,622 component-claim records. Of those occurrences, **451,016 (45.0%)** match one exact source entry, **452,714 (45.1%)** match multiple entries, and **99,499 (9.9%)** have no exact entry. These are exact language-and-spelling lookups, not sense matches or evidence that two components are historically related.
+
+The named compounds show the difference. Swedish *sandbank* has one exact source entry for each component (*sand*, *bank*), but the *bank* entry still contains multiple senses. Swedish *bankman* has one exact *bank* entry but three possible *man* entries. Danish *ombudsmand* links to one exact entry for both *ombud* and *mand*. English *sandbank* has multiple entries for both components, while German *Sandbank* has one *Sand* entry and two *Bank* etymology entries. The audit keeps those candidates instead of choosing by spelling alone.
+
+Reproduce this audit with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_etymology_component_entries.py --etymology-records pipeline\data\etymology_records_all.jsonl --candidates-output pipeline\data\component_entry_candidates_source_identity.jsonl.gz --output pipeline\data\component_entry_coverage_source_identity.json --force
+```
+
+This gives the project a useful first component-link layer. Next, link only resolved source entries, preserve multiple candidate entries, and record whether the component sense is known. Do not infer whole-word cognacy from a compound's components.
+
+Next, connect the all-pair audit's existing directed claims to the selected comparison senses. Recheck this case set before considering broader reclassification. A small machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
