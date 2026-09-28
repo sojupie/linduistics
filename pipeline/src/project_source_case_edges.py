@@ -13,6 +13,7 @@ from pathlib import Path
 COMPARISON_FIELDS = (
     "id", "lang_a", "word_a", "pos_a", "def_a", "lang_b", "word_b", "pos_b", "def_b",
     "category", "etymological_relation", "orthographic_sim", "phonetic_sim", "semantic_sim",
+    "translation_source_senses",
 )
 
 
@@ -60,6 +61,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                         case_id = audit.get("audit_key", f"{path.name}:{line_number}")
                         comparison = audit.get("comparison") or {}
                         comparison_context = {key: comparison.get(key) for key in COMPARISON_FIELDS}
+                        comparison_context["candidate_pair_match_method"] = audit.get("candidate_pair_match_method")
                         for lang, entries in audit.get("source_entries", {}).items():
                             for entry in entries:
                                 entry_key = entry.get("source_entry_key", entry.get("key"))
@@ -140,7 +142,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source_files": source_files,
             "output_file": output.name,
-            "schema_version": 3,
+            "schema_version": 4,
             "counts": {
                 "cases": case_count,
                 "unique_source_edges": edge_count,

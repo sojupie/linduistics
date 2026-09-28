@@ -70,6 +70,7 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     audit = tmp_path / "audit.jsonl"
     audit.write_text(json.dumps({
         "audit_key": "sv|bank|en|bank",
+        "candidate_pair_match_method": "casefold",
         "comparison": {
             "id": 12,
             "lang_a": "sv",
@@ -85,6 +86,10 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
             "orthographic_sim": 1.0,
             "phonetic_sim": 0.95,
             "semantic_sim": 0.9,
+            "translation_source_senses": [{
+                "source_entry_key": "en|bank|noun||source-id",
+                "source_sense_id": "en-bank-sense",
+            }],
         },
         "source_entry_match": {"sv": "exact"},
         "source_sense_matches": {"sv": [{
@@ -126,7 +131,7 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     manifest = project_source_case_edges([audit], output)
 
     edge = json.loads(output.read_text(encoding="utf-8").splitlines()[0])
-    assert manifest["schema_version"] == 3
+    assert manifest["schema_version"] == 4
     assert edge["comparison"] == {
         "id": 12,
         "lang_a": "sv",
@@ -142,6 +147,11 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
         "orthographic_sim": 1.0,
         "phonetic_sim": 0.95,
         "semantic_sim": 0.9,
+        "translation_source_senses": [{
+            "source_entry_key": "en|bank|noun||source-id",
+            "source_sense_id": "en-bank-sense",
+        }],
+        "candidate_pair_match_method": "casefold",
     }
     assert edge["source_entry"] == {
         "source": "Wiktionary",
