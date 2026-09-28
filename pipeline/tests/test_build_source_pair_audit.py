@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlparse
 
-from build_source_pair_audit import audit_record, load_source_entries, sample_category_rows
+from build_source_pair_audit import audit_record, derive_pair_source_evidence, load_source_entries, sample_category_rows
 
 
 class SourcePairAuditTests(unittest.TestCase):
@@ -57,6 +57,55 @@ class SourcePairAuditTests(unittest.TestCase):
 
         self.assertEqual(result["source_entry_match"]["sv"], "casefold")
         self.assertEqual(result["source_entries"]["sv"][0]["word"], "Polen")
+
+    def test_derived_evidence_is_limited_to_the_comparison_pos(self):
+        entries = {
+            ("sv", "gift"): [
+                {"source_entry_key": "sv|gift|noun||a", "word": "gift", "part_of_speech": "noun",
+                 "claims": [{"relation": "inherited_from", "related_language": "gmw-pro", "related_form": "*gift"}]},
+                {"source_entry_key": "sv|gift|verb||b", "word": "gift", "part_of_speech": "verb",
+                 "claims": [{"relation": "inherited_from", "related_language": "gmw-pro", "related_form": "*giftan"}]},
+            ],
+            ("en", "gift"): [
+                {"source_entry_key": "en|gift|noun||c", "word": "gift", "part_of_speech": "noun",
+                 "claims": [{"relation": "inherited_from", "related_language": "gmw-pro", "related_form": "*gift"}]},
+                {"source_entry_key": "en|gift|verb||d", "word": "gift", "part_of_speech": "verb",
+                 "claims": [{"relation": "inherited_from", "related_language": "gmw-pro", "related_form": "*giftan"}]},
+            ],
+        }
+
+        result = audit_record("gift", "gift", "sv", "en", {"pos_a": "noun", "pos_b": "noun"}, entries)
+
+        self.assertEqual(result["source_pos_entry_count"], {"sv": 1, "en": 1})
+        self.assertEqual(len(result["source_derived_relationships"]), 1)
+        claims = result["source_derived_relationships"][0]["claims_a"]
+        self.assertEqual([claim["source_entry_key"] for claim in claims], ["sv|gift|noun||a"])
+
+    def test_source_evidence_distinguishes_direct_loan_from_shared_donor(self):
+        sv_fleece = {
+            "source_entry_key": "sv|fleece|noun||sv1", "word": "fleece",
+            "claims": [{"relation": "borrowed_from", "template_name": "bor", "template_index": 0,
+                        "related_language": "en", "related_form": "fleece", "args": {"2": "en", "3": "fleece"}}],
+        }
+        en_fleece = {"source_entry_key": "en|fleece|noun||en1", "word": "fleece", "claims": []}
+        direct = derive_pair_source_evidence([sv_fleece], [en_fleece], "sv", "fleece", "en", "fleece")
+        self.assertEqual(len(direct), 1)
+        self.assertEqual(direct[0]["type"], "direct_borrowing_claim")
+        self.assertEqual(direct[0]["matched_donor_entry_keys"], ["en|fleece|noun||en1"])
+
+        sv_queue = {
+            "source_entry_key": "sv|kö|noun||sv2", "word": "kö",
+            "claims": [{"relation": "borrowed_from", "related_language": "fr", "related_form": "queue"}],
+        }
+        da_queue = {
+            "source_entry_key": "da|kø|noun||da2", "word": "kø",
+            "claims": [{"relation": "borrowed_from", "related_language": "fr", "related_form": "queue"}],
+        }
+        shared = derive_pair_source_evidence([sv_queue], [da_queue], "sv", "kö", "da", "kø")
+        self.assertEqual(len(shared), 1)
+        self.assertEqual(shared[0]["type"], "shared_borrowing_source_claim")
+        self.assertEqual(shared[0]["related_language"], "fr")
+        self.assertEqual(shared[0]["related_form_key"], "queue")
 
     def test_category_sampler_uses_seeded_distinct_offsets_and_oversamples_other(self):
         def fake_response(url, timeout):

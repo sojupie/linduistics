@@ -43,6 +43,82 @@ def matching_source_entries(entries: dict[tuple[str, str], list[dict]], language
     return candidates, "casefold" if candidates else "none"
 
 
+def select_source_entries_by_pos(entries: list[dict], pos: str | None) -> tuple[list[dict], str]:
+    if not pos:
+        return [], "comparison_pos_missing"
+    selected = [entry for entry in entries if str(entry.get("part_of_speech", "")).casefold() == pos.casefold()]
+    return selected, "matched_pos" if selected else "no_source_entry_for_comparison_pos"
+
+
+def _claim_reference(entry: dict, claim: dict) -> dict:
+    return {
+        "source_entry_key": entry["source_entry_key"],
+        "template_index": claim.get("template_index"),
+        "template_name": claim.get("template_name"),
+        "args": claim.get("args", {}),
+        "related_language": claim.get("related_language"),
+        "related_form": claim.get("related_form"),
+        "source_uncertain": claim.get("source_uncertain", False),
+    }
+
+
+def derive_pair_source_evidence(
+    entries_a: list[dict], entries_b: list[dict], lang_a: str, word_a: str, lang_b: str, word_b: str
+) -> list[dict]:
+    """Link explicit entry claims across this pair without turning them into classifications."""
+    evidence = []
+    borrowed_a: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    borrowed_b: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    inherited_a: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    inherited_b: dict[tuple[str, str], list[dict]] = defaultdict(list)
+
+    for entries, language, word, partner_entries, partner_language, partner_word, borrowed_claims, inherited_claims in (
+        (entries_a, lang_a, word_a, entries_b, lang_b, word_b, borrowed_a, inherited_a),
+        (entries_b, lang_b, word_b, entries_a, lang_a, word_a, borrowed_b, inherited_b),
+    ):
+        for entry in entries:
+            for claim in entry.get("claims", []):
+                relation = claim.get("relation")
+                related_language = claim.get("related_language")
+                related_form = claim.get("related_form")
+                if not isinstance(related_form, str) or not related_language:
+                    continue
+                key = (related_language, related_form.casefold())
+                if relation == "borrowed_from":
+                    borrowed_claims[key].append(_claim_reference(entry, claim))
+                    if related_language == partner_language and related_form.casefold() == partner_word.casefold():
+                        partner_keys = [
+                            candidate["source_entry_key"]
+                            for candidate in partner_entries
+                            if candidate.get("word", "").casefold() == related_form.casefold()
+                        ]
+                        evidence.append({
+                            "type": "direct_borrowing_claim",
+                            "donor_language": partner_language,
+                            "donor_form": related_form,
+                            "recipient_language": language,
+                            "recipient_form": word,
+                            "claim": _claim_reference(entry, claim),
+                            "matched_donor_entry_keys": partner_keys,
+                        })
+                elif relation == "inherited_from":
+                    inherited_claims[key].append(_claim_reference(entry, claim))
+
+    for relation_type, claims_a, claims_b in (
+        ("shared_borrowing_source_claim", borrowed_a, borrowed_b),
+        ("shared_inherited_form_claim", inherited_a, inherited_b),
+    ):
+        for language, form in sorted(claims_a.keys() & claims_b.keys()):
+            evidence.append({
+                "type": relation_type,
+                "related_language": language,
+                "related_form_key": form,
+                "claims_a": claims_a[(language, form)],
+                "claims_b": claims_b[(language, form)],
+            })
+    return evidence
+
+
 def fetch_pair(api_url: str, source: str, target: str, word_a: str, word_b: str) -> dict | None:
     matches = []
     offset, total, limit = 0, 1, 100
@@ -74,6 +150,8 @@ def audit_record(
 ) -> dict:
     source_entries_a, source_match_a = matching_source_entries(entries, source, word_a)
     source_entries_b, source_match_b = matching_source_entries(entries, target, word_b)
+    selected_a, pos_match_a = select_source_entries_by_pos(source_entries_a, comparison.get("pos_a") if comparison else None)
+    selected_b, pos_match_b = select_source_entries_by_pos(source_entries_b, comparison.get("pos_b") if comparison else None)
     return {
         "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
@@ -85,6 +163,11 @@ def audit_record(
             source: source_match_a,
             target: source_match_b,
         },
+        "source_pos_entry_count": {source: len(selected_a), target: len(selected_b)},
+        "source_pos_entry_match": {source: pos_match_a, target: pos_match_b},
+        "source_derived_relationships": derive_pair_source_evidence(
+            selected_a, selected_b, source, word_a, target, word_b
+        ),
     }
 
 
