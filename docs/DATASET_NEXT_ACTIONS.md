@@ -1,84 +1,87 @@
 # What to do next with the dataset
 
-## Aim
+## Direction
 
-Keep building and transforming the data ourselves. The first public result does not need to serve a large audience: a small, reproducible dataset that helps one or two people inspect lexical relationships would be worthwhile. The sourcing and pipeline work is part of the project, so do not replace it with a finished corpus or turn the project into a CRUD app.
+Keep sourcing, extracting, and transforming lexical data ourselves. That work is part of the project. Do not replace it with a finished corpus or let the site’s current endpoints dictate the data model.
 
-The useful thing we can offer is a traceable set of comparisons: what the source says about each entry, how those entries relate (if the evidence supports a link), what our pipeline observes about their forms and meanings, and which steps produced the result. Do not present candidate counts as language-wide cognate percentages.
+A good outcome can be modest: a small public dataset that one or two people find useful because they can inspect where a lexical claim came from and how we transformed it. CLDF is welcome as an exchange format. Use it where it makes the result easier to reuse; keep the working pipeline shaped around the data and evidence we actually collect.
 
-CLDF is fine as a sharing format. Keep the working pipeline shaped around the evidence we need to retain; map the finished slice to CLDF modules where they fit, and add a small linked table for project-specific evidence if needed.
+The dataset should preserve different kinds of information separately:
 
-## Where the work stands
+- **Source records and claims:** what a source says, where it says it, and the entry or sense it applies to.
+- **Computed observations:** spelling, sound, meaning, and other values calculated by our pipeline.
+- **Our interpretations:** judgments we make from the evidence, including uncertainty and multiple possible paths.
 
-- The arbitrary candidate caps are removed. The local rebuild has 1,638,454 directed comparison candidates, about four times the previous file. This is candidate output, not a measure of vocabulary coverage.
-- All 23 previously flagged comparison spellings are present in the uncapped output after case-fold matching: 20 exact spellings and three lowercase canonical forms.
-- Translation mining now retains the source sense that supplied each candidate. This fixes the demonstrated `haben` / `own` sense mismatch and preserves multiple source translation claims for `fressen` / `fret` and `bis` / `till`.
-- The refreshed 270-case audit now has a comparison row for every case and active source-sense links on both sides. Three German–English spellings (`Haben`, `Fressen`, `Bis`) resolve through an explicitly recorded unique case-fold match.
-- The extractor now normalizes 3,794 previously unmapped source-claim records into 3,930 relation records. This includes plain-language forms for inheritance, derivation, borrowing variants, cognate mentions, partial calques, pseudo-loans, and formation patterns. The raw template name and arguments remain attached.
-- Rejoining the same 270 cases to the updated source export produces 2,346 normalized edges backed by 2,401 source-template records. It skips 287 unmapped or nonrelation claims, which remain in the audit files.
-- A small case ledger now documents concrete examples and separates source paths, comparison observations, and evidence-link status in [DATASET_CASE_REVIEW.md](DATASET_CASE_REVIEW.md).
-- The full pipeline test suite passes: 96 tests.
-- None of this changes the live database or proves the generated category labels correct. The old `other` value remains a candidate-builder remainder, not a linguistic relationship.
+One word pair may have more than one path. A source’s claim is evidence to preserve, not automatic proof of the full historical relationship. Missing evidence stays missing; it does not mean “unrelated.”
 
-See [the stage record](NEXT_DATASET_STAGE.md) and [the running findings log](DATASET_NEXT_STEPS.md) for methods, examples, and limitations.
+## Current state
 
-## Next work, in order
+- The pipeline covers Danish, German, English, Norwegian Bokmål, and Swedish Wiktionary-derived data.
+- The local source export keeps source-entry identity, source senses, raw etymology templates and arguments, and normalized claims. It contains 710,110 source records and 1,148,705 claim records.
+- A compact local slice contains 5,446 source-backed named-after, coined-by, coinage, and onomatopoeic facts. Each has a stable ID and source URL; it omits full etymology prose.
+- A separate 270-case audit keeps comparison senses, source claims, and their evidence links available for inspection. It is diagnostic, not representative.
+- The full pipeline suite passes 100 tests. Generated files are local and ignored; the live database has not been updated.
 
-### 1. Review the refreshed source audit
+These counts describe the current extracted files, not vocabulary coverage or the share of words with any historical relationship. The current `other` category is a candidate-builder remainder, not a linguistic conclusion.
 
-The three fresh 90-pair audits and their compact edge projection are complete. Now review the concrete cases where the evidence surfaces distinct paths or identity limits, especially the examples already named in the stage record. Keep three things distinct:
+## Next work
 
-- **Source claims:** what Wiktionary records, including the exact entry, sense, direction, wording, and template evidence.
-- **Comparison observations:** computed spelling, sound, meaning, and translation evidence.
-- **Our interpretation:** what those records support, what is ambiguous, and what remains unresolved.
+### 1. Make the source-to-result path work end to end
 
-A claim attached to a word entry is not automatically a claim about the selected sense. A missing link is not evidence that two words are unrelated. Record unresolved matches rather than guessing.
+Use the existing case ledger and local audit files. For a compact set of useful examples—*fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*—follow the data through:
 
-### 2. Make a small reviewed case set that tests the data model
+1. the exact source entry and etymology;
+2. the selected sense or component, when available;
+3. the extracted source claim and its direction;
+4. the comparison candidate and computed observations;
+5. the pipeline transformation that produced the displayed result.
 
-Use [the reviewed case ledger](DATASET_CASE_REVIEW.md) and existing audits, not a new research project or broad manual survey. Include examples that exercise:
+Record which step loses, merges, or misapplies evidence. Fix demonstrated extraction or identity problems and add a regression example for each one. Do not manually relabel the bulk dataset from this small set.
 
-- inheritance and cognate mentions;
-- direct borrowing and borrowing from a shared donor;
-- derivation, compounds, and component-level relationships;
-- homographs and multiple senses;
-- similar forms with uncertain or missing origin evidence.
+### 2. Keep building the evidence model from real source structures
 
-The existing examples around *bank*, *bankman*, *sandbank*, *ombudsman*, *clown*, *fleece*, and the refreshed translation pairs are a practical starting set. For each, preserve the full-word relationship separately from any component relationship. One pair can have more than one historical path.
+Continue expanding the extractor where Wiktionary contains structured evidence that the current export drops or flattens. Preserve the raw template and arguments beside each normalized claim. Keep source-supported claims distinct from our judgments and similarity scores. Support multiple etymologies, senses, component relations, and paths for the same spelling or pair.
 
-Do not force all evidence into one exclusive pair label. Store source-backed relationships as directed, provenance-linked claims; store similarity scores as separate observations. Any summary category should be a view over that evidence, not a replacement for it. Treat `other` as “no more specific candidate label assigned” until the evidence explains which records can be described more precisely.
+Treat unresolved source links as unresolved. Do not infer unrelated origins from an empty root field, a missing template, or a lack of a matched entry. Keep source claims queryable even when they do not map cleanly to a current comparison row.
 
-### 3. Fix only demonstrated transformation gaps
+### 3. Publish one small, rerunnable data slice
 
-For each case, identify the earliest step that loses or misjoins useful evidence: source extraction, entry identity, sense alignment, component resolution, relation normalization, or candidate selection. Add a regression check for a reproduced failure, fix that step, then rerun the bounded case set from the recorded local inputs.
+Make a release from the source-to-result slice above, not a copy of the entire raw dump. Include stable IDs, source and entry references, the claims and computed observations used, the transformation version, source-file hashes or revision details where available, a rebuild command, and clear limits on what the data supports.
 
-Do not bulk-relabel the database based on this case set. Do not infer a confirmed relationship from surface similarity, a shared donor alone, a headword-level note, or an unresolved source link.
+Keep the readable JSONL/TSV form as a working baseline. Then map the entries, forms, senses, and compatible relationships to CLDF and see whether that makes the slice easier to consume. Put project-specific provenance or evidence in a small linked table if CLDF does not represent it directly. Do not block the data work on a perfect CLDF model.
 
-### 4. Package a small, rerunnable release
+Check attribution, license, and redistribution terms before publishing source-derived content. Links and compact claims may be distributable where copied prose or dumps are not.
 
-Publish only the reviewed slice and its provenance. The first release should include stable IDs; language-specific entries and senses; directed source claims with links back to source records; separate computed observations; the transformation version and rerun command; and a short note describing what the slice can and cannot establish.
+### 4. Add another source when it adds a useful transformation challenge
 
-Use CLDF for compatible forms, senses, and relationship tables where that helps reuse. Keep extra source evidence and project-specific interpretations in clearly linked tables. If CLDF makes the first slice harder to inspect, ship the simplest readable TSV/JSONL alongside it rather than delaying the data work. Do not publish raw dumps or generated source text without checking their terms.
+Wiktionary can remain the main source without being the only source. First name the concrete information we want to add—for example, a stable language identifier, a missing historical form, or an independent account of a borrowing path. Then choose a source that can supply it and preserve its claims separately from Wiktionary’s.
 
-## The first release should let someone
+The point is not to import a finished answer and replace our pipeline. The point is to learn how sources differ, connect their records, and make those transformations inspectable. Keep genealogy, typology, and contact data as separate dimensions if we add them; do not fold them into a word-pair label.
 
-1. Pick a word comparison and see which source entries and senses were matched.
-2. Follow each historical claim to the source record and see its direction and evidence.
-3. Distinguish a source assertion from a computed similarity score and from our interpretation.
-4. See ambiguity, missing links, and multiple paths without silently turning them into “unrelated” or one confident label.
-5. Rebuild the released slice from the documented inputs and pipeline version.
+## A useful first release
 
-## Defer until the cases show a need
+Someone should be able to pick a result and:
 
-- Adding another source just to make the dataset look broader. Add one when a concrete case shows which missing fact it could contribute; keep Wiktionary sourcing and transformation central.
-- A broad typological or genealogical database. Language-level genealogy, area, and typology are separate data dimensions and can be added when there is a useful source and a concrete question.
-- Reclassifying every comparison or claiming language-wide cognate proportions.
-- Building a new data platform or forcing CLDF to become the internal pipeline model.
+1. identify the source entry and sense used;
+2. inspect the source claim, direction, and evidence;
+3. distinguish source assertions from computed values and our interpretation;
+4. see multiple paths, missing links, and uncertainty without a forced one-box label;
+5. rerun the transformation on the documented local inputs.
 
-## Done for this stage when
+That is enough for a useful public artifact. It does not need complete language coverage, expert review of every row, a new data platform, or a claim about the proportion of either language’s vocabulary that is cognate.
 
-- The refreshed case audits produce a compact source-claim edge file with active-sense links and unresolved matches visible. **Complete:** 270/270 cases now have comparison rows and active links on both sides; the 2,341-edge projection is reproducible from the local audit files.
-- The selected cases demonstrate that source claims, lexical paths, comparison observations, and project interpretations stay distinct.
-- Reproduced transformation failures have regression checks, and the slice can be rebuilt from recorded local inputs.
-- A small release is understandable and useful without claiming completeness or expert adjudication.
-- CLDF compatibility has been checked, and the release uses it where it helps rather than as a prerequisite.
+## Defer
+
+- Reclassifying every current comparison before the source-to-result path is traceable.
+- Treating pair-candidate counts as vocabulary-wide rates.
+- Importing broad genealogy or typology data without a question the project will answer with it.
+- Building a general-purpose ontology or forcing CLDF to become the internal data model.
+- Adding sources solely to make the dataset look larger.
+
+## Stage complete when
+
+- The selected examples can be traced from source entry and sense through extraction and transformation to the result.
+- Demonstrated loss or identity bugs have regression checks.
+- Claims, observations, and interpretations remain distinguishable, including uncertainty and multiple paths.
+- A small slice can be rebuilt and inspected from documented local inputs.
+- A CLDF export has been tried and retained only if it helps another person use the slice.
