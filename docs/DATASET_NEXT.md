@@ -49,11 +49,13 @@ The reproducible local artifact is `pipeline/data/case_claim_target_entries.json
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
 ```
 
-### 1. Test whether the source can distinguish target entries
+In the 78 exact-form claims, 44 point to one target entry and 34 point to multiple entries (19 to two, five to three, one to four, six to five, and three to seven). A single entry can still contain several senses, so neither count establishes a sense-level relation. A first source-side inspection found that *fleece* noun and verb entries share the same recorded history, *clown* noun and verb entries share the same recorded history, and German *Bank* has two distinct numbered etymologies while the Swedish claim names only the form `Bank`. These are candidate links, not grounds to pick one target sense.
 
-Take the multi-entry matches first (*fleece*, *clown*, then the *bank* cases) and inspect the target entries' own etymology claims and source wording. Ask whether those records identify a specific target entry, support more than one, or leave the target at form level. Do not use the comparison's selected sense as evidence unless Wiktionary links the claim to that sense.
+### 1. Audit what supports each exact target link
 
-Record the outcome as a source-supported entry link, a set of candidate entries, or unresolved at form level. If the source does not distinguish homographs, preserve that ambiguity; do not invent a single target identity. This will tell us whether the useful next transformation is reciprocal-claim evidence, a multivalued source-entry link in CLDF, or simply a clearly recorded unresolved link.
+Review the 78 exact-form claims, starting with multi-entry matches (*fleece*, *clown*, and *bank*). Record whether the target-side source independently supports one candidate, supports multiple candidates, or only matches the claimed form. Keep these as audit outcomes, not public linguistic categories. Do not use the comparison's selected sense as evidence unless Wiktionary links the claim to that sense.
+
+For a source that does not distinguish homographs, preserve all candidates and the unresolved form-level claim. For a unique entry with multiple senses, keep the entry link but leave sense identity unresolved. This review will show whether reciprocal claims add evidence or whether the source genuinely stops at entry/form level; then decide whether CLDF should expose the candidate links as a multivalued relation.
 
 ### 2. Fix only a demonstrated loss
 
