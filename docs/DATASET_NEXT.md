@@ -8,7 +8,7 @@ Wiktionary is the main source for the current work, not the definition of the pr
 
 ## Current checkpoint (2026-09-28)
 
-The local source-linked slice now has 13 deliberate case groups, 56 directed comparison candidates, 40 comparison entries, 46 component source entries, 25 pair-claim matches, and 12 shared-component ancestor candidates. It remains a local diagnostic; no live database rows changed.
+The local source-linked slice now has 15 deliberate case groups, 60 directed comparison candidates, 83 unique source entries, 273 source senses, 26 pair-claim matches, and 12 shared-component ancestor candidates. It remains a local diagnostic; no live database rows changed. The current action plan and latest export counts are in [DATASET_NEXT_ACTIONS.md](DATASET_NEXT_ACTIONS.md).
 
 Four new pairs were selected because the existing component audit found a shared reconstructed ancestor in one component on each side:
 
@@ -25,7 +25,7 @@ The examples show a concrete meaning of the old `partial_cognate` label: the cla
 
 I re-encoded the selected senses with the current multilingual MiniLM default and the same alignment function. The four scores reproduce within 1.2e-7. For *berauben/bereave*, the unrestricted best gloss pair scores 0.624, while the stored 0.616 uses the English sense linked by source-translation evidence; applying that restriction reproduces the stored value. For *kurv/kurv*, the stored score is 0.749, just below the 0.75 cutoff. No score mismatch appeared in these examples, but the original model revision was not recorded, so the exact historical checkpoint is unverified.
 
-The refreshed CLDF Generic preview now includes exact target-entry candidates: 5 languages, 158 entries, 616 senses, 45 comparison forms, 1,430 expanded source-claim records representing 1,339 template occurrences, 1,251 normalized relation targets, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 comparison-claim matches. It preserves 477 unique target-form resolutions (86 exact, 389 outside the five indexed languages, and two not found), 161 candidate-entry links across 113 entries, and 53 exact return-mention cross-references. The cross-reference relation pairs are six borrowing→cognate mentions, 36 cognate mention→cognate mention, and 11 doublet→doublet; these are internal source links, not independent confirmation. The exporter checks stable IDs and declared foreign keys, including that every relation target is referenced; the official CLDF validator has not been run. The original 79-entry, 262-sense, 520-claim case subset remains included in the expanded export. The multi-target handling is described in [the source-claim audit](DATASET_NEXT_STEPS.md#preserve-multi-target-template-claims-2026-09-28).
+The refreshed CLDF Generic preview now includes exact target-entry candidates: 5 languages, 173 entries, 664 senses, 49 comparison forms, 1,556 expanded source-claim records representing 1,462 template occurrences, 1,373 normalized relation targets, 30 component links, 12 shared-component ancestor candidates, 30 unordered comparisons, and 26 comparison-claim matches. It preserves 499 unique target-form resolutions (91 exact, 406 outside the five indexed languages, and two not found), 173 candidate-entry links across 125 entries, and 57 exact return-mention cross-references. The cross-reference relation pairs are six borrowing→cognate mentions, 40 cognate mention→cognate mention, and 11 doublet→doublet; these are internal source links, not independent confirmation. The exporter checks stable IDs and declared foreign keys, including that every relation target is referenced; the official CLDF validator has not been run. The expanded export includes the current 15-case slice. The multi-target handling is described in [the source-claim audit](DATASET_NEXT_STEPS.md#preserve-multi-target-template-claims-2026-09-28).
 
 ## Next work
 
@@ -35,11 +35,11 @@ The Swedish and German entries each have a `borrowed_from(en, fleece)` claim. Th
 
 The CLDF export now records that source scope on `source-claims.csv`. `claim-matches.csv` names its sense IDs `Comparison_Source_Sense_ID` and `Comparison_Target_Sense_ID`, so they are not mistaken for source-attested sense links. This keeps the actual borrowing claim separate from the comparison candidate it matched.
 
-### Completed: find every local target entry for a form-level claim
+### Historical 13-case target lookup snapshot (superseded)
 
 The case-slice audit scans all five local dumps and retains every exact spelling match, including separate parts of speech and etymology sections. It keeps target-form matching separate from target-sense identity. Exact spelling is only a candidate link; the source claim does not identify one of those senses.
 
-Across 495 distinct form-level claims, 78 resolved to one or more exact target entries, 415 use language codes outside the five local dumps, and two did not occur in the recorded dump snapshot. The audit retained 152 candidate-entry links across 105 unique entries. These are counts within the 13-case slice, not coverage or rates for Wiktionary or any language. There were no case-fold-only results in this slice.
+The first target-lookup pass covered 495 distinct form-level claims: 78 resolved to one or more exact target entries, 415 used language codes outside the five local dumps, and two did not occur in the recorded dump snapshot. It retained 152 candidate-entry links across 105 unique entries. These are historical counts within the 13-case slice, not coverage or rates for Wiktionary or any language. The expanded, target-aware audit supersedes them; see [the current plan](DATASET_NEXT_ACTIONS.md) and [multi-target audit](DATASET_NEXT_STEPS.md#preserve-multi-target-template-claims-2026-09-28).
 
 The *fleece* and *clown* claims each reach English noun and verb entries, demonstrating that spelling alone cannot identify a target entry. The Danish *berøve* claim resolves to its local Danish entry. The corresponding Norwegian claim uses Wiktionary code `no`, whereas the local dump is Norwegian Bokmål (`nb`); it is reported as `language_not_indexed`, not as a failed Bokmål lookup. Two missing forms are literal `-` values in source cognate templates; preserve them as source data rather than silently repairing them.
 
