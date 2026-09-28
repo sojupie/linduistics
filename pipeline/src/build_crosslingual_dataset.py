@@ -29,6 +29,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from classifier import classify_pair, etymological_relation
+from extract_etymology_records import source_entry_key
 from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
@@ -131,9 +132,24 @@ def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
 def mine_translation_cliques(
     en_jsonl_path: Path,
     lexicons: Dict[str, Dict[str, dict]],
-) -> Dict[Tuple[str, str], Set[Tuple[str, str]]]:
-    """Extracts candidate translation links from Kaikki English dump."""
+) -> Tuple[
+    Dict[Tuple[str, str], Set[Tuple[str, str]]],
+    Dict[Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str]]]],
+]:
+    """Extract candidate links and retain the English source entry and sense."""
     pairs_by_lang: Dict[Tuple[str, str], Set[Tuple[str, str]]] = defaultdict(set)
+    source_senses_by_pair: Dict[
+        Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str]]]
+    ] = defaultdict(lambda: defaultdict(set))
+
+    def add_pair(
+        lang_pair: Tuple[str, str],
+        word_pair: Tuple[str, str],
+        source_entry: str,
+        source_sense: str,
+    ) -> None:
+        pairs_by_lang[lang_pair].add(word_pair)
+        source_senses_by_pair[lang_pair][word_pair].add((source_entry, source_sense))
 
     if not en_jsonl_path.is_file():
         print(f"Warning: {en_jsonl_path} not found.")
@@ -154,11 +170,13 @@ def mine_translation_cliques(
             en_meta = _lookup_lemma(en_lex, lowercase_indexes["en"], en_word)
             if not en_meta:
                 continue
+            en_source_entry_key = source_entry_key(d)
 
             for sense in d.get("senses", []):
                 translations = sense.get("translations", [])
                 if not translations:
                     continue
+                en_source_sense_id = str(sense.get("id") or "")
 
                 targets: Dict[str, List[str]] = defaultdict(list)
                 for t in translations:
@@ -179,9 +197,15 @@ def mine_translation_cliques(
                     pair_key = ("en", t_lang) if "en" < t_lang else (t_lang, "en")
                     for tw in t_words:
                         if pair_key == ("en", t_lang):
-                            pairs_by_lang[pair_key].add((en_meta["word"], tw))
+                            add_pair(
+                                pair_key, (en_meta["word"], tw),
+                                en_source_entry_key, en_source_sense_id,
+                            )
                         else:
-                            pairs_by_lang[pair_key].add((tw, en_meta["word"]))
+                            add_pair(
+                                pair_key, (tw, en_meta["word"]),
+                                en_source_entry_key, en_source_sense_id,
+                            )
 
                 # Target to Target clique (canonically sorted pair key)
                 t_langs = list(targets.keys())
@@ -193,16 +217,22 @@ def mine_translation_cliques(
                         for w_a in targets[l_a]:
                             for w_b in targets[l_b]:
                                 if l_a < l_b:
-                                    pairs_by_lang[pair_key].add((w_a, w_b))
+                                    add_pair(
+                                        pair_key, (w_a, w_b),
+                                        en_source_entry_key, en_source_sense_id,
+                                    )
                                 else:
-                                    pairs_by_lang[pair_key].add((w_b, w_a))
+                                    add_pair(
+                                        pair_key, (w_b, w_a),
+                                        en_source_entry_key, en_source_sense_id,
+                                    )
 
     elapsed = time.perf_counter() - start_time
     total_mined = sum(len(p) for p in pairs_by_lang.values())
     print(
         f"Extracted {total_mined:,} translation pairs across {len(pairs_by_lang)} language combinations in {elapsed:.2f}s."
     )
-    return pairs_by_lang
+    return pairs_by_lang, source_senses_by_pair
 
 
 def find_surface_collisions(
@@ -291,6 +321,7 @@ def align_pair_senses(
     meta_b: dict,
     matcher: SemanticMatcher,
     is_mined_translation: bool = False,
+    translation_source_senses: Set[Tuple[str, str]] | None = None,
 ) -> Tuple[float, float, str, str, List[dict], List[dict]]:
     """Evaluates N x M sense matrix between Word A and Word B.
 
@@ -350,6 +381,22 @@ def align_pair_senses(
         for j in range(len(senses_b))
         if senses_a[i].get("is_active", True) and senses_b[j].get("is_active", True)
     ]
+
+    # A mined English translation is attached to a specific source sense.
+    # Restrict alignment to that sense when its identity is present and active.
+    refs = translation_source_senses or set()
+    for side, meta, senses in ((0, meta_a, senses_a), (1, meta_b, senses_b)):
+        if meta.get("lang") != "en" or not refs:
+            continue
+        source_indices = {
+            i for i, sense in enumerate(senses)
+            if (sense.get("source_entry_key"), sense.get("source_sense_id")) in refs
+            and sense.get("is_active", True)
+        }
+        if source_indices:
+            active_pairs = [
+                pair for pair in active_pairs if pair[side] in source_indices
+            ]
 
     if active_pairs:
         best_i, best_j = max(active_pairs, key=lambda idx: sim_matrix[idx[0], idx[1]])
@@ -435,6 +482,9 @@ def build_pair_dataset(
     mined_pairs: Set[Tuple[str, str]],
     lexicons: Dict[str, Dict[str, dict]],
     matcher: SemanticMatcher,
+    translation_source_senses: Dict[
+        Tuple[str, str], Set[Tuple[str, str]]
+    ] | None = None,
 ) -> List[dict]:
     """Constructs comparison records for (lang_a, lang_b) and its inverse."""
     lex_a = lexicons[lang_a]
@@ -444,7 +494,9 @@ def build_pair_dataset(
     seen_pairs: Set[Tuple[str, str]] = set()
 
     # Step 1: Pre-collect candidate items
-    candidate_items: List[Tuple[dict, dict, bool, float, float]] = []
+    candidate_items: List[
+        Tuple[dict, dict, bool, float, float, Set[Tuple[str, str]]]
+    ] = []
 
     # Keep every mined translation candidate. The comparison table is already
     # candidate data, so an arbitrary cap would silently hide source links.
@@ -461,7 +513,8 @@ def build_pair_dataset(
             if (meta_a["ipa"] and meta_b["ipa"])
             else 0.0
         )
-        candidate_items.append((meta_a, meta_b, True, s_orth, s_phon))
+        source_senses = (translation_source_senses or {}).get((w_a, w_b), set())
+        candidate_items.append((meta_a, meta_b, True, s_orth, s_phon, source_senses))
         seen_pairs.add((meta_a["word"], meta_b["word"]))
 
     # 1.2 Surface collisions
@@ -473,11 +526,11 @@ def build_pair_dataset(
         seen_pairs=seen_pairs,
     )
     for meta_a, meta_b, s_orth, s_phon in collisions:
-        candidate_items.append((meta_a, meta_b, False, s_orth, s_phon))
+        candidate_items.append((meta_a, meta_b, False, s_orth, s_phon, set()))
 
     # Pre-encode all glosses for candidate items in batches
     all_glosses: List[str] = []
-    for meta_a, meta_b, _, _, _ in candidate_items:
+    for meta_a, meta_b, _, _, _, _ in candidate_items:
         for s in meta_a.get("senses") or []:
             all_glosses.append(s["gloss"])
         for s in meta_b.get("senses") or []:
@@ -485,9 +538,10 @@ def build_pair_dataset(
     matcher.preencode_glosses(all_glosses)
 
     # Step 2: Sense alignment and classification
-    for meta_a, meta_b, is_mined, s_orth, s_phon in candidate_items:
+    for meta_a, meta_b, is_mined, s_orth, s_phon, source_senses in candidate_items:
         s_sem, max_active_sem, def_a, def_b, senses_a, senses_b = align_pair_senses(
-            meta_a, meta_b, matcher, is_mined_translation=is_mined
+            meta_a, meta_b, matcher, is_mined_translation=is_mined,
+            translation_source_senses=source_senses,
         )
 
         matched_a = next(s for s in senses_a if s["is_active_match"])
@@ -537,6 +591,10 @@ def build_pair_dataset(
             "shared_etym_root": shared_etym_root,
             "etym_text_a": etym_text_a or None,
             "etym_text_b": etym_text_b or None,
+            "translation_source_senses": orjson.dumps([
+                {"source_entry_key": entry_key, "source_sense_id": sense_id}
+                for entry_key, sense_id in sorted(source_senses)
+            ]).decode("utf-8"),
         })
 
     # Step 3: Symmetrical Inversion (Lang B -> Lang A)
@@ -566,6 +624,7 @@ def build_pair_dataset(
             "shared_etym_root": r["shared_etym_root"],
             "etym_text_a": r["etym_text_b"],
             "etym_text_b": r["etym_text_a"],
+            "translation_source_senses": r["translation_source_senses"],
         })
 
     return symmetrical
@@ -595,7 +654,7 @@ def main() -> None:
     lexicons = load_canonical_lexicons(args.lemma_dir)
 
     print("Mining translation cliques...")
-    mined_by_pair = mine_translation_cliques(en_dump, lexicons)
+    mined_by_pair, translation_senses_by_pair = mine_translation_cliques(en_dump, lexicons)
 
     print("Initializing semantic matcher...")
     matcher = SemanticMatcher()
@@ -615,7 +674,10 @@ def main() -> None:
         pair_key = (l_a, l_b)
         mined = mined_by_pair.get(pair_key, set())
         print(f"\nProcessing pair [{l_a} <-> {l_b}] ({len(mined):,} mined translation links)...")
-        pair_records = build_pair_dataset(l_a, l_b, mined, lexicons, matcher)
+        pair_records = build_pair_dataset(
+            l_a, l_b, mined, lexicons, matcher,
+            translation_senses_by_pair.get(pair_key, {}),
+        )
         all_rows.extend(pair_records)
         for r in pair_records:
             category_counts[r["category"]] += 1
@@ -656,6 +718,7 @@ def main() -> None:
         ("shared_etym_root", pa.string()),
         ("etym_text_a", pa.string()),
         ("etym_text_b", pa.string()),
+        ("translation_source_senses", pa.string()),
     ])
 
     cols = {name: [r[name] for r in all_rows] for name in schema.names}

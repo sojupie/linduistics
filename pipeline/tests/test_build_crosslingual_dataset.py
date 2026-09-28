@@ -250,14 +250,58 @@ def test_translation_mining_prefers_exact_target_spelling_and_skips_ambiguous_fa
     }
     translation_dump = tmp_path / "translations.jsonl"
     translation_dump.write_text(
-        '{"word":"present","senses":[{"translations":['
+        '{"word":"present","lang_code":"en","pos":"noun","senses":[{"id":"en-present","translations":['
         '{"code":"de","word":"GIFT"},{"code":"de","word":"Gift"}]}]}\n',
         encoding="utf-8",
     )
 
-    mined = mine_translation_cliques(translation_dump, lexicons)
+    mined, source_senses = mine_translation_cliques(translation_dump, lexicons)
 
     assert mined[("de", "en")] == {("Gift", "present")}
+    assert source_senses[("de", "en")][("Gift", "present")] == {
+        ("en|present|noun||en-present", "en-present")
+    }
+
+
+def test_translation_source_sense_constrains_english_sense_alignment():
+    gloss_a = "have"
+    gloss_b_adj = "possessed"
+    gloss_b_verb = "have rightful possession"
+    lexicons = {
+        "de": {"haben": {
+            "word": "haben", "lang": "de", "pos": "verb", "ipa": "", "def": gloss_a,
+            "glosses": [gloss_a], "senses": [{
+                "sense_id": 1, "source_entry_key": "de|haben|verb||haben-1",
+                "source_sense_id": "haben-1", "gloss": gloss_a, "pos": "verb",
+                "tags": [], "is_active": True,
+            }],
+        }},
+        "en": {"own": {
+            "word": "own", "lang": "en", "pos": "adj", "ipa": "", "def": gloss_b_adj,
+            "glosses": [gloss_b_adj, gloss_b_verb], "senses": [
+                {"sense_id": 1, "source_entry_key": "en|own|adj|1|own-adj",
+                 "source_sense_id": "own-adj", "gloss": gloss_b_adj, "pos": "adj",
+                 "tags": [], "is_active": True},
+                {"sense_id": 2, "source_entry_key": "en|own|verb|2|own-verb",
+                 "source_sense_id": "own-verb", "gloss": gloss_b_verb, "pos": "verb",
+                 "tags": [], "is_active": True},
+            ],
+        }},
+    }
+    source_refs = {("haben", "own"): {("en|own|verb|2|own-verb", "own-verb")}}
+    matcher = FixedMatcher({gloss_a: [1.0, 0.0], gloss_b_adj: [1.0, 0.0], gloss_b_verb: [0.0, 1.0]})
+
+    rows = build_pair_dataset(
+        "de", "en", {("haben", "own")}, lexicons, matcher, source_refs
+    )
+
+    assert rows[0]["pos_b"] == "verb"
+    selected = [sense for sense in json.loads(rows[0]["senses_b"]) if sense["is_active_match"]]
+    assert selected[0]["source_sense_id"] == "own-verb"
+    assert json.loads(rows[0]["translation_source_senses"]) == [{
+        "source_entry_key": "en|own|verb|2|own-verb",
+        "source_sense_id": "own-verb",
+    }]
 
 
 def test_builder_keeps_exact_case_identity_for_mined_pair():
