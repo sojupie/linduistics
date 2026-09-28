@@ -8,6 +8,24 @@ The site is the first consumer. We do not need full language coverage or expert 
 
 This project does not aim to replace Glottolog, Grambank, Wiktionary, or specialist dictionaries. We can link to their records, use them as inputs, and compare our results with them. The lexical data and transformations remain ours.
 
+## The next milestone
+
+Keep the work centered on the part that makes this project fun: taking source data apart, deciding what it can support, and building a transformation that someone else can inspect and rerun. A useful public dataset for one or two people would be a good result. It does not need to become a research project or a general-purpose linguistic database.
+
+The next milestone is a small, end-to-end slice where a comparison can be traced from the selected source senses, through the Wiktionary claims and our transformation, to the result shown by the site. Fix source identity before changing the bulk labels: the current parser merges homographs and etymologies, so its root or part-of-speech fields can belong to a different sense from the one being compared.
+
+### Work order
+
+1. **Keep source identity through parsing.** Preserve source-entry ID, etymology number, source-sense ID, part of speech, root, and etymology text on each sense. Keep distinct homographic entries. When a comparison sense cannot be linked to one source sense, leave that link unresolved instead of choosing a headword-level fallback.
+2. **Use the selected senses in comparisons.** Populate comparison part of speech and etymology evidence from the matched active senses. Do not use a merged headword's scalar root to classify a comparison. Add small regression cases for the identity failures already found.
+3. **Represent what sources say before deciding what it means.** Keep the source's claim, direction, components, wording, and uncertainty separate from our normalized interpretation and any computed similarity. Allow one word pair to have several paths, such as direct borrowing plus a deeper shared origin. Keep misleading similarity queryable even when origin is unknown.
+4. **Compare a narrow rerun with today's output.** Use the existing five varieties and the seeded audit cases. Review each changed result against the linked source sense. Keep the old labels available for comparison; do not apply broad relabeling rules based on this diagnostic sample.
+5. **Make one useful result inspectable.** Let a person follow a result back to its source entry and see what the pipeline did. If that slice is worth sharing, publish a small versioned export with its source manifest, rerun command, limits, and license notes. Use CLDF for the parts it already describes well; keep any extra project fields in a small documented extension.
+
+The milestone is complete when the slice reruns from recorded inputs, its source-to-result links are inspectable, known identity failures have regression checks, and ambiguous cases remain marked as unresolved. This is enough to learn whether the approach is useful before applying it to the rest of the data.
+
+CLDF is just an output format here. Do not build around it in advance. Export to it when it makes the slice easier for another person to read or reuse.
+
 ## Design rule
 
 Store source records, linguistic claims, and computed results as different things.
