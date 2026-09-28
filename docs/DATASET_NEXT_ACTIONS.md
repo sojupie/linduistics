@@ -25,7 +25,8 @@ One word pair may have more than one path. A source’s claim is evidence to pre
 - The all-pair source-claim audit finds 20,354 evidence rows across all 10 language pairs, including 13,143 `other` candidates with a matching entry-level source claim. It retains the possible IDs for 406 ambiguous target matches. See the [audit findings and source-aware rebuild](DATASET_NEXT_STEPS.md#candidate-to-source-claim-evidence-export-2026-09-28).
 - The component audit indexed 2.3 million dump entries and checked 1,003,229 component occurrences. Its output now carries all candidate source-sense IDs and glosses without selecting one. About 45% of occurrences match one exact entry, 45% multiple entries, and 10% none; even one entry match may still contain several senses. See the component-link findings in the same audit note.
 - The existing shared-component audit projects source-root claims onto compound components. It finds 592 shared-root candidates when every component must have one exact entry, and 569 when recorded peer-language paths are also excluded. These remain candidate ancestry links, not reviewed cognate sets.
-- A demonstrated false-friend error is fixed: English *Bankman* “a surname” versus Swedish *bankman* “bank employee” remains an inspectable candidate but is no longer classified as a false friend. The full pipeline suite passes 102 tests. Generated data remains local and ignored; the live database has not been updated.
+- A rerunnable local case slice now links the six named examples to comparison candidates, source-entry etymologies, pair-specific source claims, and component-entry candidates. It covers 36 directed comparison rows, 22 source etymology records, 10 claim-to-candidate matches, and seven component-claim records. The artifact is generated locally and ignored by Git; the live database is unchanged. Details are in [the case-slice audit](DATASET_NEXT_STEPS.md#source-linked-case-slice-2026-09-28).
+- A demonstrated false-friend error is fixed: English *Bankman* “a surname” versus Swedish *bankman* “bank employee” remains an inspectable candidate but is no longer classified as a false friend. The full pipeline suite passes 104 tests. Generated data remains local and ignored; the live database has not been updated.
 
 These counts describe the current extracted files, not vocabulary coverage or the share of words with any historical relationship. The current `other` category is a candidate-builder remainder, not a linguistic conclusion.
 
@@ -33,7 +34,7 @@ These counts describe the current extracted files, not vocabulary coverage or th
 
 ### 1. Make the source-to-result path work end to end
 
-Trace the compact case set—*fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*—through:
+The first source-to-result trace for *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank* is in the local case slice. Next, review the mismatches it exposes and make only demonstrated changes:
 
 1. the exact source entry and etymology;
 2. the selected sense or component entry, and whether its sense is known;

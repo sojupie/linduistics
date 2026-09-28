@@ -315,4 +315,39 @@ I reran the existing shared-component ancestry scan on this richer projection. I
 
 One useful lead is Proto-Germanic `*samdaz`, which appears as the *sand* component in German *Sandbank*, Bokmål *sandbanke*, and Swedish *sandbank*. That supports checking the component histories together. It does not establish that the whole compounds are cognate, nor select the sense of *bank* used in each compound. The peer-language filter also only removes known paths; absence of a recorded borrowing path does not prove independent inheritance.
 
-Next, connect the all-pair audit's existing directed claims to the selected comparison senses. Recheck this case set before considering broader reclassification. A small machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
+Next, review the source-to-result slice below for specific transformation or identity failures before considering broader reclassification. A public machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
+
+## Source-linked case slice (2026-09-28)
+
+I added `pipeline/src/build_case_evidence_slice.py` to join the current comparison candidates with their active source-entry records, pair-specific claim matches, and component-entry candidates. It uses the source-aware build and local Wiktionary-derived inputs; no live API or database is involved. The generated `pipeline/data/named_case_evidence_slice.jsonl` and manifest are ignored local files.
+
+| Case | Directed comparison rows | Source etymology records | Pair-specific claim matches | Component claim records |
+| --- | ---: | ---: | ---: | ---: |
+| *bank* | 8 | 6 | 0 | 0 |
+| *bankman* | 2 | 1 | 0 | 1 |
+| *fleece* | 4 | 3 | 2 | 0 |
+| *clown* | 8 | 5 | 5 | 0 |
+| *ombudsman* | 8 | 4 | 1 | 2 |
+| *sandbank* | 6 | 3 | 2 | 4 |
+| **Total** | **36** | **22** | **10** | **7** |
+
+The comparison rows are directed records, so reversed versions of the same form pair are counted twice. These totals describe this deliberately selected case set, not dataset coverage. All 22 selected source etymology records overlap an active comparison sense ID, but an entry or etymology-level claim still does not automatically become a claim about that sense. The slice preserves candidate target identity as available or ambiguous. Component records retain every exact entry/sense candidate rather than selecting one.
+
+### What the linked rows show
+
+- **Bank:** the current rows remain `other` / `unknown` and have no source claim directly naming the paired language and form. Source entries do record different paths involving French, Italian, Dutch, German, and Low German. That is a lead for modeling shared donors and separate routes; it does not establish direct inheritance between the compared modern words.
+- **Bankman:** the current rows are now `other` / `unknown`, not `false_friend`. Swedish *bankman* has a `compound_of` claim for *bank + man*. The component lookup finds one exact *bank* entry and three possible *man* entries. The English comparison sense is the surname; the source data does not establish a whole-word relationship.
+- **Fleece:** Swedish and German source claims say `borrowed_from(en, fleece)`; the English entry separately traces its history through Old English to Proto-West Germanic `*fleus`. Both pair rows remain `other` / `unknown`. The pair-specific claim matches have available target entry and sense identities, but the borrowing claim is still not reflected in the scalar comparison relation.
+- **Clown:** Swedish, Danish, Bokmål, and German have five pair-specific borrowing claim matches to English *clown* (German has two template encodings). All current comparison rows remain `other` / `unknown`. The English entry also retains its own deeper-origin claims; keep those as separate source paths.
+- **Ombudsman:** six directed rows are `true_cognate` / `cognate`, while the German pair's two rows are `other` / `unknown`. One source claim matches English *ombudsman* borrowed from Swedish, while Danish and Swedish entries also record compound and Old Norse relationships. This is the case where a deeper shared path and a direct borrowing path coexist.
+- **Sandbank:** all six rows remain `other` / `unknown`. English has a cognate mention naming Swedish *sandbank* and German *Sandbank*. The German target identity is available; the Swedish target identity is ambiguous and its candidate IDs remain in the slice. Component records show the compound analyses and the unresolved component-entry choices.
+
+This demonstrates two concrete limitations without turning the six cases into bulk labels: the scalar relation misses some directly encoded borrowing or cognate-mention evidence, while the `other` value mixes pair rows that have different source evidence. It also shows that the source matcher can find a form but still encounter ambiguous target identity, as for Swedish *sandbank*. No category migration follows from this small review slice.
+
+Rebuild from the recorded local artifacts:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --force
+```
+
+The manifest fingerprints the comparison table, source claim match export, source etymology records, component candidates, and generated JSONL. The builder's focused tests check case matching, active-sense links, pair-claim identity, and component retention. The full pipeline suite must be rerun after the next pipeline change.
