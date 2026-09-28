@@ -190,6 +190,55 @@ class EtymologyRecordTests(unittest.TestCase):
         self.assertEqual((clipping["relation"], clipping["related_language"], clipping["related_form"]), ("clipped_from", "sv", "biograf"))
         self.assertEqual(calque["relation"], "partial_calque_of")
 
+    def test_normalizes_verified_plain_language_relation_templates(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "example",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "derived", "args": {"1": "sv", "2": "de", "3": "Haus"}},
+                    {"name": "inherited", "args": {"1": "sv", "2": "gmh", "3": "hūs"}},
+                    {"name": "partial calque", "args": {"1": "sv", "2": "en", "3": "word"}},
+                    {"name": "semantic loan", "args": {"1": "sv", "2": "de", "3": "Wort"}},
+                    {"name": "unadapted borrowing", "args": {"1": "sv", "2": "pl", "3": "Warszawa"}},
+                    {"name": "pseudo-loan", "args": {"1": "sv", "2": "en", "3": "evergreen"}},
+                    {"name": "pseudoloan", "args": {"1": "sv", "2": "en", "3": "basket"}},
+                    {"name": "cognate", "args": {"1": "da", "2": "ord"}},
+                    {"name": "false cognate", "args": {"1": "en", "2": "word"}},
+                    {"name": "back-form", "args": {"1": "sv", "2": "exempel"}},
+                    {"name": "piecewise doublet", "args": {"1": "en", "2": "patternage"}},
+                    {"name": "piecewise_doublet", "args": {"1": "en", "2": "patronage"}},
+                    {"name": "surface analysis", "args": {"1": "sv", "2": "social", "3": "-ism"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(
+            [
+                (claim["relation"], claim.get("related_language"), claim.get("related_form"))
+                for claim in record["claims"]
+            ],
+            [
+                ("derived_from", "de", "Haus"),
+                ("inherited_from", "gmh", "hūs"),
+                ("partial_calque_of", "en", "word"),
+                ("semantic_loan_from", "de", "Wort"),
+                ("borrowed_from", "pl", "Warszawa"),
+                ("pseudo_loan_based_on", "en", "evergreen"),
+                ("pseudo_loan_based_on", "en", "basket"),
+                ("cognate_mention", "da", "ord"),
+                ("noncognate_mention", "en", "word"),
+                ("back_formed_from", "sv", "exempel"),
+                ("piecewise_doublet_of", "en", "patternage"),
+                ("piecewise_doublet_of", "en", "patronage"),
+                ("surface_analysis", "sv", None),
+            ],
+        )
+        self.assertEqual(record["claims"][-1]["components"], ["social", "-ism"])
+
     def test_keeps_surface_analysis_distinct_from_historical_formation(self):
         record = source_record(
             {

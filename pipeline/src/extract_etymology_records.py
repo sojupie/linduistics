@@ -48,10 +48,30 @@ RELATION_BY_TEMPLATE = {
     "clip": "clipped_from",
     "clipping": "clipped_from",
     "back-formation": "back_formed_from",
+    "back-form": "back_formed_from",
+    "backform": "back_formed_from",
+    "backformation": "back_formed_from",
+    "back formation": "back_formed_from",
     "cog": "cognate_mention",
+    "cognate": "cognate_mention",
     "ncog": "noncognate_mention",
     "noncog": "noncognate_mention",
     "noncognate": "noncognate_mention",
+    "false cognate": "noncognate_mention",
+    "derived": "derived_from",
+    "inherited": "inherited_from",
+    "partial calque": "partial_calque_of",
+    "semantic loan": "semantic_loan_from",
+    "unadapted borrowing": "borrowed_from",
+    "adapted borrowing": "borrowed_from",
+    "learned borrowing": "borrowed_from",
+    "semi-learned borrowing": "borrowed_from",
+    "orthographic borrowing": "borrowed_from",
+    "pseudo-loan": "pseudo_loan_based_on",
+    "pseudoloan": "pseudo_loan_based_on",
+    "piecewise doublet": "piecewise_doublet_of",
+    "piecewise_doublet": "piecewise_doublet_of",
+    "surface analysis": "surface_analysis",
     "root": "rooted_in",
     "sl": "semantic_loan_from",
     "psm": "phono_semantic_match_to",
@@ -240,7 +260,7 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         "args": args,
     }
 
-    if base_name in {"doublet", "dbt"}:
+    if base_name in {"doublet", "dbt", "piecewise doublet", "piecewise_doublet"}:
         return [
             {
                 **claim,
@@ -250,7 +270,7 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             for key, value in sorted(args.items(), key=lambda item: int(item[0]) if str(item[0]).isdigit() else 10**9)
             if str(key).isdigit() and int(key) >= 2 and isinstance(value, str) and value
         ] or [claim]
-    elif base_name in {"cog", "ncog", "noncog", "noncognate"}:
+    elif base_name in {"cog", "cognate", "ncog", "noncog", "noncognate", "false cognate"}:
         return [
             {
                 **claim,
@@ -259,10 +279,19 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             }
             for language in _language_codes(args.get("1"))
         ] or [claim]
-    elif base_name in {"deverbal", "denominal", "clip", "clipping", "back-formation", "abbrev", "abbr", "abbreviation", "acronym", "initialism"}:
+    elif base_name in {
+        "deverbal", "denominal", "clip", "clipping", "back-formation", "back-form", "backform",
+        "backformation", "back formation", "abbrev", "abbr", "abbreviation", "acronym", "initialism",
+    }:
         claim["related_language"] = entry_lang
         claim["related_form"] = args.get("2")
-    elif base_name in {"inh", "bor", "lbor", "slbor", "obor", "ubor", "abor", "borrowed", "der", "uder", "calque", "cal", "clq", "pcalque", "pcal", "pclq", "root", "sl", "psm", "translit", "transliteration"}:
+    elif base_name in {
+        "inh", "inherited", "bor", "lbor", "slbor", "obor", "ubor", "abor", "borrowed",
+        "unadapted borrowing", "adapted borrowing", "learned borrowing", "semi-learned borrowing",
+        "orthographic borrowing", "der", "derived", "uder", "calque", "cal", "clq", "pcalque",
+        "pcal", "pclq", "partial calque", "root", "sl", "semantic loan", "pseudo-loan", "pseudoloan", "psm",
+        "translit", "transliteration",
+    }:
         return [
             {
                 **claim,
@@ -271,7 +300,7 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
             }
             for language in _language_codes(args.get("2"))
         ] or [claim]
-    elif base_name in {"compound", "com", "confix", "surf", "af", "affix", "prefix", "pre", "suffix", "suf", "blend", "univ", "afeq"}:
+    elif base_name in {"compound", "com", "confix", "surf", "surface analysis", "af", "affix", "prefix", "pre", "suffix", "suf", "blend", "univ", "afeq"}:
         claim["related_language"] = entry_lang
         claim["components"] = [
             value
