@@ -23,25 +23,35 @@ All four selected senses overlap exactly with the source senses retained for the
 
 The examples show a concrete meaning of the old `partial_cognate` label: the classifier assigns it when roots match and semantic similarity is below 0.75. It does not test whether only part of the word is cognate. The Danish and Swedish *ramsløg/ramslök* glosses both describe ramsons, yet their score is 0.342. That is a useful score/alignment case to investigate, not a reason to relabel this pair by guess.
 
+I re-encoded the selected senses with the current multilingual MiniLM default and the same alignment function. The four scores reproduce within 1.2e-7. For *berauben/bereave*, the unrestricted best gloss pair scores 0.624, while the stored 0.616 uses the English sense linked by source-translation evidence; applying that restriction reproduces the stored value. For *kurv/kurv*, the stored score is 0.749, just below the 0.75 cutoff. No score mismatch appeared in these examples, but the original model revision was not recorded, so the exact historical checkpoint is unverified.
+
 The refreshed CLDF Generic preview has 5 languages, 79 entries, 262 senses, 45 comparison forms, 520 source claims, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 claim matches. Component candidate resolution is explicit: 27 links resolve all candidate keys to included source entries, one resolves only some, one has no resolved entry, and one has no candidate keys. Shared-ancestor uses link to the included parent and component entries. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run.
 
 ## Next work
 
-### 1. Investigate low semantic scores before touching the labels
+### 1. Trace one real mismatch end to end: *fleece*
 
-Use the exact selected gloss pairs and sense IDs from the case slice to trace how the semantic matcher selected and scored them. Start with *ramsløg/ramslök*, then compare *oversætte/översätta*, *Stieftochter/stepdaughter*, *berauben/bereave*, and the existing *kurv/kurv* case. Separate three questions: did the pipeline align the intended source senses, what did the embedding model score for the selected glosses, and what historical claims are recorded? Fix a demonstrated alignment or scoring problem, and leave the legacy category alone until the evidence says what should replace it.
+Use the English and Swedish entries to test exactly what the current dataset means when it shows a Proto-West Germanic root. Identify which entry, sense, and source claim supplies that root; trace the Swedish borrowing claim separately; then follow both through extraction, comparison matching, and the displayed result. The goal is to find the first step that loses or blurs the distinction between an inherited path and a borrowing path. Keep each path attached to the entry that asserts it. Do not infer that both words inherited the root directly just because the same deep form appears in the comparison view.
 
-### 2. Resolve component evidence without overstating it
+Deliver a small rebuilt case slice that lets someone inspect both source histories, the direction of any borrowing, the selected senses, the computed similarity, and the transformation that joined them. If the existing evidence cannot establish a link, represent that limit instead of filling it by assumption.
 
-Follow each projected ancestor to the exact source component entry and its `inherited_from` claim. Keep the component entry’s source wording, sense list, and ancestor claim available alongside the parent compound. Investigate missing component source identities and the runic `gmq-pro` candidate. A shared component root is evidence about a part of each word; it is not by itself a whole-word verdict.
+### 2. Fix only the demonstrated loss
 
-### 3. Make the smallest data-model change the evidence requires
+If the trace exposes a parser, identity, or linking bug, fix that transformation and add *fleece* as a regression case. Preserve separate claims and paths: borrowing, inheritance, derivation, calquing, and component formation can coexist in a word’s history. Keep computed similarity and project interpretation separate from source claims. Avoid a mutually exclusive pair label when the evidence supports several relations or does not settle one.
 
-Keep source statements, lexical entry/sense identity, calculated similarity, component formation, and project-derived interpretation separately queryable. Preserve multiple paths, competing evidence, and unknowns. Add a regression case when a reproduced transformation error is fixed. Do not bulk-relabel from this selected slice.
+Do not change bulk classifications unless the repaired rule has been checked against the purposeful case slice. Leave unresolved source identity and competing evidence visible.
 
-### 4. Keep the export useful and reproducible
+### 3. Make the next data slice reproducible and shareable
 
-Rebuild the ignored JSONL and CLDF preview from recorded inputs, check the hashes and entry references, and retain CLDF only as a shareable format. Before any public release, verify attribution and redistribution terms and document the exact build command, model/configuration versions, and limits of this selected sample.
+Record input hashes, the transformation version, exact command, and model identifier and revision for the comparison build. Keep meaning similarity as an observation; do not let its 0.75 cutoff claim whole-word or partial cognacy. The four component cases reproduce with the current model, but the original model revision was not recorded. Check hashes and references in the rebuilt slice, then export CLDF if it makes that slice easier for someone else to use. Verify attribution and redistribution terms before sharing source-derived content.
+
+### 4. Add another evidence dimension when a case calls for it
+
+The useful dataset can grow beyond lexical history. Keep language genealogy, typological features, and areal/contact evidence as linked but separate dimensions, with their own sources and confidence. Add one when a concrete question or case needs it; do not import a broad catalog just to make the dataset larger. Wiktionary can stay the main source for lexical histories while another source fills a specific gap.
+
+### 5. Keep component work attached to source cases
+
+For the existing compounds, follow each projected ancestor to the exact component entry and its `inherited_from` claim. Keep component senses, source wording, and ancestor claims alongside the parent form. Investigate missing component identities and the runic `gmq-pro` candidate. A shared component root is evidence about part of a word, not by itself a whole-word verdict.
 
 ## Guardrails
 
