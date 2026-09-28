@@ -467,3 +467,39 @@ pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --in
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_relations_complete.jsonl --output pipeline\data\source_claim_inventory_source_relations_complete.json --force
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_relations_complete.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_relations_complete.jsonl --force
 ```
+
+## Preserve same-language derivation and source-kind claims (2026-09-28)
+
+The next inventory pass highlighted claims that should not be flattened into cross-language borrowing. Wiktionary defines `from` for derivation within one language and says it works like `mention`, with the language and source form in arguments 1 and 2 ([documentation](https://en.wiktionary.org/wiki/Template:from/documentation)). `internationalism` marks words whose immediate source may be unclear and recommends a more specific borrowed/derived claim when it is known ([template page](https://en.wiktionary.org/wiki/Template:internationalism)). The dump also contains the short `intnat` template; its recorded expansions say “Internationalism,” so it is normalized to the same source label while the original template and arguments remain intact. Wiktionary's sound-symbolism category explicitly distinguishes sound-symbolic words from strict onomatopoeia ([category definition](https://en.wiktionary.org/wiki/Category:Sound-symbolic_terms_by_language)).
+
+The extractor now records `from` as a same-language `derived_from` edge. `internationalism` and `intnat` receive `diffusion_type: internationalism` without an invented donor edge. `sound-symbolic` receives `formation_type: sound_symbolic`, with its optional `title` retained as `source_label`; it stays distinct from the existing `onomatopoeic` value.
+
+Compared line by line with the preceding source export, **396 claims in 392 entries changed**: 124 `from` links gained `derived_from` and same-language targets; 219 claims gained the internationalism diffusion label; 53 sound-symbolic claims gained their own process value, including 24 source labels. The full export has 710,110 source entries, 1,148,705 claims, and **1,055,534 claims with normalized relations**. The all-pair claim join remains exactly **20,354 match IDs** (no additions or removals), and comparison scores, categories, and live database rows are unchanged. The full suite passes **116 tests**.
+
+The refreshed ignored export is `pipeline/data/etymology_records_source_claim_kinds.jsonl`, SHA-256 `511ba4c8c84cb3745729ac7b145b631f7f22a227ce0a733dca3e962ac6a624a5`. Its inventory is `pipeline/data/source_claim_inventory_source_claim_kinds.json`. The candidate match export is `pipeline/data/candidate_source_claim_matches_source_claim_kinds.jsonl`, SHA-256 `f623128143716b7f6e8a46d972f955ed645f3ba01d263ae6a31408de029ecf37`.
+
+Rebuild the local artifacts:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --input-dir pipeline\data --languages sv da nb de en --output pipeline\data\etymology_records_source_claim_kinds.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --output pipeline\data\source_claim_inventory_source_claim_kinds.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
+```
+
+## Preserve same-language derivation and source-kind claims (2026-09-28)
+
+The next inventory pass highlighted claims that should not be flattened into cross-language borrowing. Wiktionary defines `from` for derivation within one language and says it works like `mention`, with the language and source form in arguments 1 and 2 ([documentation](https://en.wiktionary.org/wiki/Template:from/documentation)). `internationalism` marks words whose immediate source may be unclear and recommends a more specific borrowed/derived claim when it is known ([template page](https://en.wiktionary.org/wiki/Template:internationalism)). The dump also contains the short `intnat` template; its recorded expansions say “Internationalism,” so it is normalized to the same source label while the original template and arguments remain intact. Wiktionary's sound-symbolism category distinguishes words that use sound symbolism from strict onomatopoeia ([category definition](https://en.wiktionary.org/wiki/Category:Sound-symbolic_terms_by_language)).
+
+The extractor now records `from` as a same-language `derived_from` edge. `internationalism` and `intnat` receive `diffusion_type: internationalism` without an invented donor edge. `sound-symbolic` receives `formation_type: sound_symbolic`, with its optional `title` retained as `source_label`; it stays distinct from the existing `onomatopoeic` value.
+
+Compared line by line with the preceding source export, **396 claims in 392 entries changed**: 124 `from` links gained `derived_from` and same-language targets; 219 claims gained the internationalism diffusion label; 53 sound-symbolic claims gained their own process value, including 24 source labels. The full export has 710,110 source entries, 1,148,705 claims, and **1,055,534 claims with normalized relations**. The all-pair claim join remains exactly **20,354 match IDs** (no additions or removals), and comparison scores, categories, and live database rows are unchanged. The full suite passes **116 tests**.
+
+The refreshed ignored export is `pipeline/data/etymology_records_source_claim_kinds.jsonl`, SHA-256 `511ba4c8c84cb3745729ac7b145b631f7f22a227ce0a733dca3e962ac6a624a5`. Its inventory is `pipeline/data/source_claim_inventory_source_claim_kinds.json`. The candidate match export is `pipeline/data/candidate_source_claim_matches_source_claim_kinds.jsonl`, SHA-256 `f623128143716b7f6e8a46d972f955ed645f3ba01d263ae6a31408de029ecf37`.
+
+Rebuild the local artifacts:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --input-dir pipeline\data --languages sv da nb de en --output pipeline\data\etymology_records_source_claim_kinds.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --output pipeline\data\source_claim_inventory_source_claim_kinds.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
+```
