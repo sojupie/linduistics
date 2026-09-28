@@ -9,6 +9,7 @@ export interface LanguageSelectProps {
   label?: string;
   disabled?: boolean;
   className?: string;
+  noWrap?: boolean;
   plate?: boolean;
   id?: string;
   'aria-label'?: string;
@@ -21,6 +22,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   label,
   disabled = false,
   className = '',
+  noWrap = false,
   plate = false,
   id,
   'aria-label': ariaLabel,
@@ -47,7 +49,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   }
 
   const content = (
-    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+    <div className={`flex ${noWrap ? 'flex-nowrap' : 'flex-wrap'} items-center gap-1.5 sm:gap-2`}>
       {label && <span className="typo-sublabel shrink-0">{label}</span>}
       {selectElement}
     </div>

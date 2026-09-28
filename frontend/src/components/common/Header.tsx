@@ -43,12 +43,10 @@ export const Header: React.FC = () => {
   }, [mobileNavOpen]);
 
   const navLinks = [
-    { to: '/orbit', label: 'Language Orbit', icon: 'hub' },
     { to: '/languages', label: 'Language Overview', icon: 'public' },
     { to: '/lexicon', label: 'Comparative Lexicon', icon: 'menu_book' },
     { to: '/quiz', label: 'False Friends Quiz', icon: 'quiz' },
     { to: '/inspector', label: 'Text Inspector', icon: 'text_snippet' },
-    { to: '/gallery', label: 'Concepts', icon: 'science' },
   ];
 
   return (
@@ -66,7 +64,7 @@ export const Header: React.FC = () => {
             <MaterialSymbol icon="menu" size={24} />
           </button>
 
-          <Link to="/orbit" className="text-decoration-none flex items-center gap-2.5 group">
+          <Link to="/languages" className="text-decoration-none flex items-center gap-2.5 group">
             <img
               src={logoUrl}
               alt="Linduistics Logo"
@@ -81,9 +79,7 @@ export const Header: React.FC = () => {
         {/* Navigation */}
         <nav className="hidden lg:flex items-center flex-wrap justify-center gap-8 flex-1 px-4">
           {navLinks.map((link) => {
-            const isActive =
-              currentPath === link.to ||
-              (link.to === '/orbit' && currentPath === '/');
+            const isActive = currentPath === link.to;
 
             return (
               <Link
@@ -178,13 +174,13 @@ export const Header: React.FC = () => {
                     {item.ipa_b && <Phonetic ipa={item.ipa_b} />}
                   </div>
                   <div className="typo-badge text-ink-muted shrink-0">
-                    {item.category === 'true_cognate' || item.category === 'cognate'
+                    {item.category === 'true_cognate'
                       ? 'True Cognate'
                       : item.category === 'false_friend'
                         ? 'False Friend'
-                        : item.category === 'partial_cognate' || item.category === 'cousin' || item.category === 'sound_shift'
+                      : item.category === 'partial_cognate'
                           ? 'Partial Cognate'
-                          : item.category === 'translation_pair' || item.category === 'schism'
+                        : item.category === 'translation_pair'
                             ? 'Translation Pair'
                             : 'Other'}
                   </div>
@@ -227,7 +223,7 @@ export const Header: React.FC = () => {
               {/* Drawer header */}
               <div className="flex items-center justify-between px-4 py-2.5 border-b border-book-rule bg-page-bg shrink-0">
                 <Link
-                  to="/orbit"
+                  to="/languages"
                   onClick={() => setMobileNavOpen(false)}
                   className="text-decoration-none flex items-center gap-2.5 group"
                 >
@@ -253,9 +249,7 @@ export const Header: React.FC = () => {
               {/* Drawer navigation links */}
               <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
                 {navLinks.map((link) => {
-                  const isActive =
-                    currentPath === link.to ||
-                    (link.to === '/orbit' && currentPath === '/');
+                  const isActive = currentPath === link.to;
 
                   return (
                     <Link
@@ -299,4 +293,3 @@ export const Header: React.FC = () => {
     </header>
   );
 };
-

@@ -20,7 +20,7 @@ export function getLanguageName(code: string): string {
 
 /**
  * Converts a live database pair statistics record into a language profile
- * for comparative displays and orbits.
+ * for comparative language displays.
  */
 export function pairStatsToProfile(pair: LanguagePairStats): LanguageProfile {
   const phoneticSimilarity = Math.max(0, Math.min(1.0, pair.avg_phonetic));

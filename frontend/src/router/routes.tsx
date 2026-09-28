@@ -9,9 +9,6 @@ import { RootRoute } from './root';
 import { LoadingIndicator } from '../components/common/LoadingIndicator';
 
 // Lazy component imports for clean code splitting
-const OrbitLazy = React.lazy(() =>
-  import('../routes/orbit.lazy').then((m) => ({ default: m.OrbitRouteComponent })),
-);
 const LanguagesLazy = React.lazy(() =>
   import('../routes/languages.lazy').then((m) => ({ default: m.LanguagesRouteComponent })),
 );
@@ -24,19 +21,8 @@ const InspectorLazy = React.lazy(() =>
 const QuizLazy = React.lazy(() =>
   import('../routes/quiz.lazy').then((m) => ({ default: m.QuizRouteComponent })),
 );
-const GalleryLazy = React.lazy(() =>
-  import('../routes/gallery.lazy').then((m) => ({ default: m.GalleryRouteComponent })),
-);
-
-// Zod search param validation schemas
-const orbitSearchSchema = z.object({
-  register: z.enum(['vernacular', 'academic']).optional(),
-  modality: z.enum(['phonetic', 'spelling']).optional(),
-  anchor: z.string().optional(),
-});
-
 export const languagesSearchSchema = z.object({
-  sort: z.enum(['ease', 'minefield', 'phonetic', 'ancient', 'cognates', 'spelling', 'pairs', 'name']).optional(),
+  sort: z.enum(['ease', 'minefield', 'phonetic', 'cognates', 'spelling', 'pairs', 'name']).optional(),
 });
 
 export const lexiconSearchSchema = z.object({
@@ -50,19 +36,8 @@ export const indexRoute = createRoute({
   getParentRoute: () => RootRoute,
   path: '/',
   beforeLoad: () => {
-    throw redirect({ to: '/orbit' });
+    throw redirect({ to: '/languages' });
   },
-});
-
-export const orbitRoute = createRoute({
-  getParentRoute: () => RootRoute,
-  path: '/orbit',
-  validateSearch: orbitSearchSchema,
-  component: () => (
-    <Suspense fallback={<LoadingIndicator />}>
-      <OrbitLazy />
-    </Suspense>
-  ),
 });
 
 export const languagesRoute = createRoute({
@@ -74,6 +49,14 @@ export const languagesRoute = createRoute({
       <LanguagesLazy />
     </Suspense>
   ),
+});
+
+export const languagesPreviewRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/languages-preview',
+  beforeLoad: () => {
+    throw redirect({ to: '/languages' });
+  },
 });
 
 export const lexiconRoute = createRoute({
@@ -107,24 +90,13 @@ export const inspectorRoute = createRoute({
   ),
 });
 
-export const galleryRoute = createRoute({
-  getParentRoute: () => RootRoute,
-  path: '/gallery',
-  component: () => (
-    <Suspense fallback={<LoadingIndicator />}>
-      <GalleryLazy />
-    </Suspense>
-  ),
-});
-
 const routeTree = RootRoute.addChildren([
   indexRoute,
-  orbitRoute,
   languagesRoute,
+  languagesPreviewRoute,
   lexiconRoute,
   quizRoute,
   inspectorRoute,
-  galleryRoute,
 ]);
 
 export const router = createRouter({
