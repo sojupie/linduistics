@@ -16,7 +16,7 @@ CLDF is fine as a sharing format. Keep the working pipeline shaped around the ev
 - The refreshed 270-case audit now has a comparison row for every case and active source-sense links on both sides. Three German–English spellings (`Haben`, `Fressen`, `Bis`) resolve through an explicitly recorded unique case-fold match.
 - The source-claim projection contains 2,341 normalized edges backed by 2,396 source-template records. It skips 292 claims without a normalized relation; those claims remain in the audit files.
 - A small case ledger now documents concrete examples and separates source paths, comparison observations, and evidence-link status in [DATASET_CASE_REVIEW.md](DATASET_CASE_REVIEW.md).
-- The pipeline test suite passes: 92 tests.
+- The pipeline test suite passes: 95 tests.
 - None of this changes the live database or proves the generated category labels correct. The old `other` value remains a candidate-builder remainder, not a linguistic relationship.
 
 See [the stage record](NEXT_DATASET_STAGE.md) and [the running findings log](DATASET_NEXT_STEPS.md) for methods, examples, and limitations.

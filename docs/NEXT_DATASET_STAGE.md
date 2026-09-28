@@ -264,7 +264,9 @@ The local uncapped candidate file contains 1,638,454 directed rows (608,101,499 
 
 The refreshed 270-row sample now contains 152 `other` labels. A strict pair-claim matcher finds specific source evidence on 28: 11 direct borrowing claims, nine cognate mentions, six shared donors, five shared inherited forms, and one noncognate mention. These evidence types overlap. The other 124 rows have no pair-specific claim found by this matcher; that is not evidence of unrelated origins. See [the case ledger](DATASET_CASE_REVIEW.md) for the examples and limits.
 
-The full pipeline test suite passes (92 tests). The rebuilt Parquet, refreshed audit JSONL, and edge projection stay in ignored `pipeline/data/`; the live database is unchanged. The 270-case sample remains a diagnostic from earlier API sampling, not a representative sample.
+The retained English translation-claim snapshot has 302,640 rows, all with a source-sense ID. The builder now leaves an absent ID explicitly null and does not use it to constrain sense selection; its missing-input branch also returns both expected result maps.
+
+The full pipeline test suite passes (95 tests). The rebuilt Parquet, refreshed audit JSONL, and edge projection stay in ignored `pipeline/data/`; the live database is unchanged. The 270-case sample remains a diagnostic from earlier API sampling, not a representative sample.
 
 Rejoin the exact saved sample to the source-sense-aware candidate file with `--pairs-from-audit`. This preserves the old pair spellings and sample metadata while using the new comparison data:
 
