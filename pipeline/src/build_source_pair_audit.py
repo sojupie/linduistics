@@ -36,6 +36,53 @@ def load_source_entries(path: Path, words: set[str]) -> dict[tuple[str, str], li
     return matches
 
 
+def load_translation_claims(
+    path: Path, source: str, target: str, pairs: list[tuple[str, str]]
+) -> tuple[dict[tuple[str, str, str, str], list[dict]], str]:
+    matches: dict[tuple[str, str, str, str], list[dict]] = defaultdict(list)
+    wanted = {
+        key
+        for word_a, word_b in pairs
+        for key in ((source, word_a, target, word_b), (target, word_b, source, word_a))
+    }
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for line_number, line in enumerate(source, start=1):
+            digest.update(line)
+            if not line.strip():
+                continue
+            try:
+                claim = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid JSON in {path.name} at line {line_number}") from exc
+            key = (
+                str(claim.get("source_lang", "")),
+                str(claim.get("source_word", "")),
+                str(claim.get("target_lang", "")),
+                str(claim.get("target_form", "")),
+            )
+            if key in wanted:
+                matches[key].append(claim)
+    return matches, digest.hexdigest()
+
+
+def translation_claims_for_pair(
+    claims: dict[tuple[str, str, str, str], list[dict]],
+    source: str,
+    word_a: str,
+    target: str,
+    word_b: str,
+) -> list[dict]:
+    directions = (
+        ("source_to_target", (source, word_a, target, word_b)),
+        ("target_to_source", (target, word_b, source, word_a)),
+    )
+    result = []
+    for direction, key in directions:
+        result.extend({**claim, "pair_direction": direction} for claim in claims.get(key, []))
+    return result
+
+
 def load_comparison_rows(path: Path, source: str, target: str, pairs: list[tuple[str, str]]) -> dict[tuple[str, str], dict]:
     """Read only requested directed pairs from a generated comparison Parquet."""
     import pyarrow.parquet as pq
@@ -268,6 +315,7 @@ def audit_record(
     target: str,
     comparison: dict | None,
     entries: dict[tuple[str, str], list[dict]],
+    translation_claims: list[dict] | None = None,
 ) -> dict:
     source_entries_a, source_match_a = matching_source_entries(entries, source, word_a)
     source_entries_b, source_match_b = matching_source_entries(entries, target, word_b)
@@ -319,6 +367,8 @@ def audit_record(
             comparison_entry_keys_a=comparison_entry_keys_a,
             comparison_entry_keys_b=comparison_entry_keys_b,
         ),
+        "translation_claims": translation_claims or [],
+        "translation_claim_evidence": "found" if translation_claims else "no_direct_claim_in_input",
     }
 
 
@@ -363,12 +413,19 @@ def write_audit(
     sample_metadata: dict[tuple[str, str], dict] | None = None,
     sampling: dict | None = None,
     comparison_source: str | None = None,
+    translation_claims_path: Path | None = None,
 ) -> int:
     manifest = output.with_suffix(output.suffix + ".manifest.json")
     if not force and (output.exists() or manifest.exists()):
         raise FileExistsError(f"Output already exists; pass --force to replace it: {output}")
 
     entries = load_source_entries(source_records, {word for pair in pairs for word in pair})
+    translation_claims = {}
+    translation_claims_sha256 = None
+    if translation_claims_path:
+        translation_claims, translation_claims_sha256 = load_translation_claims(
+            translation_claims_path, source, target, pairs
+        )
     output.parent.mkdir(parents=True, exist_ok=True)
     temp_output = output.with_suffix(output.suffix + ".tmp")
     counts: dict[str, dict[str, int]] = {}
@@ -380,7 +437,11 @@ def write_audit(
                     if comparison_rows is not None
                     else fetch_pair(api_url, source, target, word_a, word_b)
                 )
-                record = audit_record(word_a, word_b, source, target, comparison, entries)
+                record = audit_record(
+                    word_a, word_b, source, target, comparison, entries,
+                    translation_claims_for_pair(translation_claims, source, word_a, target, word_b)
+                    if translation_claims_path else None,
+                )
                 if sample_metadata and (word_a, word_b) in sample_metadata:
                     record["sample"] = sample_metadata[(word_a, word_b)]
                 destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
@@ -402,6 +463,8 @@ def write_audit(
             "languages": [source, target],
             "word_pairs": pairs,
             "sampling": sampling,
+            "translation_claims_file": str(translation_claims_path) if translation_claims_path else None,
+            "translation_claims_sha256": translation_claims_sha256,
             "counts": counts,
         }
         manifest.write_text(json.dumps(manifest_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -418,6 +481,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=project_root / "pipeline/data/source_pair_audit.jsonl")
     parser.add_argument("--api-url", default="http://localhost:8080")
     parser.add_argument("--comparison-parquet", type=Path, help="Read the comparison rows from a generated Parquet instead of the live API.")
+    parser.add_argument("--translation-claims", type=Path, help="Attach exact source-sense translation statements from JSONL.")
     parser.add_argument("--source", default="sv")
     parser.add_argument("--target", default="en")
     parser.add_argument("--words", nargs="+", help="Same headword in both languages.")
@@ -449,6 +513,7 @@ def main() -> None:
     count = write_audit(
         args.source_records, args.output, args.api_url, args.source, args.target, pairs, args.force,
         comparison_rows, sample_metadata, sampling, comparison_source,
+        args.translation_claims,
     )
     print(f"Wrote {count} joined audit rows to {args.output}")
 

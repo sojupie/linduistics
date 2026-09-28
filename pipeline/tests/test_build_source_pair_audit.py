@@ -1,5 +1,6 @@
 import json
 import io
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,11 +12,41 @@ import pyarrow.parquet as pq
 
 from build_source_pair_audit import (
     PAIR_FIELDS, audit_record, derive_pair_source_evidence, load_comparison_rows,
-    load_source_entries, sample_category_rows,
+    load_source_entries, load_translation_claims, sample_category_rows, translation_claims_for_pair,
 )
 
 
 class SourcePairAuditTests(unittest.TestCase):
+    def test_translation_claim_loader_filters_exact_pairs_and_hashes_input(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "claims.jsonl"
+            lines = [
+                {"source_lang": "en", "source_word": "clown", "target_lang": "da", "target_form": "klovn", "source_sense_id": "right"},
+                {"source_lang": "en", "source_word": "Clown", "target_lang": "da", "target_form": "klovn", "source_sense_id": "wrong-case"},
+            ]
+            path.write_text("".join(json.dumps(item) + "\n" for item in lines), encoding="utf-8")
+            expected_digest = hashlib.sha256(path.read_bytes()).hexdigest()
+
+            claims, digest = load_translation_claims(path, "da", "en", [("klovn", "clown")])
+
+        joined = translation_claims_for_pair(claims, "da", "klovn", "en", "clown")
+        self.assertEqual([item["source_sense_id"] for item in joined], ["right"])
+        self.assertEqual(digest, expected_digest)
+
+    def test_translation_claim_join_keeps_direction_and_exact_source_sense(self):
+        claims = {
+            ("en", "clown", "da", "klovn"): [{"source_sense_id": "en-clown-performer"}],
+            ("da", "klovn", "en", "clown"): [{"source_sense_id": "da-klovn"}],
+            ("en", "Bank", "da", "bank"): [{"source_sense_id": "wrong-case"}],
+        }
+
+        joined = translation_claims_for_pair(claims, "da", "klovn", "en", "clown")
+
+        self.assertEqual(
+            [(claim["source_sense_id"], claim["pair_direction"]) for claim in joined],
+            [("da-klovn", "source_to_target"), ("en-clown-performer", "target_to_source")],
+        )
+
     def test_comparison_parquet_loader_reads_requested_direction_and_parses_senses(self):
         with tempfile.TemporaryDirectory() as directory:
             parquet_path = Path(directory) / "pairs.parquet"
