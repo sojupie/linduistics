@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Build an exploratory, source-linked dataset about lexical relationships across the Germanic varieties already covered by Linduistics. The data pipeline is part of the project: we source, parse, compare, and revise the data ourselves.
+Keep building Linduistics' own source-and-transform pipeline for lexical relationships across the Germanic varieties already covered by the site. Sourcing and transforming the data is part of the project, not work to replace with a finished corpus. The aim is to make the results more useful and inspectable, and to learn what the data can support. A small public release that helps another person is a welcome outcome, not a research-program requirement.
 
-The site is the first consumer of the dataset. A public release should also help another person inspect the sources, reproduce transformations, or reuse part of the data. We do not need complete language coverage or expert review of every row to make a useful release. We do need to show what each value means and where it came from.
+The site is the first consumer. We do not need full language coverage or expert review of every row. We do need to show what each value means and where it came from. CLDF is acceptable as an export format if it makes the data easier to reuse; it does not need to become the internal model.
 
 This project does not aim to replace Glottolog, Grambank, Wiktionary, or specialist dictionaries. We can link to their records, use them as inputs, and compare our results with them. The lexical data and transformations remain ours.
 
@@ -60,6 +60,36 @@ Keep the evidence basis and uncertainty beside the judgment. Do not use a semant
 ## Keep existing data useful
 
 Keep the current comparison rows as generated candidates and analysis results. Do not silently turn them into historical facts. Preserve scores, candidate source, and pipeline version so a later transformation can be compared with the current one.
+
+## What to do next
+
+The current pipeline has a first source-level etymology exporter. It reads the five local Kaikki/Wiktextract dumps, keeps each entry's raw etymology templates and arguments, and writes provisional normalized claims. It exported about 710,000 source records. Four focused tests pass. This is an extraction prototype, not a validated taxonomy or replacement dataset.
+
+Do the next work in this order:
+
+1. **Check the extraction.** Review template counts and unmapped templates. Inspect the regression examples below, plus homographs such as Swedish *gift*. Confirm that the source entry key keeps separate etymology entries apart and that the source pointers lead to the right language section. Fix extraction errors before using these claims downstream.
+2. **Keep source statements intact.** Preserve the original template name, arguments, and prose alongside every normalized claim. Treat the normalized relation names as conveniences for analysis; do not turn them into facts stronger than the source statement. Record the dump identity, file hash, retrieval date, and reuse terms with each release.
+3. **Make one end-to-end slice.** Connect source entries and their claims to a small set of existing comparison candidates. Include borrowing, compounds, a homograph, an uncertain etymology, and a possible cognate. Keep form similarity, meaning links, and historical claims separate. Show which source records and transformations produced each result.
+4. **Compare before replacing.** Run that slice beside the current classifications. Add checks for concrete failures, and note where the source is silent or ambiguous. Do not regenerate the full dataset from a new rule until the slice behaves as expected.
+5. **Choose the smallest useful output.** First make the source-linked records useful to the site and easy to inspect. Then export the stable subset to CLDF if a supported module fits. Keep project-specific evidence or uncertainty fields in documented extension tables where needed.
+
+The current API and comparison table are consumers of this work, not the definition of the data model. Keep the initial scope to the existing five varieties. Add another language or a new source only when it helps answer a concrete question or reveals a gap in the extraction.
+
+### This stage is complete when
+
+- The extractor's coverage and unmapped-template counts are known and reviewed.
+- The regression examples retain distinct source entries, source wording, and relationship direction where the source gives one.
+- At least one end-to-end slice can explain a result from source record through transformation to site-facing output.
+- The old bulk classifications remain intact until the new slice has been checked.
+- A reproducible command, source manifest, tests, and short limitations note let someone else rerun the slice.
+
+### Keep out of scope for now
+
+- Replacing Wiktionary-derived data with a ready-made corpus.
+- Claiming expert or complete historical classifications.
+- Inferring unrelated origins from missing root data.
+- Rebuilding every comparison row before the extraction and evidence links are checked.
+- Building a general-purpose ontology or a full CLDF release before the project has a stable, useful slice.
 
 The initial audit exposed cases that should become regression examples:
 
