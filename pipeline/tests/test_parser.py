@@ -48,6 +48,25 @@ def test_parse_preserves_source_entry_sense_and_etymology_identity():
     assert sense["etym_root"] == "Proto-Germanic *giftiz"
 
 
+def test_etym_root_ignores_dercat_language_list_and_uses_an_actual_ancestor_form():
+    raw = {
+        "word": "Ente",
+        "lang_code": "de",
+        "pos": "noun",
+        "etymology_templates": [
+            {"name": "dercat", "args": {"1": "de", "2": "gem-pro", "3": "ine-pro", "inh": "1"}},
+            {"name": "inh", "args": {"1": "de", "2": "gmh", "3": "ente"}},
+            {"name": "der", "args": {"1": "de", "2": "gmw-pro", "3": "*anad"}},
+        ],
+        "senses": [{"id": "de-ente", "glosses": ["duck"]}],
+    }
+
+    entry = parse_kaikki_entry(raw)
+
+    assert entry is not None
+    assert entry["etym_root"] == "Proto-West Germanic *anad"
+
+
 def test_stream_keeps_same_gloss_from_distinct_entries_and_blanks_ambiguous_scalars():
     lines = [
         orjson.dumps({

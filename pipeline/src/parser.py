@@ -65,6 +65,9 @@ def extract_etym_root(raw: dict) -> Tuple[str, str]:
         for t in templates:
             if not isinstance(t, dict):
                 continue
+            # `dercat` lists languages for categorization, not ancestor forms.
+            if t.get("name") == "dercat":
+                continue
             args = t.get("args") or {}
             target_code = args.get("2") or args.get("1") or ""
             if target_code == lang_code:
