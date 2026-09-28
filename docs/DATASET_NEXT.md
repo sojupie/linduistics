@@ -1,97 +1,76 @@
-# Next steps for the dataset
+# What we do next with the dataset
 
 ## Aim
 
-Keep building the source and transformation pipeline as the project. A useful result can be a small dataset that one or two people can inspect and reuse. Wiktionary remains the main source for now. CLDF is an optional export format, not the internal model or the goal by itself.
+Keep building the data ourselves: find source material, extract it, transform it, and inspect what our pipeline did. That work is part of the project. The result can stay small and still be useful to a few people. This is a weekend project, not a claim to conduct formal linguistic research or to replace Wiktionary with somebody else's finished dataset.
 
-Keep the work hands-on and exploratory: sourcing, transforming, and checking the data is part of the fun. This does not need to become formal linguistic research to be useful.
+CLDF is welcome as a data format. Treat it like an export or exchange format: try it when there is a real slice to share, keep it if it makes that slice easier to use, and add only the small extensions needed for our provenance and transformations. It does not need to dictate the internal pipeline.
 
-The next work should make it possible to follow a result from the source entry and sense, through the extracted claims and our calculations, to the interpretation shown by the site. It should also make gaps and uncertain links visible instead of turning them into confident labels.
+## The next milestone
 
-## Current checkpoint
+Make one bounded set of word comparisons traceable from the source data through our transformations to the result. This should expose real pipeline behavior and produce an artifact someone else can inspect or reuse. It is not meant to estimate how much of a language's vocabulary is related, or to establish linguistic truth by itself.
 
-The source-template audit now covers six passes: target-language extraction, missing word-formation aliases, process-specific formation data, clipping/inflection/PIE-word links, source labels for same-language derivation/international distribution/sound symbolism, and explicit source distinctions between unknown and uncertain origins. A local crosswalk now links those status claims to active comparison senses without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28), [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28), [clipping, inflection, and PIE-word audit](DATASET_NEXT_STEPS.md#retain-clipping-inflection-and-pie-word-links-2026-09-28), [source-kind audit](DATASET_NEXT_STEPS.md#preserve-same-language-derivation-and-source-kind-claims-2026-09-28), and [origin-status audit](DATASET_NEXT_STEPS.md#preserve-source-distinction-between-unknown-and-uncertain-origins-2026-09-28).
+Use the current local source exports, candidate build, source-claim crosswalks, and case ledger. Do this in the existing pipeline and tests; do not start a separate validation project or change the live database as part of the investigation.
 
-Next, inspect the origin-status crosswalk through concrete cases such as Swedish *torta* and Bokmål *tort*, then continue checking templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Follow the cases through source-entry matching and interpretation.
+## Work order
 
-The current exact-form source join finds entry-level claims on 13,738 candidate pairs still labeled `other`, including overlapping cognate mentions, borrowings, derivations, and calques. These are evidence facets, not reviewed subcategories; unmatched pairs remain unresolved in this join. See the [source-claim breakdown](DATASET_NEXT_STEPS.md#source-claims-within-the-other-candidate-bucket-2026-09-28).
+### 1. Pick cases that test different data problems
 
-## Work in this order
+Start with the existing examples rather than hand-labeling a large new sample. Keep cases that reveal different transformations: direct borrowing, a deeper shared ancestor, compounds, multiple etymologies for one spelling, source claims without a matched sense, and similar forms with uncertain history. Existing examples include *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, *sandbank*, and *torta/tort*.
 
-### 1. Inspect unknown and uncertain source claims in context
+Add a case only when it tests something the current set does not. This is a debugging slice, not a representative survey.
 
-The latest export preserves 1,833 `unknown` and 1,652 `uncertain` source-status claims. A local crosswalk links 865 `unknown` and 832 `uncertain` claims to active candidate entries; 968 and 820 claims respectively have no active candidate under this join. Those linked claims fan out to 8,986 active-sense evidence rows and 4,518 unique `unknown`-status pairs and 4,365 `uncertain`-status pairs. All evidence rows overlap an active source sense. Source records also carry normalized relation claims in 790 `unknown` and 1,168 `uncertain` cases. Pairs occur in all five current candidate labels. Keep this as evidence coverage, not a category migration; see the [status-coverage findings](DATASET_NEXT_STEPS.md#link-origin-status-claims-to-active-candidates-2026-09-28).
+### 2. Follow each case to the first point of failure
 
-The artifact retains the source entry, status and original template arguments, candidate pair and category, plus the matched source-sense ID and gloss. It distinguishes an exact active-sense match from an entry-only match, and reports counts by source status, current candidate category, and alignment type. A status on one source entry must not become a verdict about the relationship between the pair.
-
-Use the artifact to choose cases for source-page inspection and find where identity or linking fails. The status marker can coexist with explicit relationship claims in the same etymology: Swedish *torta*, for example, is marked `Unknown` while Wiktionary also lists cognate Norwegian and Danish forms. Do not read either status as “no relationship claim,” and do not bulk-relabel candidates from these counts. See the [status-coverage findings](DATASET_NEXT_STEPS.md#link-origin-status-claims-to-active-candidates-2026-09-28).
-
-### 2. Finish checking the source extraction rules
-
-Continue from the full Wiktionary dump scan. Check templates whose normalized claims lack source forms, and templates where the source language in the arguments differs from the page language. Confirm each template’s argument meaning from its documentation and sampled source records before changing a rule.
-
-For each demonstrated gap:
-
-- preserve the raw template and arguments;
-- normalize only fields the source supports;
-- leave optional or ambiguous targets unresolved;
-- add a small regression case;
-- rebuild a separate local snapshot and compare it with the previous one.
-
-Do not treat every unnormalized template as an etymology gap. Many templates only format or annotate an entry.
-
-### 3. Trace a focused set of real examples end to end
-
-Use the existing cases that exposed structural problems: *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*. Add a case only when it tests a distinct source or transformation pattern, such as a homograph, shared donor, compound component, or uncertain origin.
-
-For each comparison, record:
+For each comparison, record or inspect:
 
 1. the exact source entry, etymology, and sense on each side;
-2. the source’s relationship claim, its direction, and its evidence;
-3. component links when the word is formed from other words;
-4. computed spelling, sound, or meaning observations;
-5. the pipeline interpretation and any unresolved identity or origin question.
+2. the source's claim, direction, wording or template, and target form;
+3. any compound or component links, separately from the whole-word history;
+4. the candidate pair and the spelling, sound, meaning, or translation observations we computed;
+5. the rule that produced the current interpretation, plus anything unresolved.
 
-This is a debugging and design set, not a representative sample. Use it to find where the pipeline loses or misapplies evidence, not to estimate how much of a language’s vocabulary is related.
+Then identify where a mismatch begins: extraction, entry or sense identity, candidate matching, score calculation, or interpretation. Fix that cause, preserve the source evidence, and add a small regression check. Do not change a pair label merely because a source mentions a similar form or because a root field happens to match.
 
-### 4. Fix the earliest demonstrated failure
+### 3. Keep different facts distinct
 
-For each mismatch, locate the first step that went wrong: source parsing, entry or sense identity, component linking, candidate matching, score calculation, or interpretation. Fix that step and add a regression case. Keep distinct claims and paths instead of forcing a word pair into one exclusive historical box.
+- **Language facts:** genealogy, area/contact, and typological features describe languages and need their own sources.
+- **Lexical records:** entries, etymologies, senses, forms, and components keep homographs and multiple histories distinct.
+- **Historical claims:** inheritance, borrowing, derivation, calquing, cognate mentions, and word formation are sourced paths with direction and scope. A pair may have several.
+- **Comparison observations:** spelling, sound, meaning, and translation help find and describe candidates; they do not prove a shared origin.
+- **Project interpretation:** any label or judgment we derive must name its inputs and rule, and remain separate from what a source says.
 
-Keep three things separate in the data:
+Do not force these into one exclusive box. A word can be a loan and have a deeper shared ancestor; a compound can have cognate components while its whole-word history remains unclear; and “misleadingly similar” can describe a comparison even when origin is unresolved. Keep `other` as the current candidate builder's remainder, not as a linguistic category.
 
-- what Wiktionary or another source states;
-- what our code calculates from forms and meanings;
-- what our rules infer from those inputs.
+### 4. Make the transformation rerunnable and inspectable
 
-An absent claim or unmatched form means the relationship is unresolved in this data. It does not mean the words are unrelated.
+Build the bounded output from recorded local inputs. Give records stable identifiers and retain source entry/sense IDs, source URLs, input hashes or revisions where available, and the transformation version. Make one command rebuild it. Start with readable JSONL or TSV if that keeps debugging simple.
 
-### 5. Make one small, rebuildable data release
+Try exporting that same slice to CLDF. Use the standard tables where they fit; link a small project-specific evidence table where they do not. Keep the export only if someone can more easily inspect, import, or build on the data. Check the applicable attribution and redistribution terms before publishing source-derived text; compact claims and links may be more suitable to share than copied source prose or raw dumps.
 
-Once the focused examples can be traced end to end, package that slice with stable IDs, source links, input hashes or revisions where available, transformation version, a rebuild command, and known limits. Start with readable JSONL or TSV so the records stay easy to inspect during development.
+### 5. Expand from demonstrated gaps
 
-Then try exporting the same slice to CLDF. Keep the export if its standard tables make the data easier for someone else to use. Add only a small documented extension for evidence that CLDF does not represent well. Check attribution and redistribution terms before publishing source-derived text or data.
+Use the slice to see which useful facts Wiktionary does not provide or which transformations it makes difficult. Add another source only to answer a concrete question, and preserve its claims independently so sources can disagree. Expand language coverage or add language-level genealogy, area, and typology when a useful question calls for them.
 
-## Not part of this pass
+## What this milestone is not
 
-- Bulk-reclassifying the current database from a small set of examples.
-- Calling candidate-pair totals percentages of a language’s vocabulary.
-- Treating `other` or missing evidence as a linguistic relationship.
-- Replacing the source pipeline with a finished corpus or a data-entry application.
-- Adding sources or language-level genealogy, area, and typology data before a concrete question needs them.
-- Building a general-purpose ontology or making CLDF the internal schema.
+- A bulk relabeling of the database.
+- A vocabulary-wide cognate percentage.
+- A claim that missing evidence means unrelated origins.
+- A replacement for the source-and-transformation pipeline with a finished corpus or CRUD app.
+- A general linguistic ontology or a requirement to adopt CLDF internally.
 
-## Done for this stage when
+## Done when
 
-- The focused examples can be followed from exact source entries and senses to the displayed result.
-- Each reproduced extraction or identity failure has a regression check.
-- Source claims, computed observations, and project interpretations remain distinguishable.
-- Multiple paths, components, and unresolved links remain inspectable.
-- Another person can rebuild the small slice from documented inputs.
-- A CLDF export has been tested and kept only if it improves reuse.
+- A small set of comparisons can be followed from source entries and senses through claims and calculations to our interpretation.
+- Demonstrated extraction or identity problems have regression checks.
+- Multiple paths, components, and uncertainty remain visible.
+- The output can be rebuilt from documented inputs and inspected in a readable format.
+- A CLDF export has been tested, and is retained if it makes the slice more useful to others.
 
-## Project notes
+## Related notes
 
-- [Current dataset actions and status](DATASET_NEXT_ACTIONS.md)
-- [Source and transformation findings](DATASET_NEXT_STEPS.md)
-- [Dataset direction and data model](DATASET_PROJECT_DIRECTION.md)
+- [Current data and near-term actions](DATASET_NEXT_ACTIONS.md)
+- [Source extraction and audit findings](DATASET_NEXT_STEPS.md)
+- [Reviewed example cases](DATASET_CASE_REVIEW.md)
+- [Dataset data model](DATASET_PROJECT_DIRECTION.md)
