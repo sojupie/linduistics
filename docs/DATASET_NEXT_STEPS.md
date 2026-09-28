@@ -136,6 +136,34 @@ Rerun the projection with:
 pipeline\.venv\Scripts\python.exe pipeline/src/project_source_case_edges.py --input pipeline/data/source_case_audit_da_en.jsonl --input pipeline/data/source_case_audit_de_en.jsonl --input pipeline/data/source_case_audit_nb_en.jsonl --input pipeline/data/source_case_audit_sv_en.jsonl --output pipeline/data/source_case_edges.jsonl
 ```
 
+## Completed: compare a stratified sample with source claims
+
+I reviewed 270 seeded comparisons across Swedish–Danish, Swedish–Bokmål, and German–English. Each pair has 10 rows from each of `true_cognate`, `partial_cognate`, `false_friend`, and `translation_pair`, plus 50 rows from `other`. The manifests record the category populations at sampling time; for `other`, these were 9,520, 10,078, and 11,719 rows respectively. The sample was selected from the live API and then joined to the local Wiktionary snapshots. It is a diagnostic sample, not a population estimate.
+
+The 150 sampled `other` rows show why the value cannot mean “unrelated” or “no etymology.” The pair-audit projection found these row-level source links:
+
+| Pair | Both exact source entries | Both active comparison senses linked | Direct borrowing from the paired language | Shared borrowing source | Explicit cognate mention of the paired form | Shared inherited form |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| German–English | 29/50 | 30/50 | 11/50 | 2/50 | 2/50 | 1/50 |
+| Swedish–Danish | 34/50 | 26/50 | 0/50 | 0/50 | 3/50 | 1/50 |
+| Swedish–Bokmål | 33/50 | 26/50 | 0/50 | 3/50 | 1/50 | 1/50 |
+
+Evidence types overlap. “Both active comparison senses linked” means each side had an exact-gloss or source-identity match to the active comparison sense; it does not prove that every entry-level etymology claim belongs to that sense. The counts include only the relation types this pair-audit projection matches. Zero means no matching event in this projection, not that the source contains no useful evidence.
+
+Several rows illustrate distinct facts that an exclusive pair label hides:
+
+- German *Bestseller* / English *bestseller* is currently `other`. The German entry says “Borrowed from English bestseller,” and the audit links it to the active English noun entry. Wiktionary encodes this same loan in two templates, so the projected edge must be deduplicated while both templates remain provenance.
+- Swedish *näck* / Bokmål *nøkk* is currently `other`. Both source entries trace the form to Old Norse *nykr*. This is a shared inherited path, separate from surface and meaning scores.
+- Swedish *debut* / Bokmål *debut* is currently `other`. Both entries say the word comes from French *début*. That supports a shared donor path; it does not by itself mean the two varieties inherited the word from a common ancestor.
+- Swedish *greve* / Danish *greve* is currently `other`. The Swedish entry explicitly lists Danish *greve* as a cognate. The entries also give their own source histories, which should remain separately inspectable.
+- German *Nagel* / English *nail* is currently `other`. Both entries trace the compared noun to Proto-West Germanic `*nagl`; the English entry also lists German *Nagel* in its cognates. The active source senses are the fastening-tool meanings.
+
+The sample also gives a useful limit case: the English *fret* entry mentions German *fressen* as a cognate, but the audit did not match that German form to an active comparison sense. Keep the source statement, but do not promote it to a confirmed relation for the compared senses without resolving that link.
+
+This supports a data model with multiple source-backed paths and comparison observations, not a rule that maps every pair to exactly one historical label. It also exposes a separate identity task: 32–42% of sampled `other` rows did not have both sides linked to an exact source entry, and only 52–60% had active-sense source links on both sides. Improve the matching and retain unresolved links before using these rows to estimate category coverage.
+
+The expanded audit JSONL files and their manifests remain local under `pipeline/data/`. The manifest records that sampling queried the live API, so an exact rerun needs the same comparison snapshot; the current API must not be assumed to return the same rows. [build_source_pair_audit.py](../pipeline/src/build_source_pair_audit.py) can rejoin explicit pairs to the retained source records. Keep this table as a sample finding, not a reclassification of all rows in those populations.
+
 ## Do this next
 
 ### 1. Build a small multi-edge lexical-history slice
