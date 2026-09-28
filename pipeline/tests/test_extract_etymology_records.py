@@ -438,6 +438,37 @@ class EtymologyRecordTests(unittest.TestCase):
             ],
         )
 
+    def test_keeps_same_language_derivation_diffusion_and_sound_symbolism_distinct(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "example",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "from", "args": {"1": "sv", "2": "styng"}},
+                    {"name": "internationalism", "args": {"1": "sv"}},
+                    {"name": "intnat", "args": {"1": "sv"}},
+                    {"name": "sound-symbolic", "args": {"1": "sv", "title": "expressive"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(
+            [
+                (claim["relation"], claim.get("related_language"), claim.get("related_form"),
+                 claim.get("diffusion_type"), claim.get("formation_type"), claim.get("source_label"))
+                for claim in record["claims"]
+            ],
+            [
+                ("derived_from", "sv", "styng", None, None, None),
+                (None, None, None, "internationalism", None, None),
+                (None, None, None, "internationalism", None, None),
+                (None, None, None, None, "sound_symbolic", "expressive"),
+            ],
+        )
+
     def test_keeps_person_attribution_and_formation_facts_out_of_lexical_edges(self):
         record = source_record(
             {
