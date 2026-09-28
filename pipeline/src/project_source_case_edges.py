@@ -10,6 +10,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
+COMPARISON_FIELDS = (
+    "id", "lang_a", "word_a", "pos_a", "def_a", "lang_b", "word_b", "pos_b", "def_b",
+    "category", "etymological_relation", "orthographic_sim", "phonetic_sim", "semantic_sim",
+)
+
+
 def _edge_key(claim: dict) -> tuple:
     return (
         claim.get("relation"),
@@ -53,8 +59,25 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                         input_cases += 1
                         case_id = audit.get("audit_key", f"{path.name}:{line_number}")
                         comparison = audit.get("comparison") or {}
+                        comparison_context = {key: comparison.get(key) for key in COMPARISON_FIELDS}
                         for lang, entries in audit.get("source_entries", {}).items():
                             for entry in entries:
+                                entry_key = entry.get("source_entry_key", entry.get("key"))
+                                comparison_sense_matches = []
+                                for sense_match in audit.get("source_sense_matches", {}).get(lang, []):
+                                    matched_senses = [
+                                        sense for sense in sense_match.get("source_senses", [])
+                                        if sense.get("source_entry_key") == entry_key
+                                    ]
+                                    if matched_senses:
+                                        comparison_sense_matches.append({
+                                            "comparison_sense_id": sense_match.get("comparison_sense_id"),
+                                            "comparison_sense_is_active_match": sense_match.get("comparison_sense_is_active_match"),
+                                            "comparison_sense_pos": sense_match.get("comparison_sense_pos"),
+                                            "comparison_gloss": sense_match.get("comparison_gloss"),
+                                            "match_method": sense_match.get("match_method"),
+                                            "source_senses": matched_senses,
+                                        })
                                 grouped = {}
                                 for claim in entry.get("claims", []):
                                     relation = claim.get("relation")
@@ -67,16 +90,19 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                     relation, related_lang, related_form, components, uncertain, basis = key
                                     record = {
                                         "case_id": case_id,
-                                        "comparison": {
-                                            "category": comparison.get("category"),
-                                            "etymological_relation": comparison.get("etymological_relation"),
-                                        },
+                                        "comparison": comparison_context,
                                         "source_entry": {
+                                            "source": entry.get("source"),
+                                            "source_file": entry.get("source_file"),
+                                            "source_url": entry.get("source_url"),
                                             "language": lang,
                                             "word": entry.get("word"),
                                             "part_of_speech": entry.get("part_of_speech", entry.get("pos")),
-                                            "entry_key": entry.get("source_entry_key", entry.get("key")),
+                                            "etymology_number": entry.get("etymology_number"),
+                                            "entry_key": entry_key,
                                             "etymology_text": entry.get("etymology_text", entry.get("text")),
+                                            "sense_ids": entry.get("sense_ids"),
+                                            "comparison_sense_matches": comparison_sense_matches,
                                         },
                                         "edge": {
                                             "relation": relation,
@@ -113,7 +139,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source_files": source_files,
             "output_file": output.name,
-            "schema_version": 1,
+            "schema_version": 2,
             "counts": {
                 "cases": case_count,
                 "unique_source_edges": edge_count,

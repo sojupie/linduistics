@@ -48,7 +48,11 @@ def test_case_projection_groups_duplicate_edges_but_keeps_template_evidence(tmp_
     records = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
     assert len(records) == 1
     edge = records[0]
-    assert edge["comparison"] == {"category": "false_friend", "etymological_relation": "unknown"}
+    assert edge["comparison"]["category"] == "false_friend"
+    assert edge["comparison"]["etymological_relation"] == "unknown"
+    assert edge["source_entry"]["entry_key"] == "sv|fleece|noun||source-id"
+    assert edge["source_entry"]["part_of_speech"] == "noun"
+    assert edge["source_entry"]["etymology_text"] == "Borrowed from English fleece."
     assert edge["edge"]["relation"] == "borrowed_from"
     assert edge["evidence"] == [
         {"template_index": 0, "template_name": "ety", "args": {"1": "sv", "2": ":bor", "3": "en:fleece"}},
@@ -66,13 +70,46 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     audit = tmp_path / "audit.jsonl"
     audit.write_text(json.dumps({
         "audit_key": "sv|bank|en|bank",
-        "comparison": {"category": "other", "etymological_relation": "unknown"},
+        "comparison": {
+            "id": 12,
+            "lang_a": "sv",
+            "word_a": "bank",
+            "pos_a": "noun",
+            "def_a": "financial institution",
+            "lang_b": "en",
+            "word_b": "bank",
+            "pos_b": "noun",
+            "def_b": "financial institution",
+            "category": "other",
+            "etymological_relation": "unknown",
+            "orthographic_sim": 1.0,
+            "phonetic_sim": 0.95,
+            "semantic_sim": 0.9,
+        },
+        "source_entry_match": {"sv": "exact"},
+        "source_sense_matches": {"sv": [{
+            "comparison_sense_id": 1,
+            "comparison_sense_is_active_match": True,
+            "comparison_sense_pos": "noun",
+            "comparison_gloss": "financial institution",
+            "match_method": "exact_gloss",
+            "source_senses": [{
+                "source_entry_key": "sv|bank|noun||source-id",
+                "source_sense_id": "sense-1",
+                "source_gloss": "financial institution",
+            }],
+        }]},
         "source_entries": {
             "sv": [{
+                "source": "Wiktionary",
+                "source_file": "kaikki_sv.jsonl",
+                "source_url": "https://en.wiktionary.org/wiki/bank#Swedish",
                 "word": "bank",
                 "part_of_speech": "noun",
+                "etymology_number": 1,
                 "source_entry_key": "sv|bank|noun||source-id",
                 "etymology_text": "Borrowed from English bank.",
+                "sense_ids": ["sense-1"],
                 "claims": [{
                     "template_index": 0,
                     "template_name": "bor+",
@@ -87,13 +124,47 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     }) + "\n", encoding="utf-8")
     output = tmp_path / "edges.jsonl"
 
-    project_source_case_edges([audit], output)
+    manifest = project_source_case_edges([audit], output)
 
     edge = json.loads(output.read_text(encoding="utf-8").splitlines()[0])
+    assert manifest["schema_version"] == 2
+    assert edge["comparison"] == {
+        "id": 12,
+        "lang_a": "sv",
+        "word_a": "bank",
+        "pos_a": "noun",
+        "def_a": "financial institution",
+        "lang_b": "en",
+        "word_b": "bank",
+        "pos_b": "noun",
+        "def_b": "financial institution",
+        "category": "other",
+        "etymological_relation": "unknown",
+        "orthographic_sim": 1.0,
+        "phonetic_sim": 0.95,
+        "semantic_sim": 0.9,
+    }
     assert edge["source_entry"] == {
+        "source": "Wiktionary",
+        "source_file": "kaikki_sv.jsonl",
+        "source_url": "https://en.wiktionary.org/wiki/bank#Swedish",
         "language": "sv",
         "word": "bank",
         "part_of_speech": "noun",
+        "etymology_number": 1,
         "entry_key": "sv|bank|noun||source-id",
         "etymology_text": "Borrowed from English bank.",
+        "sense_ids": ["sense-1"],
+        "comparison_sense_matches": [{
+            "comparison_sense_id": 1,
+            "comparison_sense_is_active_match": True,
+            "comparison_sense_pos": "noun",
+            "comparison_gloss": "financial institution",
+            "match_method": "exact_gloss",
+            "source_senses": [{
+                "source_entry_key": "sv|bank|noun||source-id",
+                "source_sense_id": "sense-1",
+                "source_gloss": "financial institution",
+            }],
+        }],
     }
