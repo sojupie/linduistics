@@ -11,6 +11,9 @@ import os
 from collections import Counter, defaultdict
 from pathlib import Path
 
+PROJECT_LANGUAGES = {"da", "de", "en", "nb", "sv"}
+PROJECT_LANGUAGE_RELATIONS = {"inherited_from", "borrowed_from", "derived_from"}
+
 
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -44,6 +47,9 @@ def audit_shared_component_proto_claims(
     force: bool = False,
 ) -> dict:
     roots_by_entry: dict[str, set[tuple[str, str]]] = defaultdict(set)
+    peer_source_entries = set()
+    peer_source_claims: Counter[tuple[str, str, str]] = Counter()
+    peer_source_entry_counts: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     etymology_records_count = 0
     with etymology_records.open("rb") as source:
         for line_number, line in enumerate(source, start=1):
@@ -55,9 +61,21 @@ def audit_shared_component_proto_claims(
                 raise ValueError(f"Invalid JSON at line {line_number} in {etymology_records.name}") from exc
             etymology_records_count += 1
             entry_key = record.get("source_entry_key")
+            source_language = record.get("language_code")
             for claim in record.get("claims", []):
                 ancestor_language = claim.get("related_language")
                 ancestor_form = claim.get("related_form")
+                if (
+                    entry_key
+                    and source_language in PROJECT_LANGUAGES
+                    and ancestor_language in PROJECT_LANGUAGES
+                    and ancestor_language != source_language
+                    and claim.get("relation") in PROJECT_LANGUAGE_RELATIONS
+                ):
+                    peer_source_entries.add(entry_key)
+                    key = (source_language, ancestor_language, claim["relation"])
+                    peer_source_claims[key] += 1
+                    peer_source_entry_counts[key].add(entry_key)
                 if (
                     entry_key
                     and claim.get("relation") == "inherited_from"
@@ -70,7 +88,9 @@ def audit_shared_component_proto_claims(
 
     all_candidates: dict[tuple[str, str], dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
     unique_candidates: dict[tuple[str, str], dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
+    unique_without_peer_candidates: dict[tuple[str, str], dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
     unique_uses: dict[tuple[str, str], dict[str, set[tuple]]] = defaultdict(lambda: defaultdict(set))
+    unique_without_peer_uses: dict[tuple[str, str], dict[str, set[tuple]]] = defaultdict(lambda: defaultdict(set))
     candidate_records_analyzed = 0
     languages = set()
     with gzip.open(component_candidates, "rt", encoding="utf-8") as source:
@@ -94,13 +114,17 @@ def audit_shared_component_proto_claims(
                         all_candidates[ancestor][language].add(entry_key)
                         if component.get("match_status") == "one_exact_entry" and len(keys) == 1:
                             unique_candidates[ancestor][language].add(entry_key)
-                            unique_uses[ancestor][language].add((
+                            use = (
                                 record.get("source_entry_key"),
                                 record.get("relation"),
                                 component.get("index"),
                                 component.get("surface_form"),
                                 entry_key,
-                            ))
+                            )
+                            unique_uses[ancestor][language].add(use)
+                            if entry_key not in peer_source_entries:
+                                unique_without_peer_candidates[ancestor][language].add(entry_key)
+                                unique_without_peer_uses[ancestor][language].add(use)
 
     candidate_output = shared_candidate_output
     if candidate_output.exists() and not force:
@@ -112,29 +136,33 @@ def audit_shared_component_proto_claims(
         with temp_output.open("wb") as compressed_file:
             compressed = gzip.GzipFile(fileobj=compressed_file, mode="wb", filename="", mtime=0)
             with io.TextIOWrapper(compressed, encoding="utf-8", newline="\n") as destination:
-                for ancestor, languages_by_code in sorted(unique_uses.items()):
-                    if len(languages_by_code) < 2:
-                        continue
-                    record = {
-                        "ancestor": {"language_code": ancestor[0], "form": ancestor[1]},
-                        "basis": "unique_exact_entry_only",
-                        "component_uses_by_language": {
-                            language: [
-                                {
-                                    "parent_entry_key": parent_key,
-                                    "relation": relation,
-                                    "component_index": component_index,
-                                    "component_form": component_form,
-                                    "component_entry_key": component_entry_key,
-                                }
-                                for parent_key, relation, component_index, component_form, component_entry_key
-                                in sorted(uses)
-                            ]
-                            for language, uses in sorted(languages_by_code.items())
-                        },
-                    }
-                    destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
-                    shared_candidate_records += 1
+                for basis, candidate_view in (
+                    ("unique_exact_entry_only", unique_uses),
+                    ("unique_exact_entry_without_peer_source_recorded", unique_without_peer_uses),
+                ):
+                    for ancestor, languages_by_code in sorted(candidate_view.items()):
+                        if len(languages_by_code) < 2:
+                            continue
+                        record = {
+                            "ancestor": {"language_code": ancestor[0], "form": ancestor[1]},
+                            "basis": basis,
+                            "component_uses_by_language": {
+                                language: [
+                                    {
+                                        "parent_entry_key": parent_key,
+                                        "relation": relation,
+                                        "component_index": component_index,
+                                        "component_form": component_form,
+                                        "component_entry_key": component_entry_key,
+                                    }
+                                    for parent_key, relation, component_index, component_form, component_entry_key
+                                    in sorted(uses)
+                                ]
+                                for language, uses in sorted(languages_by_code.items())
+                            },
+                        }
+                        destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
+                        shared_candidate_records += 1
         os.replace(temp_output, candidate_output)
     except Exception:
         temp_output.unlink(missing_ok=True)
@@ -157,13 +185,25 @@ def audit_shared_component_proto_claims(
             "Exact (reconstructed language, form) pairs from non-uncertain inherited_from claims to language codes ending in -pro."
         ),
         "component_scope": "compound_of and formed_from records only",
+        "direct_project_language_source_claims": {
+            "count_by_direction_and_relation": {
+                f"{source}>{target}:{relation}": count
+                for (source, target, relation), count in sorted(peer_source_claims.items())
+            },
+            "distinct_source_entries_by_direction_and_relation": {
+                f"{source}>{target}:{relation}": len(peer_source_entry_counts[(source, target, relation)])
+                for source, target, relation in sorted(peer_source_claims)
+            },
+        },
         "results": {
             "all_exact_entry_candidates": _coverage_summary(all_candidates),
             "unique_exact_entry_only": _coverage_summary(unique_candidates),
+            "unique_exact_entry_without_peer_source_recorded": _coverage_summary(unique_without_peer_candidates),
         },
         "interpretation_limit": (
             "Shared nodes are candidate component-level source links, not reviewed cognate sets or whole-word classifications. "
-            "Entries may contain several senses; ambiguous component spellings remain candidates."
+            "Entries may contain several senses; ambiguous component spellings remain candidates. Absence of a peer-language "
+            "source claim does not prove independent inheritance."
         ),
     }
 
