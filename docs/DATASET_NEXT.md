@@ -14,6 +14,8 @@ The source-template audit now covers five passes: target-language extraction, mi
 
 Next, keep auditing templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Then follow the current focused word cases through source-entry matching and interpretation.
 
+The current exact-form source join finds entry-level claims on 13,738 candidate pairs still labeled `other`, including overlapping cognate mentions, borrowings, derivations, and calques. These are evidence facets, not reviewed subcategories; unmatched pairs remain unresolved in this join. See the [source-claim breakdown](DATASET_NEXT_STEPS.md#source-claims-within-the-other-candidate-bucket-2026-09-28).
+
 ## Work in this order
 
 ### 1. Finish checking the source extraction rules

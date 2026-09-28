@@ -486,6 +486,29 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py -
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
 
+## Source claims within the `other` candidate bucket (2026-09-28)
+
+The refreshed source-claim join has **20,354 evidence rows** across **17,753 exact-case candidate form pairs**. Of those, **13,738** pairs currently marked `other` have at least one source-entry claim whose language and form match the paired entry. The other bucket contains **572,981 unique exact-case candidate form pairs** in this candidate build; 559,243 have no match under this exact entry-claim join.
+
+Among the 13,738 matched `other` pairs, source claims give these overlapping evidence facets:
+
+| Source claim | Exact candidate pairs |
+| --- | ---: |
+| Cognate mention | 6,575 |
+| Borrowed from | 4,828 |
+| Derived from | 1,832 |
+| Calque of | 321 |
+| Inherited from | 136 |
+| Noncognate mention | 72 |
+| Semantic loan from | 31 |
+| Partial calque of | 27 |
+| Pseudo-loan based on | 16 |
+| Influenced by | 2 |
+
+The counts overlap: **102 pairs have more than one distinct claim type**. These are claims attached to Wiktionary entries, not independently verified relations for a selected sense. They show why `other` cannot serve as a linguistic category and why one exclusive relation field loses useful distinctions. They do not justify migrating the matched pairs into cognate, loan, or false-cognate labels by themselves. The remaining pairs have no match under this narrow join; that is missing linked evidence, not evidence of unrelatedness.
+
+The refreshed file `pipeline/data/candidate_source_claim_matches_source_claim_kinds.jsonl` has 20,354 rows and the same match IDs as the prior export. This breakdown describes the current candidate build and exact-form join, not vocabulary-wide coverage.
+
 ## Preserve same-language derivation and source-kind claims (2026-09-28)
 
 The next inventory pass highlighted claims that should not be flattened into cross-language borrowing. Wiktionary defines `from` for derivation within one language and says it works like `mention`, with the language and source form in arguments 1 and 2 ([documentation](https://en.wiktionary.org/wiki/Template:from/documentation)). `internationalism` marks words whose immediate source may be unclear and recommends a more specific borrowed/derived claim when it is known ([template page](https://en.wiktionary.org/wiki/Template:internationalism)). The dump also contains the short `intnat` template; its recorded expansions say “Internationalism,” so it is normalized to the same source label while the original template and arguments remain intact. Wiktionary's sound-symbolism category distinguishes words that use sound symbolism from strict onomatopoeia ([category definition](https://en.wiktionary.org/wiki/Category:Sound-symbolic_terms_by_language)).
