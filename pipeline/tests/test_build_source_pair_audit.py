@@ -107,6 +107,26 @@ class SourcePairAuditTests(unittest.TestCase):
         self.assertEqual(shared[0]["related_language"], "fr")
         self.assertEqual(shared[0]["related_form_key"], "queue")
 
+    def test_source_cognate_mentions_link_to_the_comparison_without_classifying_it(self):
+        english = {
+            "source_entry_key": "en|sandbank|noun||a", "word": "sandbank",
+            "claims": [{"relation": "cognate_mention", "template_name": "cog", "template_index": 1,
+                        "related_language": "sv", "related_form": "sandbank", "args": {"1": "sv", "2": "sandbank"}}],
+        }
+        swedish = {
+            "source_entry_key": "sv|sandbank|noun||b", "word": "sandbank",
+            "claims": [{"relation": "noncognate_mention", "template_name": "ncog", "template_index": 1,
+                        "related_language": "en", "related_form": "sandbank", "args": {"1": "en", "2": "sandbank"}}],
+        }
+
+        evidence = derive_pair_source_evidence([swedish], [english], "sv", "sandbank", "en", "sandbank")
+
+        self.assertEqual([item["type"] for item in evidence], ["source_noncognate_mention", "source_cognate_mention"])
+        self.assertEqual(evidence[0]["claim"]["source_entry_key"], "sv|sandbank|noun||b")
+        self.assertEqual(evidence[0]["matched_mentioned_entry_keys"], ["en|sandbank|noun||a"])
+        self.assertEqual(evidence[1]["claim"]["source_entry_key"], "en|sandbank|noun||a")
+        self.assertEqual(evidence[1]["matched_mentioned_entry_keys"], ["sv|sandbank|noun||b"])
+
     def test_category_sampler_uses_seeded_distinct_offsets_and_oversamples_other(self):
         def fake_response(url, timeout):
             query = parse_qs(urlparse(url).query)

@@ -101,6 +101,22 @@ def derive_pair_source_evidence(
                             "claim": _claim_reference(entry, claim),
                             "matched_donor_entry_keys": partner_keys,
                         })
+                elif relation in {"cognate_mention", "noncognate_mention"}:
+                    if related_language == partner_language and related_form.casefold() == partner_word.casefold():
+                        partner_keys = [
+                            candidate["source_entry_key"]
+                            for candidate in partner_entries
+                            if candidate.get("word", "").casefold() == related_form.casefold()
+                        ]
+                        evidence.append({
+                            "type": f"source_{relation}",
+                            "source_language": language,
+                            "source_form": word,
+                            "mentioned_language": partner_language,
+                            "mentioned_form": related_form,
+                            "claim": _claim_reference(entry, claim),
+                            "matched_mentioned_entry_keys": partner_keys,
+                        })
                 elif relation == "inherited_from":
                     inherited_claims[key].append(_claim_reference(entry, claim))
 
