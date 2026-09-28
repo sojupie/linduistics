@@ -125,6 +125,16 @@ These are diagnostic examples, not adjudicated labels or vocabulary statistics. 
 
 These are source-claim and candidate-coverage counts. A Wiktionary mention is evidence to inspect, not a reviewed judgment. A claim that does not reach a candidate may reflect candidate retrieval, a form or sense mismatch, or an incomplete source link; it does not show that the claim is false. This audit gives us a concrete next target: keep source claims queryable even when no current comparison row exists.
 
+The script also checks the residual `other` set for a claim attached to an exact active source entry that names the counterpart language and the compared form. It finds such a claim on 636 of 9,409 Swedish–Danish `other` candidates, 504 of 10,039 Swedish–Norwegian candidates, and 2,785 of 11,769 German–English candidates. The claim types overlap:
+
+| Pair | `other` candidates | With a pair-specific claim | Claim types found |
+|---|---:|---:|---|
+| Swedish–Danish | 9,409 | 636 | 561 cognate mentions; 47 `borrowed_from`; 25 `derived_from`; 3 noncognate mentions; 2 calque claims |
+| Swedish–Norwegian Bokmål | 10,039 | 504 | 476 cognate mentions; 16 `borrowed_from`; 14 `derived_from` |
+| German–English | 11,769 | 2,785 | 2,143 `borrowed_from`; 440 cognate mentions; 199 `derived_from`; 7 calque claims; 4 noncognate mentions; 2 semantic-loan claims; 1 influence claim |
+
+This is a strict source-to-candidate link, not an adjudication. A source entry can have several claims, and a claim may not tell us the full relationship between the selected forms. The remaining `other` candidates may have claims that name another etymon, use another spelling, lack a target-language link, or have no extracted claim. These counts identify where the source already makes a pair-specific assertion; they do not define the entire residual bucket.
+
 The manifest records hashes and local modification times for the input files. It does not pin a Wiktionary revision or prove when the files were downloaded. The raw dumps and generated JSONL are local, ignored data files; this repository contains the command and tests needed to recreate the export when those inputs are available.
 
 An initial local audit slice contains 27 source entries matching *fleece*, *clown*, *ombudsman*, *bankman*, *sandbank*, and *gift* across the five covered varieties. It is generated from the full export at `pipeline/data/etymology_audit_slice.jsonl` and is ignored by Git because it contains source text. The slice confirms that separate Swedish *gift* entries survive extraction, Swedish *fleece* and *clown* state direct English borrowing, *ombudsman* preserves both Swedish components and the English borrowing direction, and *sandbank*/*bankman* preserve component claims. `pipeline/src/build_source_pair_audit.py` joins these source records to live comparison rows, preferring exact language and spelling and using a clearly marked casefold fallback when needed. It keeps every matching source entry per side. The six-row initial audit is written to `pipeline/data/source_pair_audit.jsonl`; generated files are ignored by Git.
