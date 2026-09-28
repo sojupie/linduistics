@@ -14,9 +14,10 @@ CLDF is fine as a sharing format. Keep the working pipeline shaped around the ev
 - All 23 previously flagged comparison spellings are present in the uncapped output after case-fold matching: 20 exact spellings and three lowercase canonical forms.
 - Translation mining now retains the source sense that supplied each candidate. This fixes the demonstrated `haben` / `own` sense mismatch and preserves multiple source translation claims for `fressen` / `fret` and `bis` / `till`.
 - The refreshed 270-case audit now has a comparison row for every case and active source-sense links on both sides. Three German–English spellings (`Haben`, `Fressen`, `Bis`) resolve through an explicitly recorded unique case-fold match.
-- The source-claim projection contains 2,341 normalized edges backed by 2,396 source-template records. It skips 292 claims without a normalized relation; those claims remain in the audit files.
+- The extractor now normalizes 3,794 previously unmapped source-claim records into 3,930 relation records. This includes plain-language forms for inheritance, derivation, borrowing variants, cognate mentions, partial calques, pseudo-loans, and formation patterns. The raw template name and arguments remain attached.
+- Rejoining the same 270 cases to the updated source export produces 2,346 normalized edges backed by 2,401 source-template records. It skips 287 unmapped or nonrelation claims, which remain in the audit files.
 - A small case ledger now documents concrete examples and separates source paths, comparison observations, and evidence-link status in [DATASET_CASE_REVIEW.md](DATASET_CASE_REVIEW.md).
-- The pipeline test suite passes: 95 tests.
+- The full pipeline test suite passes: 96 tests.
 - None of this changes the live database or proves the generated category labels correct. The old `other` value remains a candidate-builder remainder, not a linguistic relationship.
 
 See [the stage record](NEXT_DATASET_STAGE.md) and [the running findings log](DATASET_NEXT_STEPS.md) for methods, examples, and limitations.
