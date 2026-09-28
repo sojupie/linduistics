@@ -81,3 +81,51 @@ def test_slice_links_only_active_source_entries_and_keeps_component_candidates(t
     assert set(fleece["shared_component_ancestors"][0]["matched_uses_by_language"]) == {"sv", "en"}
     assert {row["source_entry_key"] for row in fleece["component_source_entries"]} == {"sv|flee|verb||sv-flee", "en|flee|verb||en-flee"}
     assert manifest["case_counts"]["fleece"] == {"comparison_candidates": 1, "source_entries": 2, "component_source_entries": 2, "pair_claim_matches": 1, "component_claims": 1, "shared_component_ancestor_candidates": 1}
+
+
+def test_slice_includes_source_entry_candidates_for_ambiguous_active_sense(tmp_path):
+    comparison = {
+        "lang_a": "en", "word_a": "ombudsman", "pos_a": "noun", "def_a": "ombudsman",
+        "etym_root_a": None, "etym_text_a": None,
+        "lang_b": "nb", "word_b": "ombudsmann", "pos_b": "noun", "def_b": "ombudsman",
+        "etym_root_b": "Old Norse umboðsmaðr", "etym_text_b": "Inherited from Old Norse.",
+        "category": "partial_cognate", "etymological_relation": "cognate",
+        "orthographic_sim": 0.9, "phonetic_sim": 0.8, "semantic_sim": 0.66,
+        "senses_a": json.dumps([{
+            "source_entry_key": "en|ombudsman|noun||en-sense", "source_sense_id": "en-sense",
+            "gloss": "ombudsman", "pos": "noun", "is_active_match": True,
+        }]),
+        "senses_b": json.dumps([{
+            "source_entry_key": None, "source_sense_id": None, "source_identity_ambiguous": True,
+            "source_identity_candidates": [
+                {"source_entry_key": "nb|ombudsmann|noun||nb-sense-a,nb-sense-b", "source_sense_id": "nb-sense-a"},
+                {"source_entry_key": "nb|ombudsmann|noun||nb-sense-a,nb-sense-b", "source_sense_id": "nb-sense-b"},
+            ],
+            "gloss": "an ombudsman", "pos": "noun", "is_active_match": True,
+        }]),
+        "translation_source_senses": "[]",
+    }
+    comparisons = tmp_path / "comparisons.parquet"
+    pq.write_table(pa.Table.from_pylist([comparison]), comparisons)
+    candidate_key = "nb|ombudsmann|noun||nb-sense-a,nb-sense-b"
+    source_records = tmp_path / "sources.jsonl"
+    source_records.write_text(json.dumps({
+        "source_entry_key": candidate_key, "language_code": "nb", "word": "ombudsmann",
+        "sense_ids": ["nb-sense-a", "nb-sense-b"], "claims": [],
+    }) + "\n", encoding="utf-8")
+    components = tmp_path / "components.jsonl.gz"
+    with gzip.open(components, "wt", encoding="utf-8"):
+        pass
+    claim_matches = tmp_path / "claim_matches.jsonl"
+    claim_matches.write_text("", encoding="utf-8")
+    output = tmp_path / "slice.jsonl"
+
+    build_slice(comparisons, source_records, claim_matches, components, output)
+
+    ombudsman = next(row for row in map(json.loads, output.read_text(encoding="utf-8").splitlines()) if row["case_id"] == "ombudsman")
+    target = next(row for row in ombudsman["source_entries"] if row["source_entry_key"] == candidate_key)
+    alignment = target["comparison_sense_alignment"]
+    assert alignment["status"] == "ambiguous_sense_overlap"
+    assert alignment["active_comparison_sense_ids"] == []
+    assert alignment["candidate_comparison_sense_ids"] == ["nb-sense-a", "nb-sense-b"]
+    assert alignment["matched_candidate_sense_ids"] == ["nb-sense-a", "nb-sense-b"]

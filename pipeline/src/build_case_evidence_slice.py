@@ -69,6 +69,7 @@ def build_slice(
     }
     active_entry_keys: dict[str, set[str]] = defaultdict(set)
     active_sense_ids: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
+    candidate_sense_ids: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
 
     for batch in pq.ParquetFile(comparisons).iter_batches(columns=list(COMPARISON_FIELDS)):
         for row in batch.to_pylist():
@@ -86,6 +87,13 @@ def build_slice(
                             active_entry_keys[case_id].add(entry_key)
                         if entry_key and sense_id:
                             active_sense_ids[case_id][entry_key].add(sense_id)
+                        for candidate in sense.get("source_identity_candidates") or []:
+                            candidate_entry_key = candidate.get("source_entry_key")
+                            candidate_sense_id = candidate.get("source_sense_id")
+                            if candidate_entry_key:
+                                active_entry_keys[case_id].add(candidate_entry_key)
+                            if candidate_entry_key and candidate_sense_id:
+                                candidate_sense_ids[case_id][candidate_entry_key].add(candidate_sense_id)
             if comparison["translation_source_senses"]:
                 comparison["translation_source_senses"] = json.loads(comparison["translation_source_senses"])
             cases[case_id]["comparisons"].append(comparison)
@@ -138,12 +146,20 @@ def build_slice(
         for case_id in entry_cases.get(entry_key, ()):
             record_sense_ids = set(record.get("sense_ids", []))
             active_ids = active_sense_ids[case_id][entry_key]
+            candidate_ids = candidate_sense_ids[case_id][entry_key]
+            matched_candidate_ids = candidate_ids & record_sense_ids
             cases[case_id]["source_entries"].append({
                 **record,
                 "comparison_sense_alignment": {
                     "active_comparison_sense_ids": sorted(active_ids),
                     "matched_source_sense_ids": sorted(active_ids & record_sense_ids),
-                    "status": "exact_sense_overlap" if active_ids & record_sense_ids else "entry_level_only",
+                    "candidate_comparison_sense_ids": sorted(candidate_ids),
+                    "matched_candidate_sense_ids": sorted(matched_candidate_ids),
+                    "status": (
+                        "exact_sense_overlap" if active_ids & record_sense_ids else
+                        "ambiguous_sense_overlap" if matched_candidate_ids else
+                        "entry_level_only"
+                    ),
                 },
             })
         for case_id in component_entry_cases.get(entry_key, set()) - entry_cases.get(entry_key, set()):

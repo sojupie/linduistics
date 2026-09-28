@@ -328,3 +328,49 @@ def test_rejects_an_unreferenced_relation_target():
         assert "Unreferenced normalized relation target" in str(error)
     else:
         raise AssertionError("Expected orphan normalized relation targets to fail validation")
+
+
+def test_exports_ambiguous_comparison_identity_candidates_as_entry_and_sense_links(tmp_path):
+    candidate_key = "nb|ombudsmann|noun||sense-a,sense-b"
+    comparison = _comparison(
+        "en", "ombudsman", "en|ombudsman|noun||sense-en", "sense-en", "ombudsman",
+        "nb", "ombudsmann", "", "", "an ombudsman",
+    )
+    comparison["senses_b"] = [{
+        "source_entry_key": None,
+        "source_sense_id": None,
+        "source_identity_ambiguous": True,
+        "source_identity_candidates": [
+            {"source_entry_key": candidate_key, "source_sense_id": "sense-a"},
+            {"source_entry_key": candidate_key, "source_sense_id": "sense-b"},
+        ],
+        "gloss": "an ombudsman",
+        "pos": "noun",
+        "is_active_match": True,
+    }]
+    source = tmp_path / "slice.jsonl"
+    source.write_text(json.dumps({
+        "case_id": "ombudsman",
+        "comparisons": [comparison],
+        "source_entries": [{
+            **_entry(candidate_key, "nb", "ombudsmann", "sense-a", "an ombudsman"),
+            "source_senses": [
+                {"id": "sense-a", "glosses": ["an ombudsman"], "tags": ["masculine"]},
+                {"id": "sense-b", "glosses": ["an ombudsman"], "tags": ["masculine"]},
+            ],
+        }],
+    }, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    output = tmp_path / "cldf"
+    export_slice(source, output)
+
+    with (output / "forms.csv").open(encoding="utf-8", newline="") as stream:
+        forms = list(csv.DictReader(stream))
+    target = next(row for row in forms if row["Language_ID"] == "nb")
+    candidates = json.loads(target["Source_Identity_Candidates_JSON"])
+    assert target["Source_Identity_Status"] == "ambiguous"
+    assert target["Source_Entry_ID"] == ""
+    assert len(candidates) == 2
+    assert {candidate["Source_Sense_ID"] for candidate in candidates} == {"sense-a", "sense-b"}
+    assert {candidate["Resolution_Status"] for candidate in candidates} == {"resolved"}
+    assert all(candidate["Entry_ID"] and candidate["Sense_ID"] for candidate in candidates)

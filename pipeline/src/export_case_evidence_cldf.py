@@ -45,15 +45,26 @@ def _active_sense(comparison: dict, side: str) -> dict:
     return active[0] if len(active) == 1 else {}
 
 
-def _form_identity(comparison: dict, side: str) -> tuple[dict, str]:
+def _form_identity(
+    comparison: dict,
+    side: str,
+    entries_by_key: dict[str, dict],
+    senses_by_key: dict[tuple[str, str], dict],
+) -> tuple[dict, dict]:
     language = comparison[f"lang_{side}"]
     word = comparison[f"word_{side}"]
     sense = _active_sense(comparison, side)
     entry_key = sense.get("source_entry_key")
     sense_id = sense.get("source_sense_id")
+    identity_candidates = sorted({
+        (candidate.get("source_entry_key") or "", candidate.get("source_sense_id") or "")
+        for candidate in sense.get("source_identity_candidates") or []
+    })
     pos = sense.get("pos") or comparison.get(f"pos_{side}") or ""
     gloss = sense.get("gloss") or comparison.get(f"def_{side}") or ""
     identity = (language, word, pos, entry_key or "", sense_id or "", gloss)
+    if identity_candidates:
+        identity += (identity_candidates,)
     return {
         "ID": stable_id("form", *identity),
         "Language_ID": language,
@@ -67,6 +78,21 @@ def _form_identity(comparison: dict, side: str) -> tuple[dict, str]:
             "ambiguous" if sense.get("source_identity_ambiguous") else
             "matched" if entry_key and sense_id else "unresolved"
         ),
+        "Source_Identity_Candidates_JSON": _dump([
+            {
+                "Source_Entry_Key": candidate.get("source_entry_key") or "",
+                "Source_Sense_ID": candidate.get("source_sense_id") or "",
+                "Entry_ID": entries_by_key.get(candidate.get("source_entry_key") or "", {}).get("ID", ""),
+                "Sense_ID": senses_by_key.get((candidate.get("source_entry_key") or "", candidate.get("source_sense_id") or ""), {}).get("ID", ""),
+                "Resolution_Status": (
+                    "resolved" if candidate.get("source_entry_key") in entries_by_key and
+                    (candidate.get("source_entry_key"), candidate.get("source_sense_id")) in senses_by_key else
+                    "entry_resolved_sense_missing" if candidate.get("source_entry_key") in entries_by_key else
+                    "entry_missing"
+                ),
+            }
+            for candidate in sense.get("source_identity_candidates") or []
+        ]),
     }, sense
 
 
@@ -179,6 +205,15 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
     }
     if relation_target_ids - referenced_relation_target_ids:
         raise ValueError("Unreferenced normalized relation target")
+    if "forms.csv" in rows_by_file:
+        entry_ids = ids.get("entries.csv", set())
+        sense_ids = ids.get("senses.csv", set())
+        for form in rows_by_file["forms.csv"]:
+            for candidate in json.loads(form.get("Source_Identity_Candidates_JSON") or "[]"):
+                if candidate.get("Entry_ID") and candidate["Entry_ID"] not in entry_ids:
+                    raise ValueError("Broken identity candidate entry reference")
+                if candidate.get("Sense_ID") and candidate["Sense_ID"] not in sense_ids:
+                    raise ValueError("Broken identity candidate sense reference")
 
 
 def _column(name: str, datatype: str = "string", *, required: bool = False, property_url: str | None = None, description: str | None = None) -> dict:
@@ -343,7 +378,7 @@ def export_slice(
             form_rows = []
             active_senses = []
             for side in ("a", "b"):
-                form, sense = _form_identity(comparison, side)
+                form, sense = _form_identity(comparison, side, entries_by_key, senses_by_key)
                 forms_by_id[form["ID"]] = form
                 form_rows.append(form)
                 active_senses.append(sense)
@@ -595,7 +630,7 @@ def export_slice(
         ("languages.csv", ["ID", "Name"], languages),
         ("entries.csv", ["ID", "Language_ID", "Headword", "Part_Of_Speech", "Source_Entry_Key", "Etymology_Number", "Origin_Status", "Etymology_Text", "Source_URL", "Source_File", "Source_Line"], entries),
         ("senses.csv", ["ID", "Entry_ID", "Source_Sense_ID", "Glosses_JSON", "Raw_Glosses_JSON", "Tags_JSON"], senses),
-        ("forms.csv", ["ID", "Language_ID", "Form", "Part_Of_Speech", "Source_Entry_ID", "Source_Entry_Key", "Source_Sense_ID", "Gloss", "Source_Identity_Status"], forms),
+        ("forms.csv", ["ID", "Language_ID", "Form", "Part_Of_Speech", "Source_Entry_ID", "Source_Entry_Key", "Source_Sense_ID", "Gloss", "Source_Identity_Status", "Source_Identity_Candidates_JSON"], forms),
         ("source-relation-targets.csv", ["ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON"], relation_targets),
         ("source-claims.csv", ["ID", "Template_Occurrence_ID", "Source_Relation_Target_ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON", "Source_Uncertain", "Template_Name", "Template_Index", "Template_Arguments_JSON", "Source_URL"], claims),
         ("component-links.csv", ["ID", "Parent_Entry_ID", "Relation", "Component_Index", "Component_Form", "Raw_Forms_JSON", "Match_Status", "Candidate_Entry_Keys_JSON", "Candidate_Entry_IDs_JSON", "Candidate_Entry_Resolution", "Evidence_JSON"], components),
@@ -629,6 +664,8 @@ def export_slice(
                 "Candidate_Entry_Resolution": "Whether every raw component candidate entry key resolved to a source entry in this export.",
                 "Claim_Source_Scope": "The source etymology claim is attached to this lexical entry, not to an individually identified sense.",
                 "Claim_Target_Scope": "The normalized claim target is a form, entity, component list, language only, or no target; form-level claims do not identify one target sense.",
+                "Source_Identity_Status": "Whether the comparison's selected sense resolves to one source entry and sense, remains ambiguous, or lacks a source link.",
+                "Source_Identity_Candidates_JSON": "Alternative source entry and sense identities retained when a comparison sense cannot be linked uniquely; Entry_ID and Sense_ID reference included rows when resolved.",
                 "Source_Relation_Target_ID": "Link to the normalized relation and target within the source entry. Multiple template occurrences can point to the same row; their own uncertainty and raw arguments stay on source-claims.csv.",
                 "Template_Occurrence_ID": "Stable identity for the raw source template and its arguments; one template can expand to multiple normalized target claims.",
                 "Template_Name": "Wiktionary template occurrence preserved from the source etymology data.",
@@ -644,6 +681,7 @@ def export_slice(
                 "Target_Language_Code": "Language code named by the source claim; it may be absent from the local dump set and is not a language-table foreign key.",
                 "Resolution_ID": "Form-level source-claim lookup result referenced by this candidate entry.",
                 "Target_Entry_ID": "Source entry identified as a spelling candidate; this link does not establish a target sense or relationship.",
+                "Source_Identity_Candidates_JSON": "Alternative source entry and sense identities retained when a comparison sense cannot be linked uniquely; Entry_ID and Sense_ID are populated only when those records are included in this slice.",
                 "Source_Claim_ID": "Target-specific source claim that initiated the form lookup.",
                 "Target_Claim_ID": "Target-entry claim that points back to the source entry's exact language and form; this is an internal source cross-reference, not independent confirmation.",
                 "Target_Relation_Target_ID": "Normalized relation-and-target record for the target-entry cross-reference.",
@@ -777,6 +815,7 @@ def export_slice(
             "Wiktionary entries can contain externally sourced material with separate terms; this selected export has not been checked for that material entry by entry and is not cleared for redistribution.",
             "The official CLDF validator has not been run; only the exporter's ID and declared foreign-key checks have passed.",
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
+            "Ambiguous comparison form identities retain candidate source entry and sense IDs; the export does not choose among them.",
             "Component candidate entry keys are candidates, not confirmed component-sense links.",
             "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
             "Target-entry resolution and candidate tables come from a separate spelling lookup. They preserve all candidates and do not resolve target senses or confirm the source claim.",
@@ -791,6 +830,7 @@ def export_slice(
         f"This CLDF Generic export contains {len(case_ids)} deliberately chosen Wiktionary-derived {case_group_label}. "
         "It keeps source entries and senses, normalized relation targets, source-template claim evidence, compound-component analyses, matched claim links, "
         "shared-component ancestor candidates, form-level target-entry candidates, and computed pair comparisons in separate tables.\n\n"
+        "When a comparison form's source identity is ambiguous, `forms.csv` leaves the singular source entry and sense IDs blank and stores all candidate identities in `Source_Identity_Candidates_JSON`. Candidate entries and senses are linked when included; the export does not choose among them.\n\n"
         "Source claims record their originating entry and one normalized target scope (form, entity, components, language, or none). A target template that expands into several claims retains one Template_Occurrence_ID across its rows. "
         "`source-relation-targets.csv` groups identical normalized relation targets within an entry; `source-claims.csv` retains each expanded claim, its template identity, uncertainty, and raw arguments. `claim-target-cross-references.csv` links exact return mentions in candidate target entries; these are Wiktionary cross-references, not independent confirmation. "
         "Sense IDs on claim-match rows identify "
