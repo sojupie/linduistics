@@ -33,6 +33,10 @@ def test_similarity_alone_never_claims_cognacy():
     assert classify_pair(0.1, 0.1, 0.9) == ("translation_pair", "unknown")
 
 
+def test_name_to_common_word_collision_is_not_a_false_friend():
+    assert classify_pair(1.0, 1.0, 0.1, pos_a="name", pos_b="noun") == ("other", "unknown")
+
+
 def test_verified_cognates_can_have_full_or_partial_semantic_overlap():
     root = "Proto-Germanic *hundaz"
     assert classify_pair(0.2, 0.2, 0.9, etym_root_a=root, etym_root_b=root) == ("true_cognate", "cognate")

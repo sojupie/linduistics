@@ -37,6 +37,8 @@ def classify_pair(
     etym_root_a: str = "",
     etym_root_b: str = "",
     max_active_sem: Optional[float] = None,
+    pos_a: str = "",
+    pos_b: str = "",
 ) -> Tuple[str, str]:
     """Return a display category and the pair's etymological relation.
 
@@ -45,6 +47,10 @@ def classify_pair(
     semantics = max_active_sem if max_active_sem is not None else s_sem
     surface_match = s_phon >= 0.65 or s_orth >= 0.70
     origin = etymological_relation(etym_root_a, etym_root_b)
+
+    # A name-to-common-word spelling collision is not a false-friend relation.
+    if (pos_a == "name") != (pos_b == "name"):
+        return "other", origin
 
     if surface_match and semantics <= 0.30:
         return "false_friend", origin

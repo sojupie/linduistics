@@ -77,6 +77,10 @@ def test_alignment_leaves_same_gloss_homograph_identity_unresolved():
     matched = aligned[4][0]
 
     assert matched["source_identity_ambiguous"] is True
+    assert matched["source_identity_candidates"] == [
+        {"source_entry_key": "sv|gift|noun|1|a", "source_sense_id": "a"},
+        {"source_entry_key": "sv|gift|noun|2|b", "source_sense_id": "b"},
+    ]
     assert matched["source_entry_key"] is None
     assert matched["source_sense_id"] is None
     assert matched["etym_root"] == ""

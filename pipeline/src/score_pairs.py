@@ -139,6 +139,8 @@ def score_lexicons(
                 s_orth=s_orth,
                 s_phon=s_phon,
                 s_sem=s_sem,
+                pos_a=pos_a,
+                pos_b=pos_b,
             )
 
             # Base pair

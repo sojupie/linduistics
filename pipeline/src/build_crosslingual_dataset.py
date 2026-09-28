@@ -464,6 +464,14 @@ def align_pair_senses(
             continue
         matched = annotated[int(selected_index)]
         matched["source_identity_ambiguous"] = True
+        matched["source_identity_candidates"] = [
+            {
+                "source_entry_key": candidate["source_entry_key"],
+                "source_sense_id": candidate["source_sense_id"],
+            }
+            for candidate in candidates
+            if candidate.get("source_entry_key") and candidate.get("source_sense_id")
+        ]
         matched["source_entry_key"] = None
         matched["source_sense_id"] = None
         matched["etymology_number"] = None
@@ -561,6 +569,8 @@ def build_pair_dataset(
             etym_root_a=etym_root_a,
             etym_root_b=etym_root_b,
             max_active_sem=max_active_sem,
+            pos_a=pos_a,
+            pos_b=pos_b,
         )
 
         shared_etym_root = (
