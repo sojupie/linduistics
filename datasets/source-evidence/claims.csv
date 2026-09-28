@@ -33,3 +33,6 @@ clown-sv-01,clown,clown-current,sv,clown,borrowed_from,en,clown,entry
 clown-da-01,clown,klovn-current,da,klovn,borrowed_from,en,clown,entry
 clown-nb-01,clown,klovn-current,nb,klovn,borrowed_from,en,clown,entry
 clown-de-01,clown,Clown-current,de,Clown,borrowed_from,en,clown,entry
+torta-sv-01,torta-tort,torta-current,sv,torta,cognate_mention,Norwegian (variety unspecified),tort,entry
+tort-nb-01,torta-tort,tort-current,nb,tort,borrowed_from,fr,tort,entry
+tort-nb-02,torta-tort,tort-current,nb,tort,derived_from,la,tortum,etymon
