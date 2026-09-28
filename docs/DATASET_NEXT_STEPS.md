@@ -183,7 +183,7 @@ I projected all 270 audits into 2,341 source-claim rows, backed by 2,396 templat
 | `calque_of` | 2 |
 | `influenced_by` | 1 |
 
-These rows describe claims attached to source entries used in the sample. Many point to third languages and do not connect the two compared forms. They are source evidence, not 2,341 confirmed pair classifications. Schema version 2 carries the compared forms and scores, source URL and entry key, and entry-to-comparison-sense links when the audit found them. Of the 2,341 rows, 1,624 carry at least one such sense link; that is context for an entry-level claim, not proof that the claim belongs to that sense. All rows have a source URL, entry key, and part of speech. One lacks etymology prose but retains its template name and arguments. The generated JSONL and manifest stay local because they contain source text.
+These rows describe claims attached to source entries used in the sample. Many point to third languages and do not connect the two compared forms. They are source evidence, not 2,341 confirmed pair classifications. Schema version 3 carries the compared forms and scores, source URL and entry key, and active comparison-sense links when the audit found them. Of the 2,341 rows, 1,216 carry such a link; it gives context for an entry-level claim, not proof that the claim belongs to that sense. The projection keeps only the active sense link rather than repeating every ambiguous gloss match. This reduced the local JSONL from 712 MB to 4.3 MB. All rows have a source URL, entry key, and part of speech. One lacks etymology prose but retains its template name and arguments. The generated JSONL and manifest stay local because they contain source text.
 
 Rerun this projection from the saved local audits with:
 
