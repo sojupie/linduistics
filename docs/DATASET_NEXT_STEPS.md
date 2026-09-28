@@ -93,7 +93,7 @@ pipeline\.venv\Scripts\python.exe pipeline/src/extract_etymology_records.py --in
 
 ## Completed: first comparison-to-source edge slice
 
-Using the existing pair-audit tool, I joined 19 selected Swedish, Danish, German, and Norwegian Bokmål comparisons to their exact source entries and senses. Eighteen have a current comparison row; the German *Ombudsmann* / English *ombudsman* source entries exist, but the local candidate build has no comparison row for that pair. Of the 19 requested cases, the current classifications are 14 `other`, three `true_cognate`, one `false_friend`, and one missing comparison.
+Using the existing pair-audit tool, I joined 19 selected Swedish, Danish, German, and Norwegian Bokmål comparisons to their exact source entries and senses. Eighteen have a current comparison row; the German *Ombudsmann* / English *ombudsman* source entries exist, but the local candidate build has no comparison row for that pair. Of the 19 requested cases, the current classifications are 14 `other`, three `true_cognate`, one `false_friend`, and one missing comparison. The audit also joins the original English translation statements: 18 cases have an exact source-sense claim for the compared forms; *bankman* is the one without a direct translation claim in these inputs.
 
 The audit makes several mismatches concrete:
 
@@ -101,6 +101,7 @@ The audit makes several mismatches concrete:
 - Swedish *bankman* / English *Bankman* is currently `false_friend`. The English source entry is a capitalized surname with no etymology; lowercase English *bankman* is a separate alternative form of *banksman*. Swedish *bankman* is a compound of *bank + man*. The source does not establish the whole-word relation.
 - For Danish *klovn* / English *clown*, the candidate comparison selects the English gloss “A clownfish.” The English translation claims for Danish *klovn* are attached to the performer and silly-person senses instead.
 - For Danish *bank* / English *bank*, the candidate selects an English verbal sense (“To store in a bank”) while the English translation entries link Danish *bank* to financial-institution senses. The source’s exact sense links expose this alignment gap.
+- The English translation records for *clown* attach Danish and Swedish *klovn/clown* to the performer and silly-person senses. They are useful sense evidence, but do not establish historical relationship by themselves.
 - Several current `other` rows have direct source statements for borrowing or compounding, including *clown*, *fleece*, *sandbank*, and *sandbanke*.
 
 The new [project_source_case_edges.py](../pipeline/src/project_source_case_edges.py) turns the audits into a directed edge view. For these 19 cases it produced 386 normalized source edges supported by 407 template records; 21 repeated encodings were grouped while preserving each template as evidence. The 53 claims without normalized relations remain in the source audits and are not treated as unknown origins. The generated case audits, edge file, and manifests are local ignored artifacts.
