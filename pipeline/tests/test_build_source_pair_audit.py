@@ -91,13 +91,19 @@ class SourcePairAuditTests(unittest.TestCase):
         }
         result = audit_record("besök", "besøg", "sv", "da", {
             "pos_a": "noun", "pos_b": "noun",
-            "senses_a": [{"sense_id": 1, "gloss": "A   VISIT"}, {"sense_id": 2, "gloss": "appointment"}],
+            "senses_a": [
+                {"sense_id": 1, "pos": "noun", "gloss": "A   VISIT"},
+                {"sense_id": 2, "pos": "noun", "gloss": "appointment"},
+                {"sense_id": 3, "pos": "verb", "gloss": "a visit"},
+            ],
         }, entries)
 
         linked = result["source_sense_matches"]["sv"]
         self.assertEqual(linked[0]["match_method"], "exact_gloss")
         self.assertEqual(linked[0]["source_senses"][0]["source_sense_id"], "sv-sense-1")
         self.assertEqual(linked[1]["match_method"], "unmatched")
+        self.assertEqual(linked[2]["match_method"], "pos_mismatch")
+        self.assertEqual(linked[2]["source_senses"], [])
 
     def test_source_evidence_distinguishes_direct_loan_from_shared_donor(self):
         sv_fleece = {

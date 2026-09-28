@@ -51,7 +51,7 @@ def select_source_entries_by_pos(entries: list[dict], pos: str | None) -> tuple[
     return selected, "matched_pos" if selected else "no_source_entry_for_comparison_pos"
 
 
-def match_source_senses(comparison_senses: list[dict], entries: list[dict]) -> list[dict]:
+def match_source_senses(comparison_senses: list[dict], entries: list[dict], comparison_pos: str | None) -> list[dict]:
     """Link only exact normalized glosses; leave paraphrases for review instead of guessing."""
     if not isinstance(comparison_senses, list):
         return []
@@ -73,16 +73,23 @@ def match_source_senses(comparison_senses: list[dict], entries: list[dict]) -> l
                     })
 
     matches = []
+    expected_pos = comparison_pos.casefold() if isinstance(comparison_pos, str) else None
     for sense in comparison_senses:
         if not isinstance(sense, dict):
             continue
         gloss = sense.get("gloss")
         key = " ".join(unicodedata.normalize("NFC", gloss).casefold().split()) if isinstance(gloss, str) else ""
+        sense_pos = sense.get("pos")
+        pos_mismatch = (
+            isinstance(sense_pos, str) and expected_pos is not None
+            and sense_pos.casefold() != expected_pos
+        )
         matches.append({
             "comparison_sense_id": sense.get("sense_id"),
+            "comparison_sense_pos": sense_pos,
             "comparison_gloss": gloss,
-            "match_method": "exact_gloss" if key and key in source_by_gloss else "unmatched",
-            "source_senses": source_by_gloss.get(key, []) if key else [],
+            "match_method": "pos_mismatch" if pos_mismatch else "exact_gloss" if key and key in source_by_gloss else "unmatched",
+            "source_senses": source_by_gloss.get(key, []) if key and not pos_mismatch else [],
         })
     return matches
 
@@ -221,8 +228,8 @@ def audit_record(
         "source_pos_entry_count": {source: len(selected_a), target: len(selected_b)},
         "source_pos_entry_match": {source: pos_match_a, target: pos_match_b},
         "source_sense_matches": {
-            source: match_source_senses(comparison_senses_a, selected_a),
-            target: match_source_senses(comparison_senses_b, selected_b),
+            source: match_source_senses(comparison_senses_a, selected_a, comparison.get("pos_a") if comparison else None),
+            target: match_source_senses(comparison_senses_b, selected_b, comparison.get("pos_b") if comparison else None),
         },
         "source_derived_relationships": derive_pair_source_evidence(
             selected_a, selected_b, source, word_a, target, word_b
