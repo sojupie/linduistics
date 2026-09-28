@@ -6,56 +6,50 @@ Keep making the data ourselves: source it, extract it, transform it, and inspect
 
 Wiktionary is the main source for the current work, not the definition of the project. Keep its claims and gaps visible. Add another source when a concrete case shows what information or transformation it can contribute. CLDF is fine as an exchange format; it should help someone reuse the data without dictating our internal pipeline.
 
-## Next milestone: make a small slice trustworthy to inspect
+## Current checkpoint (2026-09-28)
 
-The pipeline already has a source-linked case slice and a local CLDF Generic preview. Use these in the existing repo. Do not start a separate validation project, replace the work with a finished corpus, or update the live database as part of this milestone.
+The local source-linked slice now has 13 deliberate case groups, 56 directed comparison candidates, 40 comparison entries, 46 component source entries, 25 pair-claim matches, and 12 shared-component ancestor candidates. It remains a local diagnostic; no live database rows changed.
 
-### 1. Extend the case slice with component-overlap examples
+Four new pairs were selected because the existing component audit found a shared reconstructed ancestor in one component on each side:
 
-The shared-component candidate file overlaps four current `partial_cognate` comparisons: Danish–Swedish *oversætte/översätta*, Danish–Swedish *ramsløg/ramslök*, German–English *berauben/bereave*, and German–English *Stieftochter/stepdaughter*. Add these as test cases to the existing slice, then inspect their source entries, senses, whole-word claims, and component claims together.
+| Pair | Legacy label and similarity | What the source entries record | Shared component candidate |
+| --- | --- | --- | --- |
+| Danish *oversætte* – Swedish *översätta* | `partial_cognate`, 0.713 | Both entries trace the full word through Middle Low German and Old Saxon to Proto-West Germanic `*ubarsattjan`; each also describes a form built with “over” and the equivalent of “set.” | Danish *sætte* and Swedish *sätta*, Proto-Germanic `*satjaną` |
+| Danish *ramsløg* – Swedish *ramslök* | `partial_cognate`, 0.342 | Both entries describe compounds; both record the first element through Middle Low German *ramese* and Proto-West Germanic `*hramusō*`. | Danish *løg* and Swedish *lök*, Proto-Germanic `*laukaz`; a second candidate is recorded with language code `gmq-pro` and a runic form, which still needs inspection. |
+| German *berauben* – English *bereave* | `partial_cognate`, 0.616 | Both entries trace the complete word to Proto-Germanic `*biraubōną` and describe the prefix *be-* plus a verb. | German *be-* and English *be-*, Proto-Germanic `*bi-` |
+| German *Stieftochter* – English *stepdaughter* | `partial_cognate`, 0.494 | Both entries trace the complete word to Proto-Germanic `*steupaduhtēr` and describe a prefix plus “daughter.” | German *stief-* and English *step-*, Proto-West Germanic `*steupa-` |
 
-These are deliberately selected debugging examples, not a representative sample. A component link is evidence about a component; it does not by itself establish the history or cognacy of the complete word. The existing `partial_cognate` output is a legacy rule based on a shared root and a semantic-score threshold, not a component-level finding.
+All four selected senses overlap exactly with the source senses retained for their comparison. The component audit also added Proto-Germanic `*samdaz` candidates for German *Sandbank* and Norwegian Bokmål *sandbanke*. These are pipeline candidates projected from source component records, not independent confirmation of a whole-word classification. The source dump also has separate candidate-generation bases; repeated ancestor forms under those bases are not separate evidence.
 
-### 2. Trace each example from source to output
+The examples show a concrete meaning of the old `partial_cognate` label: the classifier assigns it when roots match and semantic similarity is below 0.75. It does not test whether only part of the word is cognate. The Danish and Swedish *ramsløg/ramslök* glosses both describe ramsons, yet their score is 0.342. That is a useful score/alignment case to investigate, not a reason to relabel this pair by guess.
 
-For each case, capture enough to follow the transformation:
+The refreshed CLDF Generic preview has 5 languages, 79 entries, 262 senses, 45 comparison forms, 520 source claims, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 claim matches. Component candidate resolution is explicit: 27 links resolve all candidate keys to included source entries, one resolves only some, one has no resolved entry, and one has no candidate keys. Shared-ancestor uses link to the included parent and component entries. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run.
 
-1. the exact source entry, etymology, and selected sense on each side;
-2. source wording or template, normalized claim, direction, and target identity;
-3. compound/component evidence, kept separate from whole-word history;
-4. the comparison forms and computed spelling, sound, and meaning observations;
-5. the rule that produced the current result, plus anything unresolved.
+## Next work
 
-When something disagrees, find the earliest failing step: extraction, lexical identity, sense alignment, claim matching, score calculation, or interpretation. Fix only demonstrated failures and add a regression check for each reproduced one. Keep source claims, computed observations, and project interpretations as separate facts; allow more than one historical path.
+### 1. Investigate low semantic scores before touching the labels
 
-### 3. Rebuild and inspect the same export
+Use the exact selected gloss pairs and sense IDs from the case slice to trace how the semantic matcher selected and scored them. Start with *ramsløg/ramslök*, then compare *oversætte/översätta*, *Stieftochter/stepdaughter*, *berauben/bereave*, and the existing *kurv/kurv* case. Separate three questions: did the pipeline align the intended source senses, what did the embedding model score for the selected glosses, and what historical claims are recorded? Fix a demonstrated alignment or scoring problem, and leave the legacy category alone until the evidence says what should replace it.
 
-Regenerate the readable case slice and its CLDF preview from the recorded local inputs. Check stable IDs, references, input hashes, and the generated summaries. Keep the JSONL as the easiest debugging view and the CLDF tables as a reuse option. The current exporter checks its declared IDs and foreign keys; an official CLDF validator has not yet been run, so do not describe the preview as officially validated.
+### 2. Resolve component evidence without overstating it
 
-Before publishing, review source attribution and redistribution terms. Prefer source links and compact extracted claims where copying full Wiktionary text is unnecessary. Include a rebuild command, input/version details, and a plain statement of what the slice can and cannot support.
+Follow each projected ancestor to the exact source component entry and its `inherited_from` claim. Keep the component entry’s source wording, sense list, and ancestor claim available alongside the parent compound. Investigate missing component source identities and the runic `gmq-pro` candidate. A shared component root is evidence about a part of each word; it is not by itself a whole-word verdict.
 
-### 4. Use the failures to choose the next transformation
+### 3. Make the smallest data-model change the evidence requires
 
-After these cases are traceable, pick the next source or pipeline gap from observed evidence. A useful next question might concern multiple etymologies behind one spelling, target resolution for source claims, or borrowing alongside shared deeper ancestry. Choose one demonstrated gap, improve its extraction or linking, and rerun the same slice. Add another source only if it contributes evidence the current sources do not provide.
+Keep source statements, lexical entry/sense identity, calculated similarity, component formation, and project-derived interpretation separately queryable. Preserve multiple paths, competing evidence, and unknowns. Add a regression case when a reproduced transformation error is fixed. Do not bulk-relabel from this selected slice.
 
-Language genealogy, areal/contact relationships, typological features, lexical histories, and form/meaning comparisons are different kinds of data. They may all be useful to the site, but keep their sources and meanings distinct rather than folding them into a single word-pair label.
+### 4. Keep the export useful and reproducible
+
+Rebuild the ignored JSONL and CLDF preview from recorded inputs, check the hashes and entry references, and retain CLDF only as a shareable format. Before any public release, verify attribution and redistribution terms and document the exact build command, model/configuration versions, and limits of this selected sample.
 
 ## Guardrails
 
-- Do not bulk-relabel the database from a handful of cases.
 - Do not treat missing evidence or the current `other` bucket as proof of unrelated origins.
 - Do not present candidate counts as the percentage of either language's vocabulary that is cognate.
 - Do not infer whole-word history from similar forms, shared components, or a deep root alone.
 - Do not build a general ontology or add infrastructure before a real data case needs it.
-- Keep generated review data local until it is checked; do not change live rows during this milestone.
-
-## Done when
-
-- A bounded set of comparisons can be followed from source entries and senses through claims and calculations to the current output.
-- At least the reproduced extraction/linking problems have regression checks.
-- Multiple paths, component evidence, source uncertainty, and project judgments stay distinguishable.
-- Another person can inspect and rebuild the slice from documented inputs.
-- The CLDF preview is kept because it makes reuse easier, not because the project has to become CLDF-native.
+- Keep generated review data local until checked; do not change live rows during this work.
 
 ## Related notes
 

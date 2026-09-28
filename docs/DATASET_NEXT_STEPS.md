@@ -555,6 +555,36 @@ Rebuild the source-linked case slice:
 pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --comparisons pipeline\data\all_comparisons_dercat_fix.parquet --source-records pipeline\data\etymology_records_source_origin_status.jsonl --claim-matches pipeline\data\candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline\data\component_entry_candidates_source_identity.jsonl.gz --output pipeline\data\named_case_evidence_slice_dercat_fix.jsonl --force
 ```
 
+## Shared-component overlap case slice (2026-09-28)
+
+The shared-component audit overlapped four of the 4,635 unordered comparisons currently labeled `partial_cognate`: Danish–Swedish *oversætte/översätta*, Danish–Swedish *ramsløg/ramslök*, German–English *berauben/bereave*, and German–English *Stieftochter/stepdaughter*. Their legacy labels result from equal extracted roots plus `semantic_sim < 0.75`; the classifier does not inspect components. Each pair's selected source senses overlap exactly with the corresponding Wiktionary entry senses.
+
+The pair records have similarity values of 0.713, 0.342, 0.616, and 0.494, respectively. The Danish and Swedish *ramsløg/ramslök* senses are glossed “ramson” and “ramsons, Allium ursinum,” yet the embedding score is 0.342. This is a concrete reason to inspect sense alignment and gloss scoring separately from origin evidence; it does not justify manually replacing the category.
+
+The source and component records reveal several different structures:
+
+- Both *oversætte* entries trace the whole form through Middle Low German and Old Saxon to Proto-West Germanic `*ubarsattjan`. Separate component claims match Danish *sætte* and Swedish *sätta* at Proto-Germanic `*satjaną`.
+- Both *ramsløg* entries trace the first element through Middle Low German *ramese* to Proto-West Germanic `*hramusō`; their final components *løg/lök* share the Proto-Germanic `*laukaz` candidate. The source component records also carry a `gmq-pro` rune-form claim. Keep that form as recorded and inspect it before treating it as a distinct useful relationship.
+- *Berauben/bereave* both record Proto-Germanic `*biraubōną` for the whole word and *be-* formations. Their *be-* components share the `*bi-` candidate.
+- *Stieftochter/stepdaughter* both record Proto-Germanic `*steupaduhtēr` for the whole word and a prefix-plus-daughter formation. Their prefixes share the Proto-West Germanic `*steupa-` candidate.
+
+This shows why `partial_cognate` is currently a misleading name for the classifier output: it means a shared extracted root with a low embedding score, not a finding that only part of a word is cognate. It also demonstrates useful overlapping evidence in one pair: a whole-word path, a component formation, and a computed semantic score should remain separate records.
+
+The source-linked case builder now includes exact source records for comparison entries and candidate component entries, plus the projected shared-component ancestor records. The CLDF Generic preview exports 5 languages, 79 unique entries, 262 senses, 45 comparison forms, 520 source claims, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 claim matches. Candidate-entry resolution counts are 27 fully resolved, one partially resolved, one unresolved, and one with no candidate keys. The remaining candidate keys stay in the export even when their source entry could not be included. Every shared-ancestor use resolves to exported parent and component entries. These resolution counts are export coverage, not relationship confidence.
+
+The 12 ancestor rows include the four new comparison pairs and an additional German *Sandbank*–Norwegian Bokmål *sandbanke* component match at Proto-Germanic `*samdaz`. Multiple rows for the same ancestor reflect the audit's two candidate-generation bases (`unique_exact_entry_only` and `unique_exact_entry_without_peer_source_recorded`), not independent evidence. The rows are projected candidates, not reviewed component cognate sets or whole-word classifications.
+
+The generated slice is `pipeline/data/named_case_evidence_slice_dercat_fix.jsonl`, SHA-256 `c0f51f30a55ca45a321c97ab4d0dde5da9d945c3317c19f7dedcd2672720834b`. Its manifest records the five input hashes, including the source component candidate and shared-ancestor files. The ignored CLDF Generic preview is `pipeline/data/cldf_case_evidence_dercat_fix`; it contains a new `shared-component-ancestor-candidates.csv` table and retains the component entries' own source claims. The exporter verifies stable table IDs and declared CSV foreign keys, and a local check confirms the component IDs stored in JSON fields resolve. The official CLDF validator is not installed and has not been run. The full pipeline suite passes **124 tests**. No comparison categories or live database rows changed.
+
+Rebuild both artifacts from the recorded local snapshots:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --comparisons pipeline\data\all_comparisons_dercat_fix.parquet --source-records pipeline\data\etymology_records_source_origin_status.jsonl --claim-matches pipeline\data\candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline\data\component_entry_candidates_source_identity.jsonl.gz --shared-ancestor-candidates pipeline\data\component_shared_ancestor_candidates_source_identity.jsonl.gz --output pipeline\data\named_case_evidence_slice_dercat_fix.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\export_case_evidence_cldf.py --force
+```
+
+The next narrow data task is to explain the unexpectedly low semantic scores, starting with *ramsløg/ramslök*, then follow each shared-component candidate back to its exact source entry and claim. Do not bulk-relabel the 4,635 legacy pairs from these selected examples.
+
 The local snapshots and manifests are:
 
 - `pipeline/data/all_comparisons_dercat_fix.parquet`, SHA-256 `1d85f6f65f3ca45d11a95065998c929fa21b3e8bc5e03408be29377ad26267b9`.
