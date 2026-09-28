@@ -486,6 +486,60 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py -
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
 
+## Ignore `dercat` language lists during root extraction (2026-09-28)
+
+Wiktionary documents [`dercat`](https://en.wiktionary.org/wiki/Template:dercat) as a compact categorization template: its numbered parameters list language codes in a descent chain and may omit early historical steps. They are not ancestor-form parameters. The root extractor previously looked for a known ancestral-language code in those same argument positions, so German *Ente* could receive `Proto-Germanic *ine-pro` even though the actual ancestor template records Proto-West Germanic `*anad`.
+
+The parser now skips `dercat` while searching for ancestor forms. A regression test for German *Ente* verifies that the actual `inh`/`der` templates yield `Proto-West Germanic *anad`. The focused parser tests pass, and the full pipeline suite passes **121 tests**.
+
+I rebuilt the five lemma tables and the comparison dataset to separate local files; the working baseline and live database remain unchanged. The five lemma tables still contain **720,407 rows**. The previous 223 language-code “roots” are all gone; **275** lemma root fields changed in total, including legitimate conflicts that now remain blank. Lemmas with a scalar root decreased from **64,362 to 64,289**.
+
+The old and corrected comparison snapshots contain the same **1,638,454 directed rows and pair identities**. Root-based relation changes affect **108 rows / 54 unique pairs**: 92 `unknown` → `cognate` and 16 `cognate` → `unknown`. The number of equal-root rows rises from **24,872 to 24,948**. Candidate labels change on 106 directed rows:
+
+| Label transition | Directed rows |
+| --- | ---: |
+| `other` → `true_cognate` | 52 |
+| `translation_pair` → `true_cognate` | 10 |
+| `true_cognate` → `other` | 12 |
+| `other` → `partial_cognate` | 28 |
+| `partial_cognate` → `other` | 4 |
+
+The corrected candidate distribution is 14,860 `true_cognate`, 9,270 `partial_cognate`, 1,145,898 `other`, 106,546 `translation_pair`, and 361,880 `false_friend`. These are generated candidate rows, not shares of vocabulary. Semantic-score values differ at floating-point scale in the two builds (188,616 rows, maximum absolute difference **0.00000155**); orthographic and phonetic scores are unchanged. No score differs by more than 0.00001. Preserve that as a reproducibility detail, not a linguistic result.
+
+The exact-first source-claim crosswalk retains **all 20,188 match IDs**: 18,500 exact target-form matches and 1,688 case-fold fallbacks. But 36 evidence rows across 27 unique pairs have a different candidate label after the root repair. Twenty-six pairs carry a `cognate_mention` claim and one carries a `borrowed_from` claim. That is entry-linked source evidence, not independent verification or proof that the claim belongs to the selected sense.
+
+Three examples show why the parser fix is useful and why it does not solve the whole taxonomy:
+
+- German *gut* – Danish *god*: the old German root was the bogus code `Proto-Germanic *ine-pro`; the corrected root is `Proto-Germanic *gōdaz`, matching Danish. Both Wiktionary entries explicitly list one another as cognates. This is a clear repair to the extracted source evidence.
+- Danish *arbejde* – Swedish *arbete*: the old shared `Proto-West Germanic *gem-pro` came from `dercat`. The corrected scalar roots are blank because the structured history instead records Middle Low German and Old Saxon forms. That leaves the pair unresolved at this root field; it does not establish unrelatedness.
+- Danish *kurv* – Norwegian Bokmål *kurv*: the Bokmål entry says it is borrowed from Danish *kurv*. Both point to Proto-West Germanic `*korb`, while the selected senses are Danish “basket” and Bokmål “the contents of a basket.” Their semantic score is 0.748805, so the current rule calls the pair `partial_cognate` and the shared root makes its separate origin field say `cognate`. This exposes two problems beyond `dercat`: direct borrowing is being collapsed into a cognate label, and a semantic threshold is being used to name “partial cognacy.” Keep the borrowing path, common ancestry evidence, sense alignment, and similarity observation as separate data.
+
+I added these three groups to the existing case-slice builder and regenerated it against the corrected snapshot. The nine groups now contain **48 comparison rows**, **32 case-level source-entry records**, **19 pair-claim matches**, and **7 component links**. The new cases retain exact active-sense links to the entry-level claims above. The local artifact is `pipeline/data/named_case_evidence_slice_dercat_fix.jsonl`, SHA-256 `03560db766d5c1f0b7281f276410883cfaeb96064a24e72f3e9327ece4fa477b`; its manifest records all input hashes and the per-case counts. The full pipeline suite passes **121 tests**, including recognition of the three added case groups.
+
+Rebuild the source-linked case slice:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --comparisons pipeline\data\all_comparisons_dercat_fix.parquet --source-records pipeline\data\etymology_records_source_origin_status.jsonl --claim-matches pipeline\data\candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline\data\component_entry_candidates_source_identity.jsonl.gz --output pipeline\data\named_case_evidence_slice_dercat_fix.jsonl --force
+```
+
+The local snapshots and manifests are:
+
+- `pipeline/data/all_comparisons_dercat_fix.parquet`, SHA-256 `1d85f6f65f3ca45d11a95065998c929fa21b3e8bc5e03408be29377ad26267b9`.
+- `pipeline/data/candidate_source_claim_matches_dercat_fix.jsonl`, SHA-256 `e832299fa8ae9cd17e991d1f770f3b047a1ee4f2e72bc30a167771bd1b890889`.
+- The crosswalk manifest records the source-export, comparison, generator, and output hashes. These generated files are ignored local artifacts, not release inputs.
+
+Rebuild the corrected comparison and evidence crosswalk from the five rebuilt lemma tables and the preserved source export:
+
+```powershell
+foreach ($lang in @("sv", "da", "nb", "de", "en")) {
+    pipeline\.venv\Scripts\python.exe pipeline\src\parser.py --input "pipeline\data\kaikki_$lang.jsonl" --output "pipeline\data\lemmas_dercat_fix\lemmas_$lang.parquet" --lang $lang
+}
+pipeline\.venv\Scripts\python.exe pipeline\src\build_crosslingual_dataset.py --lemma-dir pipeline\data\lemmas_dercat_fix --output pipeline\data\all_comparisons_dercat_fix.parquet
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --comparisons pipeline\data\all_comparisons_dercat_fix.parquet --matches-output pipeline\data\candidate_source_claim_matches_dercat_fix.jsonl --force
+```
+
+The parser fix is supported by both a clear source-template definition and the entry-level claims on the changed cases. Next, review the 54 changed pairs and the loan/cognacy distinction before promoting the snapshot. Do not bulk-relabel candidates or infer vocabulary-wide cognate percentages from this rebuild.
+
 ## Prefer exact target forms and keep active-sense evidence (2026-09-28)
 
 The candidate-to-source-claim audit previously used case-folded spellings as its only join key. That can merge distinct capitalized and lowercase entries when both exist. German *platt* (“flat”) and *Platt* (“Low German”) show why the distinction matters: English *plat* explicitly mentions German *platt* as a cognate, but the old crosswalk also attached that claim to the capitalized German noun. The audit now prefers an exact target spelling and uses case-fold matching only when there is no exact-form candidate for that source entry. It records which method matched each row.

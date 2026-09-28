@@ -12,15 +12,31 @@ Make one bounded set of word comparisons traceable from the source data through 
 
 Use the current local source exports, candidate build, source-claim crosswalks, and case ledger. Do this in the existing pipeline and tests; do not start a separate validation project or change the live database as part of the investigation.
 
+## Current checkpoint
+
+A concrete parser defect surfaced while examining the root evidence: Wiktionary's [`dercat` template](https://en.wiktionary.org/wiki/Template:dercat) lists language codes in a descent chain, not ancestral forms. The old root extractor could mistake codes such as `ine-pro` for reconstructed roots. The parser now ignores that template and reads actual ancestor-form templates instead; a German *Ente* regression covers the distinction.
+
+A five-language rebuild kept all **720,407 lemma rows**, removed **223 malformed root values**, and changed **275 root fields** in total. The comparison snapshot kept **1,638,454 directed candidate rows**. Root-based relation results changed on **108 rows** across **54 unique pairs**: 92 moved from `unknown` to `cognate`, while 16 moved from `cognate` to `unknown`. The number of equal-root rows rose from **24,872 to 24,948**. Display categories changed on 106 rows; the corrected distribution is 14,860 `true_cognate`, 9,270 `partial_cognate`, 1,145,898 `other`, 106,546 `translation_pair`, and 361,880 `false_friend`.
+
+The source-claim crosswalk kept the same **20,188 match IDs**. However, **36 evidence rows across 27 pairs** now carry a different candidate category. Twenty-six of those pairs have a Wiktionary `cognate_mention` for the pair; one has a direct `borrowed_from` claim. These are source assertions linked to entries, not independent confirmation or necessarily sense-level evidence.
+
+The changed cases expose another model issue. Norwegian Bokmål *kurv* is explicitly borrowed from Danish *kurv* and both records point to Proto-West Germanic `*korb`, but the current output calls their origin `cognate` and their comparison `partial_cognate` because the selected glosses score just below a semantic threshold. A shared deep root, a direct borrowing path, and a whole-word cognacy judgment are separate facts. The local snapshots remain diagnostic; they have not replaced the working data or database.
+
+The parser regression and full pipeline suite now pass (**121 tests**). The existing source-linked case slice now includes *gut/god*, *arbejde/arbete*, and *kurv/kurv* alongside the original six case groups. It contains the matched comparison senses, source claims, and component links, with a hash manifest. Before using the snapshot more broadly, review the 54 changed pairs and the loan/cognacy distinction; then decide whether to promote the corrected local build. Keep the old build for comparison and do not update the live database during this review.
+
 ## Work order
 
-### 1. Pick cases that test different data problems
+### 1. Review the corrected cases before promotion
+
+The parser fix, full test run, stable-identity comparison, and corrected-snapshot crosswalk are complete. Review all changed pairs for root conflicts, direct loans, and sense-alignment problems. In particular, decide what can be inferred from an equal root when one entry is directly borrowed from the other. Preserve the separate local artifacts and their manifests; do not promote the snapshot or update the live database until those cases are understood.
+
+### 2. Pick cases that test different data problems
 
 Start with the existing examples rather than hand-labeling a large new sample. Keep cases that reveal different transformations: direct borrowing, a deeper shared ancestor, compounds, multiple etymologies for one spelling, source claims without a matched sense, and similar forms with uncertain history. Existing examples include *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, *sandbank*, and *torta/tort*.
 
 Add a case only when it tests something the current set does not. This is a debugging slice, not a representative survey.
 
-### 2. Follow each case to the first point of failure
+### 3. Follow each case to the first point of failure
 
 For each comparison, record or inspect:
 
@@ -32,7 +48,7 @@ For each comparison, record or inspect:
 
 Then identify where a mismatch begins: extraction, entry or sense identity, candidate matching, score calculation, or interpretation. Fix that cause, preserve the source evidence, and add a small regression check. Do not change a pair label merely because a source mentions a similar form or because a root field happens to match.
 
-### 3. Keep different facts distinct
+### 4. Keep different facts distinct
 
 - **Language facts:** genealogy, area/contact, and typological features describe languages and need their own sources.
 - **Lexical records:** entries, etymologies, senses, forms, and components keep homographs and multiple histories distinct.
@@ -42,13 +58,13 @@ Then identify where a mismatch begins: extraction, entry or sense identity, cand
 
 Do not force these into one exclusive box. A word can be a loan and have a deeper shared ancestor; a compound can have cognate components while its whole-word history remains unclear; and “misleadingly similar” can describe a comparison even when origin is unresolved. Keep `other` as the current candidate builder's remainder, not as a linguistic category.
 
-### 4. Make the transformation rerunnable and inspectable
+### 5. Make the transformation rerunnable and inspectable
 
 Build the bounded output from recorded local inputs. Give records stable identifiers and retain source entry/sense IDs, source URLs, input hashes or revisions where available, and the transformation version. Make one command rebuild it. Start with readable JSONL or TSV if that keeps debugging simple.
 
 Try exporting that same slice to CLDF. Use the standard tables where they fit; link a small project-specific evidence table where they do not. Keep the export only if someone can more easily inspect, import, or build on the data. Check the applicable attribution and redistribution terms before publishing source-derived text; compact claims and links may be more suitable to share than copied source prose or raw dumps.
 
-### 5. Expand from demonstrated gaps
+### 6. Expand from demonstrated gaps
 
 Use the slice to see which useful facts Wiktionary does not provide or which transformations it makes difficult. Add another source only to answer a concrete question, and preserve its claims independently so sources can disagree. Expand language coverage or add language-level genealogy, area, and typology when a useful question calls for them.
 
