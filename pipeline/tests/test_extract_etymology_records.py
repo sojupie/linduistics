@@ -172,12 +172,12 @@ class EtymologyRecordTests(unittest.TestCase):
     def test_normalizes_direct_derivation_clipping_and_partial_calque_templates(self):
         record = source_record(
             {
-                "lang_code": "sv",
-                "lang": "Swedish",
+                "lang_code": "en",
+                "lang": "English",
                 "word": "examples",
                 "pos": "noun",
                 "etymology_templates": [
-                    {"name": "deverbal", "args": {"1": "sv", "2": "ticka"}},
+                    {"name": "deverbal", "args": {"1": "gmq-osw", "2": "ticka"}},
                     {"name": "clipping", "args": {"1": "sv", "2": "biograf"}},
                     {"name": "pcal", "args": {"1": "sv", "2": "en", "3": "volleyball"}},
                 ],
@@ -186,9 +186,54 @@ class EtymologyRecordTests(unittest.TestCase):
         )
 
         derivation, clipping, calque = record["claims"]
-        self.assertEqual((derivation["relation"], derivation["related_language"], derivation["related_form"]), ("derived_from", "sv", "ticka"))
+        self.assertEqual((derivation["relation"], derivation["related_language"], derivation["related_form"]), ("derived_from", "gmq-osw", "ticka"))
         self.assertEqual((clipping["relation"], clipping["related_language"], clipping["related_form"]), ("clipped_from", "sv", "biograf"))
         self.assertEqual(calque["relation"], "partial_calque_of")
+
+    def test_normalizes_initialism_and_acronym_aliases_without_promoting_display_text(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "examples",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "init", "args": {"1": "fr-CA", "2": "nom de personne non célèbre"}},
+                    {"name": "acro", "args": {"1": "en", "2": "", "3": "display only"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(
+            [
+                (claim["relation"], claim.get("related_language"), claim.get("related_form"))
+                for claim in record["claims"]
+            ],
+            [
+                ("initialism_of", "fr-CA", "nom de personne non célèbre"),
+                ("acronym_of", "en", ""),
+            ],
+        )
+
+    def test_does_not_treat_non_language_abbreviation_argument_as_a_language(self):
+        record = source_record(
+            {
+                "lang_code": "en",
+                "lang": "English",
+                "word": "molt",
+                "pos": "verb",
+                "etymology_templates": [
+                    {"name": "abbr", "args": {"1": "2sg", "2": "second-person singular indicative"}},
+                ],
+            },
+            "kaikki_en.jsonl",
+        )
+
+        claim = record["claims"][0]
+        self.assertEqual(claim["relation"], "abbreviated_from")
+        self.assertNotIn("related_language", claim)
+        self.assertNotIn("related_form", claim)
 
     def test_normalizes_nominalization_and_syllabic_abbreviation_source_languages(self):
         record = source_record(

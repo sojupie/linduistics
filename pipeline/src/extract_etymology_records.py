@@ -162,6 +162,16 @@ def _language_codes(value: Any) -> list[str]:
     return [code.strip() for code in value.split(",") if code.strip()]
 
 
+def _source_language_codes(value: Any) -> list[str]:
+    if not isinstance(value, str):
+        return []
+    return [
+        code.strip()
+        for code in value.split(",")
+        if re.fullmatch(r"[a-z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*", code.strip())
+    ]
+
+
 def _entity_reference(value: Any) -> dict[str, str] | None:
     if not isinstance(value, str) or not value:
         return None
@@ -363,10 +373,17 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         ] or [claim]
     elif base_name in {
         "deverbal", "denominal", "clip", "clipping", "back-formation", "back-form", "backform",
-        "backformation", "back formation", "abbrev", "abbr", "abbreviation", "acronym", "initialism",
+        "backformation", "back formation", "abbrev", "abbr", "abbreviation", "acronym", "acro",
+        "initialism", "init",
     }:
-        claim["related_language"] = entry_lang
-        claim["related_form"] = args.get("2")
+        return [
+            {
+                **claim,
+                "related_language": language,
+                "related_form": args.get("2"),
+            }
+            for language in _source_language_codes(args.get("1"))
+        ] or [claim]
     elif base_name in {
         "inh", "inherited", "bor", "lbor", "slbor", "obor", "ubor", "abor", "borrowed",
         "unadapted borrowing", "adapted borrowing", "learned borrowing", "semi-learned borrowing",
