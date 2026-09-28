@@ -312,7 +312,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             <span className="typo-metric-table text-ink-muted">{alternatives.length}</span>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 space-y-2.5">
+          <div className="flex-1 min-h-[12rem] lg:min-h-0 overflow-y-auto pr-1.5 space-y-2.5">
             {alternatives.map((alt: AlternativeWord, idx: number) => {
               const isSameForm = alt.form.toLowerCase() === tokenAnalysis.token.toLowerCase();
               const matchEntries = Object.entries(alt.cognate_matches);
@@ -425,10 +425,10 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
         </div>
 
         {matches.length > 0 ? (
-          <div className="divide-y divide-book-rule/50 flex-1 min-h-0 overflow-y-auto pr-1.5">
+          <div className="divide-y divide-book-rule/50 flex-1 min-h-[12rem] lg:min-h-0 overflow-y-auto pr-1.5">
           {matches.map(([lang, match]) => {
-            const isCognate = match.category === 'true_cognate' || match.category === 'cognate';
-            const isPartial = match.category === 'partial_cognate' || match.category === 'cousin';
+            const isCognate = match.category === 'true_cognate';
+            const isPartial = match.category === 'partial_cognate';
             const isFalseFriend = match.category === 'false_friend';
             const isTranslation = match.category === 'translation_pair';
 

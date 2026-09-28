@@ -141,28 +141,7 @@ export const TextInspector: React.FC = () => {
       {/* Top Bar matching ComparativeLexicon */}
       <div className="pb-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
-            <h1 className="typo-page-title">
-              Sentence Analysis
-            </h1>
-            {response && (
-              <div className="flex items-baseline gap-2 text-ink-muted">
-                <span className="typo-metric text-cognate-ink font-medium">
-                  {Math.round(response.universality_score)}%
-                </span>
-                <span className="typo-sublabel">
-                  universality
-                </span>
-                <span className="text-book-rule">•</span>
-                <span className="typo-metric text-ink-main font-normal">
-                  {response.total_tokens}
-                </span>
-                <span className="typo-sublabel">
-                  {response.total_tokens === 1 ? 'token' : 'tokens'}
-                </span>
-              </div>
-            )}
-          </div>
+          <h1 className="typo-page-title">Sentence Analysis</h1>
           <p className="typo-page-deck mt-1.5">
             Sentence analysis tracking cross-lingual cognates, syntactic dependencies, and lexical calques.
           </p>
@@ -184,6 +163,7 @@ export const TextInspector: React.FC = () => {
 
           <span className="text-book-rule hidden sm:inline">|</span>
 
+          <div className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap">
           <span className="typo-sublabel">Targets:</span>
           <div className="flex items-center gap-1.5">
             {availableTargets.map((code) => {
@@ -204,6 +184,7 @@ export const TextInspector: React.FC = () => {
                 </button>
               );
             })}
+          </div>
           </div>
         </div>
       </div>
@@ -261,20 +242,27 @@ export const TextInspector: React.FC = () => {
           {/* 2. Interlinear Analysis Reading Passage */}
           {response && (
             <div className={`space-y-3 pt-4 border-t border-book-rule ${hasCalques ? 'shrink-0 max-h-[38%] overflow-y-auto pr-1' : 'flex-1 min-h-0 overflow-y-auto pr-1'}`}>
-              <div className="flex items-center justify-between pb-1 shrink-0 sticky top-0 bg-page-bg/95 backdrop-blur-xs z-1">
-                <span className="typo-overline">
-                  Interlinear Analysis
-                </span>
-                <div className="flex items-center gap-4 typo-sublabel text-ink-muted select-none">
-                  <span className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pb-1 shrink-0 sticky top-0 bg-page-bg/95 backdrop-blur-xs z-1">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="typo-overline whitespace-nowrap">Interlinear Analysis</span>
+                  <div className="flex items-baseline gap-2 text-ink-muted">
+                    <span className="typo-metric text-cognate-ink font-medium">{Math.round(response.universality_score)}%</span>
+                    <span className="typo-sublabel">universality</span>
+                    <span className="text-book-rule">•</span>
+                    <span className="typo-metric text-ink-main font-normal">{response.total_tokens}</span>
+                    <span className="typo-sublabel">{response.total_tokens === 1 ? 'token' : 'tokens'}</span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 typo-sublabel text-ink-muted select-none">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap">
                     <span className="text-cognate-ink font-semibold">●</span>
                     Cognate
                   </span>
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap">
                     <span className="text-shifted-ink font-semibold">●</span>
                     Partial
                   </span>
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap">
                     <span className="text-ink-light font-semibold">○</span>
                     Isolate
                   </span>
@@ -302,11 +290,11 @@ export const TextInspector: React.FC = () => {
           {/* 3. Lexical Calques */}
           {hasCalques && translations && (
             <div className="flex-1 min-h-0 flex flex-col space-y-2 pt-4 border-t border-book-rule">
-              <div className="flex items-center justify-between pb-1 shrink-0">
-                <span className="typo-overline">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 pb-1 shrink-0">
+                <span className="typo-overline whitespace-nowrap">
                   Lexical Calques
                 </span>
-                <span className="typo-note text-ink-muted">
+                <span className="typo-note min-w-0 text-ink-muted">
                   Word replacements using the same sentence layout
                 </span>
               </div>
@@ -347,7 +335,7 @@ export const TextInspector: React.FC = () => {
         </div>
 
         {/* Right: Token Specimen Details */}
-        <div className="w-full lg:w-[720px] xl:w-[780px] lg:shrink-0 p-5 sm:p-6 bg-page-surface h-[560px] lg:h-full flex flex-col min-h-0 overflow-hidden">
+        <div className="w-full lg:w-[38%] xl:w-[30%] lg:shrink-0 p-5 sm:p-6 bg-page-surface h-[720px] lg:h-full flex flex-col min-h-0 overflow-hidden">
           {selectedToken ? (
             <TokenDetailDrawer
               tokenAnalysis={selectedToken}
