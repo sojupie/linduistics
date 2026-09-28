@@ -12,11 +12,34 @@ import pyarrow.parquet as pq
 
 from build_source_pair_audit import (
     PAIR_FIELDS, audit_record, derive_pair_source_evidence, load_comparison_rows,
-    load_source_entries, load_translation_claims, sample_category_rows, translation_claims_for_pair,
+    load_pairs_from_audit, load_source_entries, load_translation_claims, sample_category_rows,
+    translation_claims_for_pair,
 )
 
 
 class SourcePairAuditTests(unittest.TestCase):
+    def test_prior_audit_loader_preserves_pairs_and_sample_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "prior.jsonl"
+            records = [
+                {"audit_key": "de|Haben|en|own", "sample": {"category": "other", "offset": 4}},
+                {"audit_key": "de|Fressen|en|fret"},
+            ]
+            path.write_text("".join(json.dumps(record) + "\n" for record in records), encoding="utf-8")
+
+            pairs, sample = load_pairs_from_audit(path, "de", "en")
+
+        self.assertEqual(pairs, [("Haben", "own"), ("Fressen", "fret")])
+        self.assertEqual(sample, {("Haben", "own"): {"category": "other", "offset": 4}})
+
+    def test_prior_audit_loader_rejects_wrong_direction(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "prior.jsonl"
+            path.write_text(json.dumps({"audit_key": "en|own|de|haben"}) + "\n", encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "Unexpected audit key"):
+                load_pairs_from_audit(path, "de", "en")
+
     def test_translation_claim_loader_filters_exact_pairs_and_hashes_input(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "claims.jsonl"
@@ -50,17 +73,67 @@ class SourcePairAuditTests(unittest.TestCase):
     def test_comparison_parquet_loader_reads_requested_direction_and_parses_senses(self):
         with tempfile.TemporaryDirectory() as directory:
             parquet_path = Path(directory) / "pairs.parquet"
-            row = {field: None for field in PAIR_FIELDS if field != "id"}
-            row.update({
-                "lang_a": "sv", "lang_b": "da", "word_a": "gift", "word_b": "gift",
-                "senses_a": json.dumps([{"sense_id": 1, "source_entry_key": "sv|gift|noun|1|a"}]),
-                "senses_b": "[]",
-            })
-            pq.write_table(pa.Table.from_pylist([row]), parquet_path)
+            def row(lang_a, word_a, lang_b, word_b, source_key):
+                result = {field: None for field in PAIR_FIELDS if field != "id"}
+                result.update({
+                    "lang_a": lang_a, "word_a": word_a, "lang_b": lang_b, "word_b": word_b,
+                    "senses_a": json.dumps([{"sense_id": 1, "source_entry_key": source_key}]),
+                    "senses_b": "[]",
+                    "translation_source_senses": json.dumps([{
+                        "source_entry_key": f"{lang_b}|{word_b}|verb||source",
+                        "source_sense_id": f"{word_b}-verb-source",
+                    }]),
+                })
+                return result
 
-            result = load_comparison_rows(parquet_path, "sv", "da", [["gift", "gift"]])
+            pq.write_table(pa.Table.from_pylist([
+                row("sv", "gift", "da", "gift", "sv|gift|noun|1|a"),
+                row("sv", "hund", "da", "hund", "sv|hund|noun|1|b"),
+                row("da", "gift", "sv", "gift", "da|gift|noun|1|c"),
+                row("sv", "gift", "nb", "gift", "sv|gift|noun|1|d"),
+                row("de", "haben", "en", "own", "de|haben|verb||e"),
+            ]), parquet_path)
+
+            result = load_comparison_rows(
+                parquet_path, "sv", "da", [["gift", "gift"], ["hund", "hund"]]
+            )
+            folded = load_comparison_rows(parquet_path, "de", "en", [["Haben", "own"]])
 
         self.assertEqual(result[("gift", "gift")]["senses_a"][0]["source_entry_key"], "sv|gift|noun|1|a")
+        self.assertEqual(result[("hund", "hund")]["senses_a"][0]["source_entry_key"], "sv|hund|noun|1|b")
+        self.assertEqual(
+            result[("gift", "gift")]["translation_source_senses"][0]["source_sense_id"],
+            "gift-verb-source",
+        )
+        self.assertEqual(len(result), 2)
+        self.assertEqual(folded[("Haben", "own")]["word_a"], "haben")
+        self.assertEqual(folded[("Haben", "own")]["_pair_match_method"], "casefold")
+
+    def test_comparison_parquet_loader_prefers_exact_case_and_skips_ambiguous_fallback(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parquet_path = Path(directory) / "pairs.parquet"
+            def row(word_a, word_b):
+                result = {field: None for field in PAIR_FIELDS if field != "id"}
+                result.update({
+                    "lang_a": "de", "word_a": word_a, "lang_b": "en", "word_b": word_b,
+                    "senses_a": "[]", "senses_b": "[]", "translation_source_senses": "[]",
+                })
+                return result
+
+            pq.write_table(pa.Table.from_pylist([
+                row("Gift", "present"),
+                row("gift", "present"),
+                row("Tv", "show"),
+                row("tv", "show"),
+            ]), parquet_path)
+
+            result = load_comparison_rows(
+                parquet_path, "de", "en", [["Gift", "present"], ["TV", "show"]]
+            )
+
+        self.assertEqual(result[("Gift", "present")]["word_a"], "Gift")
+        self.assertEqual(result[("Gift", "present")]["_pair_match_method"], "exact")
+        self.assertNotIn(("TV", "show"), result)
 
     def test_audit_join_preserves_homographs_and_does_not_infer_a_relationship(self):
         with tempfile.TemporaryDirectory() as directory:

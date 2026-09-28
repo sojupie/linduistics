@@ -20,7 +20,7 @@ PAIR_FIELDS = (
     "id", "lang_a", "word_a", "pos_a", "def_a", "etym_root_a", "etym_text_a",
     "lang_b", "word_b", "pos_b", "def_b", "etym_root_b", "etym_text_b",
     "shared_etym_root", "category", "etymological_relation", "orthographic_sim",
-    "phonetic_sim", "semantic_sim", "senses_a", "senses_b",
+    "phonetic_sim", "semantic_sim", "senses_a", "senses_b", "translation_source_senses",
 )
 
 
@@ -34,6 +34,32 @@ def load_source_entries(path: Path, words: set[str]) -> dict[tuple[str, str], li
             if word.casefold() in folded_words:
                 matches[(record["language_code"], word.casefold())].append(record)
     return matches
+
+
+def load_pairs_from_audit(path: Path, source: str, target: str) -> tuple[list[tuple[str, str]], dict[tuple[str, str], dict]]:
+    """Reuse a saved audit's pairs and per-row sample metadata for a fresh join."""
+    pairs = []
+    sample_metadata = {}
+    seen = set()
+    with path.open(encoding="utf-8") as stream:
+        for line_number, line in enumerate(stream, start=1):
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid JSON in {path.name} at line {line_number}") from exc
+            parts = record.get("audit_key", "").split("|", 3)
+            if len(parts) != 4 or parts[0] != source or parts[2] != target:
+                raise ValueError(f"Unexpected audit key in {path.name} at line {line_number}")
+            pair = (parts[1], parts[3])
+            if pair in seen:
+                raise ValueError(f"Duplicate audit pair in {path.name} at line {line_number}: {pair!r}")
+            seen.add(pair)
+            pairs.append(pair)
+            if isinstance(record.get("sample"), dict):
+                sample_metadata[pair] = record["sample"]
+    return pairs, sample_metadata
 
 
 def load_translation_claims(
@@ -84,23 +110,60 @@ def translation_claims_for_pair(
 
 
 def load_comparison_rows(path: Path, source: str, target: str, pairs: list[tuple[str, str]]) -> dict[tuple[str, str], dict]:
-    """Read only requested directed pairs from a generated comparison Parquet."""
-    import pyarrow.parquet as pq
+    """Read requested pairs, allowing a unique case-folded candidate fallback."""
+    import pyarrow.dataset as ds
 
     requested = {tuple(pair) for pair in pairs}
     fields = [field for field in PAIR_FIELDS if field != "id"]
-    table = pq.read_table(path, columns=fields)
+    if not requested:
+        return {}
+
+    pair_filter = None
+    for word_a, word_b in requested:
+        expression = (ds.field("word_a") == word_a) & (ds.field("word_b") == word_b)
+        pair_filter = expression if pair_filter is None else pair_filter | expression
+    dataset = ds.dataset(path, format="parquet")
+    language_filter = (ds.field("lang_a") == source) & (ds.field("lang_b") == target)
+    scanner = dataset.scanner(
+        columns=fields,
+        filter=language_filter & pair_filter,
+        batch_size=2048,
+    )
     rows = {}
-    for row in table.to_pylist():
-        key = (row["word_a"], row["word_b"])
-        if row["lang_a"] != source or row["lang_b"] != target or key not in requested:
-            continue
-        for field in ("senses_a", "senses_b"):
-            if isinstance(row.get(field), str):
-                row[field] = json.loads(row[field])
-        if key in rows:
-            raise ValueError(f"Expected one Parquet row for {source}/{target} {key!r}")
-        rows[key] = row
+    for batch in scanner.to_batches():
+        for row in batch.to_pylist():
+            key = (row["word_a"], row["word_b"])
+            for field in ("senses_a", "senses_b", "translation_source_senses"):
+                if isinstance(row.get(field), str):
+                    row[field] = json.loads(row[field])
+            if key in rows:
+                raise ValueError(f"Expected one Parquet row for {source}/{target} {key!r}")
+            row["_pair_match_method"] = "exact"
+            rows[key] = row
+
+    unresolved = requested - rows.keys()
+    folded_requests: dict[tuple[str, str], list[tuple[str, str]]] = defaultdict(list)
+    for word_a, word_b in unresolved:
+        folded_requests[(word_a.casefold(), word_b.casefold())].append((word_a, word_b))
+    if folded_requests:
+        folded_candidates: dict[tuple[str, str], list[dict]] = defaultdict(list)
+        scanner = dataset.scanner(columns=fields, filter=language_filter, batch_size=2048)
+        for batch in scanner.to_batches():
+            for row in batch.to_pylist():
+                folded_key = (row["word_a"].casefold(), row["word_b"].casefold())
+                if folded_key not in folded_requests:
+                    continue
+                for field in ("senses_a", "senses_b", "translation_source_senses"):
+                    if isinstance(row.get(field), str):
+                        row[field] = json.loads(row[field])
+                folded_candidates[folded_key].append(row)
+        for folded_key, requested_spellings in folded_requests.items():
+            candidates = folded_candidates.get(folded_key, [])
+            if len(requested_spellings) != 1 or len(candidates) != 1:
+                continue
+            row = candidates[0]
+            row["_pair_match_method"] = "casefold"
+            rows[requested_spellings[0]] = row
     return rows
 
 
@@ -346,6 +409,9 @@ def audit_record(
     return {
         "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
+        "comparison_match_method": (
+            comparison.get("_pair_match_method", "exact") if comparison else "not_found"
+        ),
         "source_entries": {
             source: source_entries_a,
             target: source_entries_b,
@@ -447,6 +513,7 @@ def write_audit(
                 destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
                 counts[f"{word_a} → {word_b}"] = {
                     "comparison_rows": int(comparison is not None),
+                    "comparison_match_method": record["comparison_match_method"],
                     "source_entries": len(record["source_entries"][source]) + len(record["source_entries"][target]),
                     "source_entry_match": record["source_entry_match"],
                 }
@@ -486,13 +553,16 @@ def main() -> None:
     parser.add_argument("--target", default="en")
     parser.add_argument("--words", nargs="+", help="Same headword in both languages.")
     parser.add_argument("--pairs", nargs=2, action="append", metavar=("SOURCE_WORD", "TARGET_WORD"), help="Different headwords to join.")
+    parser.add_argument("--pairs-from-audit", type=Path, help="Reuse the pair list and sample metadata from a saved audit JSONL.")
     parser.add_argument("--sample-per-category", type=int, help="Draw this many rows from each current pair category.")
     parser.add_argument("--other-sample-count", type=int, default=8, help="Rows to draw from `other` (default: 8).")
     parser.add_argument("--seed", type=int, default=20260928, help="Seed for category sampling.")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    if args.sample_per_category is not None and (args.pairs or args.words or args.comparison_parquet):
+    if args.sample_per_category is not None and (args.pairs or args.words or args.pairs_from_audit or args.comparison_parquet):
         parser.error("choose either live category sampling or explicit pairs/words")
+    if args.pairs_from_audit and (args.pairs or args.words):
+        parser.error("choose either --pairs-from-audit or explicit --pairs/--words")
     sampling = None
     sample_metadata = None
     if args.sample_per_category is not None:
@@ -505,7 +575,10 @@ def main() -> None:
         sampling = {"seed": args.seed, "strata": strata}
     else:
         comparison_rows = None
-        pairs = args.pairs or [(word, word) for word in (args.words or DEFAULT_WORDS)]
+        if args.pairs_from_audit:
+            pairs, sample_metadata = load_pairs_from_audit(args.pairs_from_audit, args.source, args.target)
+        else:
+            pairs = args.pairs or [(word, word) for word in (args.words or DEFAULT_WORDS)]
     comparison_source = None
     if args.comparison_parquet:
         comparison_rows = load_comparison_rows(args.comparison_parquet, args.source, args.target, pairs)
