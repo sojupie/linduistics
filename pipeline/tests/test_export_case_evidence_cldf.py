@@ -196,6 +196,11 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
         "args": {"1": "en", "2": "gmw-pro", "3": "*fleus"},
         "related_language": "gmw-pro", "related_form": "*fleus",
     }
+    return_claim = {
+        "template_index": 1, "template_name": "cog", "relation": "cognate_mention",
+        "args": {"1": "en", "2": "sv", "3": "fleece"},
+        "related_language": "sv", "related_form": "fleece",
+    }
     target_input = tmp_path / "target-entries.jsonl"
     target_input.write_text(json.dumps({
         "claim_id": _claim_id(source_key, claim),
@@ -213,7 +218,7 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
             "source_url": "https://en.wiktionary.org/wiki/fleece#English",
             "etymology_text": "From Old English, from Proto-West Germanic *fleus.",
             "source_senses": [{"id": "candidate-sense-en", "glosses": ["wool"], "tags": []}],
-            "source_claims": [candidate_claim],
+            "source_claims": [candidate_claim, return_claim],
         }],
     }, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -230,9 +235,11 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
         claims = list(csv.DictReader(stream))
     with (output / "source-relation-targets.csv").open(encoding="utf-8", newline="") as stream:
         relation_targets = list(csv.DictReader(stream))
+    with (output / "claim-target-cross-references.csv").open(encoding="utf-8", newline="") as stream:
+        cross_references = list(csv.DictReader(stream))
 
     assert manifest["tables"]["claim-target-resolutions.csv"]["rows"] == 1
-    assert manifest["tables"]["source-relation-targets.csv"]["rows"] == 2
+    assert manifest["tables"]["source-relation-targets.csv"]["rows"] == 3
     assert resolutions[0]["Match_Status"] == "exact"
     assert resolutions[0]["Claimed_Form"] == "fleece"
     assert len(candidates) == 1
@@ -247,7 +254,12 @@ def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
     assert borrowed_occurrences[0]["Source_Relation_Target_ID"] == borrowed_occurrences[1]["Source_Relation_Target_ID"]
     assert {row["Source_Uncertain"] for row in borrowed_occurrences} == {"false", "true"}
     assert resolutions[0]["Source_Relation_Target_ID"] == borrowed_occurrences[0]["Source_Relation_Target_ID"]
-    assert len(relation_targets) == 2
+    assert len(relation_targets) == 3
+    assert len(cross_references) == 1
+    assert manifest["summary"]["target_claim_cross_references_by_relation_pair"] == {
+        "borrowed_from->cognate_mention": 1,
+    }
+    assert cross_references[0]["Source_Claim_ID"] == borrowed_occurrences[0]["ID"]
 
 
 def test_preserves_one_template_that_expands_to_multiple_normalized_claims(tmp_path):

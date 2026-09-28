@@ -154,6 +154,14 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
         "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
         "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
         "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
+        "claim-target-cross-references.csv": {
+            "Resolution_ID": ("claim-target-resolutions.csv", "ID"),
+            "Source_Claim_ID": ("source-claims.csv", "ID"),
+            "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
+            "Target_Entry_ID": ("entries.csv", "ID"),
+            "Target_Claim_ID": ("source-claims.csv", "ID"),
+            "Target_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
+        },
     }
     ids = {filename: {row["ID"] for row in rows} for filename, rows in rows_by_file.items()}
     for filename, rows in rows_by_file.items():
@@ -545,6 +553,42 @@ def export_slice(
     claim_matches.sort(key=lambda row: row["ID"])
     target_resolutions = sorted(pending_target_resolutions.values(), key=lambda row: row["ID"])
     target_candidates = sorted(pending_target_candidates.values(), key=lambda row: row["ID"])
+    entries_by_id = {row["ID"]: row for row in entries}
+    claims_by_id = {row["ID"]: row for row in claims}
+    candidates_by_resolution = defaultdict(list)
+    claims_by_entry = defaultdict(list)
+    for candidate in target_candidates:
+        candidates_by_resolution[candidate["Resolution_ID"]].append(candidate)
+    for claim in claims:
+        claims_by_entry[claim["Entry_ID"]].append(claim)
+    target_cross_references_by_id = {}
+    for resolution in target_resolutions:
+        source_claim = claims_by_id[resolution["Claim_ID"]]
+        source_entry = entries_by_id[source_claim["Entry_ID"]]
+        for candidate in candidates_by_resolution[resolution["ID"]]:
+            target_entry_id = candidate["Target_Entry_ID"]
+            for target_claim in claims_by_entry[target_entry_id]:
+                if (
+                    target_claim["Related_Language_ID"].casefold() != source_entry["Language_ID"].casefold()
+                    or target_claim["Related_Form"] != source_entry["Headword"]
+                ):
+                    continue
+                cross_reference_id = stable_id(
+                    "claim_cross_reference",
+                    resolution["ID"],
+                    target_entry_id,
+                    target_claim["ID"],
+                )
+                target_cross_references_by_id[cross_reference_id] = {
+                    "ID": cross_reference_id,
+                    "Resolution_ID": resolution["ID"],
+                    "Source_Claim_ID": source_claim["ID"],
+                    "Source_Relation_Target_ID": source_claim["Source_Relation_Target_ID"],
+                    "Target_Entry_ID": target_entry_id,
+                    "Target_Claim_ID": target_claim["ID"],
+                    "Target_Relation_Target_ID": target_claim["Source_Relation_Target_ID"],
+                }
+    target_cross_references = sorted(target_cross_references_by_id.values(), key=lambda row: row["ID"])
 
     tables = [
         ("languages.csv", ["ID", "Name"], languages),
@@ -559,6 +603,7 @@ def export_slice(
         ("claim-matches.csv", ["ID", "Claim_ID", "Source_Relation_Target_ID", "Comparison_ID", "Comparison_Source_Sense_ID", "Comparison_Target_Sense_ID", "Target_Identity_Status", "Target_Entry_Key", "Form_Match_Method", "Source_URL"], claim_matches),
         ("claim-target-resolutions.csv", ["ID", "Claim_ID", "Source_Relation_Target_ID", "Target_Language_Code", "Claimed_Form", "Match_Status"], target_resolutions),
         ("claim-target-candidates.csv", ["ID", "Resolution_ID", "Target_Entry_ID"], target_candidates),
+        ("claim-target-cross-references.csv", ["ID", "Resolution_ID", "Source_Claim_ID", "Source_Relation_Target_ID", "Target_Entry_ID", "Target_Claim_ID", "Target_Relation_Target_ID"], target_cross_references),
     ]
     _validate_table_links(tables)
     for filename, fields, rows in tables:
@@ -598,6 +643,9 @@ def export_slice(
                 "Target_Language_Code": "Language code named by the source claim; it may be absent from the local dump set and is not a language-table foreign key.",
                 "Resolution_ID": "Form-level source-claim lookup result referenced by this candidate entry.",
                 "Target_Entry_ID": "Source entry identified as a spelling candidate; this link does not establish a target sense or relationship.",
+                "Source_Claim_ID": "Target-specific source claim that initiated the form lookup.",
+                "Target_Claim_ID": "Target-entry claim that points back to the source entry's exact language and form; this is an internal source cross-reference, not independent confirmation.",
+                "Target_Relation_Target_ID": "Normalized relation-and-target record for the target-entry cross-reference.",
             }.get(field)
             cols.append(_column(field, "string", required=field == "ID", property_url=prop, description=description))
         fks = []
@@ -612,6 +660,14 @@ def export_slice(
             "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
             "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID")},
             "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
+            "claim-target-cross-references.csv": {
+                "Resolution_ID": ("claim-target-resolutions.csv", "ID"),
+                "Source_Claim_ID": ("source-claims.csv", "ID"),
+                "Source_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
+                "Target_Entry_ID": ("entries.csv", "ID"),
+                "Target_Claim_ID": ("source-claims.csv", "ID"),
+                "Target_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
+            },
         }.get(filename, {})
         for field, (resource, target_column) in references.items():
             fks.append({"columnReference": [field], "reference": {"resource": resource, "columnReference": [target_column]}})
@@ -621,7 +677,7 @@ def export_slice(
         "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
         "dc:conformsTo": CLDF + "Generic",
         "dc:title": "Linduistics source-linked lexical case slice",
-        "dc:description": "A bounded diagnostic export of source entries, senses, normalized relation targets, template-level claim evidence, component analyses, form-level target-entry candidates, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
+        "dc:description": "A bounded diagnostic export of source entries, senses, normalized relation targets, template-level claim evidence, component analyses, form-level target-entry candidates and their exact return-mention cross-references, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
         "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
         "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "tables": metadata_tables,
@@ -691,6 +747,11 @@ def export_slice(
                 label: dict(sorted(relations.items()))
                 for label, relations in sorted(matched_evidence.items())
             },
+            "target_claim_cross_references": len(target_cross_references),
+            "target_claim_cross_references_by_relation_pair": dict(sorted(Counter(
+                f"{claims_by_id[row['Source_Claim_ID']]['Relation']}->{claims_by_id[row['Target_Claim_ID']]['Relation']}"
+                for row in target_cross_references
+            ).items())),
         },
         "limits": [
             "The thirteen cases are deliberate diagnostics, not a representative sample.",
@@ -709,7 +770,7 @@ def export_slice(
         "It keeps source entries and senses, normalized relation targets, source-template claim evidence, compound-component analyses, matched claim links, "
         "shared-component ancestor candidates, form-level target-entry candidates, and computed pair comparisons in separate tables.\n\n"
         "Source claims record their originating entry and one normalized target scope (form, entity, components, language, or none). A target template that expands into several claims retains one Template_Occurrence_ID across its rows. "
-        "`source-relation-targets.csv` groups identical normalized relation targets within an entry; `source-claims.csv` retains each expanded claim, its template identity, uncertainty, and raw arguments. "
+        "`source-relation-targets.csv` groups identical normalized relation targets within an entry; `source-claims.csv` retains each expanded claim, its template identity, uncertainty, and raw arguments. `claim-target-cross-references.csv` links exact return mentions in candidate target entries; these are Wiktionary cross-references, not independent confirmation. "
         "Sense IDs on claim-match rows identify "
         "the comparison's selected senses for context; they do not narrow the source claim to those senses. "
         "Claims without a single related form retain their normalized entity or component targets, or have target scope `none`.\n\n"
