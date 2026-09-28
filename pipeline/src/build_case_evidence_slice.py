@@ -25,6 +25,8 @@ CASES = {
     "ramslog": [("da", "ramsløg", "sv", "ramslök")],
     "bereave": [("de", "berauben", "en", "bereave")],
     "stepdaughter": [("de", "Stieftochter", "en", "stepdaughter")],
+    "blive": [("da", "blive", "nb", "blive")],
+    "wall_road": [("da", "væg", "sv", "väg")],
 }
 
 COMPARISON_FIELDS = (
