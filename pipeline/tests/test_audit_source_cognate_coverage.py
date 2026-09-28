@@ -1,4 +1,6 @@
+import hashlib
 import json
+from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -117,3 +119,110 @@ def test_export_keeps_candidate_ids_for_an_ambiguous_target_identity(tmp_path):
     match = json.loads(matches_output.read_text(encoding="utf-8"))
     assert match["target_form_match"]["active_identity_status"] == "ambiguous"
     assert match["target_form_match"]["source_identity_candidates"] == target_sense["source_identity_candidates"]
+
+
+def test_exact_target_form_match_wins_over_casefold_homograph(tmp_path):
+    source_sense = {
+        "is_active_match": True,
+        "source_entry_key": "en|plat|adj|3|en-plat-adj",
+        "source_sense_id": "en-plat-adj",
+        "gloss": "Flat; level.",
+        "etym_root": "Proto-Indo-European *pleth₂-",
+    }
+    lower_target = {
+        "is_active_match": True,
+        "source_entry_key": "de|platt|adj||de-platt-adj",
+        "source_sense_id": "de-platt-flat",
+        "gloss": "flat",
+        "etym_root": "Ancient Greek πλατύς",
+    }
+    upper_target = {
+        "is_active_match": True,
+        "source_entry_key": "de|Platt|noun||de-Platt-noun",
+        "source_sense_id": "de-Platt-Low-German",
+        "comparison_gloss": "Low German",
+    }
+    rows = [
+        {
+            "lang_a": "en", "word_a": "plat", "lang_b": "de", "word_b": "platt",
+            "category": "other", "senses_a": json.dumps([source_sense]), "senses_b": json.dumps([lower_target]),
+        },
+        {
+            "lang_a": "en", "word_a": "plat", "lang_b": "de", "word_b": "Platt",
+            "category": "false_friend", "senses_a": json.dumps([source_sense]), "senses_b": json.dumps([upper_target]),
+        },
+    ]
+    comparisons = tmp_path / "comparisons.parquet"
+    pq.write_table(pa.Table.from_pylist(rows), comparisons)
+    source_records = tmp_path / "source_records.jsonl"
+    source_records.write_text(json.dumps({
+        "language_code": "en",
+        "source_entry_key": source_sense["source_entry_key"],
+        "claims": [{
+            "template_index": 0,
+            "relation": "cognate_mention",
+            "related_language": "de",
+            "related_form": "platt",
+        }],
+    }) + "\n", encoding="utf-8")
+    matches_output = tmp_path / "matched_claims.jsonl"
+
+    audit_coverage(source_records, comparisons, matches_output)
+
+    matches = [json.loads(line) for line in matches_output.read_text(encoding="utf-8").splitlines()]
+    assert len(matches) == 1
+    assert matches[0]["candidate"]["forms"] == [
+        {"language_code": "de", "word": "platt"},
+        {"language_code": "en", "word": "plat"},
+    ]
+    assert matches[0]["target_form_match"]["active_entry_key"] == "de|platt|adj||de-platt-adj"
+    assert matches[0]["target_form_match"]["form_match_method"] == "exact"
+    assert matches[0]["source_active_sense"] == {
+        "source_sense_id": "en-plat-adj",
+        "gloss": "Flat; level.",
+        "etymological_root": "Proto-Indo-European *pleth₂-",
+    }
+    assert matches[0]["target_form_match"]["active_sense_gloss"] == "flat"
+    assert matches[0]["target_form_match"]["active_sense_etymological_root"] == "Ancient Greek πλατύς"
+
+
+def test_casefold_is_used_only_when_no_exact_target_form_exists(tmp_path):
+    source_sense = {
+        "is_active_match": True,
+        "source_entry_key": "en|plat|adj|3|en-plat-adj",
+        "source_sense_id": "en-plat-adj",
+    }
+    target_sense = {
+        "is_active_match": True,
+        "source_entry_key": "de|Platt|noun||de-Platt-noun",
+        "source_sense_id": "de-Platt-noun",
+    }
+    comparisons = tmp_path / "comparisons.parquet"
+    pq.write_table(pa.Table.from_pylist([{
+        "lang_a": "en", "word_a": "plat", "lang_b": "de", "word_b": "Platt",
+        "category": "false_friend", "senses_a": json.dumps([source_sense]), "senses_b": json.dumps([target_sense]),
+    }]), comparisons)
+    source_records = tmp_path / "source_records.jsonl"
+    source_records.write_text(json.dumps({
+        "language_code": "en",
+        "source_entry_key": source_sense["source_entry_key"],
+        "claims": [{
+            "template_index": 0,
+            "relation": "cognate_mention",
+            "related_language": "de",
+            "related_form": "platt",
+        }],
+    }) + "\n", encoding="utf-8")
+    matches_output = tmp_path / "matched_claims.jsonl"
+
+    audit_coverage(source_records, comparisons, matches_output)
+
+    match = json.loads(matches_output.read_text(encoding="utf-8"))
+    assert match["target_form_match"]["active_entry_key"] == "de|Platt|noun||de-Platt-noun"
+    assert match["target_form_match"]["form_match_method"] == "casefold_fallback"
+    manifest = json.loads(matches_output.with_suffix(".jsonl.manifest.json").read_text(encoding="utf-8"))
+    assert manifest["generator_file"] == "audit_source_cognate_coverage.py"
+    generator = Path(__file__).parents[1] / "src" / manifest["generator_file"]
+    assert manifest["generator_sha256"] == hashlib.sha256(generator.read_bytes()).hexdigest()
+    assert manifest["evidence_rows_by_form_match_method"] == {"casefold_fallback": 1}
+    assert "exact target-form spelling" in manifest["matching_rule"]

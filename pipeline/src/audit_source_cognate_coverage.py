@@ -31,6 +31,7 @@ def audit_coverage(
         raise FileExistsError(f"Output already exists; pass --force to replace it: {matches_output}")
 
     active_candidates: dict[tuple[str, str, str, str], set[tuple]] = defaultdict(set)
+    casefold_candidates: dict[tuple[str, str, str, str], set[tuple]] = defaultdict(set)
     candidate_meta = {}
     columns = ["lang_a", "lang_b", "word_a", "word_b", "category", "senses_a", "senses_b"]
     for batch in pq.ParquetFile(comparisons).iter_batches(columns=columns):
@@ -57,28 +58,32 @@ def audit_coverage(
                     if not target.get("source_sense_id")
                     else "available"
                 )
-                key = (source_lang, source["source_entry_key"], target_lang, target_word.casefold())
-                active_candidates[key].add((
+                candidate_data = (
                     candidate,
                     target_identity_status,
                     source.get("source_sense_id"),
-                    source.get("comparison_gloss"),
+                    source.get("gloss", source.get("comparison_gloss")),
+                    source.get("etym_root"),
                     target.get("source_entry_key"),
                     target.get("source_sense_id"),
-                    target.get("comparison_gloss"),
+                    target.get("gloss", target.get("comparison_gloss")),
+                    target.get("etym_root"),
                     json.dumps(
                         target.get("source_identity_candidates", []),
                         ensure_ascii=False,
                         sort_keys=True,
                         separators=(",", ":"),
                     ),
-                ))
+                )
+                active_candidates[(source_lang, source["source_entry_key"], target_lang, target_word)].add(candidate_data)
+                casefold_candidates[(source_lang, source["source_entry_key"], target_lang, target_word.casefold())].add(candidate_data)
 
     cognate_claims: dict[tuple[str, str], set[tuple[str, int | None, str, str]]] = defaultdict(set)
     relations_by_candidate: dict[tuple, set[str]] = defaultdict(set)
     match_counts_by_relation = defaultdict(int)
     match_counts_by_category = defaultdict(int)
     match_counts_by_target_identity = defaultdict(int)
+    match_counts_by_form_match = defaultdict(int)
     source_hash = hashlib.sha256()
     temp_output = matches_output.with_suffix(matches_output.suffix + ".tmp") if matches_output else None
     try:
@@ -100,17 +105,23 @@ def audit_coverage(
                         relation = claim.get("relation")
                         if not source_lang or not target_lang or source_lang == target_lang or not entry_key or not isinstance(form, str) or not form:
                             continue
-                        form_key = form.casefold()
-                        candidate_key = (source_lang, entry_key, target_lang, form_key)
+                        candidate_key = (source_lang, entry_key, target_lang, form)
                         matches = active_candidates.get(candidate_key, ())
+                        match_method = "exact"
+                        if not matches:
+                            form_key = form.casefold()
+                            matches = casefold_candidates.get((source_lang, entry_key, target_lang, form_key), ())
+                            match_method = "casefold_fallback"
                         for (
                             candidate,
                             target_identity_status,
                             source_sense_id,
                             source_gloss,
+                            source_root,
                             target_entry_key,
                             target_sense_id,
                             target_gloss,
+                            target_root,
                             target_identity_candidates,
                         ) in matches:
                             if relation:
@@ -118,7 +129,7 @@ def audit_coverage(
                             if destination and relation:
                                 category = candidate_meta[candidate][1]
                                 match_key = json.dumps(
-                                    [entry_key, claim.get("template_index"), relation, target_lang, form_key, candidate],
+                                    [entry_key, claim.get("template_index"), relation, target_lang, form, candidate],
                                     ensure_ascii=False,
                                     sort_keys=True,
                                     separators=(",", ":"),
@@ -142,6 +153,7 @@ def audit_coverage(
                                     "source_active_sense": {
                                         "source_sense_id": source_sense_id,
                                         "gloss": source_gloss,
+                                        "etymological_root": source_root,
                                     },
                                     "claim": {
                                         "relation": relation,
@@ -161,7 +173,9 @@ def audit_coverage(
                                         "active_entry_key": target_entry_key,
                                         "active_sense_id": target_sense_id,
                                         "active_sense_gloss": target_gloss,
+                                        "active_sense_etymological_root": target_root,
                                         "active_identity_status": target_identity_status,
+                                        "form_match_method": match_method,
                                         "source_identity_candidates": json.loads(target_identity_candidates),
                                     },
                                 }
@@ -169,9 +183,10 @@ def audit_coverage(
                                 match_counts_by_relation[relation] += 1
                                 match_counts_by_category[category] += 1
                                 match_counts_by_target_identity[target_identity_status] += 1
+                                match_counts_by_form_match[match_method] += 1
                         if relation == "cognate_mention":
                             cognate_claims[(source_lang, target_lang)].add((
-                                entry_key, claim.get("template_index"), target_lang, form_key
+                                entry_key, claim.get("template_index"), target_lang, form
                             ))
         finally:
             if destination:
@@ -194,6 +209,8 @@ def audit_coverage(
             values["source_claims"] += 1
             candidate_key = (source_lang, entry_key, related_lang, form)
             matches = active_candidates.get(candidate_key, set())
+            if not matches:
+                matches = casefold_candidates.get((source_lang, entry_key, related_lang, form.casefold()), set())
             if matches:
                 values["active_source_entry_candidates"] += 1
                 if any(match[1] == "available" for match in matches):
@@ -229,6 +246,8 @@ def audit_coverage(
         with comparisons.open("rb") as comparison_file:
             for block in iter(lambda: comparison_file.read(1024 * 1024), b""):
                 comparison_hash.update(block)
+        generator_path = Path(__file__).resolve()
+        generator_hash = hashlib.sha256(generator_path.read_bytes()).hexdigest()
         manifest = {
             "schema_version": 1,
             "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -236,17 +255,21 @@ def audit_coverage(
             "source_records_sha256": source_hash.hexdigest(),
             "comparisons_file": comparisons.name,
             "comparisons_sha256": comparison_hash.hexdigest(),
+            "generator_file": generator_path.name,
+            "generator_sha256": generator_hash,
             "matches_file": matches_output.name,
             "matches_sha256": output_hash.hexdigest(),
             "source_claim_candidate_matches": sum(match_counts_by_relation.values()),
             "matches_by_relation": dict(sorted(match_counts_by_relation.items())),
             "evidence_rows_by_candidate_category": dict(sorted(match_counts_by_category.items())),
             "evidence_rows_by_target_identity": dict(sorted(match_counts_by_target_identity.items())),
+            "evidence_rows_by_form_match_method": dict(sorted(match_counts_by_form_match.items())),
             "unique_candidates_with_source_claim_by_category": dict(sorted(unique_candidates_by_category.items())),
             "matching_rule": (
                 "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its "
-                "related language and case-folded form equal the other candidate form. Claims are entry-level; this does "
-                "not assert that they apply to the selected target sense."
+                "related language and exact target-form spelling match the candidate. Case-folded matching is used only "
+                "when no exact-form candidate exists for that source entry. Claims are entry-level; this does not assert "
+                "that they apply to the selected target sense."
             ),
         }
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
