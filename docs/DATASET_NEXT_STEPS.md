@@ -162,7 +162,36 @@ The sample also gives a useful limit case: the English *fret* entry mentions Ger
 
 This supports a data model with multiple source-backed paths and comparison observations, not a rule that maps every pair to exactly one historical label. It also exposes a separate identity task: 32–42% of sampled `other` rows did not have both sides linked to an exact source entry, and only 52–60% had active-sense source links on both sides. Improve the matching and retain unresolved links before using these rows to estimate category coverage.
 
-The expanded audit JSONL files and their manifests remain local under `pipeline/data/`. The manifest records that sampling queried the live API, so an exact rerun needs the same comparison snapshot; the current API must not be assumed to return the same rows. [build_source_pair_audit.py](../pipeline/src/build_source_pair_audit.py) can rejoin explicit pairs to the retained source records. Keep this table as a sample finding, not a reclassification of all rows in those populations.
+### Project the sample as multiple source claims
+
+I projected all 270 audits into 2,341 source-claim rows, backed by 2,396 template records. The projector grouped 55 repeated encodings of the same claim on a source entry while preserving the raw template evidence. It skipped 292 claims with no normalized relation; those remain in the pair audits and do not mean “unknown origin.”
+
+| Normalized source relation | Projected rows |
+| --- | ---: |
+| `cognate_mention` | 723 |
+| `inherited_from` | 645 |
+| `derived_from` | 588 |
+| `borrowed_from` | 135 |
+| `formed_from` | 84 |
+| `doublet_of` | 61 |
+| `noncognate_mention` | 38 |
+| `rooted_in` | 36 |
+| `compound_of` | 14 |
+| `clipped_from` | 8 |
+| `surface_analysis` | 4 |
+| `back_formed_from` | 2 |
+| `calque_of` | 2 |
+| `influenced_by` | 1 |
+
+These rows describe claims attached to source entries used in the sample. Many point to third languages and do not connect the two compared forms. They are source evidence, not 2,341 confirmed pair classifications. Schema version 2 carries the compared forms and scores, source URL and entry key, and entry-to-comparison-sense links when the audit found them. Of the 2,341 rows, 1,624 carry at least one such sense link; that is context for an entry-level claim, not proof that the claim belongs to that sense. All rows have a source URL, entry key, and part of speech. One lacks etymology prose but retains its template name and arguments. The generated JSONL and manifest stay local because they contain source text.
+
+Rerun this projection from the saved local audits with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/project_source_case_edges.py --input pipeline/data/source_pair_audit_sv_da_expanded.jsonl --input pipeline/data/source_pair_audit_sv_nb_expanded.jsonl --input pipeline/data/source_pair_audit_de_en_expanded.jsonl --output pipeline/data/source_pair_edges_expanded.jsonl
+```
+
+The expanded audit JSONL files and their manifests remain local under `pipeline/data/`. The manifest records that sampling queried the live API, so an exact resample needs the same comparison snapshot; a fresh live sample may select different rows. [build_source_pair_audit.py](../pipeline/src/build_source_pair_audit.py) can rejoin explicit pairs to the retained source records. Keep these findings as a sample, not a reclassification of all rows in those populations.
 
 ## Do this next
 
