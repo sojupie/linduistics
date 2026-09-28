@@ -99,7 +99,17 @@ The repeatable scan records hashes for both the five full entry dumps and the et
 pipeline\.venv\Scripts\python.exe pipeline/src/audit_etymology_component_entries.py --etymology-records pipeline/data/etymology_records_all.jsonl --entry-dump pipeline/data/kaikki_da.jsonl --entry-dump pipeline/data/kaikki_de.jsonl --entry-dump pipeline/data/kaikki_en.jsonl --entry-dump pipeline/data/kaikki_nb.jsonl --entry-dump pipeline/data/kaikki_sv.jsonl --candidates-output pipeline/data/component_entry_candidates.jsonl.gz --output pipeline/data/component_entry_coverage.json --force
 ```
 
-For Swedish *bankman*, the recorded component list is *bank + man*. The exact entry lookup resolves *bank* to one Swedish entry but leaves *man* ambiguous. Swedish and English `man` entries independently record Proto-Germanic `*mann-`, but the component lookup cannot decide which Swedish *man* sense is intended. This supports investigating component-level cognacy; it does not establish a partial-cognate relation for the full Swedish *bankman* and English surname *Bankman* pair, whose English source entry has no etymology claim in these inputs.
+I then intersected those component candidates with exact, non-uncertain `inherited_from` claims that point to the same reconstructed language and form. Across `compound_of` and `formed_from` records, 2,302 reconstructed nodes appeared in components from at least two varieties if ambiguous entry candidates were allowed. Requiring exactly one source entry for each component spelling reduces that to 592 nodes: 443 represented in two varieties, 122 in three, 26 in four, and one in all five. The strict local projection is `pipeline/data/component_shared_ancestor_candidates.jsonl.gz`; each row links a reconstructed node to component entries and the parent compounds that use them.
+
+This is a useful discovery set, not a count of cognate sets. The number changes sharply when ambiguous spellings are excluded, and even a unique source entry can contain several senses. For example, the exact Swedish *man* component in *bankman* still has three entry candidates. Although Swedish and English *man* entries each record Proto-Germanic `*mann-`, that evidence alone does not resolve the component sense in *bankman* or establish the relationship of the English surname *Bankman*.
+
+Rerun the shared-ancestor scan with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/audit_shared_component_proto_claims.py --etymology-records pipeline/data/etymology_records_all.jsonl --component-candidates pipeline/data/component_entry_candidates.jsonl.gz --shared-candidates-output pipeline/data/component_shared_ancestor_candidates.jsonl.gz --output pipeline/data/shared_component_proto_claims.json --force
+```
+
+For Swedish *bankman*, the generated component table links *bank* to one Swedish source entry and keeps all three *man* entry candidates rather than selecting a sense automatically.
 
 ## Completed: first comparison-to-source edge slice
 
