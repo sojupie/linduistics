@@ -387,3 +387,25 @@ pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --co
 ```
 
 The corrected comparison SHA-256 is `0d7a686246b261a7d44ac75b596714bd8b68b5c2c3b53264e888d427905866c1`. The refreshed claim export SHA-256 is `3773ba3d5c983ad6878324be9175e6ea71a6863e7a4725ee5aaca1ce2d62de36`. These ignored local files contain no live database changes. The full pipeline suite passes 105 tests.
+
+## Restore source forms for three etymology templates (2026-09-28)
+
+I inventoried all 1,148,705 source-claim records from 710,110 entries. Three already-classified template types had a relation but generally lost the endpoint form during extraction: `ellipsis`, `nom`, and `sylabbr`. The normalizer now reads their documented or observed source-form argument while preserving the original arguments. For `ellipsis`, Wiktionary specifies argument 1 as the source language and argument 2 as the source term; argument 3 is display text, so it is not promoted to a source form when argument 2 is empty. See the [ellipsis template documentation](https://en.wiktionary.org/wiki/Template:ellipsis/documentation).
+
+The corrected extraction keeps all 710,110 entries and 1,148,705 claims. It moves **480 claims** from no structured target to a target shape: 283 `ellipsis_of`, 164 `nominalized_from`, and 33 `syllabically_abbreviated_from`. The total number of claims per relation is unchanged. The remaining 140 endpoint-less claims are six different relation types whose local source arguments do not provide a form or entity; their raw arguments remain available for a later audit.
+
+A streamed field-by-field comparison of all 710,110 old and rebuilt records confirmed that exactly 480 claim records changed, and only their `related_language` or `related_form` fields. Source entry and sense identities, relation names, raw template arguments, and all other claim fields remained identical. Of the 480 changes, 448 now include a form and 32 carry only a source language because the original argument does not name a form.
+
+The inventory also found **232 `cognate_mention` claims** whose source template has an empty term parameter. Wiktionary documents that as a request for a missing term; the next positional value is only an alternate display form. Those 232 claims correctly remain language-only rather than being converted into links to a form the source did not assert.
+
+I rebuilt the all-pair claim-to-candidate audit against the corrected source export. It still has 20,354 matched evidence rows and 406 ambiguous target identities; no new claims from these three template types matched the current comparison candidates. Candidate categories, comparison scores, and the database are unchanged. This is an extraction-completeness improvement, not a reclassification.
+
+The original source export remains intact. The corrected 1,148,705-claim snapshot is `pipeline/data/etymology_records_relation_targets.jsonl` with SHA-256 `02ed58bc2becfe28a91b828d692904602217d0a248f511260e0aa8da07037739`. Its compact summary is `pipeline/data/source_claim_inventory_relation_targets.json`; both are ignored local artifacts. The refreshed all-pair evidence export has the same 20,354 rows and 406 ambiguous target identities. The full pipeline suite passes 109 tests.
+
+Rebuild and compare the corrected local outputs:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --output pipeline\data\etymology_records_relation_targets.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_relation_targets.jsonl --output pipeline\data\source_claim_inventory_relation_targets.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_relation_targets.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_relation_targets.jsonl --force
+```
