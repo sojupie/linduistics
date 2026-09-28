@@ -93,7 +93,7 @@ I rebuilt all five lemma Parquet files into the ignored local directory `pipelin
 
 I then rebuilt the comparison Parquet from those lemmas and the existing Wiktionary translation dump. It contains 403,952 directed candidate rows, compared with 403,694 in the existing comparison file. On 392,200 new rows, both selected senses link to exact source entry and sense IDs. The other 11,752 rows are explicitly marked as ambiguous because multiple same-POS source senses have the same normalized gloss. No row-level part of speech disagrees with its selected sense. The rebuild reports 20,284 rows with a confirmed shared root and 383,668 with unknown origin; the previous file had 19,938 `cognate`, 354,936 `unknown`, and 28,820 `false_cognate` rows. Unequal roots no longer create a separate-origin result.
 
-These are candidate-pair counts, not shares of any language's vocabulary. The comparison builder also reran semantic matching, and its model revision is not pinned, so score-driven category changes cannot be attributed only to the source-identity fix. The full pipeline test suite passes (70 tests). The generated Parquets remain ignored local artifacts; the comparison rebuild has not been loaded into the database, and the database migration remains unapplied.
+These are candidate-pair counts, not shares of any language's vocabulary. The comparison builder also reran semantic matching, and its model revision is not pinned, so score-driven category changes cannot be attributed only to the source-identity fix. The full pipeline test suite passes (71 tests). The generated Parquets remain ignored local artifacts; the comparison rebuild has not been loaded into the database, and the database migration remains unapplied.
 
 ### Spot checks against the rebuilt candidates
 
@@ -112,6 +112,18 @@ The source audit can now read comparison rows from a Parquet file, so the rebuil
 | Swedish–Danish *leja–leje* | The pair has no row in the rebuilt candidate file. | This is a candidate-retrieval gap, not a classification result. A taxonomy change cannot recover a pair the candidate generator never emits. |
 
 These are diagnostic examples, not adjudicated labels or vocabulary statistics. The next useful change is to carry source claims as independent, queryable relations beside candidate similarity and any project judgment. That will let the site show, for example, a direct borrowing claim without forcing it into the single shared-root field.
+
+### Source cognate-claim coverage
+
+`pipeline/src/audit_source_cognate_coverage.py` counts explicit Wiktionary `cognate_mention` claims and checks whether each claim reaches a rebuilt comparison candidate. A claim is counted once per source-entry key, template index, target language, and target form. “Active source-entry candidate” means the claiming entry is the selected active source entry in a comparison for the named target form. “Both active sense IDs” further requires the target side of that candidate to link to one exact source sense.
+
+| Language pair | Source claims | Active source-entry candidate | Both active sense IDs |
+|---|---:|---:|---:|
+| Swedish–Danish | 3,451 | 1,128 | 1,098 |
+| Swedish–Norwegian Bokmål | 1,847 | 664 | 653 |
+| German–English | 9,648 | 1,262 | 1,236 |
+
+These are source-claim and candidate-coverage counts. A Wiktionary mention is evidence to inspect, not a reviewed judgment. A claim that does not reach a candidate may reflect candidate retrieval, a form or sense mismatch, or an incomplete source link; it does not show that the claim is false. This audit gives us a concrete next target: keep source claims queryable even when no current comparison row exists.
 
 The manifest records hashes and local modification times for the input files. It does not pin a Wiktionary revision or prove when the files were downloaded. The raw dumps and generated JSONL are local, ignored data files; this repository contains the command and tests needed to recreate the export when those inputs are available.
 
