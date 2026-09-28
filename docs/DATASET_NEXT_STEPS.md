@@ -351,3 +351,39 @@ pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --fo
 ```
 
 The manifest fingerprints the comparison table, source claim match export, source etymology records, component candidates, and generated JSONL. The builder's focused tests check case matching, active-sense links, pair-claim identity, and component retention. The full pipeline suite must be rerun after the next pipeline change.
+
+## Separate source translation evidence from embedding scores (2026-09-28)
+
+The candidate builder previously raised `semantic_sim` and its classification input to at least **0.95** for every pair mined from an English Wiktionary translation. That wrote a source assertion into a field presented as an embedding similarity. The pair also already retained its source-sense reference in `translation_source_senses`.
+
+I removed the floor. `semantic_sim` now records the cosine score for the selected sense pair; the translation source references remain alongside it. A low embedding score alone does not label a pair `false_friend` when the candidate has direct translation-source evidence. This leaves the row inspectable as `other` while preserving both facts, rather than falsifying the numeric score or treating a source translation as proof of the target sense. The reference still identifies the English source sense, not a resolved target sense.
+
+The change keeps the same 1,638,454 directed candidates and 542,990 directed rows with translation source-sense references. The relation counts are unchanged: 24,872 rows have equal extracted roots and 1,613,582 have unknown root relation. The local candidate categories changed as follows:
+
+| Category | Before score separation | After score separation |
+| --- | ---: | ---: |
+| `true_cognate` | 21,646 | 14,810 |
+| `partial_cognate` | 2,410 | 9,246 |
+| `translation_pair` | 328,262 | 106,556 |
+| `false_friend` | 361,880 | 361,880 |
+| `other` | 924,256 | 1,145,962 |
+
+The translation-pair decrease is 221,706 directed rows; the `other` increase is the same amount. Another 6,836 rows move from `true_cognate` to `partial_cognate` when the embedding score is no longer floored. This is a change in heuristic candidate labels, not new etymological evidence. The corrected snapshot remains local; none of these changes have been applied to the database.
+
+The named cases show why the score and source claim must coexist:
+
+- Swedish and German *fleece* retain borrowing claims to English, but their selected-sense embeddings are 0.198 and 0.609. Both comparison candidates stay `other`; the source claims and target identities remain inspectable.
+- Danish and Bokmål *ombudsman* rows move from `true_cognate` to `partial_cognate` because the selected-sense embedding scores are 0.427 and 0.664. Their extracted Old Norse roots still match, and the English-to-Swedish borrowing claim remains. The score alone does not settle whether these are partial cognates; this is a review candidate, not an accepted reclassification.
+- *bankman* remains `other`; its English comparison is a surname, and the Swedish compound still has one exact *bank* component entry and three *man* candidates.
+
+The refreshed all-pair claim audit still has 20,354 evidence rows and 406 ambiguous target identities. It now associates 13,738 source-claim matches with `other` candidates, among 572,981 unique `other` form pairs. The normalized claim inventory itself is unchanged.
+
+Rebuild the corrected comparison snapshot, source-claim matches, and six-case slice from local files:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\build_crosslingual_dataset.py --lemma-dir pipeline\data\lemmas_source_identity --output pipeline\data\all_comparisons_separated_translation_evidence.parquet
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_all.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_separated_translation_evidence.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --claim-matches pipeline\data\candidate_source_claim_matches_separated_translation_evidence.jsonl --output pipeline\data\named_case_evidence_slice_separated_translation_evidence.jsonl --force
+```
+
+The corrected comparison SHA-256 is `0d7a686246b261a7d44ac75b596714bd8b68b5c2c3b53264e888d427905866c1`. The refreshed claim export SHA-256 is `3773ba3d5c983ad6878324be9175e6ea71a6863e7a4725ee5aaca1ce2d62de36`. These ignored local files contain no live database changes. The full pipeline suite passes 105 tests.
