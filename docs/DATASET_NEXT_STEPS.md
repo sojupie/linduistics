@@ -91,6 +91,16 @@ The normalized output contains 5,448 repeated edge encodings across 5,103 source
 pipeline\.venv\Scripts\python.exe pipeline/src/extract_etymology_records.py --input-dir pipeline/data --languages da de en nb sv --output pipeline/data/etymology_records_all.jsonl
 ```
 
+The first component-to-entry audit scanned all 710,110 source records. It found 527,311 raw claim vectors with component lists; collapsing repeated normalized lists within each source entry leaves 492,125 vectors and 1,001,433 component positions. Exact language-and-spelling lookup found one source-entry candidate for 408,980 positions (40.8%), multiple candidates for 384,624 (38.4%), and none for 207,829 (20.8%). The lookup removes Wiktionary `<t:...>` gloss tags but preserves spelling and case. These are entry candidates only: they do not resolve the component's sense or prove that two components are cognate. The many ambiguous hits confirm that a component spelling cannot safely be linked to one etymology or sense by itself.
+
+The repeatable aggregate scan records the input hash and matching rules, and writes only counts to the ignored local data directory:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/audit_etymology_component_entries.py --input pipeline/data/etymology_records_all.jsonl --output pipeline/data/component_entry_coverage.json
+```
+
+For Swedish *bankman*, the recorded component list is *bank + man*: *bank* has one exact Swedish entry candidate, while *man* has three. The Swedish and English `man` entries independently record Proto-Germanic `*mann-`, but the Swedish component lookup alone cannot decide which *man* sense is intended. This supports investigating component-level cognacy; it does not establish a partial-cognate relation for the full Swedish *bankman* and English surname *Bankman* pair, whose English source entry has no etymology claim in this input.
+
 ## Completed: first comparison-to-source edge slice
 
 Using the existing pair-audit tool, I joined 19 selected Swedish, Danish, German, and Norwegian Bokmål comparisons to their exact source entries and senses. Eighteen have a current comparison row; the German *Ombudsmann* / English *ombudsman* source entries exist, but the local candidate build has no comparison row for that pair. Of the 19 requested cases, the current classifications are 14 `other`, three `true_cognate`, one `false_friend`, and one missing comparison. The audit also joins the original English translation statements: 18 cases have an exact source-sense claim for the compared forms; *bankman* is the one without a direct translation claim in these inputs.
