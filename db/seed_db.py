@@ -47,10 +47,12 @@ COLUMNS = [
     "phonetic_sim",
     "semantic_sim",
     "category",
-    "false_friend_type",
+    "etymological_relation",
     "senses_a",
     "senses_b",
-    "etym_root",
+    "etym_root_a",
+    "etym_root_b",
+    "shared_etym_root",
     "etym_text_a",
     "etym_text_b",
 ]
@@ -84,7 +86,6 @@ def seed_database(
             if truncate:
                 print("Truncating word_comparisons table...")
                 cur.execute("TRUNCATE TABLE word_comparisons RESTART IDENTITY;")
-                conn.commit()
 
             cols_str = ", ".join(COLUMNS)
             copy_sql = f"COPY word_comparisons ({cols_str}) FROM STDIN"

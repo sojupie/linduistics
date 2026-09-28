@@ -59,7 +59,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     return (saved as ViewingMode) || 'blind';
   });
 
-  const [selectedTier, setSelectedTier] = useState<string>('etymological_shift');
+  const [selectedRelation, setSelectedRelation] = useState<string>('all');
   const [showSourceHint, setShowSourceHint] = useState(false);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     data: quizData,
     isLoading: quizLoading,
     refetch: refetchQuiz,
-  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedTier);
+  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedRelation);
 
   const currentQuizItem = quizData?.[currentQuizIdx];
 
@@ -235,22 +235,22 @@ export const FalseFriendsQuiz: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         {/* Etymological Type Filter Segmented Control */}
         <div className="flex items-center gap-2">
-          <span className="typo-sublabel text-ink-muted">Type:</span>
+          <span className="typo-sublabel text-ink-muted">Origin:</span>
           <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
             <button
               type="button"
               onClick={() => {
-                setSelectedTier('all');
+                setSelectedRelation('all');
                 handleRestartQuiz();
               }}
               className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedTier === 'all'
+                selectedRelation === 'all'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
-              title="Test all false friends (both historical cognates and accidental lookalikes)"
+              title="Test all false friends, including pairs with unknown etymological origin"
             >
-              {selectedTier === 'all' && (
+              {selectedRelation === 'all' && (
                 <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
               )}
               <span>All Pairs</span>
@@ -258,38 +258,56 @@ export const FalseFriendsQuiz: React.FC = () => {
             <button
               type="button"
               onClick={() => {
-                setSelectedTier('etymological_shift');
+                setSelectedRelation('cognate');
                 handleRestartQuiz();
               }}
               className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedTier === 'etymological_shift'
+                selectedRelation === 'cognate'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
-              title="Shared roots: words sharing an ancestral root whose meanings diverged over centuries (e.g. English 'gift' vs German 'Gift')"
+              title="Historically related words whose modern meanings have diverged enough to mislead."
             >
-              {selectedTier === 'etymological_shift' && (
+              {selectedRelation === 'cognate' && (
                 <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
               )}
-              <span>Shared Roots</span>
+              <span>Cognate false friends</span>
             </button>
             <button
               type="button"
               onClick={() => {
-                setSelectedTier('surface_collision');
+                setSelectedRelation('false_cognate');
                 handleRestartQuiz();
               }}
               className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedTier === 'surface_collision'
+                selectedRelation === 'false_cognate'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
               }`}
-              title="Accidental lookalikes: unrelated words that coincidentally look or sound alike (e.g. English 'bad' vs German 'Bad')"
+              title="Similar-looking words with distinct recorded roots."
             >
-              {selectedTier === 'surface_collision' && (
+              {selectedRelation === 'false_cognate' && (
                 <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
               )}
-              <span>Accidental Lookalikes</span>
+              <span>False cognates</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedRelation('unknown');
+                handleRestartQuiz();
+              }}
+              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
+                selectedRelation === 'unknown'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+              }`}
+              title="Similar-looking words whose historical relationship remains unverified in the available records."
+            >
+              {selectedRelation === 'unknown' && (
+                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+              )}
+              <span>Origin unknown</span>
             </button>
           </div>
         </div>
@@ -354,12 +372,15 @@ export const FalseFriendsQuiz: React.FC = () => {
         </div>
       ) : !currentQuizItem ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
-          No false friend word pairs found for {getLanguageName(sourceLang)}{' '}
+          No {selectedRelation === 'cognate'
+            ? 'cognate false friends'
+            : selectedRelation === 'false_cognate'
+              ? 'false cognates'
+              : selectedRelation === 'unknown'
+                ? 'false friends with unknown origin'
+                : 'false friend word pairs'} found for {getLanguageName(sourceLang)}{' '}
           <MaterialSymbol icon="arrow_forward" size={14} className="inline-block text-ink-muted align-middle mx-0.5" />{' '}
-          {getLanguageName(targetLang)}
-          {selectedTier !== 'all'
-            ? ` classified as ${selectedTier === 'etymological_shift' ? 'shared roots (divergent cognates)' : 'accidental lookalikes'}`
-            : ''}.
+          {getLanguageName(targetLang)}.
         </div>
       ) : isRoundFinished ? (
         /* Round Finished Summary Dossier */
@@ -462,18 +483,22 @@ export const FalseFriendsQuiz: React.FC = () => {
                         <span className="typo-headword-row text-falsefriend-ink truncate">
                           {rec.item.word_b}
                         </span>
-                        {rec.item.false_friend_type && (
+                        {rec.item.etymological_relation && (
                           <span
                             className="typo-subscript text-ink-muted text-2xs px-1.5 py-0.5 border border-book-rule/60 shrink-0"
                             title={
-                              rec.item.false_friend_type === 'etymological_shift'
-                                ? 'Shared historical root with divergent meaning'
-                                : 'Accidental lookalike with no etymological relationship'
+                              rec.item.etymological_relation === 'cognate'
+                                ? 'Historically related words whose modern meanings have diverged enough to mislead.'
+                                : rec.item.etymological_relation === 'false_cognate'
+                                  ? 'Similar-looking words with distinct recorded roots.'
+                                  : 'Similar-looking words whose historical relationship remains unverified in the available records.'
                             }
                           >
-                            {rec.item.false_friend_type === 'etymological_shift'
-                              ? 'Shared Root'
-                              : 'Accidental Lookalike'}
+                            {rec.item.etymological_relation === 'cognate'
+                              ? 'Cognate'
+                              : rec.item.etymological_relation === 'false_cognate'
+                                ? 'False Cognate'
+                                : 'Origin Unknown'}
                           </span>
                         )}
                       </div>
@@ -564,18 +589,22 @@ export const FalseFriendsQuiz: React.FC = () => {
                 <span className="typo-overline text-ink-main">
                   Question {currentQuizIdx + 1} of {quizData?.length || 10}
                 </span>
-                {currentQuizItem?.false_friend_type && (
+                {currentQuizItem?.etymological_relation && (
                   <span
                     className="typo-subscript px-1.5 py-0.5 border border-book-rule text-ink-muted bg-page-muted/20 font-serif"
                     title={
-                      currentQuizItem.false_friend_type === 'etymological_shift'
-                        ? 'Shared historical root: words share a common ancestor but diverged in meaning'
-                        : 'Accidental lookalike: unrelated words that look or sound alike by coincidence'
+                      currentQuizItem.etymological_relation === 'cognate'
+                        ? 'Historically related words whose modern meanings have diverged enough to mislead.'
+                        : currentQuizItem.etymological_relation === 'false_cognate'
+                          ? 'Similar-looking words with distinct recorded roots.'
+                          : 'Similar-looking words whose historical relationship remains unverified in the available records.'
                     }
                   >
-                    {currentQuizItem.false_friend_type === 'etymological_shift'
-                      ? 'Shared Root · Diverged'
-                      : 'Accidental Lookalike'}
+                    {currentQuizItem.etymological_relation === 'cognate'
+                      ? 'Cognate false friend'
+                      : currentQuizItem.etymological_relation === 'false_cognate'
+                        ? 'False cognate'
+                        : 'Origin unknown'}
                   </span>
                 )}
                 {currentStreak > 1 && (
@@ -799,11 +828,13 @@ export const FalseFriendsQuiz: React.FC = () => {
                     <span className="typo-overline text-ink-main font-medium">
                       Etymology
                     </span>
-                    {currentQuizItem.false_friend_type && (
+                    {currentQuizItem.etymological_relation && (
                       <span className="typo-subscript text-ink-muted uppercase tracking-wider">
-                        {currentQuizItem.false_friend_type === 'surface_collision'
-                          ? 'Accidental resemblance (unrelated roots)'
-                          : 'Semantic drift (shared root)'}
+                        {currentQuizItem.etymological_relation === 'false_cognate'
+                          ? 'False cognate'
+                          : currentQuizItem.etymological_relation === 'cognate'
+                            ? 'Cognate origin'
+                            : 'Origin unknown'}
                       </span>
                     )}
                   </div>

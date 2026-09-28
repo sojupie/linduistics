@@ -26,6 +26,19 @@ def test_parse_kaikki_entry_valid_lemma():
     assert result["glosses"] == ["dog (canine mammal)"]
 
 
+def test_etymology_text_sister_mentions_do_not_become_the_entry_root():
+    raw = {
+        "word": "ost",
+        "pos": "noun",
+        "lang_code": "da",
+        "senses": [{"glosses": ["cheese"]}],
+        "etymology_text": "From Proto-Germanic *jūstaz; compare Swedish ost and English east from *austrą.",
+    }
+    result = parse_kaikki_entry(raw)
+    assert result is not None
+    assert result["etym_root"] == ""
+
+
 def test_parse_kaikki_entry_rejects_inflection_tags():
     # Top-level tags containing "form-of"
     raw = {

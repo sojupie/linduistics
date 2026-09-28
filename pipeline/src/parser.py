@@ -38,7 +38,6 @@ _META_GLOSS_PATTERN = re.compile(
 )
 
 _INACTIVE_TAGS = {"obsolete", "archaic", "historical", "dated"}
-_ROOT_RE = re.compile(r"\*([a-zA-Z\u0100-\u017F\u0180-\u024F]+)")
 
 # Prioritized proto/ancestral language codes
 _ANCESTRAL_LANG_ORDER = [
@@ -92,20 +91,8 @@ def extract_etym_root(raw: dict) -> Tuple[str, str]:
             if etym_root:
                 break
 
-    # 3. Fallback to regex on etymology text
-    if not etym_root and etym_text:
-        m = re.search(
-            r"(Proto-Germanic|Proto-Indo-European|Proto-West Germanic|Old Norse|Latin)\s+\*?([a-zA-Z\u0100-\u017F]+)",
-            etym_text,
-            re.I,
-        )
-        if m:
-            etym_root = f"{m.group(1)} *{m.group(2).lstrip('*')}"
-        else:
-            m2 = _ROOT_RE.search(etym_text)
-            if m2:
-                etym_root = f"*{m2.group(1)}"
-
+    # Etymology prose may mention sister words and unrelated roots; only structured
+    # source fields can populate etym_root.
     clean_text = etym_text[:500] if etym_text else ""
     return etym_root, clean_text
 

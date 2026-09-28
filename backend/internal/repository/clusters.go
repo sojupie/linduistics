@@ -94,12 +94,11 @@ func (r *ClustersRepository) GetClusterByRoot(ctx context.Context, root string) 
 	query := `
 		SELECT id, root, proto_language, language_count, languages, members, sample_gloss
 		FROM cognate_clusters
-		WHERE root = $1 OR root ILIKE $2
-		ORDER BY (root = $1) DESC
+		WHERE root = $1
 		LIMIT 1
 	`
 	var c models.CognateCluster
-	err := r.pool.QueryRow(ctx, query, root, "%"+root+"%").Scan(
+	err := r.pool.QueryRow(ctx, query, root).Scan(
 		&c.ID,
 		&c.Root,
 		&c.ProtoLanguage,

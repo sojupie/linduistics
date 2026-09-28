@@ -75,9 +75,9 @@ def build_clusters() -> Dict[str, dict]:
     conn = psycopg.connect("postgresql://postgres:postgres@localhost:5432/linduistics")
     cur = conn.cursor()
     cur.execute("""
-        SELECT DISTINCT etym_root, lang_a, word_a, ipa_a, pos_a, def_a, lang_b, word_b, ipa_b, pos_b, def_b
+        SELECT DISTINCT shared_etym_root, lang_a, word_a, ipa_a, pos_a, def_a, lang_b, word_b, ipa_b, pos_b, def_b
         FROM word_comparisons
-        WHERE etym_root IS NOT NULL AND category IN ('true_cognate', 'partial_cognate');
+        WHERE shared_etym_root IS NOT NULL AND category IN ('true_cognate', 'partial_cognate');
     """)
 
     for r, la, wa, ipaa, posa, defa, lb, wb, ipab, posb, defb in cur.fetchall():
@@ -127,8 +127,9 @@ def build_clusters() -> Dict[str, dict]:
 def ingest_clusters(clusters: Dict[str, dict]):
     """Ingests aggregated cognate clusters into PostgreSQL."""
     logger.info(f"Ingesting {len(clusters)} cognate clusters into PostgreSQL...")
-    conn = psycopg.connect("postgresql://postgres:postgres@localhost:5432/linduistics", autocommit=True)
+    conn = psycopg.connect("postgresql://postgres:postgres@localhost:5432/linduistics")
     cur = conn.cursor()
+    cur.execute("TRUNCATE TABLE cognate_clusters;")
 
     insert_query = """
         INSERT INTO cognate_clusters (
@@ -167,6 +168,7 @@ def ingest_clusters(clusters: Dict[str, dict]):
 
     cur.execute("SELECT COUNT(*), COUNT(*) FILTER (WHERE language_count >= 3) FROM cognate_clusters;")
     total, multi = cur.fetchone()
+    conn.commit()
     logger.info(f"Successfully ingested {total} cognate clusters ({multi} spanning 3+ languages)!")
     conn.close()
 

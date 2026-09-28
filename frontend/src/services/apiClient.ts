@@ -54,7 +54,7 @@ export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsRe
   if (params.min_sem !== undefined) query.set('min_sem', params.min_sem.toString());
   if (params.max_sem !== undefined) query.set('max_sem', params.max_sem.toString());
   if (params.category) query.set('category', params.category);
-  if (params.false_friend_type) query.set('false_friend_type', params.false_friend_type);
+  if (params.etymological_relation) query.set('etymological_relation', params.etymological_relation);
   if (params.q) query.set('q', params.q);
   if (params.limit !== undefined) query.set('limit', params.limit.toString());
   if (params.offset !== undefined) query.set('offset', params.offset.toString());
@@ -79,7 +79,7 @@ export async function fetchFalseFriendsQuiz(
   source = 'sv',
   target = 'en',
   limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
-  tier?: string,
+  relation?: string,
 ): Promise<QuizItemDto[]> {
   const params: Record<string, string> = {
     mode: 'quiz',
@@ -87,8 +87,8 @@ export async function fetchFalseFriendsQuiz(
     target,
     limit: limit.toString(),
   };
-  if (tier && tier !== 'all') {
-    params.tier = tier;
+  if (relation && relation !== 'all') {
+    params.relation = relation;
   }
   const query = new URLSearchParams(params);
   return apiClient<QuizItemDto[]>(`/api/false-friends?${query.toString()}`);

@@ -18,11 +18,11 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
   sourceLang,
   targetLang,
 }) => {
-  const { data: cognateCluster } = useClusterByRootQuery(pair?.etymRoot);
+  const { data: cognateCluster } = useClusterByRootQuery(pair?.sharedEtymRoot);
 
   const sourceName = getLanguageName(sourceLang);
   const targetName = getLanguageName(targetLang);
-  const parsedRoot = parseEtymRoot(pair?.etymRoot, cognateCluster?.proto_language);
+  const parsedRoot = parseEtymRoot(pair?.sharedEtymRoot, cognateCluster?.proto_language);
 
   if (!pair) {
     return (
@@ -39,11 +39,11 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       case 'true_cognate':
         return 'True Cognate';
       case 'false_friend':
-        return pair.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Shared Root'
-          : pair.falseFriendType === 'surface_collision'
-            ? 'False Friend · Accidental Lookalike'
-            : 'False Friend';
+        return pair.etymologicalRelation === 'cognate'
+          ? 'False Friend · Cognate'
+          : pair.etymologicalRelation === 'false_cognate'
+            ? 'False Cognate'
+            : 'False Friend · Origin Unknown';
       case 'partial_cognate':
         return 'Partial Cognate';
       case 'translation_pair':
@@ -118,13 +118,13 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
       {/* 1. Word Pair Title Plate */}
       <div className="pb-5 border-b border-book-rule space-y-4">
         {/* Running Header */}
-        <div className="flex items-center justify-between typo-overline border-b border-book-rule/60 pb-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 typo-overline border-b border-book-rule/60 pb-2.5">
           <span className="inline-flex items-center gap-1.5">
             <span>{sourceName}</span>
             <MaterialSymbol icon="sync_alt" size={14} className="text-ink-muted" />
             <span>{targetName}</span>
           </span>
-          <span className={`typo-badge px-2.5 py-0.5 rounded ${pair.category === 'false_friend'
+          <span className={`typo-badge shrink-0 px-2.5 py-0.5 rounded ${pair.category === 'false_friend'
               ? 'text-falsefriend-ink bg-falsefriend-bg'
               : pair.category === 'true_cognate'
                 ? 'text-cognate-ink bg-cognate-bg'
@@ -194,9 +194,11 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         {/* False Friend Distinction Advisory */}
         {pair.category === 'false_friend' && (
           <div className="pt-3 border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
-            {pair.falseFriendType === 'etymological_shift'
-              ? 'Shared root: Both headwords descend from a common ancestral root, but independent semantic drift has diverged their modern definitions.'
-              : 'Headwords descend from completely unrelated ancestral roots and converge only through coincidental spelling or phonetic similarity.'}
+            {pair.etymologicalRelation === 'cognate'
+              ? 'Historically related words whose modern meanings have diverged enough to mislead.'
+              : pair.etymologicalRelation === 'false_cognate'
+                ? 'Similar-looking words with distinct recorded roots.'
+                : 'Similar-looking words whose historical relationship remains unverified in the available records.'}
           </div>
         )}
       </div>
@@ -249,7 +251,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
           Etymological Descent & Lineage
         </div>
 
-        {pair.etymRoot ? (
+        {pair.sharedEtymRoot ? (
           <div className="bg-page-muted/30 border border-book-rule p-4 space-y-2.5">
             <span className="typo-sublabel block">
               Reconstructed Ancestral Root
@@ -283,15 +285,28 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
               </span>
             </div>
           </div>
-        ) : pair.category === 'false_friend' && pair.falseFriendType === 'surface_collision' ? (
+        ) : pair.category === 'false_friend' && pair.etymologicalRelation === 'false_cognate' ? (
           <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note text-ink-muted">
-            No shared ancestral root: these words have historically distinct etymological origins and converged only in surface form.
+            Similar-looking words with distinct recorded roots.
           </div>
-        ) : !pair.etymTextA && !pair.etymTextB ? (
+        ) : !pair.etymRootA && !pair.etymRootB && !pair.etymTextA && !pair.etymTextB ? (
           <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note text-ink-muted">
-            No reconstructed ancestral root recorded in source data.
+            No etymological root is recorded for this pair.
           </div>
         ) : null}
+
+        {!pair.sharedEtymRoot && pair.etymRootA && (
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note">
+            <span className="typo-sublabel block">{sourceName} root</span>
+            {pair.etymRootA}
+          </div>
+        )}
+        {!pair.sharedEtymRoot && pair.etymRootB && (
+          <div className="bg-page-muted/20 border border-book-rule/60 p-3.5 typo-note">
+            <span className="typo-sublabel block">{targetName} root</span>
+            {pair.etymRootB}
+          </div>
+        )}
 
         {pair.etymTextA && (
           <div className="typo-body pl-3.5 border-l-2 border-book-rule-strong space-y-1">

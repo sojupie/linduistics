@@ -30,11 +30,11 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
       case 'true_cognate':
         return 'True Cognate';
       case 'false_friend':
-        return pair.falseFriendType === 'etymological_shift'
-          ? 'False Friend · Shared Root'
-          : pair.falseFriendType === 'surface_collision'
-          ? 'False Friend · Accidental Lookalike'
-          : 'False Friend';
+        return pair.etymologicalRelation === 'cognate'
+          ? 'False Friend · Cognate'
+          : pair.etymologicalRelation === 'false_cognate'
+          ? 'False Cognate'
+          : 'False Friend · Origin Unknown';
       case 'partial_cognate':
         return 'Partial Cognate';
       case 'translation_pair':

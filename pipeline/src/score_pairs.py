@@ -135,14 +135,10 @@ def score_lexicons(
             if not def_b and glosses_b:
                 def_b = glosses_b[0]
 
-            pair_max_len = max(len(word_a), len(word_b))
-            category, false_friend_type = classify_pair(
+            category, etymological_relation_value = classify_pair(
                 s_orth=s_orth,
                 s_phon=s_phon,
                 s_sem=s_sem,
-                max_len=pair_max_len,
-                word_a=word_a,
-                word_b=word_b,
             )
 
             # Base pair
@@ -161,7 +157,7 @@ def score_lexicons(
                 "phonetic_sim": float(s_phon),
                 "semantic_sim": float(s_sem),
                 "category": category,
-                "false_friend_type": false_friend_type,
+                "etymological_relation": etymological_relation_value,
             }
             evaluated_pairs.append(pair_record)
 
@@ -181,7 +177,7 @@ def score_lexicons(
                 "phonetic_sim": float(s_phon),
                 "semantic_sim": float(s_sem),
                 "category": category,
-                "false_friend_type": false_friend_type,
+                "etymological_relation": etymological_relation_value,
             }
             evaluated_pairs.append(inverse_record)
 
@@ -208,6 +204,7 @@ def export_comparisons_to_parquet(
             ("phonetic_sim", pa.float32()),
             ("semantic_sim", pa.float32()),
             ("category", pa.string()),
+            ("etymological_relation", pa.string()),
         ]
     )
 
@@ -226,6 +223,7 @@ def export_comparisons_to_parquet(
         pa.array([p["phonetic_sim"] for p in pairs], type=pa.float32()),
         pa.array([p["semantic_sim"] for p in pairs], type=pa.float32()),
         pa.array([p["category"] for p in pairs], type=pa.string()),
+        pa.array([p["etymological_relation"] for p in pairs], type=pa.string()),
     ]
 
     table = pa.Table.from_arrays(arrays, schema=schema)

@@ -5,6 +5,7 @@ import type { WordPair, SpecimenCategory } from '../../types/linguistics';
 import { LexiconTable } from './LexiconTable';
 import { WordPairDetails } from './WordPairDetails';
 import { LanguagePairSelect } from '../common/LanguagePicker';
+import { MaterialSymbol } from '../common/MaterialSymbol';
 
 export const ComparativeLexicon: React.FC = () => {
   const search = useSearch({ strict: false }) as {
@@ -16,12 +17,13 @@ export const ComparativeLexicon: React.FC = () => {
 
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFfType, setSelectedFfType] = useState<string | undefined>(undefined);
+  const [selectedFfRelation, setSelectedFfRelation] = useState<string | undefined>(undefined);
   const [limit, setLimit] = useState(50);
   const [offset, setOffset] = useState(0);
 
   // Active Selected Pair State
   const [selectedPairId, setSelectedPairId] = useState<number | null>(null);
+  const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
 
   // Load dynamically available languages from database
   const { data: languagesData } = useLanguagesQuery();
@@ -57,7 +59,7 @@ export const ComparativeLexicon: React.FC = () => {
     source: sourceLang,
     target: targetLang,
     category: selectedCategory,
-    false_friend_type: selectedFfType,
+    etymological_relation: selectedFfRelation,
     q: searchQuery.trim() || undefined,
     limit,
     offset,
@@ -70,10 +72,10 @@ export const ComparativeLexicon: React.FC = () => {
     }
     return livePairsData.items.map((dto) => {
       let cat: SpecimenCategory = 'other';
-      if (dto.category === 'true_cognate' || dto.category === 'cognate') cat = 'true_cognate';
+      if (dto.category === 'true_cognate') cat = 'true_cognate';
       else if (dto.category === 'false_friend') cat = 'false_friend';
-      else if (dto.category === 'partial_cognate' || dto.category === 'cousin' || dto.category === 'sound_shift') cat = 'partial_cognate';
-      else if (dto.category === 'translation_pair' || dto.category === 'schism') cat = 'translation_pair';
+      else if (dto.category === 'partial_cognate') cat = 'partial_cognate';
+      else if (dto.category === 'translation_pair') cat = 'translation_pair';
       else cat = 'other';
 
       return {
@@ -94,10 +96,12 @@ export const ComparativeLexicon: React.FC = () => {
         semanticSim: dto.semantic_sim,
         category: cat,
         rawCategory: dto.category,
-        falseFriendType: dto.false_friend_type,
+        etymologicalRelation: dto.etymological_relation,
         sensesA: dto.senses_a || [],
         sensesB: dto.senses_b || [],
-        etymRoot: dto.etym_root,
+        etymRootA: dto.etym_root_a,
+        etymRootB: dto.etym_root_b,
+        sharedEtymRoot: dto.shared_etym_root,
         etymTextA: dto.etym_text_a,
         etymTextB: dto.etym_text_b,
       };
@@ -216,8 +220,8 @@ export const ComparativeLexicon: React.FC = () => {
     });
   };
 
-  const handleFfTypeChange = (tier: string | undefined) => {
-    setSelectedFfType(tier);
+  const handleFfRelationChange = (relation: string | undefined) => {
+    setSelectedFfRelation(relation);
     setOffset(0);
   };
 
@@ -252,9 +256,9 @@ export const ComparativeLexicon: React.FC = () => {
       </div>
 
       {/* Master-Detail Layout with Independent Vertical Scrolling */}
-      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule lg:h-[calc(100vh-13rem)] overflow-hidden">
+      <div className="flex flex-col lg:flex-row border border-book-rule bg-page-bg divide-y lg:divide-y-0 lg:divide-x divide-book-rule lg:h-[calc(100vh-13rem)] overflow-visible lg:overflow-hidden">
         {/* Left: Lexicon Table Pane with Independent Item Scroll */}
-        <div className="flex-1 min-w-0 p-4 sm:p-5 h-[560px] lg:h-full w-full flex flex-col min-h-0">
+        <div className={`${mobileDetailOpen ? 'hidden' : 'flex'} lg:flex flex-1 min-w-0 p-4 sm:p-5 h-[560px] lg:h-full w-full flex-col min-h-0`}>
           <LexiconTable
             pairs={livePairs}
             total={livePairsData?.total ?? 0}
@@ -266,21 +270,28 @@ export const ComparativeLexicon: React.FC = () => {
             onSearchChange={handleSearchChange}
             selectedCategory={selectedCategory}
             onCategoryChange={handleCategoryChange}
-            selectedFfType={selectedFfType}
-            onFfTypeChange={handleFfTypeChange}
+            selectedFfRelation={selectedFfRelation}
+            onFfRelationChange={handleFfRelationChange}
             onPageChange={setOffset}
             onLimitChange={(l) => {
               setLimit(l);
               setOffset(0);
             }}
-            onSelectPair={(p) => setSelectedPairId(p.id)}
+            onSelectPair={(p) => {
+              setSelectedPairId(p.id);
+              setMobileDetailOpen(true);
+            }}
             selectedPairId={activePairId}
             isLoading={pairsLoading}
           />
         </div>
 
         {/* Right: Independently Scrollable Word Pair Details */}
-        <div className="w-full lg:w-[480px] xl:w-[520px] lg:shrink-0 p-5 sm:p-6 overflow-y-auto h-full bg-page-surface">
+        <div className={`${mobileDetailOpen ? 'block' : 'hidden'} lg:block w-full lg:w-[480px] xl:w-[520px] lg:shrink-0 p-5 sm:p-6 overflow-visible lg:overflow-y-auto lg:h-full bg-page-surface`}>
+          <button type="button" onClick={() => setMobileDetailOpen(false)} className="lg:hidden mb-5 inline-flex items-center gap-2 typo-sublabel text-ink-muted hover:text-ink-main">
+            <MaterialSymbol icon="arrow_back" size={18} />
+            Back to results
+          </button>
           <WordPairDetails
             pair={selectedPair}
             sourceLang={sourceLang}

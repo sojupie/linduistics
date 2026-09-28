@@ -62,12 +62,12 @@ export function useFalseFriendsQuizQuery(
   source = 'sv',
   target = 'en',
   limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
-  tier?: string,
+  relation?: string,
   options?: { enabled?: boolean },
 ) {
   return useQuery<QuizItemDto[]>({
-    queryKey: ['false-friends', 'quiz', source, target, limit, tier ?? 'all'],
-    queryFn: () => fetchFalseFriendsQuiz(source, target, limit, tier),
+    queryKey: ['false-friends', 'quiz', source, target, limit, relation ?? 'all'],
+    queryFn: () => fetchFalseFriendsQuiz(source, target, limit, relation),
     staleTime: QUERY_CONFIG.QUIZ_STALE_TIME_MS,
     enabled: options?.enabled ?? true,
   });

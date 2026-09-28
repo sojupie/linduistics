@@ -45,9 +45,9 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		args = append(args, category)
 		whereClause += fmt.Sprintf(" AND category = $%d", len(args))
 	}
-	if p.FalseFriendType != "" {
-		args = append(args, p.FalseFriendType)
-		whereClause += fmt.Sprintf(" AND false_friend_type = $%d", len(args))
+	if p.EtymologicalRelation != "" {
+		args = append(args, p.EtymologicalRelation)
+		whereClause += fmt.Sprintf(" AND etymological_relation = $%d", len(args))
 	}
 	if p.Search != "" {
 		args = append(args, "%"+p.Search+"%")
@@ -64,7 +64,7 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
 		       orthographic_sim, phonetic_sim, semantic_sim, category,
-		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+		       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		%s
 		ORDER BY phonetic_sim DESC, semantic_sim DESC
@@ -85,7 +85,7 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
-			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+			&c.EtymologicalRelation, &c.SensesA, &c.SensesB, &c.EtymRootA, &c.EtymRootB, &c.SharedEtymRoot, &c.EtymTextA, &c.EtymTextB,
 		)
 		if err != nil {
 			return nil, 0, fmt.Errorf("scan pair error: %w", err)
@@ -112,7 +112,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 			       lang_b, word_b, ipa_b, def_b, pos_b,
 			       orthographic_sim, phonetic_sim, semantic_sim, category,
-			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 			FROM word_comparisons
 			WHERE word_a = ANY($1)
 			  AND lang_b = ANY($2)
@@ -133,7 +133,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 				&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 				&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 				&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
-				&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+				&c.EtymologicalRelation, &c.SensesA, &c.SensesB, &c.EtymRootA, &c.EtymRootB, &c.SharedEtymRoot, &c.EtymTextA, &c.EtymTextB,
 			); err != nil {
 				return nil, fmt.Errorf("scan token match error: %w", err)
 			}
@@ -146,7 +146,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
 		       orthographic_sim, phonetic_sim, semantic_sim, category,
-		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+		       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		WHERE lang_a = $1
 		  AND word_a = ANY($2)
@@ -167,7 +167,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
-			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+			&c.EtymologicalRelation, &c.SensesA, &c.SensesB, &c.EtymRootA, &c.EtymRootB, &c.SharedEtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan token match error: %w", err)
 		}
@@ -176,22 +176,22 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 	return items, nil
 }
 
-func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang, tier string, limit int) ([]models.WordComparison, error) {
+func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang, relation string, limit int) ([]models.WordComparison, error) {
 	if limit <= 0 || limit > 100 {
 		limit = 20
 	}
 	whereClause := "WHERE lang_a = $1 AND lang_b = $2 AND category = 'false_friend'"
 	args := []any{sourceLang, targetLang}
-	if tier != "" && tier != "all" {
-		args = append(args, tier)
-		whereClause += fmt.Sprintf(" AND false_friend_type = $%d", len(args))
+	if relation != "" && relation != "all" {
+		args = append(args, relation)
+		whereClause += fmt.Sprintf(" AND etymological_relation = $%d", len(args))
 	}
 	args = append(args, limit)
 	query := fmt.Sprintf(`
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
 		       orthographic_sim, phonetic_sim, semantic_sim, category,
-		       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+		       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		%s
 		ORDER BY random()
@@ -210,7 +210,7 @@ func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang,
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
-			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+			&c.EtymologicalRelation, &c.SensesA, &c.SensesB, &c.EtymRootA, &c.EtymRootB, &c.SharedEtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan false friend error: %w", err)
 		}
@@ -287,27 +287,29 @@ func canonicalPairKey(langA, wordA, langB, wordB string) string {
 
 func flipComparison(c models.WordComparison) models.WordComparison {
 	return models.WordComparison{
-		ID:              c.ID,
-		LangA:           c.LangB,
-		WordA:           c.WordB,
-		IpaA:            c.IpaB,
-		DefA:            c.DefB,
-		PosA:            c.PosB,
-		LangB:           c.LangA,
-		WordB:           c.WordA,
-		IpaB:            c.IpaA,
-		DefB:            c.DefA,
-		PosB:            c.PosA,
-		OrthographicSim: c.OrthographicSim,
-		PhoneticSim:     c.PhoneticSim,
-		SemanticSim:     c.SemanticSim,
-		Category:        c.Category,
-		FalseFriendType: c.FalseFriendType,
-		SensesA:         c.SensesB,
-		SensesB:         c.SensesA,
-		EtymRoot:        c.EtymRoot,
-		EtymTextA:       c.EtymTextB,
-		EtymTextB:       c.EtymTextA,
+		ID:                  c.ID,
+		LangA:               c.LangB,
+		WordA:               c.WordB,
+		IpaA:                c.IpaB,
+		DefA:                c.DefB,
+		PosA:                c.PosB,
+		LangB:               c.LangA,
+		WordB:               c.WordA,
+		IpaB:                c.IpaA,
+		DefB:                c.DefA,
+		PosB:                c.PosA,
+		OrthographicSim:     c.OrthographicSim,
+		PhoneticSim:         c.PhoneticSim,
+		SemanticSim:         c.SemanticSim,
+		Category:            c.Category,
+		EtymologicalRelation: c.EtymologicalRelation,
+		SensesA:             c.SensesB,
+		SensesB:             c.SensesA,
+		EtymRootA:           c.EtymRootB,
+		EtymRootB:           c.EtymRootA,
+		SharedEtymRoot:      c.SharedEtymRoot,
+		EtymTextA:           c.EtymTextB,
+		EtymTextB:           c.EtymTextA,
 	}
 }
 
@@ -331,7 +333,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 			       lang_b, word_b, ipa_b, def_b, pos_b,
 			       orthographic_sim, phonetic_sim, semantic_sim, category,
-			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 			FROM word_comparisons
 			WHERE word_a ILIKE $1 || '%' OR word_b ILIKE $1 || '%'
 			ORDER BY phonetic_sim DESC, semantic_sim DESC
@@ -344,7 +346,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 			       lang_b, word_b, ipa_b, def_b, pos_b,
 			       orthographic_sim, phonetic_sim, semantic_sim, category,
-			       false_friend_type, senses_a, senses_b, etym_root, etym_text_a, etym_text_b
+			       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 			FROM word_comparisons
 			WHERE (lang_a = $1 AND word_a ILIKE $2 || '%') OR (lang_b = $1 AND word_b ILIKE $2 || '%')
 			ORDER BY phonetic_sim DESC, semantic_sim DESC
@@ -367,7 +369,7 @@ func (r *ComparisonsRepository) SearchHeadwords(ctx context.Context, lang, prefi
 			&c.ID, &c.LangA, &c.WordA, &c.IpaA, &c.DefA, &c.PosA,
 			&c.LangB, &c.WordB, &c.IpaB, &c.DefB, &c.PosB,
 			&c.OrthographicSim, &c.PhoneticSim, &c.SemanticSim, &c.Category,
-			&c.FalseFriendType, &c.SensesA, &c.SensesB, &c.EtymRoot, &c.EtymTextA, &c.EtymTextB,
+			&c.EtymologicalRelation, &c.SensesA, &c.SensesB, &c.EtymRootA, &c.EtymRootB, &c.SharedEtymRoot, &c.EtymTextA, &c.EtymTextB,
 		); err != nil {
 			return nil, fmt.Errorf("scan search result error: %w", err)
 		}
@@ -479,11 +481,11 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 			COALESCE(avg(orthographic_sim), 0) AS avg_ortho,
 			COALESCE(avg(phonetic_sim), 0) AS avg_phon,
 			COALESCE(avg(semantic_sim), 0) AS avg_sem,
-			COALESCE(count(*) FILTER (WHERE category IN ('true_cognate', 'cognate')), 0) AS cognates,
+			COALESCE(count(*) FILTER (WHERE category = 'true_cognate'), 0) AS true_cognates,
 			COALESCE(count(*) FILTER (WHERE category = 'false_friend'), 0) AS false_friends,
-			COALESCE(count(*) FILTER (WHERE category IN ('partial_cognate', 'cousin', 'sound_shift')), 0) AS shifted,
-			COALESCE(count(*) FILTER (WHERE category IN ('translation_pair', 'schism', 'divergent')), 0) AS divergent,
-			COALESCE(count(*) FILTER (WHERE category = 'other' OR category IS NULL OR category NOT IN ('true_cognate', 'cognate', 'false_friend', 'partial_cognate', 'cousin', 'sound_shift', 'translation_pair', 'schism', 'divergent')), 0) AS other_count
+			COALESCE(count(*) FILTER (WHERE category = 'partial_cognate'), 0) AS partial_cognates,
+			COALESCE(count(*) FILTER (WHERE category = 'translation_pair'), 0) AS translation_pairs,
+			COALESCE(count(*) FILTER (WHERE category = 'other' OR category IS NULL OR category NOT IN ('true_cognate', 'false_friend', 'partial_cognate', 'translation_pair')), 0) AS other_count
 		FROM word_comparisons
 		%s
 		GROUP BY lang_a, lang_b
@@ -501,7 +503,7 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 
 	for rows.Next() {
 		var p models.LanguagePairStats
-		var cognates, falseFriends, shifted, divergent, otherCount int64
+		var trueCognates, falseFriends, partialCognates, translationPairs, otherCount int64
 		if err := rows.Scan(
 			&p.Source,
 			&p.Target,
@@ -509,10 +511,10 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 			&p.AvgOrthographic,
 			&p.AvgPhonetic,
 			&p.AvgSemantic,
-			&cognates,
+			&trueCognates,
 			&falseFriends,
-			&shifted,
-			&divergent,
+			&partialCognates,
+			&translationPairs,
 			&otherCount,
 		); err != nil {
 			return nil, fmt.Errorf("scan language pair stats error: %w", err)
@@ -520,10 +522,10 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 
 		if p.PairCount > 0 {
 			countF := float32(p.PairCount)
-			p.TrueCognatesRatio = float32(cognates) / countF
-			p.PartialCognatesRatio = float32(shifted) / countF
+			p.TrueCognatesRatio = float32(trueCognates) / countF
+			p.PartialCognatesRatio = float32(partialCognates) / countF
 			p.FalseFriendsRatio = float32(falseFriends) / countF
-			p.TranslationPairsRatio = float32(divergent) / countF
+			p.TranslationPairsRatio = float32(translationPairs) / countF
 			p.OtherRatio = float32(otherCount) / countF
 		}
 
@@ -550,15 +552,15 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 
 func normalizeCategory(cat string) string {
 	switch strings.ToLower(strings.TrimSpace(cat)) {
-	case "true_cognate", "cognate":
+	case "true_cognate":
 		return "true_cognate"
-	case "false_friend", "minefield":
+	case "false_friend":
 		return "false_friend"
-	case "partial_cognate", "sound_shift", "cousin", "shifted":
+	case "partial_cognate":
 		return "partial_cognate"
-	case "translation_pair", "translation", "schism", "divergent":
+	case "translation_pair":
 		return "translation_pair"
-	case "other", "alien":
+	case "other":
 		return "other"
 	default:
 		return cat

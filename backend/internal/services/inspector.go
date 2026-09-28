@@ -65,16 +65,16 @@ type TokenAnalysis struct {
 }
 
 type InspectResponse struct {
-	SourceLang              string                 `json:"source_lang"`
-	TargetLangs             []string               `json:"target_langs"`
-	TotalTokens             int                    `json:"total_tokens"`
-	UniqueTokens            int                    `json:"unique_tokens"`
-	UniversalityScore       float32                `json:"universality_score"` // 0.0 to 100.0%
-	Tokens                  []TokenAnalysis        `json:"tokens"`
-	ApproximateTranslations map[string]string      `json:"approximate_translations,omitempty"`
-	PanGermanicTranslations map[string]string      `json:"pan_germanic_translations,omitempty"` // backward compat alias
-	RootID                  int                    `json:"root_id"`
-	ServiceMode             string                 `json:"service_mode"` // "nlp_service" or "db_fallback"
+	SourceLang              string            `json:"source_lang"`
+	TargetLangs             []string          `json:"target_langs"`
+	TotalTokens             int               `json:"total_tokens"`
+	UniqueTokens            int               `json:"unique_tokens"`
+	UniversalityScore       float32           `json:"universality_score"` // 0.0 to 100.0%
+	Tokens                  []TokenAnalysis   `json:"tokens"`
+	ApproximateTranslations map[string]string `json:"approximate_translations,omitempty"`
+	PanGermanicTranslations map[string]string `json:"pan_germanic_translations,omitempty"` // backward compat alias
+	RootID                  int               `json:"root_id"`
+	ServiceMode             string            `json:"service_mode"` // "nlp_service" or "db_fallback"
 }
 
 type InspectorService struct {
@@ -324,13 +324,13 @@ func (s *InspectorService) inspectWithNLP(ctx context.Context, req InspectReques
 		if !t.IsPunct {
 			for _, m := range langMatches {
 				switch m.Category {
-				case "true_cognate", "cognate":
+				case "true_cognate":
 					sim := m.PhoneticSim
 					if sim <= 0 {
 						sim = 0.8
 					}
 					cognacyScoreSum += 1.0 * sim
-				case "partial_cognate", "sound_shift", "cousin":
+				case "partial_cognate":
 					sim := m.PhoneticSim
 					if sim <= 0 {
 						sim = 0.5
@@ -571,13 +571,13 @@ func (s *InspectorService) inspectFallback(ctx context.Context, req InspectReque
 		var cognacyScoreSum float32
 		for _, m := range langMatches {
 			switch m.Category {
-			case "true_cognate", "cognate":
+			case "true_cognate":
 				sim := m.PhoneticSim
 				if sim <= 0 {
 					sim = 0.8
 				}
 				cognacyScoreSum += 1.0 * sim
-			case "partial_cognate", "sound_shift", "cousin":
+			case "partial_cognate":
 				sim := m.PhoneticSim
 				if sim <= 0 {
 					sim = 0.5
@@ -627,11 +627,11 @@ func (s *InspectorService) inspectFallback(ctx context.Context, req InspectReque
 
 func cognateCategoryRank(cat string) int {
 	switch strings.ToLower(strings.TrimSpace(cat)) {
-	case "true_cognate", "cognate":
+	case "true_cognate":
 		return 3
-	case "partial_cognate", "sound_shift", "cousin":
+	case "partial_cognate":
 		return 2
-	case "translation_pair", "translation":
+	case "translation_pair":
 		return 1
 	default:
 		return 0

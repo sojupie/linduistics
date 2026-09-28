@@ -27,7 +27,7 @@ import orjson
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from classifier import are_cognate_roots, classify_pair
+from classifier import classify_pair, etymological_relation
 from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
@@ -430,30 +430,20 @@ def build_pair_dataset(
             meta_a, meta_b, matcher, is_mined_translation=is_mined
         )
 
-        max_len = max(len(meta_a["word"]), len(meta_b["word"]))
-        category, false_friend_type = classify_pair(
+        category, etymological_relation_value = classify_pair(
             s_orth=s_orth,
             s_phon=s_phon,
             s_sem=s_sem,
-            max_len=max_len,
-            word_a=meta_a["word"],
-            word_b=meta_b["word"],
             etym_root_a=meta_a.get("etym_root", ""),
             etym_root_b=meta_b.get("etym_root", ""),
-            etym_text_a=meta_a.get("etym_text", ""),
-            etym_text_b=meta_b.get("etym_text", ""),
             max_active_sem=max_active_sem,
         )
 
-        # Determine shared etymological root
-        etym_root = ""
-        if meta_a.get("etym_root") and meta_b.get("etym_root"):
-            if are_cognate_roots(meta_a["etym_root"], meta_b["etym_root"]):
-                etym_root = meta_a["etym_root"]
-        elif meta_a.get("etym_root") and "Proto-Germanic" in meta_a["etym_root"]:
-            etym_root = meta_a["etym_root"]
-        elif meta_b.get("etym_root") and "Proto-Germanic" in meta_b["etym_root"]:
-            etym_root = meta_b["etym_root"]
+        shared_etym_root = (
+            meta_a.get("etym_root")
+            if etymological_relation(meta_a.get("etym_root", ""), meta_b.get("etym_root", "")) == "cognate"
+            else None
+        )
 
         records.append({
             "lang_a": lang_a,
@@ -470,10 +460,12 @@ def build_pair_dataset(
             "phonetic_sim": float(s_phon),
             "semantic_sim": float(s_sem),
             "category": category,
-            "false_friend_type": false_friend_type,
+            "etymological_relation": etymological_relation_value,
             "senses_a": orjson.dumps(senses_a, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
             "senses_b": orjson.dumps(senses_b, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
-            "etym_root": etym_root or None,
+            "etym_root_a": meta_a.get("etym_root") or None,
+            "etym_root_b": meta_b.get("etym_root") or None,
+            "shared_etym_root": shared_etym_root,
             "etym_text_a": meta_a.get("etym_text") or None,
             "etym_text_b": meta_b.get("etym_text") or None,
         })
@@ -497,10 +489,12 @@ def build_pair_dataset(
             "phonetic_sim": r["phonetic_sim"],
             "semantic_sim": r["semantic_sim"],
             "category": r["category"],
-            "false_friend_type": r["false_friend_type"],
+            "etymological_relation": r["etymological_relation"],
             "senses_a": r["senses_b"],
             "senses_b": r["senses_a"],
-            "etym_root": r["etym_root"],
+            "etym_root_a": r["etym_root_b"],
+            "etym_root_b": r["etym_root_a"],
+            "shared_etym_root": r["shared_etym_root"],
             "etym_text_a": r["etym_text_b"],
             "etym_text_b": r["etym_text_a"],
         })
@@ -512,10 +506,24 @@ def main() -> None:
     project_root = Path(__file__).resolve().parent.parent.parent
     data_dir = project_root / "pipeline" / "data"
     en_dump = data_dir / "kaikki_en.jsonl"
-    out_parquet = data_dir / "all_comparisons.parquet"
+    parser = argparse.ArgumentParser(description="Build and classify cross-lingual word comparisons.")
+    parser.add_argument(
+        "--lemma-dir",
+        type=Path,
+        default=data_dir,
+        help="Directory containing the canonical lemmas_<lang>.parquet files.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=data_dir / "all_comparisons.parquet",
+        help="Output comparison Parquet path.",
+    )
+    args = parser.parse_args()
+    out_parquet = args.output
 
     print("Loading canonical lexicons...")
-    lexicons = load_canonical_lexicons(data_dir)
+    lexicons = load_canonical_lexicons(args.lemma_dir)
 
     print("Mining translation cliques...")
     mined_by_pair = mine_translation_cliques(en_dump, lexicons)
@@ -532,7 +540,7 @@ def main() -> None:
 
     all_rows: List[dict] = []
     category_counts: Dict[str, int] = defaultdict(int)
-    ff_type_counts: Dict[str, int] = defaultdict(int)
+    etymological_relations: Dict[str, int] = defaultdict(int)
 
     for l_a, l_b in unique_pairs:
         pair_key = (l_a, l_b)
@@ -542,8 +550,7 @@ def main() -> None:
         all_rows.extend(pair_records)
         for r in pair_records:
             category_counts[r["category"]] += 1
-            if r["false_friend_type"]:
-                ff_type_counts[r["false_friend_type"]] += 1
+            etymological_relations[r["etymological_relation"]] += 1
         print(f"  Generated {len(pair_records):,} symmetrical rows for [{l_a} <-> {l_b}].")
 
     print(f"\nTotal comparison rows generated: {len(all_rows):,}")
@@ -551,9 +558,9 @@ def main() -> None:
     for cat, cnt in sorted(category_counts.items(), key=lambda x: -x[1]):
         print(f"  {cat:20}: {cnt:,} ({cnt / len(all_rows) * 100:.1f}%)")
 
-    print("False Friend Sub-Tiers:")
-    for ff_t, cnt in sorted(ff_type_counts.items(), key=lambda x: -x[1]):
-        print(f"  {ff_t:25}: {cnt:,}")
+    print("Etymological relations:")
+    for relation, cnt in sorted(etymological_relations.items(), key=lambda x: -x[1]):
+        print(f"  {relation:25}: {cnt:,}")
 
     # Serialize to Parquet
     print(f"\nWriting to {out_parquet}...")
@@ -572,10 +579,12 @@ def main() -> None:
         ("phonetic_sim", pa.float64()),
         ("semantic_sim", pa.float64()),
         ("category", pa.string()),
-        ("false_friend_type", pa.string()),
+        ("etymological_relation", pa.string()),
         ("senses_a", pa.string()),
         ("senses_b", pa.string()),
-        ("etym_root", pa.string()),
+        ("etym_root_a", pa.string()),
+        ("etym_root_b", pa.string()),
+        ("shared_etym_root", pa.string()),
         ("etym_text_a", pa.string()),
         ("etym_text_b", pa.string()),
     ])

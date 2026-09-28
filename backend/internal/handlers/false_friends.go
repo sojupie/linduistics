@@ -33,14 +33,11 @@ func (h *FalseFriendsHandler) HandleGetFalseFriends(w http.ResponseWriter, r *ht
 	if target == "" {
 		target = "en"
 	}
-	tier := q.Get("tier")
-	if tier == "" {
-		tier = q.Get("type")
-	}
+	relation := q.Get("relation")
 	limit := ParseInt(q.Get("limit"), 10)
 	mode := q.Get("mode")
 
-	pairs, err := h.repo.GetFalseFriends(r.Context(), source, target, tier, limit)
+	pairs, err := h.repo.GetFalseFriends(r.Context(), source, target, relation, limit)
 	if err != nil {
 		WriteError(w, http.StatusInternalServerError, err.Error())
 		return

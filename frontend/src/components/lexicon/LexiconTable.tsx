@@ -16,8 +16,8 @@ interface LexiconTableProps {
   onSearchChange: (q: string) => void;
   selectedCategory: string | undefined;
   onCategoryChange: (cat: string | undefined) => void;
-  selectedFfType: string | undefined;
-  onFfTypeChange: (tier: string | undefined) => void;
+  selectedFfRelation: string | undefined;
+  onFfRelationChange: (relation: string | undefined) => void;
   onPageChange: (newOffset: number) => void;
   onLimitChange: (newLimit: number) => void;
   onSelectPair: (pair: WordPair) => void;
@@ -36,8 +36,8 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
   onSearchChange,
   selectedCategory,
   onCategoryChange,
-  selectedFfType,
-  onFfTypeChange,
+  selectedFfRelation,
+  onFfRelationChange,
   onPageChange,
   onLimitChange,
   onSelectPair,
@@ -66,9 +66,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
             <span className="typo-badge px-2 py-0.5 rounded bg-falsefriend-bg text-falsefriend-ink whitespace-nowrap">
               False Friend
             </span>
-            {pair.falseFriendType && (
+            {pair.etymologicalRelation && (
               <span className="typo-subscript text-ink-muted text-2xs mt-0.5 whitespace-nowrap">
-                {pair.falseFriendType === 'etymological_shift' ? 'shared root' : 'lookalike'}
+                {pair.etymologicalRelation === 'cognate'
+                  ? 'cognate'
+                  : pair.etymologicalRelation === 'false_cognate'
+                    ? 'false cognate'
+                    : 'origin unknown'}
               </span>
             )}
           </div>
@@ -163,15 +167,16 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
 
           {selectedCategory === 'false_friend' && (
             <div className="flex items-center gap-2">
-              <span className="typo-sublabel">Type:</span>
+              <span className="typo-sublabel">Origin:</span>
               <select
-                value={selectedFfType ?? 'all'}
-                onChange={(e) => onFfTypeChange(e.target.value === 'all' ? undefined : e.target.value)}
+                value={selectedFfRelation ?? 'all'}
+                onChange={(e) => onFfRelationChange(e.target.value === 'all' ? undefined : e.target.value)}
                 className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
               >
                 <option value="all">All False Friends</option>
-                <option value="etymological_shift">Shared Roots</option>
-                <option value="surface_collision">Accidental Lookalikes</option>
+                <option value="cognate">Cognate false friends</option>
+                <option value="false_cognate">False cognates</option>
+                <option value="unknown">Origin unknown</option>
               </select>
             </div>
           )}

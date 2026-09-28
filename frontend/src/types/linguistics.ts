@@ -5,7 +5,7 @@ export type SpecimenCategory =
   | 'translation_pair'   // Translation Pairs (Iron gall blue)
   | 'other';             // Other / Unclassified (Slate)
 
-export type FalseFriendType = 'etymological_shift' | 'surface_collision' | null;
+export type EtymologicalRelation = 'cognate' | 'false_cognate' | 'unknown';
 
 export interface SenseItem {
   sense_id: number;
@@ -35,10 +35,12 @@ export interface WordPair {
   semanticSim: number;
   category: SpecimenCategory;
   rawCategory: string;
-  falseFriendType?: FalseFriendType;
+  etymologicalRelation: EtymologicalRelation;
   sensesA: SenseItem[];
   sensesB: SenseItem[];
-  etymRoot?: string | null;
+  etymRootA?: string | null;
+  etymRootB?: string | null;
+  sharedEtymRoot?: string | null;
   etymTextA?: string | null;
   etymTextB?: string | null;
   marginalia?: string;
@@ -155,10 +157,12 @@ export interface RawComparisonDto {
   phonetic_sim: number;
   semantic_sim: number;
   category: string;
-  false_friend_type?: FalseFriendType;
+  etymological_relation: EtymologicalRelation;
   senses_a?: SenseItem[];
   senses_b?: SenseItem[];
-  etym_root?: string | null;
+  etym_root_a?: string | null;
+  etym_root_b?: string | null;
+  shared_etym_root?: string | null;
   etym_text_a?: string | null;
   etym_text_b?: string | null;
 }
@@ -171,7 +175,7 @@ export interface PairsQueryParams {
   min_sem?: number;
   max_sem?: number;
   category?: string;
-  false_friend_type?: string;
+  etymological_relation?: string;
   q?: string;
   limit?: number;
   offset?: number;
