@@ -32,7 +32,7 @@ A small, clearly non-representative version lets someone follow selected results
 
 ### Existing source seed
 
-[`datasets/source-evidence/`](../datasets/source-evidence/README.md) contains the currently committed pinned pages and structured assertions for *blive*, *fleece*, *sandbank*, *bankman*, *væg/väg/vägg*, and *ombudsman*. The case set is intentionally selected to test the transformation, not to estimate language-wide proportions. The linked CSVs omit copied entry prose. Keep their counts and coverage notes synchronized as the seed grows.
+[`datasets/source-evidence/`](../datasets/source-evidence/README.md) contains 15 pinned pages, 34 structured assertions, and ten pair reviews covering *blive*, *fleece*, *sandbank*, *bankman*, *væg/väg/vägg*, *ombudsman*, and *clown*. The `clown` entries give a source-backed borrowing path in four languages even though all four current candidates remain `other`; exact active-sense links are still unresolved. The case set is intentionally selected to test the transformation, not to estimate language-wide proportions. The linked CSVs omit copied entry prose. Keep their counts and coverage notes synchronized as the seed grows.
 
 ## Current state
 
