@@ -503,7 +503,7 @@ The local output directory is `pipeline/data/cldf_case_evidence_dercat_fix/`. It
 | `comparisons.csv` | 24 | Unique unordered pairs and computed similarity observations |
 | `claim-matches.csv` | 19 | Links between a source claim and a candidate comparison |
 
-Eighteen claim matches have an available target identity; one remains ambiguous. The tables retain the old candidate and root-match outputs under `Legacy_` field names. The manifest records the source-slice hash, its upstream input hashes, and every CSV hash. The output is ignored local data; the repo contains only its exporter and test. No live database rows changed.
+Eighteen claim matches have an available target identity; one remains ambiguous. The tables retain the old candidate and root-match outputs under `Legacy_` field names. The manifest records the source-slice hash, upstream input hashes, original five Kaikki dump hashes, and every CSV hash. The output is ignored local data; the repo contains only its exporter and test. No live database rows changed.
 
 The exporter checks stable table IDs and every declared foreign key. The focused tests pass. The environment does not include `pycldf`, so this is not yet verified by the official CLDF validator. Wiktionary-derived gloss and claim fields retain their source page URLs; the preview selects CC BY-SA 4.0 and records the source attribution. Review the terms and metadata before publishing a larger dataset.
 
