@@ -14,6 +14,22 @@ The dataset should preserve different kinds of information separately:
 
 One word pair may have more than one path. A source’s claim is evidence to preserve, not automatic proof of the full historical relationship. Missing evidence stays missing; it does not mean “unrelated.”
 
+## Next deliverable: a small, versioned evidence slice
+
+Do not start another project or rebuild the whole corpus. Use the existing extraction pipeline to turn a small set of interesting cases into a public, inspectable artifact. The point is to make the path from source page to transformed data clear and repeatable; it is not to claim a representative sample or settle historical linguistics.
+
+### Work in this order
+
+1. **Pin the sources for a compact case set.** Start with cases already in [the case review](DATASET_CASE_REVIEW.md): *blive* for source revision drift and a second dictionary, *fleece* or *clown* for borrowing, *sandbank* or *bankman* for compounds and component evidence, *bank* or *gift* for multiple etymologies, and *væg/väg* for a misleading form match. Add one straightforward positive control. Keep the slice small enough to inspect by hand.
+2. **Make each source state identifiable.** For Wiktionary, retain the local dump fingerprint and capture a page revision ID where one can be established; otherwise say it is unavailable. For any additional source, record its entry URL, retrieval date, and reuse/attribution terms before exporting facts. Do not replace an older claim when a page changes; store the new observation beside it.
+3. **Trace each case through the existing transformation.** Keep source entry and sense identity, raw source claim and target, normalized relation, candidate target entries, computed similarity values, and any project interpretation distinct. Mark links as exact, ambiguous, entry-level only, missing, or not checked. A source claim about a component or a related word must not silently become a claim about the complete compared pair.
+4. **Fix only demonstrated extraction losses.** When a case shows a repeatable parser or identity failure, add the smallest correction and a regression fixture using the source evidence. Do not change bulk labels merely because a source claim exists; loans, shared ancestry, modern meaning, and sense matching can coexist.
+5. **Publish the slice in a reusable form.** Export the existing internal records to CLDF if the current tables map cleanly; document any extension fields and retain stable source links. Run the CLDF validator and include the input fingerprints and extraction command. If a field does not fit, document the mismatch before extending the schema.
+
+### Done means
+
+For every example, someone can follow a source page or pinned revision to the extracted statement, see how it was normalized and linked, and rerun the slice. The artifact includes at least one missing or ambiguous link and one source-version change, so it demonstrates uncertainty rather than hiding it. It makes no vocabulary-wide cognate-rate claim. Only after this works should we expand the source coverage or automate larger refreshes.
+
 ## Current state
 
 - The pipeline covers Danish, German, English, Norwegian Bokmål, and Swedish Wiktionary-derived data.
