@@ -488,13 +488,13 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py 
 
 ## Preserve source distinction between unknown and uncertain origins (2026-09-28)
 
-Wiktionary distinguishes two source assertions that our export previously left as untyped templates. `unknown` (shortcut `unk`) is used when no origin hypothesis can be identified; `uncertain` (shortcut `unc`) is used when hypotheses exist but cannot be established. It distinguishes these from an editor simply not knowing the answer ([unknown template](https://en.wiktionary.org/wiki/Template:unknown), [uncertain template](https://en.wiktionary.org/wiki/Template:uncertain)).
+Wiktionary distinguishes two source status markers that our export previously left as untyped templates. `unknown` (shortcut `unk`) marks an etymology as unknown; `uncertain` (shortcut `unc`) marks an etymology as uncertain ([unknown template](https://en.wiktionary.org/wiki/Template:unknown), [uncertain template](https://en.wiktionary.org/wiki/Template:uncertain)). These markers describe the source editor's status for an entry's history; they do not imply that the entry contains no proposed paths or cognate mentions. For example, Swedish *torta* begins with “Unknown” and then lists Norwegian and Danish cognate forms.
 
-The extractor now preserves this distinction as `source_etymology_status: unknown` or `source_etymology_status: uncertain`. The field records Wiktionary's template-level assessment; it does not state that our project verified the history or that a comparison pair belongs in a particular category. Customized template wording is retained as `source_label`, with the raw template arguments still available.
+The extractor now preserves this distinction as `source_etymology_status: unknown` or `source_etymology_status: uncertain`. The field records Wiktionary's template-level assessment; it does not state that our project verified the history or that a comparison pair belongs in a particular category. A separate cognate, borrowing, or derivation claim may coexist with the marker. Customized template wording is retained as `source_label`, with the raw template arguments still available.
 
 Across the full export, the four template names produce **1,833 unknown claims** and **1,652 uncertain claims** (3,485 total). They add no relation endpoints and do not change the 1,055,534 normalized relation count, the 20,354 pair-claim match IDs, candidate scores, categories, or database rows. The full suite passes **117 tests**.
 
-The ignored local export is `pipeline/data/etymology_records_source_origin_status.jsonl`, SHA-256 `717e04e01608216d3d00bd7b5e32bc0bf0b0efab17c2cd8d24e1d1b328091ee`. The matching evidence file is `pipeline/data/candidate_source_claim_matches_source_origin_status.jsonl`, SHA-256 `8e02b7e71966b83de73d04fbb11e641cb603f1b4a02f09ef49d1098ba0040b10`.
+The ignored local export is `pipeline/data/etymology_records_source_origin_status.jsonl`, SHA-256 `717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961`. The matching evidence file is `pipeline/data/candidate_source_claim_matches_source_origin_status.jsonl`, SHA-256 `8e02b7e71966b83de73d04fbb11e641cb603f1b4a02f09ef49d1098ba0040b10`.
 
 Rebuild these local artifacts:
 
@@ -503,6 +503,49 @@ pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --in
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --output pipeline\data\source_claim_inventory_source_origin_status.json --force
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_origin_status.jsonl --force
 ```
+
+## Link origin-status claims to active candidates (2026-09-28)
+
+The source status labels are now joined to active comparison senses by exact source-entry identity. The output distinguishes an exact active-sense overlap from a status attached to the same entry but outside the selected sense. The status remains attached to the source etymology; it does not become a pair-level verdict.
+
+Of the **1,833 `unknown` status claims**, 865 link to at least one active candidate source entry; 968 do not. Of the **1,652 `uncertain` claims**, 832 link and 820 do not. A linked source claim can fan out to many candidate pairs: the audit produced **8,986 evidence rows**, all with exact active-sense overlap, covering **4,518 unique candidate pairs** with an `unknown` status and **4,365** with an `uncertain` status. Candidate counts by current label are:
+
+| Current candidate label | Unknown status | Uncertain status |
+| --- | ---: | ---: |
+| `other` | 3,129 | 3,210 |
+| `false_friend` | 1,042 | 760 |
+| `translation_pair` | 336 | 368 |
+| `partial_cognate` | 4 | 14 |
+| `true_cognate` | 7 | 13 |
+
+The evidence-row total is larger than the unique-pair total because a candidate can link to more than one active source sense or status claim. Source-claim counts, pair counts, and evidence-row counts are different measures. Unlinked status claims have no active candidate entry under the current join; that does not mean they lack a relationship or are unrelated. Both source statuses occur alongside every current candidate label. They report source etymology status; neither determines whether a candidate is a cognate, a borrowing, a translation, or a misleading form match.
+
+At the source-record level, **790 of 1,823** records marked `unknown` and **1,168 of 1,649** marked `uncertain` also contain at least one normalized relationship claim. This counts structured claims in the same exported record, not every relation stated in prose. It confirms that these status markers cannot be treated as “no relationship claim”; Swedish *torta* is one visible example.
+
+The most common co-occurring relation types are:
+
+| Relation in the same source record | `unknown` records | `uncertain` records |
+| --- | ---: | ---: |
+| `derived_from` | 402 | 713 |
+| `cognate_mention` | 366 | 651 |
+| `inherited_from` | 206 | 464 |
+| `borrowed_from` | 129 | 183 |
+| `formed_from` | 75 | 171 |
+| `noncognate_mention` | 44 | 112 |
+
+These counts overlap: a record can contain several relation types. They show that a source can leave an ultimate etymology uncertain while still recording a nearer derivation, borrowing, comparison, or formation path. That is useful granularity to preserve, not a contradiction to resolve by choosing one category.
+
+The Swedish *torta* entry is a useful sense-identity test. It marks the origin `Unknown`, then lists Norwegian and Danish cognates; structured templates retain `no:turt` and `da:turt`, while the full source text also names other Norwegian forms including *tort*. Our `nb:tort` candidate is a distinct entry sense meaning a legal offense, recorded as borrowed from French and ultimately Latin. So the word-form mention should not by itself override the candidate's sense-level comparison. It also exposes two transformation questions for later work: how to preserve the untemplated form list and how to relate the source's Norwegian code `no` to the project's Norwegian Bokmål records without implying exact variety identity. Source entries: [Swedish *torta*](https://en.wiktionary.org/wiki/torta#Swedish) and [Norwegian Bokmål *tort*](https://en.wiktionary.org/wiki/tort#Norwegian_Bokm%C3%A5l).
+
+The reproducible artifact is `pipeline/data/source_origin_status_matches.jsonl` with manifest `pipeline/data/source_origin_status_matches.jsonl.manifest.json`. The source export hash is `717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961`; the comparison snapshot hash is `0d7a686246b261a7d44ac75b596714bd8b68b5c2c3b53264e888d427905866c1`; the match file hash is `4c0573d4da810b7e2479553d0c5be2454ad129764e2e39c4f1bdba042924de13`. Each row carries the matched source sense's Wiktionary glosses as well as its ID.
+
+Rebuild the local crosswalk:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_origin_status_coverage.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --output pipeline\data\source_origin_status_matches.jsonl --force
+```
+
+The full pipeline suite passes **118 tests**. No pair labels or live database rows changed.
 
 ## Source claims within the `other` candidate bucket (2026-09-28)
 

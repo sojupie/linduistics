@@ -10,15 +10,23 @@ The next work should make it possible to follow a result from the source entry a
 
 ## Current checkpoint
 
-The source-template audit now covers six passes: target-language extraction, missing word-formation aliases, process-specific formation data, clipping/inflection/PIE-word links, source labels for same-language derivation/international distribution/sound symbolism, and explicit source distinctions between unknown and uncertain origins. These additions preserve source claims without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28), [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28), [clipping, inflection, and PIE-word audit](DATASET_NEXT_STEPS.md#retain-clipping-inflection-and-pie-word-links-2026-09-28), [source-kind audit](DATASET_NEXT_STEPS.md#preserve-same-language-derivation-and-source-kind-claims-2026-09-28), and [origin-status audit](DATASET_NEXT_STEPS.md#preserve-source-distinction-between-unknown-and-uncertain-origins-2026-09-28).
+The source-template audit now covers six passes: target-language extraction, missing word-formation aliases, process-specific formation data, clipping/inflection/PIE-word links, source labels for same-language derivation/international distribution/sound symbolism, and explicit source distinctions between unknown and uncertain origins. A local crosswalk now links those status claims to active comparison senses without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28), [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28), [clipping, inflection, and PIE-word audit](DATASET_NEXT_STEPS.md#retain-clipping-inflection-and-pie-word-links-2026-09-28), [source-kind audit](DATASET_NEXT_STEPS.md#preserve-same-language-derivation-and-source-kind-claims-2026-09-28), and [origin-status audit](DATASET_NEXT_STEPS.md#preserve-source-distinction-between-unknown-and-uncertain-origins-2026-09-28).
 
-Next, keep auditing templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Then follow the current focused word cases through source-entry matching and interpretation.
+Next, inspect the origin-status crosswalk through concrete cases such as Swedish *torta* and Bokmål *tort*, then continue checking templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Follow the cases through source-entry matching and interpretation.
 
 The current exact-form source join finds entry-level claims on 13,738 candidate pairs still labeled `other`, including overlapping cognate mentions, borrowings, derivations, and calques. These are evidence facets, not reviewed subcategories; unmatched pairs remain unresolved in this join. See the [source-claim breakdown](DATASET_NEXT_STEPS.md#source-claims-within-the-other-candidate-bucket-2026-09-28).
 
 ## Work in this order
 
-### 1. Finish checking the source extraction rules
+### 1. Inspect unknown and uncertain source claims in context
+
+The latest export preserves 1,833 `unknown` and 1,652 `uncertain` source-status claims. A local crosswalk links 865 `unknown` and 832 `uncertain` claims to active candidate entries; 968 and 820 claims respectively have no active candidate under this join. Those linked claims fan out to 8,986 active-sense evidence rows and 4,518 unique `unknown`-status pairs and 4,365 `uncertain`-status pairs. All evidence rows overlap an active source sense. Source records also carry normalized relation claims in 790 `unknown` and 1,168 `uncertain` cases. Pairs occur in all five current candidate labels. Keep this as evidence coverage, not a category migration; see the [status-coverage findings](DATASET_NEXT_STEPS.md#link-origin-status-claims-to-active-candidates-2026-09-28).
+
+The artifact retains the source entry, status and original template arguments, candidate pair and category, plus the matched source-sense ID and gloss. It distinguishes an exact active-sense match from an entry-only match, and reports counts by source status, current candidate category, and alignment type. A status on one source entry must not become a verdict about the relationship between the pair.
+
+Use the artifact to choose cases for source-page inspection and find where identity or linking fails. The status marker can coexist with explicit relationship claims in the same etymology: Swedish *torta*, for example, is marked `Unknown` while Wiktionary also lists cognate Norwegian and Danish forms. Do not read either status as “no relationship claim,” and do not bulk-relabel candidates from these counts. See the [status-coverage findings](DATASET_NEXT_STEPS.md#link-origin-status-claims-to-active-candidates-2026-09-28).
+
+### 2. Finish checking the source extraction rules
 
 Continue from the full Wiktionary dump scan. Check templates whose normalized claims lack source forms, and templates where the source language in the arguments differs from the page language. Confirm each template’s argument meaning from its documentation and sampled source records before changing a rule.
 
@@ -32,7 +40,7 @@ For each demonstrated gap:
 
 Do not treat every unnormalized template as an etymology gap. Many templates only format or annotate an entry.
 
-### 2. Trace a focused set of real examples end to end
+### 3. Trace a focused set of real examples end to end
 
 Use the existing cases that exposed structural problems: *fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*. Add a case only when it tests a distinct source or transformation pattern, such as a homograph, shared donor, compound component, or uncertain origin.
 
@@ -46,7 +54,7 @@ For each comparison, record:
 
 This is a debugging and design set, not a representative sample. Use it to find where the pipeline loses or misapplies evidence, not to estimate how much of a language’s vocabulary is related.
 
-### 3. Fix the earliest demonstrated failure
+### 4. Fix the earliest demonstrated failure
 
 For each mismatch, locate the first step that went wrong: source parsing, entry or sense identity, component linking, candidate matching, score calculation, or interpretation. Fix that step and add a regression case. Keep distinct claims and paths instead of forcing a word pair into one exclusive historical box.
 
@@ -58,7 +66,7 @@ Keep three things separate in the data:
 
 An absent claim or unmatched form means the relationship is unresolved in this data. It does not mean the words are unrelated.
 
-### 4. Make one small, rebuildable data release
+### 5. Make one small, rebuildable data release
 
 Once the focused examples can be traced end to end, package that slice with stable IDs, source links, input hashes or revisions where available, transformation version, a rebuild command, and known limits. Start with readable JSONL or TSV so the records stay easy to inspect during development.
 
