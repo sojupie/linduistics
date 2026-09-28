@@ -134,26 +134,26 @@ def mine_translation_cliques(
     lexicons: Dict[str, Dict[str, dict]],
 ) -> Tuple[
     Dict[Tuple[str, str], Set[Tuple[str, str]]],
-    Dict[Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str]]]],
+    Dict[Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str | None]]]],
 ]:
     """Extract candidate links and retain the English source entry and sense."""
     pairs_by_lang: Dict[Tuple[str, str], Set[Tuple[str, str]]] = defaultdict(set)
     source_senses_by_pair: Dict[
-        Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str]]]
+        Tuple[str, str], Dict[Tuple[str, str], Set[Tuple[str, str | None]]]
     ] = defaultdict(lambda: defaultdict(set))
 
     def add_pair(
         lang_pair: Tuple[str, str],
         word_pair: Tuple[str, str],
         source_entry: str,
-        source_sense: str,
+        source_sense: str | None,
     ) -> None:
         pairs_by_lang[lang_pair].add(word_pair)
         source_senses_by_pair[lang_pair][word_pair].add((source_entry, source_sense))
 
     if not en_jsonl_path.is_file():
         print(f"Warning: {en_jsonl_path} not found.")
-        return pairs_by_lang
+        return pairs_by_lang, source_senses_by_pair
 
     print(f"Streaming translations from {en_jsonl_path}...")
     start_time = time.perf_counter()
@@ -176,7 +176,8 @@ def mine_translation_cliques(
                 translations = sense.get("translations", [])
                 if not translations:
                     continue
-                en_source_sense_id = str(sense.get("id") or "")
+                source_sense_id = sense.get("id")
+                en_source_sense_id = str(source_sense_id) if source_sense_id else None
 
                 targets: Dict[str, List[str]] = defaultdict(list)
                 for t in translations:
@@ -321,7 +322,7 @@ def align_pair_senses(
     meta_b: dict,
     matcher: SemanticMatcher,
     is_mined_translation: bool = False,
-    translation_source_senses: Set[Tuple[str, str]] | None = None,
+    translation_source_senses: Set[Tuple[str, str | None]] | None = None,
 ) -> Tuple[float, float, str, str, List[dict], List[dict]]:
     """Evaluates N x M sense matrix between Word A and Word B.
 
@@ -384,7 +385,7 @@ def align_pair_senses(
 
     # A mined English translation is attached to a specific source sense.
     # Restrict alignment to that sense when its identity is present and active.
-    refs = translation_source_senses or set()
+    refs = {ref for ref in translation_source_senses or set() if ref[1]}
     for side, meta, senses in ((0, meta_a, senses_a), (1, meta_b, senses_b)):
         if meta.get("lang") != "en" or not refs:
             continue
@@ -483,7 +484,7 @@ def build_pair_dataset(
     lexicons: Dict[str, Dict[str, dict]],
     matcher: SemanticMatcher,
     translation_source_senses: Dict[
-        Tuple[str, str], Set[Tuple[str, str]]
+        Tuple[str, str], Set[Tuple[str, str | None]]
     ] | None = None,
 ) -> List[dict]:
     """Constructs comparison records for (lang_a, lang_b) and its inverse."""
@@ -593,7 +594,7 @@ def build_pair_dataset(
             "etym_text_b": etym_text_b or None,
             "translation_source_senses": orjson.dumps([
                 {"source_entry_key": entry_key, "source_sense_id": sense_id}
-                for entry_key, sense_id in sorted(source_senses)
+                for entry_key, sense_id in sorted(source_senses, key=lambda ref: (ref[0], ref[1] or ""))
             ]).decode("utf-8"),
         })
 
