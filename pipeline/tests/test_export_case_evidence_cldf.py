@@ -160,6 +160,45 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     ) for row in rows)
 
 
+def test_exports_curated_claims_separately_with_revision_links(tmp_path):
+    source = tmp_path / "slice.jsonl"
+    source.write_text(json.dumps({"case_id": "aften_afton", "comparisons": [], "source_entries": []}) + "\n", encoding="utf-8")
+    evidence = tmp_path / "source-evidence"
+    evidence.mkdir()
+    (evidence / "source-pages.csv").write_text(
+        "source_id,title,revision_id,page_last_edited_display,retrieved_on,revision_url\n"
+        "aften-current,aften,88495592,11 December 2025,2026-09-28,https://en.wiktionary.org/w/index.php?title=aften&oldid=88495592\n",
+        encoding="utf-8",
+    )
+    (evidence / "claims.csv").write_text(
+        "claim_id,case_id,source_id,source_language_or_stage,source_form,claim_type,target_language_or_stage,target_form,scope,assertion_basis,source_locator\n"
+        "aften-da-06,aften_afton,aften-current,Proto-Germanic,\"*aftanaz, *aftunaz\",relationship_unclear,Proto-Germanic,*ēbanþs,etymon,entry_prose,Danish > Etymology\n",
+        encoding="utf-8",
+    )
+
+    output = tmp_path / "cldf"
+    manifest = export_slice(source, output, source_evidence_dir=evidence)
+
+    with (output / "source-claims.csv").open(encoding="utf-8", newline="") as stream:
+        extracted_claims = list(csv.DictReader(stream))
+    with (output / "curated-source-claims.csv").open(encoding="utf-8", newline="") as stream:
+        curated_claims = list(csv.DictReader(stream))
+    with (output / "curated-source-pages.csv").open(encoding="utf-8", newline="") as stream:
+        source_pages = list(csv.DictReader(stream))
+    metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
+    curated_table = next(table for table in metadata["tables"] if table["url"] == "curated-source-claims.csv")
+
+    assert extracted_claims == []
+    assert curated_claims[0]["Relation"] == "relationship_unclear"
+    assert curated_claims[0]["Ledger_Claim_ID"] == "aften-da-06"
+    assert curated_claims[0]["Source_Page_ID"] == source_pages[0]["ID"]
+    assert source_pages[0]["Ledger_Source_ID"] == "aften-current"
+    assert source_pages[0]["Revision_ID"] == "88495592"
+    assert curated_table["tableSchema"]["foreignKeys"][0]["reference"]["resource"] == "curated-source-pages.csv"
+    assert manifest["tables"]["curated-source-claims.csv"]["rows"] == 1
+    assert "claims.csv" in manifest["curated_evidence_inputs"]
+
+
 def test_refuses_to_overwrite_nonempty_output_without_force(tmp_path):
     source = tmp_path / "slice.jsonl"
     source.write_text("{}\n", encoding="utf-8")

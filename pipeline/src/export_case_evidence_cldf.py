@@ -33,6 +33,11 @@ def read_jsonl(path: Path) -> list[dict]:
         return [json.loads(line) for line in stream if line.strip()]
 
 
+def _read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
 def _dump(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
@@ -188,6 +193,7 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
             "Target_Claim_ID": ("source-claims.csv", "ID"),
             "Target_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
         },
+        "curated-source-claims.csv": {"Source_Page_ID": ("curated-source-pages.csv", "ID")},
     }
     ids = {filename: {row["ID"] for row in rows} for filename, rows in rows_by_file.items()}
     for filename, rows in rows_by_file.items():
@@ -237,6 +243,7 @@ def export_slice(
     output_dir: Path,
     *,
     target_entries_path: Path | None = None,
+    source_evidence_dir: Path | None = None,
     force: bool = False,
 ) -> dict:
     if output_dir.exists() and any(output_dir.iterdir()) and not force:
@@ -244,6 +251,58 @@ def export_slice(
     output_dir.mkdir(parents=True, exist_ok=True)
     cases = read_jsonl(source_path)
     case_ids = sorted({case["case_id"] for case in cases})
+
+    curated_sources: list[dict[str, str]] = []
+    curated_claims: list[dict[str, str]] = []
+    curated_evidence_inputs: dict[str, Path] = {}
+    if source_evidence_dir is not None:
+        source_pages_path = source_evidence_dir / "source-pages.csv"
+        source_claims_path = source_evidence_dir / "claims.csv"
+        raw_sources = _read_csv(source_pages_path)
+        raw_claims = _read_csv(source_claims_path)
+        curated_evidence_inputs = {
+            "source-pages.csv": source_pages_path,
+            "claims.csv": source_claims_path,
+        }
+        source_ids = {row["source_id"] for row in raw_sources}
+        claim_ids = [row["claim_id"] for row in raw_claims]
+        if len(source_ids) != len(raw_sources) or len(set(claim_ids)) != len(claim_ids):
+            raise ValueError("Duplicate ID in curated source-evidence ledger")
+        if any(row["source_id"] not in source_ids for row in raw_claims):
+            raise ValueError("Curated source claim references an unknown source page")
+        source_page_ids = {
+            source_id: stable_id("curated_source_page", source_id)
+            for source_id in source_ids
+        }
+        curated_sources = [
+            {
+                "ID": source_page_ids[row["source_id"]],
+                "Ledger_Source_ID": row["source_id"],
+                "Title": row["title"],
+                "Revision_ID": row["revision_id"],
+                "Page_Last_Edited": row["page_last_edited_display"],
+                "Retrieved_On": row["retrieved_on"],
+                "Revision_URL": row["revision_url"],
+            }
+            for row in raw_sources
+        ]
+        curated_claims = [
+            {
+                "ID": stable_id("curated_source_claim", row["claim_id"]),
+                "Ledger_Claim_ID": row["claim_id"],
+                "Evidence_Case_ID": row["case_id"],
+                "Source_Page_ID": source_page_ids[row["source_id"]],
+                "Source_Language_or_Stage": row["source_language_or_stage"],
+                "Source_Form": row["source_form"],
+                "Relation": row["claim_type"],
+                "Target_Language_or_Stage": row["target_language_or_stage"],
+                "Target_Form": row["target_form"],
+                "Scope": row["scope"],
+                "Assertion_Basis": row["assertion_basis"],
+                "Source_Locator": row["source_locator"],
+            }
+            for row in raw_claims
+        ]
 
     entries_by_key: dict[str, dict] = {}
     senses_by_key: dict[tuple[str, str], dict] = {}
@@ -641,6 +700,11 @@ def export_slice(
         ("claim-target-candidates.csv", ["ID", "Resolution_ID", "Target_Entry_ID"], target_candidates),
         ("claim-target-cross-references.csv", ["ID", "Resolution_ID", "Source_Claim_ID", "Source_Relation_Target_ID", "Target_Entry_ID", "Target_Claim_ID", "Target_Relation_Target_ID"], target_cross_references),
     ]
+    if source_evidence_dir is not None:
+        tables.extend([
+            ("curated-source-pages.csv", ["ID", "Ledger_Source_ID", "Title", "Revision_ID", "Page_Last_Edited", "Retrieved_On", "Revision_URL"], curated_sources),
+            ("curated-source-claims.csv", ["ID", "Ledger_Claim_ID", "Evidence_Case_ID", "Source_Page_ID", "Source_Language_or_Stage", "Source_Form", "Relation", "Target_Language_or_Stage", "Target_Form", "Scope", "Assertion_Basis", "Source_Locator"], curated_claims),
+        ])
     _validate_table_links(tables)
     for filename, fields, rows in tables:
         _write_csv(output_dir / filename, fields, rows)
@@ -685,6 +749,15 @@ def export_slice(
                 "Source_Claim_ID": "Target-specific source claim that initiated the form lookup.",
                 "Target_Claim_ID": "Target-entry claim that points back to the source entry's exact language and form; this is an internal source cross-reference, not independent confirmation.",
                 "Target_Relation_Target_ID": "Normalized relation-and-target record for the target-entry cross-reference.",
+                "Revision_ID": "Pinned Wiktionary revision used for the curated source evidence.",
+                "Ledger_Source_ID": "Original source-page key from datasets/source-evidence/source-pages.csv.",
+                "Ledger_Claim_ID": "Original claim key from datasets/source-evidence/claims.csv.",
+                "Retrieved_On": "Date this pinned source revision was recorded in the project ledger.",
+                "Revision_URL": "Permanent link to the exact source page revision.",
+                "Evidence_Case_ID": "Curator-assigned case grouping from the source-evidence ledger; it is not a CLDF comparison ID.",
+                "Source_Page_ID": "Pinned source page revision from which the assertion was transcribed.",
+                "Assertion_Basis": "Whether the curated assertion was captured from entry prose or a structured template; this is distinct from automated dump extraction.",
+                "Source_Locator": "Section locator in the pinned source revision; consult the revision URL for surrounding context.",
             }.get(field)
             cols.append(_column(field, "string", required=field == "ID", property_url=prop, description=description))
         fks = []
@@ -707,6 +780,7 @@ def export_slice(
                 "Target_Claim_ID": ("source-claims.csv", "ID"),
                 "Target_Relation_Target_ID": ("source-relation-targets.csv", "ID"),
             },
+            "curated-source-claims.csv": {"Source_Page_ID": ("curated-source-pages.csv", "ID")},
         }.get(filename, {})
         for field, (resource, target_column) in references.items():
             fks.append({"columnReference": [field], "reference": {"resource": resource, "columnReference": [target_column]}})
@@ -717,10 +791,12 @@ def export_slice(
         "dc:conformsTo": CLDF + "Generic",
         "dc:title": "Linduistics source-linked lexical case slice",
         "dc:description": "A bounded diagnostic export of source entries, senses, normalized relation targets, template-level claim evidence, component analyses, form-level target-entry candidates and their exact return-mention cross-references, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
-        "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
+        "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract and revision-pinned Wiktionary pages in the curated evidence tables.",
         "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "tables": metadata_tables,
     }
+    if source_evidence_dir is not None:
+        metadata["dc:description"] += " Revision-pinned curated source assertions are included in separate tables and are not merged into automated template extraction."
     (output_dir / "metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     def digest(path: Path) -> str:
@@ -786,6 +862,9 @@ def export_slice(
             path.relative_to(project_root).as_posix(): digest(path)
             for path in transformation_paths if path.is_file()
         },
+        "curated_evidence_inputs": {
+            name: digest(path) for name, path in curated_evidence_inputs.items()
+        },
         "metadata": "metadata.json",
         "metadata_sha256": digest(output_dir / "metadata.json"),
         "tables": {filename: {"rows": len(rows), "sha256": digest(output_dir / filename)} for filename, _, rows in tables},
@@ -813,7 +892,7 @@ def export_slice(
             f"The {len(case_ids)} case groups are deliberate diagnostics, not a representative sample.",
             "Per-entry Wiktionary revision IDs are unavailable for some records; source dump names and hashes identify the local snapshot.",
             "Wiktionary entries can contain externally sourced material with separate terms; this selected export has not been checked for that material entry by entry and is not cleared for redistribution.",
-            "The official CLDF validator has not been run; only the exporter's ID and declared foreign-key checks have passed.",
+            "The exporter checks IDs and declared foreign keys; run official CLDF validation separately as a release check.",
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
             "Ambiguous comparison form identities retain candidate source entry and sense IDs; the export does not choose among them.",
             "Component candidate entry keys are candidates, not confirmed component-sense links.",
@@ -821,6 +900,7 @@ def export_slice(
             "Target-entry resolution and candidate tables come from a separate spelling lookup. They preserve all candidates and do not resolve target senses or confirm the source claim.",
             "Shared-component ancestor rows are projections from recorded component candidates; they are not confirmed whole-word relationships.",
             "Legacy_Candidate_Label and Legacy_Root_Match_Status preserve old classifier output only.",
+            *( ["Curated source assertions are transcribed from the exact revisions in curated-source-pages.csv; they remain distinct from automated Wiktionary template extraction and are not independent historical verification."] if source_evidence_dir is not None else [] ),
         ],
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -847,14 +927,14 @@ def export_slice(
         "https://creativecommons.org/licenses/by-sa/4.0/. Kaikki/Wiktextract is the extraction route, not the original source. "
         "Wiktionary entries may contain third-party material with separate terms; those entries have not been reviewed one by one, so this is a local release candidate and is not yet cleared for redistribution. "
         "This dataset is not endorsed by Wiktionary or the Wikimedia Foundation.\n\n"
-        "A separate small set of exact page revisions and manually transcribed claims is documented in `../source-evidence/README.md`. Those page-level records supplement this dump-based export for selected examples; they are not a revision ID for every row here.\n\n"
-        "Rebuild from the repository root after generating the local source records and comparison files described in `docs/DATASET_NEXT_STEPS.md`:\n\n"
+        + ("Curated assertions from exact revisions are in `curated-source-claims.csv`, linked to `curated-source-pages.csv`; they are separate from automated template extraction and are not a revision ID for every dump-derived row.\n\n" if source_evidence_dir is not None else "A separate small set of exact page revisions and manually transcribed claims is documented in `../source-evidence/README.md`. Those page-level records supplement this dump-based export for selected examples; they are not a revision ID for every row here.\n\n")
+        + "Rebuild from the repository root after generating the local source records and comparison files described in `docs/DATASET_NEXT_STEPS.md`:\n\n"
         "```powershell\n"
         "python pipeline/src/build_case_evidence_slice.py --comparisons pipeline/data/all_comparisons_dercat_fix.parquet --source-records pipeline/data/etymology_records_source_origin_status.jsonl --claim-matches pipeline/data/candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline/data/component_entry_candidates_source_identity.jsonl.gz --shared-ancestor-candidates pipeline/data/component_shared_ancestor_candidates_source_identity.jsonl.gz --output pipeline/data/named_case_evidence_slice_dercat_fix.jsonl --force\n"
         "python pipeline/src/audit_case_claim_target_entries.py --force\n"
         "python pipeline/src/export_case_evidence_cldf.py --output-dir datasets/cldf-case-evidence --force\n"
         "```\n\n"
-        "`manifest.json` records the input and table hashes, transformation-file hashes, case groups, and row counts. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run. The selected cases are diagnostic, not representative.\n",
+        "`manifest.json` records the input and table hashes, transformation-file hashes, case groups, and row counts. The exporter checks IDs and declared foreign keys; run the official CLDF validator separately before release. The selected cases are diagnostic, not representative.\n",
         encoding="utf-8",
     )
     return manifest
@@ -866,9 +946,10 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=root / "pipeline/data/named_case_evidence_slice_dercat_fix.jsonl")
     parser.add_argument("--output-dir", type=Path, default=root / "pipeline/data/cldf_case_evidence_dercat_fix")
     parser.add_argument("--target-entries", type=Path, default=root / "pipeline/data/case_claim_target_entries.jsonl")
+    parser.add_argument("--source-evidence", type=Path, default=root / "datasets/source-evidence")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    result = export_slice(args.input, args.output_dir, target_entries_path=args.target_entries, force=args.force)
+    result = export_slice(args.input, args.output_dir, target_entries_path=args.target_entries, source_evidence_dir=args.source_evidence, force=args.force)
     print(json.dumps({"tables": result["tables"]}, indent=2))
 
 

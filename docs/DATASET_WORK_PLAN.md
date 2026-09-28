@@ -10,7 +10,7 @@ Use Wiktionary as the first source because it gives us material to explore and t
 
 Make the existing bounded case slice reproducible and publishable as a small, clearly limited dataset. It should let someone trace selected comparisons from source records through extraction and transformation to the values we calculate. It should also make uncertainty and missing links visible. It is not a representative sample and cannot support vocabulary-wide cognate percentages.
 
-Start from the 15 case groups and current CLDF preview already built locally. Keep the project site and live database out of this release step. The current preview is diagnostic, its source inputs are hashed local Wiktionary dumps, and individual page revision IDs are not available for every row. State those limits instead of implying stronger provenance.
+The current local diagnostic slice has 18 case groups and 35 undirected comparison rows. The older tracked CLDF candidate remains a separate, smaller snapshot; the newer expanded export is ignored local output. The expanded export now includes 21 pinned source-page revisions and 70 curated assertions in tables separate from the dump-derived claims. Keep the project site and live database out of this release step. The dump-derived records still lack per-entry page revision IDs in many cases, and neither export is cleared for redistribution until third-party source material is reviewed.
 
 ## Work order
 
@@ -41,9 +41,9 @@ Start from the 15 case groups and current CLDF preview already built locally. Ke
 
 ## Current milestone and next task
 
-A local 15-case CLDF release candidate now lives in [`datasets/cldf-case-evidence/`](../datasets/cldf-case-evidence/). Its manifest records case groups, upstream hashes, dump identities, and transformation-file hashes. The exporter checks IDs and declared foreign keys, and the output has been checked against its row counts and checksums. The official CLDF validator has not run, and the candidate is not cleared for redistribution until entries containing third-party material are reviewed.
+The regenerated 18-case local slice passes its exporter ID and foreign-key checks, nine focused exporter tests, and PyCLDF 2.1.1 validation. It contains 35 comparisons, 1,655 template-extracted claims, 21 revision-pinned pages, and 70 separately curated assertions. The separate tables preserve the *aften/afton* `relationship_unclear` statement without presenting it as an automated template extraction. The local export is ignored; it has not replaced the smaller tracked candidate. Neither is cleared for redistribution until entries containing third-party material are reviewed.
 
-Next, use the case ledger to choose one concrete extraction or identity failure and reproduce it end to end. Fix that failure with the smallest source-based regression case, regenerate the slice, and compare the changed rows. Keep improving the source-to-result trail before expanding the sample or applying new labels to the full dataset.
+Next, inspect the Swedish *torta* prose claim against the local raw source record. Determine whether the relation can be extracted reproducibly without guessing which Norwegian variety or sense it refers to. If not, keep it as a curated source assertion and document the extraction boundary. Then add one source-based regression case and regenerate the slice.
 
 ## Existing notes
 
