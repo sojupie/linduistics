@@ -8,15 +8,13 @@ Dataset integrity and linguistic rigor take absolute precedence over user interf
 
 ## 1. False Friends and Etymological Relation
 
-**False friend** is the user-facing class for similar-looking or similar-sounding words whose meanings can mislead a learner. It does not establish ancestry.
+**False friend** describes a misleading modern form-and-meaning comparison. It does not establish whether the words share a history. A false-friend pattern can coexist with a cognate mention, a borrowing path, or unresolved origins.
 
-Every pair has an independent `etymological_relation`:
+The current `etymological_relation` column is a **legacy root-match heuristic**, not a verified historical relationship: matching scalar root strings produce `cognate`; missing, unequal, or incomparable roots produce `unknown`. The classifier does not emit `false_cognate`. This name and behavior are too strong for the evidence and should not be treated as a public data contract.
 
-* `cognate`: both structured roots match at the same recorded ancestral-language level.
-* `false_cognate`: both roots are recorded at the same level but name different roots.
-* `unknown`: either root is missing or the recorded levels cannot be compared.
+The source-claim audit demonstrates the problem: **192 unique candidate pairs** have both a matched `borrowed_from` claim and equal recorded roots. The current heuristic calls their root relation `cognate` even though the source records a direct loan path. The source claim, the shared recorded root, and any whole-word cognacy judgment must remain separate facts. Likewise, unequal or missing scalar roots do not establish unrelated origins.
 
-These are conservative, source-record classifications, not proof that Wiktionary's entries are complete or correct. Similarity scores and mentions in etymology prose do not establish ancestry. Terminology differs across linguistic and language-learning literature; this dataset uses the operational definitions above and keeps etymological relation separate from meaning overlap. [Sampedro Mella (2024)](https://onlinelibrary.wiley.com/doi/full/10.1111/stul.12225) summarizes this variation, including definitions that distinguish false cognates from false friends by origin and meaning.
+For the data model, keep four scopes distinct: source assertions and directed historical paths; recorded-root comparisons; modern form/meaning observations; and project cognacy assessments with an explicit whole-word or partial scope. A `false_cognate` judgment requires evidence of distinct histories, not only different root strings. Partial cognacy requires identified partial or component correspondences, not a semantic-similarity cutoff. Terminology differs across linguistic and language-learning literature; [Sampedro Mella (2024)](https://onlinelibrary.wiley.com/doi/full/10.1111/stul.12225) summarizes that variation.
 
 ---
 
