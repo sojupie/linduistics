@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
@@ -46,6 +47,23 @@ LANG_ALIASES = {
 def normalize_lang(code: str) -> str:
     code = code.lower().strip()
     return LANG_ALIASES.get(code, code)
+
+
+def _same_gloss_source_candidates(senses: list[dict], selected_index: int) -> list[dict]:
+    selected = senses[selected_index]
+    gloss = " ".join(unicodedata.normalize("NFC", str(selected.get("gloss", ""))).casefold().split())
+    candidates = [
+        sense for sense in senses
+        if sense.get("is_active", True)
+        and sense.get("pos") == selected.get("pos")
+        and " ".join(unicodedata.normalize("NFC", str(sense.get("gloss", ""))).casefold().split()) == gloss
+    ]
+    identities = {
+        (sense.get("source_entry_key"), sense.get("source_sense_id"))
+        for sense in candidates
+        if sense.get("source_entry_key") and sense.get("source_sense_id")
+    }
+    return candidates if len(identities) > 1 else []
 
 
 def load_canonical_lexicons(data_dir: Path) -> Dict[str, Dict[str, dict]]:
@@ -329,7 +347,13 @@ def align_pair_senses(
     annotated_a = []
     for i, s in enumerate(senses_a):
         affinity = float(sim_matrix[i, best_j])
+        source_metadata = {
+            key: s[key]
+            for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
+            if key in s
+        }
         annotated_a.append({
+            **source_metadata,
             "sense_id": int(s.get("sense_id", i + 1)),
             "gloss": str(s["gloss"]),
             "pos": str(s.get("pos", meta_a["pos"])),
@@ -342,7 +366,13 @@ def align_pair_senses(
     annotated_b = []
     for j, s in enumerate(senses_b):
         affinity = float(sim_matrix[best_i, j])
+        source_metadata = {
+            key: s[key]
+            for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
+            if key in s
+        }
         annotated_b.append({
+            **source_metadata,
             "sense_id": int(s.get("sense_id", j + 1)),
             "gloss": str(s["gloss"]),
             "pos": str(s.get("pos", meta_b["pos"])),
@@ -351,6 +381,24 @@ def align_pair_senses(
             "is_active_match": bool(int(j) == int(best_j)),
             "similarity_to_counterpart": float(round(affinity, 3)),
         })
+
+    # Equal glosses from different source senses cannot be disambiguated by a
+    # gloss embedding. Keep shared evidence only when every candidate agrees.
+    for annotated, senses, selected_index in (
+        (annotated_a, senses_a, best_i),
+        (annotated_b, senses_b, best_j),
+    ):
+        candidates = _same_gloss_source_candidates(senses, int(selected_index))
+        if not candidates:
+            continue
+        matched = annotated[int(selected_index)]
+        matched["source_identity_ambiguous"] = True
+        matched["source_entry_key"] = None
+        matched["source_sense_id"] = None
+        matched["etymology_number"] = None
+        for field in ("etym_root", "etym_text"):
+            values = {candidate.get(field) or "" for candidate in candidates}
+            matched[field] = next(iter(values)) if len(values) == 1 else ""
 
     best_def_a = str(senses_a[best_i]["gloss"])
     best_def_b = str(senses_b[best_j]["gloss"])
@@ -430,18 +478,27 @@ def build_pair_dataset(
             meta_a, meta_b, matcher, is_mined_translation=is_mined
         )
 
+        matched_a = next(s for s in senses_a if s["is_active_match"])
+        matched_b = next(s for s in senses_b if s["is_active_match"])
+        etym_root_a = matched_a.get("etym_root") or ""
+        etym_root_b = matched_b.get("etym_root") or ""
+        etym_text_a = matched_a.get("etym_text") or ""
+        etym_text_b = matched_b.get("etym_text") or ""
+        pos_a = matched_a.get("pos") or meta_a["pos"]
+        pos_b = matched_b.get("pos") or meta_b["pos"]
+
         category, etymological_relation_value = classify_pair(
             s_orth=s_orth,
             s_phon=s_phon,
             s_sem=s_sem,
-            etym_root_a=meta_a.get("etym_root", ""),
-            etym_root_b=meta_b.get("etym_root", ""),
+            etym_root_a=etym_root_a,
+            etym_root_b=etym_root_b,
             max_active_sem=max_active_sem,
         )
 
         shared_etym_root = (
-            meta_a.get("etym_root")
-            if etymological_relation(meta_a.get("etym_root", ""), meta_b.get("etym_root", "")) == "cognate"
+            etym_root_a
+            if etymological_relation(etym_root_a, etym_root_b) == "cognate"
             else None
         )
 
@@ -450,12 +507,12 @@ def build_pair_dataset(
             "word_a": meta_a["word"],
             "ipa_a": meta_a["ipa"],
             "def_a": def_a,
-            "pos_a": meta_a["pos"],
+            "pos_a": pos_a,
             "lang_b": lang_b,
             "word_b": meta_b["word"],
             "ipa_b": meta_b["ipa"],
             "def_b": def_b,
-            "pos_b": meta_b["pos"],
+            "pos_b": pos_b,
             "orthographic_sim": float(s_orth),
             "phonetic_sim": float(s_phon),
             "semantic_sim": float(s_sem),
@@ -463,11 +520,11 @@ def build_pair_dataset(
             "etymological_relation": etymological_relation_value,
             "senses_a": orjson.dumps(senses_a, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
             "senses_b": orjson.dumps(senses_b, option=orjson.OPT_SERIALIZE_NUMPY).decode("utf-8"),
-            "etym_root_a": meta_a.get("etym_root") or None,
-            "etym_root_b": meta_b.get("etym_root") or None,
+            "etym_root_a": etym_root_a or None,
+            "etym_root_b": etym_root_b or None,
             "shared_etym_root": shared_etym_root,
-            "etym_text_a": meta_a.get("etym_text") or None,
-            "etym_text_b": meta_b.get("etym_text") or None,
+            "etym_text_a": etym_text_a or None,
+            "etym_text_b": etym_text_b or None,
         })
 
     # Step 3: Symmetrical Inversion (Lang B -> Lang A)

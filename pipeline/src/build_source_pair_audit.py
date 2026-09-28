@@ -51,11 +51,15 @@ def select_source_entries_by_pos(entries: list[dict], pos: str | None) -> tuple[
     return selected, "matched_pos" if selected else "no_source_entry_for_comparison_pos"
 
 
-def match_source_senses(comparison_senses: list[dict], entries: list[dict], comparison_pos: str | None) -> list[dict]:
-    """Link only exact normalized glosses; leave paraphrases for review instead of guessing."""
+def match_source_senses(
+    comparison_senses: list[dict], entries: list[dict], comparison_pos: str | None,
+    *, identity_entries: list[dict] | None = None,
+) -> list[dict]:
+    """Prefer exact source IDs; use exact normalized glosses only as a fallback."""
     if not isinstance(comparison_senses, list):
         return []
     source_by_gloss: dict[str, list[dict]] = defaultdict(list)
+    source_by_identity: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for entry in entries:
         for sense in entry.get("source_senses", []):
             if not isinstance(sense, dict):
@@ -72,6 +76,16 @@ def match_source_senses(comparison_senses: list[dict], entries: list[dict], comp
                         "source_gloss": gloss,
                     })
 
+    for entry in identity_entries if identity_entries is not None else entries:
+        for sense in entry.get("source_senses", []):
+            if not isinstance(sense, dict):
+                continue
+            source_by_identity[(entry["source_entry_key"], str(sense.get("id", "")))].append({
+                "source_entry_key": entry["source_entry_key"],
+                "source_sense_id": sense.get("id"),
+                "source_gloss": (sense.get("glosses") or [""])[0],
+            })
+
     matches = []
     expected_pos = comparison_pos.casefold() if isinstance(comparison_pos, str) else None
     for sense in comparison_senses:
@@ -84,13 +98,26 @@ def match_source_senses(comparison_senses: list[dict], entries: list[dict], comp
             isinstance(sense_pos, str) and expected_pos is not None
             and sense_pos.casefold() != expected_pos
         )
+        identity_matches = source_by_identity.get((
+            str(sense.get("source_entry_key", "")),
+            str(sense.get("source_sense_id", "")),
+        ), []) if (
+            sense.get("source_entry_key") and sense.get("source_sense_id")
+            and not sense.get("source_identity_ambiguous")
+        ) else []
+        source_senses = identity_matches or (source_by_gloss.get(key, []) if key and not pos_mismatch else [])
         matches.append({
             "comparison_sense_id": sense.get("sense_id"),
             "comparison_sense_is_active_match": sense.get("is_active_match"),
             "comparison_sense_pos": sense_pos,
             "comparison_gloss": gloss,
-            "match_method": "pos_mismatch" if pos_mismatch else "exact_gloss" if key and key in source_by_gloss else "unmatched",
-            "source_senses": source_by_gloss.get(key, []) if key and not pos_mismatch else [],
+            "match_method": (
+                "ambiguous_source_identity" if sense.get("source_identity_ambiguous") else
+                "source_identity" if identity_matches else
+                "pos_mismatch" if pos_mismatch else
+                "exact_gloss" if key and key in source_by_gloss else "unmatched"
+            ),
+            "source_senses": source_senses,
         })
     return matches
 
@@ -227,18 +254,24 @@ def audit_record(
     selected_b, pos_match_b = select_source_entries_by_pos(source_entries_b, comparison.get("pos_b") if comparison else None)
     comparison_senses_a = comparison.get("senses_a", []) if comparison else []
     comparison_senses_b = comparison.get("senses_b", []) if comparison else []
-    sense_matches_a = match_source_senses(comparison_senses_a, selected_a, comparison.get("pos_a") if comparison else None)
-    sense_matches_b = match_source_senses(comparison_senses_b, selected_b, comparison.get("pos_b") if comparison else None)
+    sense_matches_a = match_source_senses(
+        comparison_senses_a, selected_a, comparison.get("pos_a") if comparison else None,
+        identity_entries=source_entries_a,
+    )
+    sense_matches_b = match_source_senses(
+        comparison_senses_b, selected_b, comparison.get("pos_b") if comparison else None,
+        identity_entries=source_entries_b,
+    )
     comparison_entry_keys_a = {
         source_sense["source_entry_key"]
         for match in sense_matches_a
-        if match["match_method"] == "exact_gloss" and match["comparison_sense_is_active_match"] is True
+        if match["match_method"] in {"exact_gloss", "source_identity"} and match["comparison_sense_is_active_match"] is True
         for source_sense in match["source_senses"]
     }
     comparison_entry_keys_b = {
         source_sense["source_entry_key"]
         for match in sense_matches_b
-        if match["match_method"] == "exact_gloss" and match["comparison_sense_is_active_match"] is True
+        if match["match_method"] in {"exact_gloss", "source_identity"} and match["comparison_sense_is_active_match"] is True
         for source_sense in match["source_senses"]
     }
     return {

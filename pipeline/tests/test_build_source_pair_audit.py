@@ -105,6 +105,56 @@ class SourcePairAuditTests(unittest.TestCase):
         self.assertEqual(linked[2]["match_method"], "pos_mismatch")
         self.assertEqual(linked[2]["source_senses"], [])
 
+    def test_source_identity_disambiguates_same_gloss_homographic_entries(self):
+        entries = {
+            ("sv", "gift"): [
+                {"source_entry_key": "sv|gift|noun|1|a", "word": "gift", "part_of_speech": "noun",
+                 "source_senses": [{"id": "a", "glosses": ["poison"]}]},
+                {"source_entry_key": "sv|gift|noun|2|b", "word": "gift", "part_of_speech": "noun",
+                 "source_senses": [{"id": "b", "glosses": ["poison"]}]},
+            ],
+            ("en", "gift"): [],
+        }
+
+        result = audit_record("gift", "gift", "sv", "en", {
+            "pos_a": "noun", "pos_b": "noun",
+            "senses_a": [{
+                "sense_id": 1, "source_entry_key": "sv|gift|noun|2|b", "source_sense_id": "b",
+                "pos": "noun", "gloss": "poison", "is_active_match": True,
+            }],
+        }, entries)
+
+        match = result["source_sense_matches"]["sv"][0]
+        self.assertEqual(match["match_method"], "source_identity")
+        self.assertEqual(match["source_senses"], [{
+            "source_entry_key": "sv|gift|noun|2|b", "source_sense_id": "b", "source_gloss": "poison",
+        }])
+
+    def test_ambiguous_comparison_identity_stays_ambiguous_in_source_audit(self):
+        entries = {
+            ("sv", "gift"): [
+                {"source_entry_key": "sv|gift|noun|1|a", "word": "gift", "part_of_speech": "noun",
+                 "source_senses": [{"id": "a", "glosses": ["poison"]}]},
+                {"source_entry_key": "sv|gift|noun|2|b", "word": "gift", "part_of_speech": "noun",
+                 "source_senses": [{"id": "b", "glosses": ["poison"]}]},
+            ],
+            ("en", "gift"): [],
+        }
+
+        result = audit_record("gift", "gift", "sv", "en", {
+            "pos_a": "noun", "pos_b": "noun",
+            "senses_a": [{
+                "sense_id": 1, "source_entry_key": None, "source_sense_id": None,
+                "source_identity_ambiguous": True, "pos": "noun", "gloss": "poison",
+                "is_active_match": True,
+            }],
+        }, entries)
+
+        match = result["source_sense_matches"]["sv"][0]
+        self.assertEqual(match["match_method"], "ambiguous_source_identity")
+        self.assertEqual(len(match["source_senses"]), 2)
+        self.assertEqual(result["source_derived_relationships"], [])
+
     def test_source_evidence_distinguishes_direct_loan_from_shared_donor(self):
         sv_fleece = {
             "source_entry_key": "sv|fleece|noun||sv1", "word": "fleece",
