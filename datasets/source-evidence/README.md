@@ -10,6 +10,8 @@ It is deliberately small and selected for debugging. It is not a random sample, 
 - `claims.csv` contains short structured assertions extracted from the named page section. It does not reproduce entry prose. A claim is what that source page records, not an independently verified historical conclusion.
 - `pair-reviews.csv` records bounded checks of two comparison pairs. “No direct claim found” means none was found in the listed page sections; it does not mean the words are unrelated.
 
+To check these pages for newer edits, run `python pipeline/src/fetch_wiktionary_revision_snapshot.py --output pipeline/data/source-page-revision-snapshot.csv`. It writes a separate snapshot and input-hash manifest; it never changes the pinned rows in this directory.
+
 `blive` appears twice in `source-pages.csv`: the earlier revision matches the local Kaikki snapshot’s direct Bokmål-to-Danish derivation claim; the later revision replaces that path with a Middle Norwegian inheritance claim and a Danish cognate mention. Both source states remain queryable.
 
 ## Attribution and license

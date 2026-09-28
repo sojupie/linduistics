@@ -32,7 +32,7 @@ For every example, someone can follow a source page or pinned revision to the ex
 
 ### First seed created
 
-[`datasets/source-evidence/`](../datasets/source-evidence/README.md) is an initial curated seed: eight pinned page revisions, 16 structured assertions, and two bounded pair reviews. It covers the *blive* revision change, borrowing, compounds, and the *væg/väg/vägg* distinction. The CSVs retain revision links and omit copied entry prose. This seed was transcribed from the pinned pages and reviewed local cases; fetching revisions and regenerating the CSVs are not automated yet. The next data-engineering step is to make that capture and export repeatable, then expand only where the existing cases reveal a concrete gap.
+[`datasets/source-evidence/`](../datasets/source-evidence/README.md) is an initial curated seed: eight pinned page revisions, 16 structured assertions, and two bounded pair reviews. It covers the *blive* revision change, borrowing, compounds, and the *væg/väg/vägg* distinction. The CSVs retain revision links and omit copied entry prose. The claims were transcribed from the pinned pages and checked against the local case slice. A small API tool can capture newer page revisions without changing this seed; claim extraction itself is still manual. Next make that extraction repeatable, then expand only where the existing cases reveal a concrete gap.
 
 ## Current state
 
