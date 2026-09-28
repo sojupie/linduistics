@@ -309,4 +309,6 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_etymology_component_entries
 
 This gives the project a useful first component-link layer. Next, link only resolved source entries, preserve multiple candidate entries, and record whether the component sense is known. Do not infer whole-word cognacy from a compound's components.
 
+The component projection now retains the POS, etymology number, source-sense IDs, glosses, and tags for every exact candidate entry. The existing `candidate_entry_keys` field remains for the shared-component audit. This is evidence for review, not automatic sense alignment: Swedish *bankman* now exposes the adult-male, husband, and workforce readings of *man*, along with separate homographic entries. The refreshed compressed output hash is `294cb74914db90fb349e66b0552fb15fb115dd3a259193b52229a925d46a8013`.
+
 Next, connect the all-pair audit's existing directed claims to the selected comparison senses. Recheck this case set before considering broader reclassification. A small machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
