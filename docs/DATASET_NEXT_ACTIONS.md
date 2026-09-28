@@ -18,6 +18,8 @@ One word pair may have more than one path. A source’s claim is evidence to pre
 
 The project now has a source-claim extraction pipeline, bounded case audits, and a tracked CLDF Generic release candidate. That is a useful working result, not yet a validated public release: some source claims still need exact entry/sense resolution, the official CLDF validator has not run, and redistribution needs an entry-level source-material check. Continue sourcing and transforming data; do not replace the work with a finished corpus or rebuild the whole dataset.
 
+The next result should be a small, rerunnable slice that demonstrates the project's own transformation work. It can be useful to only a few people and still be worth sharing. CLDF is an output option for that slice, not a new project or a requirement to remodel the pipeline.
+
 ### Work in this order
 
 1. **Close the small source-evidence ledger.** Use the cases in [the case review](DATASET_CASE_REVIEW.md): *blive* for source revision drift, *fleece* and *clown* for borrowing and origin uncertainty, *bankman* and *sandbank* for compounds, *bank* for multiple etymologies, *væg/väg* for a misleading form match, and *ombudsman* for several paths across varieties. Keep each page revision, source section, directed claim, and pair review linked. Record unavailable revisions explicitly. Preserve older and newer source states side by side.
@@ -33,6 +35,18 @@ A small, clearly non-representative version lets someone follow selected results
 ### Existing source seed
 
 [`datasets/source-evidence/`](../datasets/source-evidence/README.md) contains 17 pinned pages, 37 structured assertions, and ten pair reviews linked to the CLDF slice. Its new `torta-tort` source note also includes three linked botanical and dictionary observations, but that comparison has not yet been added to the CLDF slice. The `clown` entries give a source-backed borrowing path in four languages even though all four current candidates remain `other`; the source claims are entry-level, while the selected comparison senses are linked separately. The *ombudsman* crosswalk exposed two possible Bokmål source-sense IDs for one selected gloss. The case builder and CLDF exporter now preserve both candidate IDs and link them to the included Bokmål entry and senses, while leaving the identity ambiguous. The case set is intentionally selected to test the transformation, not to estimate language-wide proportions. The linked CSVs omit copied entry prose. Keep their counts and coverage notes synchronized as the seed grows.
+
+## Immediate next pass
+
+Carry the newly documented *torta/tort* mismatch through the existing evidence-to-export path before widening the sample:
+
+1. Check whether the current comparison inputs contain the exact Swedish *torta* / Bokmål *tort* row and source-entry identities. If they do, add it to the case slice with its evidence links. If they do not, record that boundary and keep the source case separate; do not manufacture a pair ID or infer that the two entries are historically related.
+2. Preserve the different scopes of the evidence: Swedish *torta* mentions a Norwegian *tort* without identifying a variety, while the current Bokmål *tort* entry describes a French-derived legal term. The plant-name evidence makes a regional-name explanation plausible, but does not identify the cited Norwegian form as that plant name. Keep the pair unresolved unless a source links those forms.
+3. Record how each normalized claim was obtained (for example, entry prose or a parsed template) and where it appears on the source page. Blank provenance on older rows means it has not been recorded; it does not mean the claim came from a particular method.
+4. Rebuild just the bounded slice, check its IDs and links, and run the CLDF validator. Keep the export only if a reader can use it to follow records and claims outside the application. If the local Python environment prevents the rebuild, capture that as an execution issue rather than hand-editing generated output.
+5. Pick the next demonstrated extraction or identity loss from the case ledger, fix it at the earliest failing step, and add one focused regression check. Then rerun the same slice to see whether the transformation improved.
+
+This pass is complete when *torta/tort* is either traceably represented in the slice or explicitly documented as outside its current comparison inputs, the slice can be rebuilt and validated, and one concrete pipeline behavior has a source-backed check. That is a useful next increment; it does not require resolving every etymology or reclassifying the full candidate table.
 
 ## Current state
 
