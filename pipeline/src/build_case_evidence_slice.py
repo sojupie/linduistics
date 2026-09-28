@@ -27,7 +27,7 @@ CASES = {
     "stepdaughter": [("de", "Stieftochter", "en", "stepdaughter")],
     "blive": [("da", "blive", "nb", "blive")],
     "wall_road": [("da", "væg", "sv", "väg")],
-    "torta_tort": [("sv", "torta", "nb", "tort")],
+    "torta_tort": [("sv", "torta", "nb", "tort"), ("en", "tort", "nb", "tort")],
 }
 
 COMPARISON_FIELDS = (
