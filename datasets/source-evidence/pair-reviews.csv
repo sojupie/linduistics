@@ -1,0 +1,3 @@
+pair_id,language_a,form_a,language_b,form_b,reviewed_source_ids,source_finding,project_note
+blive-da-nb,da,blive,nb,blive,blive-old;blive-current,versioned_claims_differ,"The older page revision records a direct Danish path; the later page records Middle Norwegian inheritance and a Danish cognate mention. The modern comparison remains sense-sensitive."
+væg-väg,da,væg,sv,väg,væg-current;väg-current;vägg-current,no_direct_claim_found,"The Danish page names Swedish vägg as a cognate. The Swedish väg page records a different root and names English way. No direct claim connecting the compared forms was found in these pages; this does not establish that they are historically unrelated."

@@ -1,0 +1,24 @@
+# Germanic lexical source evidence: a small slice
+
+This is a compact, inspectable data slice built from Wiktionary page revisions. It focuses on examples where spelling-pair labels hide different evidence: a changed etymology, borrowing, compound structure, and a near-match that resolves to a different Swedish word.
+
+It is deliberately small and selected for debugging. It is not a random sample, a vocabulary-wide cognate estimate, or an expert adjudication. A page-level revision can contain several language sections; `claims.csv` records which section each extracted assertion came from.
+
+## Files
+
+- `source-pages.csv` pins each consulted Wiktionary page to a revision ID and records the displayed edit date and retrieval date.
+- `claims.csv` contains short structured assertions extracted from the named page section. It does not reproduce entry prose. A claim is what that source page records, not an independently verified historical conclusion.
+- `pair-reviews.csv` records bounded checks of two comparison pairs. “No direct claim found” means none was found in the listed page sections; it does not mean the words are unrelated.
+
+`blive` appears twice in `source-pages.csv`: the earlier revision matches the local Kaikki snapshot’s direct Bokmål-to-Danish derivation claim; the later revision replaces that path with a Middle Norwegian inheritance claim and a Danish cognate mention. Both source states remain queryable.
+
+## Attribution and license
+
+Source material is from Wiktionary contributors, available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The revision links in `source-pages.csv` identify the pages used. This project extracted and normalized source assertions into tables and added the pair-review notes; it did not copy the entries’ prose. This slice is also offered under CC BY-SA 4.0. The data does not imply endorsement by Wiktionary or the Wikimedia Foundation.
+
+## Limits
+
+- These examples were chosen because they expose particular transformation risks; counts from this file must not be generalized to a language’s lexicon.
+- Relations have different scopes. `borrowed_from` connects a borrowing to a donor; `compound_component` connects a whole form to a component; `cognate_mention` records a source page’s explicit mention. None alone settles the relation between every sense of two headwords.
+- Proto-language forms and target spellings are stored as source-reported values. This file does not assert that equal or different root strings prove cognacy or non-cognacy.
+- Only the seven listed pages and the two listed pair checks were reviewed for this release.

@@ -1,0 +1,17 @@
+claim_id,case_id,source_id,source_language_or_stage,source_form,claim_type,target_language_or_stage,target_form,scope
+blive-old-01,blive,blive-old,nb,blive,derived_from,da,blive,entry
+blive-current-01,blive,blive-current,nb,blive,inherited_from,Middle Norwegian,blífa,entry
+blive-current-02,blive,blive-current,Middle Norwegian,blífa,borrowed_from,Middle Low German,blîven,etymon
+blive-current-03,blive,blive-current,nb,blive,cognate_mention,da,blive,entry
+fleece-current-01,fleece,fleece-current,sv,fleece,borrowed_from,en,fleece,entry
+sandbank-current-01,sandbank,sandbank-current,sv,sandbank,compound_component,sv,sand,formation
+sandbank-current-02,sandbank,sandbank-current,sv,sandbank,compound_component,sv,bank,formation
+bankman-current-01,bankman,bankman-current,sv,bankman,compound_component,sv,bank,formation
+bankman-current-02,bankman,bankman-current,sv,bankman,compound_component,sv,man,formation
+bankman-current-03,bankman,bankman-current,en,bankman,alternative_form_of,en,banksman,entry
+væg-current-01,væg-väg,væg-current,da,væg,root_recorded,Proto-Germanic,*wajjuz,entry
+væg-current-02,væg-väg,væg-current,da,væg,cognate_mention,sv,vägg,entry
+väg-current-01,væg-väg,väg-current,sv,väg,root_recorded,Proto-Germanic,*wegaz,entry
+väg-current-02,væg-väg,väg-current,sv,väg,cognate_mention,en,way,entry
+vägg-current-01,væg-väg,vägg-current,sv,vägg,root_recorded,Proto-Germanic,*wajjuz,entry
+vägg-current-02,væg-väg,vägg-current,sv,vägg,cognate_mention,da,væg,entry
