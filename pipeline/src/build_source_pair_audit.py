@@ -86,6 +86,7 @@ def match_source_senses(comparison_senses: list[dict], entries: list[dict], comp
         )
         matches.append({
             "comparison_sense_id": sense.get("sense_id"),
+            "comparison_sense_is_active_match": sense.get("is_active_match"),
             "comparison_sense_pos": sense_pos,
             "comparison_gloss": gloss,
             "match_method": "pos_mismatch" if pos_mismatch else "exact_gloss" if key and key in source_by_gloss else "unmatched",
@@ -94,8 +95,8 @@ def match_source_senses(comparison_senses: list[dict], entries: list[dict], comp
     return matches
 
 
-def _claim_reference(entry: dict, claim: dict) -> dict:
-    return {
+def _claim_reference(entry: dict, claim: dict, comparison_entry_keys: set[str] | None) -> dict:
+    reference = {
         "source_entry_key": entry["source_entry_key"],
         "template_index": claim.get("template_index"),
         "template_name": claim.get("template_name"),
@@ -104,21 +105,28 @@ def _claim_reference(entry: dict, claim: dict) -> dict:
         "related_form": claim.get("related_form"),
         "source_uncertain": claim.get("source_uncertain", False),
     }
+    if comparison_entry_keys is not None:
+        reference["source_entry_matches_active_comparison_sense"] = entry["source_entry_key"] in comparison_entry_keys
+    return reference
 
 
 def derive_pair_source_evidence(
-    entries_a: list[dict], entries_b: list[dict], lang_a: str, word_a: str, lang_b: str, word_b: str
+    entries_a: list[dict], entries_b: list[dict], lang_a: str, word_a: str, lang_b: str, word_b: str,
+    *, all_entries_a: list[dict] | None = None, all_entries_b: list[dict] | None = None,
+    comparison_entry_keys_a: set[str] | None = None, comparison_entry_keys_b: set[str] | None = None,
 ) -> list[dict]:
     """Link explicit entry claims across this pair without turning them into classifications."""
     evidence = []
+    all_entries_a = all_entries_a if all_entries_a is not None else entries_a
+    all_entries_b = all_entries_b if all_entries_b is not None else entries_b
     borrowed_a: dict[tuple[str, str], list[dict]] = defaultdict(list)
     borrowed_b: dict[tuple[str, str], list[dict]] = defaultdict(list)
     inherited_a: dict[tuple[str, str], list[dict]] = defaultdict(list)
     inherited_b: dict[tuple[str, str], list[dict]] = defaultdict(list)
 
-    for entries, language, word, partner_entries, partner_language, partner_word, borrowed_claims, inherited_claims in (
-        (entries_a, lang_a, word_a, entries_b, lang_b, word_b, borrowed_a, inherited_a),
-        (entries_b, lang_b, word_b, entries_a, lang_a, word_a, borrowed_b, inherited_b),
+    for entries, language, word, partner_entries, partner_language, partner_word, borrowed_claims, inherited_claims, comparison_entry_keys, partner_comparison_entry_keys in (
+        (entries_a, lang_a, word_a, all_entries_b, lang_b, word_b, borrowed_a, inherited_a, comparison_entry_keys_a, comparison_entry_keys_b),
+        (entries_b, lang_b, word_b, all_entries_a, lang_a, word_a, borrowed_b, inherited_b, comparison_entry_keys_b, comparison_entry_keys_a),
     ):
         for entry in entries:
             for claim in entry.get("claims", []):
@@ -128,8 +136,9 @@ def derive_pair_source_evidence(
                 if not isinstance(related_form, str) or not related_language:
                     continue
                 key = (related_language, related_form.casefold())
+                claim_ref = _claim_reference(entry, claim, comparison_entry_keys)
                 if relation == "borrowed_from":
-                    borrowed_claims[key].append(_claim_reference(entry, claim))
+                    borrowed_claims[key].append(claim_ref)
                     if related_language == partner_language and related_form.casefold() == partner_word.casefold():
                         partner_keys = [
                             candidate["source_entry_key"]
@@ -142,8 +151,10 @@ def derive_pair_source_evidence(
                             "donor_form": related_form,
                             "recipient_language": language,
                             "recipient_form": word,
-                            "claim": _claim_reference(entry, claim),
-                            "matched_donor_entry_keys": partner_keys,
+                            "claim": claim_ref,
+                            "same_form_donor_entry_candidates": partner_keys,
+                            "active_sense_donor_entry_candidates": sorted(set(partner_keys) & partner_comparison_entry_keys)
+                            if partner_comparison_entry_keys is not None else None,
                         })
                 elif relation in {"cognate_mention", "noncognate_mention"}:
                     if related_language == partner_language and related_form.casefold() == partner_word.casefold():
@@ -158,11 +169,13 @@ def derive_pair_source_evidence(
                             "source_form": word,
                             "mentioned_language": partner_language,
                             "mentioned_form": related_form,
-                            "claim": _claim_reference(entry, claim),
-                            "matched_mentioned_entry_keys": partner_keys,
+                            "claim": claim_ref,
+                            "same_form_mentioned_entry_candidates": partner_keys,
+                            "active_sense_mentioned_entry_candidates": sorted(set(partner_keys) & partner_comparison_entry_keys)
+                            if partner_comparison_entry_keys is not None else None,
                         })
                 elif relation == "inherited_from":
-                    inherited_claims[key].append(_claim_reference(entry, claim))
+                    inherited_claims[key].append(claim_ref)
 
     for relation_type, claims_a, claims_b in (
         ("shared_borrowing_source_claim", borrowed_a, borrowed_b),
@@ -214,6 +227,20 @@ def audit_record(
     selected_b, pos_match_b = select_source_entries_by_pos(source_entries_b, comparison.get("pos_b") if comparison else None)
     comparison_senses_a = comparison.get("senses_a", []) if comparison else []
     comparison_senses_b = comparison.get("senses_b", []) if comparison else []
+    sense_matches_a = match_source_senses(comparison_senses_a, selected_a, comparison.get("pos_a") if comparison else None)
+    sense_matches_b = match_source_senses(comparison_senses_b, selected_b, comparison.get("pos_b") if comparison else None)
+    comparison_entry_keys_a = {
+        source_sense["source_entry_key"]
+        for match in sense_matches_a
+        if match["match_method"] == "exact_gloss" and match["comparison_sense_is_active_match"] is True
+        for source_sense in match["source_senses"]
+    }
+    comparison_entry_keys_b = {
+        source_sense["source_entry_key"]
+        for match in sense_matches_b
+        if match["match_method"] == "exact_gloss" and match["comparison_sense_is_active_match"] is True
+        for source_sense in match["source_senses"]
+    }
     return {
         "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
@@ -228,11 +255,15 @@ def audit_record(
         "source_pos_entry_count": {source: len(selected_a), target: len(selected_b)},
         "source_pos_entry_match": {source: pos_match_a, target: pos_match_b},
         "source_sense_matches": {
-            source: match_source_senses(comparison_senses_a, selected_a, comparison.get("pos_a") if comparison else None),
-            target: match_source_senses(comparison_senses_b, selected_b, comparison.get("pos_b") if comparison else None),
+            source: sense_matches_a,
+            target: sense_matches_b,
         },
         "source_derived_relationships": derive_pair_source_evidence(
-            selected_a, selected_b, source, word_a, target, word_b
+            selected_a, selected_b, source, word_a, target, word_b,
+            all_entries_a=source_entries_a,
+            all_entries_b=source_entries_b,
+            comparison_entry_keys_a=comparison_entry_keys_a,
+            comparison_entry_keys_b=comparison_entry_keys_b,
         ),
     }
 

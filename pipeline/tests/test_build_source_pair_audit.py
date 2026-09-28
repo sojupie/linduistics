@@ -115,7 +115,7 @@ class SourcePairAuditTests(unittest.TestCase):
         direct = derive_pair_source_evidence([sv_fleece], [en_fleece], "sv", "fleece", "en", "fleece")
         self.assertEqual(len(direct), 1)
         self.assertEqual(direct[0]["type"], "direct_borrowing_claim")
-        self.assertEqual(direct[0]["matched_donor_entry_keys"], ["en|fleece|noun||en1"])
+        self.assertEqual(direct[0]["same_form_donor_entry_candidates"], ["en|fleece|noun||en1"])
 
         sv_queue = {
             "source_entry_key": "sv|kö|noun||sv2", "word": "kö",
@@ -147,9 +147,37 @@ class SourcePairAuditTests(unittest.TestCase):
 
         self.assertEqual([item["type"] for item in evidence], ["source_noncognate_mention", "source_cognate_mention"])
         self.assertEqual(evidence[0]["claim"]["source_entry_key"], "sv|sandbank|noun||b")
-        self.assertEqual(evidence[0]["matched_mentioned_entry_keys"], ["en|sandbank|noun||a"])
+        self.assertEqual(evidence[0]["same_form_mentioned_entry_candidates"], ["en|sandbank|noun||a"])
         self.assertEqual(evidence[1]["claim"]["source_entry_key"], "en|sandbank|noun||a")
-        self.assertEqual(evidence[1]["matched_mentioned_entry_keys"], ["sv|sandbank|noun||b"])
+        self.assertEqual(evidence[1]["same_form_mentioned_entry_candidates"], ["sv|sandbank|noun||b"])
+
+    def test_source_claims_distinguish_same_form_candidates_from_selected_senses(self):
+        entries = {
+            ("de", "barsch"): [
+                {"source_entry_key": "de|barsch|adj||a", "word": "barsch", "part_of_speech": "adj",
+                 "source_senses": [{"id": "a1", "glosses": ["harsh, unfriendly"]}]},
+                {"source_entry_key": "de|barsch|noun||b", "word": "barsch", "part_of_speech": "noun",
+                 "source_senses": [{"id": "b1", "glosses": ["perch"]}]},
+            ],
+            ("en", "barse"): [
+                {"source_entry_key": "en|barse|noun|1|fish", "word": "barse", "part_of_speech": "noun",
+                 "source_senses": [{"id": "fish1", "glosses": ["perch"]}],
+                 "claims": [{"relation": "cognate_mention", "related_language": "de", "related_form": "Barsch"}]},
+                {"source_entry_key": "en|barse|noun|2|slang", "word": "barse", "part_of_speech": "noun",
+                 "source_senses": [{"id": "slang1", "glosses": ["The perineum of a man."]}], "claims": []},
+            ],
+        }
+        result = audit_record("barsch", "barse", "de", "en", {
+            "pos_a": "adj", "pos_b": "noun",
+            "senses_a": [{"sense_id": 1, "pos": "adj", "gloss": "harsh, unfriendly", "is_active_match": True}],
+            "senses_b": [{"sense_id": 1, "pos": "noun", "gloss": "The perineum of a man.", "is_active_match": True}],
+        }, entries)
+
+        evidence = result["source_derived_relationships"][0]
+        self.assertEqual(evidence["type"], "source_cognate_mention")
+        self.assertFalse(evidence["claim"]["source_entry_matches_active_comparison_sense"])
+        self.assertEqual(evidence["same_form_mentioned_entry_candidates"], ["de|barsch|adj||a", "de|barsch|noun||b"])
+        self.assertEqual(evidence["active_sense_mentioned_entry_candidates"], ["de|barsch|adj||a"])
 
     def test_category_sampler_uses_seeded_distinct_offsets_and_oversamples_other(self):
         def fake_response(url, timeout):
