@@ -36,6 +36,27 @@ def load_source_entries(path: Path, words: set[str]) -> dict[tuple[str, str], li
     return matches
 
 
+def load_comparison_rows(path: Path, source: str, target: str, pairs: list[tuple[str, str]]) -> dict[tuple[str, str], dict]:
+    """Read only requested directed pairs from a generated comparison Parquet."""
+    import pyarrow.parquet as pq
+
+    requested = {tuple(pair) for pair in pairs}
+    fields = [field for field in PAIR_FIELDS if field != "id"]
+    table = pq.read_table(path, columns=fields)
+    rows = {}
+    for row in table.to_pylist():
+        key = (row["word_a"], row["word_b"])
+        if row["lang_a"] != source or row["lang_b"] != target or key not in requested:
+            continue
+        for field in ("senses_a", "senses_b"):
+            if isinstance(row.get(field), str):
+                row[field] = json.loads(row[field])
+        if key in rows:
+            raise ValueError(f"Expected one Parquet row for {source}/{target} {key!r}")
+        rows[key] = row
+    return rows
+
+
 def matching_source_entries(entries: dict[tuple[str, str], list[dict]], language: str, word: str) -> tuple[list[dict], str]:
     candidates = entries.get((language, word.casefold()), [])
     exact = [entry for entry in candidates if entry.get("word") == word]
@@ -341,6 +362,7 @@ def write_audit(
     comparison_rows: dict[tuple[str, str], dict] | None = None,
     sample_metadata: dict[tuple[str, str], dict] | None = None,
     sampling: dict | None = None,
+    comparison_source: str | None = None,
 ) -> int:
     manifest = output.with_suffix(output.suffix + ".manifest.json")
     if not force and (output.exists() or manifest.exists()):
@@ -374,8 +396,9 @@ def write_audit(
             "source_records": str(source_records),
             "source_manifest": str(source_manifest) if source_manifest.exists() else None,
             "source_manifest_sha256": hashlib.sha256(source_manifest.read_bytes()).hexdigest() if source_manifest.exists() else None,
-            "comparison_api": f"{api_url.rstrip('/')}/api/pairs",
-            "sampled_live_api": sampling is not None,
+            "comparison_api": f"{api_url.rstrip('/')}/api/pairs" if comparison_source is None else None,
+            "comparison_source": comparison_source or f"{api_url.rstrip('/')}/api/pairs",
+            "sampled_live_api": comparison_source is None and sampling is not None,
             "languages": [source, target],
             "word_pairs": pairs,
             "sampling": sampling,
@@ -394,6 +417,7 @@ def main() -> None:
     parser.add_argument("--source-records", type=Path, default=project_root / "pipeline/data/etymology_records.jsonl")
     parser.add_argument("--output", type=Path, default=project_root / "pipeline/data/source_pair_audit.jsonl")
     parser.add_argument("--api-url", default="http://localhost:8080")
+    parser.add_argument("--comparison-parquet", type=Path, help="Read the comparison rows from a generated Parquet instead of the live API.")
     parser.add_argument("--source", default="sv")
     parser.add_argument("--target", default="en")
     parser.add_argument("--words", nargs="+", help="Same headword in both languages.")
@@ -403,8 +427,8 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=20260928, help="Seed for category sampling.")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    if args.sample_per_category is not None and (args.pairs or args.words):
-        parser.error("choose either --sample-per-category or explicit --pairs/--words")
+    if args.sample_per_category is not None and (args.pairs or args.words or args.comparison_parquet):
+        parser.error("choose either live category sampling or explicit pairs/words")
     sampling = None
     sample_metadata = None
     if args.sample_per_category is not None:
@@ -418,9 +442,13 @@ def main() -> None:
     else:
         comparison_rows = None
         pairs = args.pairs or [(word, word) for word in (args.words or DEFAULT_WORDS)]
+    comparison_source = None
+    if args.comparison_parquet:
+        comparison_rows = load_comparison_rows(args.comparison_parquet, args.source, args.target, pairs)
+        comparison_source = str(args.comparison_parquet)
     count = write_audit(
         args.source_records, args.output, args.api_url, args.source, args.target, pairs, args.force,
-        comparison_rows, sample_metadata, sampling,
+        comparison_rows, sample_metadata, sampling, comparison_source,
     )
     print(f"Wrote {count} joined audit rows to {args.output}")
 

@@ -6,10 +6,31 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlparse
 
-from build_source_pair_audit import audit_record, derive_pair_source_evidence, load_source_entries, sample_category_rows
+import pyarrow as pa
+import pyarrow.parquet as pq
+
+from build_source_pair_audit import (
+    PAIR_FIELDS, audit_record, derive_pair_source_evidence, load_comparison_rows,
+    load_source_entries, sample_category_rows,
+)
 
 
 class SourcePairAuditTests(unittest.TestCase):
+    def test_comparison_parquet_loader_reads_requested_direction_and_parses_senses(self):
+        with tempfile.TemporaryDirectory() as directory:
+            parquet_path = Path(directory) / "pairs.parquet"
+            row = {field: None for field in PAIR_FIELDS if field != "id"}
+            row.update({
+                "lang_a": "sv", "lang_b": "da", "word_a": "gift", "word_b": "gift",
+                "senses_a": json.dumps([{"sense_id": 1, "source_entry_key": "sv|gift|noun|1|a"}]),
+                "senses_b": "[]",
+            })
+            pq.write_table(pa.Table.from_pylist([row]), parquet_path)
+
+            result = load_comparison_rows(parquet_path, "sv", "da", [["gift", "gift"]])
+
+        self.assertEqual(result[("gift", "gift")]["senses_a"][0]["source_entry_key"], "sv|gift|noun|1|a")
+
     def test_audit_join_preserves_homographs_and_does_not_infer_a_relationship(self):
         with tempfile.TemporaryDirectory() as directory:
             source_path = Path(directory) / "source.jsonl"
