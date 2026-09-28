@@ -20,15 +20,19 @@ A five-language rebuild kept all **720,407 lemma rows**, removed **223 malformed
 
 The source-claim crosswalk kept the same **20,188 match IDs**. However, **36 evidence rows across 27 pairs** now carry a different candidate category. Twenty-six of those pairs have a Wiktionary `cognate_mention` for the pair; one has a direct `borrowed_from` claim. These are source assertions linked to entries, not independent confirmation or necessarily sense-level evidence.
 
+Across the corrected crosswalk, source claims also cut across the existing labels: `borrowed_from` appears among `false_friend`, `other`, `partial_cognate`, `translation_pair`, and `true_cognate` candidates; `cognate_mention` appears on 62 `false_friend` candidates. This is expected if the label describes a modern form/meaning pattern and claims describe history. The `partial_cognate` label is not currently a subword-cognacy finding; the classifier assigns it from a shared root plus a semantic score below 0.75. See the [cross-label audit](DATASET_NEXT_STEPS.md#source-claims-overlap-current-candidate-labels-2026-09-28).
+
 The changed cases expose another model issue. Norwegian Bokmål *kurv* is explicitly borrowed from Danish *kurv* and both records point to Proto-West Germanic `*korb`, but the current output calls their origin `cognate` and their comparison `partial_cognate` because the selected glosses score just below a semantic threshold. A shared deep root, a direct borrowing path, and a whole-word cognacy judgment are separate facts. The local snapshots remain diagnostic; they have not replaced the working data or database.
 
 The parser regression and full pipeline suite now pass (**121 tests**). The existing source-linked case slice now includes *gut/god*, *arbejde/arbete*, and *kurv/kurv* alongside the original six case groups. It contains the matched comparison senses, source claims, and component links, with a hash manifest. Before using the snapshot more broadly, review the 54 changed pairs and the loan/cognacy distinction; then decide whether to promote the corrected local build. Keep the old build for comparison and do not update the live database during this review.
 
 ## Work order
 
-### 1. Review the corrected cases before promotion
+### 1. Separate the questions the data answers
 
-The parser fix, full test run, stable-identity comparison, and corrected-snapshot crosswalk are complete. Review all changed pairs for root conflicts, direct loans, and sense-alignment problems. In particular, decide what can be inferred from an equal root when one entry is directly borrowed from the other. Preserve the separate local artifacts and their manifests; do not promote the snapshot or update the live database until those cases are understood.
+Use the corrected-root cases and source-claim overlap matrix to distinguish: candidate similarity, misleading modern meanings, recorded-root matches, sourced historical paths, and whole-word or partial cognacy judgments. Name and store those as separate fields or linked records. A direct loan can share an older root with its donor, while a false friend can have a cognate claim; neither fact should erase the other. Test the resulting contract on the nine source-linked case groups before applying it to the full candidate build.
+
+The parser fix, full test run, stable-identity comparison, corrected-snapshot crosswalk, and nine-case slice are complete. Keep the outputs as local diagnostics until the relationship fields have meanings the evidence can support. Do not update the live database or bulk-relabel candidates as part of this case audit.
 
 ### 2. Pick cases that test different data problems
 

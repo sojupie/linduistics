@@ -540,6 +540,24 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py 
 
 The parser fix is supported by both a clear source-template definition and the entry-level claims on the changed cases. Next, review the 54 changed pairs and the loan/cognacy distinction before promoting the snapshot. Do not bulk-relabel candidates or infer vocabulary-wide cognate percentages from this rebuild.
 
+## Source claims overlap current candidate labels (2026-09-28)
+
+I added a deduplicated source-claim-by-candidate-label matrix to the existing crosswalk manifest. It counts unique exact-form candidate pairs with at least one matched source claim, once per pair and claim type; relation types overlap. The corrected snapshot has **20,188 evidence rows** across **17,594 unique candidate pairs**. Those links are entry-level source statements joined to active comparison identities; they are not independent verification, and a source-entry claim is not automatically sense-specific.
+
+| Current candidate label | Pairs with any matched source claim | `cognate_mention` | `borrowed_from` | `inherited_from` | `noncognate_mention` |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `false_friend` | 166 | 62 | 70 | 0 | 0 |
+| `other` | 13,609 | 6,530 | 4,772 | 136 | 72 |
+| `partial_cognate` | 1,494 | 1,346 | 88 | 15 | 0 |
+| `translation_pair` | 514 | 385 | 9 | 0 | 15 |
+| `true_cognate` | 1,811 | 1,543 | 101 | 109 | 0 |
+
+These counts show why the display label cannot be the relationship taxonomy. `cognate_mention` is linked to **62 `false_friend` candidates**, which is consistent with “misleading modern meanings” and shared history being separate questions. `borrowed_from` occurs under every display label, including **101 `true_cognate`** and **88 `partial_cognate`** candidates. A pair can have an explicit loan path as well as a shared deeper root. **132 pairs** have more than one distinct matched source-claim type.
+
+The `partial_cognate` label is especially misleading: `classifier.py` currently assigns it when roots match but semantic similarity is below 0.75. That is a meaning-similarity threshold, not evidence that only part of a word is cognate. Keep the score as an observation; reserve partial cognacy for component-level correspondences that the data actually identifies.
+
+This is a bounded crosswalk, not a complete audit of the candidate population. It can show which current labels coexist with linked source claims; it cannot estimate the share of a language's words that are loans or cognates. The new manifest field is `unique_candidates_with_source_claim_by_category_and_relation`; regenerate it with the crosswalk command above.
+
 ## Prefer exact target forms and keep active-sense evidence (2026-09-28)
 
 The candidate-to-source-claim audit previously used case-folded spellings as its only join key. That can merge distinct capitalized and lowercase entries when both exist. German *platt* (“flat”) and *Platt* (“Low German”) show why the distinction matters: English *plat* explicitly mentions German *platt* as a cognate, but the old crosswalk also attached that claim to the capitalized German noun. The audit now prefers an exact target spelling and uses case-fold matching only when there is no exact-form candidate for that source entry. It records which method matched each row.
