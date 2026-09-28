@@ -8,7 +8,7 @@ The next work should make it possible to follow a result from the source entry a
 
 ## Current checkpoint
 
-The first source-template pass corrected target-language extraction for derivation, clipping, back-formation, abbreviation, acronym, and initialism templates. It also covers the `init` and `acro` aliases. The full export comparison changed only claim target fields; relation counts, source identities, comparison candidates, and the database stayed unchanged. See [the extraction audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28).
+The source-template audit now covers three passes: target-language extraction, missing word-formation aliases, and process-specific formation data. The latest full export recognizes back-formation, reduplication, univerbation, contraction, apheresis, apocope, syncope, rebracketing, infixation, and metathesis without changing comparison labels or the database. See the [source-language audit](DATASET_NEXT_STEPS.md#use-template-language-arguments-for-source-forms-2026-09-28) and [formation-process audit](DATASET_NEXT_STEPS.md#preserve-additional-word-formation-evidence-2026-09-28).
 
 Next, keep auditing templates whose normalized claims lack endpoints. Check each template against its documentation and raw examples before changing extraction. Then follow the current focused word cases through source-entry matching and interpretation.
 
