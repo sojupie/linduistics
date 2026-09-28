@@ -783,4 +783,17 @@ The ignored output is `pipeline/data/case_claim_target_entries.jsonl`, with `pip
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
 ```
 
-The next check is to review these 78 exact target links by claim scope and relation direction. Start with the 29 reverse matches, separating the 12 component-level rows and examining whether the relation pair actually supports the same path. Then inspect the 49 without a reverse match as source wording permits. Record corroboration, conflicting evidence, or unresolved scope as audit outcomes only. Preserve candidate sets when Wiktionary leaves identity unresolved; do not force a target sense from comparison alignment. After this review, decide whether CLDF should expose multivalued candidate-entry links or an explicit unresolved form-level link.
+## Export target-entry candidates as linked CLDF data (2026-09-28)
+
+The CLDF Generic exporter now consumes the target-entry audit and adds candidate source entries, senses, etymology text, dump line numbers, and their source claims to the corresponding tables. `claim-target-resolutions.csv` records one row per unique source claim, including unresolved and unsupported-language outcomes; `claim-target-candidates.csv` contains one row per resolved source-claim/target-entry link. The relationship remains explicitly a spelling-based candidate link, not a target-sense match or a verified etymological relation.
+
+The current local preview has 151 entries, 607 senses, 1,322 source claims, 458 unique target-form resolutions, and 145 deduplicated candidate-entry links. The 458 resolutions comprise 76 exact matches, 380 language codes outside the five indexed dumps, and two not found in those snapshots; two exact claim rows repeated across cases collapse to unique claim IDs in CLDF. It retains the prior 28 comparison rows and 25 matched comparison claims. The target lookup JSONL and its manifest hashes are recorded in the CLDF `manifest.json`. The exporter validates all declared CSV foreign keys and stable IDs; the official CLDF validator remains unavailable in this environment.
+
+Rebuild in this order:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
+pipeline\.venv\Scripts\python.exe pipeline\src\export_case_evidence_cldf.py --force
+```
+
+The next check is to review these 78 exact target links by claim scope and relation direction. Start with the 29 reverse matches, separating the 12 component-level rows and examining whether the relation pair actually supports the same path. Then inspect the 49 without a reverse match as source wording permits. Record corroboration, conflicting evidence, or unresolved scope as audit outcomes only. Preserve candidate sets when Wiktionary leaves identity unresolved; do not force a target sense from comparison alignment. The CLDF preview now preserves these candidates for inspection rather than deciding among them.

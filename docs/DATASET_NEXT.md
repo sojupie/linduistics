@@ -25,7 +25,7 @@ The examples show a concrete meaning of the old `partial_cognate` label: the cla
 
 I re-encoded the selected senses with the current multilingual MiniLM default and the same alignment function. The four scores reproduce within 1.2e-7. For *berauben/bereave*, the unrestricted best gloss pair scores 0.624, while the stored 0.616 uses the English sense linked by source-translation evidence; applying that restriction reproduces the stored value. For *kurv/kurv*, the stored score is 0.749, just below the 0.75 cutoff. No score mismatch appeared in these examples, but the original model revision was not recorded, so the exact historical checkpoint is unverified.
 
-The refreshed CLDF Generic preview has 5 languages, 79 entries, 262 senses, 45 comparison forms, 520 source claims, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 claim matches. Component candidate resolution is explicit: 27 links resolve all candidate keys to included source entries, one resolves only some, one has no resolved entry, and one has no candidate keys. Shared-ancestor uses link to the included parent and component entries. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run.
+The refreshed CLDF Generic preview now includes the exact target-entry lookup: 5 languages, 151 source entries, 607 senses, 45 comparison forms, 1,322 source claims, 30 component links, 12 shared-component ancestor candidates, 28 unordered comparisons, and 25 comparison-claim matches. Two additional tables preserve 458 unique source-claim resolutions and 145 candidate-entry links; statuses with no local match remain visible in the resolution table. The exporter checks IDs and declared foreign keys; the official CLDF validator has not been run. The original case slice's 79 entries, 262 senses, and 520 claims remain the comparison-side/source-case subset; the larger totals include the target entries and their claims.
 
 ## Next work
 
@@ -43,7 +43,7 @@ Across 495 distinct form-level claims, 78 resolved to one or more exact target e
 
 The *fleece* and *clown* claims each reach English noun and verb entries, demonstrating that spelling alone cannot identify a target entry. The Danish *berøve* claim resolves to its local Danish entry. The corresponding Norwegian claim uses Wiktionary code `no`, whereas the local dump is Norwegian Bokmål (`nb`); it is reported as `language_not_indexed`, not as a failed Bokmål lookup. Two missing forms are literal `-` values in source cognate templates; preserve them as source data rather than silently repairing them.
 
-The reproducible local artifact is `pipeline/data/case_claim_target_entries.jsonl`; its manifest records the case-slice and five dump hashes. Rebuild it with:
+The reproducible local artifact is `pipeline/data/case_claim_target_entries.jsonl`; its manifest records the case-slice and five dump hashes. Rebuild it before the CLDF export with:
 
 ```powershell
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_case_claim_target_entries.py --force
