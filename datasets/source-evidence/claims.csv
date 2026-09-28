@@ -15,3 +15,17 @@ väg-current-01,væg-väg,väg-current,sv,väg,root_recorded,Proto-Germanic,*weg
 väg-current-02,væg-väg,väg-current,sv,väg,cognate_mention,en,way,entry
 vägg-current-01,væg-väg,vägg-current,sv,vägg,root_recorded,Proto-Germanic,*wajjuz,entry
 vägg-current-02,væg-väg,vägg-current,sv,vägg,cognate_mention,da,væg,entry
+ombudsman-en-01,ombudsman,ombudsman-current,en,ombudsman,borrowed_from,sv,ombudsman,entry
+ombudsman-en-02,ombudsman,ombudsman-current,en,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry
+ombudsman-sv-01,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,ombud,formation
+ombudsman-sv-02,ombudsman,ombudsman-current,sv,ombudsman,compound_component,sv,man,formation
+ombudsman-sv-03,ombudsman,ombudsman-current,sv,ombudsman,root_recorded,Old Norse,umboðsmaðr,entry
+ombudsmand-da-01,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,ombud,formation
+ombudsmand-da-02,ombudsman,ombudsmand-current,da,ombudsmand,compound_component,da,mand,formation
+ombudsmand-da-03,ombudsman,ombudsmand-current,da,ombudsmand,historical_form,Old Danish,umbuzman,entry
+ombudsmand-da-04,ombudsman,ombudsmand-current,da,ombudsmand,root_recorded,Old Norse,umboðsmaðr,entry
+ombudsmann-nb-01,ombudsman,ombudsmann-current,nb,ombudsmann,inherited_from,Old Norse,umboðsmaðr,entry
+ombudsmann-nb-02,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,ombud,formation
+ombudsmann-nb-03,ombudsman,ombudsmann-current,nb,ombudsmann,interfix,nb,-s-,formation
+ombudsmann-nb-04,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,mann,formation
+Ombudsmann-de-01,ombudsman,Ombudsmann-current,de,Ombudsmann,borrowed_from,sv,ombudsman,entry
