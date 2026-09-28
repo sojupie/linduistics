@@ -249,37 +249,43 @@ The longer audit history and current data model are in [NEXT_DATASET_STAGE.md](N
 
 I ran the source-claim coverage audit against the latest source-sense candidate build and extended it to export the matching claim records as compact JSONL. It streams the Parquet input and restricts the check to Swedish–Danish, Swedish–Norwegian Bokmål, and German–English, the three pairs the audit reports.
 
-The local export at `pipeline/data/candidate_source_claim_matches.jsonl` contains **9,268 source-claim-to-candidate evidence rows** across **7,579 distinct candidate pairs**. Each row has a stable match ID; the candidate spelling pair and current candidate label; the source entry key, URL, and active source sense; the normalized relation and original template arguments; and the active target entry/sense IDs when available. The adjacent manifest records both input hashes and the output hash. The export omits full etymology prose.
+The earlier export had the same source claims but used stale comparison tables: every historical relation in that comparison build was `unknown`. Those counts and category shares are superseded below. The source-aware builder now preserves multiple candidate target identities when an exact sense cannot be selected.
 
-The useful result for the residual category is that **5,675 `other` candidate pairs** in these three language-pair builds have at least one normalized source claim naming the other language and the exact compared form (case-folded):
+### Source-aware rebuild and audit
 
-| Pair | `other` candidates | With a matching source claim | Share |
+On 2026-09-28, I rebuilt lemma tables from all five local Wiktionary dumps into `pipeline/data/lemmas_source_identity/`. The build has 1,060,087 active senses, all with source-entry and source-sense IDs. A source root is extracted on 222,272 senses. I then rebuilt all 10 language pairs into `pipeline/data/all_comparisons_source_identity.parquet`: 1,638,454 directed comparison candidates, 24,872 with equal extracted roots and 1,613,582 with an unknown root relation. These are counts in the generated candidate set, not vocabulary-wide rates.
+
+The source-claim export at `pipeline/data/candidate_source_claim_matches_source_identity.jsonl` contains **9,268 claim-to-candidate evidence rows** across **7,579 candidates**. Claims overlap within a candidate. In the three audited pairs, **5,949 `other` candidates** have at least one entry-level source claim naming the compared form:
+
+| Pair | `other` candidates | With a matching source claim | Share of candidates |
 | --- | ---: | ---: | ---: |
-| Swedish–Danish | 20,645 | 1,034 | 5.0% |
-| Swedish–Norwegian Bokmål | 20,407 | 690 | 3.4% |
-| German–English | 96,467 | 3,951 | 4.1% |
-| **Combined** | **137,519** | **5,675** | **4.1%** |
+| Swedish–Danish | 21,978 | 1,034 | 4.7% |
+| Swedish–Norwegian Bokmål | 21,601 | 696 | 3.2% |
+| German–English | 144,580 | 4,219 | 2.9% |
+| **Combined** | **188,159** | **5,949** | **3.2%** |
 
-The source-claim types overlap within a candidate pair. They include cognate mentions, borrowing, derivation, calques, noncognate mentions, and other direct claims. This confirms that `other` is a mixed pipeline remainder. It does **not** mean those pairs can automatically be relabeled: the claim is attached to a source entry, and a form-level match does not prove that it applies to the selected target sense. Of all 9,268 evidence rows, 188 lack an active target source identity; the remaining target IDs still do not make an entry-level claim sense-specific.
+This confirms that `other` is a mixed candidate-builder remainder, not an etymological category. The audit found borrowing, cognate mentions, derivation, calques, semantic loans, and noncognate mentions. The 188 target identities that could not be selected are ambiguous; the output retains their possible IDs. An entry-level claim plus a form match still does not prove that the claim applies to the exact aligned target sense.
 
-The 9,656 German/English, 3,453 Swedish/Danish, and 1,849 Swedish/Norwegian Bokmål source cognate-mention claims have 2,320, 1,635, and 865 active source-entry candidate matches, respectively. In 2,280, 1,602, and 853 of those matched cases, both comparison sides have active source-sense IDs. This last count only says the candidate row has IDs on both sides; it does not establish that the source's cognate mention targets those exact senses.
+### What the examples show
 
-Reproduce the export from the existing local artifacts:
+| Case | What the source-backed build says | What remains wrong or unresolved |
+| --- | --- | --- |
+| *bankman* (Swedish–English) | The selected Swedish sense is a common noun, “bank employee”; the selected English sense is a surname. Both forms are identical. | It was labeled `false_friend`. I changed the classifier so a name-to-common-word collision remains `other`; it is still inspectable as a candidate, but is no longer presented as a lexical false friend. |
+| *fleece* (Swedish–English) | The English sense traces to Proto-West Germanic `*fleus`; the Swedish etymology text says “Borrowed from English fleece.” | The comparison is `other` with unknown root relation. The natural-language borrowing statement is retained as text but is not normalized into a directed borrowing claim by the current claim extractor. |
+| *clown* | Swedish, Danish, and Bokmål entries say they are borrowed from English. The German entry has two structured borrowing templates for English *clown*. | The normalized audit finds the German structured claims but misses the Scandinavian plain-text claims. The two German templates should remain as evidence while a graph projection can recognize that they support the same edge. |
+| *ombudsman* (Danish/Swedish–English) | The English entry says it was borrowed from Swedish; the Danish and Swedish entries trace to Old Norse `umboðsmaðr`. | Exact root equality makes the pair `cognate`, collapsing the direct borrowing path into a root match. Both facts need to coexist as different relation types and paths. |
+| *bank* | Danish financial *bank* traces through French to Italian *banco*; Swedish traces through German/Dutch or Low German to Italian *banco*. | The root-only comparison is unknown. The source histories show a shared loan source with different paths, not enough to call the modern words inherited cognates. |
+| *sandbank* | English and German entries give compound structure, and English explicitly mentions German *Sandbank* as a cognate. | The pair remains `other`; Swedish component text is not linked to source senses. Whole-word, component, and source-claim relationships are currently flattened or missed. |
+
+These cases point to three independent layers in the next data model: **directed lexical-history edges** (including borrowing and derivation), **component links** for compounds, and **shared-root/cognate observations**. Each edge should keep its source entry, sense, raw wording or template, and uncertainty. Similarity scores remain observations that find candidates, not evidence of history. Do not turn any one layer into an exclusive pair label.
+
+Reproduce the source-aware build and audit from local inputs:
 
 ```powershell
-pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_all.jsonl --comparisons pipeline\data\all_comparisons_source_sense.parquet --matches-output pipeline\data\candidate_source_claim_matches.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\build_crosslingual_dataset.py --lemma-dir pipeline\data\lemmas_source_identity --output pipeline\data\all_comparisons_source_identity.parquet
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_all.jsonl --comparisons pipeline\data\all_comparisons_source_identity.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_identity.jsonl --force
 ```
 
-Hashes from the generated manifest:
+The current manifest records source-record SHA-256 `1406623aa2bd12cdcf23eb19b575ed2f61f015759e2cb49e5144b49b5274be4b`, comparison SHA-256 `3e80e59c2229ba908bafc52e4f955f0035ef80e9f10c72961a8d0d8a80770943`, and evidence-export SHA-256 `54209a974c321f3759caf0603318e25d262e0251b3f92389dccb6ca0810a97cf`. The full pipeline test suite passes 102 tests. Generated files remain local and ignored; the live database is unchanged.
 
-- Source records: `1406623aa2bd12cdcf23eb19b575ed2f61f015759e2cb49e5144b49b5274be4b`.
-- Source-sense comparisons: `bc2b73806941809b2cf4cce74ee1bc0c24df08e8f30fa892d922788a16e2c1c4`.
-- Matched evidence export: `01342e157958e29589a7eb2468a770edf189084c01063482e92f593b15943524`.
-
-Next, inspect the matched rows, especially the 188 ambiguous target identities and candidates with multiple source claims. Preserve this as an evidence layer beside the existing labels. Do not bulk-relabel comparisons from this export. Check source attribution and licensing before publishing the generated table.
-
-### Follow-up: the comparison input was stale
-
-The counts above are useful only as a diagnostic of source-claim matching. The comparison Parquet used for this audit was built from lemma tables created before the parser preserved source-entry IDs, source-sense IDs, and etymological roots. Rebuilding from those old tables produced empty roots and `unknown` for every `etymological_relation`. That comparison output cannot support conclusions about the current historical classifications, and the 5,675 matches must not be read as category corrections.
-
-The identity-aware parser has since regenerated lemma tables for all five local dumps into `pipeline/data/lemmas_source_identity/`. The immediate next step is to verify identity and root coverage there, then rebuild comparisons from those tables and rerun the audit. The source-claim builder now retains candidate target identities when several senses match equally; 188 therefore means ambiguous in the old export, not missing source evidence. The fresh comparison rebuild and audit remain pending.
+Next, extract the plain-text borrowing patterns demonstrated by *fleece* and *clown* as source-backed claims, without discarding the original prose. Then add component links for the named compounds, preserving unresolved or ambiguous components instead of guessing. Recheck this small case set as regression evidence before considering broader reclassification. A small machine-readable release can follow; try CLDF as an export format only after the slice shape is clear, and retain it if it makes reuse easier.
