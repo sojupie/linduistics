@@ -48,6 +48,10 @@ Carry the newly documented *torta/tort* mismatch through the existing evidence-t
 
 This pass is complete when *torta/tort* is either traceably represented in the slice or explicitly documented as outside its current comparison inputs, the slice can be rebuilt and validated, and one concrete pipeline behavior has a source-backed check. That is a useful next increment; it does not require resolving every etymology or reclassifying the full candidate table.
 
+### Current execution note
+
+The exact-form candidate has been found in `source_origin_status_matches.jsonl`, and `build_case_evidence_slice.py` now routes it to `torta_tort`. A standard-library check confirms the case lookup handles both input directions and case. The checked-in CLDF slice has not been rebuilt. The repository virtual environment targets Python 3.13.14 through a Windows Store alias that currently cannot launch; the available bundled Python is 3.12.14, but the installed PyArrow extension is built for CPython 3.13. The full Parquet-backed builder and exporter therefore remain unverified until a compatible Python/PyArrow runtime is available. Do not hand-edit generated CLDF tables to stand in for that rebuild.
+
 ## Current state
 
 - The pipeline covers Danish, German, English, Norwegian Bokmål, and Swedish Wiktionary-derived data.
