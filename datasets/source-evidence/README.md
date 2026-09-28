@@ -12,6 +12,24 @@ It is deliberately small and selected for debugging. It is not a random sample, 
 
 The `ombudsman` case is a useful small source-to-data example: English and German entries record borrowing from Swedish; the Bokmål entry records inheritance from Old Norse; and the Danish entry traces its form through Old Danish to Old Norse. These are source-reported paths that can coexist. The rows do not force them into a single cognate/loan box or settle the project’s eventual pair-level taxonomy.
 
+## Claim fields
+
+`source_language_or_stage` and `target_language_or_stage` use language codes for modern varieties and readable names for historical stages. `source_form` and `target_form` preserve the forms recorded in that page revision. `scope` describes what the claim concerns: `entry` for a whole lexical entry, `etymon` for an older or donor form, and `formation` for a component or linking element.
+
+| `claim_type` | Meaning in this file |
+| --- | --- |
+| `borrowed_from` | The source explicitly names a donor form or language. Direction is from `source_form` to the named donor. |
+| `inherited_from` | The source explicitly describes inheritance from the named earlier form. |
+| `derived_from` | The source explicitly identifies a derivational relation. |
+| `cognate_mention` | The source explicitly names a cognate form; this records the source's statement, not our verification. |
+| `root_recorded` | The source names a root or older form for the entry; this does not assert a direct transmission path. |
+| `historical_form` | The source names a form in an earlier stage without enough wording here to normalize the transmission as borrowing or inheritance. |
+| `compound_component` | The source identifies a component of the form; it does not by itself establish a relationship between the whole word and another word. |
+| `interfix` | The source identifies a linking element such as Bokmål `-s-`. |
+| `alternative_form_of` | The source describes one form as an alternative form of another. |
+
+Claims from the same entry are separate rows so a direct loan, an older source, and a component analysis can coexist. `pair-reviews.csv` records the bounded comparison and its project note; it does not turn source claims into a single etymological verdict.
+
 To check these pages for newer edits, run `python pipeline/src/fetch_wiktionary_revision_snapshot.py --output pipeline/data/source-page-revision-snapshot.csv`. It writes a separate snapshot and input-hash manifest; it never changes the pinned rows in this directory.
 
 `blive` appears twice in `source-pages.csv`: the earlier revision matches the local Kaikki snapshot’s direct Bokmål-to-Danish derivation claim; the later revision replaces that path with a Middle Norwegian inheritance claim and a Danish cognate mention. Both source states remain queryable.
