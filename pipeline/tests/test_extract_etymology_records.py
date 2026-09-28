@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from extract_etymology_records import source_record
+from extract_etymology_records import export_records, source_record
 
 
 class EtymologyRecordTests(unittest.TestCase):
@@ -238,6 +238,70 @@ class EtymologyRecordTests(unittest.TestCase):
             ],
         )
         self.assertEqual(record["claims"][-1]["components"], ["social", "-ism"])
+
+    def test_keeps_person_attribution_and_formation_facts_out_of_lexical_edges(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "dator",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "named-after", "args": {
+                        "1": "sv", "2": "Börje Langefors", "nat": "Swedish",
+                        "occ": "researcher", "born": "1915", "wplink": "Börje Langefors",
+                    }},
+                    {"name": "named-after/list", "args": {"1": "researcher"}},
+                    {"name": "coinage", "args": {
+                        "1": "sv", "2": "Q123", "in": "1956", "exnihilo": "1",
+                    }},
+                    {"name": "onom", "args": {"1": "sv", "title": "imitative"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        named_after, coinage, onomatopoeia = record["claims"]
+        self.assertEqual(named_after["relation"], "named_after")
+        self.assertEqual(named_after["related_entity"], {
+            "name": "Börje Langefors",
+            "nationality": "Swedish",
+            "occupation": "researcher",
+            "wikipedia_title": "Börje Langefors",
+            "born": "1915",
+        })
+        self.assertEqual(coinage["relation"], "coined_by")
+        self.assertEqual(coinage["related_entity"], {"wikidata_id": "Q123", "date": "1956"})
+        self.assertEqual(coinage["formation_type"], "coinage")
+        self.assertTrue(coinage["coined_ex_nihilo"])
+        self.assertEqual(onomatopoeia["relation"], None)
+        self.assertEqual(onomatopoeia["formation_type"], "onomatopoeic")
+        self.assertEqual(onomatopoeia["source_label"], "imitative")
+        self.assertEqual([t["name"] for t in record["templates"]], [
+            "named-after", "named-after/list", "coinage", "onom",
+        ])
+        self.assertNotIn("named-after/list", [claim["template_name"] for claim in record["claims"]])
+
+    def test_export_manifest_counts_relationships_formations_and_unmapped_separately(self):
+        import json
+        from tempfile import TemporaryDirectory
+
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "kaikki_sv.jsonl").write_text("\n".join([
+                json.dumps({"lang_code": "sv", "lang": "Swedish", "word": "dator", "pos": "noun",
+                            "etymology_templates": [{"name": "coin", "args": {"1": "sv", "2": "Ture"}}]}),
+                json.dumps({"lang_code": "sv", "lang": "Swedish", "word": "plopp", "pos": "noun",
+                            "etymology_templates": [{"name": "onomatopoeic", "args": {"1": "sv"}}]}),
+                json.dumps({"lang_code": "sv", "lang": "Swedish", "word": "mystery", "pos": "noun",
+                            "etymology_templates": [{"name": "unknown-template", "args": {"1": "sv"}}]}),
+            ]) + "\n", encoding="utf-8")
+
+            manifest = export_records(root, ["sv"], root / "records.jsonl")
+
+        self.assertEqual(manifest["normalized_relations"], {"coined_by": 1})
+        self.assertEqual(manifest["formation_types"], {"coinage": 1, "onomatopoeic": 1})
+        self.assertEqual(manifest["unmapped_templates"], {"unknown-template": 1})
 
     def test_keeps_surface_analysis_distinct_from_historical_formation(self):
         record = source_record(

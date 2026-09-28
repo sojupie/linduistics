@@ -22,6 +22,7 @@ def _edge_key(claim: dict) -> tuple:
         claim.get("relation"),
         claim.get("related_language"),
         claim.get("related_form"),
+        json.dumps(claim.get("related_entity"), ensure_ascii=False, sort_keys=True, separators=(",", ":")),
         tuple(claim.get("components") or []),
         claim.get("source_uncertain", False),
         claim.get("analysis_basis"),
@@ -91,7 +92,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                     key = _edge_key(claim)
                                     grouped.setdefault(key, []).append(claim)
                                 for key, evidence in grouped.items():
-                                    relation, related_lang, related_form, components, uncertain, basis = key
+                                    relation, related_lang, related_form, related_entity, components, uncertain, basis = key
                                     record = {
                                         "case_id": case_id,
                                         "comparison": comparison_context,
@@ -111,6 +112,7 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                             "relation": relation,
                                             "related_language": related_lang,
                                             "related_form": related_form,
+                                            "related_entity": json.loads(related_entity) if related_entity != "null" else None,
                                             "components": list(components) or None,
                                             "source_uncertain": uncertain,
                                             "analysis_basis": basis,
@@ -142,12 +144,12 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source_files": source_files,
             "output_file": output.name,
-            "schema_version": 4,
+            "schema_version": 5,
             "counts": {
                 "cases": case_count,
                 "unique_source_edges": edge_count,
                 "source_template_evidence_records": evidence_count,
-                "unmapped_or_nonrelation_claims_skipped": skipped_count,
+                "nonedge_source_claims_skipped": skipped_count,
             },
             "edges_by_relation": dict(sorted(relation_counts.items())),
         }

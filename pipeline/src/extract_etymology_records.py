@@ -72,6 +72,11 @@ RELATION_BY_TEMPLATE = {
     "piecewise doublet": "piecewise_doublet_of",
     "piecewise_doublet": "piecewise_doublet_of",
     "surface analysis": "surface_analysis",
+    "named-after": "named_after",
+    "named after": "named_after",
+    "coin": "coined_by",
+    "coined": "coined_by",
+    "coinage": "coined_by",
     "root": "rooted_in",
     "sl": "semantic_loan_from",
     "psm": "phono_semantic_match_to",
@@ -148,12 +153,20 @@ ETY_RELATIONS = {
 }
 
 _ETY_MARKER = re.compile(r"^:([^<]+)")
+_WIKIDATA_ID = re.compile(r"^Q[1-9][0-9]*$")
 
 
 def _language_codes(value: Any) -> list[str]:
     if not isinstance(value, str):
         return []
     return [code.strip() for code in value.split(",") if code.strip()]
+
+
+def _entity_reference(value: Any) -> dict[str, str] | None:
+    if not isinstance(value, str) or not value:
+        return None
+    key = "wikidata_id" if _WIKIDATA_ID.fullmatch(value) else "name"
+    return {key: value}
 
 
 def source_entry_key(entry: dict[str, Any]) -> str:
@@ -259,6 +272,66 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
         "relation": relation,
         "args": args,
     }
+
+    if base_name in {"named-after", "named after"}:
+        related_entity = _entity_reference(args.get("2")) or {}
+        claim["related_entity"] = related_entity or None
+        for field, argument in (
+            ("nationality", args.get("nationality") or args.get("nat")),
+            ("occupation", args.get("occupation") or args.get("occ")),
+            ("wikipedia_title", args.get("wplink")),
+            ("transliteration", args.get("tr")),
+            ("script", args.get("sc")),
+            ("born", args.get("born")),
+            ("died", args.get("died")),
+        ):
+            if argument:
+                related_entity[field] = argument
+        occupations = [
+            value
+            for index in range(2, 6)
+            for value in (args.get(f"occupation{index}") or args.get(f"occ{index}"),)
+            if value
+        ]
+        if occupations:
+            related_entity["additional_occupations"] = occupations
+        if related_entity:
+            claim["related_entity"] = related_entity
+        return [claim]
+    elif base_name in {"coin", "coined", "coinage"}:
+        related_entity = _entity_reference(args.get("2"))
+        if related_entity and args.get("2", "").casefold() != "unknown":
+            claim["related_entity"] = related_entity
+            for field, argument in (
+                ("nationality", args.get("nationality") or args.get("nat")),
+                ("occupation", args.get("occupation") or args.get("occ")),
+                ("wikipedia_link_spec", args.get("w")),
+                ("date", args.get("in")),
+            ):
+                if argument:
+                    claim["related_entity"][field] = argument
+            occupations = [
+                value
+                for index in range(2, 6)
+                for value in (args.get(f"occupation{index}") or args.get(f"occ{index}"),)
+                if value
+            ]
+            if occupations:
+                claim["related_entity"]["additional_occupations"] = occupations
+        else:
+            claim["relation"] = None
+        claim["formation_type"] = "coinage"
+        claim["coined_ex_nihilo"] = args.get("exnihilo") == "1"
+        return [claim]
+    elif base_name in {"onom", "onomatopoeic"}:
+        claim["relation"] = None
+        claim["formation_type"] = "onomatopoeic"
+        if args.get("title"):
+            claim["source_label"] = args["title"]
+        return [claim]
+    elif base_name == "named-after/list":
+        # This template formats the occupation list for named-after; retain it in templates only.
+        return []
 
     if base_name in {"doublet", "dbt", "piecewise doublet", "piecewise_doublet"}:
         return [
@@ -375,6 +448,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
         "totals": {"source_records": 0, "source_sense_records": 0, "template_records": 0, "claim_records": 0},
         "templates": {},
         "normalized_relations": {},
+        "formation_types": {},
         "unmapped_templates": {},
     }
 
@@ -389,6 +463,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                 counts = {"source_records": 0, "source_sense_records": 0, "template_records": 0, "claim_records": 0}
                 template_counts: Counter[str] = Counter()
                 relation_counts: Counter[str] = Counter()
+                formation_counts: Counter[str] = Counter()
                 unmapped: Counter[str] = Counter()
                 with source_path.open("rb") as source:
                     for line_number, line in enumerate(source, start=1):
@@ -410,9 +485,13 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                         counts["source_sense_records"] += len(record["source_senses"])
                         for claim in record["claims"]:
                             counts["claim_records"] += 1
-                            if claim["relation"]:
+                            has_relation = bool(claim.get("relation"))
+                            formation_type = claim.get("formation_type")
+                            if has_relation:
                                 relation_counts[claim["relation"]] += 1
-                            else:
+                            if formation_type:
+                                formation_counts[formation_type] += 1
+                            if not has_relation and not formation_type:
                                 marker = claim.get("unmapped_marker")
                                 key = f"{claim['template_name']}:{marker}" if marker else claim["template_name"]
                                 unmapped[key] += 1
@@ -430,6 +509,7 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                     "source_file_sha256": digest.hexdigest(),
                     "templates": dict(sorted(template_counts.items())),
                     "normalized_relations": dict(sorted(relation_counts.items())),
+                    "formation_types": dict(sorted(formation_counts.items())),
                     "unmapped_templates": dict(sorted(unmapped.items())),
                 }
                 summary["totals"]["source_records"] += counts["source_records"]
@@ -440,6 +520,8 @@ def export_records(input_dir: Path, languages: list[str], output: Path, force: b
                     summary["templates"][name] = summary["templates"].get(name, 0) + count
                 for name, count in relation_counts.items():
                     summary["normalized_relations"][name] = summary["normalized_relations"].get(name, 0) + count
+                for name, count in formation_counts.items():
+                    summary["formation_types"][name] = summary["formation_types"].get(name, 0) + count
                 for name, count in unmapped.items():
                     summary["unmapped_templates"][name] = summary["unmapped_templates"].get(name, 0) + count
 

@@ -62,7 +62,7 @@ def test_case_projection_groups_duplicate_edges_but_keeps_template_evidence(tmp_
         "cases": 1,
         "unique_source_edges": 1,
         "source_template_evidence_records": 2,
-        "unmapped_or_nonrelation_claims_skipped": 1,
+        "nonedge_source_claims_skipped": 1,
     }
 
 
@@ -131,7 +131,7 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
     manifest = project_source_case_edges([audit], output)
 
     edge = json.loads(output.read_text(encoding="utf-8").splitlines()[0])
-    assert manifest["schema_version"] == 4
+    assert manifest["schema_version"] == 5
     assert edge["comparison"] == {
         "id": 12,
         "lang_a": "sv",
@@ -176,3 +176,38 @@ def test_case_projection_preserves_current_source_audit_entry_fields(tmp_path):
             }],
         }],
     }
+
+
+def test_entity_relations_keep_distinct_targets_in_projected_edges(tmp_path):
+    audit = tmp_path / "audit.jsonl"
+    audit.write_text(json.dumps({
+        "audit_key": "sv|dator|en|computer",
+        "comparison": None,
+        "source_entries": {"sv": [{
+            "word": "dator",
+            "source_entry_key": "sv|dator|noun||source-entry",
+            "claims": [
+                {"template_index": 0, "template_name": "coinage", "relation": "coined_by",
+                 "formation_type": "coinage", "related_entity": {"name": "Börje Langefors"},
+                 "args": {"1": "sv", "2": "Börje Langefors"}},
+                {"template_index": 1, "template_name": "coinage", "relation": "coined_by",
+                 "formation_type": "coinage", "related_entity": {"wikidata_id": "Q123"},
+                 "args": {"1": "sv", "2": "Q123"}},
+                {"template_index": 2, "template_name": "onomatopoeic", "relation": None,
+                 "formation_type": "onomatopoeic", "args": {"1": "sv"}},
+            ],
+        }]},
+    }) + "\n", encoding="utf-8")
+    output = tmp_path / "edges.jsonl"
+
+    manifest = project_source_case_edges([audit], output)
+
+    records = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
+    assert len(records) == 2
+    assert {
+        tuple(sorted(record["edge"]["related_entity"].items())) for record in records
+    } == {
+        (("name", "Börje Langefors"),), (("wikidata_id", "Q123"),),
+    }
+    assert manifest["counts"]["nonedge_source_claims_skipped"] == 1
+    assert manifest["schema_version"] == 5
