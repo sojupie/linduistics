@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import random
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,6 +14,7 @@ from urllib.request import urlopen
 
 
 DEFAULT_WORDS = ["fleece", "clown", "ombudsman", "bankman", "sandbank", "gift"]
+PAIR_CATEGORIES = ("true_cognate", "partial_cognate", "false_friend", "translation_pair", "other")
 PAIR_FIELDS = (
     "id", "lang_a", "word_a", "pos_a", "def_a", "etym_root_a", "etym_text_a",
     "lang_b", "word_b", "pos_b", "def_b", "etym_root_b", "etym_text_b",
@@ -23,50 +25,96 @@ PAIR_FIELDS = (
 
 def load_source_entries(path: Path, words: set[str]) -> dict[tuple[str, str], list[dict]]:
     matches: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    folded_words = {word.casefold() for word in words}
     with path.open(encoding="utf-8") as source:
         for line in source:
             record = json.loads(line)
-            if record.get("word") in words:
-                matches[(record["language_code"], record["word"])].append(record)
+            word = record.get("word", "")
+            if word.casefold() in folded_words:
+                matches[(record["language_code"], word.casefold())].append(record)
     return matches
 
 
-def fetch_pair(api_url: str, source: str, target: str, word: str) -> dict | None:
+def matching_source_entries(entries: dict[tuple[str, str], list[dict]], language: str, word: str) -> tuple[list[dict], str]:
+    candidates = entries.get((language, word.casefold()), [])
+    exact = [entry for entry in candidates if entry.get("word") == word]
+    if exact:
+        return exact, "exact"
+    return candidates, "casefold" if candidates else "none"
+
+
+def fetch_pair(api_url: str, source: str, target: str, word_a: str, word_b: str) -> dict | None:
     matches = []
     offset, total, limit = 0, 1, 100
     while offset < total:
-        query = {"source": source, "target": target, "q": word, "limit": limit, "offset": offset}
+        query = {"source": source, "target": target, "q": word_a, "limit": limit, "offset": offset}
         with urlopen(f"{api_url.rstrip('/')}/api/pairs?{urlencode(query)}", timeout=20) as response:
             payload = json.load(response)
         total = payload.get("total", 0)
         matches.extend(
             item for item in payload.get("items", [])
             if item.get("lang_a") == source and item.get("lang_b") == target
-            and item.get("word_a") == word and item.get("word_b") == word
+            and item.get("word_a") == word_a and item.get("word_b") == word_b
         )
         if matches:
             break
         offset += limit
     if len(matches) > 1:
-        raise ValueError(f"Expected one headword-pair row for {source}/{target} {word!r}; found {len(matches)}")
+        raise ValueError(f"Expected one headword-pair row for {source}/{target} {word_a!r}/{word_b!r}; found {len(matches)}")
     return matches[0] if matches else None
 
 
 def audit_record(
-    word: str,
+    word_a: str,
+    word_b: str,
     source: str,
     target: str,
     comparison: dict | None,
     entries: dict[tuple[str, str], list[dict]],
 ) -> dict:
+    source_entries_a, source_match_a = matching_source_entries(entries, source, word_a)
+    source_entries_b, source_match_b = matching_source_entries(entries, target, word_b)
     return {
-        "audit_key": f"{source}|{word}|{target}|{word}",
+        "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
         "source_entries": {
-            source: entries.get((source, word), []),
-            target: entries.get((target, word), []),
+            source: source_entries_a,
+            target: source_entries_b,
+        },
+        "source_entry_match": {
+            source: source_match_a,
+            target: source_match_b,
         },
     }
+
+
+def sample_category_rows(
+    api_url: str, source: str, target: str, per_category: int, other_count: int, seed: int
+) -> tuple[dict[tuple[str, str], dict], dict[tuple[str, str], dict], dict[str, dict]]:
+    rng = random.Random(seed)
+    rows: dict[tuple[str, str], dict] = {}
+    metadata: dict[tuple[str, str], dict] = {}
+    strata = {}
+    for category in PAIR_CATEGORIES:
+        query = {"source": source, "target": target, "category": category, "limit": 1, "offset": 0}
+        with urlopen(f"{api_url.rstrip('/')}/api/pairs?{urlencode(query)}", timeout=20) as response:
+            total = json.load(response).get("total", 0)
+        sample_count = other_count if category == "other" else per_category
+        offsets = sorted(rng.sample(range(total), min(sample_count, total)))
+        strata[category] = {"total": total, "sample_count": len(offsets), "offsets": offsets}
+        for offset in offsets:
+            query["offset"] = offset
+            with urlopen(f"{api_url.rstrip('/')}/api/pairs?{urlencode(query)}", timeout=20) as response:
+                items = json.load(response).get("items", [])
+            if len(items) != 1:
+                raise ValueError(f"Expected one row at {source}/{target} {category} offset {offset}")
+            comparison = items[0]
+            key = comparison["word_a"], comparison["word_b"]
+            if key in rows:
+                raise ValueError(f"Duplicate comparison row selected: {source}/{target} {key}")
+            rows[key] = comparison
+            metadata[key] = {"category": category, "stratum_total": total, "offset": offset, "seed": seed}
+    return rows, metadata, strata
 
 
 def write_audit(
@@ -75,26 +123,36 @@ def write_audit(
     api_url: str,
     source: str,
     target: str,
-    words: list[str],
+    pairs: list[tuple[str, str]],
     force: bool = False,
+    comparison_rows: dict[tuple[str, str], dict] | None = None,
+    sample_metadata: dict[tuple[str, str], dict] | None = None,
+    sampling: dict | None = None,
 ) -> int:
     manifest = output.with_suffix(output.suffix + ".manifest.json")
     if not force and (output.exists() or manifest.exists()):
         raise FileExistsError(f"Output already exists; pass --force to replace it: {output}")
 
-    entries = load_source_entries(source_records, set(words))
+    entries = load_source_entries(source_records, {word for pair in pairs for word in pair})
     output.parent.mkdir(parents=True, exist_ok=True)
     temp_output = output.with_suffix(output.suffix + ".tmp")
     counts: dict[str, dict[str, int]] = {}
     try:
         with temp_output.open("w", encoding="utf-8", newline="\n") as destination:
-            for word in words:
-                comparison = fetch_pair(api_url, source, target, word)
-                record = audit_record(word, source, target, comparison, entries)
+            for word_a, word_b in pairs:
+                comparison = (
+                    comparison_rows.get((word_a, word_b))
+                    if comparison_rows is not None
+                    else fetch_pair(api_url, source, target, word_a, word_b)
+                )
+                record = audit_record(word_a, word_b, source, target, comparison, entries)
+                if sample_metadata and (word_a, word_b) in sample_metadata:
+                    record["sample"] = sample_metadata[(word_a, word_b)]
                 destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
-                counts[word] = {
+                counts[f"{word_a} → {word_b}"] = {
                     "comparison_rows": int(comparison is not None),
                     "source_entries": len(record["source_entries"][source]) + len(record["source_entries"][target]),
+                    "source_entry_match": record["source_entry_match"],
                 }
         temp_output.replace(output)
         source_manifest = source_records.with_suffix(source_records.suffix + ".manifest.json")
@@ -104,15 +162,17 @@ def write_audit(
             "source_manifest": str(source_manifest) if source_manifest.exists() else None,
             "source_manifest_sha256": hashlib.sha256(source_manifest.read_bytes()).hexdigest() if source_manifest.exists() else None,
             "comparison_api": f"{api_url.rstrip('/')}/api/pairs",
+            "sampled_live_api": sampling is not None,
             "languages": [source, target],
-            "words": words,
+            "word_pairs": pairs,
+            "sampling": sampling,
             "counts": counts,
         }
         manifest.write_text(json.dumps(manifest_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     except Exception:
         temp_output.unlink(missing_ok=True)
         raise
-    return len(words)
+    return len(pairs)
 
 
 def main() -> None:
@@ -123,10 +183,32 @@ def main() -> None:
     parser.add_argument("--api-url", default="http://localhost:8080")
     parser.add_argument("--source", default="sv")
     parser.add_argument("--target", default="en")
-    parser.add_argument("--words", nargs="+", default=DEFAULT_WORDS)
+    parser.add_argument("--words", nargs="+", help="Same headword in both languages.")
+    parser.add_argument("--pairs", nargs=2, action="append", metavar=("SOURCE_WORD", "TARGET_WORD"), help="Different headwords to join.")
+    parser.add_argument("--sample-per-category", type=int, help="Draw this many rows from each current pair category.")
+    parser.add_argument("--other-sample-count", type=int, default=8, help="Rows to draw from `other` (default: 8).")
+    parser.add_argument("--seed", type=int, default=20260928, help="Seed for category sampling.")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    count = write_audit(args.source_records, args.output, args.api_url, args.source, args.target, args.words, args.force)
+    if args.sample_per_category is not None and (args.pairs or args.words):
+        parser.error("choose either --sample-per-category or explicit --pairs/--words")
+    sampling = None
+    sample_metadata = None
+    if args.sample_per_category is not None:
+        if args.sample_per_category < 0 or args.other_sample_count < 0:
+            parser.error("sample counts must not be negative")
+        comparison_rows, sample_metadata, strata = sample_category_rows(
+            args.api_url, args.source, args.target, args.sample_per_category, args.other_sample_count, args.seed
+        )
+        pairs = list(comparison_rows)
+        sampling = {"seed": args.seed, "strata": strata}
+    else:
+        comparison_rows = None
+        pairs = args.pairs or [(word, word) for word in (args.words or DEFAULT_WORDS)]
+    count = write_audit(
+        args.source_records, args.output, args.api_url, args.source, args.target, pairs, args.force,
+        comparison_rows, sample_metadata, sampling,
+    )
     print(f"Wrote {count} joined audit rows to {args.output}")
 
 
