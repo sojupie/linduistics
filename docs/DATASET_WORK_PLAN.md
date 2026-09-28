@@ -39,9 +39,11 @@ Start from the 15 case groups and current CLDF preview already built locally. Ke
 - Demonstrated parser or identity bugs have regression coverage.
 - The exported tables have consistent links and honest attribution, coverage, and limitations.
 
-## Immediate next task
+## Current milestone and next task
 
-Turn the local 15-case CLDF preview into a release candidate: refresh it from the recorded inputs, correct stale case counts and provenance notes in the exporter output, check the generated tables and licenses, and document any fields the CLDF mapping cannot express cleanly. Then use the cases to pick the next concrete extraction fix. Keep the existing audits and data notes as evidence; this file is the short work order.
+A local 15-case CLDF release candidate now lives in [`datasets/cldf-case-evidence/`](../datasets/cldf-case-evidence/). Its manifest records case groups, upstream hashes, dump identities, and transformation-file hashes. The exporter checks IDs and declared foreign keys, and the output has been checked against its row counts and checksums. The official CLDF validator has not run, and the candidate is not cleared for redistribution until entries containing third-party material are reviewed.
+
+Next, use the case ledger to choose one concrete extraction or identity failure and reproduce it end to end. Fix that failure with the smallest source-based regression case, regenerate the slice, and compare the changed rows. Keep improving the source-to-result trail before expanding the sample or applying new labels to the full dataset.
 
 ## Existing notes
 
