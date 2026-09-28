@@ -486,6 +486,24 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py -
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
 
+## Preserve source distinction between unknown and uncertain origins (2026-09-28)
+
+Wiktionary distinguishes two source assertions that our export previously left as untyped templates. `unknown` (shortcut `unk`) is used when no origin hypothesis can be identified; `uncertain` (shortcut `unc`) is used when hypotheses exist but cannot be established. It distinguishes these from an editor simply not knowing the answer ([unknown template](https://en.wiktionary.org/wiki/Template:unknown), [uncertain template](https://en.wiktionary.org/wiki/Template:uncertain)).
+
+The extractor now preserves this distinction as `source_etymology_status: unknown` or `source_etymology_status: uncertain`. The field records Wiktionary's template-level assessment; it does not state that our project verified the history or that a comparison pair belongs in a particular category. Customized template wording is retained as `source_label`, with the raw template arguments still available.
+
+Across the full export, the four template names produce **1,833 unknown claims** and **1,652 uncertain claims** (3,485 total). They add no relation endpoints and do not change the 1,055,534 normalized relation count, the 20,354 pair-claim match IDs, candidate scores, categories, or database rows. The full suite passes **117 tests**.
+
+The ignored local export is `pipeline/data/etymology_records_source_origin_status.jsonl`, SHA-256 `717e04e01608216d3d00bd7b5e32bc0bf0b0efab17c2cd8d24e1d1b328091ee`. The matching evidence file is `pipeline/data/candidate_source_claim_matches_source_origin_status.jsonl`, SHA-256 `8e02b7e71966b83de73d04fbb11e641cb603f1b4a02f09ef49d1098ba0040b10`.
+
+Rebuild these local artifacts:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\extract_etymology_records.py --input-dir pipeline\data --languages sv da nb de en --output pipeline\data\etymology_records_source_origin_status.jsonl --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --output pipeline\data\source_claim_inventory_source_origin_status.json --force
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_origin_status.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_origin_status.jsonl --force
+```
+
 ## Source claims within the `other` candidate bucket (2026-09-28)
 
 The refreshed source-claim join has **20,354 evidence rows** across **17,753 exact-case candidate form pairs**. Of those, **13,738** pairs currently marked `other` have at least one source-entry claim whose language and form match the paired entry. The other bucket contains **572,981 unique exact-case candidate form pairs** in this candidate build; 559,243 have no match under this exact entry-claim join.
