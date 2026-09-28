@@ -50,7 +50,7 @@ Rerun with:
 pipeline\.venv\Scripts\python.exe pipeline/src/extract_translation_claims.py --input pipeline/data/kaikki_en.jsonl --output pipeline/data/translation_claims_en.jsonl
 ```
 
-The pipeline suite passes: 78 tests. This artifact is a source-preserving intermediate table; it is not a release dataset or evidence that a translation has a particular historical relationship.
+The pipeline suite passed: 78 tests at this stage. This artifact is a source-preserving intermediate table; it is not a release dataset or evidence that a translation has a particular historical relationship.
 
 ## Completed: link translation surfaces to target entries
 
@@ -79,11 +79,25 @@ The examples already raised show why a spelling-pair label is too coarse:
 
 The generated candidate table illustrates the mismatch: for example, it labels Swedish *fleece* versus English *fleece* `false_friend` with unknown relation, while the source explicitly records borrowing. For *bankman*, it labels a false friend although the English sense it selected is the capitalized surname and its source has no origin claim. These are not yet bulk corrections; they are concrete failures the next transformation should encode and test.
 
+## Completed: scan all five source dumps
+
+The translation exporter now accepts several input dumps. Scanning all five local language snapshots counted 2,315,293 entries. The English dump supplied all 302,640 in-scope translation claims; the other four dumps supplied zero. That is a property of these local extracts, not a claim that Wiktionary has no translation data in those languages. We should treat reversed English-to-target links as joins derived from the English claim plus target source entry, not as independently stated target-to-English claims.
+
+The existing [extract_etymology_records.py](../pipeline/src/extract_etymology_records.py) produced a separate source-linked export across all five dumps: 710,110 entries with etymology data, 978,265 sense records, and 1,138,433 raw templates. Its current normalizer emitted 1,045,911 relation claims, including 99,626 borrowings, 87,404 inheritances, 72,456 compounds, 117,612 explicit cognate mentions, and 4,603 noncognate mentions. It also left 103,729 templates without a normalized relation; common ones include glossary and layout helpers, so they must not be interpreted as “unknown origin.”
+
+The normalized output contains 5,448 repeated edge encodings across 5,103 source entries. Often Wiktionary includes both a base template and its `+` form for the same claim (for example, `inh` and `inh+`). Preserve those templates as provenance, but deduplicate their projected relation edge carefully before counting lexical relationships. Rerun the all-language extraction with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/extract_etymology_records.py --input-dir pipeline/data --languages da de en nb sv --output pipeline/data/etymology_records_all.jsonl
+```
+
 ## Do this next
 
-### 1. Join source claims in both directions
+### 1. Build a small multi-edge lexical-history slice
 
-The current source-claim export starts from English translation senses. Extend it to the four other existing language dumps so the data retains direction and asymmetric coverage, then join each claim to target entries in the same way. Keep target `form_of` paths and multiple senses as evidence, not a forced lemma choice. Use *trübe* and *tidigare* as ambiguity checks, and include *bankman* even though its Wiktionary entries do not provide a direct translation link.
+Start with the inspected pairs: *bank*, *bankman*, *fleece*, *clown*, *sandbank*, and *ombudsman*. Link each current candidate to its exact language-specific source entries and senses. Represent inherited, borrowed, derived, and compound-component links as separate directed claims with raw wording, template provenance, and uncertainty. Keep orthographic, phonetic, and semantic similarity as separate observations. Preserve multiple senses, homographs, component links, and missing origin claims; do not force each spelling pair into a single exclusive label.
+
+For the slice, add a graph projection that collapses only duplicate normalized claims whose source template evidence points to the same edge. Keep the original source templates intact. Use cases such as *bankman* to test that a whole-word relationship can remain unestablished while its components have their own claims.
 
 ### 2. Make a rerunnable, source-backed slice
 
