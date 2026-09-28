@@ -74,9 +74,9 @@ def project_source_case_edges(inputs: list[Path], output: Path, force: bool = Fa
                                         "source_entry": {
                                             "language": lang,
                                             "word": entry.get("word"),
-                                            "part_of_speech": entry.get("pos"),
-                                            "entry_key": entry.get("key"),
-                                            "etymology_text": entry.get("text"),
+                                            "part_of_speech": entry.get("part_of_speech", entry.get("pos")),
+                                            "entry_key": entry.get("source_entry_key", entry.get("key")),
+                                            "etymology_text": entry.get("etymology_text", entry.get("text")),
                                         },
                                         "edge": {
                                             "relation": relation,
