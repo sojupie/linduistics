@@ -8,7 +8,7 @@ import hashlib
 import json
 import math
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -398,6 +398,14 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         source_data_path = source_path.parent / f"{source_export_name}.manifest.json" if source_export_name else None
         if source_data_path and source_data_path.exists():
             source_data_manifest = json.loads(source_data_path.read_text(encoding="utf-8"))
+    claim_by_id = {row["ID"]: row for row in claims}
+    comparison_by_id = {row["ID"]: row for row in comparisons}
+    label_counts = Counter(row["Legacy_Candidate_Label"] for row in comparisons)
+    matched_evidence = defaultdict(Counter)
+    for match in claim_matches:
+        label = comparison_by_id[match["Comparison_ID"]]["Legacy_Candidate_Label"]
+        relation = claim_by_id[match["Claim_ID"]]["Relation"]
+        matched_evidence[label][f"{relation}:{match['Target_Identity_Status']}"] += 1
     manifest = {
         "source": source_path.name,
         "source_sha256": digest(source_path),
@@ -414,6 +422,13 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "metadata": "metadata.json",
         "metadata_sha256": digest(output_dir / "metadata.json"),
         "tables": {filename: {"rows": len(rows), "sha256": digest(output_dir / filename)} for filename, _, rows in tables},
+        "summary": {
+            "comparisons_by_legacy_label": dict(sorted(label_counts.items())),
+            "matched_source_claims_by_legacy_label": {
+                label: dict(sorted(relations.items()))
+                for label, relations in sorted(matched_evidence.items())
+            },
+        },
         "limits": [
             "The nine cases are deliberate diagnostics, not a representative sample.",
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",

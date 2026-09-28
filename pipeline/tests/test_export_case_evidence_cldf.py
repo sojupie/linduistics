@@ -93,6 +93,8 @@ def test_exports_claims_components_and_comparisons_with_linked_ids(tmp_path):
     assert manifest["tables"]["comparisons.csv"]["rows"] == 1
     assert manifest["tables"]["claim-matches.csv"]["rows"] == 1
     assert manifest["source_dump_files"]["sv"]["source_file_sha256"] == "dump-hash"
+    assert manifest["summary"]["comparisons_by_legacy_label"] == {"other": 1}
+    assert manifest["summary"]["matched_source_claims_by_legacy_label"]["other"] == {"borrowed_from:available": 1}
     metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
     assert metadata["dc:conformsTo"].endswith("#Generic")
     tables = {table["url"]: table for table in metadata["tables"]}
