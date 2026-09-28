@@ -244,3 +244,42 @@ Check whether CLDF's existing modules fit the released tables. Export the compat
 - Building a general-purpose linguistic ontology or making the site API the internal data model.
 
 The longer audit history and current data model are in [NEXT_DATASET_STAGE.md](NEXT_DATASET_STAGE.md).
+
+## Candidate-to-source-claim evidence export (2026-09-28)
+
+I ran the source-claim coverage audit against the latest source-sense candidate build and extended it to export the matching claim records as compact JSONL. It streams the Parquet input and restricts the check to Swedish–Danish, Swedish–Norwegian Bokmål, and German–English, the three pairs the audit reports.
+
+The local export at `pipeline/data/candidate_source_claim_matches.jsonl` contains **9,268 source-claim-to-candidate evidence rows** across **7,579 distinct candidate pairs**. Each row has a stable match ID; the candidate spelling pair and current candidate label; the source entry key, URL, and active source sense; the normalized relation and original template arguments; and the active target entry/sense IDs when available. The adjacent manifest records both input hashes and the output hash. The export omits full etymology prose.
+
+The useful result for the residual category is that **5,675 `other` candidate pairs** in these three language-pair builds have at least one normalized source claim naming the other language and the exact compared form (case-folded):
+
+| Pair | `other` candidates | With a matching source claim | Share |
+| --- | ---: | ---: | ---: |
+| Swedish–Danish | 20,645 | 1,034 | 5.0% |
+| Swedish–Norwegian Bokmål | 20,407 | 690 | 3.4% |
+| German–English | 96,467 | 3,951 | 4.1% |
+| **Combined** | **137,519** | **5,675** | **4.1%** |
+
+The source-claim types overlap within a candidate pair. They include cognate mentions, borrowing, derivation, calques, noncognate mentions, and other direct claims. This confirms that `other` is a mixed pipeline remainder. It does **not** mean those pairs can automatically be relabeled: the claim is attached to a source entry, and a form-level match does not prove that it applies to the selected target sense. Of all 9,268 evidence rows, 188 lack an active target source identity; the remaining target IDs still do not make an entry-level claim sense-specific.
+
+The 9,656 German/English, 3,453 Swedish/Danish, and 1,849 Swedish/Norwegian Bokmål source cognate-mention claims have 2,320, 1,635, and 865 active source-entry candidate matches, respectively. In 2,280, 1,602, and 853 of those matched cases, both comparison sides have active source-sense IDs. This last count only says the candidate row has IDs on both sides; it does not establish that the source's cognate mention targets those exact senses.
+
+Reproduce the export from the existing local artifacts:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_all.jsonl --comparisons pipeline\data\all_comparisons_source_sense.parquet --matches-output pipeline\data\candidate_source_claim_matches.jsonl --force
+```
+
+Hashes from the generated manifest:
+
+- Source records: `1406623aa2bd12cdcf23eb19b575ed2f61f015759e2cb49e5144b49b5274be4b`.
+- Source-sense comparisons: `bc2b73806941809b2cf4cce74ee1bc0c24df08e8f30fa892d922788a16e2c1c4`.
+- Matched evidence export: `01342e157958e29589a7eb2468a770edf189084c01063482e92f593b15943524`.
+
+Next, inspect the matched rows, especially the 188 ambiguous target identities and candidates with multiple source claims. Preserve this as an evidence layer beside the existing labels. Do not bulk-relabel comparisons from this export. Check source attribution and licensing before publishing the generated table.
+
+### Follow-up: the comparison input was stale
+
+The counts above are useful only as a diagnostic of source-claim matching. The comparison Parquet used for this audit was built from lemma tables created before the parser preserved source-entry IDs, source-sense IDs, and etymological roots. Rebuilding from those old tables produced empty roots and `unknown` for every `etymological_relation`. That comparison output cannot support conclusions about the current historical classifications, and the 5,675 matches must not be read as category corrections.
+
+The identity-aware parser has since regenerated lemma tables for all five local dumps into `pipeline/data/lemmas_source_identity/`. The immediate next step is to verify identity and root coverage there, then rebuild comparisons from those tables and rerun the audit. The source-claim builder now retains candidate target identities when several senses match equally; 188 therefore means ambiguous in the old export, not missing source evidence. The fresh comparison rebuild and audit remain pending.

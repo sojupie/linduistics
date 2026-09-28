@@ -20,7 +20,9 @@ One word pair may have more than one path. A source’s claim is evidence to pre
 - The local source export keeps source-entry identity, source senses, raw etymology templates and arguments, and normalized claims. It contains 710,110 source records and 1,148,705 claim records.
 - A compact local slice contains 5,446 source-backed named-after, coined-by, coinage, and onomatopoeic facts. Each has a stable ID and source URL; it omits full etymology prose.
 - A separate 270-case audit keeps comparison senses, source claims, and their evidence links available for inspection. It is diagnostic, not representative.
-- The full pipeline suite passes 100 tests. Generated files are local and ignored; the live database has not been updated.
+- The previous source-claim audit found 9,268 claim records matched to 7,579 candidates, including 5,675 `other` candidates. Treat those counts as diagnostic only: its comparison build used stale lemma files, so every historical relation in that build was `unknown`. The 188 unselected target identities were ambiguous, not absent; the builder now preserves their possible identities. See the [audit findings and correction](DATASET_NEXT_STEPS.md#candidate-to-source-claim-evidence-export-2026-09-28).
+- Fresh per-language lemma tables have now been parsed from all five local Wiktionary dumps into `pipeline/data/lemmas_source_identity/`. Their source-entry, source-sense, and root coverage still needs validation before rebuilding comparisons.
+- The prior full pipeline run passed 100 tests; the latest focused builder and audit tests passed 16 tests. Generated files are local and ignored; the live database has not been updated.
 
 These counts describe the current extracted files, not vocabulary coverage or the share of words with any historical relationship. The current `other` category is a candidate-builder remainder, not a linguistic conclusion.
 
@@ -28,7 +30,7 @@ These counts describe the current extracted files, not vocabulary coverage or th
 
 ### 1. Make the source-to-result path work end to end
 
-Use the existing case ledger and local audit files. For a compact set of useful examples—*fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*—follow the data through:
+Validate the fresh lemma tables: confirm that source-entry IDs, source-sense IDs, and etymological evidence survived parsing, including the known *fleece* case. Then rebuild the local comparison artifact from those tables and rerun the source-claim audit. Inspect candidates where a claim is attached to the source entry but the target entry or sense link is ambiguous. For a compact set of useful examples—*fleece*, *clown*, *ombudsman*, *bank*, *bankman*, and *sandbank*—follow the data through:
 
 1. the exact source entry and etymology;
 2. the selected sense or component, when available;
