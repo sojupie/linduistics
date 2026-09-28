@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import sys
 import time
+from collections import defaultdict
 from pathlib import Path
 
 import orjson
@@ -31,12 +32,22 @@ def extract_forms(
     print(f"Loading valid canonical lemmas from {lemmas_parquet_path}...")
     lemmas_table = pq.read_table(lemmas_parquet_path, columns=["word"])
     raw_lemmas = lemmas_table.column("word").to_pylist()
-    # Build case-insensitive lookup to canonical lemma spelling
-    lemma_lookup = {w.lower(): w for w in raw_lemmas if w}
-    print(f"Loaded {len(lemma_lookup):,} valid canonical lemmas for lang '{lang}'.")
+    exact_lemmas = {word for word in raw_lemmas if word}
+    lowercase_lemmas: dict[str, list[str]] = defaultdict(list)
+    for word in exact_lemmas:
+        lowercase_lemmas[word.lower()].append(word)
+
+    def resolve_lemma(word: str) -> str | None:
+        if word in exact_lemmas:
+            return word
+        matches = lowercase_lemmas.get(word.lower(), [])
+        return matches[0] if len(matches) == 1 else None
+
+    print(f"Loaded {len(exact_lemmas):,} valid canonical lemmas for lang '{lang}'.")
 
     # Set of (form, lemma) pairs
     pairs: set[tuple[str, str]] = set()
+    ambiguous_links = 0
 
     start_time = time.perf_counter()
     print(f"Streaming and parsing forms from {raw_jsonl_path}...")
@@ -50,8 +61,8 @@ def extract_forms(
                 continue
 
             # Source 1: Declension/conjugation tables on canonical headwords
-            if word_lower in lemma_lookup:
-                canonical_lemma = lemma_lookup[word_lower]
+            canonical_lemma = resolve_lemma(raw_word)
+            if canonical_lemma is not None:
                 for form_entry in d.get("forms", []):
                     form = form_entry.get("form", "").strip().lower()
                     tags = form_entry.get("tags", [])
@@ -63,16 +74,22 @@ def extract_forms(
                         and "inflection-template" not in tags
                     ):
                         pairs.add((form, canonical_lemma))
+            elif len(lowercase_lemmas.get(word_lower, [])) > 1:
+                ambiguous_links += 1
 
             # Source 2: "form-of" senses pointing back to canonical headwords
             for sense in d.get("senses", []):
                 for fo in sense.get("form_of", []):
-                    target_lemma_lower = fo.get("word", "").strip().lower()
-                    if target_lemma_lower in lemma_lookup and target_lemma_lower != word_lower:
-                        pairs.add((word_lower, lemma_lookup[target_lemma_lower]))
+                    target_word = fo.get("word", "").strip()
+                    target_lemma = resolve_lemma(target_word)
+                    if target_lemma is not None and target_lemma != raw_word:
+                        pairs.add((word_lower, target_lemma))
+                    elif len(lowercase_lemmas.get(target_word.lower(), [])) > 1:
+                        ambiguous_links += 1
 
     extract_time = time.perf_counter() - start_time
     print(f"Extracted {len(pairs):,} unique (form, lemma) pairs in {extract_time:.2f}s.")
+    print(f"Skipped {ambiguous_links:,} lemma links with ambiguous lowercase matches.")
 
     # Convert to sorted columns for Parquet
     sorted_pairs = sorted(pairs)
