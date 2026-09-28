@@ -13,16 +13,19 @@ CLDF is fine as a sharing format. Keep the working pipeline shaped around the ev
 - The arbitrary candidate caps are removed. The local rebuild has 1,638,454 directed comparison candidates, about four times the previous file. This is candidate output, not a measure of vocabulary coverage.
 - All 23 previously flagged comparison spellings are present in the uncapped output after case-fold matching: 20 exact spellings and three lowercase canonical forms.
 - Translation mining now retains the source sense that supplied each candidate. This fixes the demonstrated `haben` / `own` sense mismatch and preserves multiple source translation claims for `fressen` / `fret` and `bis` / `till`.
-- A fresh, source-sense-aware comparison build and three refreshed 90-pair audits exist as local generated files. The pipeline test suite passed 89 tests after these changes.
+- The refreshed 270-case audit now has a comparison row for every case and active source-sense links on both sides. Three German–English spellings (`Haben`, `Fressen`, `Bis`) resolve through an explicitly recorded unique case-fold match.
+- The source-claim projection contains 2,341 normalized edges backed by 2,396 source-template records. It skips 292 claims without a normalized relation; those claims remain in the audit files.
+- A small case ledger now documents concrete examples and separates source paths, comparison observations, and evidence-link status in [DATASET_CASE_REVIEW.md](DATASET_CASE_REVIEW.md).
+- The pipeline test suite passes: 92 tests.
 - None of this changes the live database or proves the generated category labels correct. The old `other` value remains a candidate-builder remainder, not a linguistic relationship.
 
 See [the stage record](NEXT_DATASET_STAGE.md) and [the running findings log](DATASET_NEXT_STEPS.md) for methods, examples, and limitations.
 
 ## Next work, in order
 
-### 1. Finish the refreshed source audit
+### 1. Review the refreshed source audit
 
-Project the three fresh 90-pair audits against the source-sense-aware build into a compact edge file. Check how source claims connect to the exact entries and active comparison senses, with particular attention to the known cases in the stage record. Keep three things distinct:
+The three fresh 90-pair audits and their compact edge projection are complete. Now review the concrete cases where the evidence surfaces distinct paths or identity limits, especially the examples already named in the stage record. Keep three things distinct:
 
 - **Source claims:** what Wiktionary records, including the exact entry, sense, direction, wording, and template evidence.
 - **Comparison observations:** computed spelling, sound, meaning, and translation evidence.
@@ -30,9 +33,9 @@ Project the three fresh 90-pair audits against the source-sense-aware build into
 
 A claim attached to a word entry is not automatically a claim about the selected sense. A missing link is not evidence that two words are unrelated. Record unresolved matches rather than guessing.
 
-### 2. Make a small case set that tests the data model
+### 2. Make a small reviewed case set that tests the data model
 
-Use the cases already found, not a new research project or a broad manual survey. Include examples that exercise:
+Use [the reviewed case ledger](DATASET_CASE_REVIEW.md) and existing audits, not a new research project or broad manual survey. Include examples that exercise:
 
 - inheritance and cognate mentions;
 - direct borrowing and borrowing from a shared donor;
@@ -73,7 +76,7 @@ Use CLDF for compatible forms, senses, and relationship tables where that helps 
 
 ## Done for this stage when
 
-- The refreshed case audits produce a compact source-claim edge file with active-sense links and unresolved matches visible.
+- The refreshed case audits produce a compact source-claim edge file with active-sense links and unresolved matches visible. **Complete:** 270/270 cases now have comparison rows and active links on both sides; the 2,341-edge projection is reproducible from the local audit files.
 - The selected cases demonstrate that source claims, lexical paths, comparison observations, and project interpretations stay distinct.
 - Reproduced transformation failures have regression checks, and the slice can be rebuilt from recorded local inputs.
 - A small release is understandable and useful without claiming completeness or expert adjudication.
