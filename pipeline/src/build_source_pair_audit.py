@@ -409,7 +409,7 @@ def audit_record(
     return {
         "audit_key": f"{source}|{word_a}|{target}|{word_b}",
         "comparison": {key: comparison.get(key) for key in PAIR_FIELDS} if comparison else None,
-        "comparison_match_method": (
+        "candidate_pair_match_method": (
             comparison.get("_pair_match_method", "exact") if comparison else "not_found"
         ),
         "source_entries": {
@@ -513,7 +513,7 @@ def write_audit(
                 destination.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
                 counts[f"{word_a} → {word_b}"] = {
                     "comparison_rows": int(comparison is not None),
-                    "comparison_match_method": record["comparison_match_method"],
+                    "candidate_pair_match_method": record["candidate_pair_match_method"],
                     "source_entries": len(record["source_entries"][source]) + len(record["source_entries"][target]),
                     "source_entry_match": record["source_entry_match"],
                 }

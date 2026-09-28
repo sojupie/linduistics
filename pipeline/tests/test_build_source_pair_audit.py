@@ -156,6 +156,7 @@ class SourcePairAuditTests(unittest.TestCase):
         self.assertEqual([entry["source_entry_key"] for entry in result["source_entries"]["en"]], ["en|gift|noun||c"])
         self.assertEqual(result["comparison"]["category"], "false_friend")
         self.assertEqual(result["comparison"]["etymological_relation"], "cognate")
+        self.assertEqual(result["candidate_pair_match_method"], "exact")
         self.assertIsNone(result["comparison"]["id"])
 
     def test_audit_join_supports_different_forms_across_languages(self):
