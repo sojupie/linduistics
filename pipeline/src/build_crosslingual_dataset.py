@@ -321,7 +321,6 @@ def align_pair_senses(
     meta_a: dict,
     meta_b: dict,
     matcher: SemanticMatcher,
-    is_mined_translation: bool = False,
     translation_source_senses: Set[Tuple[str, str | None]] | None = None,
 ) -> Tuple[float, float, str, str, List[dict], List[dict]]:
     """Evaluates N x M sense matrix between Word A and Word B.
@@ -408,11 +407,6 @@ def align_pair_senses(
         max_active_sem = float(sim_matrix[best_i, best_j])
 
     best_sem_sim = float(sim_matrix[best_i, best_j])
-
-    # Direct translation links from Wiktionary represent high semantic affinity
-    if is_mined_translation:
-        best_sem_sim = max(best_sem_sim, 0.95)
-        max_active_sem = max(max_active_sem, 0.95)
 
     # Annotate senses with attribution and counterpart affinity
     annotated_a = []
@@ -504,7 +498,7 @@ def build_pair_dataset(
 
     # Step 1: Pre-collect candidate items
     candidate_items: List[
-        Tuple[dict, dict, bool, float, float, Set[Tuple[str, str]]]
+        Tuple[dict, dict, float, float, Set[Tuple[str, str]]]
     ] = []
 
     # Keep every mined translation candidate. The comparison table is already
@@ -523,7 +517,7 @@ def build_pair_dataset(
             else 0.0
         )
         source_senses = (translation_source_senses or {}).get((w_a, w_b), set())
-        candidate_items.append((meta_a, meta_b, True, s_orth, s_phon, source_senses))
+        candidate_items.append((meta_a, meta_b, s_orth, s_phon, source_senses))
         seen_pairs.add((meta_a["word"], meta_b["word"]))
 
     # 1.2 Surface collisions
@@ -535,11 +529,11 @@ def build_pair_dataset(
         seen_pairs=seen_pairs,
     )
     for meta_a, meta_b, s_orth, s_phon in collisions:
-        candidate_items.append((meta_a, meta_b, False, s_orth, s_phon, set()))
+        candidate_items.append((meta_a, meta_b, s_orth, s_phon, set()))
 
     # Pre-encode all glosses for candidate items in batches
     all_glosses: List[str] = []
-    for meta_a, meta_b, _, _, _, _ in candidate_items:
+    for meta_a, meta_b, _, _, _ in candidate_items:
         for s in meta_a.get("senses") or []:
             all_glosses.append(s["gloss"])
         for s in meta_b.get("senses") or []:
@@ -547,10 +541,9 @@ def build_pair_dataset(
     matcher.preencode_glosses(all_glosses)
 
     # Step 2: Sense alignment and classification
-    for meta_a, meta_b, is_mined, s_orth, s_phon, source_senses in candidate_items:
+    for meta_a, meta_b, s_orth, s_phon, source_senses in candidate_items:
         s_sem, max_active_sem, def_a, def_b, senses_a, senses_b = align_pair_senses(
-            meta_a, meta_b, matcher, is_mined_translation=is_mined,
-            translation_source_senses=source_senses,
+            meta_a, meta_b, matcher, translation_source_senses=source_senses,
         )
 
         matched_a = next(s for s in senses_a if s["is_active_match"])
@@ -571,6 +564,7 @@ def build_pair_dataset(
             max_active_sem=max_active_sem,
             pos_a=pos_a,
             pos_b=pos_b,
+            direct_translation_evidence=bool(source_senses),
         )
 
         shared_etym_root = (

@@ -37,6 +37,10 @@ def test_name_to_common_word_collision_is_not_a_false_friend():
     assert classify_pair(1.0, 1.0, 0.1, pos_a="name", pos_b="noun") == ("other", "unknown")
 
 
+def test_translation_source_evidence_blocks_a_false_friend_inference_but_not_the_score():
+    assert classify_pair(1.0, 0.9, 0.1, direct_translation_evidence=True) == ("other", "unknown")
+
+
 def test_verified_cognates_can_have_full_or_partial_semantic_overlap():
     root = "Proto-Germanic *hundaz"
     assert classify_pair(0.2, 0.2, 0.9, etym_root_a=root, etym_root_b=root) == ("true_cognate", "cognate")

@@ -39,6 +39,7 @@ def classify_pair(
     max_active_sem: Optional[float] = None,
     pos_a: str = "",
     pos_b: str = "",
+    direct_translation_evidence: bool = False,
 ) -> Tuple[str, str]:
     """Return a display category and the pair's etymological relation.
 
@@ -52,7 +53,9 @@ def classify_pair(
     if (pos_a == "name") != (pos_b == "name"):
         return "other", origin
 
-    if surface_match and semantics <= 0.30:
+    # A source-attested translation conflicts with a false-friend inference;
+    # keep the candidate unclassified without changing its embedding score.
+    if surface_match and semantics <= 0.30 and not direct_translation_evidence:
         return "false_friend", origin
     if origin == "cognate":
         return ("true_cognate" if semantics >= 0.75 else "partial_cognate"), origin

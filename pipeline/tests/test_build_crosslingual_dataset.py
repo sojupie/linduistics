@@ -330,6 +330,7 @@ def test_translation_source_sense_constrains_english_sense_alignment():
     )
 
     assert rows[0]["pos_b"] == "verb"
+    assert rows[0]["semantic_sim"] == 0.0
     selected = [sense for sense in json.loads(rows[0]["senses_b"]) if sense["is_active_match"]]
     assert selected[0]["source_sense_id"] == "own-verb"
     assert json.loads(rows[0]["translation_source_senses"]) == [{
