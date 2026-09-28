@@ -6,27 +6,31 @@ Keep doing the part that made this project interesting: source data, inspect wha
 
 Wiktionary stays the first source. CLDF is a possible export format when it helps someone reuse the result; it does not dictate the internal model or need to be adopted before the data is ready.
 
+## Next concrete work
+
+Use the existing pipeline and the nine-case source-linked slice. Do not start a separate validation project. The aim is to make one useful dataset artifact by following the evidence we already extracted, fixing transformations only when a real case shows where they lose or distort information.
+
+1. **Trace the cases end to end.** For each existing case, line up the exact source entries and senses, Wiktionary claims and direction, component links, calculated similarities, and current output. Mark what is directly stated, what the pipeline inferred, and what remains unresolved. Prioritize the examples that expose distinct issues: *fleece*, *clown*, *ombudsman*, *bank/bankman/sandbank*, *torta/tort*, and the corrected-root cases.
+2. **Fix demonstrated pipeline failures.** Find the earliest point where each mismatch appears: extraction, entry or sense identity, claim matching, score calculation, or interpretation. Make the smallest correction that preserves the source evidence, and add a regression case. In particular, do not equate a matching root field with a whole-word relationship, a direct loan with the absence of deeper ancestry, or component matches with whole-word cognacy.
+3. **Make a readable comparison artifact.** Rebuild the bounded slice from recorded inputs and show old output beside source evidence and corrected transformation output. Keep stable IDs, input hashes or revisions, and transformation version with it. Keep the live database untouched while reviewing this candidate.
+4. **Try a CLDF export of that artifact.** Map records to existing CLDF tables where they fit. Keep any project-specific provenance or claim links in a small linked table. Compare the export with the readable JSONL/TSV and keep CLDF if it makes reuse easier; do not redesign the internal pipeline around the format.
+5. **Choose the next expansion from what the slice cannot express.** Add a source only when a specific missing fact would change or enrich a transformation. Expand beyond the seed cases by rerunning tested transformations, not by applying labels learned from a handful of examples to the full dataset.
+
 ## First useful release
 
 Build one bounded, source-backed slice across the five varieties already in the project. A reader should be able to go from a compared form and sense to the exact source entries, see the source wording and the transformation, and distinguish stated history from our computed observations and interpretation.
 
 Use the cases and extraction work recorded in [NEXT_DATASET_STAGE.md](NEXT_DATASET_STAGE.md) and [DATASET_NEXT_STEPS.md](DATASET_NEXT_STEPS.md) as the starting material. Keep generated dumps and source-text artifacts local; check in scripts, tests, manifests that do not reproduce source text, and concise findings.
 
-## Work order
+## Data boundaries to preserve
 
-1. **Finish the evidence slice.** Keep exact entry, etymology, sense, spelling, and language identities separate. Attach translation claims and etymology claims to the exact source records they came from. Preserve the original wording, direction, components, uncertainty, and source version. An absent or unmatched claim means “not established from these inputs,” not “unrelated.”
-2. **Represent claims at the right scope.** Keep whole-entry history separate from component history. A compound can have cognate components without its whole-word history being established. A borrowing can coexist with a deeper shared ancestor. A translation, similar form, or high similarity score is not itself evidence of cognacy.
-3. **Test the transformation on a seeded, varied sample.** Include every current label and the structural cases already exposed: loans, compounds, shared donors, partial relationships, homographs, sense mismatches, and missing or uncertain etymologies. Record the old result, source-backed claims, new interpretation, and unresolved bits side by side. Use the sample to find parser and join failures; do not claim it proves vocabulary-wide correctness or percentages.
-4. **Explain the residual bucket from evidence.** Treat `other` as the current builder's remainder, not a linguistic category. Split sampled rows only when their evidence supports a distinct description, such as a recorded loan, compound, translation-only link, unresolved origin, or mismatched sense. Keep multiple claims when they apply; do not force every pair into one exclusive label. Retain “misleadingly similar” as a queryable comparison observation even when origin is unknown.
-5. **Compare before replacing.** Rebuild only the bounded candidate slice first. Show which rows changed and why, and keep the existing classifications available for comparison. Expand to more rows only after the exact-sense links and demonstrated failure cases pass their regression checks. Leave the live database untouched until the candidate output is inspectable.
-6. **Package what the slice can support.** Publish versioned machine-readable tables with stable IDs, source/dump identifiers and hashes, transformation version, rerun command, license notes, coverage, and limitations. Use the simplest useful project format first; add a CLDF export if its existing tables fit and make the slice easier to reuse. Keep project-specific evidence links documented rather than distorting them to fit a format.
+Keep exact entry, etymology, sense, spelling, and language identities separate. Attach translation and historical claims to the source records they came from. Preserve direction, components, uncertainty, and source version. An absent or unmatched claim means “not established from these inputs,” not “unrelated.”
 
-## Keep the data dimensions distinct
+Keep lexical history distinct from modern comparison and language-level properties. Borrowing, inheritance, derivation, calquing, compounds, and component relationships can coexist at different scopes. Spelling, pronunciation, meaning similarity, and translation help compare forms; they do not prove origin. Genealogy, area/contact, and typology describe languages and need independent sources.
 
-- **Language relationships:** genealogy, contact/area, and typological features each need their own sourced statements and coverage. They are not interchangeable.
-- **Lexical history claims:** inheritance, borrowing, calquing, derivation, compounds, and cognate-set links are directed or scoped relationships supported by source evidence.
-- **Comparison observations:** translations, spelling, pronunciation, and semantic similarity describe forms or senses; they can help find candidates but do not establish origin.
-- **Project interpretations:** judgments derived by a named transformation, with its input records, version, and uncertainty visible.
+Treat `other` as the current candidate builder's remainder, not a linguistic category. Keep overlapping evidence and “misleadingly similar” queryable without forcing every word pair into one box. Do not use a small set of reviewed examples to relabel the full dataset or make vocabulary-wide percentage claims.
+
+Package only what the slice can support: stable IDs, source/dump identifiers and hashes, transformation version, rebuild command, license notes, coverage, and limitations. Use the simplest readable format first; add CLDF when it helps someone reuse the result.
 
 Only add a new category, source, or data structure when an audited case demonstrates what it must represent. In particular, do not turn missing evidence into a negative historical claim.
 
