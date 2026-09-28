@@ -52,11 +52,38 @@ pipeline\.venv\Scripts\python.exe pipeline/src/extract_translation_claims.py --i
 
 The pipeline suite passes: 78 tests. This artifact is a source-preserving intermediate table; it is not a release dataset or evidence that a translation has a particular historical relationship.
 
+## Completed: link translation surfaces to target entries
+
+The new [link_translation_target_entries.py](../pipeline/src/link_translation_target_entries.py) joins each distinct translated form to every matching entry in the target-language Wiktionary dump. It writes source entry IDs and line numbers, etymology text and templates, and sense glosses, tags, and `form_of` links. Exact-spelling matches remain distinct from case-only matches; homographic entries stay separate.
+
+Across the 302,640 exported English translation claims, 371 had no usable target spelling. The remaining claims supplied 211,255 distinct forms across the four targets. Exact target entries were found for 113,227 forms; 1,197 more had case-only matches, 14 of those ambiguous across multiple target spellings. The other 96,831 forms had no source entry in these snapshots. The join produced 131,354 target source-entry records (117 MB). Per-language counts and SHA-256 fingerprints for every input are in the generated manifest. Both generated files stay local and ignored.
+
+Rerun with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/link_translation_target_entries.py --claims pipeline/data/translation_claims_en.jsonl --target-dir pipeline/data --output pipeline/data/translation_target_entries.jsonl
+```
+
+### First source-backed cases
+
+The examples already raised show why a spelling-pair label is too coarse:
+
+| Case | Source entries say | What that supports |
+| --- | --- | --- |
+| Swedish *bankman* / English *Bankman* | Swedish: compound *bank + man*, “bank employee.” English capitalized *Bankman*: “A surname,” with no etymology claim. English lowercase *bankman* is a separate alternative form of *banksman*. | The current same-spelling row draws on a case-distinct English name and Swedish compound. The source does not establish their historical relationship. Component-level evidence belongs beside, not inside, the whole-word relation. |
+| Swedish *fleece* / English *fleece* | Swedish entry: borrowed from English. English entry: inherited through Old English from Proto-West Germanic. | A borrowing edge is supported. The English root describes English’s history; it is not evidence that Swedish independently inherited the same root. |
+| German *Fleece* / English *fleece* | German entry: borrowed from English; also marked as a doublet of *Vlies*. | Again, loan history and doublet information are separate claims. |
+| Swedish *clown* / English *clown* | Swedish entry: borrowed from English. The English entry describes competing, uncertain origin analyses. | The direction of the Swedish loan is recorded even though the English word’s deeper origin is uncertain. |
+| *sandbank* / *sandbanke* | Swedish, Danish, Norwegian Bokmål, and German entries all describe compounds; the English source separately lists entries and senses for the written form. | Preserve compound components and each language’s own source claim. Shared components alone do not prove that the complete words descend from one shared lexical ancestor. |
+| *ombudsman* forms | Swedish traces the word to Old Swedish/Old Norse and marks its compound parts; Norwegian Bokmål records Old Norse inheritance; German says it was borrowed from Swedish. | One spelling family can contain inherited, compound, and borrowed relations depending on the language pair. |
+
+The generated candidate table illustrates the mismatch: for example, it labels Swedish *fleece* versus English *fleece* `false_friend` with unknown relation, while the source explicitly records borrowing. For *bankman*, it labels a false friend although the English sense it selected is the capitalized surname and its source has no origin claim. These are not yet bulk corrections; they are concrete failures the next transformation should encode and test.
+
 ## Do this next
 
-### 1. Connect translated forms to target source records
+### 1. Join source claims in both directions
 
-Use the exported claims to find exact target-language source entries for the translated forms. Attach form-of records with their source sense IDs, parts of speech, tags, and paths. Preserve multiple lemma candidates and unresolved links. Use *trübe* and *tidigare* as ambiguity checks. Only after these links are inspectable should we decide which unique form links can create comparison candidates.
+The current source-claim export starts from English translation senses. Extend it to the four other existing language dumps so the data retains direction and asymmetric coverage, then join each claim to target entries in the same way. Keep target `form_of` paths and multiple senses as evidence, not a forced lemma choice. Use *trübe* and *tidigare* as ambiguity checks, and include *bankman* even though its Wiktionary entries do not provide a direct translation link.
 
 ### 2. Make a rerunnable, source-backed slice
 
