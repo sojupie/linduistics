@@ -583,7 +583,24 @@ pipeline\.venv\Scripts\python.exe pipeline\src\build_case_evidence_slice.py --co
 pipeline\.venv\Scripts\python.exe pipeline\src\export_case_evidence_cldf.py --force
 ```
 
-The next narrow data task is to explain the unexpectedly low semantic scores, starting with *ramsløg/ramslök*, then follow each shared-component candidate back to its exact source entry and claim. Do not bulk-relabel the 4,635 legacy pairs from these selected examples.
+## Reproduce low semantic scores in the component cases (2026-09-28)
+
+I re-encoded the stored glosses with the current `SemanticMatcher` default, `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`, and reran the same `align_pair_senses` function used to build the comparison artifact. The current scores reproduce to floating-point precision:
+
+| Pair | Stored score | Recomputed with source-aware alignment | Selected glosses |
+| --- | ---: | ---: | --- |
+| *oversætte/översätta* | 0.7132165 | 0.7132165 | “to translate” / “to translate; to change from one language to another, usually written text” |
+| *ramsløg/ramslök* | 0.3421778 | 0.3421779 | “ramson” / “ramsons, Allium ursinum” |
+| *berauben/bereave* | 0.6162728 | 0.6162729 | “to deprive” / “To take away someone or something that is important or close; deprive.” |
+| *Stieftochter/stepdaughter* | 0.4944662 | 0.4944662 | “stepdaughter” / “The daughter of one's spouse from a previous relationship.” |
+
+The current default model reproduces the stored values for these examples; no score mismatch appeared. The original embedding revision is not recorded, so this does not prove which exact checkpoint produced the historical file. For *berauben/bereave*, dropping the source-translation sense restriction changes the best active English gloss to “To deprive by or as if by violence; to rob; to strip.” and raises the score to 0.624. Reapplying the recorded English source-sense reference reproduces 0.616. That restriction is part of the meaning of the stored observation, not a change in the embedding itself.
+
+The existing Danish–Norwegian Bokmål *kurv* case scores **0.7488054**, only 0.0012 below the classifier cutoff. Its selected glosses are “basket” and “the contents of a basket; an amount that a basket holds.” This makes the cutoff's category consequence especially sensitive to small score differences. The four new cases also show that the cutoff's output `partial_cognate` is not a component-cognacy result: it follows equal roots plus a score under 0.75.
+
+No score bug was reproduced. The remaining problem is interpretive and reproducibility-related: an embedding score is being used to split a historical label, while the comparison output has no recorded model revision or explicit score-level field describing whether source-sense evidence restricted alignment. A separate `translation_source_senses` field can explain that restriction when the link exists. The case CLDF export keeps source entries, their claims, component candidates, and similarity observations distinct, but its legacy label remains exactly that: legacy output. Do not relabel the full 4,635 unordered pairs from these selected examples.
+
+Next, add a comparison-build manifest with the model revision and a direct record of the sense restriction used for alignment, then test a replacement for `partial_cognate` against the current case slice. Keep the data rule separate from the presentation label and preserve the existing score as an observation.
 
 The local snapshots and manifests are:
 
