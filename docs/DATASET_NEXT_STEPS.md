@@ -140,6 +140,8 @@ pipeline\.venv\Scripts\python.exe pipeline/src/project_source_case_edges.py --in
 
 I reviewed 270 seeded comparisons across Swedish–Danish, Swedish–Bokmål, and German–English. Each pair has 10 rows from each of `true_cognate`, `partial_cognate`, `false_friend`, and `translation_pair`, plus 50 rows from `other`. The manifests record the category populations at sampling time; for `other`, these were 9,520, 10,078, and 11,719 rows respectively. The sample was selected from the live API and then joined to the local Wiktionary snapshots. It is a diagnostic sample, not a population estimate.
 
+The comparison values are from an older database snapshot, not a rebuild of the current pipeline. The sample contains `false_cognate`, while the checked-in [classifier](../pipeline/src/classifier.py) now returns only `cognate` or `unknown` for root evidence. The local `all_comparisons.parquet` also predates the later classifier and entry-identity changes. Use this sample to inspect source claims and matching failures; do not treat its category counts or relation values as current output.
+
 The 150 sampled `other` rows show why the value cannot mean “unrelated” or “no etymology.” The pair-audit projection found these row-level source links:
 
 | Pair | Both exact source entries | Both active comparison senses linked | Direct borrowing from the paired language | Shared borrowing source | Explicit cognate mention of the paired form | Shared inherited form |
