@@ -29,3 +29,7 @@ ombudsmann-nb-02,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,n
 ombudsmann-nb-03,ombudsman,ombudsmann-current,nb,ombudsmann,interfix,nb,-s-,formation
 ombudsmann-nb-04,ombudsman,ombudsmann-current,nb,ombudsmann,compound_component,nb,mann,formation
 Ombudsmann-de-01,ombudsman,Ombudsmann-current,de,Ombudsmann,borrowed_from,sv,ombudsman,entry
+clown-sv-01,clown,clown-current,sv,clown,borrowed_from,en,clown,entry
+clown-da-01,clown,klovn-current,da,klovn,borrowed_from,en,clown,entry
+clown-nb-01,clown,klovn-current,nb,klovn,borrowed_from,en,clown,entry
+clown-de-01,clown,Clown-current,de,Clown,borrowed_from,en,clown,entry

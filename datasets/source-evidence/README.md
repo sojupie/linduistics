@@ -8,9 +8,9 @@ It is deliberately small and selected for debugging. It is not a random sample, 
 
 - `source-pages.csv` pins each consulted Wiktionary page to a revision ID and records the displayed edit date and retrieval date.
 - `claims.csv` contains short structured assertions from the named page section. It does not reproduce entry prose. A claim is what that source page records, not an independently verified historical conclusion. `root_recorded` records an explicitly named deeper form; it does not mean the modern entry inherited that form directly. Component and interfix rows describe the source's formation analysis.
-- `pair-reviews.csv` records bounded checks of six comparison pairs. “No direct claim found” means none was found in the listed page sections; it does not mean the words are unrelated. The `ombudsman` cases separate direct borrowing, inherited paths, shared older forms, and shared donors.
+- `pair-reviews.csv` records bounded checks of ten comparison pairs. “No direct claim found” means none was found in the listed page sections; it does not mean the words are unrelated. The `ombudsman` cases separate direct borrowing, inherited paths, shared older forms, and shared donors. The `clown` cases record direct borrowing into Swedish, Danish, Bokmål, and German while keeping the English entry's uncertain deeper origin as a separate question.
 
-The `ombudsman` case is a useful small source-to-data example: English and German entries record borrowing from Swedish; the Bokmål entry records inheritance from Old Norse; and the Danish entry traces its form through Old Danish to Old Norse. These are source-reported paths that can coexist. The rows do not force them into a single cognate/loan box or settle the project’s eventual pair-level taxonomy.
+The `ombudsman` case is a useful small source-to-data example: English and German entries record borrowing from Swedish; the Bokmål entry records inheritance from Old Norse; and the Danish entry traces its form through Old Danish to Old Norse. The `clown` case adds a different pattern: four entries record borrowing from English, while the English entry offers competing or uncertain deeper-origin analyses. These are source-reported paths that can coexist. The rows do not force them into a single cognate/loan box or settle the project’s eventual pair-level taxonomy.
 
 ## Claim fields
 
@@ -43,4 +43,4 @@ Source material is from Wiktionary contributors, available under [CC BY-SA 4.0](
 - These examples were chosen because they expose particular transformation risks; counts from this file must not be generalized to a language’s lexicon.
 - Relations have different scopes. `borrowed_from` connects a borrowing to a donor; `compound_component` connects a whole form to a component; `cognate_mention` records a source page’s explicit mention. None alone settles the relation between every sense of two headwords.
 - Proto-language forms and target spellings are stored as source-reported values. This file does not assert that equal or different root strings prove cognacy or non-cognacy.
-- Only the twelve listed page revisions and six listed pair checks were reviewed for this release.
+- The current seed contains 15 pinned page revisions, 34 structured assertions, and ten bounded pair checks. These records were reviewed for this release; this is not a complete audit of the source entries or the comparison population.
