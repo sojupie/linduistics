@@ -505,6 +505,8 @@ The local output directory is `pipeline/data/cldf_case_evidence_dercat_fix/`. It
 
 Eighteen claim matches have an available target identity; one remains ambiguous. The tables retain the old candidate and root-match outputs under `Legacy_` field names. The manifest records the source-slice hash, upstream input hashes, original five Kaikki dump hashes, and every CSV hash. The output is ignored local data; the repo contains only its exporter and test. No live database rows changed.
 
+The 19 matched source claims cross the old display labels: seven `borrowed_from` claims match `other` pairs, and five `cognate_mention` claims match `other` pairs (one target is ambiguous). A borrowing claim also matches a `partial_cognate` pair and a `true_cognate` pair. The regenerated manifest reports this label-by-claim matrix so it can be recomputed from the tables. It reinforces that the display label cannot stand in for source history.
+
 The exporter checks stable table IDs and every declared foreign key. The focused tests pass. The environment does not include `pycldf`, so this is not yet verified by the official CLDF validator. Wiktionary-derived gloss and claim fields retain their source page URLs; the preview selects CC BY-SA 4.0 and records the source attribution. Review the terms and metadata before publishing a larger dataset.
 
 Rebuild the export after regenerating the case slice:
