@@ -331,6 +331,12 @@ def _normalize_template(template: dict[str, Any], index: int, entry_lang: str) -
     elif base_name in {"internationalism", "intnat"}:
         claim["diffusion_type"] = "internationalism"
         return [claim]
+    elif base_name in {"unknown", "unk", "uncertain", "unc"}:
+        claim["source_etymology_status"] = "unknown" if base_name in {"unknown", "unk"} else "uncertain"
+        source_label = args.get("title") or args.get("2")
+        if source_label:
+            claim["source_label"] = source_label
+        return [claim]
     elif base_name == "sound-symbolic":
         claim["formation_type"] = "sound_symbolic"
         if args.get("title"):

@@ -469,6 +469,36 @@ class EtymologyRecordTests(unittest.TestCase):
             ],
         )
 
+    def test_preserves_source_distinction_between_unknown_and_uncertain_origins(self):
+        record = source_record(
+            {
+                "lang_code": "sv",
+                "lang": "Swedish",
+                "word": "example",
+                "pos": "noun",
+                "etymology_templates": [
+                    {"name": "unknown", "args": {"1": "sv"}},
+                    {"name": "unk", "args": {"1": "sv", "title": "origin unclear"}},
+                    {"name": "uncertain", "args": {"1": "sv"}},
+                    {"name": "unc", "args": {"1": "sv", "2": "speculative"}},
+                ],
+            },
+            "kaikki_sv.jsonl",
+        )
+
+        self.assertEqual(
+            [
+                (claim["relation"], claim.get("source_etymology_status"), claim.get("source_label"))
+                for claim in record["claims"]
+            ],
+            [
+                (None, "unknown", None),
+                (None, "unknown", "origin unclear"),
+                (None, "uncertain", None),
+                (None, "uncertain", "speculative"),
+            ],
+        )
+
     def test_keeps_person_attribution_and_formation_facts_out_of_lexical_edges(self):
         record = source_record(
             {
