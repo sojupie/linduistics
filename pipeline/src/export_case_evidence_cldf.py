@@ -114,6 +114,8 @@ def _validate_table_links(tables: list[tuple[str, list[str], list[dict]]]) -> No
         "component-links.csv": {"Parent_Entry_ID": ("entries.csv", "ID")},
         "comparisons.csv": {"Form_A_ID": ("forms.csv", "ID"), "Form_B_ID": ("forms.csv", "ID")},
         "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
+        "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID")},
+        "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
     }
     ids = {filename: {row["ID"] for row in rows} for filename, rows in rows_by_file.items()}
     for filename, rows in rows_by_file.items():
@@ -141,7 +143,13 @@ def _table(url: str, columns: list[dict], primary_key: str = "ID", foreign_keys:
     return {"url": url, "tableSchema": schema}
 
 
-def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) -> dict:
+def export_slice(
+    source_path: Path,
+    output_dir: Path,
+    *,
+    target_entries_path: Path | None = None,
+    force: bool = False,
+) -> dict:
     if output_dir.exists() and any(output_dir.iterdir()) and not force:
         raise FileExistsError(f"Output directory is not empty; pass --force to replace it: {output_dir}")
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -156,6 +164,8 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
     comparison_pairs: dict[str, dict] = {}
     pair_lookup: dict[tuple[str, str, str, str, str, str], str] = {}
     pending_matches: list[tuple[dict, str, str]] = []
+    pending_target_resolutions: dict[str, dict] = {}
+    pending_target_candidates: dict[tuple[str, str], dict] = {}
 
     for case in cases:
         case_id = case["case_id"]
@@ -172,8 +182,10 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                 "Source_Entry_Key": entry_key,
                 "Etymology_Number": entry.get("etymology_number") or "",
                 "Origin_Status": entry.get("origin_status") or "",
+                "Etymology_Text": entry.get("etymology_text") or "",
                 "Source_URL": entry.get("source_url", ""),
                 "Source_File": entry.get("source_file", ""),
+                "Source_Line": entry.get("source_line", ""),
             }
             for sense in entry.get("source_senses", []):
                 sense_id = sense.get("id")
@@ -348,6 +360,85 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                 raise ValueError(f"No comparison row for source claim match {match.get('match_id')}")
             pending_matches.append((match, claim_id, comparison_id))
 
+    if target_entries_path is not None:
+        for resolution in read_jsonl(target_entries_path):
+            claim_id = resolution.get("claim_id", "")
+            if claim_id not in claims_by_id:
+                raise ValueError(f"Target-entry resolution references missing source claim {claim_id}")
+            resolution_id = stable_id("target_resolution", claim_id)
+            output_resolution = {
+                "ID": resolution_id,
+                "Claim_ID": claim_id,
+                "Target_Language_Code": resolution.get("target_language", ""),
+                "Claimed_Form": resolution.get("claimed_form", ""),
+                "Match_Status": resolution.get("match_status", ""),
+            }
+            previous = pending_target_resolutions.setdefault(claim_id, output_resolution)
+            if previous != output_resolution:
+                raise ValueError(f"Inconsistent target-entry resolution for source claim {claim_id}")
+            for target in resolution.get("candidate_entries", []):
+                entry_key = target.get("source_entry_key", "")
+                if not entry_key:
+                    raise ValueError(f"Target-entry candidate has no source entry key for claim {claim_id}")
+                entry_id = stable_id("entry", entry_key)
+                if entry_key not in entries_by_key:
+                    entries_by_key[entry_key] = {
+                        "ID": entry_id,
+                        "Language_ID": target.get("language_code", ""),
+                        "Headword": target.get("word", ""),
+                        "Part_Of_Speech": target.get("part_of_speech", ""),
+                        "Source_Entry_Key": entry_key,
+                        "Etymology_Number": target.get("etymology_number") or "",
+                        "Origin_Status": "",
+                        "Etymology_Text": target.get("etymology_text") or "",
+                        "Source_URL": target.get("source_url", ""),
+                        "Source_File": target.get("source_file", ""),
+                        "Source_Line": target.get("source_line", ""),
+                    }
+                else:
+                    existing = entries_by_key[entry_key]
+                    if existing["Language_ID"] != target.get("language_code") or existing["Headword"] != target.get("word"):
+                        raise ValueError(f"Conflicting source entry identity for {entry_key}")
+                    for field in ("Etymology_Text", "Source_URL", "Source_File", "Source_Line"):
+                        if target.get(field.lower()) and not existing.get(field):
+                            existing[field] = target[field.lower()]
+                for sense in target.get("source_senses", []):
+                    sense_id = sense.get("id")
+                    if not sense_id:
+                        continue
+                    senses_by_key.setdefault((entry_key, sense_id), {
+                        "ID": stable_id("sense", entry_key, sense_id),
+                        "Entry_ID": entry_id,
+                        "Source_Sense_ID": sense_id,
+                        "Glosses_JSON": _dump(sense.get("glosses") or []),
+                        "Raw_Glosses_JSON": _dump(sense.get("raw_glosses") or []),
+                        "Tags_JSON": _dump(sense.get("tags") or []),
+                    })
+                for claim in target.get("source_claims", []):
+                    target_claim_id = _claim_id(entry_key, claim)
+                    claims_by_id.setdefault(target_claim_id, {
+                        "ID": target_claim_id,
+                        "Entry_ID": entry_id,
+                        "Claim_Source_Scope": "entry",
+                        "Claim_Target_Scope": _claim_target_scope(claim),
+                        "Relation": claim.get("relation", ""),
+                        "Related_Language_ID": claim.get("related_language") or "",
+                        "Related_Form": claim.get("related_form") or "",
+                        "Related_Entity_JSON": _dump(claim.get("related_entity") or {}),
+                        "Components_JSON": _dump(claim.get("components") or []),
+                        "Source_Uncertain": "" if claim.get("source_uncertain") is None else str(bool(claim.get("source_uncertain"))).lower(),
+                        "Template_Name": claim.get("template_name", ""),
+                        "Template_Index": claim.get("template_index", ""),
+                        "Template_Arguments_JSON": _dump(claim.get("args") or {}),
+                        "Source_URL": target.get("source_url", ""),
+                    })
+                candidate_id = stable_id("target_candidate", resolution_id, entry_id)
+                pending_target_candidates[(resolution_id, entry_id)] = {
+                    "ID": candidate_id,
+                    "Resolution_ID": resolution_id,
+                    "Target_Entry_ID": entry_id,
+                }
+
     # Entries referenced by the source data must exist before writing linked tables.
     languages = [
         {"ID": code, "Name": name}
@@ -358,6 +449,9 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
     if any(row["Language_ID"] not in language_ids for row in entries_by_key.values()):
         raise ValueError("Entry references a language missing from the language table")
 
+    for entry in entries_by_key.values():
+        entry.setdefault("Etymology_Text", "")
+        entry.setdefault("Source_Line", "")
     entries = sorted(entries_by_key.values(), key=lambda row: row["ID"])
     senses = sorted(senses_by_key.values(), key=lambda row: row["ID"])
     claims = sorted(claims_by_id.values(), key=lambda row: row["ID"])
@@ -383,10 +477,12 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
             "Source_URL": match.get("source_entry", {}).get("source_url", ""),
         })
     claim_matches.sort(key=lambda row: row["ID"])
+    target_resolutions = sorted(pending_target_resolutions.values(), key=lambda row: row["ID"])
+    target_candidates = sorted(pending_target_candidates.values(), key=lambda row: row["ID"])
 
     tables = [
         ("languages.csv", ["ID", "Name"], languages),
-        ("entries.csv", ["ID", "Language_ID", "Headword", "Part_Of_Speech", "Source_Entry_Key", "Etymology_Number", "Origin_Status", "Source_URL", "Source_File"], entries),
+        ("entries.csv", ["ID", "Language_ID", "Headword", "Part_Of_Speech", "Source_Entry_Key", "Etymology_Number", "Origin_Status", "Etymology_Text", "Source_URL", "Source_File", "Source_Line"], entries),
         ("senses.csv", ["ID", "Entry_ID", "Source_Sense_ID", "Glosses_JSON", "Raw_Glosses_JSON", "Tags_JSON"], senses),
         ("forms.csv", ["ID", "Language_ID", "Form", "Part_Of_Speech", "Source_Entry_ID", "Source_Entry_Key", "Source_Sense_ID", "Gloss", "Source_Identity_Status"], forms),
         ("source-claims.csv", ["ID", "Entry_ID", "Claim_Source_Scope", "Claim_Target_Scope", "Relation", "Related_Language_ID", "Related_Form", "Related_Entity_JSON", "Components_JSON", "Source_Uncertain", "Template_Name", "Template_Index", "Template_Arguments_JSON", "Source_URL"], claims),
@@ -394,6 +490,8 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         ("shared-component-ancestor-candidates.csv", ["ID", "Case_ID", "Ancestor_Language_Code", "Ancestor_Form", "Candidate_Basis", "Matched_Uses_JSON"], shared_component_ancestors),
         ("comparisons.csv", ["ID", "Case_ID", "Form_A_ID", "Form_B_ID", "Recorded_Root_A", "Recorded_Root_B", "Spelling_Similarity", "Phonetic_Similarity", "Semantic_Similarity", "Legacy_Candidate_Label", "Legacy_Root_Match_Status", "Directed_Row_Count"], comparisons),
         ("claim-matches.csv", ["ID", "Claim_ID", "Comparison_ID", "Comparison_Source_Sense_ID", "Comparison_Target_Sense_ID", "Target_Identity_Status", "Target_Entry_Key", "Form_Match_Method", "Source_URL"], claim_matches),
+        ("claim-target-resolutions.csv", ["ID", "Claim_ID", "Target_Language_Code", "Claimed_Form", "Match_Status"], target_resolutions),
+        ("claim-target-candidates.csv", ["ID", "Resolution_ID", "Target_Entry_ID"], target_candidates),
     ]
     _validate_table_links(tables)
     for filename, fields, rows in tables:
@@ -422,6 +520,12 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
                 "Components_JSON": "Normalized component references carried by this source claim; component candidate matching is detailed in component-links.csv.",
                 "Comparison_Source_Sense_ID": "Active source sense selected for the linked comparison; the entry-level source claim is not asserted to apply only to this sense.",
                 "Comparison_Target_Sense_ID": "Active target sense selected for the linked comparison; the form-level source claim does not identify this sense.",
+                "Etymology_Text": "Source etymology text for this entry when present in the selected case data or target-entry lookup.",
+                "Source_Line": "One-based line number in the recorded local source dump; populated for entries added from the target-entry lookup.",
+                "Match_Status": "Result of exact-form lookup in the recorded local dumps; it resolves candidate entries, not senses or historical truth.",
+                "Target_Language_Code": "Language code named by the source claim; it may be absent from the local dump set and is not a language-table foreign key.",
+                "Resolution_ID": "Form-level source-claim lookup result referenced by this candidate entry.",
+                "Target_Entry_ID": "Source entry identified as a spelling candidate; this link does not establish a target sense or relationship.",
             }.get(field)
             cols.append(_column(field, "string", required=field == "ID", property_url=prop, description=description))
         fks = []
@@ -433,6 +537,8 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
             "component-links.csv": {"Parent_Entry_ID": ("entries.csv", "ID")},
             "comparisons.csv": {"Form_A_ID": ("forms.csv", "ID"), "Form_B_ID": ("forms.csv", "ID")},
             "claim-matches.csv": {"Claim_ID": ("source-claims.csv", "ID"), "Comparison_ID": ("comparisons.csv", "ID")},
+            "claim-target-resolutions.csv": {"Claim_ID": ("source-claims.csv", "ID")},
+            "claim-target-candidates.csv": {"Resolution_ID": ("claim-target-resolutions.csv", "ID"), "Target_Entry_ID": ("entries.csv", "ID")},
         }.get(filename, {})
         for field, (resource, target_column) in references.items():
             fks.append({"columnReference": [field], "reference": {"resource": resource, "columnReference": [target_column]}})
@@ -442,7 +548,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
         "dc:conformsTo": CLDF + "Generic",
         "dc:title": "Linduistics source-linked lexical case slice",
-        "dc:description": "A bounded diagnostic export of source entries, senses, directed claims, component analyses, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
+        "dc:description": "A bounded diagnostic export of source entries, senses, directed claims, component analyses, form-level target-entry candidates, projected shared-component ancestry candidates, and pair comparisons. Legacy labels are retained as pipeline output, not linguistic verdicts. This is not a vocabulary-wide sample.",
         "dc:source": "Wiktionary entries extracted via Kaikki/Wiktextract; each entry URL is retained in the data tables.",
         "dc:license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "tables": metadata_tables,
@@ -458,6 +564,10 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
 
     source_manifest_path = source_path.with_suffix(source_path.suffix + ".manifest.json")
     source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8")) if source_manifest_path.exists() else None
+    target_manifest_path = (
+        target_entries_path.with_suffix(target_entries_path.suffix + ".manifest.json")
+        if target_entries_path is not None else None
+    )
     source_data_manifest = None
     if source_manifest:
         source_export_name = next((name for name in source_manifest.get("inputs", {}) if name.startswith("etymology_records_")), None)
@@ -477,6 +587,12 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "source_sha256": digest(source_path),
         "source_manifest": source_manifest_path.name if source_manifest else None,
         "source_manifest_sha256": digest(source_manifest_path) if source_manifest else None,
+        "target_entry_lookup": ({
+            "file": target_entries_path.name,
+            "sha256": digest(target_entries_path),
+            "manifest": target_manifest_path.name if target_manifest_path and target_manifest_path.exists() else None,
+            "manifest_sha256": digest(target_manifest_path) if target_manifest_path and target_manifest_path.exists() else None,
+        } if target_entries_path is not None else None),
         "upstream_inputs": source_manifest.get("inputs", {}) if source_manifest else {},
         "source_dump_files": {
             code: {
@@ -501,6 +617,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
             "Source claims are attached to source entries; claim matches record whether target identity was available or ambiguous.",
             "Component candidate entry keys are candidates, not confirmed component-sense links.",
             "Component entries and their source claims are included to make candidate root evidence inspectable; they do not resolve which component sense is intended.",
+            "Target-entry resolution and candidate tables come from a separate spelling lookup. They preserve all candidates and do not resolve target senses or confirm the source claim.",
             "Shared-component ancestor rows are projections from recorded component candidates; they are not confirmed whole-word relationships.",
             "Legacy_Candidate_Label and Legacy_Root_Match_Status preserve old classifier output only.",
         ],
@@ -510,7 +627,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "# Linduistics source-linked lexical case slice\n\n"
         "This is a small CLDF Generic export of thirteen deliberately chosen Wiktionary-derived cases. "
         "It keeps source entries and senses, source claims, compound-component analyses, matched claim links, "
-        "shared-component ancestor candidates, and computed pair comparisons in separate tables.\n\n"
+        "shared-component ancestor candidates, form-level target-entry candidates, and computed pair comparisons in separate tables.\n\n"
         "Source claims record their originating entry and target scope (form, entity, components, language, or none). "
         "Sense IDs on claim-match rows identify "
         "the comparison's selected senses for context; they do not narrow the source claim to those senses. "
@@ -526,6 +643,7 @@ def export_slice(source_path: Path, output_dir: Path, *, force: bool = False) ->
         "https://creativecommons.org/licenses/by-sa/4.0/. Confirm the project-wide redistribution terms before "
         "publishing a larger release.\n\n"
         "Rebuild the source-linked slice using the command in `docs/DATASET_NEXT_STEPS.md`, then run "
+        "`pipeline/.venv/Scripts/python.exe pipeline/src/audit_case_claim_target_entries.py --force` and "
         "`pipeline/.venv/Scripts/python.exe pipeline/src/export_case_evidence_cldf.py --force`. "
         "`manifest.json` records hashes for the slice, its inputs, and each exported table.\n",
         encoding="utf-8",
@@ -538,9 +656,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=root / "pipeline/data/named_case_evidence_slice_dercat_fix.jsonl")
     parser.add_argument("--output-dir", type=Path, default=root / "pipeline/data/cldf_case_evidence_dercat_fix")
+    parser.add_argument("--target-entries", type=Path, default=root / "pipeline/data/case_claim_target_entries.jsonl")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    result = export_slice(args.input, args.output_dir, force=args.force)
+    result = export_slice(args.input, args.output_dir, target_entries_path=args.target_entries, force=args.force)
     print(json.dumps({"tables": result["tables"]}, indent=2))
 
 

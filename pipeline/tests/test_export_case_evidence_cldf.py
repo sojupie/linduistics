@@ -2,7 +2,7 @@ import csv
 import json
 import re
 
-from export_case_evidence_cldf import _claim_target_scope, _validate_table_links, export_slice
+from export_case_evidence_cldf import _claim_id, _claim_target_scope, _validate_table_links, export_slice
 
 
 def test_claim_target_scope_distinguishes_forms_entities_components_languages_and_no_target():
@@ -165,6 +165,73 @@ def test_refuses_to_overwrite_nonempty_output_without_force(tmp_path):
         pass
     else:
         raise AssertionError("Expected an existing output directory to be protected")
+
+
+def test_exports_target_entry_candidates_without_resolving_senses(tmp_path):
+    source_key = "sv|fleece|noun||sense-sv"
+    claim = {
+        "template_index": 0, "template_name": "bor", "relation": "borrowed_from",
+        "args": {"1": "sv", "2": "en", "3": "fleece"},
+        "related_language": "en", "related_form": "fleece",
+    }
+    candidate_key = "en|fleece|noun||candidate-sense-en"
+    source = tmp_path / "slice.jsonl"
+    source.write_text(json.dumps({
+        "case_id": "fleece",
+        "source_entries": [
+            _entry(source_key, "sv", "fleece", "sense-sv", "polar fleece", [claim]),
+            _entry(candidate_key, "en", "fleece", "candidate-sense-en", "wool"),
+        ],
+        "comparisons": [],
+    }) + "\n", encoding="utf-8")
+    candidate_claim = {
+        "template_index": 0, "template_name": "inh", "relation": "inherited_from",
+        "args": {"1": "en", "2": "gmw-pro", "3": "*fleus"},
+        "related_language": "gmw-pro", "related_form": "*fleus",
+    }
+    target_input = tmp_path / "target-entries.jsonl"
+    target_input.write_text(json.dumps({
+        "claim_id": _claim_id(source_key, claim),
+        "target_language": "en",
+        "claimed_form": "fleece",
+        "match_status": "exact",
+        "candidate_entries": [{
+            "source_entry_key": candidate_key,
+            "language_code": "en",
+            "word": "fleece",
+            "part_of_speech": "noun",
+            "etymology_number": None,
+            "source_file": "kaikki_en.jsonl",
+            "source_line": 42,
+            "source_url": "https://en.wiktionary.org/wiki/fleece#English",
+            "etymology_text": "From Old English, from Proto-West Germanic *fleus.",
+            "source_senses": [{"id": "candidate-sense-en", "glosses": ["wool"], "tags": []}],
+            "source_claims": [candidate_claim],
+        }],
+    }, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    output = tmp_path / "cldf"
+    manifest = export_slice(source, output, target_entries_path=target_input)
+
+    with (output / "claim-target-resolutions.csv").open(encoding="utf-8", newline="") as stream:
+        resolutions = list(csv.DictReader(stream))
+    with (output / "claim-target-candidates.csv").open(encoding="utf-8", newline="") as stream:
+        candidates = list(csv.DictReader(stream))
+    with (output / "entries.csv").open(encoding="utf-8", newline="") as stream:
+        entries = list(csv.DictReader(stream))
+    with (output / "source-claims.csv").open(encoding="utf-8", newline="") as stream:
+        claims = list(csv.DictReader(stream))
+
+    assert manifest["tables"]["claim-target-resolutions.csv"]["rows"] == 1
+    assert resolutions[0]["Match_Status"] == "exact"
+    assert resolutions[0]["Claimed_Form"] == "fleece"
+    assert len(candidates) == 1
+    assert candidates[0]["Resolution_ID"] == resolutions[0]["ID"]
+    target_entry = next(row for row in entries if row["Source_Entry_Key"] == candidate_key)
+    assert candidates[0]["Target_Entry_ID"] == target_entry["ID"]
+    assert target_entry["Etymology_Text"].startswith("From Old English")
+    assert target_entry["Source_Line"] == "42"
+    assert any(row["Relation"] == "inherited_from" for row in claims)
 
 
 def test_rejects_a_broken_table_reference():
