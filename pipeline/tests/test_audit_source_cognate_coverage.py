@@ -20,6 +20,7 @@ def test_audit_counts_source_claims_only_when_the_claiming_entry_is_active(tmp_p
     comparisons_path = tmp_path / "comparisons.parquet"
     row = {
         "lang_a": "sv", "lang_b": "da", "word_b": "greve",
+        "word_a": "greve", "category": "other",
         "senses_a": json.dumps([{"is_active_match": True, "source_entry_key": "sv|greve|noun||sv-greve",
                                   "source_sense_id": "sv-greve"}]),
         "senses_b": json.dumps([{"is_active_match": True, "source_entry_key": "da|greve|noun||da-greve",
@@ -29,8 +30,13 @@ def test_audit_counts_source_claims_only_when_the_claiming_entry_is_active(tmp_p
 
     counts = audit_coverage(source_path, comparisons_path)
 
-    assert counts[("sv", "da")] == {
+    assert counts["cognate_mentions"][("sv", "da")] == {
         "source_claims": 1,
         "active_source_entry_candidates": 1,
         "both_active_sense_ids": 1,
+    }
+    assert counts["other_candidates"][("da", "sv")] == {
+        "candidate_count": 1,
+        "with_pair_specific_claim": 1,
+        "relations": {"cognate_mention": 1, "borrowed_from": 1},
     }
