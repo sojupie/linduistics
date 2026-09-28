@@ -18,6 +18,9 @@ CASES = {
     "clown": [("sv", "clown", "en", "clown"), ("da", "klovn", "en", "clown"), ("nb", "klovn", "en", "clown"), ("de", "Clown", "en", "clown")],
     "ombudsman": [("sv", "ombudsman", "en", "ombudsman"), ("da", "ombudsmand", "en", "ombudsman"), ("nb", "ombudsmann", "en", "ombudsman"), ("de", "Ombudsmann", "en", "ombudsman")],
     "sandbank": [("sv", "sandbank", "en", "sandbank"), ("da", "sandbank", "en", "sandbank"), ("nb", "sandbanke", "en", "sandbank"), ("de", "Sandbank", "en", "sandbank")],
+    "gut": [("de", "gut", "da", "god"), ("de", "gut", "sv", "god"), ("de", "gut", "en", "good")],
+    "arbeit": [("da", "arbejde", "sv", "arbete")],
+    "kurv": [("da", "kurv", "nb", "kurv")],
 }
 
 COMPARISON_FIELDS = (

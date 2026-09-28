@@ -12,6 +12,9 @@ def test_case_lookup_preserves_language_pair_and_accepts_case_and_direction():
     assert case_for_candidate({"lang_a": "sv", "word_a": "bankman", "lang_b": "en", "word_b": "bankman"}) == "bankman"
     assert case_for_candidate({"lang_a": "en", "word_a": "clown", "lang_b": "da", "word_b": "klovn"}) == "clown"
     assert case_for_candidate({"lang_a": "sv", "word_a": "bank", "lang_b": "en", "word_b": "bankman"}) is None
+    assert case_for_candidate({"lang_a": "da", "word_a": "god", "lang_b": "de", "word_b": "gut"}) == "gut"
+    assert case_for_candidate({"lang_a": "sv", "word_a": "arbete", "lang_b": "da", "word_b": "arbejde"}) == "arbeit"
+    assert case_for_candidate({"lang_a": "nb", "word_a": "kurv", "lang_b": "da", "word_b": "kurv"}) == "kurv"
 
 
 def test_slice_links_only_active_source_entries_and_keeps_component_candidates(tmp_path):
