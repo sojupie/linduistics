@@ -18,17 +18,31 @@ I rebuilt the local candidate output from the identity-aware lemma files. It con
 
 These totals do not prove that the new classifications are all correct. The semantic model revision is not pinned, and the full build recomputes semantic matches. Keep the generated Parquet files local and do not treat category-count changes as caused only by the spelling fix. The live database remains untouched.
 
+## Completed: preserve exact lemma identity in form links
+
+The form extractor had the same overwrite risk: it keyed lemmas by lowercase spelling. It now keeps exact lemma names, accepts a lowercase fallback only when it identifies one lemma, and counts skipped ambiguous references. The `form` column stays lowercase for the inspector's token lookup; the `lemma` column keeps its exact spelling.
+
+I regenerated the five form tables from the local Wiktionary dumps and identity-aware lemma tables. They contain 415,544 English, 391,985 German, 311,745 Swedish, 111,760 Danish, and 65,079 Norwegian Bokmål form-to-lemma pairs. The extractor skipped 17 ambiguous lowercase lemma links in German and none in the other four languages.
+
+The new [audit_translation_form_coverage.py](../pipeline/src/audit_translation_form_coverage.py) measures source and target lookup coverage. It reproduces these results with the current local inputs:
+
+- The English dump has 1,102,025 eligible source-entry records. Direct lemma lookup resolves 481,677 exact spellings and 151,258 unique lowercase fallbacks; 469,090 entries do not match a lemma.
+- Of those unmatched English entries, 401 source-entry occurrences contain target translations. Their form tables link 55 to one lemma, link seven to multiple lemmas, and have no matching form record for 339. Those records contribute 825 translation occurrences.
+- Matched English source entries contain 214,450 eligible target translation occurrences. Direct target-lemma lookup resolves 147,606 exact spellings and 3,751 unique lowercase fallbacks. Of the other 63,093 occurrences, form tables link 7,084 to one lemma, link 576 to multiple lemmas, and have no matching form record for 55,433.
+
+The form table is a lookup index, not enough evidence to choose a comparison sense. For example, German *trübe* maps to both *trüb* and *trüben*; its raw source records include different adjective and verb analyses. Swedish *tidigare* has separate adjective and adverb form-of senses. The current form table drops those source sense IDs, tags, and paths. Keep these links out of automatic comparison generation until the translation surface, source sense, candidate lemma, part of speech, and source form claim can be inspected together.
+
+Rerun the coverage summary against these local snapshots with:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline/src/audit_translation_form_coverage.py --english-dump pipeline/data/kaikki_en.jsonl --lemma-dir pipeline/data/identity-rebuild --form-dir pipeline/data/form-identity-rebuild --output pipeline/data/form-identity-rebuild/coverage.json
+```
+
 ## Do this next
 
-### 1. Connect translation forms to lemmas without erasing the forms
+### 1. Keep translation surfaces and their source claims
 
-A read-only scan of the current English translation dump shows a larger retrieval gap. After the builder's single-word filter, it scans 1,102,025 English source-entry records. The lemma tables resolve 632,935; 469,090 do not. These are entry occurrences, not unique spellings.
-
-The existing word-form tables link 351,392 of those unmatched source-entry occurrences to one or more lemma records: 289,318 by exact form, 61,403 by a unique lowercase form, and 671 through an ambiguous lowercase form. The remaining 117,698 have no matching word-form record. Keep the source headword and its form-to-lemma link as separate evidence. Do not turn ambiguous links into a single lemma choice.
-
-From matched English source entries, the dump contains 214,450 eligible target translation occurrences. The lemma tables resolve 151,357. Among the other 63,093 occurrences, word-form tables link 7,362 to a lemma with a single exact or lowercase match, link 298 through an ambiguous lowercase form, and have no form record for 55,433. These are candidate links only: a form-to-lemma link does not prove that the translation senses match.
-
-Next, add a reproducible audit for these counts and inspect a sample of the form links against their source entries and senses. Then decide how the pipeline should represent translation claims from an inflected form: retain the actual surface form, link it to one or more lemma candidates, and keep unresolved links visible. Only feed a form-derived lemma into lexical comparison when the evidence identifies a usable sense; do not silently replace the surface form with its lemma.
+Build a small source-level table from Wiktionary's English translation senses. Keep the English entry and sense IDs, the target language and exact translated form, and any target form-of links with their source sense IDs, parts of speech, and tags. Preserve multiple lemma candidates and unresolved links. Use the reviewed *trübe* and *tidigare* cases as tests. Only after those links are inspectable should we decide which unique form links can create comparison candidates.
 
 ### 2. Make a rerunnable, source-backed slice
 
