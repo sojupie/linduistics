@@ -42,6 +42,11 @@ def test_audit_counts_pair_specific_claims_once_across_directed_rows(tmp_path):
             "relation": "cognate_mention",
             "related_language": "da",
             "related_form": "dator",
+        }, {
+            "template_index": 1,
+            "relation": "borrowed_from",
+            "related_language": "en",
+            "related_form": "computer",
         }],
     }) + "\n", encoding="utf-8")
     matches_output = tmp_path / "matched_claims.jsonl"
@@ -53,20 +58,24 @@ def test_audit_counts_pair_specific_claims_once_across_directed_rows(tmp_path):
         "active_source_entry_candidates": 1,
         "both_active_sense_ids": 1,
     }
+    assert result["other_candidates"][("en", "sv")]["with_pair_specific_claim"] == 1
     summary = result["other_candidates"][("da", "sv")]
     assert summary["candidate_count"] == 1
     assert summary["with_pair_specific_claim"] == 1
     assert summary["relations"] == {"cognate_mention": 1}
-    match = json.loads(matches_output.read_text(encoding="utf-8"))
+    matches = [json.loads(line) for line in matches_output.read_text(encoding="utf-8").splitlines()]
+    match = next(row for row in matches if row["target_form_match"]["language_code"] == "da")
     assert match["candidate"]["category"] == "other"
     assert match["source_active_sense"]["source_sense_id"] == "sv-dator-1"
     assert match["target_form_match"]["active_sense_id"] == "da-dator-1"
     assert match["target_form_match"]["active_identity_status"] == "available"
+    en_match = next(row for row in matches if row["target_form_match"]["language_code"] == "en")
+    assert en_match["target_form_match"]["active_identity_status"] == "missing_entry"
     manifest = json.loads(matches_output.with_suffix(".jsonl.manifest.json").read_text(encoding="utf-8"))
-    assert manifest["source_claim_candidate_matches"] == 1
-    assert manifest["evidence_rows_by_candidate_category"] == {"other": 1}
-    assert manifest["unique_candidates_with_source_claim_by_category"] == {"other": 1}
-    assert manifest["evidence_rows_by_target_identity"] == {"available": 1}
+    assert manifest["source_claim_candidate_matches"] == 2
+    assert manifest["evidence_rows_by_candidate_category"] == {"other": 2}
+    assert manifest["unique_candidates_with_source_claim_by_category"] == {"other": 2}
+    assert manifest["evidence_rows_by_target_identity"] == {"available": 1, "missing_entry": 1}
     assert "does not assert that they apply to the selected target sense" in manifest["matching_rule"]
 
 

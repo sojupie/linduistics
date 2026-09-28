@@ -10,7 +10,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-AUDIT_LANGUAGE_PAIRS = {frozenset(pair) for pair in (("sv", "da"), ("sv", "nb"), ("de", "en"))}
+AUDIT_LANGUAGES = ("da", "de", "en", "nb", "sv")
+AUDIT_LANGUAGE_PAIRS = {
+    frozenset((lang_a, lang_b))
+    for index, lang_a in enumerate(AUDIT_LANGUAGES)
+    for lang_b in AUDIT_LANGUAGES[index + 1 :]
+}
 
 
 def audit_coverage(
@@ -257,7 +262,7 @@ def main() -> None:
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
     result = audit_coverage(args.source_records, args.comparisons, args.matches_output, args.force)
-    pairs = (("sv", "da"), ("sv", "nb"), ("de", "en"))
+    pairs = sorted(tuple(sorted(pair)) for pair in AUDIT_LANGUAGE_PAIRS)
     print("Pair | source cognate claims | active source-entry candidates | both active sense IDs")
     for source_lang, target_lang in pairs:
         forward = result["cognate_mentions"].get((source_lang, target_lang), {})
