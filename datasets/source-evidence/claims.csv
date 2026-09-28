@@ -50,3 +50,22 @@ døgn-da-03,dygn,døgn-current,da,døgn,inherited_from,Proto-Germanic,*dōg-,ent
 døgn-da-04,dygn,døgn-current,da,døgn,derived_from,Proto-Germanic,*dōgaz,entry,template,Danish > Etymology
 døgn-nb-01,dygn,døgn-current,nb,døgn,inherited_from,da,døgn,entry,template,Norwegian Bokmål > Etymology
 døgn-nb-02,dygn,døgn-current,nb,døgn,inherited_from,Old Norse,dǿgn,entry,template,Norwegian Bokmål > Etymology
+aften-da-01,aften_afton,aften-current,da,aften,inherited_from,Old Danish,aftæn,entry,entry_prose,Danish > Etymology
+aften-da-02,aften_afton,aften-current,da,aften,inherited_from,Old Norse,aptann,entry,entry_prose,Danish > Etymology
+aften-da-03,aften_afton,aften-current,da,aften,inherited_from,Proto-Germanic,*aftanaz,entry,entry_prose,Danish > Etymology
+aften-da-04,aften_afton,aften-current,da,aften,inherited_from,Proto-Germanic,*aftunaz,entry,entry_prose,Danish > Etymology
+aften-da-05,aften_afton,aften-current,da,aften,cognate_mention,sv,afton,entry,entry_prose,Danish > Etymology
+aften-da-06,aften_afton,aften-current,Proto-Germanic,"*aftanaz, *aftunaz",relationship_unclear,Proto-Germanic,*ēbanþs,etymon,entry_prose,Danish > Etymology
+afton-sv-01,aften_afton,afton-current,sv,afton,inherited_from,Old Swedish,aptan,entry,entry_prose,Swedish > Etymology
+afton-sv-02,aften_afton,afton-current,sv,afton,inherited_from,Old Swedish,aftan,entry,entry_prose,Swedish > Etymology
+afton-sv-03,aften_afton,afton-current,sv,afton,inherited_from,Old Swedish,afton,entry,entry_prose,Swedish > Etymology
+afton-sv-04,aften_afton,afton-current,sv,afton,inherited_from,Old Norse,aptann,entry,entry_prose,Swedish > Etymology
+afton-sv-05,aften_afton,afton-current,sv,afton,inherited_from,Proto-Germanic,*ēbanþs,entry,entry_prose,Swedish > Etymology
+afton-sv-06,aften_afton,afton-current,sv,afton,inherited_from,Proto-Indo-European,*h₁epi,entry,entry_prose,Swedish > Etymology
+afton-sv-07,aften_afton,afton-current,sv,afton,cognate_mention,nn,aftan,entry,entry_prose,Swedish > Etymology
+afton-sv-08,aften_afton,afton-current,sv,afton,cognate_mention,nb,aften,entry,entry_prose,Swedish > Etymology
+afton-sv-09,aften_afton,afton-current,sv,afton,cognate_mention,da,aften,entry,entry_prose,Swedish > Etymology
+afton-sv-10,aften_afton,afton-current,sv,afton,cognate_mention,is,aftann,entry,entry_prose,Swedish > Etymology
+afton-sv-11,aften_afton,afton-current,sv,afton,cognate_mention,en,even,entry,entry_prose,Swedish > Etymology
+afton-sv-12,aften_afton,afton-current,sv,afton,cognate_mention,nl,avond,entry,entry_prose,Swedish > Etymology
+afton-sv-13,aften_afton,afton-current,sv,afton,cognate_mention,de,Abend,entry,entry_prose,Swedish > Etymology

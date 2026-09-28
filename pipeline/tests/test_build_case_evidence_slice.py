@@ -25,6 +25,7 @@ def test_case_lookup_preserves_language_pair_and_accepts_case_and_direction():
     assert case_for_candidate({"lang_a": "en", "word_a": "tort", "lang_b": "nb", "word_b": "tort"}) == "torta_tort"
     assert case_for_candidate({"lang_a": "da", "word_a": "døgn", "lang_b": "sv", "word_b": "dygn"}) == "dygn"
     assert case_for_candidate({"lang_a": "nb", "word_a": "døgn", "lang_b": "sv", "word_b": "dygn"}) == "dygn"
+    assert case_for_candidate({"lang_a": "sv", "word_a": "AFTON", "lang_b": "da", "word_b": "AFTEN"}) == "aften_afton"
 
 
 def test_slice_links_only_active_source_entries_and_keeps_component_candidates(tmp_path):
