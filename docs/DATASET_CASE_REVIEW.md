@@ -45,6 +45,8 @@ The remaining 124 rows have no pair-specific claim found by this strict matcher.
 
 These cases do not form a replacement set of mutually exclusive labels. They show that the current `other` bucket crosses several paths and evidence states, so the useful next step is to query the underlying claims and links rather than rename the bucket.
 
+The current 28-row CLDF case preview makes that separation concrete. Its 17 `other` rows have seven matched borrowing claims and five matched cognate mentions (four with available target identity, one ambiguous); its seven `partial_cognate` rows have one borrowing claim and six cognate mentions; its four `true_cognate` rows have one borrowing claim and five cognate mentions. These are **claim-match counts**, not unique-pair counts, and the rows are deliberate diagnostics rather than a representative sample. They show that the legacy label does not encode the source relationship. This preview contains no `false_friend` row, so it cannot establish how that label behaves.
+
 ## What this says about the data model
 
 The current candidate labels mix different questions. The same pair can have a form/meaning pattern, one or more historical paths, and uneven evidence linking those paths to the selected senses. Keep these as separate, queryable dimensions:
