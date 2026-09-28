@@ -486,6 +486,37 @@ pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_claim_inventory.py -
 pipeline\.venv\Scripts\python.exe pipeline\src\audit_source_cognate_coverage.py --source-records pipeline\data\etymology_records_source_claim_kinds.jsonl --comparisons pipeline\data\all_comparisons_separated_translation_evidence.parquet --matches-output pipeline\data\candidate_source_claim_matches_source_claim_kinds.jsonl --force
 ```
 
+## First linked CLDF Generic case export (2026-09-28)
+
+The existing nine-case source-linked slice now has a normalized CLDF Generic preview. Generic is useful here because the project-specific tables can keep historical claims, component analyses, comparison observations, and pipeline interpretations separate without pretending every row is a cognate judgment. CLDF describes Generic as imposing no requirements on table or column content, while its metadata still declares the table schemas and links.
+
+The local output directory is `pipeline/data/cldf_case_evidence_dercat_fix/`. It contains:
+
+| Table | Rows | Purpose |
+| --- | ---: | --- |
+| `languages.csv` | 5 | Language identifiers and names |
+| `entries.csv` | 32 | Source entries with stable export IDs and page links |
+| `senses.csv` | 121 | Entry-linked source sense IDs and glosses |
+| `forms.csv` | 37 | The comparison-side forms and exact or unresolved sense identities |
+| `source-claims.csv` | 211 | Directed source claims and their template evidence |
+| `component-links.csv` | 14 | Compound-component forms and all candidate entry matches |
+| `comparisons.csv` | 24 | Unique unordered pairs and computed similarity observations |
+| `claim-matches.csv` | 19 | Links between a source claim and a candidate comparison |
+
+Eighteen claim matches have an available target identity; one remains ambiguous. The tables retain the old candidate and root-match outputs under `Legacy_` field names. The manifest records the source-slice hash, its upstream input hashes, and every CSV hash. The output is ignored local data; the repo contains only its exporter and test. No live database rows changed.
+
+The exporter checks stable table IDs and every declared foreign key. The focused tests pass. The environment does not include `pycldf`, so this is not yet verified by the official CLDF validator. Wiktionary-derived gloss and claim fields retain their source page URLs; the preview selects CC BY-SA 4.0 and records the source attribution. Review the terms and metadata before publishing a larger dataset.
+
+Rebuild the export after regenerating the case slice:
+
+```powershell
+pipeline\.venv\Scripts\python.exe pipeline\src\export_case_evidence_cldf.py --force
+```
+
+The official [CLDF specification](https://github.com/cldf/cldf) defines Generic datasets as a way to describe custom tables in CLDF metadata. Wiktionary’s [copyright page](https://en.wiktionary.org/wiki/Wiktionary:Copyrights) describes its dual CC BY-SA/GFDL licensing.
+
+The same case slice exposes a classifier artifact. `classifier.py` calls an equal-root pair `partial_cognate` whenever `semantic_sim < 0.75`; it does not look for partial component correspondence. In the corrected full snapshot this accounts for **9,270 directed rows / 4,635 unordered pairs**, all below the threshold. Three rows of the small case slice receive this label, including Danish/Norwegian Bokmål *kurv*. Keep the old values for comparison, but do not present this as source-backed partial cognacy. The next taxonomy change should preserve the underlying scores and source paths separately before deciding what to display or query.
+
 ## Ignore `dercat` language lists during root extraction (2026-09-28)
 
 Wiktionary documents [`dercat`](https://en.wiktionary.org/wiki/Template:dercat) as a compact categorization template: its numbered parameters list language codes in a descent chain and may omit early historical steps. They are not ancestor-form parameters. The root extractor previously looked for a known ancestral-language code in those same argument positions, so German *Ente* could receive `Proto-Germanic *ine-pro` even though the actual ancestor template records Proto-West Germanic `*anad`.
