@@ -10,7 +10,7 @@ _ROOT_RE = re.compile(r"^(?P<language>.+?)\s+\*?(?P<root>[^\s]+)$")
 
 
 def etymological_relation(root_a: str, root_b: str) -> str:
-    """Return cognate, false_cognate, or unknown from structured root fields only."""
+    """Return cognate or unknown from root fields; unequal roots do not prove unrelatedness."""
     if not root_a or not root_b:
         return "unknown"
 
@@ -27,8 +27,6 @@ def etymological_relation(root_a: str, root_b: str) -> str:
         return "unknown"
     if a == b:
         return "cognate"
-    if a[0] == b[0]:
-        return "false_cognate"
     return "unknown"
 
 
