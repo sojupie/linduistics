@@ -807,6 +807,7 @@ def export_slice(
         "https://creativecommons.org/licenses/by-sa/4.0/. Kaikki/Wiktextract is the extraction route, not the original source. "
         "Wiktionary entries may contain third-party material with separate terms; those entries have not been reviewed one by one, so this is a local release candidate and is not yet cleared for redistribution. "
         "This dataset is not endorsed by Wiktionary or the Wikimedia Foundation.\n\n"
+        "A separate small set of exact page revisions and manually transcribed claims is documented in `../source-evidence/README.md`. Those page-level records supplement this dump-based export for selected examples; they are not a revision ID for every row here.\n\n"
         "Rebuild from the repository root after generating the local source records and comparison files described in `docs/DATASET_NEXT_STEPS.md`:\n\n"
         "```powershell\n"
         "python pipeline/src/build_case_evidence_slice.py --comparisons pipeline/data/all_comparisons_dercat_fix.parquet --source-records pipeline/data/etymology_records_source_origin_status.jsonl --claim-matches pipeline/data/candidate_source_claim_matches_dercat_fix.jsonl --component-candidates pipeline/data/component_entry_candidates_source_identity.jsonl.gz --shared-ancestor-candidates pipeline/data/component_shared_ancestor_candidates_source_identity.jsonl.gz --output pipeline/data/named_case_evidence_slice_dercat_fix.jsonl --force\n"
