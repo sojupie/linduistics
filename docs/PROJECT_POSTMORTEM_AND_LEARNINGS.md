@@ -143,6 +143,56 @@ These are the mistakes I would avoid on the next pass:
 9. **Do not call a safer label a more complete taxonomy.** Moving an unsupported negative claim to `unknown` improves restraint, but it does not explain the records or make them useful. Say exactly which claim changed and which user-facing question it now answers.
 10. **Keep the goal stable across turns.** The goal is to make a useful, inspectable public dataset from sourced and transformed material. Audits and formats are means. They count as progress only when they improve the dataset's evidence, the user's ability to inspect it, or the reproducibility of that result.
 
+## How the work itself went wrong
+
+The technical detour was made worse by how I interpreted and reported the work. These are project lessons, not just communication preferences:
+
+- **I replaced the product goal with a safer-sounding research goal.** The user wanted a useful public dataset made through the project's own sourcing and transformation work. I over-focused on proving correctness, defining confidence boundaries, and comparing established resources. That made a weekend project sound like a linguistic research program.
+- **I treated “first principles” as a request for labels and caveats.** The question was about the underlying model: language-level genealogy, typology, and areal contact; word and morpheme histories; and smaller scales of cognacy. I kept returning to UI categories and wording. The data model must represent distinct kinds and levels of relationship before the UI chooses how to present them.
+- **I confused caution with usefulness.** The user did not ask for certainty scores. Crude, useful categories are acceptable if their scope is clear. Uncertainty belongs where it helps explain a record; it should not dominate every label or make the product inert.
+- **I let infrastructure stand in for the outcome.** More parsers, reports, test counts, exports, and commits did not mean `other` had become useful. The right progress measure is what a person can now find, inspect, compare, or query in the existing product.
+- **I did not lead with the database facts.** The user had to repeatedly ask for a direct database query and for the actual counts. A progress report should first show the real table, its row unit, the category totals, the change made, and what remains unexplained. API results and screenshots are not substitutes for a database query when the question is about stored data.
+- **I described stale or separate states as if they were current.** The display `category`, the separate `etymological_relation`, the generated artifact, and the loaded database are different things. Reports must identify which one they query and when. An old API failure report must not be repeated after the routes are fixed.
+- **I proposed another plan when the user wanted the next useful change.** A plan is not progress when the diagnosis is already clear. The next step should be a small change in the existing dataset and lexicon, tested against named examples, not a new project or another planning-only stage.
+- **I over-read brief corrections and then made broad changes.** Requests about copy, controls, layout, or chart behavior must be applied to the specific element named. Existing user-authored content should remain intact unless the user asks to change it. Before changing adjacent behavior, inspect the current UI and state the exact effect the change will have.
+
+### Product requirements reconstructed from the work
+
+These are the practical requirements that emerged from the user's prompts. They are a working summary, not a substitute for confirming future product decisions.
+
+1. **Keep the sourcing and transformation work visible.** The project should add value through its own collection, parsing, linking, and transformation, rather than becoming a CRUD interface over a finished external corpus.
+2. **Make comparisons useful even when history is not known.** People should be able to search and inspect misleadingly similar pairs for the lexicon and quiz. A missing historical classification must not remove a useful comparison candidate.
+3. **Represent more than one kind of relationship.** Language ancestry, structural similarity, and contact are language-level dimensions. Inheritance, borrowing, derivation, calquing, and compound components concern word histories. Similarity scores describe forms or meanings. Keep those dimensions separate and allow more than one relevant relation on a pair.
+4. **Make the evidence inspectable.** A reader should be able to see which entry, sense, or component supports a claim, what the source says, and where the project's transformation or interpretation begins.
+5. **Use outside datasets as tools, not replacements.** A comparison dataset can help check coverage or provide a bounded reference sample. It should not displace the project's source work just because it is more complete or better curated.
+6. **Do not claim vocabulary-wide rates from candidate rows.** If the site eventually reports a share of cognates in a language pair, it needs a defined meaning list, sampling frame, and denominator. Until then, report counts as candidate or comparison counts.
+7. **Keep the scope enjoyable and achievable.** A small public resource that answers a real question for a few people is a valid result. The work should not grow into an academic validation program unless the user chooses that direction.
+
+### Working protocol for the next engineer
+
+For each proposed dataset improvement, write down these five items before expanding the pipeline:
+
+1. **User outcome:** What new question can a person answer in the current product after this change?
+2. **Data unit:** Is the change about a language, entry, sense, morpheme, candidate pair, source claim, or sample concept?
+3. **Before state:** Query the loaded database and capture the counts and named records that expose the problem.
+4. **Small end-to-end change:** Update the source transformation, stored representation, and existing query or view for a bounded set of cases. Do not stop at a report or export.
+5. **Evidence of completion:** Query the database again, exercise the existing product path, run the checks that cover the changed behavior, and report what each check does and does not prove.
+
+If the bounded change reveals a missing source or schema feature, add only what that case needs. Then test it against another case with a different relationship. Scale up only after the representation handles both without losing source scope, direction, or overlapping histories.
+
+### Product and interface lessons from earlier work
+
+The same outcome-first failure appeared in the language comparison UI:
+
+- **“Combine” meant add both new views to the existing Language Overview.** The map and matrix were to join the existing table and breakdown. A parallel page was a safe place to prove that complete integration before replacing the original route; it was not a new, reduced product page.
+- **A combination must preserve the existing page.** The table, breakdown, authored copy, layout, and existing controls were part of the requested result. Keeping only a small subset and calling it integrated missed the goal.
+- **Coordinate interactions across views.** A language chosen from the table, map, matrix, or shared pair selector should produce one understandable comparison state. Map-only controls, such as 2D/3D, belong to the map. Avoid multiple filters that appear global but silently affect different panes.
+- **Make actions match their visual affordance and stay usable at every viewport.** A control should not cover nodes or content. Persistent controls must remain reachable when the user is at the bottom of a long mobile page. Keep desktop and mobile defaults intentional.
+- **Treat screenshots as evidence to inspect, not instructions to overgeneralize.** Confirm which object overlaps which, what a symbol means, and which plotted lines are in front before changing geometry or drawing order. Verify the result in the actual page after interaction, not only from code or a static screenshot.
+- **Preserve copy and established component conventions.** Existing authored copy is not “redundancy” to trim. Change only the requested copy; use neighboring pages for visual and typographic conventions, and use the project's existing controls and icon system.
+
+These are the same core lesson as the data work: do not optimize a local element while losing the user's requested whole. Define the whole-page or user-visible outcome first, then implement and verify the connected behavior.
+
 ## Practical direction from here
 
 Do not start by relabeling all 1.6 million rows. First make one useful vertical slice work in the existing project:
