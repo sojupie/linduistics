@@ -64,7 +64,7 @@ def build_table_rows(
             sense_links[(form_id, fingerprint)] = (
                 REFERENCE_DATASET, REFERENCE_VERSION, form_id, fingerprint, sense_id,
                 row["local_source_entry_key"], row["local_word"], row["language_code"],
-                row["local_source_url"], row["sense_review_status"],
+                row["local_source_url"], row["sense_review_status"], row["local_etymology_root"],
             )
 
     form_rows = [(
@@ -81,12 +81,28 @@ def build_table_rows(
     return list(concepts.values()), form_rows, list(sense_links.values()), pair_db_rows
 
 
+def build_pair_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
+    return [(
+        row["ancestry_status"], row["source_word"], row["target_word"],
+        row["source_sense_id"], row["target_sense_id"],
+        row["source_entry_key"], row["target_entry_key"],
+        row["source_url"], row["target_url"],
+        json.dumps({
+            "direct_claims": row["shared_direct_ancestor_claims"],
+            "proto_mentions": row["shared_proto_ancestor_mentions"],
+        }, ensure_ascii=False),
+        row["concept_id"], row["source_language"], row["target_language"],
+    ) for row in rows]
+
+
 def seed_panel(
-    db_url: str, crosswalk_path: Path, pair_path: Path, replace: bool = False
+    db_url: str, crosswalk_path: Path, pair_path: Path, ancestry_path: Path,
+    replace: bool = False,
 ) -> dict[str, int]:
     concepts, forms, sense_links, pairs = build_table_rows(
         read_jsonl(crosswalk_path), read_jsonl(pair_path)
     )
+    pair_evidence = build_pair_evidence_rows(read_jsonl(ancestry_path))
     with psycopg.connect(db_url) as conn:
         with conn.transaction():
             with conn.cursor() as cursor:
@@ -106,16 +122,35 @@ def seed_panel(
                     "INSERT INTO iecor_reference_forms VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", forms
                 )
                 cursor.executemany(
-                    "INSERT INTO iecor_local_sense_links VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", sense_links
+                    """INSERT INTO iecor_local_sense_links (
+                        reference_dataset, reference_version, form_id, candidate_fingerprint,
+                        source_sense_id, source_entry_key, local_word, language_code,
+                        source_url, review_status, local_etymology_root
+                    ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", sense_links
                 )
                 cursor.executemany(
-                    "INSERT INTO iecor_meaning_pairs VALUES (%s,%s,%s,%s,%s,%s,%s,%s)", pairs
+                    """INSERT INTO iecor_meaning_pairs (
+                        reference_dataset, reference_version, concept_id, source_language,
+                        target_language, reference_relation, shared_cognate_set_ids,
+                        unassigned_form_ids
+                    ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""", pairs
+                )
+                cursor.executemany(
+                    """UPDATE iecor_meaning_pairs SET
+                        local_ancestry_status = %s, local_source_word = %s, local_target_word = %s,
+                        local_source_sense_id = %s, local_target_sense_id = %s,
+                        local_source_entry_key = %s, local_target_entry_key = %s,
+                        local_source_url = %s, local_target_url = %s, local_ancestor_evidence = %s::jsonb
+                    WHERE reference_dataset = 'IE-CoR' AND reference_version = '1.1'
+                      AND concept_id = %s AND source_language = %s AND target_language = %s""",
+                    pair_evidence,
                 )
     return {
         "concepts": len(concepts),
         "forms": len(forms),
         "local_sense_links": len(sense_links),
         "meaning_pairs": len(pairs),
+        "meaning_pair_evidence": len(pair_evidence),
     }
 
 
@@ -127,9 +162,10 @@ def main() -> None:
     ))
     parser.add_argument("--crosswalk", type=Path, default=root / "pipeline/data/iecor_local_sense_crosswalk_v1.1.jsonl")
     parser.add_argument("--pairs", type=Path, default=root / "pipeline/data/iecor_local_sense_crosswalk_v1.1_pairs.jsonl")
+    parser.add_argument("--ancestry", type=Path, default=root / "pipeline/data/iecor_reviewed_ancestry_v1.1.jsonl")
     parser.add_argument("--replace", action="store_true", help="Replace this IE-CoR version in the four IE-CoR tables")
     args = parser.parse_args()
-    print(json.dumps(seed_panel(args.db_url, args.crosswalk, args.pairs, args.replace), indent=2))
+    print(json.dumps(seed_panel(args.db_url, args.crosswalk, args.pairs, args.ancestry, args.replace), indent=2))
 
 
 if __name__ == "__main__":

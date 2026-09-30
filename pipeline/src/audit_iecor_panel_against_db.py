@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -41,6 +42,15 @@ def sense_alignment_status(
     if not both_senses_active:
         return "sense_pair_not_active"
     return "sense_pair_active"
+
+
+def root_alignment_status(source_root: str | None, target_root: str | None) -> str:
+    normalize = lambda value: re.sub(r"\s+", " ", value.strip()).casefold() if value else ""
+    if not normalize(source_root):
+        return "missing_source_root"
+    if not normalize(target_root):
+        return "missing_target_root"
+    return "same_root_label" if normalize(source_root) == normalize(target_root) else "different_root_labels"
 
 
 def audit_panel(
@@ -178,6 +188,40 @@ def audit_panel(
         GROUP BY concept_id, concept, source_language, target_language, reference_relation
         ORDER BY concept, source_language, target_language
     """
+    reviewed_root_query = """
+        SELECT concept.concept_label, pair.concept_id,
+               pair.source_language, pair.target_language,
+               pair.reference_relation,
+               source_form.reference_form, source_link.local_word,
+               source_link.source_sense_id, source_link.local_etymology_root,
+               target_form.reference_form, target_link.local_word,
+               target_link.source_sense_id, target_link.local_etymology_root
+        FROM iecor_meaning_pairs pair
+        JOIN iecor_reference_concepts concept
+          USING (reference_dataset, reference_version, concept_id)
+        JOIN iecor_reference_forms source_form
+          ON source_form.reference_dataset = pair.reference_dataset
+         AND source_form.reference_version = pair.reference_version
+         AND source_form.concept_id = pair.concept_id
+         AND source_form.language_code = pair.source_language
+        JOIN iecor_local_sense_links source_link
+          ON source_link.reference_dataset = source_form.reference_dataset
+         AND source_link.reference_version = source_form.reference_version
+         AND source_link.form_id = source_form.form_id
+         AND source_link.review_status = 'selected_primary'
+        JOIN iecor_reference_forms target_form
+          ON target_form.reference_dataset = pair.reference_dataset
+         AND target_form.reference_version = pair.reference_version
+         AND target_form.concept_id = pair.concept_id
+         AND target_form.language_code = pair.target_language
+        JOIN iecor_local_sense_links target_link
+          ON target_link.reference_dataset = target_form.reference_dataset
+         AND target_link.reference_version = target_form.reference_version
+         AND target_link.form_id = target_form.form_id
+         AND target_link.review_status = 'selected_primary'
+        WHERE pair.reference_dataset = 'IE-CoR' AND pair.reference_version = '1.1'
+        ORDER BY pair.concept_id, pair.source_language, pair.target_language
+    """
 
     with psycopg.connect(db_url) as conn:
         with conn.transaction():
@@ -216,6 +260,7 @@ def audit_panel(
             sense_rows = conn.execute(
                 sense_query, (json.dumps(sense_input),)
             ).fetchall()
+            reviewed_root_rows = conn.execute(reviewed_root_query).fetchall()
 
     pair_output = []
     pair_summary = Counter()
@@ -279,11 +324,43 @@ def audit_panel(
             "db_etymological_relations": relations,
         })
 
+    root_output = []
+    root_summary = Counter()
+    roots_by_reference_relation: dict[str, Counter[str]] = {}
+    for (concept, concept_id, source_language, target_language, reference_relation,
+         source_form, source_word, source_sense_id, source_root,
+         target_form, target_word, target_sense_id, target_root) in reviewed_root_rows:
+        status = root_alignment_status(source_root, target_root)
+        root_summary["reviewed_meaning_pairs"] += 1
+        root_summary[status] += 1
+        if source_root and target_root:
+            root_summary["both_roots_present"] += 1
+        by_relation = roots_by_reference_relation.setdefault(reference_relation, Counter())
+        by_relation[status] += 1
+        root_output.append({
+            "concept_id": concept_id,
+            "concept": concept,
+            "source_language": source_language,
+            "target_language": target_language,
+            "reference_relation": reference_relation,
+            "source_form": source_form,
+            "source_word": source_word,
+            "source_sense_id": source_sense_id,
+            "source_etymology_root": source_root,
+            "target_form": target_form,
+            "target_word": target_word,
+            "target_sense_id": target_sense_id,
+            "target_etymology_root": target_root,
+            "root_alignment": status,
+        })
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     pair_path = output_path.with_name(f"{output_path.stem}_pairs.jsonl")
     sense_path = output_path.with_name(f"{output_path.stem}_reviewed_senses.jsonl")
+    root_path = output_path.with_name(f"{output_path.stem}_reviewed_roots.jsonl")
     pair_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in pair_output), encoding="utf-8")
     sense_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in sense_output), encoding="utf-8")
+    root_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in root_output), encoding="utf-8")
     output_path.write_text(json.dumps({
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "database_rows": database_total,
@@ -308,13 +385,20 @@ def audit_panel(
             "active_pair_categories": dict(active_categories),
             "active_pair_etymological_relations": dict(active_relations),
         },
+        "reviewed_root_panel": {
+            **dict(root_summary),
+            "by_reference_relation": {
+                relation: dict(counts) for relation, counts in roots_by_reference_relation.items()
+            },
+            "interpretation": "Exact normalized root-label overlap is a diagnostic only; differing labels may still trace to the same ancestor.",
+        },
         "inputs": {
             str(path): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in (crosswalk_path, input_pair_path)
         },
         "outputs": {
             path.name: hashlib.sha256(path.read_bytes()).hexdigest()
-            for path in (pair_path, sense_path)
+            for path in (pair_path, sense_path, root_path)
         },
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return json.loads(output_path.read_text(encoding="utf-8"))

@@ -1,4 +1,6 @@
-from pipeline.src.seed_iecor_panel import build_table_rows
+import json
+
+from pipeline.src.seed_iecor_panel import build_pair_evidence_rows, build_table_rows
 
 
 def test_build_table_rows_preserves_reference_and_local_links():
@@ -36,4 +38,28 @@ def test_build_table_rows_preserves_reference_and_local_links():
     assert (len(concepts), len(forms), len(links), len(meaning_pairs)) == (1, 2, 1, 1)
     assert forms[0][7] == ["10"]
     assert links[0][4:6] == ("sense-da", "entry-da")
+    assert links[0][-1] == "Proto-Germanic *blōþą"
     assert meaning_pairs[0][5:7] == ("shared_cognate_set", ["10"])
+
+
+def test_pair_evidence_rows_keep_meaning_alignment_and_raw_claim_basis():
+    row = {
+        "ancestry_status": "shared_direct_ancestor_claim",
+        "source_word": "fire", "target_word": "Feuer",
+        "source_sense_id": "sense-en", "target_sense_id": "sense-de",
+        "source_entry_key": "en|fire", "target_entry_key": "de|Feuer",
+        "source_url": "https://en.wiktionary.org/wiki/fire#English",
+        "target_url": "https://en.wiktionary.org/wiki/Feuer#German",
+        "shared_direct_ancestor_claims": [{"language_code": "gmw-pro", "form": "*fuir"}],
+        "shared_proto_ancestor_mentions": [],
+        "concept_id": "50", "source_language": "en", "target_language": "de",
+    }
+
+    values = build_pair_evidence_rows([row])[0]
+
+    assert values[0] == "shared_direct_ancestor_claim"
+    assert json.loads(values[9]) == {
+        "direct_claims": [{"language_code": "gmw-pro", "form": "*fuir"}],
+        "proto_mentions": [],
+    }
+    assert values[10:] == ("50", "en", "de")
