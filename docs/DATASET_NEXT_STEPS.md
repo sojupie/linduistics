@@ -881,3 +881,11 @@ The rebuilt slice contains **18 case groups and 70 directed candidate rows**. It
 The focused tests pass (**11 passed**), and the generated `metadata.json` passes the official PyCLDF 2.1.1 validator. The regenerated slice has SHA-256 `861a0e6cb4e39db4641d418ccaee48aecd5d5221079ddc23e4013c6eaee8fc6a`. The output lives under ignored `pipeline/data/` paths, not in a deployed database or tracked public release.
 
 The `relationship_unclear` assertion for *aften/afton* is now a normalized row in `curated-source-claims.csv`, linked to the revision in `curated-source-pages.csv`. It remains distinct from the dump-extracted `source-claims.csv`. This closes the curated-claim export gap without turning a source statement into an automatic comparison verdict.
+
+## Compare the curated *torta* claim with the local raw dump (2026-09-28)
+
+The Swedish `torta` record in `etymology_records_source_origin_status.jsonl` contains an etymology-text field listing Norwegian variants that include `tort`. Its normalized `claims` array contains only the structured `cog` claims for Norwegian `turt` and Danish `turt`; there is no normalized claim for Norwegian `tort`. The pinned Swedish revision is separately recorded as source ID `torta-current`, and `torta-sv-01` captures the prose mention as `cognate_mention` with its target variety explicitly unspecified.
+
+This is not evidence that the source page omits the claim: the unstructured text is present in the local dump. It is also not enough to claim that the dump record is the exact pinned revision, because the local entry lacks a per-entry revision ID. Keep the curated assertion tied to the permanent page revision, retain the raw dump text as a separate snapshot observation, and do not resolve the Norwegian mention to the Bokmål legal sense merely because that candidate exists.
+
+The next useful check is a small crosswalk of the existing curated assertions against raw dump `etymology_text` and normalized `claims`: mark each match as structured, prose-only in the snapshot, source-version disagreement, or unresolved. This will show whether a general extraction change is warranted or whether curated transcriptions are the right boundary for prose evidence.

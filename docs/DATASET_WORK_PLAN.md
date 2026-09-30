@@ -43,7 +43,7 @@ The current local diagnostic slice has 18 case groups and 35 undirected comparis
 
 The regenerated 18-case local slice passes its exporter ID and foreign-key checks, nine focused exporter tests, and PyCLDF 2.1.1 validation. It contains 35 comparisons, 1,655 template-extracted claims, 21 revision-pinned pages, and 70 separately curated assertions. The separate tables preserve the *aften/afton* `relationship_unclear` statement without presenting it as an automated template extraction. The local export is ignored; it has not replaced the smaller tracked candidate. Neither is cleared for redistribution until entries containing third-party material are reviewed.
 
-Next, inspect the Swedish *torta* prose claim against the local raw source record. Determine whether the relation can be extracted reproducibly without guessing which Norwegian variety or sense it refers to. If not, keep it as a curated source assertion and document the extraction boundary. Then add one source-based regression case and regenerate the slice.
+The local Swedish *torta* record retains prose mentioning Norwegian *tort*, but its normalized claims only contain the structured *turt* links, and the local dump record has no page-revision ID. The pinned curated assertion therefore remains the stronger source link. Next, compare the existing curated assertions against dump `etymology_text` and normalized claims to distinguish prose-only evidence, template matches, source-version changes, and unresolved identities before deciding whether any broader extraction rule is justified.
 
 ## Existing notes
 
