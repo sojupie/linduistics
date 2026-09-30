@@ -158,7 +158,7 @@ The reference comparison is useful because it exposes both signal and disagreeme
 | Shared cognate set | 816 | 36 | 162 | 54 | 26 |
 | No shared cognate set | 33 | 2 | 383 | 146 | 32 |
 
-The 33 direct-claim and two Proto-mention pairs in IE-CoR's `no_shared_cognate_set` group are a concrete review queue, not automatic corrections. For example, the Danish and German entries for “play” both point to Proto-West Germanic `*spilōn`; matching sense candidates describe playing a game or performance. IE-CoR assigns no shared set to that pair. This is the kind of inspectable discrepancy that can improve our source-derived classifications.
+The 33 direct-claim and two Proto-mention pairs in IE-CoR's `no_shared_cognate_set` group are a concrete review queue, not automatic corrections. For example, the Danish and German entries for “play” both point to Proto-West Germanic `*spilōn`; matching sense candidates describe playing a game or performance. IE-CoR assigns no shared set to that pair, while a read-only query of the current `word_comparisons` table finds Danish `spille`–German `spielen` already labeled `true_cognate` / `cognate` in both directions. That is a real disagreement between the reference panel and the app's existing data, not a correction made by this pass. It is inspectable and gives us a concrete row to reconcile.
 
 The full output retains **1,668 entry-pair evidence records**, including both supporting and disagreeing comparisons. It also exposes the current coverage gap: 1,496 of 1,623 exact entry keys were found in the extracted source records, leaving 832 entry-pair combinations incomplete. A pair can have candidate evidence and still have other missing entry records, so use its missing-record count as well as its status.
 
@@ -192,7 +192,7 @@ The generated local manifest records the exact hashes. The audit was run against
 
 Use the loaded 169-meaning panel as the first project-owned, meaning-aligned comparison set. The next steps are:
 
-1. Review the 35 IE-CoR no-shared-set pairs where the local entry claims point to a common ancestor. Start with “play” (Danish *spille* and German *spielen*) and record whether the forms, senses, and source claims support the same historical relationship.
+1. Review the 35 IE-CoR no-shared-set pairs where the local entry claims point to a common ancestor against the current database rows. Start with “play” (Danish *spille* and German *spielen*): record the app's existing `true_cognate` label, IE-CoR's missing shared set, the matching senses, and the source claims, then decide which evidence path explains the disagreement.
 2. Inspect the 162 IE-CoR shared-set pairs with no common ancestor found, separating actual etymology gaps from the 54 incomplete source-record cases and 26 pairs without two-sided local entries.
 3. Repair the 127 missing source-entry records and resolve the 18 local form misses, then rerun the candidate export. Keep the output as evidence candidates until the conflicting and unresolved cases have a sense-level decision.
 4. Only after those checks, write accepted relationships into the project's own data model. Keep IE-CoR assignments and local Wiktionary claims as separate evidence, and keep multiple relations possible for one pair.
