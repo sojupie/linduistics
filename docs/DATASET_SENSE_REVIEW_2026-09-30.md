@@ -38,4 +38,4 @@ Validation checked 47 rows, 40 distinct meaning-language slots, exactly one prim
 
 ## Next work
 
-Scale this same crosswalk to the remaining 161 meanings. Keep exact spelling, phrase/inflected-form matches, alternative spellings, ambiguous senses, and missing forms as distinct outcomes. Only after the full sample has reproducible mapping and coverage counts should we compare local source claims against IE-CoR's own cognate groups or publish relationship percentages.
+The reproducible crosswalk now covers all 169 meanings, and the live-database comparison is documented in [`IECOR_PANEL_AUDIT_2026-09-30.md`](IECOR_PANEL_AUDIT_2026-09-30.md). The remaining work is to review more local senses, resolve the 18 exact-form gaps, and explain the 54 reviewed-sense pairs that are present in the database but not selected as its active comparison. Do not transfer IE-CoR cognate-set IDs into local records automatically.
