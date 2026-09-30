@@ -95,14 +95,40 @@ def build_pair_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
     ) for row in rows]
 
 
+def build_candidate_pair_rows(rows: list[dict[str, Any]]) -> list[tuple]:
+    return [(
+        row["entry_evidence_status"], row["source_etymology_entries"],
+        row["target_etymology_entries"], row["etymology_entry_combinations"],
+        row["combinations_with_missing_source_record"],
+        row["direct_ancestor_candidate_pairs"], row["proto_mention_candidate_pairs"],
+        row["concept_id"], row["source_language"], row["target_language"],
+    ) for row in rows]
+
+
+def build_candidate_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
+    return [(
+        REFERENCE_DATASET, REFERENCE_VERSION, row["concept_id"],
+        row["source_language"], row["target_language"],
+        row["source_entry"]["entry_key"], row["target_entry"]["entry_key"],
+        row["evidence_type"], row["source_entry"]["url"], row["target_entry"]["url"],
+        json.dumps(row["source_entry"]["sense_candidates"], ensure_ascii=False),
+        json.dumps(row["target_entry"]["sense_candidates"], ensure_ascii=False),
+        json.dumps(row["source_etymology_claims"], ensure_ascii=False),
+        json.dumps(row["target_etymology_claims"], ensure_ascii=False),
+        json.dumps(row["shared_ancestors"], ensure_ascii=False),
+    ) for row in rows]
+
+
 def seed_panel(
     db_url: str, crosswalk_path: Path, pair_path: Path, ancestry_path: Path,
-    replace: bool = False,
+    candidate_pairs_path: Path, candidate_evidence_path: Path, replace: bool = False,
 ) -> dict[str, int]:
     concepts, forms, sense_links, pairs = build_table_rows(
         read_jsonl(crosswalk_path), read_jsonl(pair_path)
     )
     pair_evidence = build_pair_evidence_rows(read_jsonl(ancestry_path))
+    candidate_pair_summaries = build_candidate_pair_rows(read_jsonl(candidate_pairs_path))
+    candidate_evidence = build_candidate_evidence_rows(read_jsonl(candidate_evidence_path))
     with psycopg.connect(db_url) as conn:
         with conn.transaction():
             with conn.cursor() as cursor:
@@ -145,12 +171,40 @@ def seed_panel(
                       AND concept_id = %s AND source_language = %s AND target_language = %s""",
                     pair_evidence,
                 )
+                cursor.executemany(
+                    """UPDATE iecor_meaning_pairs SET
+                        local_candidate_ancestry_status = %s,
+                        local_source_etymology_entry_count = %s,
+                        local_target_etymology_entry_count = %s,
+                        local_etymology_entry_combinations = %s,
+                        local_missing_entry_combinations = %s,
+                        local_direct_ancestor_entry_pairs = %s,
+                        local_proto_mention_entry_pairs = %s
+                    WHERE reference_dataset = 'IE-CoR' AND reference_version = '1.1'
+                      AND concept_id = %s AND source_language = %s AND target_language = %s""",
+                    candidate_pair_summaries,
+                )
+                cursor.executemany(
+                    """INSERT INTO iecor_ancestry_candidate_evidence (
+                        reference_dataset, reference_version, concept_id,
+                        source_language, target_language, source_entry_key, target_entry_key,
+                        evidence_type, source_entry_url, target_entry_url,
+                        source_sense_candidates, target_sense_candidates,
+                        source_etymology_claims, target_etymology_claims, shared_ancestor_evidence
+                    ) VALUES (
+                        %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
+                        %s::jsonb,%s::jsonb,%s::jsonb,%s::jsonb,%s::jsonb
+                    )""",
+                    candidate_evidence,
+                )
     return {
         "concepts": len(concepts),
         "forms": len(forms),
         "local_sense_links": len(sense_links),
         "meaning_pairs": len(pairs),
         "meaning_pair_evidence": len(pair_evidence),
+        "candidate_pair_summaries": len(candidate_pair_summaries),
+        "ancestry_candidate_evidence": len(candidate_evidence),
     }
 
 
@@ -163,9 +217,14 @@ def main() -> None:
     parser.add_argument("--crosswalk", type=Path, default=root / "pipeline/data/iecor_local_sense_crosswalk_v1.1.jsonl")
     parser.add_argument("--pairs", type=Path, default=root / "pipeline/data/iecor_local_sense_crosswalk_v1.1_pairs.jsonl")
     parser.add_argument("--ancestry", type=Path, default=root / "pipeline/data/iecor_reviewed_ancestry_v1.1.jsonl")
-    parser.add_argument("--replace", action="store_true", help="Replace this IE-CoR version in the four IE-CoR tables")
+    parser.add_argument("--candidate-pairs", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_pairs.jsonl")
+    parser.add_argument("--candidate-evidence", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_evidence.jsonl")
+    parser.add_argument("--replace", action="store_true", help="Replace this IE-CoR version and its candidate evidence")
     args = parser.parse_args()
-    print(json.dumps(seed_panel(args.db_url, args.crosswalk, args.pairs, args.ancestry, args.replace), indent=2))
+    print(json.dumps(seed_panel(
+        args.db_url, args.crosswalk, args.pairs, args.ancestry,
+        args.candidate_pairs, args.candidate_evidence, args.replace,
+    ), indent=2))
 
 
 if __name__ == "__main__":

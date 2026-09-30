@@ -1,6 +1,11 @@
 import json
 
-from pipeline.src.seed_iecor_panel import build_pair_evidence_rows, build_table_rows
+from pipeline.src.seed_iecor_panel import (
+    build_candidate_evidence_rows,
+    build_candidate_pair_rows,
+    build_pair_evidence_rows,
+    build_table_rows,
+)
 
 
 def test_build_table_rows_preserves_reference_and_local_links():
@@ -63,3 +68,44 @@ def test_pair_evidence_rows_keep_meaning_alignment_and_raw_claim_basis():
         "proto_mentions": [],
     }
     assert values[10:] == ("50", "en", "de")
+
+
+def test_candidate_ancestry_rows_preserve_entry_level_evidence_and_sense_alternatives():
+    pair = {
+        "entry_evidence_status": "entry_shared_ancestor_found",
+        "source_etymology_entries": 1, "target_etymology_entries": 2,
+        "etymology_entry_combinations": 2,
+        "combinations_with_missing_source_record": 1,
+        "direct_ancestor_candidate_pairs": 1, "proto_mention_candidate_pairs": 0,
+        "concept_id": "221", "source_language": "da", "target_language": "de",
+    }
+    evidence = {
+        "concept_id": "221", "source_language": "da", "target_language": "de",
+        "source_entry": {
+            "entry_key": "da|spille", "url": "https://example.test/spille",
+            "sense_candidates": [{"sense_id": "da-1", "gloss": "to play"}],
+        },
+        "target_entry": {
+            "entry_key": "de|spielen", "url": "https://example.test/spielen",
+            "sense_candidates": [{"sense_id": "de-1", "gloss": "to play a game"}],
+        },
+        "source_etymology_claims": [{"relation": "inherited_from", "related_form": "*spilōn"}],
+        "target_etymology_claims": [{"relation": "borrowed_from", "related_form": "spilōn"}],
+        "evidence_type": "shared_direct_ancestor_claim",
+        "shared_ancestors": [{"language_code": "gmw-pro", "form": "*spilōn"}],
+    }
+
+    summary_values = build_candidate_pair_rows([pair])[0]
+    evidence_values = build_candidate_evidence_rows([evidence])[0]
+
+    assert summary_values == (
+        "entry_shared_ancestor_found", 1, 2, 2, 1, 1, 0, "221", "da", "de"
+    )
+    assert evidence_values[:10] == (
+        "IE-CoR", "1.1", "221", "da", "de", "da|spille", "de|spielen",
+        "shared_direct_ancestor_claim", "https://example.test/spille", "https://example.test/spielen",
+    )
+    assert json.loads(evidence_values[10]) == evidence["source_entry"]["sense_candidates"]
+    assert json.loads(evidence_values[12]) == evidence["source_etymology_claims"]
+    assert json.loads(evidence_values[13]) == evidence["target_etymology_claims"]
+    assert json.loads(evidence_values[14]) == evidence["shared_ancestors"]

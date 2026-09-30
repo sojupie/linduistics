@@ -133,6 +133,8 @@ def audit(
                         "evidence_type": "shared_direct_ancestor_claim",
                         "source_entry": entry_summary(left_entry),
                         "target_entry": entry_summary(right_entry),
+                        "source_etymology_claims": records[left_key].get("claims", []),
+                        "target_etymology_claims": records[right_key].get("claims", []),
                         "shared_ancestors": [{
                             "language_code": language,
                             "form": form,
@@ -154,6 +156,8 @@ def audit(
                         "evidence_type": "shared_proto_ancestor_mention",
                         "source_entry": entry_summary(left_entry),
                         "target_entry": entry_summary(right_entry),
+                        "source_etymology_claims": records[left_key].get("claims", []),
+                        "target_etymology_claims": records[right_key].get("claims", []),
                         "shared_ancestors": [
                             {"language_label": language, "form": form}
                             for language, form in shared_proto

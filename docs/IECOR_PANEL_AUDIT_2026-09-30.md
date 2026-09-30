@@ -100,6 +100,7 @@ Migration `db/migrations/010_create_iecor_meaning_panel.sql` adds four tables al
 | `iecor_reference_forms` | 853 | Reference forms, cognate-set IDs, local exact-form matches, and source URLs |
 | `iecor_local_sense_links` | 8,353 | Distinct local sense candidate records with review status and source link |
 | `iecor_meaning_pairs` | 1,690 | Meaning-scoped IE-CoR relation plus local sense links and ancestry evidence |
+| `iecor_ancestry_candidate_evidence` | 1,668 | Source-linked local etymology-entry pairs, all entry claims, and alternative senses |
 
 The 8,353 sense-link rows include 40 `selected_primary`, six `selected_additional`, one `rejected_sense_mismatch`, and 8,306 `unreviewed` records. They contain 7,117 distinct source-sense IDs, another reason not to treat that ID alone as the record key. Each link also retains the root label parsed for that local sense; the root is evidence text, not a normalized ancestor identity.
 
@@ -164,7 +165,9 @@ A direct SQL join checked all 35 discrepancy pairs against the existing app tabl
 
 The full output retains **1,668 entry-pair evidence records**, including both supporting and disagreeing comparisons. It also exposes the current coverage gap: 1,496 of 1,623 exact entry keys were found in the extracted source records, leaving 832 entry-pair combinations incomplete. A pair can have candidate evidence and still have other missing entry records, so use its missing-record count as well as its status.
 
-These numbers are a broad candidate pass, not final sense-level classifications. The exact headword match identifies the form, but a word can have several senses and etymology sections. Candidate evidence conflicts with IE-CoR's no-shared-set status in 35 pairs, while 162 shared-set pairs have no common ancestry claim in the currently extracted records. Preserve those differences for inspection; do not choose a winner automatically. The detailed outputs are `iecor_candidate_ancestry_v1.1_pairs.jsonl` and `iecor_candidate_ancestry_v1.1_evidence.jsonl`; the manifest hashes all three source inputs and both outputs.
+The candidate evidence is now queryable in PostgreSQL. A useful example is English *flower*–Norwegian Bokmål *blomst*: the existing app row is `other` / `unknown`, while the new evidence table records both entries' claims and their shared Proto-Indo-European root `*bʰleh₃-`. It also preserves the different routes: English *flower* through Middle English, Anglo-Norman, Latin, and Proto-Italic; Bokmål *blomst* through Danish, Old Norse, and Proto-Germanic. This does not settle the final label, but it turns an unhelpful `other` into inspectable evidence with both a common root and separate borrowing/inheritance paths.
+
+These numbers are a broad candidate pass, not final sense-level classifications. The exact headword match identifies the form, but a word can have several senses and etymology sections. Candidate evidence conflicts with IE-CoR's no-shared-set status in 35 pairs, while 162 shared-set pairs have no common ancestry claim in the currently extracted records. The evidence rows now retain each side's full extracted claims as well as the matching ancestor, so borrowing and intermediate paths remain visible. Preserve disagreements for inspection; do not choose a winner automatically. The detailed outputs are `iecor_candidate_ancestry_v1.1_pairs.jsonl` and `iecor_candidate_ancestry_v1.1_evidence.jsonl`; the manifest hashes all three source inputs and both outputs.
 
 ## Reproduction
 
@@ -179,13 +182,13 @@ python pipeline/src/audit_iecor_candidate_ancestry.py
 
 The first command creates ignored local outputs in `pipeline/data/`: an 8,440-row crosswalk (8,422 local sense candidates plus 18 missing-form rows), the 1,690-row IE-CoR pair panel, and a manifest with input/output hashes. The second command runs a repeatable read-only, repeatable-read transaction against `word_comparisons` and writes the database audit JSON plus per-pair JSONL files. Set `DATABASE_URL` or pass `--db-url` if the local PostgreSQL connection differs from the development default.
 
-To load the panel, apply migrations 010, 011, and 012, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed replaces only the IE-CoR v1.1 rows in these four tables; it does not update `word_comparisons`.
+To load the panel, apply migrations 010 through 014, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed replaces only IE-CoR v1.1 panel rows and their candidate evidence; it does not update `word_comparisons`.
 
 The generated local manifest records the exact hashes. The audit was run against the live database on 2026-09-30; rerunning against a changed database may produce different counts.
 
 ## What this establishes—and does not
 
-- It establishes that the project can align a bounded meaning panel to local dictionary-derived source senses, preserve separate IE-CoR cognate evidence, query the actual database, and quantify where the two disagree.
+- It establishes that the project can align a bounded meaning panel to local dictionary-derived source senses, preserve source-claim evidence alongside IE-CoR data, query the actual database, and quantify where they disagree.
 - It does not establish a whole-vocabulary cognate percentage, validate all Wiktionary histories, settle the complete taxonomy, or prove IE-CoR is right in every disputed case.
 - It does not automatically transfer IE-CoR cognate-set IDs to local words or rewrite existing categories.
 - It does show that the current display taxonomy is too coarse to carry the separate questions of meaning alignment and historical relationship by itself.
@@ -199,4 +202,4 @@ Use the loaded 169-meaning panel as the first project-owned, meaning-aligned com
 3. Repair the 127 missing source-entry records and resolve the 18 local form misses, then rerun the candidate export. Keep the output as evidence candidates until the conflicting and unresolved cases have a sense-level decision.
 4. Only after those checks, write accepted relationships into the project's own data model. Keep IE-CoR assignments and local Wiktionary claims as separate evidence, and keep multiple relations possible for one pair.
 
-The full 169-meaning pass now produces reproducible, source-linked candidate evidence files without changing the existing app comparison table or loading these new candidate results into PostgreSQL. It shows that useful counts are possible, and it identifies specific source gaps and disagreements to review before promoting candidates to classifications.
+The full 169-meaning pass is loaded into PostgreSQL as 1,690 aggregate candidate statuses and 1,668 source-linked entry-pair evidence rows, including all parsed claims on both entries. A direct count confirmed `word_comparisons` stayed at 1,638,454 rows through the panel refresh. This makes candidate evidence inspectable without promoting it to app classifications; the documented disagreements and source gaps remain to be reviewed.
