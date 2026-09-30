@@ -94,7 +94,7 @@ This is the clearest issue found so far: **the local forms often exist, but the 
 
 ## Data added to PostgreSQL
 
-Migration `db/migrations/010_create_iecor_meaning_panel.sql` adds four tables alongside the app's existing headword comparisons:
+Migrations 010 through 016 add the IE-CoR panel tables alongside the app's existing headword comparisons:
 
 | Table | Rows loaded | Purpose |
 | --- | ---: | --- |
@@ -104,6 +104,8 @@ Migration `db/migrations/010_create_iecor_meaning_panel.sql` adds four tables al
 | `iecor_meaning_pairs` | 1,690 | Meaning-scoped IE-CoR relation plus local sense links and ancestry evidence |
 | `iecor_ancestry_candidate_evidence` | 1,668 | Source-linked local etymology-entry pairs, all entry claims, and alternative senses |
 | `iecor_local_etymology_claims` | 588 | Individual source claims for the 45 reviewed primary entries, kept as typed, entry-scoped records |
+| `iecor_candidate_entry_claims` | 15,979 | All extracted claims for exact-form local entry candidates, with candidate senses retained |
+| `iecor_candidate_relation_claim_links` | 2,481 | Candidate source claims whose target language and form match another local panel entry |
 
 The 8,353 sense-link rows now include 45 `selected_primary`, six `selected_additional`, one `rejected_sense_mismatch`, and 8,301 `unreviewed` records. They contain 7,117 distinct source-sense IDs, another reason not to treat that ID alone as the record key. Each link also retains the root label parsed for that local sense; the root is evidence text, not a normalized ancestor identity.
 
@@ -112,6 +114,32 @@ The live `word_comparisons` table remains at 1,638,454 directed rows. Existing c
 The 1,690 meaning-pair rows now have 61 `shared_direct_ancestor_claim`, seven `shared_proto_ancestor_mention`, 22 `no_common_ancestor_evidence`, and 1,600 `unreviewed` local statuses. `no_common_ancestor_evidence` is not a false-cognate verdict.
 
 The 588 claim rows cover all 45 selected source entries; none of those source records was missing. Their extracted relation types are 369 `cognate_mention`, 149 `inherited_from`, 32 `derived_from`, nine `rooted_in`, seven `doublet_of`, one `compound_of`, one `noncognate_mention`, and 20 `unmapped`. This count is for the selected entries in nine reviewed meanings, not the full panel. The raw claim JSON is retained alongside the searchable relation and target fields. `derived_from` is left as the extractor reports it; it does not automatically mean a borrowing.
+
+The full-panel candidate pass found 1,496 of 1,623 local etymology entry records and retained 15,979 claims from them. This includes 70 `borrowed_from`, 15 `semantic_loan_from`, 10 `compound_of`, four `calque_of`, 213 `noncognate_mention`, 8,901 `cognate_mention`, and other claim types. A further 127 source-entry records were missing. Counts describe extracted claims on candidate headword entries; they are not reviewed sense-level facts or mutually exclusive pair categories.
+
+Of those claims, 2,481 directly name a local panel form in another language: 2,365 `cognate_mention`, 64 `inherited_from`, 32 `derived_from`, 11 `semantic_loan_from`, and nine `borrowed_from`. The link requires the claim's target language and normalized spelling to match a local candidate form in the same meaning slot. Case-only matches are marked. Source direction, full claim, source page, target entry, and alternative senses remain queryable. For example, a Bokmål *blomst* claim names German *Blume* as a cognate; the database now links that statement to the panel's German *Blume* entry. These links preserve what the dictionary says; they do not decide whether the specific senses are aligned or whether the whole word pair is cognate.
+
+That claim can be inspected directly in PostgreSQL:
+
+```sql
+SELECT c.local_word, c.claim_relation, c.related_language, c.related_form,
+       c.source_url, l.target_local_word, l.target_source_url,
+       c.sense_candidates, l.target_sense_candidates, c.source_claim
+FROM iecor_candidate_entry_claims c
+JOIN iecor_candidate_relation_claim_links l
+  ON (l.reference_dataset, l.reference_version, l.concept_id,
+      l.claim_source_language, l.source_entry_key, l.source_claim_index)
+   = (c.reference_dataset, c.reference_version, c.concept_id,
+      c.language_code, c.source_entry_key, c.claim_index)
+WHERE c.reference_dataset = 'IE-CoR'
+  AND c.reference_version = '1.1'
+  AND c.concept_id = '55'
+  AND c.language_code = 'nb'
+  AND c.local_word = 'blomst'
+  AND c.claim_relation = 'cognate_mention'
+  AND l.claim_target_language = 'de'
+  AND l.target_local_word = 'Blume';
+```
 
 Joining each claim's `related_language` and `related_form` to the selected primary form for the same meaning resolves **52 claims to another selected panel entry** by exact spelling, ignoring case: 48 `cognate_mention`, three `inherited_from`, and one `derived_from`. None of those matches has more than one selected target. For example, the Bokmål *blomst* entry's `cognate_mention` of German *Blume* now joins directly to the reviewed German form. This is a reproducible link from one source statement to another panel entry, not an automatic judgment that the whole words share the same history.
 
@@ -207,7 +235,7 @@ python pipeline/src/audit_iecor_candidate_ancestry.py
 
 The first command creates ignored local outputs in `pipeline/data/`: an 8,440-row crosswalk (8,422 local sense candidates plus 18 missing-form rows), the 1,690-row IE-CoR pair panel, and a manifest with input/output hashes. The second command runs a repeatable read-only, repeatable-read transaction against `word_comparisons` and writes the database audit JSON plus per-pair JSONL files. Set `DATABASE_URL` or pass `--db-url` if the local PostgreSQL connection differs from the development default.
 
-To load the panel, apply migrations 010 through 015, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed reads the extracted source-claims JSONL from `pipeline/data/etymology_records_rebuild_20260929.jsonl` by default and replaces only IE-CoR v1.1 panel rows and their candidate evidence. It does not update `word_comparisons`.
+To load the panel, apply migrations 010 through 016, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed reads the extracted source-claims JSONL from `pipeline/data/etymology_records_rebuild_20260929.jsonl` and the candidate claim outputs from `pipeline/data/` by default. It replaces only IE-CoR v1.1 panel rows and their candidate evidence. It does not update `word_comparisons`.
 
 The generated local manifest records the exact hashes. The audit was run against the live database on 2026-09-30; rerunning against a changed database may produce different counts.
 
