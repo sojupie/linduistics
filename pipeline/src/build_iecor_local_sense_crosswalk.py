@@ -34,12 +34,18 @@ def wiktionary_url(word: str, language_name: str) -> str:
     return f"https://en.wiktionary.org/wiki/{page}#{anchor}"
 
 
+def sense_review_key(
+    language: str, word: str, pos: str, sense_id: str, gloss: str
+) -> tuple[str, str, str, str, str]:
+    return (language, normalize_form(word), pos.strip().casefold(), sense_id, gloss.strip())
+
+
 def build_rows(
     reference_forms: list[dict[str, str]],
     concepts: dict[str, dict[str, str]],
     cognates_by_form: dict[str, set[str]],
     local_entries: dict[tuple[str, str], list[dict[str, Any]]],
-    reviewed_senses: dict[str, str],
+    reviewed_senses: dict[tuple[str, str, str, str, str], str],
 ) -> list[dict[str, Any]]:
     rows = []
     for reference in reference_forms:
@@ -83,17 +89,24 @@ def build_rows(
                 senses = [{}]
             for sense in senses:
                 sense_id = sense.get("source_sense_id", "") or ""
+                sense_pos = sense.get("pos") or entry["pos"]
                 rows.append({
                     **common,
                     "local_word": entry["word"],
-                    "local_pos": entry["pos"],
+                    "local_pos": sense_pos,
                     "local_source_entry_key": sense.get("source_entry_key", "") or "",
                     "local_source_sense_id": sense_id,
                     "local_sense_gloss": sense.get("gloss", "") or "",
                     "local_sense_tags": sense.get("tags", []) or [],
                     "local_etymology_root": sense.get("etym_root", "") or "",
                     "local_source_url": "",
-                    "sense_review_status": reviewed_senses.get(sense_id, "unreviewed"),
+                    "sense_review_status": reviewed_senses.get(
+                        sense_review_key(
+                            language_code, entry["word"], sense_pos, sense_id,
+                            sense.get("gloss", "") or "",
+                        ),
+                        "unreviewed",
+                    ),
                 })
     return rows
 
@@ -156,11 +169,16 @@ def _read_csv(path: Path, delimiter: str = ",") -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter=delimiter))
 
 
-def _load_reviewed_senses(path: Path) -> dict[str, str]:
+def _load_reviewed_senses(path: Path) -> dict[tuple[str, str, str, str], str]:
     return {
-        row["local_sense_candidate_id"]: row["sense_review_status"]
+        sense_review_key(
+            row["language"], row["local_word"], row["local_pos"],
+            row["local_sense_candidate_id"], row["local_gloss"],
+        ): row["sense_review_status"]
         for row in _read_csv(path, delimiter="\t")
-        if row.get("local_sense_candidate_id") and row.get("sense_review_status")
+        if row.get("language") and row.get("local_word") and row.get("local_pos")
+        and row.get("local_sense_candidate_id") and row.get("local_gloss")
+        and row.get("sense_review_status")
     }
 
 

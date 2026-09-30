@@ -24,6 +24,7 @@ def read_primary_senses(crosswalk_rows: list[dict[str, Any]]) -> dict[tuple[str,
         (row["concept_id"], row["language_code"]): {
             "word": row["local_word"],
             "sense_id": row["local_source_sense_id"],
+            "gloss": row["local_sense_gloss"],
         }
         for row in crosswalk_rows
         if row["sense_review_status"] == "selected_primary" and row["local_source_sense_id"]
@@ -127,6 +128,8 @@ def audit_panel(
             "target_word": right["word"],
             "source_sense_id": left["sense_id"],
             "target_sense_id": right["sense_id"],
+            "source_gloss": left["gloss"],
+            "target_gloss": right["gloss"],
             "reference_relation": row["reference_relation"],
         })
     sense_query = """
@@ -134,7 +137,8 @@ def audit_panel(
             SELECT * FROM jsonb_to_recordset(%s::jsonb) AS x(
                 concept_id text, concept text, source_language text, target_language text,
                 source_word text, target_word text, source_sense_id text,
-                target_sense_id text, reference_relation text
+                target_sense_id text, source_gloss text, target_gloss text,
+                reference_relation text
             )
         ), matched AS (
             SELECT expected.*, comparison.id, comparison.category,
@@ -159,14 +163,14 @@ def audit_panel(
         SELECT concept_id, concept, source_language, target_language,
                reference_relation, count(DISTINCT id),
                coalesce(bool_or(source_senses @> jsonb_build_array(
-                   jsonb_build_object('source_sense_id', source_sense_id))), false),
+                   jsonb_build_object('source_sense_id', source_sense_id, 'gloss', source_gloss))), false),
                coalesce(bool_or(target_senses @> jsonb_build_array(
-                   jsonb_build_object('source_sense_id', target_sense_id))), false),
+                   jsonb_build_object('source_sense_id', target_sense_id, 'gloss', target_gloss))), false),
                coalesce(bool_or(
                    source_senses @> jsonb_build_array(jsonb_build_object(
-                       'source_sense_id', source_sense_id, 'is_active_match', true))
+                       'source_sense_id', source_sense_id, 'gloss', source_gloss, 'is_active_match', true))
                    AND target_senses @> jsonb_build_array(jsonb_build_object(
-                       'source_sense_id', target_sense_id, 'is_active_match', true))), false),
+                       'source_sense_id', target_sense_id, 'gloss', target_gloss, 'is_active_match', true))), false),
                coalesce(array_agg(DISTINCT category) FILTER (WHERE category IS NOT NULL), ARRAY[]::varchar[]),
                coalesce(array_agg(DISTINCT etymological_relation)
                         FILTER (WHERE etymological_relation IS NOT NULL), ARRAY[]::varchar[])
