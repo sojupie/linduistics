@@ -3,6 +3,8 @@ import json
 from pipeline.src.seed_iecor_panel import (
     build_source_claim_rows,
     build_candidate_evidence_rows,
+    build_candidate_entry_claim_rows,
+    build_candidate_relation_claim_link_rows,
     build_candidate_pair_rows,
     build_pair_evidence_rows,
     build_table_rows,
@@ -148,3 +150,40 @@ def test_candidate_ancestry_rows_preserve_entry_level_evidence_and_sense_alterna
     assert json.loads(evidence_values[12]) == evidence["source_etymology_claims"]
     assert json.loads(evidence_values[13]) == evidence["target_etymology_claims"]
     assert json.loads(evidence_values[14]) == evidence["shared_ancestors"]
+
+
+def test_candidate_source_claim_rows_keep_claim_and_pair_directions_separate():
+    entry_claim = {
+        "concept_id": "55", "language_code": "nb",
+        "source_entry": {
+            "entry_key": "nb|blomst", "word": "blomst",
+            "url": "https://example.test/blomst",
+            "panel_forms": [{"form_id": "nb-55", "form": "blomst"}],
+            "sense_candidates": [{"sense_id": "sense-nb", "review_status": "selected_primary"}],
+        },
+        "claim_index": 2, "claim_relation": "cognate_mention",
+        "related_language": "de", "related_form": "Blume",
+        "source_claim": {"relation": "cognate_mention", "related_language": "de", "related_form": "Blume"},
+    }
+    linked_claim = {
+        "concept_id": "55", "meaning_pair_source_language": "de",
+        "meaning_pair_target_language": "nb", "source_language": "nb", "target_language": "de",
+        "source_entry": entry_claim["source_entry"],
+        "target_entry": {
+            "entry_key": "de|Blume", "word": "Blume",
+            "url": "https://example.test/Blume",
+            "panel_forms": [{"form_id": "de-55", "form": "Blume"}],
+            "sense_candidates": [{"sense_id": "sense-de", "review_status": "selected_primary"}],
+        },
+        "source_claim_index": 2, "claim_relation": "cognate_mention",
+        "target_form_match_method": "exact",
+    }
+
+    claim_values = build_candidate_entry_claim_rows([entry_claim])[0]
+    link_values = build_candidate_relation_claim_link_rows([linked_claim])[0]
+
+    assert claim_values[:7] == ("IE-CoR", "1.1", "55", "nb", "nb|blomst", 2, "blomst")
+    assert json.loads(claim_values[8]) == entry_claim["source_entry"]["panel_forms"]
+    assert json.loads(claim_values[13]) == entry_claim["source_claim"]
+    assert link_values[3:7] == ("de", "nb", "nb", "de")
+    assert link_values[7:12] == ("nb|blomst", "de|Blume", 2, "cognate_mention", "exact")

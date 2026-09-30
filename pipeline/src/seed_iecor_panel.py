@@ -154,9 +154,35 @@ def build_candidate_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
     ) for row in rows]
 
 
+def build_candidate_entry_claim_rows(rows: list[dict[str, Any]]) -> list[tuple]:
+    return [(
+        REFERENCE_DATASET, REFERENCE_VERSION, row["concept_id"],
+        row["language_code"], row["source_entry"]["entry_key"], row["claim_index"],
+        row["source_entry"]["word"], row["source_entry"]["url"],
+        json.dumps(row["source_entry"]["panel_forms"], ensure_ascii=False),
+        json.dumps(row["source_entry"]["sense_candidates"], ensure_ascii=False),
+        row["claim_relation"], row.get("related_language"), row.get("related_form"),
+        json.dumps(row["source_claim"], ensure_ascii=False),
+    ) for row in rows]
+
+
+def build_candidate_relation_claim_link_rows(rows: list[dict[str, Any]]) -> list[tuple]:
+    return [(
+        REFERENCE_DATASET, REFERENCE_VERSION, row["concept_id"],
+        row["meaning_pair_source_language"], row["meaning_pair_target_language"],
+        row["source_language"], row["target_language"],
+        row["source_entry"]["entry_key"], row["target_entry"]["entry_key"],
+        row["source_claim_index"], row["claim_relation"], row["target_form_match_method"],
+        row["target_entry"]["word"], row["target_entry"]["url"],
+        json.dumps(row["target_entry"]["panel_forms"], ensure_ascii=False),
+        json.dumps(row["target_entry"]["sense_candidates"], ensure_ascii=False),
+    ) for row in rows]
+
+
 def seed_panel(
     db_url: str, crosswalk_path: Path, pair_path: Path, ancestry_path: Path,
     candidate_pairs_path: Path, candidate_evidence_path: Path,
+    candidate_entry_claims_path: Path, candidate_relation_claims_path: Path,
     source_records_path: Path, replace: bool = False,
 ) -> dict[str, int]:
     crosswalk_rows = read_jsonl(crosswalk_path)
@@ -167,11 +193,16 @@ def seed_panel(
     pair_evidence = build_pair_evidence_rows(read_jsonl(ancestry_path))
     candidate_pair_summaries = build_candidate_pair_rows(read_jsonl(candidate_pairs_path))
     candidate_evidence = build_candidate_evidence_rows(read_jsonl(candidate_evidence_path))
+    candidate_entry_claims = build_candidate_entry_claim_rows(read_jsonl(candidate_entry_claims_path))
+    candidate_relation_claim_links = build_candidate_relation_claim_link_rows(
+        read_jsonl(candidate_relation_claims_path)
+    )
     with psycopg.connect(db_url) as conn:
         with conn.transaction():
             with conn.cursor() as cursor:
                 if replace:
                     for table in (
+                        "iecor_candidate_relation_claim_links", "iecor_candidate_entry_claims",
                         "iecor_meaning_pairs", "iecor_local_sense_links",
                         "iecor_reference_forms", "iecor_reference_concepts",
                     ):
@@ -181,6 +212,17 @@ def seed_panel(
                         )
                 cursor.executemany(
                     "INSERT INTO iecor_reference_concepts VALUES (%s,%s,%s,%s,%s,%s)", concepts
+                )
+                cursor.executemany(
+                    """INSERT INTO iecor_candidate_entry_claims (
+                        reference_dataset, reference_version, concept_id, language_code,
+                        source_entry_key, claim_index, local_word, source_url,
+                        panel_forms, sense_candidates, claim_relation, related_language,
+                        related_form, source_claim
+                    ) VALUES (
+                        %s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s::jsonb,%s,%s,%s,%s::jsonb
+                    )""",
+                    candidate_entry_claims,
                 )
                 cursor.executemany(
                     "INSERT INTO iecor_reference_forms VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", forms
@@ -209,6 +251,19 @@ def seed_panel(
                         target_language, reference_relation, shared_cognate_set_ids,
                         unassigned_form_ids
                     ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""", pairs
+                )
+                cursor.executemany(
+                    """INSERT INTO iecor_candidate_relation_claim_links (
+                        reference_dataset, reference_version, concept_id,
+                        source_language, target_language, claim_source_language,
+                        claim_target_language, source_entry_key, target_entry_key,
+                        source_claim_index, claim_relation, target_form_match_method,
+                        target_local_word, target_source_url, target_panel_forms,
+                        target_sense_candidates
+                    ) VALUES (
+                        %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s::jsonb
+                    )""",
+                    candidate_relation_claim_links,
                 )
                 cursor.executemany(
                     """UPDATE iecor_meaning_pairs SET
@@ -254,6 +309,8 @@ def seed_panel(
         "meaning_pair_evidence": len(pair_evidence),
         "candidate_pair_summaries": len(candidate_pair_summaries),
         "ancestry_candidate_evidence": len(candidate_evidence),
+        "candidate_entry_claims": len(candidate_entry_claims),
+        "candidate_relation_claim_links": len(candidate_relation_claim_links),
         "local_etymology_claims": len(source_claims),
         "claim_entries_found": claim_entries_found,
         "claim_entries_missing": claim_entries_missing,
@@ -271,12 +328,16 @@ def main() -> None:
     parser.add_argument("--ancestry", type=Path, default=root / "pipeline/data/iecor_reviewed_ancestry_v1.1.jsonl")
     parser.add_argument("--candidate-pairs", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_pairs.jsonl")
     parser.add_argument("--candidate-evidence", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_evidence.jsonl")
+    parser.add_argument("--candidate-entry-claims", type=Path, default=root / "pipeline/data/iecor_candidate_entry_claims_v1.1.jsonl")
+    parser.add_argument("--candidate-relation-claims", type=Path, default=root / "pipeline/data/iecor_candidate_relation_claims_v1.1.jsonl")
     parser.add_argument("--source-records", type=Path, default=root / "pipeline/data/etymology_records_rebuild_20260929.jsonl")
     parser.add_argument("--replace", action="store_true", help="Replace this IE-CoR version and its candidate evidence")
     args = parser.parse_args()
     print(json.dumps(seed_panel(
         args.db_url, args.crosswalk, args.pairs, args.ancestry,
-        args.candidate_pairs, args.candidate_evidence, args.source_records, args.replace,
+        args.candidate_pairs, args.candidate_evidence,
+        args.candidate_entry_claims, args.candidate_relation_claims,
+        args.source_records, args.replace,
     ), indent=2))
 
 
