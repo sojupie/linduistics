@@ -1,0 +1,20 @@
+{
+  "generated_from": "docs/data/iecor_local_sense_candidates_2026-09-29.tsv",
+  "generated_from_sha256": "4239efabaa3c2e1b25c58245482f23684d4464f1cbd400b5e737401fbc493806",
+  "source_records": "pipeline/data/etymology_records_rebuild_20260929.jsonl",
+  "source_records_sha256": "717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961",
+  "source_records_manifest": "pipeline/data/etymology_records_rebuild_20260929.jsonl.manifest.json",
+  "review_method": "Compared each candidate source-sense gloss (including raw gloss qualifiers) with the IE-CoR concept label; kept multiple compatible sense links; rejected a same-spelling candidate when its gloss named a different concept. This is a project-level sense crosswalk, not expert cognacy review.",
+  "counts": {
+    "candidate_rows": 47,
+    "source_senses_resolved": 47,
+    "concept_language_slots": 40,
+    "selected_primary": 40,
+    "selected_additional": 6,
+    "rejected_sense_mismatch": 1,
+    "candidate_status": "provisional_gloss_match on all rows"
+  },
+  "outputs": {
+    "docs/data/iecor_local_sense_review_2026-09-30.tsv": "2e078bd34e56b8da5b61e71bc42ee6a75f3f2b9d1e9290abc5911ad78a2c010f"
+  }
+}
