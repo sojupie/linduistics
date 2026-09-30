@@ -122,14 +122,14 @@ def main() -> None:
         "DATABASE_URL",
         "postgresql://postgres:postgres@localhost:5432/linduistics",
     )
-    default_input = project_root / "pipeline" / "data" / "all_comparisons.parquet"
+    default_input = project_root / "pipeline" / "data" / "all_comparisons_with_source_claims.parquet"
 
     parser = argparse.ArgumentParser(description="Bulk seed PostgreSQL word_comparisons table.")
     parser.add_argument(
         "--input",
         type=Path,
         default=default_input,
-        help=f"Input Parquet file (default: {default_input})",
+        help=f"Input Parquet file (default: {default_input}; build it with pipeline/src/enrich_comparisons_with_source_claims.py)",
     )
     parser.add_argument(
         "--db-url",
@@ -140,8 +140,8 @@ def main() -> None:
     parser.add_argument(
         "--truncate",
         action="store_true",
-        default=True,
-        help="Truncate table before ingesting (default: True)",
+        default=False,
+        help="Truncate the existing comparison table before ingesting (required to replace an existing dataset)",
     )
     parser.add_argument(
         "--batch-size",

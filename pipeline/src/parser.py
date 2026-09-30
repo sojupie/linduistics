@@ -21,7 +21,7 @@ import pyarrow.parquet as pq
 
 from g2p_multilingual import g2p_fallback
 from ipa_normalizer import normalize_ipa
-from extract_etymology_records import source_entry_key
+from extract_etymology_records import clean_etymology_root, source_entry_key
 
 # Words containing hyphens, spaces, or affix symbols are excluded
 _INVALID_WORD_PATTERN = re.compile(r"[\s\-\u2010\u2013\u2014]")
@@ -73,6 +73,7 @@ def extract_etym_root(raw: dict) -> Tuple[str, str]:
             if target_code == lang_code:
                 for k in ("3", "4", "alt", "tr"):
                     term = args.get(k)
+                    term = clean_etymology_root(term) if isinstance(term, str) else ""
                     if term and not term.isdigit() and len(term) > 1:
                         clean = "*" + term.lstrip("*") if prefix.startswith("Proto") else term
                         etym_root = f"{prefix} {clean}"
@@ -89,7 +90,8 @@ def extract_etym_root(raw: dict) -> Tuple[str, str]:
                 continue
             args = t.get("args") or {}
             for v in args.values():
-                if isinstance(v, str) and v.startswith("*") and len(v) > 2:
+                v = clean_etymology_root(v) if isinstance(v, str) else ""
+                if v.startswith("*") and len(v) > 2:
                     etym_root = v
                     break
             if etym_root:

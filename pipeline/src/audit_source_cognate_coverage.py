@@ -157,6 +157,7 @@ def audit_coverage(
                                     },
                                     "claim": {
                                         "relation": relation,
+                                        "scope": {"source": "entry", "target": "form"},
                                         "related_language": target_lang,
                                         "related_form": form,
                                         "source_uncertain": claim.get("source_uncertain"),

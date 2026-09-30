@@ -1,6 +1,9 @@
+import sys
+from types import SimpleNamespace
+
 import numpy as np
 import pytest
-from semantic_matcher import SemanticMatcher
+from semantic_matcher import DEFAULT_MODEL_REVISION, SemanticMatcher
 
 
 class MockEmbeddingModel:
@@ -36,6 +39,27 @@ class MockEmbeddingModel:
                     v = v / norm
             vecs.append(v)
         return np.array(vecs)
+
+
+def test_default_model_load_is_pinned_to_the_recorded_revision(monkeypatch):
+    calls = {}
+
+    class FakeSentenceTransformer:
+        def __init__(self, model_name, **options):
+            calls.update(model_name=model_name, **options)
+
+    monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(cuda=SimpleNamespace(is_available=lambda: False)))
+    monkeypatch.setitem(
+        sys.modules,
+        "sentence_transformers",
+        SimpleNamespace(SentenceTransformer=FakeSentenceTransformer),
+    )
+
+    matcher = SemanticMatcher()
+    matcher._get_model()
+
+    assert calls["revision"] == DEFAULT_MODEL_REVISION
+    assert calls["device"] == "cpu"
 
 
 @pytest.fixture

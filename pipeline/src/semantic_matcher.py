@@ -8,16 +8,21 @@ argmax sense pairs for attribution.
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 import numpy as np
 
+DEFAULT_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+DEFAULT_MODEL_REVISION = "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+
 
 class SemanticMatcher:
     """Encodes glosses and finds high-affinity semantic translation candidates."""
 
     def __init__(
         self,
-        model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        model_name: str = DEFAULT_MODEL_NAME,
         model: Optional[Any] = None,
+        revision: Optional[str] = None,
     ):
         self.model_name = model_name
+        self.revision = revision or (DEFAULT_MODEL_REVISION if model_name == DEFAULT_MODEL_NAME else None)
         self._model = model
         self._cache: Dict[str, np.ndarray] = {}
         self.target_words: List[str] = []
@@ -32,7 +37,10 @@ class SemanticMatcher:
             from sentence_transformers import SentenceTransformer
 
             device = "cuda" if torch.cuda.is_available() else "cpu"
-            self._model = SentenceTransformer(self.model_name, device=device)
+            options = {"device": device}
+            if self.revision:
+                options["revision"] = self.revision
+            self._model = SentenceTransformer(self.model_name, **options)
         return self._model
 
     def preencode_glosses(self, texts: Iterable[str], batch_size: int = 256) -> None:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import hashlib
 import json
 import re
@@ -208,6 +209,45 @@ def source_entry_key(entry: dict[str, Any]) -> str:
         ",".join(sense_ids),
     ]
     return "|".join(str(part) for part in parts)
+
+
+def clean_etymology_root(value: str) -> str:
+    """Remove Wiktextract argument annotations while retaining HTML text and alt forms."""
+    text: list[str] = []
+    alternate = ""
+    index = 0
+    while index < len(value):
+        if value[index] != "<":
+            text.append(value[index])
+            index += 1
+            continue
+
+        annotation = re.match(r"<([A-Za-z][A-Za-z0-9_-]*):", value[index:])
+        if annotation:
+            depth = 1
+            end = index + annotation.end()
+            content_start = end
+            while end < len(value) and depth:
+                if value[end] == "<":
+                    depth += 1
+                elif value[end] == ">":
+                    depth -= 1
+                end += 1
+            if annotation.group(1) == "alt" and not "".join(text).strip():
+                alternate = value[content_start:end - 1].strip()
+            index = end
+            continue
+
+        tag = re.match(r"</?[A-Za-z][^<>]*>", value[index:])
+        if tag:
+            index += tag.end()
+            continue
+
+        text.append(value[index])
+        index += 1
+
+    cleaned = html.unescape("".join(text)).strip()
+    return cleaned or html.unescape(alternate).strip()
 
 
 def _normalize_ety_template(template: dict[str, Any], index: int, entry_lang: str) -> list[dict[str, Any]]:

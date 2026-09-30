@@ -2,7 +2,7 @@ import io
 import orjson
 import pyarrow.parquet as pq
 import pytest
-from parser import parse_kaikki_entry, stream_kaikki_entries, export_lemmas_to_parquet
+from parser import extract_etym_root, parse_kaikki_entry, stream_kaikki_entries, export_lemmas_to_parquet
 
 
 def test_parse_kaikki_entry_valid_lemma():
@@ -65,6 +65,44 @@ def test_etym_root_ignores_dercat_language_list_and_uses_an_actual_ancestor_form
 
     assert entry is not None
     assert entry["etym_root"] == "Proto-West Germanic *anad"
+
+
+def test_etym_root_strips_wiktextract_position_annotation_from_source_form():
+    raw = {
+        "word": "pedicate",
+        "lang_code": "en",
+        "pos": "verb",
+        "etymology_templates": [{
+            "name": "bor+",
+            "args": {
+                "1": "en",
+                "2": "la",
+                "3": "pēdicāt-<pos:perfect passive participial stem of <i lang=\"la\">pēdicō</i>>",
+            },
+        }],
+        "senses": [{"id": "en-pedicate", "glosses": ["to sodomize"]}],
+    }
+
+    entry = parse_kaikki_entry(raw)
+
+    assert entry is not None
+    assert entry["etym_root"] == "Latin pēdicāt-"
+
+
+def test_etym_root_preserves_html_text_and_uses_inline_alternate_form():
+    html_root = {
+        "etymology_templates": [{
+            "args": {"1": "en", "2": "la", "3": 'fons <i class="Latn mention" lang="la">fontis</i> + -us'},
+        }],
+    }
+    alt_root = {
+        "etymology_templates": [{
+            "args": {"1": "en", "2": "la", "3": '<alt:tripod-><ng:stem of <i lang="la">tripūs</i>>'},
+        }],
+    }
+
+    assert extract_etym_root(html_root)[0] == "Latin fons fontis + -us"
+    assert extract_etym_root(alt_root)[0] == "Latin tripod-"
 
 
 def test_stream_keeps_same_gloss_from_distinct_entries_and_blanks_ambiguous_scalars():

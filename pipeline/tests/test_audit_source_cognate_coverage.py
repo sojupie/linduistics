@@ -68,6 +68,7 @@ def test_audit_counts_pair_specific_claims_once_across_directed_rows(tmp_path):
     matches = [json.loads(line) for line in matches_output.read_text(encoding="utf-8").splitlines()]
     match = next(row for row in matches if row["target_form_match"]["language_code"] == "da")
     assert match["candidate"]["category"] == "other"
+    assert match["claim"]["scope"] == {"source": "entry", "target": "form"}
     assert match["source_active_sense"]["source_sense_id"] == "sv-dator-1"
     assert match["target_form_match"]["active_sense_id"] == "da-dator-1"
     assert match["target_form_match"]["active_identity_status"] == "available"
