@@ -1,11 +1,50 @@
 import json
 
 from pipeline.src.seed_iecor_panel import (
+    build_source_claim_rows,
     build_candidate_evidence_rows,
     build_candidate_pair_rows,
     build_pair_evidence_rows,
     build_table_rows,
 )
+
+
+def test_source_claim_rows_preserve_distinct_source_relations(tmp_path):
+    crosswalk = [
+        {
+            "concept_id": "55", "reference_form_id": "nb-55",
+            "language_code": "nb", "local_word": "blomst",
+            "local_source_entry_key": "nb|blomst|noun||sense-nb",
+            "local_source_url": "https://example.test/blomst",
+            "sense_review_status": "selected_primary",
+        },
+        {
+            "concept_id": "55", "reference_form_id": "nb-55",
+            "language_code": "nb", "local_word": "blomst",
+            "local_source_entry_key": "nb|blomst|noun||other-sense",
+            "local_source_url": "https://example.test/blomst",
+            "sense_review_status": "unreviewed",
+        },
+    ]
+    claims = [
+        {"template_name": "root", "relation": "rooted_in", "related_language": "ine-pro", "related_form": "*bʰleh₃-"},
+        {"template_name": "der", "relation": "derived_from", "related_language": "da", "related_form": "blomst"},
+        {"template_name": "cog", "relation": "cognate_mention", "related_language": "de", "related_form": "Blume"},
+    ]
+    source_records = tmp_path / "etymology.jsonl"
+    source_records.write_text(json.dumps({
+        "source_entry_key": "nb|blomst|noun||sense-nb",
+        "source": "Wiktionary via Kaikki/Wiktextract",
+        "claims": claims,
+    }) + "\n", encoding="utf-8")
+
+    rows, found, missing = build_source_claim_rows(crosswalk, source_records)
+
+    assert found == 1
+    assert missing == 0
+    assert [row[10] for row in rows] == ["rooted_in", "derived_from", "cognate_mention"]
+    assert [json.loads(row[13]) for row in rows] == claims
+    assert all(row[2:4] == ("55", "nb-55") for row in rows)
 
 
 def test_build_table_rows_preserves_reference_and_local_links():

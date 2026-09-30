@@ -81,6 +81,41 @@ def build_table_rows(
     return list(concepts.values()), form_rows, list(sense_links.values()), pair_db_rows
 
 
+def build_source_claim_rows(
+    crosswalk_rows: list[dict[str, Any]], source_records_path: Path
+) -> tuple[list[tuple], int, int]:
+    """Keep every source claim on reviewed primary entries without classifying pairs."""
+    contexts: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in crosswalk_rows:
+        if row["sense_review_status"] != "selected_primary" or not row["local_source_entry_key"]:
+            continue
+        contexts[row["local_source_entry_key"]].append(row)
+
+    found: set[str] = set()
+    claim_rows = []
+    with source_records_path.open(encoding="utf-8") as stream:
+        for line in stream:
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            entry_key = record.get("source_entry_key")
+            matching_contexts = contexts.get(entry_key, [])
+            if not matching_contexts:
+                continue
+            found.add(entry_key)
+            for row in matching_contexts:
+                for claim_index, claim in enumerate(record.get("claims", [])):
+                    claim_rows.append((
+                        REFERENCE_DATASET, REFERENCE_VERSION, row["concept_id"],
+                        row["reference_form_id"], row["language_code"], row["local_word"],
+                        entry_key, row["local_source_url"], record.get("source") or "",
+                        claim_index, claim.get("relation") or "unmapped",
+                        claim.get("related_language"), claim.get("related_form"),
+                        json.dumps(claim, ensure_ascii=False),
+                    ))
+    return claim_rows, len(found), len(set(contexts) - found)
+
+
 def build_pair_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
     return [(
         row["ancestry_status"], row["source_word"], row["target_word"],
@@ -121,10 +156,13 @@ def build_candidate_evidence_rows(rows: list[dict[str, Any]]) -> list[tuple]:
 
 def seed_panel(
     db_url: str, crosswalk_path: Path, pair_path: Path, ancestry_path: Path,
-    candidate_pairs_path: Path, candidate_evidence_path: Path, replace: bool = False,
+    candidate_pairs_path: Path, candidate_evidence_path: Path,
+    source_records_path: Path, replace: bool = False,
 ) -> dict[str, int]:
-    concepts, forms, sense_links, pairs = build_table_rows(
-        read_jsonl(crosswalk_path), read_jsonl(pair_path)
+    crosswalk_rows = read_jsonl(crosswalk_path)
+    concepts, forms, sense_links, pairs = build_table_rows(crosswalk_rows, read_jsonl(pair_path))
+    source_claims, claim_entries_found, claim_entries_missing = build_source_claim_rows(
+        crosswalk_rows, source_records_path
     )
     pair_evidence = build_pair_evidence_rows(read_jsonl(ancestry_path))
     candidate_pair_summaries = build_candidate_pair_rows(read_jsonl(candidate_pairs_path))
@@ -153,6 +191,17 @@ def seed_panel(
                         source_sense_id, source_entry_key, local_word, language_code,
                         source_url, review_status, local_etymology_root
                     ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", sense_links
+                )
+                cursor.executemany(
+                    """INSERT INTO iecor_local_etymology_claims (
+                        reference_dataset, reference_version, concept_id, form_id,
+                        language_code, local_word, source_entry_key, source_url,
+                        source_name, claim_index, claim_relation, related_language,
+                        related_form, source_claim
+                    ) VALUES (
+                        %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb
+                    )""",
+                    source_claims,
                 )
                 cursor.executemany(
                     """INSERT INTO iecor_meaning_pairs (
@@ -205,6 +254,9 @@ def seed_panel(
         "meaning_pair_evidence": len(pair_evidence),
         "candidate_pair_summaries": len(candidate_pair_summaries),
         "ancestry_candidate_evidence": len(candidate_evidence),
+        "local_etymology_claims": len(source_claims),
+        "claim_entries_found": claim_entries_found,
+        "claim_entries_missing": claim_entries_missing,
     }
 
 
@@ -219,11 +271,12 @@ def main() -> None:
     parser.add_argument("--ancestry", type=Path, default=root / "pipeline/data/iecor_reviewed_ancestry_v1.1.jsonl")
     parser.add_argument("--candidate-pairs", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_pairs.jsonl")
     parser.add_argument("--candidate-evidence", type=Path, default=root / "pipeline/data/iecor_candidate_ancestry_v1.1_evidence.jsonl")
+    parser.add_argument("--source-records", type=Path, default=root / "pipeline/data/etymology_records_rebuild_20260929.jsonl")
     parser.add_argument("--replace", action="store_true", help="Replace this IE-CoR version and its candidate evidence")
     args = parser.parse_args()
     print(json.dumps(seed_panel(
         args.db_url, args.crosswalk, args.pairs, args.ancestry,
-        args.candidate_pairs, args.candidate_evidence, args.replace,
+        args.candidate_pairs, args.candidate_evidence, args.source_records, args.replace,
     ), indent=2))
 
 
