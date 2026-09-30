@@ -4,17 +4,31 @@
   "source_records": "pipeline/data/etymology_records_rebuild_20260929.jsonl",
   "source_records_sha256": "717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961",
   "source_records_manifest": "pipeline/data/etymology_records_rebuild_20260929.jsonl.manifest.json",
-  "review_method": "Compared each candidate source-sense gloss (including raw gloss qualifiers) with the IE-CoR concept label; kept multiple compatible sense links; rejected a same-spelling candidate when its gloss named a different concept. This is a project-level sense crosswalk, not expert cognacy review.",
+  "review_method": "Compared each candidate source-sense gloss (including raw gloss qualifiers) with the IE-CoR concept label; kept multiple compatible sense links; rejected a same-spelling candidate when its gloss named a different concept. This is a project-level sense crosswalk, not expert cognacy review. Five primary senses for flower were added from the generated crosswalk after checking each gloss directly against the flower meaning.",
   "counts": {
-    "candidate_rows": 47,
-    "source_senses_resolved": 47,
-    "concept_language_slots": 40,
-    "selected_primary": 40,
+    "candidate_rows": 52,
+    "source_senses_resolved": 52,
+    "concept_language_slots": 45,
+    "selected_primary": 45,
     "selected_additional": 6,
-    "rejected_sense_mismatch": 1,
-    "candidate_status": "provisional_gloss_match on all rows"
+    "rejected_sense_mismatch": 1
   },
   "outputs": {
-    "docs/data/iecor_local_sense_review_2026-09-30.tsv": "2e078bd34e56b8da5b61e71bc42ee6a75f3f2b9d1e9290abc5911ad78a2c010f"
-  }
+    "docs/data/iecor_local_sense_review_2026-09-30.tsv": "8961595b5802e23735fe46f39c17f9ab3e1bb885fa40657478c30ee25042fb21"
+  },
+  "supplemental_review_sources": [
+    {
+      "source": "pipeline/data/iecor_local_sense_crosswalk_v1.1.jsonl",
+      "sha256": "5f7bed92f5a39eaefae05790df5ffc99585520e7cb28b1826b521e0a58cbb72d",
+      "concept": "flower",
+      "selected_primary_senses": [
+        "en-Blume-de-noun-LgquJ6Ma",
+        "en-blomma-sv-noun-umfH3Nqc",
+        "en-blomst-da-noun-wGsM~gzF",
+        "en-blomst-nb-noun-pYDGLB3P",
+        "en-flower-en-noun-en:Q506"
+      ],
+      "selection_rule": "Exact local headword and a gloss that directly describes a flower; no ancestry claim was used in sense selection."
+    }
+  ]
 }
