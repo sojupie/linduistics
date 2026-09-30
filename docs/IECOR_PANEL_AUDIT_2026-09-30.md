@@ -21,7 +21,7 @@ The complete panel has 169 meanings × 10 language pairs = **1,690 meaning-level
 
 Exact matching uses normalized spelling only. It does not infer that a phrase, inflected form, alternate spelling, or merely related sense is the right match. The 18 missing forms and the ten meanings affected by them remain explicit gaps.
 
-The existing eight-meaning sense review contributes 40 primary links, six additional compatible links, and one rejected candidate. They appear on 47 candidate rows after matching by language, normalized word, source-sense ID, and exact gloss. The other 8,375 local candidate rows are unreviewed.
+The current nine-meaning sense review contributes 45 primary links, six additional compatible links, and one rejected candidate. They appear on 52 candidate rows after matching by language, normalized word, source-sense ID, and exact gloss. The other 8,370 local candidate rows are unreviewed.
 
 The source data reuses some `source_sense_id` values for different gloss records, so an ID alone is not a unique candidate key. The reviewed overlay is matched by language, normalized word, source-sense ID, and exact gloss. The PostgreSQL load fingerprints the form, source key, ID, gloss, tags, and root to distinguish records; it does not copy gloss text into the new tables.
 
@@ -38,16 +38,16 @@ Each language pair has the same denominator: 169 meanings. This is the useful co
 
 | Language pair | Shared sets | No shared set | Shared-set rate | Both forms have exact local entries |
 | --- | ---: | ---: | ---: | ---: |
-| Danish–German | 105 | 64 | 62.1% | 164 of 169 |
-| Danish–English | 86 | 83 | 50.9% | 164 of 169 |
-| Danish–Norwegian Bokmål | 149 | 20 | 88.2% | 164 of 169 |
+| Danish–German | 105 | 64 | 62.1% | 163 of 169 |
+| Danish–English | 86 | 83 | 50.9% | 163 of 169 |
+| Danish–Norwegian Bokmål | 149 | 20 | 88.2% | 161 of 169 |
 | Danish–Swedish | 143 | 26 | 84.6% | 164 of 169 |
-| German–Norwegian Bokmål | 102 | 67 | 60.4% | 166 of 169 |
-| German–Swedish | 102 | 67 | 60.4% | 166 of 169 |
-| English–German | 95 | 74 | 56.2% | 166 of 169 |
-| English–Norwegian Bokmål | 86 | 83 | 50.9% | 166 of 169 |
-| English–Swedish | 86 | 83 | 50.9% | 166 of 169 |
-| Norwegian Bokmål–Swedish | 140 | 29 | 82.8% | 164 of 169 |
+| German–Norwegian Bokmål | 102 | 67 | 60.4% | 162 of 169 |
+| German–Swedish | 102 | 67 | 60.4% | 165 of 169 |
+| English–German | 95 | 74 | 56.2% | 165 of 169 |
+| English–Norwegian Bokmål | 86 | 83 | 50.9% | 162 of 169 |
+| English–Swedish | 86 | 83 | 50.9% | 165 of 169 |
+| Norwegian Bokmål–Swedish | 140 | 29 | 82.8% | 162 of 169 |
 
 The rate means “share of this fixed 169-meaning list whose forms belong to a shared IE-CoR cognate set.” It is quantifiable and repeatable, but it describes this reference list, not the full vocabulary or the project's own Wiktionary-derived classification.
 
@@ -75,7 +75,9 @@ Among the 1,094 IE-CoR shared-set pairs, 969 have an exact local word-pair row; 
 
 ### Reviewed-sense alignment
 
-For the eight meanings with manually reviewed local sense links, there are 80 meaning–language pairs:
+The comparison figures below are the last verified join against the main `word_comparisons` table, taken before the five flower senses were added. They cover eight meanings and 80 pairs; that join has not been rerun for the updated nine-meaning overlay. The flower senses and ten reviewed ancestry records have since been loaded into the separate IE-CoR tables.
+
+For those eight meanings with reviewed local sense links, there are 80 meaning pairs:
 
 | Database alignment | Pairs |
 | --- | ---: |
@@ -102,15 +104,15 @@ Migration `db/migrations/010_create_iecor_meaning_panel.sql` adds four tables al
 | `iecor_meaning_pairs` | 1,690 | Meaning-scoped IE-CoR relation plus local sense links and ancestry evidence |
 | `iecor_ancestry_candidate_evidence` | 1,668 | Source-linked local etymology-entry pairs, all entry claims, and alternative senses |
 
-The 8,353 sense-link rows include 40 `selected_primary`, six `selected_additional`, one `rejected_sense_mismatch`, and 8,306 `unreviewed` records. They contain 7,117 distinct source-sense IDs, another reason not to treat that ID alone as the record key. Each link also retains the root label parsed for that local sense; the root is evidence text, not a normalized ancestor identity.
+The 8,353 sense-link rows now include 45 `selected_primary`, six `selected_additional`, one `rejected_sense_mismatch`, and 8,301 `unreviewed` records. They contain 7,117 distinct source-sense IDs, another reason not to treat that ID alone as the record key. Each link also retains the root label parsed for that local sense; the root is evidence text, not a normalized ancestor identity.
 
 The live `word_comparisons` table remains at 1,638,454 directed rows. Existing categories and selected glosses were not rewritten. These new tables are queryable in PostgreSQL but are not yet exposed through a Go API or UI.
 
-The 1,690 meaning-pair rows currently have 58 `shared_direct_ancestor_claim`, seven `shared_proto_ancestor_mention`, 15 `no_common_ancestor_evidence`, and 1,610 `unreviewed` local statuses. `no_common_ancestor_evidence` is not a false-cognate verdict.
+The 1,690 meaning-pair rows now have 61 `shared_direct_ancestor_claim`, seven `shared_proto_ancestor_mention`, 22 `no_common_ancestor_evidence`, and 1,600 `unreviewed` local statuses. `no_common_ancestor_evidence` is not a false-cognate verdict.
 
-### Root-label check on the reviewed eight meanings
+### Root-label check on the original eight-meaning database snapshot
 
-The read-only audit joins the 40 manually selected local senses into 80 meaning-level language pairs and compares their parsed root labels after trimming, collapsing whitespace, and ignoring case.
+This read-only database audit predates the flower follow-up. It joins the original 40 manually selected local senses into 80 meaning-level language pairs and compares their parsed root labels after trimming, collapsing whitespace, and ignoring case. The root-label figures below have not been recomputed for the expanded review.
 
 | Check | Pairs |
 | --- | ---: |
@@ -135,9 +137,27 @@ The next audit compared the full extracted records for the same 40 selected loca
 | Same Proto-ancestor text mention, no direct match | 7 | 7 | 0 |
 | No common ancestor evidence extracted | 15 | 2 | 13 |
 
-So, for this selected sample, our extracted source data exposes a common ancestor for **65 of the 67** IE-CoR shared-set pairs. It finds no common-ancestor evidence in the 13 pairs IE-CoR marks as having no shared set. Two shared-set pairs remain unresolved: Danish–Norwegian Bokmål and Norwegian Bokmål–Swedish for “woman.” The Bokmål entry stops at Old Norse `kvinna`; the current five-language dump does not include that historical entry to follow the ancestry further. This is promising evidence that a useful result is possible, not a general accuracy claim: the eight meanings were deliberately reviewed, the reference is not ground truth, and the two missing paths remain unresolved.
+So, for that selected sample, our extracted source data exposes a common ancestor for **65 of the 67** IE-CoR shared-set pairs. It finds no common-ancestor evidence in the 13 pairs IE-CoR marks as having no shared set. Two shared-set pairs remain unresolved: Danish–Norwegian Bokmål and Norwegian Bokmål–Swedish for “woman.” The Bokmål entry stops at Old Norse `kvinna`; the current five-language dump does not include that historical entry to follow the ancestry further. This is promising evidence that a useful result is possible, not a general accuracy claim: the eight meanings were deliberately reviewed, the reference is not ground truth, and the two missing paths remain unresolved.
 
-The reproducible result is `iecor_reviewed_ancestry_v1.1.jsonl`; its manifest records hashes for the exact crosswalk, pair list, and 1.08 GB extracted Wiktionary records. All 80 reviewed results are loaded into `iecor_meaning_pairs` with the selected local words, senses, source links, and evidence. The remaining 1,610 pairs stay `unreviewed`.
+### Flower follow-up: a measurable mismatch and a parser gap
+
+Five flower senses were then selected by direct gloss match, one per language, bringing the reviewed sample to nine meanings, 45 selected senses, and 90 meaning pairs. The selected senses all have source records in the local etymology dump. This is still a deliberately selected sample, not a random accuracy estimate.
+
+The IE-CoR panel assigns a shared cognate set to **6 of the 10** flower language pairs. The local direct-ancestry audit finds matching ancestry claims in three pairs:
+
+| Pair | IE-CoR result | Shared claim found in local records |
+| --- | --- | --- |
+| Danish–Norwegian Bokmål | Shared set | Old Norse `blómstr` |
+| English–Norwegian Bokmål | No shared set | Proto-Indo-European `*bʰleh₃-` |
+| Norwegian Bokmål–Swedish | Shared set | Proto-Germanic `*blōmô` |
+
+The English–Bokmål row is a concrete disagreement: English *flower* is recorded through Middle English, Anglo-Norman, Latin, and Proto-Italic to `*bʰleh₃-`; Bokmål *blomst* is recorded through Danish and Old Norse to Proto-Germanic `*blōmô` and the same PIE root. This supports keeping the transmission path and shared root as separate facts; it does not by itself settle how the project should label this pair.
+
+The remaining seven rows are `no_common_ancestor_evidence` under the current audit rule, **not evidence that the words are unrelated**. That rule only matches `inherited_from` and `derived_from` claims. For example, the Bokmål *blomst* entry explicitly lists German *Blume* as a cognate, but the extractor stores that as `cognate_mention`, which the ancestry audit excludes. It also records `rooted_in` claims to the same PIE root for several forms, another relation the audit does not compare. These are visible in the raw source claims; the gap is in how the current analysis interprets and presents them.
+
+Across the full nine-meaning review, the same audit reports 61 pairs with a matched direct ancestry claim, seven with only a shared Proto-root text mention, and 22 with no common ancestry evidence under that narrow rule. Of the 68 pairs with a shared claim or mention, 67 are IE-CoR shared-set pairs and one is a no-shared-set pair (English–Bokmål *flower–blomst*). These counts demonstrate a useful bounded comparison and a concrete extraction/model improvement target; they are not a whole-language cognate rate or a validated accuracy score.
+
+The reproducible result is `iecor_reviewed_ancestry_v1.1.jsonl`; its manifest records hashes for the exact crosswalk, pair list, and 1.08 GB extracted Wiktionary records. All 90 reviewed results are loaded into `iecor_meaning_pairs` with the selected local words, senses, source links, and evidence. The remaining 1,600 pairs stay `unreviewed`.
 
 ### Full-panel ancestry candidate pass
 
