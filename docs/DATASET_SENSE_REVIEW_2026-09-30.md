@@ -26,7 +26,7 @@ The additional water senses remain separate because a source sense can include t
 
 I compared each source gloss and any raw-gloss qualifier with the short IE-CoR concept label. Each slot gets exactly one `selected_primary` row. Other source senses that also contain the target meaning are `selected_additional`; a spelling match whose gloss describes another concept is `rejected_sense_mismatch`. These are practical project mappings, not specialist linguistic judgments or certainty scores.
 
-The overlay does not verify the histories recorded in Wiktionary, resolve all local homographs, establish cognacy, or transfer IE-CoR's cognate-set IDs. The remaining 160 IE-CoR meanings have not had their local sense candidates reviewed. The five flower selections and ten pair-level evidence records are loaded into the additive IE-CoR database tables; the main `word_comparisons` dataset was not changed. Source text redistribution rights still need review.
+The overlay does not verify the histories recorded in Wiktionary, resolve all local homographs, establish cognacy, or transfer IE-CoR's cognate-set IDs. The remaining 160 IE-CoR meanings have not had their local sense candidates reviewed. The five flower selections, ten pair-level evidence records, and 588 typed source claims from all 45 selected entries are loaded into additive IE-CoR database tables; the main `word_comparisons` dataset was not changed. Source text redistribution rights still need review.
 
 ## Reproducibility
 

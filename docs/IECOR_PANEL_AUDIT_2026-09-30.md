@@ -103,12 +103,15 @@ Migration `db/migrations/010_create_iecor_meaning_panel.sql` adds four tables al
 | `iecor_local_sense_links` | 8,353 | Distinct local sense candidate records with review status and source link |
 | `iecor_meaning_pairs` | 1,690 | Meaning-scoped IE-CoR relation plus local sense links and ancestry evidence |
 | `iecor_ancestry_candidate_evidence` | 1,668 | Source-linked local etymology-entry pairs, all entry claims, and alternative senses |
+| `iecor_local_etymology_claims` | 588 | Individual source claims for the 45 reviewed primary entries, kept as typed, entry-scoped records |
 
 The 8,353 sense-link rows now include 45 `selected_primary`, six `selected_additional`, one `rejected_sense_mismatch`, and 8,301 `unreviewed` records. They contain 7,117 distinct source-sense IDs, another reason not to treat that ID alone as the record key. Each link also retains the root label parsed for that local sense; the root is evidence text, not a normalized ancestor identity.
 
 The live `word_comparisons` table remains at 1,638,454 directed rows. Existing categories and selected glosses were not rewritten. These new tables are queryable in PostgreSQL but are not yet exposed through a Go API or UI.
 
 The 1,690 meaning-pair rows now have 61 `shared_direct_ancestor_claim`, seven `shared_proto_ancestor_mention`, 22 `no_common_ancestor_evidence`, and 1,600 `unreviewed` local statuses. `no_common_ancestor_evidence` is not a false-cognate verdict.
+
+The 588 claim rows cover all 45 selected source entries; none of those source records was missing. Their extracted relation types are 369 `cognate_mention`, 149 `inherited_from`, 32 `derived_from`, nine `rooted_in`, seven `doublet_of`, one `compound_of`, one `noncognate_mention`, and 20 `unmapped`. This count is for the selected entries in nine reviewed meanings, not the full panel. The raw claim JSON is retained alongside the searchable relation and target fields. `derived_from` is left as the extractor reports it; it does not automatically mean a borrowing.
 
 ### Root-label check on the original eight-meaning database snapshot
 
@@ -153,7 +156,7 @@ The IE-CoR panel assigns a shared cognate set to **6 of the 10** flower language
 
 The English–Bokmål row is a concrete disagreement: English *flower* is recorded through Middle English, Anglo-Norman, Latin, and Proto-Italic to `*bʰleh₃-`; Bokmål *blomst* is recorded through Danish and Old Norse to Proto-Germanic `*blōmô` and the same PIE root. This supports keeping the transmission path and shared root as separate facts; it does not by itself settle how the project should label this pair.
 
-The remaining seven rows are `no_common_ancestor_evidence` under the current audit rule, **not evidence that the words are unrelated**. That rule only matches `inherited_from` and `derived_from` claims. For example, the Bokmål *blomst* entry explicitly lists German *Blume* as a cognate, but the extractor stores that as `cognate_mention`, which the ancestry audit excludes. It also records `rooted_in` claims to the same PIE root for several forms, another relation the audit does not compare. These are visible in the raw source claims; the gap is in how the current analysis interprets and presents them.
+The remaining seven rows are `no_common_ancestor_evidence` under the current audit rule, **not evidence that the words are unrelated**. That rule only matches `inherited_from` and `derived_from` claims. For example, the Bokmål *blomst* entry explicitly lists German *Blume* as a cognate, but the ancestry audit excludes that `cognate_mention`. Its `rooted_in` claim to the same PIE root is also a different relation from an inheritance path. Both are now independently queryable in `iecor_local_etymology_claims`, alongside the Bokmål-to-Danish `derived_from` claim. The gap is in how the current analysis interprets and presents the claims, not whether extraction retained them.
 
 Across the full nine-meaning review, the same audit reports 61 pairs with a matched direct ancestry claim, seven with only a shared Proto-root text mention, and 22 with no common ancestry evidence under that narrow rule. Of the 68 pairs with a shared claim or mention, 67 are IE-CoR shared-set pairs and one is a no-shared-set pair (English–Bokmål *flower–blomst*). These counts demonstrate a useful bounded comparison and a concrete extraction/model improvement target; they are not a whole-language cognate rate or a validated accuracy score.
 
@@ -202,7 +205,7 @@ python pipeline/src/audit_iecor_candidate_ancestry.py
 
 The first command creates ignored local outputs in `pipeline/data/`: an 8,440-row crosswalk (8,422 local sense candidates plus 18 missing-form rows), the 1,690-row IE-CoR pair panel, and a manifest with input/output hashes. The second command runs a repeatable read-only, repeatable-read transaction against `word_comparisons` and writes the database audit JSON plus per-pair JSONL files. Set `DATABASE_URL` or pass `--db-url` if the local PostgreSQL connection differs from the development default.
 
-To load the panel, apply migrations 010 through 014, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed replaces only IE-CoR v1.1 panel rows and their candidate evidence; it does not update `word_comparisons`.
+To load the panel, apply migrations 010 through 015, then run `python pipeline/src/seed_iecor_panel.py --replace`. The seed reads the extracted source-claims JSONL from `pipeline/data/etymology_records_rebuild_20260929.jsonl` by default and replaces only IE-CoR v1.1 panel rows and their candidate evidence. It does not update `word_comparisons`.
 
 The generated local manifest records the exact hashes. The audit was run against the live database on 2026-09-30; rerunning against a changed database may produce different counts.
 
