@@ -36,20 +36,20 @@ This is a count over a selected set of meanings, not a percentage of all words i
 
 Each language pair has the same denominator: 169 meanings. This is the useful comparison view; the pooled 64.7% hides differences between pairs.
 
-| Language pair | Shared sets | No shared set | Shared-set rate | Both forms have exact local entries |
-| --- | ---: | ---: | ---: | ---: |
-| Danish–German | 105 | 64 | 62.1% | 163 of 169 |
-| Danish–English | 86 | 83 | 50.9% | 163 of 169 |
-| Danish–Norwegian Bokmål | 149 | 20 | 88.2% | 161 of 169 |
-| Danish–Swedish | 143 | 26 | 84.6% | 164 of 169 |
-| German–Norwegian Bokmål | 102 | 67 | 60.4% | 162 of 169 |
-| German–Swedish | 102 | 67 | 60.4% | 165 of 169 |
-| English–German | 95 | 74 | 56.2% | 165 of 169 |
-| English–Norwegian Bokmål | 86 | 83 | 50.9% | 162 of 169 |
-| English–Swedish | 86 | 83 | 50.9% | 165 of 169 |
-| Norwegian Bokmål–Swedish | 140 | 29 | 82.8% | 162 of 169 |
+| Language pair | Shared sets / 169 | No shared set | Rate / 169 | Both forms match local entries | Shared sets among local matches |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Danish–German | 105 | 64 | 62.1% | 163 of 169 | 102 / 163 (62.6%) |
+| Danish–English | 86 | 83 | 50.9% | 163 of 169 | 84 / 163 (51.5%) |
+| Danish–Norwegian Bokmål | 149 | 20 | 88.2% | 161 of 169 | 143 / 161 (88.8%) |
+| Danish–Swedish | 143 | 26 | 84.6% | 164 of 169 | 140 / 164 (85.4%) |
+| German–Norwegian Bokmål | 102 | 67 | 60.4% | 162 of 169 | 98 / 162 (60.5%) |
+| German–Swedish | 102 | 67 | 60.4% | 165 of 169 | 101 / 165 (61.2%) |
+| English–German | 95 | 74 | 56.2% | 165 of 169 | 94 / 165 (57.0%) |
+| English–Norwegian Bokmål | 86 | 83 | 50.9% | 162 of 169 | 84 / 162 (51.9%) |
+| English–Swedish | 86 | 83 | 50.9% | 165 of 169 | 86 / 165 (52.1%) |
+| Norwegian Bokmål–Swedish | 140 | 29 | 82.8% | 162 of 169 | 136 / 162 (84.0%) |
 
-The rate means “share of this fixed 169-meaning list whose forms belong to a shared IE-CoR cognate set.” It is quantifiable and repeatable, but it describes this reference list, not the full vocabulary or the project's own Wiktionary-derived classification.
+For a comparison grounded in local entries, use the last column: the denominator includes only meanings where both IE-CoR forms have exact-spelling matches in the local dataset. Across all ten language pairs, 1,068 of 1,632 such meaning pairs share an IE-CoR cognate set (65.4%). For example, the matched Swedish–Danish rate is 140/164 (85.4%); English–German is 94/165 (57.0%). This is a repeatable rate for this fixed meaning list and these matched forms—not a percentage of either language's full vocabulary, nor a validation of Wiktionary's current pair labels. The preceding rate uses all 169 IE-CoR meanings, so the two denominators are intentionally shown separately.
 
 ### Current live database
 
@@ -112,6 +112,8 @@ The live `word_comparisons` table remains at 1,638,454 directed rows. Existing c
 The 1,690 meaning-pair rows now have 61 `shared_direct_ancestor_claim`, seven `shared_proto_ancestor_mention`, 22 `no_common_ancestor_evidence`, and 1,600 `unreviewed` local statuses. `no_common_ancestor_evidence` is not a false-cognate verdict.
 
 The 588 claim rows cover all 45 selected source entries; none of those source records was missing. Their extracted relation types are 369 `cognate_mention`, 149 `inherited_from`, 32 `derived_from`, nine `rooted_in`, seven `doublet_of`, one `compound_of`, one `noncognate_mention`, and 20 `unmapped`. This count is for the selected entries in nine reviewed meanings, not the full panel. The raw claim JSON is retained alongside the searchable relation and target fields. `derived_from` is left as the extractor reports it; it does not automatically mean a borrowing.
+
+Joining each claim's `related_language` and `related_form` to the selected primary form for the same meaning resolves **52 claims to another selected panel entry** by exact spelling, ignoring case: 48 `cognate_mention`, three `inherited_from`, and one `derived_from`. None of those matches has more than one selected target. For example, the Bokmål *blomst* entry's `cognate_mention` of German *Blume* now joins directly to the reviewed German form. This is a reproducible link from one source statement to another panel entry, not an automatic judgment that the whole words share the same history.
 
 ### Root-label check on the original eight-meaning database snapshot
 
