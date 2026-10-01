@@ -72,4 +72,55 @@ func TestRepositoryQueries(t *testing.T) {
 	if len(srch) == 0 {
 		t.Log("Note: no words starting with 'vat' found in test dataset")
 	}
+
+	// Test 5: Language Stats and In-Memory Caching
+	stats1, err := repo.GetLanguageStats(context.Background(), "")
+	if err != nil {
+		t.Fatalf("GetLanguageStats failed: %v", err)
+	}
+	if len(stats1.Languages) == 0 || len(stats1.Pairs) == 0 {
+		t.Fatalf("expected non-empty stats from GetLanguageStats")
+	}
+	stats2, err := repo.GetLanguageStats(context.Background(), "")
+	if err != nil {
+		t.Fatalf("GetLanguageStats cached failed: %v", err)
+	}
+	if len(stats2.Pairs) != len(stats1.Pairs) {
+		t.Fatalf("cached stats mismatch: got %d, expected %d", len(stats2.Pairs), len(stats1.Pairs))
+	}
+
+	// Test 6: Target Languages and In-Memory Caching
+	targets1, err := repo.GetTargetLanguages(context.Background(), "sv")
+	if err != nil {
+		t.Fatalf("GetTargetLanguages failed: %v", err)
+	}
+	if len(targets1) == 0 {
+		t.Fatalf("expected non-empty target languages for sv")
+	}
+	targets2, err := repo.GetTargetLanguages(context.Background(), "sv")
+	if err != nil {
+		t.Fatalf("GetTargetLanguages cached failed: %v", err)
+	}
+	if len(targets2) != len(targets1) {
+		t.Fatalf("cached targets mismatch")
+	}
+
+	// Test 7: Distractor Pool
+	pool, err := repo.GetDistractorPool(context.Background(), "en", 10)
+	if err != nil {
+		t.Fatalf("GetDistractorPool failed: %v", err)
+	}
+	if len(pool) == 0 {
+		t.Fatalf("expected distractors in pool")
+	}
+	defs, err := repo.GetDistractorDefs(context.Background(), "en", pool[0], 3)
+	if err != nil {
+		t.Fatalf("GetDistractorDefs failed: %v", err)
+	}
+	for _, d := range defs {
+		if d == pool[0] {
+			t.Fatalf("expected excluded def to not appear in distractors")
+		}
+	}
 }
+
