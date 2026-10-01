@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { LanguagePairSelect } from '../common/LanguagePicker';
 import { LANGUAGE_MEASURES, type LanguageMeasure } from './languageComparison';
 
@@ -19,8 +19,40 @@ export const LanguageComparisonControls: React.FC<LanguageComparisonControlsProp
   languages, availableTargets, reference, target, measure, canSwap,
   onSourceChange, onTargetChange, onSwap, onMeasureChange,
 }) => {
+  const [bottomOffset, setBottomOffset] = useState<number>(12);
+
+  useEffect(() => {
+    const updateOffset = () => {
+      const footer = document.getElementById('app-footer');
+      if (!footer) {
+        setBottomOffset(12);
+        return;
+      }
+      const rect = footer.getBoundingClientRect();
+      const visibleFooterHeight = window.innerHeight - rect.top;
+      setBottomOffset(visibleFooterHeight > 0 ? visibleFooterHeight + 12 : 12);
+    };
+
+    updateOffset();
+    window.addEventListener('scroll', updateOffset, { passive: true });
+    window.addEventListener('resize', updateOffset, { passive: true });
+
+    let resizeObserver: ResizeObserver | null = null;
+    const footer = document.getElementById('app-footer');
+    if (footer && typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(updateOffset);
+      resizeObserver.observe(footer);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', updateOffset);
+      window.removeEventListener('resize', updateOffset);
+      resizeObserver?.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="language-controls-layer">
+    <div className="language-controls-layer" style={{ bottom: `${bottomOffset}px` }}>
       <div className="language-controls-panel flex flex-wrap items-center gap-x-5 gap-y-2 border border-book-rule-strong bg-page-surface px-4 py-3 shadow-lg">
         <LanguagePairSelect label="Pair:" sourceLang={reference} targetLang={target}
           availableSources={languages.filter((code) => code !== target)}

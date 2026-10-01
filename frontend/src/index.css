@@ -425,13 +425,12 @@ button:not(:disabled),
 
 .language-controls-layer {
   position: fixed;
-  inset: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding: 0.75rem;
-  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  padding: 0 0.75rem;
   pointer-events: none;
 }
 

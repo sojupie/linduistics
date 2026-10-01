@@ -136,7 +136,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
   }
 
   return (
-    <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-36 font-sans space-y-5">
+    <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-10 font-sans space-y-5">
       <header className="border-b border-book-rule pb-4 space-y-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -144,9 +144,6 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
             <p className="typo-page-deck mt-1.5">Pairwise comparisons showing phonetic similarity, spelling overlap, and lexical composition across cataloged word pairs.</p>
           </div>
         </div>
-        <p className="typo-note text-ink-muted border-l-2 border-book-rule pl-3 py-0.5">
-          <strong className="text-ink-main font-medium">Dataset scope:</strong> Metrics reflect algorithmic comparisons across cataloged lemma pairs in the reference lexicon sample. A given percentage (such as cognate pairs between Swedish and Norwegian) measures classified sample proportion rather than a hard limit on total vocabulary overlap or mutual intelligibility.
-        </p>
       </header>
 
       <LanguageComparisonControls

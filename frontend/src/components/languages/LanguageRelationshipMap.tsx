@@ -204,13 +204,19 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
     setZoom(LANGUAGE_MAP.controls.defaultZoom);
   };
 
-  return (
+    const isRatioMeasure = measure === 'cognates' || measure === 'semantic_shifts' || measure === 'false_friends';
+    const legendLow = isRatioMeasure ? 'Lower proportion' : 'Lower similarity';
+    const legendHigh = isRatioMeasure ? 'Higher proportion' : 'Higher similarity';
+    const legendColor = LANGUAGE_MEASURES[measure].color;
+    const measureLabel = LANGUAGE_MEASURES[measure].label.toLowerCase();
+
+    return (
     <section className="min-w-0 border border-book-rule bg-page-surface shadow-2xs" aria-label="Language relationship map">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-book-rule px-4 py-3">
         <h2 className="typo-section-header">Language map</h2>
-        <div className="flex items-center gap-3 typo-sublabel text-ink-muted" aria-label="Line darkness shows relative similarity on the selected comparison">
-          <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke="var(--color-cognate-ink)" strokeOpacity={LANGUAGE_MAP.depth.minOpacity} strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>Lower similarity</span>
-          <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke="var(--color-cognate-ink)" strokeOpacity="1" strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>Higher similarity</span>
+        <div className="flex items-center gap-3 typo-sublabel text-ink-muted" aria-label={`Line darkness shows ${isRatioMeasure ? 'relative proportion' : 'relative similarity'} on the selected comparison`}>
+          <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke={legendColor} strokeOpacity={LANGUAGE_MAP.depth.minOpacity} strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>{legendLow}</span>
+          <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke={legendColor} strokeOpacity="1" strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>{legendHigh}</span>
         </div>
         <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs" role="group" aria-label="Map view">
           {(['2d', '3d'] as MapView[]).map((option) => <button key={option} type="button" onClick={() => setView(option)} aria-pressed={view === option}
@@ -221,7 +227,7 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
         </div>
       </div>
 
-      <p className="px-4 pt-3 typo-sublabel text-ink-muted">Languages are positioned by genealogical lexical affinity (true cognate roots). Line strength and score badges reflect the selected comparison ({LANGUAGE_MEASURES[measure].label.toLowerCase()}).</p>
+      <p className="px-4 pt-3 typo-sublabel text-ink-muted">Languages are positioned based on the proportion of cognate samples in our lexicon, closer languages have higher proportions of these. Line strength and score badges reflect {isRatioMeasure ? `the proportion of ${measureLabel}` : `${measureLabel}`}.</p>
       {!mapIsAvailable ? <p className="p-8 text-ink-muted">A map needs scores for every pair of plotted languages.</p> : <>
         <div ref={plotRef} className={`relative isolate w-full overflow-hidden select-none ${view === '3d' ? 'touch-none cursor-grab active:cursor-grabbing' : ''}`}
           style={{ height: LANGUAGE_MAP.plot.height }}
