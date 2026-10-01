@@ -145,7 +145,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
           </div>
         </div>
         <p className="typo-note text-ink-muted border-l-2 border-book-rule pl-3 py-0.5">
-          <strong className="text-ink-main font-medium">Dataset scope:</strong> Metrics reflect algorithmic comparisons across cataloged lemma pairs in the reference lexicon sample. A given percentage (such as cognate pairs between Swedish and Norwegian) measures classified sample proportion rather than a hard limit on total vocabulary overlap or conversational mutual intelligibility.
+          <strong className="text-ink-main font-medium">Dataset scope:</strong> Metrics reflect algorithmic comparisons across cataloged lemma pairs in the reference lexicon sample. A given percentage (such as cognate pairs between Swedish and Norwegian) measures classified sample proportion rather than a hard limit on total vocabulary overlap or mutual intelligibility.
         </p>
       </header>
 
