@@ -135,6 +135,10 @@ MORPH_TO_TAGS = {
     ("Person", "1"): "first-person",
     ("Person", "2"): "second-person",
     ("Person", "3"): "third-person",
+    ("Gender", "Neut"): "neuter",
+    ("Gender", "Com"): "common",
+    ("Gender", "Masc"): "masculine",
+    ("Gender", "Fem"): "feminine",
 }
 
 POS_NORMALIZATION = {
@@ -227,6 +231,31 @@ class ApproximateTranslationResponse(BaseModel):
     translations: Dict[str, str]
     details: Dict[str, List[Dict[str, Any]]]
 
+COGNATE_CATEGORIES = (
+    "true_cognate",
+    "full_cognate",
+    "partial_cognate",
+    "semantic_narrowing",
+    "semantic_broadening",
+    "archaic_cognate",
+    "semantic_divergence",
+    "sister_loanword",
+)
+
+def normalize_lemma(lang: str, text: str, lemma: str, pos: str) -> str:
+    lower_text = text.lower()
+    lower_lemma = lemma.lower() if lemma else lower_text
+    if lang == "sv":
+        if lower_text == "det":
+            return "det"
+        if lower_text == "den":
+            return "den"
+        if lower_text in ("de", "dem"):
+            return "de"
+        if lower_text == "marinen" and lower_lemma in ("marine", "marinen"):
+            return "marin"
+    return lower_lemma
+
 # Core Logic: Database-Driven Slot-Preserving Re-Inflection
 def inflect_lemma(
     conn: psycopg.Connection,
@@ -237,8 +266,15 @@ def inflect_lemma(
 ) -> tuple[str, List[str], float]:
     """Finds best matching inflected form in word_inflections matching the grammatical slot."""
     norm_pos = POS_NORMALIZATION.get(pos.upper(), pos.lower())
+    effective_morph = dict(morph) if morph else {}
+    if norm_pos == "verb":
+        if "Person" not in effective_morph:
+            effective_morph["Person"] = "3"
+        if "Number" not in effective_morph:
+            effective_morph["Number"] = "Sing"
+
     wanted_tags = set()
-    for k, v in morph.items():
+    for k, v in effective_morph.items():
         if (k, v) in MORPH_TO_TAGS:
             wanted_tags.add(MORPH_TO_TAGS[(k, v)])
 
@@ -271,16 +307,25 @@ def inflect_lemma(
         return lemma, [], 0.0
 
     scored = []
+    lower_lemma = lemma.lower()
     for form, tags in rows:
         if not form or form == "-" or " " in form:
             continue
         tset = set(tags) if tags else set()
         penalty = 0.0
-        if "archaic" in tset or "dated" in tset or "obsolete" in tset:
-            penalty = 5.0
+        if any("error" in t for t in tset) or "archaic" in tset or "dated" in tset or "obsolete" in tset or "misspelling" in tset:
+            penalty = 10.0
+        if "finite" in wanted_tags or "present" in wanted_tags or "past" in wanted_tags:
+            if "participle" in tset and "finite" not in tset:
+                penalty += 3.0
+            if "infinitive" in tset:
+                penalty += 2.0
+
         overlap = len(wanted_tags & tset)
         extra = len(tset - wanted_tags)
         score = (overlap * 2.0) - (extra * 0.3) - penalty
+        if form.lower() == lower_lemma:
+            score += 1.0
         scored.append((score, form, list(tags)))
 
     if not scored:
@@ -314,11 +359,13 @@ def analyze(req: AnalyzeRequest):
         head_id = t.head.i if t.head != t else i
         morph_dict = dict(t.morph.to_dict()) if hasattr(t, "morph") else {}
 
+        norm_lemma = normalize_lemma(req.lang, t.text, t.lemma_, t.pos_)
+
         tokens.append(
             TokenInfo(
                 id=i,
                 text=t.text,
-                lemma=t.lemma_.lower() if t.lemma_ else t.text.lower(),
+                lemma=norm_lemma,
                 pos=t.pos_,
                 dep_rel=dep,
                 head_id=head_id,
@@ -369,13 +416,36 @@ def get_alternatives(req: AlternativesRequest):
                     )
                     target_langs = [r[0] for r in cur.fetchall() if r[0] != req.lang]
 
+                effective_lemma = req.lemma
+                # If lemma has no synonyms in lemma_synonyms, check if token or lemma resolves in word_forms
+                cur.execute(
+                    "SELECT 1 FROM lemma_synonyms WHERE lang = %s AND lemma = %s LIMIT 1",
+                    (req.lang, effective_lemma),
+                )
+                if not cur.fetchone():
+                    cur.execute(
+                        "SELECT lemma FROM word_forms WHERE lang = %s AND form = %s LIMIT 1",
+                        (req.lang, req.token.lower()),
+                    )
+                    r = cur.fetchone()
+                    if r:
+                        effective_lemma = r[0]
+                    else:
+                        cur.execute(
+                            "SELECT lemma FROM word_forms WHERE lang = %s AND form = %s LIMIT 1",
+                            (req.lang, req.lemma.lower()),
+                        )
+                        r2 = cur.fetchone()
+                        if r2:
+                            effective_lemma = r2[0]
+
                 # 1. Fetch synonyms from database
                 cur.execute(
                     """
                     SELECT synonyms FROM lemma_synonyms
                     WHERE lang = %s AND lemma = %s
                     """,
-                    (req.lang, req.lemma),
+                    (req.lang, effective_lemma),
                 )
                 synonyms = set()
                 for (syn_list,) in cur.fetchall():
@@ -389,7 +459,7 @@ def get_alternatives(req: AlternativesRequest):
                     WHERE lang = %s AND synonyms @> ARRAY[%s]::text[]
                     LIMIT 20
                     """,
-                    (req.lang, req.lemma),
+                    (req.lang, effective_lemma),
                 )
                 for (rev_lemma,) in cur.fetchall():
                     synonyms.add(rev_lemma)
@@ -400,16 +470,16 @@ def get_alternatives(req: AlternativesRequest):
                         """
                         SELECT DISTINCT word_b
                         FROM word_comparisons
-                        WHERE (word_a = %s OR word_a = %s) AND category IN ('true_cognate', 'partial_cognate')
+                        WHERE (word_a = %s OR word_a = %s) AND category = ANY(%s)
                         LIMIT 25
                         """,
-                        (req.lemma, req.token.lower()),
+                        (req.lemma, req.token.lower(), list(COGNATE_CATEGORIES)),
                     )
                     for (cb,) in cur.fetchall():
                         synonyms.add(cb)
 
                 # 2. Candidate pool: original lemma + discovered synonyms
-                candidates = {req.lemma} | synonyms
+                candidates = {effective_lemma} | synonyms
                 candidate_results: List[AlternativeWord] = []
                 orig_score = 0.0
                 orig_target_words: Dict[str, str] = {}
@@ -433,10 +503,10 @@ def get_alternatives(req: AlternativesRequest):
                             SELECT lang_b, word_b, category, phonetic_sim, semantic_sim
                             FROM word_comparisons
                             WHERE word_a = %s AND lang_b = ANY(%s) AND lang_a != lang_b
-                              AND category IN ('true_cognate', 'partial_cognate')
+                              AND category = ANY(%s)
                             ORDER BY phonetic_sim DESC, semantic_sim DESC
                             """,
-                            (cand, target_langs),
+                            (cand, target_langs, list(COGNATE_CATEGORIES)),
                         )
                     else:
                         cur.execute(
@@ -444,10 +514,10 @@ def get_alternatives(req: AlternativesRequest):
                             SELECT lang_b, word_b, category, phonetic_sim, semantic_sim
                             FROM word_comparisons
                             WHERE lang_a = %s AND word_a = %s AND lang_b = ANY(%s)
-                              AND category IN ('true_cognate', 'partial_cognate')
+                              AND category = ANY(%s)
                             ORDER BY phonetic_sim DESC, semantic_sim DESC
                             """,
-                            (req.lang, cand, target_langs),
+                            (req.lang, cand, target_langs, list(COGNATE_CATEGORIES)),
                         )
                     rows = cur.fetchall()
 
@@ -456,7 +526,7 @@ def get_alternatives(req: AlternativesRequest):
 
                     for lang_b, word_b, cat, phon_sim, sem_sim in rows:
                         if lang_b not in matches:
-                            weight = 1.0 if cat == "true_cognate" else 0.6
+                            weight = 1.0 if cat in ("true_cognate", "full_cognate") else 0.6
                             cognacy_score = weight * float(phon_sim or 0.5)
                             cand_total_score += cognacy_score
                             matches[lang_b] = AlternativeMatch(
@@ -468,7 +538,7 @@ def get_alternatives(req: AlternativesRequest):
 
                     univ_score = (cand_total_score / len(target_langs)) * 100.0 if target_langs else 0.0
 
-                    if cand == req.lemma:
+                    if cand == effective_lemma:
                         orig_score = univ_score
                         orig_target_words = {l: m.word for l, m in matches.items()}
 
@@ -493,7 +563,7 @@ def get_alternatives(req: AlternativesRequest):
                     c.universality_delta = round(c.universality_score - orig_score, 1)
                     c.sentence_delta = round(c.universality_delta / total_tokens, 1)
 
-                    if c.lemma == req.lemma:
+                    if c.lemma == effective_lemma:
                         c.context_fit = 1.0
                     else:
                         # Contextual semantic fit:
@@ -517,7 +587,7 @@ def get_alternatives(req: AlternativesRequest):
 
                         c.context_fit = round(max(0.1, min(1.0, base_fit)), 2)
 
-                    if c.lemma != req.lemma:
+                    if c.lemma != effective_lemma:
                         filtered_alternatives.append(c)
 
                 filtered_alternatives.sort(
@@ -527,7 +597,7 @@ def get_alternatives(req: AlternativesRequest):
 
                 return AlternativesResponse(
                     original_token=req.token,
-                    original_lemma=req.lemma,
+                    original_lemma=effective_lemma,
                     original_score=round(orig_score, 1),
                     alternatives=filtered_alternatives[:15],
                 )
@@ -588,22 +658,24 @@ def approximate_translation(req: ApproximateTranslationRequest):
                                   AND semantic_sim >= 0.50
                                 ORDER BY 
                                     CASE 
-                                        WHEN (pos_b ILIKE %s) AND category = 'true_cognate' THEN 1
-                                        WHEN (pos_b ILIKE %s) AND category = 'partial_cognate' THEN 2
-                                        WHEN (pos_b ILIKE %s) AND category = 'translation_pair' THEN 3
-                                        WHEN (pos_b ILIKE %s) THEN 4
-                                        WHEN category = 'true_cognate' THEN 5
-                                        WHEN category = 'partial_cognate' THEN 6
-                                        WHEN category = 'translation_pair' THEN 7
-                                        ELSE 8
+                                        WHEN (pos_b ILIKE %s) AND (category IN ('true_cognate', 'full_cognate') OR semantic_sim >= 0.85) THEN 1
+                                        WHEN (pos_b ILIKE %s) AND category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence', 'sister_loanword') THEN 2
+                                        WHEN (pos_b ILIKE %s) AND category IN ('translation_pair', 'unrelated_equivalent') THEN 3
+                                        WHEN (pos_b ILIKE %s) AND semantic_sim >= 0.70 THEN 4
+                                        WHEN (pos_b ILIKE %s) THEN 5
+                                        WHEN category IN ('true_cognate', 'full_cognate') OR semantic_sim >= 0.85 THEN 6
+                                        WHEN category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence', 'sister_loanword') THEN 7
+                                        WHEN category IN ('translation_pair', 'unrelated_equivalent') THEN 8
+                                        ELSE 9
                                     END,
-                                    phonetic_sim DESC, semantic_sim DESC
+                                    semantic_sim DESC, phonetic_sim DESC
                                 LIMIT 1
                                 """,
                                 (
                                     tok.lemma,
                                     lower_text,
                                     target_lang,
+                                    f"%{norm_pos}%",
                                     f"%{norm_pos}%",
                                     f"%{norm_pos}%",
                                     f"%{norm_pos}%",
@@ -619,16 +691,17 @@ def approximate_translation(req: ApproximateTranslationRequest):
                                   AND semantic_sim >= 0.50
                                 ORDER BY 
                                     CASE 
-                                        WHEN (pos_b ILIKE %s) AND category = 'true_cognate' THEN 1
-                                        WHEN (pos_b ILIKE %s) AND category = 'partial_cognate' THEN 2
-                                        WHEN (pos_b ILIKE %s) AND category = 'translation_pair' THEN 3
-                                        WHEN (pos_b ILIKE %s) THEN 4
-                                        WHEN category = 'true_cognate' THEN 5
-                                        WHEN category = 'partial_cognate' THEN 6
-                                        WHEN category = 'translation_pair' THEN 7
-                                        ELSE 8
+                                        WHEN (pos_b ILIKE %s) AND (category IN ('true_cognate', 'full_cognate') OR semantic_sim >= 0.85) THEN 1
+                                        WHEN (pos_b ILIKE %s) AND category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence', 'sister_loanword') THEN 2
+                                        WHEN (pos_b ILIKE %s) AND category IN ('translation_pair', 'unrelated_equivalent') THEN 3
+                                        WHEN (pos_b ILIKE %s) AND semantic_sim >= 0.70 THEN 4
+                                        WHEN (pos_b ILIKE %s) THEN 5
+                                        WHEN category IN ('true_cognate', 'full_cognate') OR semantic_sim >= 0.85 THEN 6
+                                        WHEN category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence', 'sister_loanword') THEN 7
+                                        WHEN category IN ('translation_pair', 'unrelated_equivalent') THEN 8
+                                        ELSE 9
                                     END,
-                                    phonetic_sim DESC, semantic_sim DESC
+                                    semantic_sim DESC, phonetic_sim DESC
                                 LIMIT 1
                                 """,
                                 (
@@ -636,6 +709,7 @@ def approximate_translation(req: ApproximateTranslationRequest):
                                     tok.lemma,
                                     lower_text,
                                     target_lang,
+                                    f"%{norm_pos}%",
                                     f"%{norm_pos}%",
                                     f"%{norm_pos}%",
                                     f"%{norm_pos}%",
