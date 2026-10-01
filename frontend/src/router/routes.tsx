@@ -22,7 +22,7 @@ const QuizLazy = React.lazy(() =>
   import('../routes/quiz.lazy').then((m) => ({ default: m.QuizRouteComponent })),
 );
 export const languagesSearchSchema = z.object({
-  sort: z.enum(['ease', 'minefield', 'phonetic', 'cognates', 'spelling', 'pairs', 'name']).optional(),
+  sort: z.enum(['ease', 'minefield', 'phonetic', 'cognates', 'semantic_shifts', 'spelling', 'pairs', 'name']).optional(),
 });
 
 export const lexiconSearchSchema = z.object({

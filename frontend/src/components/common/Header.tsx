@@ -156,7 +156,7 @@ export const Header: React.FC = () => {
                 >
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
                     <span
-                      className="font-mono text-xs uppercase px-1.5 py-0.5 rounded border border-book-rule bg-page-muted text-ink-muted cursor-help shrink-0"
+                      className="typo-lang-code cursor-help shrink-0"
                       title={getLanguageName(item.lang_a)}
                     >
                       {item.lang_a.toUpperCase()}
@@ -165,7 +165,7 @@ export const Header: React.FC = () => {
                     {item.ipa_a && <Phonetic ipa={item.ipa_a} />}
                     <MaterialSymbol icon="arrow_forward" size={14} className="text-ink-light" />
                     <span
-                      className="font-mono text-xs uppercase px-1.5 py-0.5 rounded border border-book-rule bg-page-muted text-ink-muted cursor-help shrink-0"
+                      className="typo-lang-code cursor-help shrink-0"
                       title={getLanguageName(item.lang_b)}
                     >
                       {item.lang_b.toUpperCase()}
@@ -179,10 +179,10 @@ export const Header: React.FC = () => {
                       : item.category === 'false_friend'
                         ? 'False Friend'
                       : item.category === 'partial_cognate'
-                          ? 'Partial Cognate'
+                          ? 'Semantic Shift'
                         : item.category === 'translation_pair'
-                            ? 'Translation Pair'
-                            : 'Other'}
+                            ? 'Translation Equivalent'
+                            : 'Unrelated Lexicon'}
                   </div>
                 </div>
               ))}

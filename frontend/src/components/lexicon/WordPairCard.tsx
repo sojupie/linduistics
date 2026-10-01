@@ -4,45 +4,13 @@ import { LEXICON_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 import { formatPos } from '../../utils/formatters';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { TaxonomyBadge } from '../common/TaxonomyBadge';
 
 interface WordPairCardProps {
   pair: WordPair;
 }
 
 export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
-  const getBadgeStyle = () => {
-    switch (pair.category) {
-      case 'true_cognate':
-        return 'text-cognate-ink bg-cognate-bg';
-      case 'false_friend':
-        return 'text-falsefriend-ink bg-falsefriend-bg';
-      case 'partial_cognate':
-        return 'text-shifted-ink bg-shifted-bg';
-      case 'translation_pair':
-        return 'text-divergent-ink bg-divergent-bg';
-      default:
-        return 'text-ink-muted bg-page-muted';
-    }
-  };
-
-  const getCategoryLabel = () => {
-    switch (pair.category) {
-      case 'true_cognate':
-        return 'True Cognate';
-      case 'false_friend':
-        return pair.etymologicalRelation === 'cognate'
-          ? 'False Friend · Cognate'
-          : pair.etymologicalRelation === 'false_cognate'
-          ? 'False Cognate'
-          : 'False Friend · Origin Unknown';
-      case 'partial_cognate':
-        return 'Partial Cognate';
-      case 'translation_pair':
-        return 'Translation Pair';
-      default:
-        return 'Other';
-    }
-  };
 
   return (
     <article className="rounded border border-book-rule bg-page-surface p-6 font-serif shadow-2xs">
@@ -77,11 +45,11 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
         </div>
 
         {/* Category tag */}
-        <span
-          className={`rounded px-2.5 py-0.5 typo-badge ${getBadgeStyle()}`}
-        >
-          {getCategoryLabel()}
-        </span>
+        <TaxonomyBadge
+          category={pair.category}
+          etymologicalRelation={pair.etymologicalRelation}
+          className="px-2.5 py-0.5"
+        />
       </div>
 
       {/* Definitions layout */}

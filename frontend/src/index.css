@@ -24,18 +24,22 @@
   --color-ink-light: #78716C;
 
   --color-cognate-ink: #255D36;
+  --color-cognate-ink-hover: #1D4C2B;
   --color-cognate-bg: #EBF3ED;
   --color-cognate-border: #B8DAC0;
 
   --color-falsefriend-ink: #9E2A2B;
+  --color-falsefriend-ink-hover: #7E1E1F;
   --color-falsefriend-bg: #F9ECEC;
   --color-falsefriend-border: #E8B6B6;
 
   --color-shifted-ink: #8F581B;
+  --color-shifted-ink-hover: #734514;
   --color-shifted-bg: #FBF3EB;
   --color-shifted-border: #ECCFA9;
 
   --color-divergent-ink: #2D516B;
+  --color-divergent-ink-hover: #213D51;
   --color-divergent-bg: #EBF1F6;
   --color-divergent-border: #BCD0E0;
 
@@ -108,7 +112,7 @@ button:not(:disabled),
   font-style: normal;
   /* Keep slashes and IPA upright even if parent is italic */
   letter-spacing: 0;
-  color: #292524;
+  color: var(--color-ink-main);
   /* Deep rich carbon-stone ink, high contrast against paper ground */
 }
 
@@ -233,7 +237,7 @@ button:not(:disabled),
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0;
-    color: #292524;
+    color: var(--color-ink-main);
   }
 
   .typo-subscript {
@@ -304,6 +308,26 @@ button:not(:disabled),
     font-size: 1.0625rem;
     line-height: 1.5rem;
     font-weight: 500;
+  }
+
+  .btn-action-primary {
+    background-color: var(--color-cognate-ink);
+    border: 1px solid var(--color-cognate-ink);
+    color: var(--color-page-surface);
+    font-family: var(--font-deck);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.375rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-action-primary:hover:not(:disabled) {
+    background-color: var(--color-cognate-ink-hover);
+    border-color: var(--color-cognate-ink-hover);
   }
 
   .typo-badge {

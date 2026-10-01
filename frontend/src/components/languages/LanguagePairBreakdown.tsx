@@ -44,15 +44,15 @@ export const LanguagePairBreakdown: React.FC<LanguagePairBreakdownProps> = ({ pa
               <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-cognate-ink" /><span>True cognates</span></span>
               <span className="typo-metric-table text-cognate-ink font-semibold">{(profile.ratios.trueCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</span>
             </div>
-            <p>In the cataloged dataset, approximately <strong className="text-ink-main font-medium">{(profile.ratios.trueCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of words share verified common ancestry and retain equivalent definitions with {sourceName}.</p>
+            <p>In the cataloged vocabulary sample, approximately <strong className="text-ink-main font-medium">{(profile.ratios.trueCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of analyzed pairs share verified common ancestry and retain equivalent definitions with {sourceName}.</p>
           </div>
 
           <div>
             <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
-              <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-shifted-ink" /><span>Partial cognates</span></span>
+              <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-shifted-ink" /><span>Semantic shifts</span></span>
               <span className="typo-metric-table text-shifted-ink font-semibold">{(profile.ratios.partialCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</span>
             </div>
-            <p>About <strong className="text-ink-main font-medium">{(profile.ratios.partialCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of pairs stem from common etymological origins but leave partial definition overlap due to semantic shift, broadening, or sound changes.</p>
+            <p>About <strong className="text-ink-main font-medium">{(profile.ratios.partialCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of pairs stem from common etymological origins but leave partial definition overlap due to semantic shift, broadening, narrowing, or sound changes.</p>
           </div>
 
           <div>
@@ -65,19 +65,19 @@ export const LanguagePairBreakdown: React.FC<LanguagePairBreakdownProps> = ({ pa
 
           <div>
             <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
-              <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" /><span>Translation pairs</span></span>
+              <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-divergent-ink" /><span>Translation equivalents</span></span>
               <span className="typo-metric-table text-divergent-ink font-semibold">{(profile.ratios.translationPairs * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</span>
             </div>
-            <p>Roughly <strong className="text-ink-main font-medium">{(profile.ratios.translationPairs * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of words translate each other directly despite descending from unrelated ancestral roots.</p>
+            <p>Roughly <strong className="text-ink-main font-medium">{(profile.ratios.translationPairs * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of analyzed pairs translate each other directly while descending from distinct, unrelated ancestral roots.</p>
           </div>
 
           {profile.ratios.other > LANGUAGE_OVERVIEW_CONFIG.otherRatioDisplayThreshold && (
             <div className="md:col-span-2">
               <div className="typo-section-header font-medium border-b border-book-rule pb-1.5 mb-2 flex items-center justify-between">
-                <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-book-rule-strong" /><span>Other &amp; unclassified</span></span>
+                <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-xs bg-book-rule-strong" /><span>Unrelated lexicon</span></span>
                 <span className="typo-metric-table text-ink-muted font-semibold">{(profile.ratios.other * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</span>
               </div>
-              <p>The remaining <strong className="text-ink-main font-medium">{(profile.ratios.other * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of cataloged pairs encompass specialized compounds, loan translations, or items outside the four primary cognate categories.</p>
+              <p>The remaining <strong className="text-ink-main font-medium">{(profile.ratios.other * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</strong> of cataloged pairs encompass independent roots, non-cognate vocabulary, or items outside the four primary relationship categories.</p>
             </div>
           )}
         </div>

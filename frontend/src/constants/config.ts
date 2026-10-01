@@ -108,3 +108,33 @@ export const TAXONOMIC_BAR_CONFIG = {
   PERCENT_MULTIPLIER: 100,
   PRECISION_DECIMALS: 0,
 } as const;
+
+export const TOKEN_STATUS_CONFIG = {
+  universal: {
+    status: 'universal',
+    label: 'Universal',
+    symbol: '●',
+    colorClass: 'text-cognate-ink',
+    badgeClass: 'text-cognate-ink bg-cognate-bg',
+    threshold: '≥ 55%',
+    tooltip: 'Universal: Cognates span ≥ 55% of selected target languages (pan-Germanic distribution)',
+  },
+  branch_specific: {
+    status: 'branch_specific',
+    label: 'Branch-specific',
+    symbol: '●',
+    colorClass: 'text-shifted-ink',
+    badgeClass: 'text-shifted-ink bg-shifted-bg',
+    threshold: '20%–54%',
+    tooltip: 'Branch-specific: Cognates restricted to a sub-branch (e.g. North Germanic) or reduced by semantic shift (20%–54% coverage)',
+  },
+  isolate: {
+    status: 'isolate',
+    label: 'Isolate',
+    symbol: '○',
+    colorClass: 'text-ink-light',
+    badgeClass: 'text-ink-muted bg-page-muted',
+    threshold: '< 20%',
+    tooltip: 'Isolate: No cognates found in selected target languages (< 20% coverage)',
+  },
+} as const;

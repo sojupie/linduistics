@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { ErrorState } from './ErrorState';
 
 interface Props {
   children: ReactNode;
@@ -30,25 +31,14 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.fallback;
       }
       return (
-        <div className="mx-auto my-12 max-w-xl rounded border border-falsefriend-border bg-page-surface p-8 text-ink-main shadow-xs">
-          <div className="border-b border-book-rule pb-3">
-            <h3 className="text-falsefriend-ink typo-section-header font-bold">
-              Unable to display this section
-            </h3>
-          </div>
-          <p className="mt-4 typo-body text-ink-muted">
-            An unexpected error occurred while loading this view.
-          </p>
-          <pre className="mt-4 overflow-x-auto rounded border border-book-rule bg-page-muted p-4 typo-metric-table text-falsefriend-ink">
-            {this.state.error?.message || 'Unknown error'}
-          </pre>
-          <button
-            type="button"
-            onClick={() => this.setState({ hasError: false, error: null })}
-            className="mt-6 inline-flex items-center rounded border border-book-rule bg-page-surface px-4 py-2 typo-sublabel text-ink-main hover:border-book-rule-strong transition-colors"
-          >
-            Try again
-          </button>
+        <div className="mx-auto my-12 max-w-xl rounded border border-book-rule bg-page-surface p-8 text-ink-main shadow-xs">
+          <ErrorState
+            title="Unable to display this view"
+            errorMessage={this.state.error?.message}
+            onRetry={() => this.setState({ hasError: false, error: null })}
+            retryLabel="Try again"
+            className="py-2"
+          />
         </div>
       );
     }

@@ -7,6 +7,7 @@ import { LanguageOverviewTable } from './LanguageOverviewTable';
 import { LanguagePairBreakdown } from './LanguagePairBreakdown';
 import { LanguagePairMatrix } from './LanguagePairMatrix';
 import { LanguageRelationshipMap } from './LanguageRelationshipMap';
+import { ErrorState } from '../common/ErrorState';
 import {
   LANGUAGE_MAP,
   pairKey,
@@ -25,7 +26,7 @@ export interface LanguageOverviewProps {
 }
 
 export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease', onSortChange }) => {
-  const { data, isPending, isError } = useLanguagesQuery();
+  const { data, isPending, isError, error, refetch } = useLanguagesQuery();
   const [internalSort, setInternalSort] = useState<LanguageSort>(sort);
   const [chosenReference, setReference] = useState<string | null>(null);
   const [selectedPair, setSelectedPair] = useState<LanguagePair | null | undefined>(undefined);
@@ -47,7 +48,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
   const selectorPair = activePair ?? lastBreakdownPair ?? defaultPair;
   const selectorTarget = selectorPair?.source === reference ? selectorPair.target
     : selectorPair?.target === reference ? selectorPair.source
-    : defaultPair?.target ?? '';
+      : defaultPair?.target ?? '';
   const canSwap = !!selectorTarget && pairs.has(pairKey(selectorTarget, reference));
   const activePairData = activePair ? pairs.get(pairKey(activePair.source, activePair.target)) : undefined;
   const breakdownPair = activePair ?? lastBreakdownPair;
@@ -57,7 +58,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
   const selectedReferenceTarget = activePair
     ? activePair.source === reference ? activePair.target
       : activePair.target === reference ? activePair.source
-      : null
+        : null
     : null;
 
   const changeSort = (nextSort: LanguageSort) => {
@@ -93,7 +94,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
     const targets = (data?.pairs ?? []).filter((pair) => pair.source === source).map((pair) => pair.target);
     const target = targets.includes(selectorTarget) ? selectorTarget
       : targets.includes(reference) ? reference
-      : targets[0];
+        : targets[0];
     if (!target) return;
     const pair = { source, target };
     setReference(source);
@@ -115,16 +116,37 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
     setSelectedPair(pair);
   };
 
-  if (isPending) return <main className="px-4 sm:px-6 lg:px-8 py-8 text-ink-muted">Loading language comparisons…</main>;
-  if (isError || !languages.length) return <main className="px-4 sm:px-6 lg:px-8 py-8 text-ink-muted">Language comparisons are unavailable.</main>;
+  if (isPending) {
+    return (
+      <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex items-center justify-center text-center typo-gloss text-ink-muted">
+        Loading language comparisons…
+      </main>
+    );
+  }
+  if (isError || !languages.length) {
+    return (
+      <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-36 font-sans">
+        <ErrorState
+          title="Unable to load language comparisons"
+          errorMessage={error instanceof Error ? error.message : undefined}
+          onRetry={() => refetch()}
+        />
+      </main>
+    );
+  }
 
   return (
     <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-36 font-sans space-y-5">
-      <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-book-rule pb-4">
-        <div>
-          <h1 className="typo-page-title">Language Overview</h1>
-          <p className="typo-page-deck mt-1.5">Pairwise comparisons showing phonetic similarity, spelling overlap, and lexical composition across cataloged word pairs.</p>
+      <header className="border-b border-book-rule pb-4 space-y-2">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 className="typo-page-title">Language Overview</h1>
+            <p className="typo-page-deck mt-1.5">Pairwise comparisons showing phonetic similarity, spelling overlap, and lexical composition across cataloged word pairs.</p>
+          </div>
         </div>
+        <p className="typo-note text-ink-muted border-l-2 border-book-rule pl-3 py-0.5">
+          <strong className="text-ink-main font-medium">Dataset scope:</strong> Metrics reflect algorithmic comparisons across cataloged lemma pairs in the reference lexicon sample. A given percentage (such as cognate pairs between Swedish and Norwegian) measures classified sample proportion rather than a hard limit on total vocabulary overlap or conversational mutual intelligibility.
+        </p>
       </header>
 
       <LanguageComparisonControls

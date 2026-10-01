@@ -1,9 +1,10 @@
 import React from 'react';
 import type { TokenAnalysis, AlternativeWord } from '../../types/linguistics';
 import { MaterialSymbol } from '../common/MaterialSymbol';
-import { LEXICON_CONFIG } from '../../constants/config';
+import { LEXICON_CONFIG, TOKEN_STATUS_CONFIG } from '../../constants/config';
 import { Phonetic } from '../common/Phonetic';
 import { getLanguageName } from '../../data/languages';
+import { TaxonomyBadge } from '../common/TaxonomyBadge';
 
 interface TokenDetailDrawerProps {
   tokenAnalysis: TokenAnalysis | null;
@@ -283,6 +284,14 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                 (lemma: <span className="text-ink-main not-italic font-deck">{tokenAnalysis.lemma}</span>)
               </span>
             )}
+            {TOKEN_STATUS_CONFIG[tokenAnalysis.status] && (
+              <span
+                className={`typo-badge px-2 py-0.5 rounded cursor-help ${TOKEN_STATUS_CONFIG[tokenAnalysis.status].badgeClass}`}
+                title={TOKEN_STATUS_CONFIG[tokenAnalysis.status].tooltip}
+              >
+                {TOKEN_STATUS_CONFIG[tokenAnalysis.status].label}
+              </span>
+            )}
           </div>
           <button
             type="button"
@@ -400,7 +409,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                           className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-book-rule bg-page-bg typo-sublabel"
                         >
                           <span
-                            className="font-mono text-xs uppercase font-medium text-ink-muted cursor-help"
+                            className="typo-sublabel font-mono uppercase cursor-help"
                             title={getLanguageName(lang)}
                           >
                             {lang.toUpperCase()}:
@@ -420,37 +429,13 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
       {/* 3. Cross-Lingual Correspondences */}
       <div className={`space-y-2 ${matches.length > 0 ? 'flex-1 min-h-0 flex flex-col' : 'shrink-0'}`}>
         <div className="typo-section-header border-b border-book-rule pb-1.5 flex items-center justify-between shrink-0">
-          <span>Multilingual Cognates</span>
+          <span>Cross-Lingual Matches</span>
           <span className="typo-metric-table text-ink-muted">{matches.length}</span>
         </div>
 
         {matches.length > 0 ? (
           <div className="divide-y divide-book-rule/50 flex-1 min-h-[12rem] lg:min-h-0 overflow-y-auto pr-1.5">
           {matches.map(([lang, match]) => {
-            const isCognate = match.category === 'true_cognate';
-            const isPartial = match.category === 'partial_cognate';
-            const isFalseFriend = match.category === 'false_friend';
-            const isTranslation = match.category === 'translation_pair';
-
-            const categoryText = isCognate
-              ? 'True Cognate'
-              : isPartial
-                ? 'Partial Cognate'
-                : isFalseFriend
-                  ? 'False Friend'
-                  : isTranslation
-                    ? 'Translation Pair'
-                    : 'Other';
-
-            const categoryStyle = isCognate
-              ? 'text-cognate-ink bg-cognate-bg'
-              : isPartial
-                ? 'text-shifted-ink bg-shifted-bg'
-                : isFalseFriend
-                  ? 'text-falsefriend-ink bg-falsefriend-bg'
-                  : isTranslation
-                    ? 'text-divergent-ink bg-divergent-bg'
-                    : 'text-ink-muted bg-page-muted';
 
             return (
               <div key={lang} className="py-2.5 space-y-1">
@@ -467,9 +452,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                     </span>
                     {match.ipa && <Phonetic ipa={match.ipa} className="table-ipa" />}
                   </div>
-                  <span className={`typo-badge px-2 py-0.5 rounded ${categoryStyle} shrink-0`}>
-                    {categoryText}
-                  </span>
+                  <TaxonomyBadge category={match.category} className="shrink-0" />
                 </div>
 
                 {match.def && (

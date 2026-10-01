@@ -5,8 +5,9 @@ import type { TokenAnalysis, InspectResponse } from '../../types/linguistics';
 import { TokenPill } from './TokenPill';
 import { TokenDetailDrawer } from './TokenDetailDrawer';
 import { LanguageSelect } from '../common/LanguagePicker';
-import { INSPECTOR_CONFIG } from '../../constants/config';
+import { INSPECTOR_CONFIG, TOKEN_STATUS_CONFIG } from '../../constants/config';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { ErrorState } from '../common/ErrorState';
 
 const escapeRegExp = (str: string): string =>
   str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -232,12 +233,24 @@ export const TextInspector: React.FC = () => {
                 type="button"
                 disabled={inspectMutation.isPending || !inputText.trim()}
                 onClick={() => handleInspect()}
-                className="px-4 py-1.5 border border-cognate-ink bg-cognate-ink text-page-surface typo-overline hover:bg-[#1d4c2b] hover:border-[#1d4c2b] transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="btn-action-primary disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {inspectMutation.isPending ? 'Parsing...' : 'Parse'}
               </button>
             </div>
           </div>
+
+          {/* Error State */}
+          {inspectMutation.isError && (
+            <div className="pt-4 border-t border-book-rule">
+              <ErrorState
+                title="Unable to parse text"
+                errorMessage={inspectMutation.error instanceof Error ? inspectMutation.error.message : undefined}
+                onRetry={() => handleInspect()}
+                retryLabel="Retry parsing"
+              />
+            </div>
+          )}
 
           {/* 2. Interlinear Analysis Reading Passage */}
           {response && (
@@ -254,15 +267,15 @@ export const TextInspector: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 typo-sublabel text-ink-muted select-none">
-                  <span className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap cursor-help hover:text-ink-main transition-colors" title={TOKEN_STATUS_CONFIG.universal.tooltip}>
                     <span className="text-cognate-ink font-semibold">●</span>
-                    Cognate
+                    Universal
                   </span>
-                  <span className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap cursor-help hover:text-ink-main transition-colors" title={TOKEN_STATUS_CONFIG.branch_specific.tooltip}>
                     <span className="text-shifted-ink font-semibold">●</span>
-                    Partial
+                    Branch-specific
                   </span>
-                  <span className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="flex items-center gap-1.5 whitespace-nowrap cursor-help hover:text-ink-main transition-colors" title={TOKEN_STATUS_CONFIG.isolate.tooltip}>
                     <span className="text-ink-light font-semibold">○</span>
                     Isolate
                   </span>

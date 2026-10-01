@@ -27,7 +27,7 @@ export const LanguageOverviewTable: React.FC<LanguageOverviewTableProps> = ({
     <section className="border border-book-rule bg-page-surface shadow-2xs" aria-label={`${referenceName} comparison table`}>
       <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-book-rule">
         <h2 className="typo-section-header">From {referenceName}</h2>
-        <span className="text-xs text-ink-muted">Select a heading to sort</span>
+        <span className="typo-sublabel">Select a heading to sort</span>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left tabular-nums" style={{ minWidth: LANGUAGE_OVERVIEW_CONFIG.minimumTableWidthPx }}>
@@ -40,14 +40,15 @@ export const LanguageOverviewTable: React.FC<LanguageOverviewTableProps> = ({
               <th scope="col" aria-sort={sort === 'phonetic' ? 'descending' : 'none'} title="Average phonetic similarity based on articulatory feature alignment" className={`px-2 py-3 text-right ${measure === 'phonetic' ? 'text-cognate-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('phonetic'); onSortChange('phonetic'); }} className="hover:text-ink-main">Phonetic sim.{sortIndicator('phonetic')}</button></th>
               <th scope="col" aria-sort={sort === 'spelling' ? 'descending' : 'none'} title="Average orthographic similarity across headword spellings" className={`px-2 py-3 text-right ${measure === 'orthographic' ? 'text-divergent-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('orthographic'); onSortChange('spelling'); }} className="hover:text-ink-main">Spelling sim.{sortIndicator('spelling')}</button></th>
               <th scope="col" aria-sort={sort === 'ease' ? 'descending' : 'none'} title="Average definition overlap based on sentence embeddings" className={`px-2 py-3 text-right ${measure === 'semantic' ? 'text-ink-main' : ''}`}><button type="button" onClick={() => { onMeasureChange('semantic'); onSortChange('ease'); }} className="hover:text-ink-main">Semantic sim.{sortIndicator('ease')}</button></th>
-              <th scope="col" aria-sort={sort === 'cognates' ? 'descending' : 'none'} className={`px-2 py-3 text-right ${measure === 'cognates' ? 'text-cognate-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('cognates'); onSortChange('cognates'); }} className="hover:text-ink-main">Cognates %{sortIndicator('cognates')}</button></th>
+              <th scope="col" aria-sort={sort === 'cognates' ? 'descending' : 'none'} title="Proportion of word pairs sharing verified ancestral roots and equivalent definitions" className={`px-2 py-3 text-right ${measure === 'cognates' ? 'text-cognate-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('cognates'); onSortChange('cognates'); }} className="hover:text-ink-main">True cognates %{sortIndicator('cognates')}</button></th>
+              <th scope="col" aria-sort={sort === 'semantic_shifts' ? 'descending' : 'none'} title="Proportion of cognate pairs with partial meaning divergence (narrowing, broadening, sound shifts)" className={`px-2 py-3 text-right ${measure === 'semantic_shifts' ? 'text-shifted-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('semantic_shifts'); onSortChange('semantic_shifts'); }} className="hover:text-ink-main">Semantic shifts %{sortIndicator('semantic_shifts')}</button></th>
               <th scope="col" aria-sort={sort === 'minefield' ? 'descending' : 'none'} className={`px-2 py-3 text-right ${measure === 'false_friends' ? 'text-falsefriend-ink' : ''}`}><button type="button" onClick={() => { onMeasureChange('false_friends'); onSortChange('minefield'); }} className="hover:text-ink-main">False friends %{sortIndicator('minefield')}</button></th>
               <th scope="col" className="w-32 px-2 py-3">Vocabulary composition</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-book-rule/50">
             {rows.length === 0 ? (
-              <tr><td colSpan={9} className="px-4 py-10 text-center text-ink-muted">No comparisons are cataloged from {referenceName}.</td></tr>
+              <tr><td colSpan={10} className="px-4 py-10 text-center text-ink-muted">No comparisons are cataloged from {referenceName}.</td></tr>
             ) : rows.map((target, index) => (
               <tr key={target.code} aria-selected={selectedTarget === target.code} className={`hover:bg-page-muted/40 ${selectedTarget === target.code ? 'bg-page-muted/60' : ''}`}>
                 <td className="px-2 py-3 text-center typo-metric-table text-ink-light">{index + 1}</td>
@@ -56,13 +57,17 @@ export const LanguageOverviewTable: React.FC<LanguageOverviewTableProps> = ({
                 <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'phonetic' ? 'bg-page-muted/60 text-cognate-ink' : 'text-cognate-ink'}`}>{(target.phoneticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
                 <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'orthographic' ? 'bg-page-muted/60 text-divergent-ink' : 'text-divergent-ink'}`}>{(target.spellingSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
                 <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'semantic' ? 'bg-page-muted/60 text-ink-main' : 'text-ink-main'}`}>{(target.semanticSimilarity * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
-                <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'cognates' ? 'bg-page-muted/60 text-cognate-ink' : 'text-cognate-ink'}`}>{((target.ratios.trueCognates + target.ratios.partialCognates) * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
+                <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'cognates' ? 'bg-page-muted/60 text-cognate-ink' : 'text-cognate-ink'}`}>{(target.ratios.trueCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
+                <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'semantic_shifts' ? 'bg-page-muted/60 text-shifted-ink' : 'text-shifted-ink'}`}>{(target.ratios.partialCognates * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
                 <td className={`px-2 py-3 text-right typo-metric-table ${measure === 'false_friends' ? 'bg-page-muted/60 text-falsefriend-ink' : 'text-falsefriend-ink'}`}>{(target.ratios.falseFriends * REGISTER_CONFIG.PERCENT_SCALE).toFixed(REGISTER_CONFIG.PRECISION)}%</td>
                 <td className="px-2 py-3"><TaxonomyRatioBar ratios={target.ratios} compact /></td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="px-4 py-2.5 border-t border-book-rule bg-page-bg/40 typo-note">
+        Ratios represent classified pair counts within the cataloged sample rather than absolute cross-language vocabulary overlap.
       </div>
     </section>
   );

@@ -3,9 +3,18 @@ export type SpecimenCategory =
   | 'false_friend'       // False Friends (Dried oxblood red)
   | 'partial_cognate'    // Partial Cognates (Raw ochre / amber)
   | 'translation_pair'   // Translation Pairs (Iron gall blue)
-  | 'other';             // Other / Unclassified (Slate)
+  | 'other'              // Other / Unclassified (Slate)
+  | 'full_cognate'
+  | 'semantic_narrowing'
+  | 'semantic_broadening'
+  | 'archaic_cognate'
+  | 'cognate_false_friend'
+  | 'accidental_lookalike'
+  | 'sister_loanword'
+  | 'unrelated_equivalent'
+  | 'independent_root';
 
-export type EtymologicalRelation = 'cognate' | 'false_cognate' | 'unknown';
+export type EtymologicalRelation = 'cognate' | 'false_cognate' | 'unknown' | 'borrowed_stratum' | 'unrelated' | 'independent';
 
 export interface SenseItem {
   sense_id: number;

@@ -6,6 +6,8 @@ import { Phonetic } from '../common/Phonetic';
 import { formatPos, parseEtymRoot } from '../../utils/formatters';
 import { MaterialSymbol } from '../common/MaterialSymbol';
 import { DeltaSymbol } from '../common/DeltaSymbol';
+import { TaxonomyBadge } from '../common/TaxonomyBadge';
+import { getTaxonomyMeta } from '../../constants/taxonomy';
 
 interface WordPairDetailsProps {
   pair: WordPair | null;
@@ -34,24 +36,6 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
     );
   }
 
-  const getTaxonomyTitle = () => {
-    switch (pair.category) {
-      case 'true_cognate':
-        return 'True Cognate';
-      case 'false_friend':
-        return pair.etymologicalRelation === 'cognate'
-          ? 'False Friend · Cognate'
-          : pair.etymologicalRelation === 'false_cognate'
-            ? 'False Cognate'
-            : 'False Friend · Origin Unknown';
-      case 'partial_cognate':
-        return 'Partial Cognate';
-      case 'translation_pair':
-        return 'Translation Pair';
-      default:
-        return 'Other';
-    }
-  };
 
   const posAbbrA = formatPos(pair.posA);
   const posAbbrB = formatPos(pair.posB);
@@ -113,6 +97,10 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
     ];
   })();
 
+  const meta = getTaxonomyMeta(pair.category, pair.etymologicalRelation);
+  const isFf = meta.macroCategory === 'false_friend';
+  const isCognate = meta.macroCategory === 'cognate';
+
   return (
     <div className="font-serif text-ink-main select-text space-y-6">
       {/* 1. Word Pair Title Plate */}
@@ -124,18 +112,11 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             <MaterialSymbol icon="sync_alt" size={14} className="text-ink-muted" />
             <span>{targetName}</span>
           </span>
-          <span className={`typo-badge shrink-0 px-2.5 py-0.5 rounded ${pair.category === 'false_friend'
-              ? 'text-falsefriend-ink bg-falsefriend-bg'
-              : pair.category === 'true_cognate'
-                ? 'text-cognate-ink bg-cognate-bg'
-                : pair.category === 'partial_cognate'
-                  ? 'text-shifted-ink bg-shifted-bg'
-                  : pair.category === 'translation_pair'
-                    ? 'text-divergent-ink bg-divergent-bg'
-                    : 'text-ink-main bg-page-muted'
-            }`}>
-            {getTaxonomyTitle()}
-          </span>
+          <TaxonomyBadge
+            category={pair.category}
+            etymologicalRelation={pair.etymologicalRelation}
+            className="shrink-0 px-2.5 py-0.5"
+          />
         </div>
 
         {/* Headwords */}
@@ -172,12 +153,13 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
             <span className="typo-lang-code shrink-0 cursor-help" title={targetName}>
               {targetLang.toUpperCase()}
             </span>
-            <h2 className={`typo-headword-display ${pair.category === 'false_friend'
+            <h2 className={`typo-headword-display ${
+              isFf
                 ? 'text-falsefriend-ink'
-                : pair.category === 'true_cognate'
+                : isCognate
                   ? 'text-cognate-ink'
                   : 'text-ink-main'
-              }`}>
+            }`}>
               {pair.wordB}{posAbbrB ? ',' : ''}
             </h2>
             {posAbbrB && (
@@ -192,7 +174,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
         </div>
 
         {/* False Friend Distinction Advisory */}
-        {pair.category === 'false_friend' && (
+        {isFf && (
           <div className="pt-3 border-book-rule/80 typo-note text-falsefriend-ink leading-relaxed bg-falsefriend-bg/40 p-3 border-l-2 border-falsefriend-border">
             {pair.etymologicalRelation === 'cognate'
               ? 'Historically related words whose modern meanings have diverged enough to mislead.'

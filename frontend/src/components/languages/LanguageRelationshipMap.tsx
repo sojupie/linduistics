@@ -42,10 +42,9 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
       const forward = pairs.get(pairKey(source, target));
       const reverse = pairs.get(pairKey(target, source));
       if (!forward || !reverse) return 0;
-      const average = (LANGUAGE_MEASURES[measure].value(forward) + LANGUAGE_MEASURES[measure].value(reverse)) / 2;
-      return measure === 'false_friends' ? 1 - average : average;
+      return (forward.true_cognates_ratio + reverse.true_cognates_ratio) / 2;
     });
-  }, [mapLanguages, pairs, measure]);
+  }, [mapLanguages, pairs]);
   const placed = useMemo(() => layoutPoints(mapPoints, view, yaw, pitch, zoom, plotWidth), [mapPoints, view, yaw, pitch, zoom, plotWidth]);
   const labels = useMemo(() => layoutLabels(placed, plotWidth), [placed, plotWidth]);
   const labelsByCode = useMemo(() => new Map(labels.map((label) => [label.code, label])), [labels]);
@@ -154,9 +153,11 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
       const highlightColor = isReference ? 'var(--color-ink-muted)' : 'var(--color-ink-light)';
       const radius = Math.max(LANGUAGE_MAP.labels.minSize, Math.min(LANGUAGE_MAP.labels.maxSize, LANGUAGE_MAP.labels.size * point.scale)) / 2;
       if (highlighted) items.push({ depth: point.depth, key: `halo-${point.code}`, element: <circle key={`halo-${point.code}`} cx={label.x} cy={label.y} r={radius + LANGUAGE_MAP.labels.haloOffset} fill="none" stroke={highlightColor} strokeWidth={LANGUAGE_MAP.depth.nodeBorderWidth} strokeDasharray={LANGUAGE_MAP.graticule.dash} /> });
-      items.push({ depth: point.depth, key: `node-${point.code}`, element: <circle key={`node-${point.code}`} cx={label.x} cy={label.y} r={radius}
-        fill={isReference ? 'var(--color-ink-muted)' : selected || hovered ? 'var(--color-ink-light)' : 'var(--color-page-muted)'}
-        stroke={highlighted ? highlightColor : 'var(--color-book-rule-strong)'} strokeWidth={highlighted ? LANGUAGE_MAP.depth.nodeBorderWidth : 1} /> });
+      items.push({
+        depth: point.depth, key: `node-${point.code}`, element: <circle key={`node-${point.code}`} cx={label.x} cy={label.y} r={radius}
+          fill={isReference ? 'var(--color-ink-muted)' : selected || hovered ? 'var(--color-ink-light)' : 'var(--color-page-muted)'}
+          stroke={highlighted ? highlightColor : 'var(--color-book-rule-strong)'} strokeWidth={highlighted ? LANGUAGE_MAP.depth.nodeBorderWidth : 1} />
+      });
     });
     return items.sort((a, b) => b.depth - a.depth);
   }, [view, yaw, pitch, zoom, plotWidth, graticules, graphEdges, similarityRange, minSimilarity, placed, labelsByCode, activePair, reference, hoveredLanguage]);
@@ -207,7 +208,7 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
     <section className="min-w-0 border border-book-rule bg-page-surface shadow-2xs" aria-label="Language relationship map">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-book-rule px-4 py-3">
         <h2 className="typo-section-header">Language map</h2>
-        <div className="flex items-center gap-3 text-xs text-ink-muted" aria-label="Line darkness shows relative similarity on the selected comparison">
+        <div className="flex items-center gap-3 typo-sublabel text-ink-muted" aria-label="Line darkness shows relative similarity on the selected comparison">
           <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke="var(--color-cognate-ink)" strokeOpacity={LANGUAGE_MAP.depth.minOpacity} strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>Lower similarity</span>
           <span className="flex items-center gap-1"><svg width={LANGUAGE_MAP.legend.width} height={LANGUAGE_MAP.legend.height} aria-hidden="true"><line x1={LANGUAGE_MAP.legend.inset} y1={LANGUAGE_MAP.legend.height / 2} x2={LANGUAGE_MAP.legend.width - LANGUAGE_MAP.legend.inset} y2={LANGUAGE_MAP.legend.height / 2} stroke="var(--color-cognate-ink)" strokeOpacity="1" strokeWidth={LANGUAGE_MAP.depth.lineWidth} /></svg>Higher similarity</span>
         </div>
@@ -220,7 +221,7 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
         </div>
       </div>
 
-      <p className="px-4 pt-3 typo-sublabel text-ink-muted">Languages closer together have more similar scores on the selected comparison. Darker lines mark greater similarity.</p>
+      <p className="px-4 pt-3 typo-sublabel text-ink-muted">Languages are positioned by genealogical lexical affinity (true cognate roots). Line strength and score badges reflect the selected comparison ({LANGUAGE_MEASURES[measure].label.toLowerCase()}).</p>
       {!mapIsAvailable ? <p className="p-8 text-ink-muted">A map needs scores for every pair of plotted languages.</p> : <>
         <div ref={plotRef} className={`relative isolate w-full overflow-hidden select-none ${view === '3d' ? 'touch-none cursor-grab active:cursor-grabbing' : ''}`}
           style={{ height: LANGUAGE_MAP.plot.height }}
@@ -303,7 +304,7 @@ export const LanguageRelationshipMap: React.FC<LanguageRelationshipMapProps> = (
             </button>;
           })}
         </div>
-        {view === '3d' && <div className="flex items-center justify-end gap-3 border-t border-book-rule px-4 py-2 text-xs text-ink-muted"><span className="mr-auto">Drag or use the arrow keys to rotate; scroll to zoom.</span><button type="button" onClick={resetView} className="underline hover:text-ink-main">Reset view</button></div>}
+        {view === '3d' && <div className="flex items-center justify-end gap-3 border-t border-book-rule px-4 py-2 typo-note"><span className="mr-auto">Drag or use the arrow keys to rotate; scroll to zoom.</span><button type="button" onClick={resetView} className="underline hover:text-ink-main">Reset view</button></div>}
       </>}
     </section>
   );

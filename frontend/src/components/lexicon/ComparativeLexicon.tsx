@@ -55,7 +55,13 @@ export const ComparativeLexicon: React.FC = () => {
   const selectedCategory = search?.category;
 
   // Query database for live pairs
-  const { data: livePairsData, isLoading: pairsLoading } = usePairsQuery({
+  const {
+    data: livePairsData,
+    isLoading: pairsLoading,
+    isError: pairsError,
+    error: pairsErrorObj,
+    refetch: refetchPairs,
+  } = usePairsQuery({
     source: sourceLang,
     target: targetLang,
     category: selectedCategory,
@@ -70,13 +76,27 @@ export const ComparativeLexicon: React.FC = () => {
     if (!livePairsData?.items || livePairsData.items.length === 0) {
       return [];
     }
+    const validCategories = new Set([
+      'true_cognate',
+      'full_cognate',
+      'false_friend',
+      'cognate_false_friend',
+      'accidental_lookalike',
+      'partial_cognate',
+      'semantic_narrowing',
+      'semantic_broadening',
+      'archaic_cognate',
+      'sister_loanword',
+      'translation_pair',
+      'unrelated_equivalent',
+      'independent_root',
+      'other',
+    ]);
+
     return livePairsData.items.map((dto) => {
-      let cat: SpecimenCategory = 'other';
-      if (dto.category === 'true_cognate') cat = 'true_cognate';
-      else if (dto.category === 'false_friend') cat = 'false_friend';
-      else if (dto.category === 'partial_cognate') cat = 'partial_cognate';
-      else if (dto.category === 'translation_pair') cat = 'translation_pair';
-      else cat = 'other';
+      const cat: SpecimenCategory = validCategories.has(dto.category)
+        ? (dto.category as SpecimenCategory)
+        : 'other';
 
       return {
         id: dto.id,
@@ -283,6 +303,9 @@ export const ComparativeLexicon: React.FC = () => {
             }}
             selectedPairId={activePairId}
             isLoading={pairsLoading}
+            isError={pairsError}
+            errorMessage={pairsErrorObj instanceof Error ? pairsErrorObj.message : undefined}
+            onRetry={() => refetchPairs()}
           />
         </div>
 

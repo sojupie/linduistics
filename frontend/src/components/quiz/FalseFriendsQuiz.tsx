@@ -6,6 +6,7 @@ import { formatPos } from '../../utils/formatters';
 import type { QuizItemDto } from '../../types/linguistics';
 import { LanguagePairSelect } from '../common/LanguagePicker';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { ErrorState } from '../common/ErrorState';
 
 type ViewingMode = 'blind' | 'target_only' | 'comparative';
 
@@ -82,6 +83,8 @@ export const FalseFriendsQuiz: React.FC = () => {
   const {
     data: quizData,
     isLoading: quizLoading,
+    isError: quizError,
+    error: quizErrorObj,
     refetch: refetchQuiz,
   } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedRelation);
 
@@ -370,6 +373,14 @@ export const FalseFriendsQuiz: React.FC = () => {
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
           Loading quiz items...
         </div>
+      ) : quizError ? (
+        <div className="border border-book-rule bg-page-surface">
+          <ErrorState
+            title="Unable to load quiz items"
+            errorMessage={quizErrorObj instanceof Error ? quizErrorObj.message : undefined}
+            onRetry={() => refetchQuiz()}
+          />
+        </div>
       ) : !currentQuizItem ? (
         <div className="border border-book-rule p-12 text-center typo-gloss bg-page-surface">
           No {selectedRelation === 'cognate'
@@ -485,7 +496,7 @@ export const FalseFriendsQuiz: React.FC = () => {
                         </span>
                         {rec.item.etymological_relation && (
                           <span
-                            className="typo-subscript text-ink-muted text-2xs px-1.5 py-0.5 border border-book-rule/60 shrink-0"
+                            className="typo-subscript text-ink-muted px-1.5 py-0.5 border border-book-rule/60 shrink-0"
                             title={
                               rec.item.etymological_relation === 'cognate'
                                 ? 'Historically related words whose modern meanings have diverged enough to mislead.'
@@ -608,14 +619,14 @@ export const FalseFriendsQuiz: React.FC = () => {
                   </span>
                 )}
                 {currentStreak > 1 && (
-                  <span className="typo-metric-table text-shifted-ink text-xs font-medium inline-flex items-center gap-1.5">
+                  <span className="typo-metric-table text-shifted-ink font-medium inline-flex items-center gap-1.5">
                     <MaterialSymbol icon="local_fire_department" size={18} className="text-shifted-ink" /> {currentStreak} streak
                   </span>
                 )}
               </div>
 
               {/* Unboxed Typographic Status Metrics */}
-              <div className="flex items-center gap-3 sm:gap-4 typo-sublabel text-xs">
+              <div className="flex items-center gap-3 sm:gap-4 typo-sublabel">
                 <span className="text-ink-muted">
                   Score: <strong className="font-semibold text-ink-main">{quizScore}</strong>
                   <span className="text-ink-light"> / </span>

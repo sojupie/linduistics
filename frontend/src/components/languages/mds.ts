@@ -75,28 +75,102 @@ export function classicalMDS(codes: string[], distMatrix: number[][]): MDSPoint[
   const s2 = Math.sqrt(lambda2);
   const s3 = Math.sqrt(lambda3);
 
-  // 5. Compute coordinates
-  const rawPoints = codes.map((code, i) => ({
-    code,
-    x: vectors[i][indices[0]] * s1,
-    y: n > 1 ? vectors[i][indices[1]] * s2 : 0,
-    z: n > 2 ? vectors[i][indices[2]] * s3 : 0,
-  }));
+  // 5. Initial Classical MDS coordinates
+  let X: number[][] = codes.map((_, i) => [
+    vectors[i][indices[0]] * s1,
+    n > 1 ? vectors[i][indices[1]] * s2 : 0,
+    n > 2 ? vectors[i][indices[2]] * s3 : 0,
+  ]);
 
-  // Normalize and scale to canvas coordinate bounds (e.g. -180 to +180)
+  const initialX = X.map((row) => [...row]);
+
+  // 6. SMACOF (Stress Majorization) refinement to distribute strain evenly across 3D space
+  if (n >= 3) {
+    const smacofIterations = 30;
+    for (let iter = 0; iter < smacofIterations; iter++) {
+      const curDist: number[][] = Array.from({ length: n }, () => Array(n).fill(0));
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          curDist[i][j] = Math.hypot(X[i][0] - X[j][0], X[i][1] - X[j][1], X[i][2] - X[j][2]);
+        }
+      }
+
+      const BSmacof: number[][] = Array.from({ length: n }, () => Array(n).fill(0));
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          if (i !== j && curDist[i][j] > 1e-6) {
+            BSmacof[i][j] = -distMatrix[i][j] / curDist[i][j];
+          }
+        }
+        let sum = 0;
+        for (let j = 0; j < n; j++) {
+          if (i !== j) sum += BSmacof[i][j];
+        }
+        BSmacof[i][i] = -sum;
+      }
+
+      const nextX: number[][] = Array.from({ length: n }, () => [0, 0, 0]);
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          nextX[i][0] += BSmacof[i][j] * X[j][0];
+          nextX[i][1] += BSmacof[i][j] * X[j][1];
+          nextX[i][2] += BSmacof[i][j] * X[j][2];
+        }
+        nextX[i][0] /= n;
+        nextX[i][1] /= n;
+        nextX[i][2] /= n;
+      }
+      X = nextX;
+    }
+
+    // 7. Align 3D coordinates along principal axes so (x, y) yields the optimal 2D projection
+    const C: number[][] = Array.from({ length: 3 }, () => [0, 0, 0]);
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < n; k++) {
+          C[i][j] += X[k][i] * X[k][j];
+        }
+      }
+    }
+
+    const { values: cValues, vectors: cVectors } = jacobiEigenvalue(C);
+    const cIdx = [0, 1, 2].sort((a, b) => cValues[b] - cValues[a]);
+
+    const rotatedX: number[][] = Array.from({ length: n }, (_, i) => [
+      X[i][0] * cVectors[0][cIdx[0]] + X[i][1] * cVectors[1][cIdx[0]] + X[i][2] * cVectors[2][cIdx[0]],
+      X[i][0] * cVectors[0][cIdx[1]] + X[i][1] * cVectors[1][cIdx[1]] + X[i][2] * cVectors[2][cIdx[1]],
+      X[i][0] * cVectors[0][cIdx[2]] + X[i][1] * cVectors[1][cIdx[2]] + X[i][2] * cVectors[2][cIdx[2]],
+    ]);
+
+    // Preserve orientation signs relative to initial Classical MDS seed
+    for (let dim = 0; dim < 3; dim++) {
+      let dot = 0;
+      for (let i = 0; i < n; i++) {
+        dot += rotatedX[i][dim] * initialX[i][dim];
+      }
+      if (dot < 0) {
+        for (let i = 0; i < n; i++) {
+          rotatedX[i][dim] = -rotatedX[i][dim];
+        }
+      }
+    }
+    X = rotatedX;
+  }
+
+  // 8. Normalize and scale to canvas coordinate bounds (160px plot radius)
   let maxNorm = 0;
-  rawPoints.forEach((p) => {
-    const dist = Math.hypot(p.x, p.y, p.z);
+  for (let i = 0; i < n; i++) {
+    const dist = Math.hypot(X[i][0], X[i][1], X[i][2]);
     if (dist > maxNorm) maxNorm = dist;
-  });
+  }
 
   const scale = maxNorm > 0 ? 160 / maxNorm : 1;
 
-  return rawPoints.map((p) => ({
-    code: p.code,
-    x: p.x * scale,
-    y: p.y * scale,
-    z: p.z * scale,
+  return codes.map((code, i) => ({
+    code,
+    x: X[i][0] * scale,
+    y: X[i][1] * scale,
+    z: X[i][2] * scale,
   }));
 }
 

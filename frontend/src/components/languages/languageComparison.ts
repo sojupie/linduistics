@@ -5,11 +5,12 @@ export type LanguageSort =
   | 'minefield'
   | 'phonetic'
   | 'cognates'
+  | 'semantic_shifts'
   | 'spelling'
   | 'pairs'
   | 'name';
 
-export type LanguageMeasure = 'phonetic' | 'orthographic' | 'semantic' | 'cognates' | 'false_friends';
+export type LanguageMeasure = 'phonetic' | 'orthographic' | 'semantic' | 'cognates' | 'semantic_shifts' | 'false_friends';
 export type LanguagePair = { source: string; target: string };
 
 export const LANGUAGE_MEASURES: Record<LanguageMeasure, {
@@ -22,6 +23,7 @@ export const LANGUAGE_MEASURES: Record<LanguageMeasure, {
   orthographic: { label: 'Spelling similarity', value: (pair) => pair.avg_orthographic, color: 'var(--color-divergent-ink)' },
   semantic: { label: 'Semantic similarity', value: (pair) => pair.avg_semantic, color: 'var(--color-ink-muted)' },
   cognates: { label: 'True cognates', value: (pair) => pair.true_cognates_ratio, category: 'true_cognate', color: 'var(--color-cognate-ink)' },
+  semantic_shifts: { label: 'Semantic shifts', value: (pair) => pair.partial_cognates_ratio, category: 'semantic_shift', color: 'var(--color-shifted-ink)' },
   false_friends: { label: 'False friends', value: (pair) => pair.false_friends_ratio, category: 'false_friend', color: 'var(--color-falsefriend-ink)' },
 };
 
@@ -40,7 +42,7 @@ export const LANGUAGE_MAP = {
   zIndexBase: 500,
 } as const;
 
-export const LANGUAGE_OVERVIEW_CONFIG = { otherRatioDisplayThreshold: 0.001, minimumTableWidthPx: 650 } as const;
+export const LANGUAGE_OVERVIEW_CONFIG = { otherRatioDisplayThreshold: 0.001, minimumTableWidthPx: 760 } as const;
 export const LANGUAGE_MATRIX_CONFIG = { minimumWidthPx: 640, sourceColumnWidthPx: 130, lightTextThreshold: 0.5 } as const;
 
 export const LANGUAGE_MAP_DESKTOP_QUERY = `(min-width: ${LANGUAGE_MAP.minViewportForExpandedControls}px)`;
@@ -63,7 +65,8 @@ export function sortLanguageProfiles(profiles: LanguageProfile[], sort: Language
       case 'ease': return b.semanticSimilarity - a.semanticSimilarity;
       case 'minefield': return b.ratios.falseFriends - a.ratios.falseFriends;
       case 'phonetic': return b.phoneticSimilarity - a.phoneticSimilarity;
-      case 'cognates': return b.ratios.trueCognates + b.ratios.partialCognates - a.ratios.trueCognates - a.ratios.partialCognates;
+      case 'cognates': return b.ratios.trueCognates - a.ratios.trueCognates;
+      case 'semantic_shifts': return b.ratios.partialCognates - a.ratios.partialCognates;
       case 'spelling': return b.spellingSimilarity - a.spellingSimilarity;
       case 'pairs': return b.pairCount - a.pairCount;
       case 'name': return a.name.localeCompare(b.name);

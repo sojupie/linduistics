@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TokenAnalysis } from '../../types/linguistics';
+import { TOKEN_STATUS_CONFIG } from '../../constants/config';
 
 interface TokenPillProps {
   tokenAnalysis: TokenAnalysis;
@@ -100,20 +101,14 @@ export const TokenPill: React.FC<TokenPillProps> = ({
     tokenAnalysis.alternatives?.filter((a) => a.universality_delta > 0).length ?? 0;
 
   const getStatusColor = () => {
-    switch (tokenAnalysis.status) {
-      case 'universal':
-        return 'text-cognate-ink';
-      case 'branch_specific':
-        return 'text-shifted-ink';
-      default:
-        return 'text-ink-main';
-    }
+    return TOKEN_STATUS_CONFIG[tokenAnalysis.status]?.colorClass ?? 'text-ink-main';
   };
 
   const tooltipTitle = [
     tokenAnalysis.token,
     isInflected ? `lemma: ${tokenAnalysis.lemma}` : null,
     glossLabel || null,
+    TOKEN_STATUS_CONFIG[tokenAnalysis.status]?.label ?? null,
     betterAltCount > 0
       ? `${betterAltCount} higher-cognacy alternate${betterAltCount === 1 ? '' : 's'}`
       : null,

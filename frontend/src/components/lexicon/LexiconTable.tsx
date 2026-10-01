@@ -4,6 +4,8 @@ import { getLanguageName } from '../../data/languages';
 import { WordHeadword } from '../common/Phonetic';
 import { MaterialSymbol } from '../common/MaterialSymbol';
 import { DeltaSymbol } from '../common/DeltaSymbol';
+import { TaxonomyBadge } from '../common/TaxonomyBadge';
+import { ErrorState } from '../common/ErrorState';
 
 interface LexiconTableProps {
   pairs: WordPair[];
@@ -23,6 +25,9 @@ interface LexiconTableProps {
   onSelectPair: (pair: WordPair) => void;
   selectedPairId: number | null;
   isLoading: boolean;
+  isError?: boolean;
+  errorMessage?: string;
+  onRetry?: () => void;
 }
 
 export const LexiconTable: React.FC<LexiconTableProps> = ({
@@ -43,6 +48,9 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
   onSelectPair,
   selectedPairId,
   isLoading,
+  isError,
+  errorMessage,
+  onRetry,
 }) => {
   const sourceName = getLanguageName(sourceLang);
   const targetName = getLanguageName(targetLang);
@@ -52,51 +60,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
   const startItem = total === 0 ? 0 : offset + 1;
   const endItem = Math.min(offset + limit, total);
 
-  const getTaxonomyLabel = (pair: WordPair) => {
-    switch (pair.category) {
-      case 'true_cognate':
-        return (
-          <span className="typo-badge px-2 py-0.5 rounded bg-cognate-bg text-cognate-ink whitespace-nowrap">
-            True Cognate
-          </span>
-        );
-      case 'false_friend':
-        return (
-          <div className="inline-flex flex-col items-center leading-tight">
-            <span className="typo-badge px-2 py-0.5 rounded bg-falsefriend-bg text-falsefriend-ink whitespace-nowrap">
-              False Friend
-            </span>
-            {pair.etymologicalRelation && (
-              <span className="typo-subscript text-ink-muted text-2xs mt-0.5 whitespace-nowrap">
-                {pair.etymologicalRelation === 'cognate'
-                  ? 'cognate'
-                  : pair.etymologicalRelation === 'false_cognate'
-                    ? 'false cognate'
-                    : 'origin unknown'}
-              </span>
-            )}
-          </div>
-        );
-      case 'partial_cognate':
-        return (
-          <span className="typo-badge px-2 py-0.5 rounded bg-shifted-bg text-shifted-ink whitespace-nowrap">
-            Partial Cognate
-          </span>
-        );
-      case 'translation_pair':
-        return (
-          <span className="typo-badge px-2 py-0.5 rounded bg-divergent-bg text-divergent-ink whitespace-nowrap">
-            Translation Pair
-          </span>
-        );
-      default:
-        return (
-          <span className="typo-badge px-2 py-0.5 rounded bg-page-muted text-ink-muted whitespace-nowrap">
-            Other
-          </span>
-        );
-    }
-  };
+  const getTaxonomyLabel = (pair: WordPair) => (
+    <TaxonomyBadge
+      category={pair.category}
+      etymologicalRelation={pair.etymologicalRelation}
+      showSubscript={true}
+    />
+  );
 
   const getMeaningDisplay = (pair: WordPair) => {
     // 1. Check for active aligned sense matches
@@ -157,11 +127,21 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
             >
               <option value="all">All Taxonomy</option>
-              <option value="true_cognate">True Cognates</option>
-              <option value="false_friend">False Friends</option>
-              <option value="partial_cognate">Partial Cognates</option>
-              <option value="translation_pair">Translation Pairs</option>
-              <option value="other">Other</option>
+              <optgroup label="Broad Categories">
+                <option value="true_cognate">True Cognates</option>
+                <option value="semantic_shift">Semantic Shifts</option>
+                <option value="false_friend">False Friends</option>
+                <option value="translation_pair">Translation Equivalents</option>
+                <option value="other">Unrelated Lexicon</option>
+              </optgroup>
+              <optgroup label="Linguistic Micro-Categories">
+                <option value="full_cognate">Full Cognates</option>
+                <option value="semantic_narrowing">Semantic Narrowing</option>
+                <option value="cognate_false_friend">Cognate False Friends</option>
+                <option value="accidental_lookalike">Accidental Lookalikes</option>
+                <option value="unrelated_equivalent">Unrelated Equivalents</option>
+                <option value="independent_root">Independent Roots</option>
+              </optgroup>
             </select>
           </div>
 
@@ -205,13 +185,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               <th className="py-3.5 px-3.5 w-1/4 bg-page-bg border-b-2 border-book-rule-strong">{targetName} Counterpart</th>
               <th className="py-3.5 px-2 text-center w-32 bg-page-bg border-b-2 border-book-rule-strong">Taxonomy</th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Orthographic Similarity">
-                <DeltaSymbol symbol="o" className="text-[15px] font-bold" />
+                <DeltaSymbol symbol="o" className="font-bold" />
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Phonetic Similarity">
-                <DeltaSymbol symbol="p" className="text-[15px] font-bold" />
+                <DeltaSymbol symbol="p" className="font-bold" />
               </th>
               <th className="py-3.5 px-2 text-center w-16 bg-page-bg border-b-2 border-book-rule-strong" title="Semantic Similarity">
-                <DeltaSymbol symbol="s" className="text-[15px] font-bold" />
+                <DeltaSymbol symbol="s" className="font-bold" />
               </th>
               <th className="py-3.5 px-3.5 bg-page-bg border-b-2 border-book-rule-strong">Aligned Sense / Meaning</th>
             </tr>
@@ -221,6 +201,17 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               <tr>
                 <td colSpan={7} className="py-12 text-center typo-gloss">
                   Loading word pairs...
+                </td>
+              </tr>
+            ) : isError ? (
+              <tr>
+                <td colSpan={7} className="py-4 text-center">
+                  <ErrorState
+                    title="Unable to load comparison pairs"
+                    errorMessage={errorMessage}
+                    onRetry={onRetry}
+                    className="py-6"
+                  />
                 </td>
               </tr>
             ) : pairs.length === 0 ? (
