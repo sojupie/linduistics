@@ -254,6 +254,16 @@ func (s *InspectorService) inspectWithNLP(ctx context.Context, req InspectReques
 		}
 	}
 
+	formMap, _ := s.repo.ResolveForms(ctx, req.SourceLang, lookupWords)
+	for _, lemmas := range formMap {
+		for _, l := range lemmas {
+			if !seenLookup[l] {
+				seenLookup[l] = true
+				lookupWords = append(lookupWords, l)
+			}
+		}
+	}
+
 	matches, err := s.repo.GetByTokens(ctx, req.SourceLang, lookupWords, req.TargetLangs, 0.20)
 	if err != nil {
 		return nil, err
@@ -306,38 +316,73 @@ func (s *InspectorService) inspectWithNLP(ctx context.Context, req InspectReques
 		tokLower := strings.ToLower(t.Text)
 		langMatches := make(map[string]TargetMatch)
 
-		// Check lemma first, then surface token
+		mergeMatch := func(targetLang string, m TargetMatch) {
+			curr, exists := langMatches[targetLang]
+			if !exists {
+				langMatches[targetLang] = m
+				return
+			}
+			currRank := cognateCategoryRank(curr.Category)
+			newRank := cognateCategoryRank(m.Category)
+			if newRank > currRank || (newRank == currRank && m.PhoneticSim > curr.PhoneticSim) {
+				langMatches[targetLang] = m
+			}
+		}
+
+		// Check lemma first, then surface token, then resolved lemmas from forms
 		if lMatches, ok := matchMap[t.Lemma]; ok {
 			for k, v := range lMatches {
-				langMatches[k] = v
+				mergeMatch(k, v)
 			}
 		}
 		if sMatches, ok := matchMap[tokLower]; ok {
 			for k, v := range sMatches {
-				if _, exists := langMatches[k]; !exists {
-					langMatches[k] = v
+				mergeMatch(k, v)
+			}
+		}
+		if lemmas, ok := formMap[tokLower]; ok {
+			for _, l := range lemmas {
+				if rMatches, ok := matchMap[l]; ok {
+					for k, v := range rMatches {
+						mergeMatch(k, v)
+					}
 				}
 			}
+		}
+
+		effectiveLemma := t.Lemma
+		if len(matchMap[t.Lemma]) == 0 {
+			if lemmas, ok := formMap[tokLower]; ok {
+				for _, l := range lemmas {
+					if len(matchMap[l]) > 0 {
+						effectiveLemma = l
+						break
+					}
+				}
+			}
+		}
+		if effectiveLemma == "" {
+			effectiveLemma = tokLower
 		}
 
 		var cognacyScoreSum float32
 		if !t.IsPunct {
 			for _, m := range langMatches {
-				switch m.Category {
-				case "true_cognate":
+				switch strings.ToLower(strings.TrimSpace(m.Category)) {
+				case "true_cognate", "full_cognate":
 					sim := m.PhoneticSim
 					if sim <= 0 {
 						sim = 0.8
 					}
 					cognacyScoreSum += 1.0 * sim
-				case "partial_cognate":
+				case "partial_cognate", "semantic_shift", "semantic_shifts", "semantic_narrowing", "semantic_broadening", "archaic_cognate", "semantic_divergence", "sister_loanword":
 					sim := m.PhoneticSim
 					if sim <= 0 {
 						sim = 0.5
 					}
 					cognacyScoreSum += 0.6 * sim
 				default:
-					// translation_pair, false_friend, other count as 0.0 towards universality
+					// translation_pair, false_friend, accidental_lookalike, unrelated_equivalent, independent_root count as 0.0 towards universality
 				}
 			}
 		}
@@ -362,7 +407,7 @@ func (s *InspectorService) inspectWithNLP(ctx context.Context, req InspectReques
 			alts, err := s.callNLPAlternatives(ctx, nlpAlternativesRequest{
 				Lang:        req.SourceLang,
 				Token:       t.Text,
-				Lemma:       t.Lemma,
+				Lemma:       effectiveLemma,
 				Pos:         t.Pos,
 				Morph:       t.Morph,
 				TargetLangs: req.TargetLangs,
@@ -377,7 +422,7 @@ func (s *InspectorService) inspectWithNLP(ctx context.Context, req InspectReques
 		tokenAnalyses = append(tokenAnalyses, TokenAnalysis{
 			ID:              t.ID,
 			Token:           t.Text,
-			Lemma:           t.Lemma,
+			Lemma:           effectiveLemma,
 			Pos:             t.Pos,
 			DepRel:          t.DepRel,
 			HeadID:          t.HeadID,
@@ -570,14 +615,14 @@ func (s *InspectorService) inspectFallback(ctx context.Context, req InspectReque
 
 		var cognacyScoreSum float32
 		for _, m := range langMatches {
-			switch m.Category {
-			case "true_cognate":
+			switch strings.ToLower(strings.TrimSpace(m.Category)) {
+			case "true_cognate", "full_cognate":
 				sim := m.PhoneticSim
 				if sim <= 0 {
 					sim = 0.8
 				}
 				cognacyScoreSum += 1.0 * sim
-			case "partial_cognate":
+			case "partial_cognate", "semantic_shift", "semantic_shifts", "semantic_narrowing", "semantic_broadening", "archaic_cognate", "semantic_divergence", "sister_loanword":
 				sim := m.PhoneticSim
 				if sim <= 0 {
 					sim = 0.5
@@ -627,11 +672,13 @@ func (s *InspectorService) inspectFallback(ctx context.Context, req InspectReque
 
 func cognateCategoryRank(cat string) int {
 	switch strings.ToLower(strings.TrimSpace(cat)) {
-	case "true_cognate":
+	case "true_cognate", "full_cognate":
+		return 4
+	case "partial_cognate", "semantic_shift", "semantic_shifts", "semantic_narrowing", "semantic_broadening", "archaic_cognate", "semantic_divergence", "sister_loanword":
 		return 3
-	case "partial_cognate":
+	case "translation_pair", "translation_equivalent", "unrelated_equivalent":
 		return 2
-	case "translation_pair":
+	case "false_friend", "cognate_false_friend", "accidental_lookalike":
 		return 1
 	default:
 		return 0

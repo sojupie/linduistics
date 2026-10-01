@@ -78,6 +78,10 @@ func TestInspectSentenceDependencyAndAlternatives(t *testing.T) {
 		t.Fatalf("failed to decode response: %v", err)
 	}
 
+	if resp.ServiceMode == "db_fallback" {
+		t.Skip("skipping dependency parsing test: NLP service is not running on 127.0.0.1:5001")
+	}
+
 	if len(resp.Tokens) < 5 {
 		t.Fatalf("expected at least 5 tokens, got %d", len(resp.Tokens))
 	}
@@ -123,6 +127,132 @@ func TestInspectSentenceDependencyAndAlternatives(t *testing.T) {
 	// Verify approximate translations are populated
 	if len(resp.ApproximateTranslations) == 0 {
 		t.Errorf("expected non-empty approximate_translations")
+	}
+}
+
+func TestInspectSkeppetSentence(t *testing.T) {
+	router := setupTestServer(t)
+	body := `{"text": "skeppet seglar över det vida havet", "source_lang": "sv", "target_langs": ["da", "de", "en", "nb"]}`
+	req := httptest.NewRequest("POST", "/api/inspect", bytes.NewBufferString(body))
+	req.Header.Set("Content-Type", "application/json")
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+
+	var resp services.InspectResponse
+	if err := json.Unmarshal(w.Body.Bytes(), &resp); err != nil {
+		t.Fatalf("failed to decode response: %v", err)
+	}
+
+	if resp.ServiceMode == "db_fallback" {
+		t.Skip("skipping skeppet test: NLP service is not running on 127.0.0.1:5001")
+	}
+
+	if resp.UniversalityScore <= 0 {
+		t.Errorf("expected positive universality score, got %f", resp.UniversalityScore)
+	}
+
+	var skeppTok, detTok *services.TokenAnalysis
+	for i := range resp.Tokens {
+		if resp.Tokens[i].Token == "skeppet" {
+			skeppTok = &resp.Tokens[i]
+		}
+		if resp.Tokens[i].Token == "det" {
+			detTok = &resp.Tokens[i]
+		}
+	}
+
+	if skeppTok == nil {
+		t.Fatalf("token 'skeppet' not found")
+	}
+	if skeppTok.Status != "universal" {
+		t.Errorf("expected 'skeppet' status 'universal', got %s", skeppTok.Status)
+	}
+	if skeppTok.CoverageRatio <= 0.5 {
+		t.Errorf("expected 'skeppet' coverage_ratio > 0.5, got %f", skeppTok.CoverageRatio)
+	}
+
+	if detTok == nil {
+		t.Fatalf("token 'det' not found")
+	}
+	if detTok.Lemma != "det" {
+		t.Errorf("expected 'det' lemma to be 'det', got %s", detTok.Lemma)
+	}
+
+	// Verify alternatives for skepp have positive universality score
+	var foundFartyg bool
+	for _, alt := range skeppTok.Alternatives {
+		if alt.Lemma == "fartyg" {
+			foundFartyg = true
+			if alt.UniversalityScore <= 0 {
+				t.Errorf("expected positive universality score for fartyg, got %f", alt.UniversalityScore)
+			}
+			if len(alt.CognateMatches) == 0 {
+				t.Errorf("expected non-empty cognate_matches for fartyg")
+			}
+		}
+	}
+	if !foundFartyg {
+		t.Errorf("expected 'fartyg' alternative for 'skeppet', got: %+v", skeppTok.Alternatives)
+	}
+
+	if len(resp.ApproximateTranslations) < 4 {
+		t.Errorf("expected 4 translations, got %d", len(resp.ApproximateTranslations))
+	}
+}
+
+func TestInspectMarinenSubstitution(t *testing.T) {
+	router := setupTestServer(t)
+	body := `{"text": "skeppet seglar över det vida marinen", "source_lang": "sv", "target_langs": ["da", "de", "en", "nb"]}`
+	req := httptest.NewRequest("POST", "/api/inspect", bytes.NewBufferString(body))
+	req.Header.Set("Content-Type", "application/json")
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected status 200, got %d: %s", w.Code, w.Body.String())
+	}
+
+	var resp services.InspectResponse
+	if err := json.Unmarshal(w.Body.Bytes(), &resp); err != nil {
+		t.Fatalf("failed to decode response: %v", err)
+	}
+
+	if resp.ServiceMode == "db_fallback" {
+		t.Skip("skipping marinen test: NLP service is not running on 127.0.0.1:5001")
+	}
+
+	var marinTok *services.TokenAnalysis
+	for i := range resp.Tokens {
+		if resp.Tokens[i].Token == "marinen" {
+			marinTok = &resp.Tokens[i]
+			break
+		}
+	}
+
+	if marinTok == nil {
+		t.Fatalf("token 'marinen' not found")
+	}
+	if marinTok.Lemma != "marin" {
+		t.Errorf("expected lemma 'marin' for 'marinen', got %s", marinTok.Lemma)
+	}
+	if marinTok.Status != "universal" {
+		t.Errorf("expected 'marinen' status 'universal', got %s", marinTok.Status)
+	}
+	if marinTok.CoverageRatio <= 0.5 {
+		t.Errorf("expected 'marinen' coverage_ratio > 0.5, got %f", marinTok.CoverageRatio)
+	}
+	if len(marinTok.LanguageMatches) < 4 {
+		t.Errorf("expected at least 4 language matches for 'marinen', got %d", len(marinTok.LanguageMatches))
+	}
+	if len(marinTok.Alternatives) == 0 {
+		t.Errorf("expected alternatives for 'marinen', got none")
+	}
+	if resp.UniversalityScore < 45.0 {
+		t.Errorf("expected universality score >= 45.0 with marinen, got %f", resp.UniversalityScore)
 	}
 }
 
