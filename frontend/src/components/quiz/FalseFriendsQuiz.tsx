@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from '@tanstack/react-router';
 import { useFalseFriendsQuizQuery, useLanguagesQuery } from '../../services/queries';
 import { getLanguageName } from '../../data/languages';
 import { Phonetic } from '../common/Phonetic';
@@ -217,6 +218,9 @@ export const FalseFriendsQuiz: React.FC = () => {
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif max-w-4xl mx-auto">
       {/* Quiz Header & Language Pair Selection (same section, under the text) */}
       <div className="pb-4 mb-4 border-b border-book-rule space-y-3">
+        <Link to="/games" className="typo-sublabel text-ink-muted hover:text-ink-main inline-flex items-center gap-1">
+          <MaterialSymbol icon="arrow_back" size={18} /> Games
+        </Link>
         <div>
           <h1 className="typo-page-title">False Friends Quiz</h1>
           <p className="typo-page-deck mt-1.5">

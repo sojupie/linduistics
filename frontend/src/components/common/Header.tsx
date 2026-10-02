@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
   const navLinks = [
     { to: '/languages', label: 'Language Overview', icon: 'public' },
     { to: '/lexicon', label: 'Comparative Lexicon', icon: 'menu_book' },
-    { to: '/quiz', label: 'False Friends Quiz', icon: 'quiz' },
+    { to: '/games', label: 'Games', icon: 'sports_esports' },
     { to: '/inspector', label: 'Text Inspector', icon: 'text_snippet' },
   ];
 
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
         {/* Navigation */}
         <nav className="hidden lg:flex items-center flex-wrap justify-center gap-8 flex-1 px-4">
           {navLinks.map((link) => {
-            const isActive = currentPath === link.to;
+            const isActive = currentPath === link.to || (link.to === '/games' && currentPath.startsWith('/games/'));
 
             return (
               <Link
@@ -238,7 +238,7 @@ export const Header: React.FC = () => {
               {/* Drawer navigation links */}
               <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
                 {navLinks.map((link) => {
-                  const isActive = currentPath === link.to;
+                  const isActive = currentPath === link.to || (link.to === '/games' && currentPath.startsWith('/games/'));
 
                   return (
                     <Link
