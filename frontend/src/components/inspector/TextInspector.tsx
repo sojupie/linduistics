@@ -7,6 +7,7 @@ import { TokenDetailDrawer } from './TokenDetailDrawer';
 import { LanguageSelect } from '../common/LanguagePicker';
 import { INSPECTOR_CONFIG, TOKEN_STATUS_CONFIG } from '../../constants/config';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { InclusionPill } from '../common/InclusionPill';
 import { ErrorState } from '../common/ErrorState';
 
 const escapeRegExp = (str: string): string =>
@@ -170,19 +171,14 @@ export const TextInspector: React.FC = () => {
             {availableTargets.map((code) => {
               const isChecked = targetLangs.includes(code);
               return (
-                <button
+                <InclusionPill
                   key={code}
-                  type="button"
+                  active={isChecked}
                   onClick={() => handleToggleTarget(code)}
-                  className={`px-2 py-0.5 border typo-lang-code font-medium transition-colors cursor-pointer ${
-                    isChecked
-                      ? 'border-ink-main bg-page-muted text-ink-main font-semibold'
-                      : 'border-book-rule bg-page-bg text-ink-muted hover:text-ink-main'
-                  }`}
                   title={getLanguageName(code)}
                 >
                   {code.toUpperCase()}
-                </button>
+                </InclusionPill>
               );
             })}
           </div>

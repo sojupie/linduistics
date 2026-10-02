@@ -72,6 +72,14 @@ export interface LanguagePairStats {
 export interface LanguagesResponse {
   languages: string[];
   pairs: LanguagePairStats[];
+  pos_counts: PosCount[];
+}
+
+export interface PosCount {
+  category?: string;
+  side?: 'source' | 'target';
+  pos: string;
+  count: number;
 }
 
 export interface LanguageProfile {
@@ -177,6 +185,7 @@ export interface RawComparisonDto {
 }
 
 export interface PairsQueryParams {
+  id?: number;
   source?: string;
   target?: string;
   min_phon?: number;
@@ -186,6 +195,7 @@ export interface PairsQueryParams {
   category?: string;
   etymological_relation?: string;
   q?: string;
+  pos?: string;
   limit?: number;
   offset?: number;
 }

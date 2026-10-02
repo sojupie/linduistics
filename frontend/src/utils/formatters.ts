@@ -3,8 +3,50 @@
  */
 
 /**
+ * Full display names for raw POS values present in the dataset.
+ * Maps every raw POS string (from pos_a / pos_b columns) to its
+ * unabbreviated English name suitable for filter labels and treemap tiles.
+ */
+export const POS_FULL_NAMES: Record<string, string> = {
+  noun: 'Noun',
+  adj: 'Adjective',
+  adjective: 'Adjective',
+  verb: 'Verb',
+  name: 'Proper noun',
+  adv: 'Adverb',
+  adverb: 'Adverb',
+  prep: 'Preposition',
+  preposition: 'Preposition',
+  pron: 'Pronoun',
+  pronoun: 'Pronoun',
+  intj: 'Interjection',
+  interjection: 'Interjection',
+  num: 'Numeral',
+  numeral: 'Numeral',
+  conj: 'Conjunction',
+  conjunction: 'Conjunction',
+  det: 'Determiner',
+  article: 'Article',
+  contraction: 'Contraction',
+  particle: 'Particle',
+  phrase: 'Phrase',
+  postp: 'Postposition',
+  punct: 'Punctuation',
+};
+
+/**
+ * Returns the full unabbreviated display name for a raw POS string.
+ * Falls back to a capitalised version of the raw value if unknown.
+ */
+export function getPosFullName(pos?: string | null): string {
+  if (!pos) return '';
+  const clean = pos.trim().toLowerCase();
+  return POS_FULL_NAMES[clean] ?? (clean.charAt(0).toUpperCase() + clean.slice(1));
+}
+
+/**
  * Transforms verbose/raw part-of-speech strings into standard
- * 18th-century lexicographical abbreviations in Warbler Italic.
+ * 18th-century lexicographical abbreviations.
  * e.g., 'noun' -> 'n.', 'verb' -> 'v.', 'adjective' -> 'adj.'
  */
 export function formatPos(pos?: string | null): string | null {

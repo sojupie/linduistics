@@ -40,13 +40,17 @@ export async function fetchHealth(): Promise<HealthStatus> {
   return apiClient<HealthStatus>('/api/health');
 }
 
-export async function fetchLanguages(source?: string): Promise<LanguagesResponse> {
-  const query = source ? `?source=${encodeURIComponent(source)}` : '';
-  return apiClient<LanguagesResponse>(`/api/languages${query}`);
+export async function fetchLanguages(source?: string, target?: string): Promise<LanguagesResponse> {
+  const params = new URLSearchParams();
+  if (source) params.set('source', source);
+  if (target) params.set('target', target);
+  const q = params.toString();
+  return apiClient<LanguagesResponse>(`/api/languages${q ? `?${q}` : ''}`);
 }
 
 export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsResultDto> {
   const query = new URLSearchParams();
+  if (params.id !== undefined) query.set('id', params.id.toString());
   if (params.source) query.set('source', params.source);
   if (params.target) query.set('target', params.target);
   if (params.min_phon !== undefined) query.set('min_phon', params.min_phon.toString());
@@ -56,6 +60,7 @@ export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsRe
   if (params.category) query.set('category', params.category);
   if (params.etymological_relation) query.set('etymological_relation', params.etymological_relation);
   if (params.q) query.set('q', params.q);
+  if (params.pos) query.set('pos', params.pos);
   if (params.limit !== undefined) query.set('limit', params.limit.toString());
   if (params.offset !== undefined) query.set('offset', params.offset.toString());
 
@@ -80,6 +85,7 @@ export async function fetchFalseFriendsQuiz(
   target = 'en',
   limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
   relation?: string,
+  posInclude?: string,
 ): Promise<QuizItemDto[]> {
   const params: Record<string, string> = {
     mode: 'quiz',
@@ -89,6 +95,9 @@ export async function fetchFalseFriendsQuiz(
   };
   if (relation && relation !== 'all') {
     params.relation = relation;
+  }
+  if (posInclude) {
+    params.pos_include = posInclude;
   }
   const query = new URLSearchParams(params);
   return apiClient<QuizItemDto[]>(`/api/false-friends?${query.toString()}`);

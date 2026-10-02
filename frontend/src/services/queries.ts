@@ -32,10 +32,10 @@ export function useHealthQuery() {
   });
 }
 
-export function useLanguagesQuery(source?: string) {
+export function useLanguagesQuery(source?: string, target?: string) {
   return useQuery<LanguagesResponse>({
-    queryKey: ['languages', source],
-    queryFn: () => fetchLanguages(source),
+    queryKey: ['languages', source, target],
+    queryFn: () => fetchLanguages(source, target),
     staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
 }
@@ -63,11 +63,12 @@ export function useFalseFriendsQuizQuery(
   target = 'en',
   limit = QUERY_CONFIG.DEFAULT_QUIZ_LIMIT,
   relation?: string,
+  posInclude?: string,
   options?: { enabled?: boolean },
 ) {
   return useQuery<QuizItemDto[]>({
-    queryKey: ['false-friends', 'quiz', source, target, limit, relation ?? 'all'],
-    queryFn: () => fetchFalseFriendsQuiz(source, target, limit, relation),
+    queryKey: ['false-friends', 'quiz', source, target, limit, relation ?? 'all', posInclude ?? ''],
+    queryFn: () => fetchFalseFriendsQuiz(source, target, limit, relation, posInclude),
     staleTime: QUERY_CONFIG.QUIZ_STALE_TIME_MS,
     enabled: options?.enabled ?? true,
   });
@@ -80,6 +81,7 @@ export function useHeadwordSearchQuery(query: string, lang = 'all') {
     queryFn: () => searchHeadwords(trimmed, lang),
     enabled: trimmed.length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS,
     staleTime: QUERY_CONFIG.SEARCH_STALE_TIME_MS,
+    placeholderData: (previousResults) => previousResults,
   });
 }
 

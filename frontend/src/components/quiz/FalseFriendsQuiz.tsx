@@ -2,10 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useFalseFriendsQuizQuery, useLanguagesQuery } from '../../services/queries';
 import { getLanguageName } from '../../data/languages';
 import { Phonetic } from '../common/Phonetic';
-import { formatPos } from '../../utils/formatters';
+import { formatPos, getPosFullName } from '../../utils/formatters';
 import type { QuizItemDto } from '../../types/linguistics';
 import { LanguagePairSelect } from '../common/LanguagePicker';
 import { MaterialSymbol } from '../common/MaterialSymbol';
+import { InclusionPill } from '../common/InclusionPill';
 import { ErrorState } from '../common/ErrorState';
 
 type ViewingMode = 'blind' | 'target_only' | 'comparative';
@@ -24,7 +25,7 @@ export const FalseFriendsQuiz: React.FC = () => {
   // Load dynamically available languages from database
   const { data: languagesData } = useLanguagesQuery();
   const availableLanguages = languagesData?.languages ?? [];
-  const defaultSource = availableLanguages[0] ?? 'sv';
+  const defaultSource = availableLanguages.includes('sv') ? 'sv' : availableLanguages[0] ?? 'sv';
   const sourceLang =
     selectedSource && availableLanguages.includes(selectedSource)
       ? selectedSource
@@ -41,7 +42,9 @@ export const FalseFriendsQuiz: React.FC = () => {
     );
   }, [languagesData, sourceLang]);
 
-  const defaultTarget = availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
+  const defaultTarget = availableTargets.includes('da')
+    ? 'da'
+    : availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
   const targetLang =
     selectedTarget && availableTargets.includes(selectedTarget)
       ? selectedTarget
@@ -62,6 +65,17 @@ export const FalseFriendsQuiz: React.FC = () => {
 
   const [selectedRelation, setSelectedRelation] = useState<string>('all');
   const [showSourceHint, setShowSourceHint] = useState(false);
+
+  // POS include set: all known POS except 'name' are included by default.
+  // Using a Set<string> where absence means excluded.
+  const ALL_QUIZ_POS = ['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det', 'name'] as const;
+  const [includedPos, setIncludedPos] = useState<Set<string>>(
+    () => new Set(ALL_QUIZ_POS.filter((p) => p !== 'name')),
+  );
+  // Compute the pos_include param: only send when not all POS are included
+  const posInclude = includedPos.size === ALL_QUIZ_POS.length
+    ? undefined
+    : Array.from(includedPos).join(',') || undefined;
 
   useEffect(() => {
     localStorage.setItem('linduistics_quiz_view_mode', viewingMode);
@@ -86,7 +100,7 @@ export const FalseFriendsQuiz: React.FC = () => {
     isError: quizError,
     error: quizErrorObj,
     refetch: refetchQuiz,
-  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedRelation);
+  } = useFalseFriendsQuizQuery(sourceLang, targetLang, 10, selectedRelation, posInclude);
 
   const currentQuizItem = quizData?.[currentQuizIdx];
 
@@ -180,7 +194,7 @@ export const FalseFriendsQuiz: React.FC = () => {
             handleQuizAnswer(idx);
           }
         } else if (e.key === 'h' || e.key === 'H') {
-          if (!showSourceHint && viewingMode === 'blind') {
+          if (!showSourceHint && (viewingMode === 'blind' || viewingMode === 'target_only')) {
             e.preventDefault();
             handleRevealHint();
           }
@@ -235,135 +249,159 @@ export const FalseFriendsQuiz: React.FC = () => {
       </div>
 
       {/* Isolated Deck Controls: Etymological Type & Viewing Mode */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-        {/* Etymological Type Filter Segmented Control */}
-        <div className="flex items-center gap-2">
-          <span className="typo-sublabel text-ink-muted">Origin:</span>
-          <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedRelation('all');
-                handleRestartQuiz();
-              }}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedRelation === 'all'
+      <div className="flex flex-col gap-3 mb-4">
+        {/* Row 1: Origin & View */}
+        <div className="flex flex-col justify-between gap-3">
+          {/* Etymological Type Filter Segmented Control */}
+          <div className="flex items-center gap-2">
+            <span className="typo-sublabel text-ink-muted">Origin:</span>
+            <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRelation('all');
+                  handleRestartQuiz();
+                }}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${selectedRelation === 'all'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Test all false friends, including pairs with unknown etymological origin"
-            >
-              {selectedRelation === 'all' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>All Pairs</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedRelation('cognate');
-                handleRestartQuiz();
-              }}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedRelation === 'cognate'
+                  }`}
+                title="Test all false friends, including pairs with unknown etymological origin"
+              >
+                {selectedRelation === 'all' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>All Pairs</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRelation('cognate');
+                  handleRestartQuiz();
+                }}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${selectedRelation === 'cognate'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Historically related words whose modern meanings have diverged enough to mislead."
-            >
-              {selectedRelation === 'cognate' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>Cognate false friends</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedRelation('false_cognate');
-                handleRestartQuiz();
-              }}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedRelation === 'false_cognate'
+                  }`}
+                title="Historically related words whose modern meanings have diverged enough to mislead."
+              >
+                {selectedRelation === 'cognate' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>Cognate false friends</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRelation('false_cognate');
+                  handleRestartQuiz();
+                }}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${selectedRelation === 'false_cognate'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Similar-looking words with distinct recorded roots."
-            >
-              {selectedRelation === 'false_cognate' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>False cognates</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedRelation('unknown');
-                handleRestartQuiz();
-              }}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                selectedRelation === 'unknown'
+                  }`}
+                title="Similar-looking words with distinct recorded roots."
+              >
+                {selectedRelation === 'false_cognate' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>False cognates</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRelation('unknown');
+                  handleRestartQuiz();
+                }}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${selectedRelation === 'unknown'
                   ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
                   : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Similar-looking words whose historical relationship remains unverified in the available records."
-            >
-              {selectedRelation === 'unknown' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>Origin unknown</span>
-            </button>
+                  }`}
+                title="Similar-looking words whose historical relationship remains unverified in the available records."
+              >
+                {selectedRelation === 'unknown' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>Origin unknown</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Viewing Mode Segmented Control */}
+          <div className="flex items-center gap-2">
+            <span className="typo-sublabel text-ink-muted">View:</span>
+            <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
+              <button
+                type="button"
+                onClick={() => setViewingMode('blind')}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${viewingMode === 'blind'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+                  }`}
+                title="Both headwords shown, but source definition masked to prevent triangulation"
+              >
+                {viewingMode === 'blind' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>Blind Deck</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewingMode('target_only')}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${viewingMode === 'target_only'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+                  }`}
+                title="Only target word displayed; counterpart reveals upon answering"
+              >
+                {viewingMode === 'target_only' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>Target Only</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewingMode('comparative')}
+                className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${viewingMode === 'comparative'
+                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
+                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
+                  }`}
+                title="Source definition visible upfront (assisted study)"
+              >
+                {viewingMode === 'comparative' && (
+                  <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
+                )}
+                <span>Assisted</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Viewing Mode Segmented Control */}
-        <div className="flex items-center gap-2">
-          <span className="typo-sublabel text-ink-muted">View:</span>
-          <div className="inline-flex items-center border border-book-rule bg-page-muted/50 p-0.5 rounded-xs">
-            <button
-              type="button"
-              onClick={() => setViewingMode('blind')}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                viewingMode === 'blind'
-                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
-                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Both headwords shown, but source definition masked to prevent triangulation"
-            >
-              {viewingMode === 'blind' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>Blind Deck</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewingMode('target_only')}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                viewingMode === 'target_only'
-                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
-                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Only target word displayed; counterpart reveals upon answering"
-            >
-              {viewingMode === 'target_only' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>Target Only</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewingMode('comparative')}
-              className={`px-2.5 py-1 typo-sublabel rounded-xs transition-all cursor-pointer inline-flex items-center gap-1.5 border ${
-                viewingMode === 'comparative'
-                  ? 'bg-page-surface border-ink-main text-ink-main font-semibold shadow-2xs'
-                  : 'border-transparent text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
-              }`}
-              title="Source definition visible upfront (assisted study)"
-            >
-              {viewingMode === 'comparative' && (
-                <MaterialSymbol icon="check" size={14} className="text-cognate-ink shrink-0" />
-              )}
-              <span>Assisted</span>
-            </button>
+        {/* Row 2: Part of Speech Include Filter */}
+        <div className="flex items-start gap-2">
+          <span className="typo-sublabel text-ink-muted pt-1 shrink-0">Parts of speech (source):</span>
+          <div className="flex flex-wrap gap-1">
+            {(ALL_QUIZ_POS as readonly string[]).map((pos) => {
+              const isOn = includedPos.has(pos);
+              return (
+                <InclusionPill
+                  key={pos}
+                  active={isOn}
+                  size="md"
+                  onClick={() => {
+                    setIncludedPos((prev) => {
+                      const next = new Set(prev);
+                      if (next.has(pos)) { next.delete(pos); } else { next.add(pos); }
+                      return next;
+                    });
+                    handleRestartQuiz();
+                  }}
+                  title={isOn ? `Exclude ${getPosFullName(pos)}` : `Include ${getPosFullName(pos)}`}
+                >
+                  {getPosFullName(pos)}
+                </InclusionPill>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -415,8 +453,8 @@ export const FalseFriendsQuiz: React.FC = () => {
             {Math.round((quizScore / (quizData?.length || 1)) * 100) >= 80
               ? 'High accuracy — You consistently distinguished true target definitions from false friend traps.'
               : Math.round((quizScore / (quizData?.length || 1)) * 100) >= 50
-              ? 'Moderate accuracy — Some lookalikes misled your interpretation across the pair.'
-              : 'Low accuracy — False friend lookalikes frequently caught you out.'}
+                ? 'Moderate accuracy — Some lookalikes misled your interpretation across the pair.'
+                : 'Low accuracy — False friend lookalikes frequently caught you out.'}
           </p>
 
           {/* Responsive Metric Cards */}
@@ -516,16 +554,16 @@ export const FalseFriendsQuiz: React.FC = () => {
 
                       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                         {rec.isCorrect ? (
-                          <span className="typo-badge text-cognate-ink font-medium inline-flex items-center gap-1.5">
-                            <MaterialSymbol icon="check_circle" size={18} className="text-cognate-ink" /> Correct
+                          <span className="typo-badge bg-cognate-ink text-page-surface font-medium inline-flex items-center gap-1.5 px-2 py-0.5">
+                            <MaterialSymbol icon="check_circle" size={16} className="text-page-surface" /> Correct
                           </span>
                         ) : rec.isTrap ? (
-                          <span className="typo-badge text-falsefriend-ink font-medium inline-flex items-center gap-1.5">
-                            <MaterialSymbol icon="warning" size={18} className="text-falsefriend-ink" /> Trapped
+                          <span className="typo-badge bg-falsefriend-ink text-page-surface font-medium inline-flex items-center gap-1.5 px-2 py-0.5">
+                            <MaterialSymbol icon="warning" size={16} className="text-page-surface" /> Trapped
                           </span>
                         ) : (
-                          <span className="typo-badge text-ink-muted font-medium inline-flex items-center gap-1.5">
-                            <MaterialSymbol icon="cancel" size={18} className="text-ink-muted" /> Missed
+                          <span className="typo-badge bg-ink-muted text-page-surface font-medium inline-flex items-center gap-1.5 px-2 py-0.5">
+                            <MaterialSymbol icon="cancel" size={16} className="text-page-surface" /> Missed
                           </span>
                         )}
                         <MaterialSymbol
@@ -650,7 +688,7 @@ export const FalseFriendsQuiz: React.FC = () => {
             {/* Dual Specimen Presentation - Clean Unboxed 2-Column Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 pt-1">
               {/* Source Counterpart Panel */}
-              {viewingMode === 'target_only' && selectedOption === null ? (
+              {viewingMode === 'target_only' && selectedOption === null && !showSourceHint ? (
                 <div className="flex flex-col justify-center items-center text-center p-3 sm:p-4 border border-dashed border-book-rule/70 bg-page-muted/15 space-y-1">
                   <span className="typo-overline text-ink-muted">
                     Source Word ({getLanguageName(currentQuizItem.lang_a)})
@@ -726,155 +764,155 @@ export const FalseFriendsQuiz: React.FC = () => {
               </div>
             </div>
 
-          {/* Prompt Header */}
-          <div className="pt-0.5">
-            <span className="typo-sublabel block text-ink-muted">
-              Choose the true modern definition of{' '}
-              <strong className="text-ink-main font-deck">
-                {currentQuizItem.word_b}
-              </strong>{' '}
-              in {getLanguageName(currentQuizItem.lang_b)}:
-            </span>
-          </div>
-
-          {/* Options Grid */}
-          <div className="space-y-2">
-            {currentQuizItem.options.map((option, idx) => {
-              const isSelected = selectedOption === idx;
-              const isCorrect = idx === currentQuizItem.correct_option;
-              const isTrap = typeof currentQuizItem.trap_option === 'number' && idx === currentQuizItem.trap_option;
-
-              let optClass = 'border-book-rule text-ink-main hover:bg-page-muted/50 cursor-pointer';
-
-              if (selectedOption !== null) {
-                if (isSelected && isCorrect) {
-                  optClass = 'border-cognate-border bg-cognate-bg/50 text-ink-main font-medium shadow-sm';
-                } else if (isCorrect) {
-                  optClass = 'border-dashed border-cognate-border/70 text-ink-muted bg-cognate-bg/10';
-                } else if (isSelected && isTrap) {
-                  optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
-                } else if (isSelected) {
-                  optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
-                } else if (isTrap) {
-                  optClass = 'border-dashed border-falsefriend-border/70 text-ink-muted bg-falsefriend-bg/10';
-                } else {
-                  optClass = 'border-book-rule/60 text-ink-muted opacity-40';
-                }
-              }
-
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => handleQuizAnswer(idx)}
-                  disabled={selectedOption !== null}
-                  className={`w-full border px-3.5 py-2.5 sm:py-3 text-left transition-all flex items-start justify-between gap-3 ${optClass}`}
-                >
-                  <div className="flex items-baseline gap-2.5 min-w-0">
-                    <span className="typo-metric text-ink-muted/80 shrink-0 font-normal">
-                      [{idx + 1}]
-                    </span>
-                    <span className="typo-definition leading-snug">
-                      {option}
-                    </span>
-                  </div>
-
-                  {selectedOption !== null && (
-                    <div className="shrink-0 text-right">
-                      {isSelected && isCorrect && (
-                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-cognate-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
-                          Target Reality
-                          <MaterialSymbol icon="check" size={16} className="text-page-bg" />
-                        </span>
-                      )}
-                      {!isSelected && isCorrect && (
-                        <span className="typo-badge text-cognate-ink/80 font-medium inline-flex items-center gap-1.5">
-                          Target Reality
-                        </span>
-                      )}
-                      {isSelected && isTrap && (
-                        <span className="px-2 py-0.5 typo-badge rounded-xs bg-falsefriend-ink text-page-bg font-medium inline-flex items-center gap-1.5 shadow-2xs">
-                          Cognitive Trap
-                          <MaterialSymbol icon="warning" size={16} className="text-page-bg" />
-                        </span>
-                      )}
-                      {!isSelected && isTrap && (
-                        <span className="typo-badge text-falsefriend-ink/80 font-medium inline-flex items-center gap-1.5">
-                          Source Meaning Trap
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Post-Answer Etymological Autopsy */}
-          {selectedOption !== null && (
-            <div className="border-t border-book-rule pt-3 space-y-3">
-              <div className="flex items-center justify-between">
-                <button
-                  type="button"
-                  onClick={() => setShowAutopsy(!showAutopsy)}
-                  className="typo-sublabel text-ink-muted hover:text-ink-main flex items-center gap-1 cursor-pointer underline"
-                >
-                  <span>{showAutopsy ? 'Hide Etymological Analysis' : 'Show Etymological Analysis'}</span>
-                  <MaterialSymbol icon={showAutopsy ? 'arrow_drop_up' : 'arrow_drop_down'} size={22} />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleNextQuizItem}
-                  className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-4 py-1.5 transition-all active:translate-y-px cursor-pointer inline-flex items-center gap-2"
-                >
-                  <span>Next Question (Enter)</span>
-                  <MaterialSymbol icon="arrow_forward" size={18} />
-                </button>
-              </div>
-
-              {showAutopsy && (
-                <div className="pt-2 space-y-2.5 typo-body animate-in fade-in duration-200">
-                  <div className="flex items-baseline justify-between border-b border-book-rule/60 pb-1.5">
-                    <span className="typo-overline text-ink-main font-medium">
-                      Etymology
-                    </span>
-                    {currentQuizItem.etymological_relation && (
-                      <span className="typo-subscript text-ink-muted uppercase tracking-wider">
-                        {currentQuizItem.etymological_relation === 'false_cognate'
-                          ? 'False cognate'
-                          : currentQuizItem.etymological_relation === 'cognate'
-                            ? 'Cognate origin'
-                            : 'Origin unknown'}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
-                    {/* Source lineage */}
-                    <div className="space-y-1">
-                      <span className="typo-section-header block">
-                        {currentQuizItem.word_a} ({getLanguageName(currentQuizItem.lang_a)}):
-                      </span>
-                      <p className="typo-note leading-relaxed">
-                        {currentQuizItem.etym_text_a || 'Etymological lineage not recorded for source lemma.'}
-                      </p>
-                    </div>
-
-                    {/* Target lineage */}
-                    <div className="space-y-1">
-                      <span className="typo-section-header block">
-                        {currentQuizItem.word_b} ({getLanguageName(currentQuizItem.lang_b)}):
-                      </span>
-                      <p className="typo-note leading-relaxed">
-                        {currentQuizItem.etym_text_b || 'Etymological lineage not recorded for target lemma.'}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
+            {/* Prompt Header */}
+            <div className="pt-0.5">
+              <span className="typo-sublabel block text-ink-muted">
+                Choose the true modern definition of{' '}
+                <strong className="text-ink-main font-deck">
+                  {currentQuizItem.word_b}
+                </strong>{' '}
+                in {getLanguageName(currentQuizItem.lang_b)}:
+              </span>
             </div>
-          )}
+
+            {/* Options Grid */}
+            <div className="space-y-2">
+              {currentQuizItem.options.map((option, idx) => {
+                const isSelected = selectedOption === idx;
+                const isCorrect = idx === currentQuizItem.correct_option;
+                const isTrap = typeof currentQuizItem.trap_option === 'number' && idx === currentQuizItem.trap_option;
+
+                let optClass = 'border-book-rule text-ink-main hover:bg-page-muted/50 cursor-pointer';
+
+                if (selectedOption !== null) {
+                  if (isSelected && isCorrect) {
+                    optClass = 'border-cognate-border bg-cognate-bg/50 text-ink-main font-medium shadow-sm';
+                  } else if (isCorrect) {
+                    optClass = 'border-dashed border-cognate-border/70 text-ink-muted bg-cognate-bg/10';
+                  } else if (isSelected && isTrap) {
+                    optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
+                  } else if (isSelected) {
+                    optClass = 'border-falsefriend-border bg-falsefriend-bg/50 text-falsefriend-ink font-medium shadow-sm';
+                  } else if (isTrap) {
+                    optClass = 'border-dashed border-falsefriend-border/70 text-ink-muted bg-falsefriend-bg/10';
+                  } else {
+                    optClass = 'border-book-rule/60 text-ink-muted opacity-40';
+                  }
+                }
+
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleQuizAnswer(idx)}
+                    disabled={selectedOption !== null}
+                    className={`w-full border px-3.5 py-2.5 sm:py-3 text-left transition-all flex items-start justify-between gap-3 ${optClass}`}
+                  >
+                    <div className="flex items-baseline gap-2.5 min-w-0">
+                      <span className="typo-metric text-ink-muted/80 shrink-0 font-normal">
+                        [{idx + 1}]
+                      </span>
+                      <span className="typo-definition leading-snug">
+                        {option}
+                      </span>
+                    </div>
+
+                    {selectedOption !== null && (
+                      <div className="shrink-0 text-right">
+                        {isSelected && isCorrect && (
+                          <span className="px-2 py-0.5 typo-badge bg-cognate-ink text-page-surface font-medium inline-flex items-center gap-1.5">
+                            Target Reality
+                            <MaterialSymbol icon="check" size={16} className="text-page-surface" />
+                          </span>
+                        )}
+                        {!isSelected && isCorrect && (
+                          <span className="px-2 py-0.5 typo-badge bg-cognate-ink text-page-surface font-medium inline-flex items-center gap-1.5">
+                            Target Reality
+                          </span>
+                        )}
+                        {isSelected && isTrap && (
+                          <span className="px-2 py-0.5 typo-badge bg-falsefriend-ink text-page-surface font-medium inline-flex items-center gap-1.5">
+                            Cognitive Trap
+                            <MaterialSymbol icon="warning" size={16} className="text-page-surface" />
+                          </span>
+                        )}
+                        {!isSelected && isTrap && (
+                          <span className="px-2 py-0.5 typo-badge bg-falsefriend-ink text-page-surface font-medium inline-flex items-center gap-1.5">
+                            Source Meaning Trap
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Post-Answer Etymological Autopsy */}
+            {selectedOption !== null && (
+              <div className="border-t border-book-rule pt-3 space-y-3">
+                <div className="flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => setShowAutopsy(!showAutopsy)}
+                    className="typo-sublabel text-ink-muted hover:text-ink-main flex items-center gap-1 cursor-pointer underline"
+                  >
+                    <span>{showAutopsy ? 'Hide Etymological Analysis' : 'Show Etymological Analysis'}</span>
+                    <MaterialSymbol icon={showAutopsy ? 'arrow_drop_up' : 'arrow_drop_down'} size={22} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleNextQuizItem}
+                    className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 hover:border-stone-800 typo-overline px-4 py-1.5 transition-all active:translate-y-px cursor-pointer inline-flex items-center gap-2"
+                  >
+                    <span>Next Question (Enter)</span>
+                    <MaterialSymbol icon="arrow_forward" size={18} />
+                  </button>
+                </div>
+
+                {showAutopsy && (
+                  <div className="pt-2 space-y-2.5 typo-body animate-in fade-in duration-200">
+                    <div className="flex items-baseline justify-between border-b border-book-rule/60 pb-1.5">
+                      <span className="typo-overline text-ink-main font-medium">
+                        Etymology
+                      </span>
+                      {currentQuizItem.etymological_relation && (
+                        <span className="typo-subscript text-ink-muted uppercase tracking-wider">
+                          {currentQuizItem.etymological_relation === 'false_cognate'
+                            ? 'False cognate'
+                            : currentQuizItem.etymological_relation === 'cognate'
+                              ? 'Cognate origin'
+                              : 'Origin unknown'}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
+                      {/* Source lineage */}
+                      <div className="space-y-1">
+                        <span className="typo-section-header block">
+                          {currentQuizItem.word_a} ({getLanguageName(currentQuizItem.lang_a)}):
+                        </span>
+                        <p className="typo-note leading-relaxed">
+                          {currentQuizItem.etym_text_a || 'Etymological lineage not recorded for source lemma.'}
+                        </p>
+                      </div>
+
+                      {/* Target lineage */}
+                      <div className="space-y-1">
+                        <span className="typo-section-header block">
+                          {currentQuizItem.word_b} ({getLanguageName(currentQuizItem.lang_b)}):
+                        </span>
+                        <p className="typo-note leading-relaxed">
+                          {currentQuizItem.etym_text_b || 'Etymological lineage not recorded for target lemma.'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
