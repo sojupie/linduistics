@@ -419,6 +419,10 @@ def align_pair_senses(
             for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
             if key in s
         }
+        if "etym_root" not in source_metadata and meta_a.get("etym_root"):
+            source_metadata["etym_root"] = meta_a["etym_root"]
+        if "etym_text" not in source_metadata and meta_a.get("etym_text"):
+            source_metadata["etym_text"] = meta_a["etym_text"]
         annotated_a.append({
             **source_metadata,
             "sense_id": int(s.get("sense_id", i + 1)),
@@ -438,6 +442,10 @@ def align_pair_senses(
             for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
             if key in s
         }
+        if "etym_root" not in source_metadata and meta_b.get("etym_root"):
+            source_metadata["etym_root"] = meta_b["etym_root"]
+        if "etym_text" not in source_metadata and meta_b.get("etym_text"):
+            source_metadata["etym_text"] = meta_b["etym_text"]
         annotated_b.append({
             **source_metadata,
             "sense_id": int(s.get("sense_id", j + 1)),
@@ -550,10 +558,10 @@ def build_pair_dataset(
 
         matched_a = next(s for s in senses_a if s["is_active_match"])
         matched_b = next(s for s in senses_b if s["is_active_match"])
-        etym_root_a = matched_a.get("etym_root") or ""
-        etym_root_b = matched_b.get("etym_root") or ""
-        etym_text_a = matched_a.get("etym_text") or ""
-        etym_text_b = matched_b.get("etym_text") or ""
+        etym_root_a = matched_a.get("etym_root") or meta_a.get("etym_root") or ""
+        etym_root_b = matched_b.get("etym_root") or meta_b.get("etym_root") or ""
+        etym_text_a = matched_a.get("etym_text") or meta_a.get("etym_text") or ""
+        etym_text_b = matched_b.get("etym_text") or meta_b.get("etym_text") or ""
         pos_a = matched_a.get("pos") or meta_a["pos"]
         pos_b = matched_b.get("pos") or meta_b["pos"]
 

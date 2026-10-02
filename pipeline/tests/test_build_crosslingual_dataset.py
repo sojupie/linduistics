@@ -134,18 +134,18 @@ def test_builder_uses_the_selected_senses_not_merged_lemma_fields():
     assert json.loads(row["senses_a"])[1]["source_entry_key"] == "sv|foo|verb|2|foo-2"
 
 
-def test_builder_does_not_fall_back_to_a_headword_root_when_matched_sense_has_none():
+def test_builder_falls_back_to_headword_root_when_matched_sense_has_none():
     matcher = FixedMatcher({"same meaning": [1.0, 0.0]})
     lexicons = {
         "sv": {"foo": {
             "word": "foo", "pos": "noun", "ipa": "foo", "def": "same meaning",
-            "etym_root": "Proto-Germanic *wrong", "etym_text": "Wrong entry.",
+            "etym_root": "Proto-Germanic *shared", "etym_text": "Shared entry.",
             "senses": [{"sense_id": 1, "gloss": "same meaning", "pos": "noun",
                         "is_active": True, "etym_root": "", "etym_text": ""}],
         }},
         "da": {"bar": {
             "word": "bar", "pos": "noun", "ipa": "bar", "def": "same meaning",
-            "etym_root": "Proto-Germanic *wrong", "etym_text": "Wrong entry.",
+            "etym_root": "Proto-Germanic *shared", "etym_text": "Shared entry.",
             "senses": [{"sense_id": 1, "gloss": "same meaning", "pos": "noun",
                         "is_active": True, "etym_root": "", "etym_text": ""}],
         }},
@@ -153,9 +153,10 @@ def test_builder_does_not_fall_back_to_a_headword_root_when_matched_sense_has_no
 
     row = build_pair_dataset("sv", "da", {("foo", "bar")}, lexicons, matcher)[0]
 
-    assert row["etymological_relation"] == "unknown"
-    assert row["etym_root_a"] is None
-    assert row["shared_etym_root"] is None
+    assert row["etymological_relation"] == "cognate"
+    assert row["etym_root_a"] == "Proto-Germanic *shared"
+    assert row["shared_etym_root"] == "Proto-Germanic *shared"
+
 
 
 def test_loader_preserves_case_distinct_lemmas_and_surface_matches_each(tmp_path):
