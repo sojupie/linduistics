@@ -224,7 +224,7 @@ export const FalseFriendsQuiz: React.FC = () => {
         <div>
           <h1 className="typo-page-title">False Friends Quiz</h1>
           <p className="typo-page-deck mt-1.5">
-            Identify true definitions and distinguish false friends across Germanic language pairs.
+            A false friend looks or sounds like a word in another language but has a different meaning. Choose the definition that fits the target word.
           </p>
         </div>
 

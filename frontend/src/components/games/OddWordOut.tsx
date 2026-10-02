@@ -11,20 +11,20 @@ import { ClusterFilters } from './ClusterFilters';
 
 export const OddWordOut: React.FC = () => {
   const game = useClusterRound('odd');
-  if (game.isLoading) return <GamePage title="Find the Odd Word Out" description="Find words that share a recorded root."><LoadingIndicator /></GamePage>;
+  if (game.isLoading) return <GamePage title="Find the Odd Word Out" description="A root is the older word that a group of words comes from. Pick the word that comes from a different root."><LoadingIndicator /></GamePage>;
   if (game.isError) return <GamePage title="Find the Odd Word Out" description=""><ErrorState onRetry={game.retry} /></GamePage>;
   const filters = <ClusterFilters source={game.source} sources={game.sources} availableTargets={game.availableTargets} selectedTargets={game.selectedTargets} includedPos={game.includedPos} onSourceChange={game.changeSource} onToggleTarget={game.toggleTarget} onTogglePos={game.togglePos} />;
-  if (!game.active) return <GamePage title="Find the Odd Word Out" description="Find words that share a recorded root.">{filters}<p className="typo-body text-ink-muted py-8">No cognate clusters are available for these languages and parts of speech.</p></GamePage>;
+  if (!game.active) return <GamePage title="Find the Odd Word Out" description="A root is the older word that a group of words comes from. Pick the word that comes from a different root.">{filters}<p className="typo-body text-ink-muted py-8">No cognate clusters are available for these languages and parts of speech.</p></GamePage>;
   if (game.finished) return <GamePage title="Find the Odd Word Out" description="Your results for this round."><RoundSummary score={game.score} total={CLUSTER_ROUND_COUNT} onRestart={game.reset} /></GamePage>;
 
-  return <GamePage title="Find the Odd Word Out" description="Three words share a recorded root. Select the word that does not belong.">
+  return <GamePage title="Find the Odd Word Out" description="A root is the older word that a group of words comes from. Three words share a root; select the one that comes from a different root.">
     {filters}
     <RoundPanel round={`Round ${game.roundIndex} of ${CLUSTER_ROUND_COUNT}`} score={game.score} total={CLUSTER_ROUND_COUNT} progress={(game.roundIndex - (game.checked ? 0 : 1)) / CLUSTER_ROUND_COUNT * 100}>
       <p className="typo-section-header mb-3">Shared meaning: {game.active.family.sample_gloss ?? game.active.family.root}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">{game.active.choices.map((member, index) => {
         const chosen = game.picked.includes(index);
         const correct = !member.belongs;
-        return <button key={`${member.lang}-${member.word}-${index}`} type="button" disabled={game.checked} aria-pressed={chosen} onClick={() => game.setPicked((current) => chosen ? current.filter((value) => value !== index) : [...current, index])} className={`border p-3 text-left transition-colors ${answerCardClass(chosen, correct, game.checked, 'border-cognate-border bg-cognate-bg text-cognate-ink')}`}>
+        return <button key={`${member.lang}-${member.word}-${index}`} type="button" disabled={game.checked} aria-pressed={chosen} onClick={() => game.setPicked((current) => chosen ? current.filter((value) => value !== index) : [...current, index])} className={`border p-3 text-left transition-colors ${answerCardClass(chosen, correct, game.checked, 'border-ink-main bg-page-muted text-ink-main')}`}>
           <span className="typo-body block">{member.word}</span><span className="typo-subscript text-ink-muted">{getLanguageName(member.lang)}</span>
           {game.checked && <div className="mt-2 flex flex-wrap items-center justify-between gap-2"><span className="typo-subscript">{member.belongs ? 'Shares the root' : 'Does not belong'}</span><AnswerFeedbackBadge selected={chosen} correct={correct} /></div>}
         </button>;
