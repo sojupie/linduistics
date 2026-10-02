@@ -133,3 +133,40 @@ The form lookup table was freshly rebuilt for the five languages, with 1,296,113
 The API and NLP services were restarted from the restored code. `/api/health` reports a connected database; `/api/languages` returns exactly `da`, `de`, `en`, `nb`, and `sv`, with twenty directed comparisons. Swedish–Danish and English–German pair queries return results. The live state is now this five-language reconstruction; earlier statements in Stage 5 about the current seven-language state describe the dataset it replaced.
 
 Commands and verification artifacts are saved under `pipeline/data/reproduce-five-language-20261002/`. Run `reproduce.ps1` from the repository root with the restored code and local dumps. It stops on failed stages, checks the rebuilt rows against the reference file, loads the fresh output, runs v2, verifies the loaded data, and saves the final labels with the source rows. The backup is a reference file, not a restore input.
+
+## October 3: formalize the pipeline without changing its result
+
+Commit `7a663c8` adds a tracked runner, recovers the original source-claim matcher, streams completed language pairs to Parquet, and publishes a verified final file with its related lookup tables. Classification rules, candidate selection, sense selection, thresholds, and category meanings remain unchanged.
+
+### What changed and why
+
+- **One complete command.** `pipeline/run.py` runs parsing, forms, comparisons, source extraction, claim matching, enrichment, and final v2 classification. The matcher now lives in the repository; a normal build no longer needs to recover a deleted script from Git history.
+- **An explicit build record.** Each run has its own directory, stage logs, manifest, and plain-text report. The manifest records input and output hashes, source-code hashes, Python and package versions, PostgreSQL version, model revision, and device. Completed stages are reused only when that contract and their saved outputs match. Interrupted stages run again. Changed inputs require a new directory.
+- **One final comparison file.** Categories, origin labels, definitions, senses, scores, roots, attached claims, and `is_core` travel together. The final classification happens before publication, avoiding the earlier failure in which PostgreSQL had newer labels than the file later loaded into it.
+- **The same numeric inputs.** Classification uses the historical PostgreSQL text-to-`REAL` conversion, not a replacement rounding method. A small score difference near a threshold can change a category even when the displayed score looks identical.
+- **The same core membership.** The historical frequency query has no tie-break for equally ranked words. Repeating it can choose a different set. This build therefore preserves the verified reference's core tags while freshly calculating and checking the labels.
+- **Preserved lookup content and IDs.** Accepted inflections, synonyms, and clusters are frozen as Parquet inputs. Cluster generation is checked against that snapshot. Existing comparison order and lookup IDs remain stable, so links do not silently point to different words.
+- **One publication transaction.** The publisher loads comparisons, forms, inflections, synonyms, and clusters together. Any error rolls back all five tables. It does not perform a second live reclassification update. Table locks can make readers wait during publication; this does not provide zero downtime. Backend caches must be refreshed after the transaction commits.
+- **Lower peak memory during comparison writing.** The builder writes and releases each completed language pair instead of collecting every pair before writing. Pair order, row order, model encoding order, and batch settings remain unchanged.
+
+### Fresh-build verification
+
+A complete run from the five local raw dumps finished under `pipeline/data/builds/20261003-formalized/`. It recalculated the final labels and checked every field of all 1,638,454 rows against the accepted reference, in the same order. There were no differences. All category and origin totals in the preceding section remain unchanged, as do the 288,512 core rows and 40,376 attached claims.
+
+The resulting `final.parquet` is also byte-for-byte identical to the accepted final reference, with SHA-256 `a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f`. Repeating the runner successfully verified the contract and reused every completed stage.
+
+The pipeline tests passed: 104 tests, including a PostgreSQL publication test in a disposable database. That test deliberately fails during form loading after comparisons have been replaced, then checks that the preceding comparisons and lookups survived rollback. Full cluster comparison also found zero differences across all 6,151 clusters.
+
+The pre-expansion backup remains untouched; its dump still has SHA-256 `ce406d9e4241b165fa6a1d48573f2bfb23391b627e8a212dd8c47df508d264c7`.
+
+### Lessons retained
+
+Reproducibility requires the actual input files, model and package versions, numeric conversion, row order, core membership, and publication sequence. A commit name and matching category totals are not enough. A pipeline refactor should prove equivalence across the complete output before it changes live data. Improving linguistic rules is separate work and requires a deliberately reviewed new reference; this build does not claim that reproducing the accepted result proves every linguistic label correct.
+
+See `pipeline/README.md` for the supported commands, build contract, and publication procedure.
+
+### Live publication verification
+
+The runner published this verified build successfully in one transaction. A subsequent read-only check compared every comparison field, including the stored `REAL` scores, senses, attached claims, labels, core tags, and pair IDs, against `final.parquet`. It found no differences across all 1,638,454 comparisons. It also checked every field and ID of all 4,993,030 inflection rows, 187,263 synonym rows, and 6,151 cluster rows against their snapshots; none differed. The form table contains the same 1,296,113 rows.
+
+The API and NLP services were restarted after commit. `/api/health` reports a connected database. `/api/languages` returns the original five languages and twenty directed comparisons; the Swedish–Danish true-cognate query returns 9,849 rows. The disposable publication-test database was removed after testing. The saved manifest, plain-text report, stage logs, and `live-verification.json` are under the build directory above.
