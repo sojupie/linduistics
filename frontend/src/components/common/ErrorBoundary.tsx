@@ -31,7 +31,7 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.fallback;
       }
       return (
-        <div className="mx-auto my-12 max-w-xl rounded border border-book-rule bg-page-surface p-8 text-ink-main shadow-xs">
+        <div className="mx-auto my-12 max-w-xl border border-book-rule bg-page-surface p-8 text-ink-main">
           <ErrorState
             title="Unable to display this view"
             errorMessage={this.state.error?.message}

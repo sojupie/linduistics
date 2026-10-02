@@ -13,7 +13,7 @@ interface WordPairCardProps {
 export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
 
   return (
-    <article className="rounded border border-book-rule bg-page-surface p-6 font-serif shadow-2xs">
+    <article className="border border-book-rule bg-page-surface p-6 font-serif">
       {/* Top entry header */}
       <div className="flex flex-wrap items-baseline justify-between border-b border-book-rule pb-3 gap-2">
         <div className="flex flex-wrap items-baseline gap-3">
@@ -54,12 +54,12 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
 
       {/* Definitions layout */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
+        <div className="bg-page-bg/70 p-4 border border-book-rule">
           <span className="typo-sublabel block mb-1">Source definition:</span>
           <p className="typo-definition">{pair.defA}</p>
         </div>
 
-        <div className="bg-page-bg/70 p-4 rounded border border-book-rule">
+        <div className="bg-page-bg/70 p-4 border border-book-rule">
           <span className="typo-sublabel block mb-1">Target definition:</span>
           <p className="typo-definition">{pair.defB}</p>
         </div>

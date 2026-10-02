@@ -286,7 +286,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
             )}
             {TOKEN_STATUS_CONFIG[tokenAnalysis.status] && (
               <span
-                className={`typo-badge px-2 py-0.5 rounded cursor-help ${TOKEN_STATUS_CONFIG[tokenAnalysis.status].badgeClass}`}
+                className={`typo-badge px-2 py-0.5 cursor-help ${TOKEN_STATUS_CONFIG[tokenAnalysis.status].badgeClass}`}
                 title={TOKEN_STATUS_CONFIG[tokenAnalysis.status].tooltip}
               >
                 {TOKEN_STATUS_CONFIG[tokenAnalysis.status].label}
@@ -329,7 +329,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
               return (
                 <div
                   key={idx}
-                  className={`p-3 rounded border transition-colors space-y-2 ${isSameForm
+                  className={`p-3 border transition-colors space-y-2 ${isSameForm
                     ? 'border-book-rule bg-page-muted/40'
                     : 'border-book-rule bg-page-surface hover:border-book-rule-strong'
                     }`}
@@ -346,7 +346,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                         </span>
                       )}
                       {isSameForm && (
-                        <span className="px-1.5 py-0.5 typo-subscript font-mono rounded bg-page-muted text-ink-muted">
+                        <span className="px-1.5 py-0.5 typo-subscript font-mono bg-page-muted text-ink-muted">
                           current
                         </span>
                       )}
@@ -356,7 +356,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                       <button
                         type="button"
                         onClick={() => onSubstitute(tokenAnalysis, alt.form)}
-                        className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface rounded-xs transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1"
+                        className="px-2.5 py-0.5 typo-sublabel font-medium text-cognate-ink hover:text-ink-main border border-cognate-border hover:border-book-rule-strong bg-page-surface transition-colors cursor-pointer shrink-0 inline-flex items-center gap-1"
                       >
                         <span>Substitute word</span>
                         <MaterialSymbol icon="swap_horiz" size={15} />
@@ -406,7 +406,7 @@ export const TokenDetailDrawer: React.FC<TokenDetailDrawerProps> = ({
                       {matchEntries.map(([lang, m]) => (
                         <span
                           key={lang}
-                          className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-book-rule bg-page-bg typo-sublabel"
+                          className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-book-rule bg-page-bg typo-sublabel"
                         >
                           <span
                             className="typo-sublabel font-mono uppercase cursor-help"

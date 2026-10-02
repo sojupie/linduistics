@@ -27,7 +27,7 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
         <button
           type="button"
           onClick={onRetry}
-          className="mt-3 px-3 py-1.5 rounded border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
+          className="mt-3 px-3 py-1.5 border border-book-rule typo-sublabel text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
         >
           {retryLabel}
         </button>

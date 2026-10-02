@@ -18,7 +18,7 @@ export const TaxonomyBadge: React.FC<TaxonomyBadgeProps> = ({
 
   const badgeElement = (
     <span
-      className={`typo-badge px-2 py-0.5 rounded cursor-help whitespace-nowrap select-none transition-opacity hover:opacity-90 ${meta.style} ${className}`}
+      className={`typo-badge px-2 py-0.5 cursor-help whitespace-nowrap select-none transition-opacity hover:opacity-90 ${meta.style} ${className}`}
       title={meta.tooltip}
     >
       {meta.label}

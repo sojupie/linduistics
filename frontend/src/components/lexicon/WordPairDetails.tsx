@@ -383,7 +383,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-2 py-0.5 rounded whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center gap-1 typo-badge bg-cognate-ink text-page-surface px-2 py-0.5 whitespace-nowrap">
                         <span>Semantic Match ·</span>
                         <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
@@ -425,7 +425,7 @@ export const WordPairDetails: React.FC<WordPairDetailsProps> = ({
                       </span>
                     </span>
                     {s.is_active_match && (
-                      <span className="ml-2 inline-flex items-center gap-1 typo-badge text-cognate-ink bg-cognate-bg px-2 py-0.5 rounded whitespace-nowrap">
+                      <span className="ml-2 inline-flex items-center gap-1 typo-badge bg-cognate-ink text-page-surface px-2 py-0.5 whitespace-nowrap">
                         <span>Semantic Match ·</span>
                         <span>{s.similarity_to_counterpart.toFixed(2)}</span>
                       </span>
