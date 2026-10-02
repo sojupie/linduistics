@@ -5,6 +5,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from build_crosslingual_dataset import (
+    TARGET_LANGS,
     _lowercase_index,
     _lookup_lemma,
     align_pair_senses,
@@ -158,7 +159,7 @@ def test_builder_does_not_fall_back_to_a_headword_root_when_matched_sense_has_no
 
 
 def test_loader_preserves_case_distinct_lemmas_and_surface_matches_each(tmp_path):
-    for lang in ("en", "de", "sv", "da", "nb"):
+    for lang in TARGET_LANGS:
         words = ["gift"]
         if lang == "de":
             words = ["Gift", "gift"]

@@ -26,7 +26,7 @@ def main():
 
     data_dir = root / "pipeline" / "data"
 
-    languages = ["sv", "de", "en", "da", "nb"]
+    languages = ["sv", "de", "en", "da", "nb", "nl", "is"]
 
     print("Connecting to database...")
     with psycopg.connect(db_url) as conn:

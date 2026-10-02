@@ -2,7 +2,7 @@
 
 Combines Wiktionary translation graph mining with targeted surface collision
 search to generate an authoritative, balanced lexical comparison dataset
-across English, Swedish, German, Danish, and Norwegian Bokmål (20 directed pairs),
+across seven Germanic languages (42 directed pairs),
 with strict sense-level alignment, polysemous inventory, and etymological provenance.
 """
 
@@ -34,7 +34,7 @@ from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
 
-TARGET_LANGS = ["en", "de", "sv", "da", "nb"]
+TARGET_LANGS = ["en", "de", "sv", "da", "nb", "nl", "is"]
 LANG_ALIASES = {
     "no": "nb",
     "norwegian": "nb",
@@ -42,6 +42,8 @@ LANG_ALIASES = {
     "german": "de",
     "swedish": "sv",
     "english": "en",
+    "dutch": "nl",
+    "icelandic": "is",
 }
 
 
@@ -664,7 +666,7 @@ def main() -> None:
     print("Initializing semantic matcher...")
     matcher = SemanticMatcher()
 
-    # Generate comparisons for all 10 language combinations (sorted order)
+    # Generate comparisons for each language combination (sorted order)
     unique_pairs = []
     sorted_langs = sorted(TARGET_LANGS)
     for i in range(len(sorted_langs)):

@@ -8,11 +8,15 @@ import os
 import urllib.request
 from tqdm import tqdm
 
+# These per-language extracts are built from English Wiktionary: entry language
+# codes identify the native headwords, while glosses are in English, as expected
+# by the cross-language matcher (the same source used for the existing dumps).
 KAIKKI_URLS = {
     "sv": "https://kaikki.org/dictionary/Swedish/kaikki.org-dictionary-Swedish.jsonl",
     "en": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl",
     "de": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
     "nl": "https://kaikki.org/dictionary/Dutch/kaikki.org-dictionary-Dutch.jsonl",
+    "is": "https://kaikki.org/dictionary/Icelandic/kaikki.org-dictionary-Icelandic.jsonl",
     "da": "https://kaikki.org/dictionary/Danish/kaikki.org-dictionary-Danish.jsonl",
     "nb": "https://kaikki.org/dictionary/Norwegian%20Bokm%C3%A5l/kaikki.org-dictionary-NorwegianBokm%C3%A5l.jsonl",
 }
