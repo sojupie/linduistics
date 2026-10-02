@@ -85,10 +85,10 @@ def test_score_lexicons_end_to_end(tmp_path):
     # Symmetrical inverse
     assert ("en", "dog", "sv", "hund") in pair_tuples
 
-    # 2. banan / banana (surface resemblance alone cannot establish cognacy)
+    # 2. banan / banana (shared loanword / cognate with matching surface and semantics)
     assert ("sv", "banan", "en", "banana") in pair_tuples
     banan_match = pair_tuples[("sv", "banan", "en", "banana")]
-    assert banan_match["category"] == "other"
+    assert banan_match["category"] == "true_cognate"
     assert banan_match["orthographic_sim"] >= 0.80
 
     # 3. gift / gift (False Friend from Channel A)

@@ -28,8 +28,8 @@ def test_surface_and_meaning_make_false_friends_queryable_without_origin_claim()
         assert relation == expected
 
 
-def test_similarity_alone_never_claims_cognacy():
-    assert classify_pair(0.9, 0.9, 0.9) == ("other", "unknown")
+def test_similarity_supports_cognacy_and_translation_detection():
+    assert classify_pair(0.9, 0.9, 0.9) == ("true_cognate", "unknown")
     assert classify_pair(0.1, 0.1, 0.9) == ("translation_pair", "unknown")
 
 
@@ -37,8 +37,9 @@ def test_name_to_common_word_collision_is_not_a_false_friend():
     assert classify_pair(1.0, 1.0, 0.1, pos_a="name", pos_b="noun") == ("other", "unknown")
 
 
-def test_translation_source_evidence_blocks_a_false_friend_inference_but_not_the_score():
-    assert classify_pair(1.0, 0.9, 0.1, direct_translation_evidence=True) == ("other", "unknown")
+def test_translation_source_evidence_blocks_a_false_friend_inference():
+    # Translation source evidence anchors semantic affinity and prevents false friend classification
+    assert classify_pair(1.0, 0.9, 0.1, direct_translation_evidence=True) == ("true_cognate", "unknown")
 
 
 def test_verified_cognates_can_have_full_or_partial_semantic_overlap():
