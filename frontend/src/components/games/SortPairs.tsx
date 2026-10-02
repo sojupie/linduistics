@@ -37,7 +37,7 @@ const SortPairRow: React.FC<{ item: { id: number; word_a: string; word_b: string
     <p className="typo-body"><strong>{item.word_a}</strong> <span className="text-ink-muted">→</span> <span className="text-cognate-ink">{item.word_b}</span></p>
     <div className="flex flex-wrap gap-1.5">{groups.map(([value, label, tone]) => {
       const chosen = answer === value;
-      const idle = tone === 'cognate' ? 'border-cognate-border bg-cognate-bg/30 text-cognate-ink' : tone === 'shifted' ? 'border-shifted-border bg-shifted-bg/40 text-shifted-ink' : 'border-falsefriend-border bg-falsefriend-bg/30 text-falsefriend-ink';
+      const idle = tone === 'cognate' ? 'border-cognate-border bg-cognate-bg text-cognate-ink' : tone === 'shifted' ? 'border-shifted-border bg-shifted-bg text-shifted-ink' : 'border-falsefriend-border bg-falsefriend-bg text-falsefriend-ink';
       const selected = tone === 'cognate' ? 'border-transparent bg-cognate-ink text-page-bg' : tone === 'shifted' ? 'border-transparent bg-shifted-ink text-page-bg' : 'border-transparent bg-falsefriend-ink text-page-bg';
       return <button key={value} type="button" onClick={() => onAnswer(value)} aria-pressed={chosen} className={`border px-2.5 py-1 typo-subscript ${chosen ? selected : idle}`}>{label}</button>;
     })}</div>

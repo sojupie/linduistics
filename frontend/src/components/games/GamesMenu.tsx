@@ -21,7 +21,7 @@ export const GamesMenu: React.FC = () => <section className="mx-auto w-full max-
   <h1 className="typo-page-title">Games</h1>
   <p className="typo-page-deck mt-1.5">Play with words across Germanic languages.</p>
   <div className="mt-5 divide-y divide-book-rule border-y border-book-rule">
-    {games.map((game) => <Link key={game.id} to={gameRoutes[game.id]} className="flex items-start gap-3 py-4 text-ink-main hover:bg-page-muted/40">
+    {games.map((game) => <Link key={game.id} to={gameRoutes[game.id]} className="flex items-start gap-3 py-4 text-ink-main hover:bg-page-muted">
       <MaterialSymbol icon={game.icon} size={22} className="mt-0.5 text-cognate-ink" />
       <span className="min-w-0"><span className="typo-section-header block">{game.title}</span><span className="typo-body text-ink-muted">{game.description}</span></span>
       <MaterialSymbol icon="arrow_forward" size={18} className="ml-auto mt-1 text-ink-muted" />
