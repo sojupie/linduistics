@@ -67,6 +67,34 @@ def test_etym_root_ignores_dercat_language_list_and_uses_an_actual_ancestor_form
     assert entry["etym_root"] == "Proto-West Germanic *anad"
 
 
+def test_etym_root_extracts_proto_germanic_from_etymon_tree():
+    raw = {
+        "word": "father",
+        "lang_code": "en",
+        "pos": "noun",
+        "etymology_templates": [
+            {"name": "root", "args": {"1": "en", "2": "ine-pro", "3": "*peh₂-"}},
+            {
+                "name": "etymon",
+                "args": {"1": "en", "id": "male parent", "2": ":inh", "3": "enm:fader"},
+                "expansion": (
+                    "Etymology tree\n"
+                    "Proto-Indo-European *peh₂-?\n"
+                    "Proto-Indo-European *ph₂tḗr\n"
+                    "Proto-Germanic *fadēr\n"
+                    "Proto-West Germanic *fader\n"
+                    "Old English fæder\n"
+                    "English father\n"
+                ),
+            },
+        ],
+        "senses": [{"id": "en-father-noun", "glosses": ["a male parent"]}],
+    }
+    entry = parse_kaikki_entry(raw)
+    assert entry is not None
+    assert entry["etym_root"] == "Proto-Germanic *fadēr"
+
+
 def test_etym_root_strips_wiktextract_position_annotation_from_source_form():
     raw = {
         "word": "pedicate",
