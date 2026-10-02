@@ -6,6 +6,7 @@ import { MaterialSymbol } from './MaterialSymbol';
 import { HEADER_CONFIG, QUERY_CONFIG } from '../../constants/config';
 import { Phonetic } from './Phonetic';
 import { getLanguageName } from '../../data/languages';
+import { TaxonomyBadge } from './TaxonomyBadge';
 import logoUrl from '../../assets/logo.png';
 
 export const Header: React.FC = () => {
@@ -19,6 +20,7 @@ export const Header: React.FC = () => {
     searchQuery,
     'all',
   );
+  const searchEligible = searchQuery.trim().length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS;
 
   useEffect(() => {
     setMobileNavOpen(false);
@@ -57,7 +59,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileNavOpen((prev) => !prev)}
-            className="lg:hidden flex items-center justify-center p-1.5 -ml-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
+            className="lg:hidden flex items-center justify-center p-1.5 -ml-1 text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
             aria-label={mobileNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileNavOpen}
           >
@@ -101,7 +103,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setSearchOpen(!searchOpen)}
-            className="flex items-center gap-2 rounded border border-book-rule bg-page-surface px-2.5 sm:px-3 py-1.5 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
+            className="flex items-center gap-2 border border-book-rule bg-page-surface px-2.5 sm:px-3 py-1.5 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors cursor-pointer"
             title="Search dictionary"
           >
             <MaterialSymbol icon="search" size={18} />
@@ -112,7 +114,7 @@ export const Header: React.FC = () => {
 
       {/* Search drawer */}
       {searchOpen && (
-        <div className="border-t border-book-rule bg-page-surface px-6 py-4 shadow-sm">
+        <div className="border-t border-book-rule bg-page-surface px-6 py-4">
           <div className="mx-auto flex max-w-2xl items-center gap-3">
             <MaterialSymbol icon="search" size={20} className="text-ink-muted" />
             <input
@@ -141,17 +143,14 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          {searchFetching && (
-            <p className="mx-auto mt-2 max-w-2xl typo-gloss">
-              Searching dictionary...
-            </p>
-          )}
-
-          {searchResults && searchResults.length > 0 && (
-            <div className={`mx-auto mt-4 max-w-2xl divide-y divide-book-rule rounded border border-book-rule bg-page-surface ${HEADER_CONFIG.MAX_SEARCH_RESULTS_HEIGHT_PX} overflow-y-auto`}>
+          {searchEligible && searchResults && searchResults.length > 0 && (
+            <div className={`mx-auto mt-4 max-w-2xl divide-y divide-book-rule border border-book-rule bg-page-surface ${HEADER_CONFIG.MAX_SEARCH_RESULTS_HEIGHT_PX} overflow-y-auto`}>
               {searchResults.map((item) => (
-                <div
+                <Link
                   key={item.id}
+                  to="/lexicon"
+                  search={{ source: item.lang_a, target: item.lang_b, category: undefined, id: item.id, q: item.word_a }}
+                  onClick={() => setSearchOpen(false)}
                   className="flex items-center justify-between p-3 typo-sublabel hover:bg-page-muted transition-colors gap-3"
                 >
                   <div className="flex items-center gap-2 flex-wrap min-w-0">
@@ -173,23 +172,13 @@ export const Header: React.FC = () => {
                     <span className="typo-headword-row text-cognate-ink">{item.word_b}</span>
                     {item.ipa_b && <Phonetic ipa={item.ipa_b} />}
                   </div>
-                  <div className="typo-badge text-ink-muted shrink-0">
-                    {item.category === 'true_cognate'
-                      ? 'True Cognate'
-                      : item.category === 'false_friend'
-                        ? 'False Friend'
-                      : item.category === 'partial_cognate'
-                          ? 'Semantic Shift'
-                        : item.category === 'translation_pair'
-                            ? 'Translation Equivalent'
-                            : 'Unrelated Lexicon'}
-                  </div>
-                </div>
+                  <TaxonomyBadge category={item.category} className="shrink-0" />
+                </Link>
               ))}
             </div>
           )}
 
-          {searchResults && searchResults.length === 0 && searchQuery.trim().length >= QUERY_CONFIG.MIN_HEADWORD_SEARCH_CHARS && !searchFetching && (
+          {searchEligible && searchResults && searchResults.length === 0 && !searchFetching && (
             <p className="mx-auto mt-3 max-w-2xl typo-gloss">
               No words found matching &ldquo;{searchQuery}&rdquo;.
             </p>
@@ -239,7 +228,7 @@ export const Header: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileNavOpen(false)}
-                  className="p-1 rounded text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
+                  className="p-1 text-ink-muted hover:text-ink-main hover:bg-page-muted transition-colors cursor-pointer"
                   aria-label="Close navigation menu"
                 >
                   <MaterialSymbol icon="close" size={20} />
@@ -256,7 +245,7 @@ export const Header: React.FC = () => {
                       key={link.to}
                       to={link.to}
                       onClick={() => setMobileNavOpen(false)}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors typo-nav ${isActive
+                      className={`flex items-center gap-3 px-3 py-2.5 transition-colors typo-nav ${isActive
                         ? 'bg-page-muted text-ink-main font-semibold border-l-2 border-cognate-ink pl-2.5'
                         : 'text-ink-muted hover:text-ink-main hover:bg-page-muted/60'
                         }`}
@@ -280,7 +269,7 @@ export const Header: React.FC = () => {
                     setMobileNavOpen(false);
                     setSearchOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 rounded border border-book-rule bg-page-surface px-3 py-2 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors shadow-2xs cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 border border-book-rule bg-page-surface px-3 py-2 typo-nav text-ink-muted hover:border-book-rule-strong hover:text-ink-main transition-colors cursor-pointer"
                 >
                   <MaterialSymbol icon="search" size={18} />
                   <span>Search dictionary</span>

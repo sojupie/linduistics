@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSearch, useNavigate } from '@tanstack/react-router';
 import { usePairsQuery, useLanguagesQuery } from '../../services/queries';
 import type { WordPair, SpecimenCategory } from '../../types/linguistics';
@@ -12,12 +12,15 @@ export const ComparativeLexicon: React.FC = () => {
     source?: string;
     target?: string;
     category?: string;
+    id?: number;
+    q?: string;
   };
   const navigate = useNavigate();
 
   // Search & Filter State
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(search.q ?? '');
   const [selectedFfRelation, setSelectedFfRelation] = useState<string | undefined>(undefined);
+  const [selectedPos, setSelectedPos] = useState<string | undefined>(undefined);
   const [limit, setLimit] = useState(50);
   const [offset, setOffset] = useState(0);
 
@@ -25,28 +28,49 @@ export const ComparativeLexicon: React.FC = () => {
   const [selectedPairId, setSelectedPairId] = useState<number | null>(null);
   const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
 
+  useEffect(() => {
+    setSelectedPairId(null);
+    setMobileDetailOpen(Boolean(search.id));
+  }, [search.id]);
+
+  useEffect(() => {
+    setSearchQuery(search.q ?? '');
+    setOffset(0);
+  }, [search.q]);
+
   // Load dynamically available languages from database
   const { data: languagesData } = useLanguagesQuery();
 
   const availableLanguages = languagesData?.languages ?? [];
-  const defaultSource = availableLanguages[0] ?? 'sv';
+  const defaultSource = availableLanguages.includes('sv') ? 'sv' : availableLanguages[0] ?? 'sv';
   const sourceLang =
     search?.source && availableLanguages.includes(search.source)
       ? search.source
       : defaultSource;
 
-  const availableTargets = useMemo(() => {
-    if (!languagesData?.pairs) return [];
-    return Array.from(
-      new Set(
-        languagesData.pairs
-          .filter((p) => p.source === sourceLang)
-          .map((p) => p.target),
-      ),
-    );
-  }, [languagesData, sourceLang]);
+  const selectableLanguages = availableLanguages.length > 0 ? availableLanguages : [sourceLang, 'en'];
 
-  const defaultTarget = availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
+  const availableTargets = useMemo(() => {
+    const targets = languagesData?.pairs?.length
+      ? Array.from(new Set(
+          languagesData.pairs
+            .filter((p) => p.source === sourceLang)
+            .map((p) => p.target),
+        ))
+      : selectableLanguages.filter((l) => l !== sourceLang);
+    if (
+      search.id && search.source === sourceLang && search.target &&
+      search.target !== sourceLang && !targets.includes(search.target) &&
+      (!languagesData || selectableLanguages.includes(search.target))
+    ) {
+      targets.push(search.target);
+    }
+    return targets.length > 0 ? targets : selectableLanguages.filter((l) => l !== sourceLang);
+  }, [languagesData, sourceLang, selectableLanguages, search.id, search.source, search.target]);
+
+  const defaultTarget = availableTargets.includes('da')
+    ? 'da'
+    : availableTargets[0] ?? (sourceLang === 'sv' ? 'en' : 'sv');
   const targetLang =
     search?.target && availableTargets.includes(search.target)
       ? search.target
@@ -64,9 +88,11 @@ export const ComparativeLexicon: React.FC = () => {
   } = usePairsQuery({
     source: sourceLang,
     target: targetLang,
+    id: search.id,
     category: selectedCategory,
     etymological_relation: selectedFfRelation,
     q: searchQuery.trim() || undefined,
+    pos: selectedPos,
     limit,
     offset,
   });
@@ -129,7 +155,7 @@ export const ComparativeLexicon: React.FC = () => {
   }, [livePairsData]);
 
   // Master-Detail active word pair: defaults to first item if none clicked
-  const activePairId = selectedPairId ?? (livePairs.length > 0 ? livePairs[0].id : null);
+  const activePairId = selectedPairId ?? search.id ?? (livePairs.length > 0 ? livePairs[0].id : null);
 
   const selectedPair = useMemo(() => {
     if (activePairId === null) return null;
@@ -167,7 +193,9 @@ export const ComparativeLexicon: React.FC = () => {
 
     let nextTarget: string;
 
-    if (newSource === targetLang) {
+    if (newSource === targetLang && search.id) {
+      nextTarget = sourceLang;
+    } else if (newSource === targetLang) {
       // Swapping: user picked the current target as the new source.
       // Swap the second option to the previous source if valid, otherwise first available target.
       if (targetsForNewSource.includes(sourceLang)) {
@@ -211,6 +239,7 @@ export const ComparativeLexicon: React.FC = () => {
   };
 
   const canSwap = useMemo(() => {
+    if (search.id) return true;
     if (!languagesData?.pairs) return true;
     return languagesData.pairs.some(
       (p) => p.source === targetLang && p.target === sourceLang,
@@ -245,7 +274,11 @@ export const ComparativeLexicon: React.FC = () => {
     setOffset(0);
   };
 
-  const selectableLanguages = availableLanguages.length > 0 ? availableLanguages : [sourceLang, targetLang];
+  const handlePosChange = (pos: string | undefined) => {
+    setSelectedPos(pos);
+    setOffset(0);
+  };
+
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-5 font-serif">
@@ -292,6 +325,8 @@ export const ComparativeLexicon: React.FC = () => {
             onCategoryChange={handleCategoryChange}
             selectedFfRelation={selectedFfRelation}
             onFfRelationChange={handleFfRelationChange}
+            selectedPos={selectedPos}
+            onPosChange={handlePosChange}
             onPageChange={setOffset}
             onLimitChange={(l) => {
               setLimit(l);
@@ -315,11 +350,18 @@ export const ComparativeLexicon: React.FC = () => {
             <MaterialSymbol icon="arrow_back" size={18} />
             Back to results
           </button>
-          <WordPairDetails
-            pair={selectedPair}
-            sourceLang={sourceLang}
-            targetLang={targetLang}
-          />
+          {search.id && pairsLoading && !selectedPair ? (
+            <div className="flex min-h-72 items-center justify-center gap-3 typo-note text-ink-muted" role="status" aria-live="polite">
+              <span className="h-5 w-5 rounded-full border-2 border-cognate-ink border-t-transparent animate-spin" aria-hidden="true" />
+              Loading word pair…
+            </div>
+          ) : (
+            <WordPairDetails
+              pair={selectedPair}
+              sourceLang={sourceLang}
+              targetLang={targetLang}
+            />
+          )}
         </div>
       </div>
     </div>

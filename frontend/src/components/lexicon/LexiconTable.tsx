@@ -6,6 +6,10 @@ import { MaterialSymbol } from '../common/MaterialSymbol';
 import { DeltaSymbol } from '../common/DeltaSymbol';
 import { TaxonomyBadge } from '../common/TaxonomyBadge';
 import { ErrorState } from '../common/ErrorState';
+import { getPosFullName, POS_FULL_NAMES } from '../../utils/formatters';
+
+// All POS values to show in the dropdown, in a useful display order.
+const POS_ORDER = ['noun', 'verb', 'adj', 'adv', 'name', 'prep', 'pron', 'num', 'conj', 'det', 'intj', 'article', 'particle', 'contraction', 'phrase', 'postp', 'punct'];
 
 interface LexiconTableProps {
   pairs: WordPair[];
@@ -20,6 +24,8 @@ interface LexiconTableProps {
   onCategoryChange: (cat: string | undefined) => void;
   selectedFfRelation: string | undefined;
   onFfRelationChange: (relation: string | undefined) => void;
+  selectedPos: string | undefined;
+  onPosChange: (pos: string | undefined) => void;
   onPageChange: (newOffset: number) => void;
   onLimitChange: (newLimit: number) => void;
   onSelectPair: (pair: WordPair) => void;
@@ -43,6 +49,8 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
   onCategoryChange,
   selectedFfRelation,
   onFfRelationChange,
+  selectedPos,
+  onPosChange,
   onPageChange,
   onLimitChange,
   onSelectPair,
@@ -123,7 +131,13 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
             <span className="typo-sublabel">Taxonomy:</span>
             <select
               value={selectedCategory ?? 'all'}
-              onChange={(e) => onCategoryChange(e.target.value === 'all' ? undefined : e.target.value)}
+              onChange={(e) => {
+                const cat = e.target.value === 'all' ? undefined : e.target.value;
+                onCategoryChange(cat);
+                if (cat !== 'false_friend') {
+                  onFfRelationChange(undefined);
+                }
+              }}
               className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
             >
               <option value="all">All Taxonomy</option>
@@ -160,6 +174,20 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
               </select>
             </div>
           )}
+
+          <div className="flex items-center gap-2">
+            <span className="typo-sublabel">Part of speech:</span>
+            <select
+              value={selectedPos ?? 'all'}
+              onChange={(e) => onPosChange(e.target.value === 'all' ? undefined : e.target.value)}
+              className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer"
+            >
+              <option value="all">All</option>
+              {POS_ORDER.filter((p) => p in POS_FULL_NAMES).map((p) => (
+                <option key={p} value={p}>{getPosFullName(p)}</option>
+              ))}
+            </select>
+          </div>
 
           <div className="flex items-center gap-2">
             <span className="typo-sublabel">Rows:</span>
@@ -228,8 +256,8 @@ export const LexiconTable: React.FC<LexiconTableProps> = ({
                     key={pair.id}
                     onClick={() => onSelectPair(pair)}
                     className={`cursor-pointer transition-colors ${isSelected
-                      ? 'bg-page-muted/90 border-l-2 border-l-ink-main font-medium'
-                      : 'hover:bg-page-muted/40'
+                      ? 'row-selected border-l-2 border-l-ink-main font-medium'
+                      : 'row-hover'
                       }`}
                   >
                     {/* Source Headword */}

@@ -29,6 +29,8 @@ export const lexiconSearchSchema = z.object({
   category: z.string().optional(),
   source: z.string().optional(),
   target: z.string().optional(),
+  id: z.coerce.number().int().positive().optional(),
+  q: z.string().optional(),
 });
 
 // Route definitions
