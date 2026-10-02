@@ -24,7 +24,7 @@ export const OddWordOut: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">{game.active.choices.map((member, index) => {
         const chosen = game.picked.includes(index);
         const correct = !member.belongs;
-        return <button key={`${member.lang}-${member.word}-${index}`} type="button" disabled={game.checked} aria-pressed={chosen} onClick={() => game.setPicked((current) => chosen ? current.filter((value) => value !== index) : [...current, index])} className={`border p-3 text-left transition-colors ${answerCardClass(chosen, correct, game.checked, 'border-ink-main bg-page-muted text-ink-main')}`}>
+        return <button key={`${member.lang}-${member.word}-${index}`} type="button" disabled={game.checked} aria-pressed={chosen} onClick={() => game.setPicked(chosen ? [] : [index])} className={`border p-3 text-left transition-colors ${answerCardClass(chosen, correct, game.checked, 'border-ink-main bg-page-muted text-ink-main')}`}>
           <span className="typo-body block">{member.word}</span><span className="typo-subscript text-ink-muted">{getLanguageName(member.lang)}</span>
           {game.checked && <div className="mt-2 flex flex-wrap items-center justify-between gap-2"><span className="typo-subscript">{member.belongs ? 'Shares the root' : 'Does not belong'}</span><AnswerFeedbackBadge selected={chosen} correct={correct} /></div>}
         </button>;

@@ -1,28 +1,31 @@
-import { useMemo, useState } from 'react';
-import { useClustersQuery, useLanguagesQuery } from '../../services/queries';
+import { useMemo, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchRandomClusters } from '../../services/apiClient';
+import { useLanguagesQuery } from '../../services/queries';
+import { QUERY_CONFIG } from '../../constants/config';
+import { shuffle } from '../../utils/shuffle';
 import type { CognateCluster, ClusterMember } from '../../types/linguistics';
 
 export const CLUSTER_ROUND_COUNT = 10;
 export type ClusterMode = 'odd' | 'family';
 export type ClusterChoice = ClusterMember & { belongs: boolean };
-export type ClusterQuestion = { family: CognateCluster; anchor: ClusterMember; choices: ClusterChoice[] };
-const shuffled = <T,>(items: T[]) => [...items].sort(() => Math.random() - 0.5);
-
-function makeQuestion(clusters: CognateCluster[], includedPos: string[], source: string, targets: string[]): ClusterQuestion | null {
+export type ClusterQuestion = { family: CognateCluster; anchor: ClusterMember; choices: ClusterChoice[]; clusterIds: number[] };
+function makeQuestion(clusters: CognateCluster[], includedPos: string[], source: string, targets: string[], excludedIds = new Set<number>()): ClusterQuestion | null {
   const valid = clusters
     .map((cluster) => ({ ...cluster, members: cluster.members.filter((member) => includedPos.includes(member.pos) && (member.lang === source || targets.includes(member.lang))) }))
     .filter((cluster) => cluster.members.some((member) => member.lang === source) && cluster.members.filter((member) => targets.includes(member.lang)).length >= 3);
-  if (valid.length < 2) return null;
-  const family = shuffled(valid)[0];
-  const distractor = shuffled(valid.filter((cluster) => cluster.id !== family.id))[0];
+  const available = valid.filter((cluster) => !excludedIds.has(cluster.id));
+  if (available.length < 2) return null;
+  const family = shuffle(available)[0];
+  const distractor = shuffle(available.filter((cluster) => cluster.id !== family.id))[0];
   if (!family || !distractor) return null;
-  const familyMembers = shuffled(family.members);
+  const familyMembers = shuffle(family.members);
   const anchorIndex = familyMembers.findIndex((member) => member.lang === source);
   const anchor = familyMembers.splice(anchorIndex, 1)[0];
-  const members = shuffled(familyMembers.filter((member) => targets.includes(member.lang))).slice(0, 3).map((member) => ({ ...member, belongs: true }));
-  const other = shuffled(distractor.members.filter((member) => targets.includes(member.lang)))[0];
+  const members = shuffle(familyMembers.filter((member) => targets.includes(member.lang))).slice(0, 3).map((member) => ({ ...member, belongs: true }));
+  const other = shuffle(distractor.members.filter((member) => targets.includes(member.lang)))[0];
   if (!anchor || !other) return null;
-  return { family, anchor, choices: shuffled([...members, { ...other, belongs: false }]) };
+  return { family, anchor, choices: shuffle([...members, { ...other, belongs: false }]), clusterIds: [family.id, distractor.id] };
 }
 
 export function useClusterRound(mode: ClusterMode) {
@@ -36,14 +39,20 @@ export function useClusterRound(mode: ClusterMode) {
   const selectedTargets = chosenTargets ?? availableTargets;
   const selectedTargetKey = selectedTargets.join(',');
   const [includedPos, setIncludedPos] = useState(['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det']);
-  const query = useClustersQuery({ min_langs: 2, lang: source || undefined, limit: 50 });
+  const [session, setSession] = useState(0);
+  const [sampleSeed, setSampleSeed] = useState(() => Math.random());
+  const query = useQuery({
+    queryKey: ['game-clusters', source, sampleSeed],
+    queryFn: () => fetchRandomClusters({ min_langs: 2, lang: source || undefined }),
+    staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
+  });
   const [round, setRound] = useState<ClusterQuestion | null>(null);
   const [picked, setPicked] = useState<number[]>([]);
   const [checked, setChecked] = useState(false);
   const [roundIndex, setRoundIndex] = useState(1);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [session, setSession] = useState(0);
+  const usedClusterIds = useRef(new Set<number>());
   const freshRound = useMemo(() => {
     const clusters = query.data?.items ?? [];
     const offset = session % Math.max(clusters.length, 1);
@@ -60,6 +69,8 @@ export function useClusterRound(mode: ClusterMode) {
     setRoundIndex(1);
     setScore(0);
     setFinished(false);
+    usedClusterIds.current.clear();
+    setSampleSeed(Math.random());
     setSession((value) => value + 1);
   };
   const changeSource = (value: string) => {
@@ -93,7 +104,14 @@ export function useClusterRound(mode: ClusterMode) {
       setFinished(true);
       return;
     }
-    setRound(makeQuestion(query.data?.items ?? [], includedPos, source, selectedTargets));
+    active?.clusterIds.forEach((id) => usedClusterIds.current.add(id));
+    let next = makeQuestion(query.data?.items ?? [], includedPos, source, selectedTargets, usedClusterIds.current);
+    if (!next) {
+      usedClusterIds.current.clear();
+      next = makeQuestion(query.data?.items ?? [], includedPos, source, selectedTargets);
+    }
+    next?.clusterIds.forEach((id) => usedClusterIds.current.add(id));
+    setRound(next);
     setPicked([]);
     setChecked(false);
     setRoundIndex((value) => value + 1);
