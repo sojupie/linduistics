@@ -27,17 +27,19 @@ func (h *PairsHandler) HandleGetPairs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	params := models.PairsQueryParams{
-		SourceLang:          source,
-		TargetLang:          target,
-		MinPhon:             ParseFloat(q.Get("min_phon"), 0.0),
-		MaxPhon:             ParseFloat(q.Get("max_phon"), 1.0),
-		MinSem:              ParseFloat(q.Get("min_sem"), 0.0),
-		MaxSem:              ParseFloat(q.Get("max_sem"), 1.0),
-		Category:            q.Get("category"),
+		ID:                   int64(ParseInt(q.Get("id"), 0)),
+		SourceLang:           source,
+		TargetLang:           target,
+		MinPhon:              ParseFloat(q.Get("min_phon"), 0.0),
+		MaxPhon:              ParseFloat(q.Get("max_phon"), 1.0),
+		MinSem:               ParseFloat(q.Get("min_sem"), 0.0),
+		MaxSem:               ParseFloat(q.Get("max_sem"), 1.0),
+		Category:             q.Get("category"),
 		EtymologicalRelation: q.Get("etymological_relation"),
-		Search:              q.Get("q"),
-		Limit:               ParseInt(q.Get("limit"), 50),
-		Offset:              ParseInt(q.Get("offset"), 0),
+		Search:               q.Get("q"),
+		Pos:                  q.Get("pos"),
+		Limit:                ParseInt(q.Get("limit"), 50),
+		Offset:               ParseInt(q.Get("offset"), 0),
 	}
 
 	items, total, err := h.repo.QueryPairs(r.Context(), params)

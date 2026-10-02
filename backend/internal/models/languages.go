@@ -14,7 +14,17 @@ type LanguagePairStats struct {
 	OtherRatio            float32 `json:"other_ratio"`
 }
 
+// PosCount is a single row from the POS distribution query.
+type PosCount struct {
+	Category string `json:"category,omitempty"`
+	Side     string `json:"side,omitempty"`
+	Pos      string `json:"pos"`
+	Count    int    `json:"count"`
+}
+
 type LanguagesResponse struct {
 	Languages []string            `json:"languages"`
 	Pairs     []LanguagePairStats `json:"pairs"`
+	PosCounts []PosCount          `json:"pos_counts"`
 }
+

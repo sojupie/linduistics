@@ -34,10 +34,11 @@ func (h *FalseFriendsHandler) HandleGetFalseFriends(w http.ResponseWriter, r *ht
 		target = "en"
 	}
 	relation := q.Get("relation")
+	posInclude := q.Get("pos_include")
 	limit := ParseInt(q.Get("limit"), 10)
 	mode := q.Get("mode")
 
-	pairs, err := h.repo.GetFalseFriends(r.Context(), source, target, relation, limit)
+	pairs, err := h.repo.GetFalseFriends(r.Context(), source, target, relation, posInclude, limit)
 	if err != nil {
 		WriteError(w, http.StatusInternalServerError, err.Error())
 		return

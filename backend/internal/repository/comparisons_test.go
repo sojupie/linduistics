@@ -44,8 +44,28 @@ func TestRepositoryQueries(t *testing.T) {
 		t.Fatal("expected items returned from QueryPairs")
 	}
 
+	// A selected ID should lead matching local results, including reversed language order.
+	selected, selectedTotal, err := repo.QueryPairs(context.Background(), models.PairsQueryParams{
+		ID:         items[0].ID,
+		SourceLang: items[0].LangB,
+		TargetLang: items[0].LangA,
+		MaxPhon:    1,
+		MaxSem:     1,
+		Search:     items[0].WordA,
+		Limit:      50,
+	})
+	if err != nil {
+		t.Fatalf("QueryPairs by ID failed: %v", err)
+	}
+	if selectedTotal == 0 || len(selected) == 0 || selected[0].ID != items[0].ID {
+		t.Fatalf("expected selected pair %d first, got total=%d items=%v", items[0].ID, selectedTotal, selected)
+	}
+	if selected[0].LangA != items[0].LangB || selected[0].LangB != items[0].LangA {
+		t.Fatalf("expected selected pair in requested language order, got %s→%s", selected[0].LangA, selected[0].LangB)
+	}
+
 	// Test 2: False friends
-	ff, err := repo.GetFalseFriends(context.Background(), "sv", "en", "", 5)
+	ff, err := repo.GetFalseFriends(context.Background(), "sv", "en", "", "", 5)
 	if err != nil {
 		t.Fatalf("GetFalseFriends failed: %v", err)
 	}
@@ -74,14 +94,14 @@ func TestRepositoryQueries(t *testing.T) {
 	}
 
 	// Test 5: Language Stats and In-Memory Caching
-	stats1, err := repo.GetLanguageStats(context.Background(), "")
+	stats1, err := repo.GetLanguageStats(context.Background(), "", "")
 	if err != nil {
 		t.Fatalf("GetLanguageStats failed: %v", err)
 	}
 	if len(stats1.Languages) == 0 || len(stats1.Pairs) == 0 {
 		t.Fatalf("expected non-empty stats from GetLanguageStats")
 	}
-	stats2, err := repo.GetLanguageStats(context.Background(), "")
+	stats2, err := repo.GetLanguageStats(context.Background(), "", "")
 	if err != nil {
 		t.Fatalf("GetLanguageStats cached failed: %v", err)
 	}
@@ -123,4 +143,3 @@ func TestRepositoryQueries(t *testing.T) {
 		}
 	}
 }
-

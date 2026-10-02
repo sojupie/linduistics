@@ -29,17 +29,19 @@ type WordComparison struct {
 }
 
 type PairsQueryParams struct {
-	SourceLang          string
-	TargetLang          string
-	MinPhon             float32
-	MaxPhon             float32
-	MinSem              float32
-	MaxSem              float32
-	Category            string
+	ID                   int64
+	SourceLang           string
+	TargetLang           string
+	MinPhon              float32
+	MaxPhon              float32
+	MinSem               float32
+	MaxSem               float32
+	Category             string
 	EtymologicalRelation string
-	Search              string
-	Limit               int
-	Offset              int
+	Search               string
+	Pos                  string
+	Limit                int
+	Offset               int
 }
 
 type PairsResult struct {

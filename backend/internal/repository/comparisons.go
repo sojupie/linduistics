@@ -50,7 +50,11 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		p.Offset = 0
 	}
 
-	whereClause := "WHERE lang_a = $1 AND lang_b = $2 AND phonetic_sim >= $3 AND semantic_sim >= $4 AND phonetic_sim <= $5 AND semantic_sim <= $6"
+	languageFilter := "lang_a = $1 AND lang_b = $2"
+	if p.ID > 0 {
+		languageFilter = "((lang_a = $1 AND lang_b = $2) OR (lang_a = $2 AND lang_b = $1))"
+	}
+	whereClause := "WHERE " + languageFilter + " AND phonetic_sim >= $3 AND semantic_sim >= $4 AND phonetic_sim <= $5 AND semantic_sim <= $6"
 	args := []any{p.SourceLang, p.TargetLang, p.MinPhon, p.MinSem, p.MaxPhon, p.MaxSem}
 
 	if p.Category != "" {
@@ -76,23 +80,33 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		args = append(args, p.EtymologicalRelation)
 		whereClause += fmt.Sprintf(" AND etymological_relation = $%d", len(args))
 	}
+	if p.Pos != "" {
+		args = append(args, p.Pos)
+		whereClause += fmt.Sprintf(" AND (pos_a = $%d OR pos_b = $%d)", len(args), len(args))
+	}
 	if p.Search != "" {
 		args = append(args, "%"+p.Search+"%")
 		whereClause += fmt.Sprintf(" AND (word_a ILIKE $%d OR word_b ILIKE $%d)", len(args), len(args))
+	}
+	queryArgs := append([]any(nil), args...)
+	orderBy := "phonetic_sim DESC, semantic_sim DESC"
+	if p.ID > 0 {
+		queryArgs = append(queryArgs, p.ID)
+		orderBy = fmt.Sprintf("(id = $%d) DESC, %s", len(queryArgs), orderBy)
 	}
 
 	dataQuery := fmt.Sprintf(`
 		SELECT id, lang_a, word_a, ipa_a, def_a, pos_a,
 		       lang_b, word_b, ipa_b, def_b, pos_b,
 		       orthographic_sim, phonetic_sim, semantic_sim, category,
-		       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
+	       etymological_relation, senses_a, senses_b, etym_root_a, etym_root_b, shared_etym_root, etym_text_a, etym_text_b
 		FROM word_comparisons
 		%s
-		ORDER BY phonetic_sim DESC, semantic_sim DESC
+		ORDER BY %s
 		LIMIT $%d OFFSET $%d
-	`, whereClause, len(args)+1, len(args)+2)
+	`, whereClause, orderBy, len(queryArgs)+1, len(queryArgs)+2)
 
-	queryArgs := append(args, p.Limit, p.Offset)
+	queryArgs = append(queryArgs, p.Limit, p.Offset)
 	rows, err := r.pool.Query(ctx, dataQuery, queryArgs...)
 	if err != nil {
 		return nil, 0, fmt.Errorf("query pairs error: %w", err)
@@ -111,12 +125,14 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 		if err != nil {
 			return nil, 0, fmt.Errorf("scan pair error: %w", err)
 		}
+		if p.ID > 0 && c.LangA != p.SourceLang && c.LangB == p.SourceLang {
+			c = flipComparison(c)
+		}
 		items = append(items, c)
 	}
 	if items == nil {
 		items = []models.WordComparison{}
 	}
-
 	if p.Offset == 0 && len(items) < p.Limit {
 		return items, len(items), nil
 	}
@@ -207,7 +223,7 @@ func (r *ComparisonsRepository) GetByTokens(ctx context.Context, sourceLang stri
 	return items, nil
 }
 
-func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang, relation string, limit int) ([]models.WordComparison, error) {
+func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang, targetLang, relation, posInclude string, limit int) ([]models.WordComparison, error) {
 	if limit <= 0 || limit > 100 {
 		limit = 20
 	}
@@ -216,6 +232,19 @@ func (r *ComparisonsRepository) GetFalseFriends(ctx context.Context, sourceLang,
 	if relation != "" && relation != "all" {
 		args = append(args, relation)
 		whereClause += fmt.Sprintf(" AND etymological_relation = $%d", len(args))
+	}
+	if posInclude != "" {
+		poses := strings.Split(posInclude, ",")
+		clean := make([]string, 0, len(poses))
+		for _, p := range poses {
+			if t := strings.TrimSpace(p); t != "" {
+				clean = append(clean, t)
+			}
+		}
+		if len(clean) > 0 {
+			args = append(args, clean)
+			whereClause += fmt.Sprintf(" AND pos_a = ANY($%d)", len(args))
+		}
 	}
 	args = append(args, limit)
 	query := fmt.Sprintf(`
@@ -332,29 +361,29 @@ func canonicalPairKey(langA, wordA, langB, wordB string) string {
 
 func flipComparison(c models.WordComparison) models.WordComparison {
 	return models.WordComparison{
-		ID:                  c.ID,
-		LangA:               c.LangB,
-		WordA:               c.WordB,
-		IpaA:                c.IpaB,
-		DefA:                c.DefB,
-		PosA:                c.PosB,
-		LangB:               c.LangA,
-		WordB:               c.WordA,
-		IpaB:                c.IpaA,
-		DefB:                c.DefA,
-		PosB:                c.PosA,
-		OrthographicSim:     c.OrthographicSim,
-		PhoneticSim:         c.PhoneticSim,
-		SemanticSim:         c.SemanticSim,
-		Category:            c.Category,
+		ID:                   c.ID,
+		LangA:                c.LangB,
+		WordA:                c.WordB,
+		IpaA:                 c.IpaB,
+		DefA:                 c.DefB,
+		PosA:                 c.PosB,
+		LangB:                c.LangA,
+		WordB:                c.WordA,
+		IpaB:                 c.IpaA,
+		DefB:                 c.DefA,
+		PosB:                 c.PosA,
+		OrthographicSim:      c.OrthographicSim,
+		PhoneticSim:          c.PhoneticSim,
+		SemanticSim:          c.SemanticSim,
+		Category:             c.Category,
 		EtymologicalRelation: c.EtymologicalRelation,
-		SensesA:             c.SensesB,
-		SensesB:             c.SensesA,
-		EtymRootA:           c.EtymRootB,
-		EtymRootB:           c.EtymRootA,
-		SharedEtymRoot:      c.SharedEtymRoot,
-		EtymTextA:           c.EtymTextB,
-		EtymTextB:           c.EtymTextA,
+		SensesA:              c.SensesB,
+		SensesB:              c.SensesA,
+		EtymRootA:            c.EtymRootB,
+		EtymRootB:            c.EtymRootA,
+		SharedEtymRoot:       c.SharedEtymRoot,
+		EtymTextA:            c.EtymTextB,
+		EtymTextB:            c.EtymTextA,
 	}
 }
 
@@ -523,8 +552,11 @@ func (r *ComparisonsRepository) GetTargetLanguages(ctx context.Context, sourceLa
 	return targets, nil
 }
 
-func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source string) (*models.LanguagesResponse, error) {
+func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source, target string) (*models.LanguagesResponse, error) {
 	cacheKey := normalizeLang(source)
+	if target != "" {
+		cacheKey = normalizeLang(source) + "->" + normalizeLang(target)
+	}
 
 	r.statsMu.RLock()
 	if cached, ok := r.statsCache[cacheKey]; ok {
@@ -535,7 +567,10 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 
 	whereClause := ""
 	var args []any
-	if source != "" {
+	if source != "" && target != "" {
+		whereClause = "WHERE lang_a = $1 AND lang_b = $2"
+		args = append(args, normalizeLang(source), normalizeLang(target))
+	} else if source != "" {
 		whereClause = "WHERE lang_a = $1"
 		args = append(args, normalizeLang(source))
 	}
@@ -620,9 +655,90 @@ func (r *ComparisonsRepository) GetLanguageStats(ctx context.Context, source str
 		Pairs:     pairs,
 	}
 
-	r.statsMu.Lock()
-	r.statsCache[cacheKey] = resp
-	r.statsMu.Unlock()
+	// Fetch POS distribution per taxonomy category (comparative across source & target when target is set)
+	var posQuery string
+	var posArgs []any
+
+	if source != "" && target != "" {
+		posArgs = []any{normalizeLang(source), normalizeLang(target)}
+		posQuery = `
+			SELECT 
+				'source' AS side,
+				CASE 
+					WHEN category IN ('true_cognate', 'full_cognate') THEN 'cognate'
+					WHEN category IN ('false_friend', 'cognate_false_friend', 'accidental_lookalike') THEN 'false_friend'
+					WHEN category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence') THEN 'semantic_shift'
+					WHEN category IN ('translation_pair', 'unrelated_equivalent', 'sister_loanword') THEN 'translation_pair'
+					ELSE 'other'
+				END AS macro_category,
+				pos_a AS pos,
+				count(*) AS cnt
+			FROM word_comparisons
+			WHERE lang_a = $1 AND lang_b = $2 AND pos_a IS NOT NULL AND pos_a != ''
+			GROUP BY 1, 2, 3
+
+			UNION ALL
+
+			SELECT 
+				'target' AS side,
+				CASE 
+					WHEN category IN ('true_cognate', 'full_cognate') THEN 'cognate'
+					WHEN category IN ('false_friend', 'cognate_false_friend', 'accidental_lookalike') THEN 'false_friend'
+					WHEN category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence') THEN 'semantic_shift'
+					WHEN category IN ('translation_pair', 'unrelated_equivalent', 'sister_loanword') THEN 'translation_pair'
+					ELSE 'other'
+				END AS macro_category,
+				pos_b AS pos,
+				count(*) AS cnt
+			FROM word_comparisons
+			WHERE lang_a = $1 AND lang_b = $2 AND pos_b IS NOT NULL AND pos_b != ''
+			GROUP BY 1, 2, 3
+			ORDER BY side, macro_category, cnt DESC;
+		`
+	} else {
+		posWhere := "WHERE pos_a IS NOT NULL AND pos_a != ''"
+		if source != "" {
+			posWhere = "WHERE lang_a = $1 AND pos_a IS NOT NULL AND pos_a != ''"
+			posArgs = []any{normalizeLang(source)}
+		}
+		posQuery = fmt.Sprintf(`
+			SELECT 
+				'source' AS side,
+				CASE 
+					WHEN category IN ('true_cognate', 'full_cognate') THEN 'cognate'
+					WHEN category IN ('false_friend', 'cognate_false_friend', 'accidental_lookalike') THEN 'false_friend'
+					WHEN category IN ('partial_cognate', 'semantic_narrowing', 'semantic_broadening', 'archaic_cognate', 'semantic_divergence') THEN 'semantic_shift'
+					WHEN category IN ('translation_pair', 'unrelated_equivalent', 'sister_loanword') THEN 'translation_pair'
+					ELSE 'other'
+				END AS macro_category,
+				pos_a AS pos,
+				count(*) AS cnt
+			FROM word_comparisons
+			%s
+			GROUP BY 1, 2, 3
+			ORDER BY macro_category, cnt DESC
+		`, posWhere)
+	}
+
+	posRows, posErr := r.pool.Query(ctx, posQuery, posArgs...)
+	if posErr == nil {
+		defer posRows.Close()
+		for posRows.Next() {
+			var pc models.PosCount
+			if scanErr := posRows.Scan(&pc.Side, &pc.Category, &pc.Pos, &pc.Count); scanErr == nil {
+				resp.PosCounts = append(resp.PosCounts, pc)
+			}
+		}
+	}
+	if resp.PosCounts == nil {
+		resp.PosCounts = []models.PosCount{}
+	}
+
+	if len(resp.Languages) > 0 && len(resp.Pairs) > 0 {
+		r.statsMu.Lock()
+		r.statsCache[cacheKey] = resp
+		r.statsMu.Unlock()
+	}
 
 	return resp, nil
 }

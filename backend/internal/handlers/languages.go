@@ -16,7 +16,8 @@ func NewLanguagesHandler(repo *repository.ComparisonsRepository) *LanguagesHandl
 
 func (h *LanguagesHandler) HandleGetLanguages(w http.ResponseWriter, r *http.Request) {
 	source := r.URL.Query().Get("source")
-	stats, err := h.repo.GetLanguageStats(r.Context(), source)
+	target := r.URL.Query().Get("target")
+	stats, err := h.repo.GetLanguageStats(r.Context(), source, target)
 	if err != nil {
 		WriteError(w, http.StatusInternalServerError, err.Error())
 		return
