@@ -80,7 +80,13 @@ export function useClusterRound(mode: ClusterMode) {
   };
   const checkAnswer = () => {
     setChecked(true);
-    if (correct) setScore((value) => value + 1);
+    if (mode === 'family') {
+      const points = active?.choices.reduce((total, member, index) => {
+        const chosen = picked.includes(index);
+        return total + (chosen === member.belongs ? chosen ? 1 : 0 : -1);
+      }, 0) ?? 0;
+      setScore((value) => value + points);
+    } else if (correct) setScore((value) => value + 1);
   };
   const nextRound = () => {
     if (roundIndex === CLUSTER_ROUND_COUNT) {

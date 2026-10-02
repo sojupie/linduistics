@@ -7,6 +7,7 @@ import { AnswerFeedbackBadge } from './AnswerFeedbackBadge';
 import { answerCardClass } from './answerCardClass';
 import { usePairGame } from './usePairGame';
 import { PairFilters } from './PairFilters';
+import { getLanguageName } from '../../data/languages';
 
 const GRID_SIZE = 16;
 
@@ -28,7 +29,7 @@ export const CognateGrid: React.FC = () => {
         const chosen = game.selected.includes(item.id);
         const selectedClass = 'border-ink-main bg-page-muted text-ink-main';
         return <button key={item.id} type="button" disabled={game.gridScore !== null} aria-pressed={chosen} onClick={() => game.setSelected((current) => chosen ? current.filter((id) => id !== item.id) : [...current, item.id])} className={`border p-3 text-left typo-body transition-colors ${answerCardClass(chosen, correct, game.gridScore !== null, selectedClass)}`}>
-          <span className="font-medium">{item.word_a}</span> <span className="text-ink-muted">→</span> <span>{item.word_b}</span>
+          <span><span className="typo-subscript block text-ink-muted">{getLanguageName(item.lang_a)}</span><span className="font-medium">{item.word_a}</span></span> <span className="text-ink-muted">→</span> <span><span className="typo-subscript block text-ink-muted">{getLanguageName(item.lang_b)}</span>{item.word_b}</span>
           {game.gridScore !== null && <div className="mt-2"><AnswerFeedbackBadge selected={chosen} correct={correct} /></div>}
         </button>;
       })}</div>

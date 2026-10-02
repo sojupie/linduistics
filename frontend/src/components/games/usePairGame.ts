@@ -34,8 +34,8 @@ export function usePairGame(limit: number) {
   const items = useMemo(() => {
     const pool = (pairsQuery.data ?? []).filter((item) => includedPos.includes(item.pos_a?.toLowerCase() ?? '') && (!isFalseFriend(item.category) || item.etymological_relation !== 'unknown'));
     const offset = (source.length + selectedTargetKey.length) % Math.max(pool.length, 1);
-    return shuffled([...pool.slice(offset), ...pool.slice(0, offset)]).slice(0, limit);
-  }, [includedPos, limit, pairsQuery.data, selectedTargetKey, source]);
+    return shuffled([...pool.slice(offset), ...pool.slice(0, offset)]);
+  }, [includedPos, pairsQuery.data, selectedTargetKey, source]);
   const [selected, setSelected] = useState<number[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [gridScore, setGridScore] = useState<number | null>(null);
@@ -44,9 +44,26 @@ export function usePairGame(limit: number) {
   const [finished, setFinished] = useState(false);
   const [session, setSession] = useState(0);
   const questionItems = useMemo(() => {
-    const offset = session % Math.max(items.length, 1);
-    return shuffled([...items.slice(offset), ...items.slice(0, offset)]);
-  }, [items, session]);
+    if (!items.length) return [];
+    const categories = ['true', 'related', 'lookalike'] as const;
+    const quotas = { true: Math.ceil(limit * 0.4), related: Math.floor(limit * 0.3), lookalike: Math.floor(limit * 0.3) };
+    const roundItems = new Map<number, typeof items[number]>();
+    for (const category of categories) {
+      const group = items.filter((item) => pairAnswer(item) === category);
+      const count = Math.min(quotas[category], group.length);
+      const offset = (session * quotas[category]) % Math.max(group.length, 1);
+      for (let index = 0; index < count; index++) {
+        const item = group[(offset + index) % group.length];
+        if (item) roundItems.set(item.id, item);
+      }
+    }
+    const offset = (session * limit) % items.length;
+    for (let index = 0; roundItems.size < Math.min(limit, items.length) && index < items.length; index++) {
+      const item = items[(offset + index) % items.length];
+      if (item) roundItems.set(item.id, item);
+    }
+    return shuffled(Array.from(roundItems.values()));
+  }, [items, limit, session]);
   const reset = () => {
     setSelected([]);
     setAnswers({});
