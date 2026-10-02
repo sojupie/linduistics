@@ -1,10 +1,30 @@
 import React from 'react';
-import { LanguageSelect } from '../common/LanguagePicker';
-import { getPosFullName, POS_FULL_NAMES } from '../../utils/formatters';
+import { InclusionPill } from '../common/InclusionPill';
+import { getLanguageName } from '../../data/languages';
+import { getPosFullName } from '../../utils/formatters';
 
-const POS_ORDER = ['noun', 'verb', 'adj', 'adv', 'name', 'prep', 'pron', 'num', 'conj', 'det', 'intj'];
+const POSITIONS = ['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det', 'name'];
 
-export const ClusterFilters: React.FC<{ language: string; languages: string[]; pos: string; onLanguageChange: (value: string) => void; onPosChange: (value: string) => void }> = ({ language, languages, pos, onLanguageChange, onPosChange }) => <div className="mb-4 flex flex-wrap items-center gap-4">
-  <LanguageSelect label="Language:" value={language} languages={languages} onChange={onLanguageChange} />
-  <label className="flex items-center gap-2"><span className="typo-sublabel">Part of speech:</span><select value={pos} onChange={(event) => onPosChange(event.target.value)} className="border-b border-book-rule bg-transparent py-0.5 typo-sublabel font-serif text-ink-main focus:border-ink-main focus:outline-none cursor-pointer">{POS_ORDER.filter((value) => value in POS_FULL_NAMES).map((value) => <option key={value} value={value}>{getPosFullName(value)}</option>)}</select></label>
+type ClusterFiltersProps = {
+  source: string;
+  sources: string[];
+  availableTargets: string[];
+  selectedTargets: string[];
+  includedPos: string[];
+  onSourceChange: (language: string) => void;
+  onToggleTarget: (language: string) => void;
+  onTogglePos: (pos: string) => void;
+};
+
+export const ClusterFilters: React.FC<ClusterFiltersProps> = ({ source, sources, availableTargets, selectedTargets, includedPos, onSourceChange, onToggleTarget, onTogglePos }) => <div className="mb-4 grid gap-2">
+  <PillRow label="Source language:" values={sources} selected={[source]} onToggle={onSourceChange} languageNames exclusive />
+  <PillRow label="Compare with:" values={availableTargets} selected={selectedTargets} onToggle={onToggleTarget} languageNames />
+  <PillRow label="Parts of speech:" values={POSITIONS} selected={includedPos} onToggle={onTogglePos} />
+</div>;
+
+const PillRow: React.FC<{ label: string; values: string[]; selected: string[]; onToggle: (value: string) => void; languageNames?: boolean; exclusive?: boolean }> = ({ label, values, selected, onToggle, languageNames = false, exclusive = false }) => <div className="flex flex-wrap items-start gap-2">
+  <span className="typo-sublabel text-ink-muted pt-1 shrink-0">{label}</span>
+  <div className="flex flex-wrap gap-1">{values.map((value) => <InclusionPill key={value} active={selected.includes(value)} size="md" onClick={() => onToggle(value)} title={`${exclusive ? 'Select' : selected.includes(value) ? 'Exclude' : 'Include'} ${languageNames ? getLanguageName(value) : getPosFullName(value)}`}>
+    {languageNames ? value.toUpperCase() : getPosFullName(value)}
+  </InclusionPill>)}</div>
 </div>;

@@ -13,11 +13,12 @@ export const OddWordOut: React.FC = () => {
   const game = useClusterRound('odd');
   if (game.isLoading) return <GamePage title="Find the Odd Word Out" description="Find words that share a recorded root."><LoadingIndicator /></GamePage>;
   if (game.isError) return <GamePage title="Find the Odd Word Out" description=""><ErrorState onRetry={game.retry} /></GamePage>;
-  if (!game.active) return <GamePage title="Find the Odd Word Out" description="Find words that share a recorded root."><ClusterFilters language={game.selectedLanguage} languages={game.availableLanguages} pos={game.pos} onLanguageChange={(value) => { game.setLanguage(value); game.reset(); }} onPosChange={(value) => { game.setPos(value); game.reset(); }} /><p className="typo-body text-ink-muted py-8">No cognate clusters are available for this language and part of speech.</p></GamePage>;
+  const filters = <ClusterFilters source={game.source} sources={game.sources} availableTargets={game.availableTargets} selectedTargets={game.selectedTargets} includedPos={game.includedPos} onSourceChange={game.changeSource} onToggleTarget={game.toggleTarget} onTogglePos={game.togglePos} />;
+  if (!game.active) return <GamePage title="Find the Odd Word Out" description="Find words that share a recorded root.">{filters}<p className="typo-body text-ink-muted py-8">No cognate clusters are available for these languages and parts of speech.</p></GamePage>;
   if (game.finished) return <GamePage title="Find the Odd Word Out" description="Your results for this round."><RoundSummary score={game.score} total={CLUSTER_ROUND_COUNT} onRestart={game.reset} /></GamePage>;
 
   return <GamePage title="Find the Odd Word Out" description="Three words share a recorded root. Select the word that does not belong.">
-    <ClusterFilters language={game.selectedLanguage} languages={game.availableLanguages} pos={game.pos} onLanguageChange={(value) => { game.setLanguage(value); game.reset(); }} onPosChange={(value) => { game.setPos(value); game.reset(); }} />
+    {filters}
     <RoundPanel round={`Round ${game.roundIndex} of ${CLUSTER_ROUND_COUNT}`} score={game.score} total={CLUSTER_ROUND_COUNT} progress={(game.roundIndex - (game.checked ? 0 : 1)) / CLUSTER_ROUND_COUNT * 100}>
       <p className="typo-section-header mb-3">Shared meaning: {game.active.family.sample_gloss ?? game.active.family.root}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">{game.active.choices.map((member, index) => {
