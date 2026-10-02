@@ -35,7 +35,7 @@ export const LanguagePairMatrix: React.FC<LanguagePairMatrixProps> = ({
             const isSelected = selectedTarget === code;
             const stateClass = isSelected ? 'bg-ink-light text-page-bg' : 'bg-page-surface text-ink-muted';
             return <th key={code} scope="col" className={`p-3 border-b border-book-rule text-center font-semibold ${stateClass}`}>
-              <button type="button" onClick={() => onChooseLanguage(code)} aria-pressed={isSelected} className={`w-full rounded-sm typo-sublabel font-semibold focus:outline focus:outline-2 focus:outline-ink-main cursor-pointer ${isSelected ? 'text-page-bg' : 'text-ink-muted hover:text-ink-main'}`}>
+              <button type="button" onClick={() => onChooseLanguage(code)} aria-pressed={isSelected} className={`w-full typo-sublabel font-semibold focus:outline focus:outline-2 focus:outline-ink-main cursor-pointer ${isSelected ? '!text-page-bg' : 'text-ink-muted hover:text-ink-main'}`}>
                 {languageName(code)}
               </button>
             </th>;
@@ -43,7 +43,7 @@ export const LanguagePairMatrix: React.FC<LanguagePairMatrixProps> = ({
         </thead>
         <tbody>{languages.map((source) => <tr key={source}>
           <th scope="row" className={`p-3 border-r border-b border-book-rule text-left typo-sublabel font-semibold ${source === reference ? 'bg-ink-muted text-page-bg' : 'bg-page-surface text-ink-muted'}`} style={{ position: 'sticky', left: 0, zIndex: 1 }}>
-            <button type="button" disabled={source === reference} onClick={() => onChooseLanguage(source)} aria-pressed={source === reference} className={`w-full text-left typo-sublabel font-semibold focus:outline focus:outline-2 focus:outline-ink-main disabled:cursor-default ${source === reference ? 'text-page-bg' : 'text-ink-muted hover:text-ink-main hover:underline'}`}>{languageName(source)}</button>
+            <button type="button" disabled={source === reference} onClick={() => onChooseLanguage(source)} aria-pressed={source === reference} className={`w-full text-left typo-sublabel font-semibold focus:outline focus:outline-2 focus:outline-ink-main disabled:cursor-default ${source === reference ? '!text-page-bg' : 'text-ink-muted hover:text-ink-main hover:underline'}`}>{languageName(source)}</button>
           </th>
           {languages.map((target) => {
             const pair = pairs.get(pairKey(source, target));

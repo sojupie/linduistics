@@ -26,7 +26,7 @@ export const LanguagePairBreakdown: React.FC<LanguagePairBreakdownProps> = ({ pa
           <Link
             to="/lexicon"
             search={lexiconSearch(pair.source, pair.target, measure)}
-            className="typo-sublabel text-cognate-ink underline decoration-1 hover:text-ink-main transition-colors inline-flex items-center gap-1"
+            className="self-start typo-sublabel text-cognate-ink border-b border-current pb-0.5 hover:text-ink-main transition-colors inline-flex items-center gap-1"
           >
             <span>Explore {sourceName}–{profile.name} word pairs</span>
             <MaterialSymbol icon="arrow_forward" size={14} />

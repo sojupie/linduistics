@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from '@tanstack/react-router';
 import { LanguagePairSelect } from '../common/LanguagePicker';
-import { LANGUAGE_MEASURES, type LanguageMeasure } from './languageComparison';
+import { MaterialSymbol } from '../common/MaterialSymbol';
+import { getLanguageName } from '../../data/languages';
+import { LANGUAGE_MEASURES, lexiconSearch, type LanguageMeasure, type LanguagePair } from './languageComparison';
 
 interface LanguageComparisonControlsProps {
   languages: string[];
   availableTargets: string[];
   reference: string;
   target: string;
+  explorePair: LanguagePair | null;
   measure: LanguageMeasure;
   canSwap: boolean;
   onSourceChange: (source: string) => void;
@@ -16,10 +20,11 @@ interface LanguageComparisonControlsProps {
 }
 
 export const LanguageComparisonControls: React.FC<LanguageComparisonControlsProps> = ({
-  languages, availableTargets, reference, target, measure, canSwap,
+  languages, availableTargets, reference, target, explorePair, measure, canSwap,
   onSourceChange, onTargetChange, onSwap, onMeasureChange,
 }) => {
   const [bottomOffset, setBottomOffset] = useState<number>(12);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const updateOffset = () => {
@@ -51,9 +56,7 @@ export const LanguageComparisonControls: React.FC<LanguageComparisonControlsProp
     };
   }, []);
 
-  return (
-    <div className="language-controls-layer" style={{ bottom: `${bottomOffset}px` }}>
-      <div className="language-controls-panel flex flex-wrap items-center gap-x-5 gap-y-2 border border-book-rule-strong bg-page-surface px-4 py-3 shadow-lg">
+  const controls = <>
         <LanguagePairSelect label="Pair:" sourceLang={reference} targetLang={target}
           availableSources={languages.filter((code) => code !== target)}
           availableTargets={availableTargets.filter((code) => code !== reference)}
@@ -63,6 +66,38 @@ export const LanguageComparisonControls: React.FC<LanguageComparisonControlsProp
             {Object.entries(LANGUAGE_MEASURES).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
           </select>
         </label>
+        {explorePair && (
+          <Link
+            to="/lexicon"
+            search={lexiconSearch(explorePair.source, explorePair.target, measure)}
+            className="inline-flex shrink-0 items-center gap-1 border-b border-current pb-0.5 typo-sublabel text-cognate-ink hover:text-ink-main transition-colors"
+          >
+            Explore {getLanguageName(explorePair.source)}–{getLanguageName(explorePair.target)} word pairs
+            <MaterialSymbol icon="arrow_forward" size={14} />
+          </Link>
+        )}
+  </>;
+
+  return (
+    <div className="language-controls-layer" style={{ bottom: `calc(${bottomOffset}px + env(safe-area-inset-bottom))` }}>
+      <div className="language-controls-panel hidden sm:flex flex-wrap items-center gap-x-5 gap-y-2 border border-book-rule-strong bg-page-surface px-4 py-3 shadow-lg">
+        {controls}
+      </div>
+      <div className="flex w-full flex-col items-end gap-2 sm:hidden">
+        {mobileOpen && (
+          <div className="language-controls-panel flex flex-wrap items-center gap-x-5 gap-y-2 border border-book-rule-strong bg-page-surface px-4 py-3 shadow-lg">
+            {controls}
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((open) => !open)}
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? 'Close language controls' : 'Open language controls'}
+          className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink-main text-page-surface shadow-lg hover:bg-ink-muted transition-colors"
+        >
+          <MaterialSymbol icon={mobileOpen ? 'close' : 'tune'} size={22} />
+        </button>
       </div>
     </div>
   );

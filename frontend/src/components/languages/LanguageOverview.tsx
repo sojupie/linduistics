@@ -7,6 +7,7 @@ import { LanguageOverviewTable } from './LanguageOverviewTable';
 import { LanguagePairBreakdown } from './LanguagePairBreakdown';
 import { LanguagePairMatrix } from './LanguagePairMatrix';
 import { LanguageRelationshipMap } from './LanguageRelationshipMap';
+import { PosTreemap } from './PosTreemap';
 import { ErrorState } from '../common/ErrorState';
 import {
   LANGUAGE_MAP,
@@ -36,19 +37,21 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
   const languages = data?.languages ?? [];
   const reference = chosenReference && languages.includes(chosenReference)
     ? chosenReference
-    : languages[0] ?? LANGUAGE_MAP.defaultReference;
+    : languages.includes('sv') ? 'sv' : languages[0] ?? LANGUAGE_MAP.defaultReference;
   const pairs = useMemo(() => new Map((data?.pairs ?? []).map((pair) => [pairKey(pair.source, pair.target), pair])), [data?.pairs]);
   const targetProfiles = useMemo<LanguageProfile[]>(() => (data?.pairs ?? [])
     .filter((pair) => pair.source === reference)
     .map(pairStatsToProfile), [data?.pairs, reference]);
   const activeSort = onSortChange ? sort : internalSort;
   const sortedTargets = useMemo(() => sortLanguageProfiles(targetProfiles, activeSort), [targetProfiles, activeSort]);
-  const defaultPair = targetProfiles[0] ? { source: reference, target: targetProfiles[0].code } : null;
+  const defaultTarget = targetProfiles.find((profile) => profile.code === 'da') ?? targetProfiles[0];
+  const defaultPair = defaultTarget ? { source: reference, target: defaultTarget.code } : null;
   const activePair = selectedPair === undefined ? defaultPair : selectedPair;
   const selectorPair = activePair ?? lastBreakdownPair ?? defaultPair;
   const selectorTarget = selectorPair?.source === reference ? selectorPair.target
     : selectorPair?.target === reference ? selectorPair.source
       : defaultPair?.target ?? '';
+  const { data: refData } = useLanguagesQuery(reference, selectorTarget || undefined);
   const canSwap = !!selectorTarget && pairs.has(pairKey(selectorTarget, reference));
   const activePairData = activePair ? pairs.get(pairKey(activePair.source, activePair.target)) : undefined;
   const breakdownPair = activePair ?? lastBreakdownPair;
@@ -136,7 +139,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
   }
 
   return (
-    <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-10 font-sans space-y-5">
+    <main className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-25 font-sans space-y-5">
       <header className="border-b border-book-rule pb-4 space-y-2">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -151,6 +154,7 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
         availableTargets={languages}
         reference={reference}
         target={selectorTarget}
+        explorePair={selectorPair ?? null}
         measure={measure}
         canSwap={canSwap}
         onSourceChange={choosePairSource}
@@ -197,6 +201,16 @@ export const LanguageOverview: React.FC<LanguageOverviewProps> = ({ sort = 'ease
           />
         </div>
       </div>
+
+      {(refData?.pos_counts?.length ?? 0) > 0 && (
+        <PosTreemap
+          posCounts={refData!.pos_counts}
+          sourceCode={reference}
+          targetCode={selectorTarget}
+          sourceName={getLanguageName(reference)}
+          targetName={getLanguageName(selectorTarget)}
+        />
+      )}
     </main>
   );
 };
