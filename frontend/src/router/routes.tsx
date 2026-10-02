@@ -21,8 +21,20 @@ const InspectorLazy = React.lazy(() =>
 const GamesLazy = React.lazy(() =>
   import('../routes/games.lazy').then((m) => ({ default: m.GamesRouteComponent })),
 );
-const GameLazy = React.lazy(() =>
-  import('../routes/games.lazy').then((m) => ({ default: m.GameRouteComponent })),
+const FalseFriendsGameLazy = React.lazy(() =>
+  import('../routes/games/false-friends.lazy').then((m) => ({ default: m.FalseFriendsRouteComponent })),
+);
+const CognateGridGameLazy = React.lazy(() =>
+  import('../routes/games/cognate-grid.lazy').then((m) => ({ default: m.CognateGridRouteComponent })),
+);
+const SortPairsGameLazy = React.lazy(() =>
+  import('../routes/games/sort-pairs.lazy').then((m) => ({ default: m.SortPairsRouteComponent })),
+);
+const OddWordOutGameLazy = React.lazy(() =>
+  import('../routes/games/odd-word-out.lazy').then((m) => ({ default: m.OddWordOutRouteComponent })),
+);
+const WordFamilyGameLazy = React.lazy(() =>
+  import('../routes/games/word-family.lazy').then((m) => ({ default: m.WordFamilyRouteComponent })),
 );
 export const languagesSearchSchema = z.object({
   sort: z.enum(['ease', 'minefield', 'phonetic', 'cognates', 'semantic_shifts', 'spelling', 'pairs', 'name']).optional(),
@@ -91,18 +103,31 @@ export const gamesRoute = createRoute({
   ),
 });
 
-const gameRoutes = [
-  ['false-friends', '/games/false-friends'],
-  ['cognate-grid', '/games/cognate-grid'],
-  ['sort-pairs', '/games/sort-pairs'],
-  ['odd-word-out', '/games/odd-word-out'],
-  ['word-family', '/games/word-family'],
-] as const;
-export const gameRoutesList = gameRoutes.map(([game, path]) => createRoute({
+export const falseFriendsGameRoute = createRoute({
   getParentRoute: () => RootRoute,
-  path,
-  component: () => <Suspense fallback={<LoadingIndicator />}><GameLazy game={game} /></Suspense>,
-}));
+  path: '/games/false-friends',
+  component: () => <Suspense fallback={<LoadingIndicator />}><FalseFriendsGameLazy /></Suspense>,
+});
+export const cognateGridGameRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/games/cognate-grid',
+  component: () => <Suspense fallback={<LoadingIndicator />}><CognateGridGameLazy /></Suspense>,
+});
+export const sortPairsGameRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/games/sort-pairs',
+  component: () => <Suspense fallback={<LoadingIndicator />}><SortPairsGameLazy /></Suspense>,
+});
+export const oddWordOutGameRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/games/odd-word-out',
+  component: () => <Suspense fallback={<LoadingIndicator />}><OddWordOutGameLazy /></Suspense>,
+});
+export const wordFamilyGameRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/games/word-family',
+  component: () => <Suspense fallback={<LoadingIndicator />}><WordFamilyGameLazy /></Suspense>,
+});
 
 export const inspectorRoute = createRoute({
   getParentRoute: () => RootRoute,
@@ -121,7 +146,11 @@ const routeTree = RootRoute.addChildren([
   lexiconRoute,
   quizRoute,
   gamesRoute,
-  ...gameRoutesList,
+  falseFriendsGameRoute,
+  cognateGridGameRoute,
+  sortPairsGameRoute,
+  oddWordOutGameRoute,
+  wordFamilyGameRoute,
   inspectorRoute,
 ]);
 
