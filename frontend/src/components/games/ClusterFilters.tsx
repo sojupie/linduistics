@@ -1,5 +1,6 @@
 import React from 'react';
 import { InclusionPill } from '../common/InclusionPill';
+import { LanguageSelect } from '../common/LanguagePicker';
 import { getLanguageName } from '../../data/languages';
 import { getPosFullName } from '../../utils/formatters';
 
@@ -17,7 +18,7 @@ type ClusterFiltersProps = {
 };
 
 export const ClusterFilters: React.FC<ClusterFiltersProps> = ({ source, sources, availableTargets, selectedTargets, includedPos, onSourceChange, onToggleTarget, onTogglePos }) => <div className="mb-4 grid gap-2">
-  <PillRow label="Source language:" values={sources} selected={[source]} onToggle={onSourceChange} languageNames exclusive />
+  <LanguageSelect label="Source language:" value={source} languages={sources} onChange={onSourceChange} />
   <PillRow label="Compare with:" values={availableTargets} selected={selectedTargets} onToggle={onToggleTarget} languageNames />
   <PillRow label="Parts of speech:" values={POSITIONS} selected={includedPos} onToggle={onTogglePos} />
 </div>;

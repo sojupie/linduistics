@@ -34,6 +34,7 @@ export function useClusterRound(mode: ClusterMode) {
   const availableTargets = Array.from(new Set(languageData?.pairs.filter((pair) => pair.source === source).map((pair) => pair.target) ?? []));
   const [chosenTargets, setChosenTargets] = useState<string[] | null>(null);
   const selectedTargets = chosenTargets ?? availableTargets;
+  const selectedTargetKey = selectedTargets.join(',');
   const [includedPos, setIncludedPos] = useState(['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det']);
   const query = useClustersQuery({ min_langs: 2, lang: source || undefined, limit: 50 });
   const [round, setRound] = useState<ClusterQuestion | null>(null);
@@ -46,8 +47,8 @@ export function useClusterRound(mode: ClusterMode) {
   const freshRound = useMemo(() => {
     const clusters = query.data?.items ?? [];
     const offset = session % Math.max(clusters.length, 1);
-    return makeQuestion([...clusters.slice(offset), ...clusters.slice(0, offset)], includedPos, source, selectedTargets);
-  }, [includedPos, query.data, selectedTargets, session, source]);
+    return makeQuestion([...clusters.slice(offset), ...clusters.slice(0, offset)], includedPos, source, selectedTargetKey ? selectedTargetKey.split(',') : []);
+  }, [includedPos, query.data, selectedTargetKey, session, source]);
   const active = round ?? freshRound;
   const expected = active?.choices.map((member, index) => member.belongs === (mode === 'family') ? index : -1).filter((index) => index >= 0) ?? [];
   const correct = picked.length === expected.length && expected.every((index) => picked.includes(index));

@@ -23,6 +23,7 @@ export function usePairGame(limit: number) {
   const availableTargets = Array.from(new Set(pairs.filter((pair) => pair.source === source).map((pair) => pair.target)));
   const [chosenTargets, setChosenTargets] = useState<string[] | null>(null);
   const selectedTargets = (chosenTargets ?? [availableTargets.includes('da') ? 'da' : availableTargets[0]]).filter((target): target is string => Boolean(target && availableTargets.includes(target)));
+  const selectedTargetKey = selectedTargets.join(',');
   const [includedPos, setIncludedPos] = useState<string[]>(POSITIONS.filter((pos) => pos !== 'name'));
   const pairsQuery = useQuery({
     queryKey: ['game-pairs', source, selectedTargets],
@@ -32,9 +33,9 @@ export function usePairGame(limit: number) {
   });
   const items = useMemo(() => {
     const pool = (pairsQuery.data ?? []).filter((item) => includedPos.includes(item.pos_a?.toLowerCase() ?? '') && (!isFalseFriend(item.category) || item.etymological_relation !== 'unknown'));
-    const offset = (source.length + selectedTargets.join('').length) % Math.max(pool.length, 1);
+    const offset = (source.length + selectedTargetKey.length) % Math.max(pool.length, 1);
     return shuffled([...pool.slice(offset), ...pool.slice(0, offset)]).slice(0, limit);
-  }, [includedPos, limit, pairsQuery.data, selectedTargets, source]);
+  }, [includedPos, limit, pairsQuery.data, selectedTargetKey, source]);
   const [selected, setSelected] = useState<number[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [gridScore, setGridScore] = useState<number | null>(null);

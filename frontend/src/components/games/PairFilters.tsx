@@ -1,5 +1,6 @@
 import React from 'react';
 import { InclusionPill } from '../common/InclusionPill';
+import { LanguageSelect } from '../common/LanguagePicker';
 import { getLanguageName } from '../../data/languages';
 import { getPosFullName } from '../../utils/formatters';
 
@@ -17,7 +18,7 @@ type PairFiltersProps = {
 };
 
 export const PairFilters: React.FC<PairFiltersProps> = ({ source, sourceLanguages, availableTargets, selectedTargets, includedPos, onSourceChange, onToggleTarget, onTogglePos }) => <div className="mb-4 grid gap-2">
-  <FilterPills label="Source language:" values={sourceLanguages} selected={[source]} onToggle={onSourceChange} languageNames exclusive />
+  <LanguageSelect label="Source language:" value={source} languages={sourceLanguages} onChange={onSourceChange} />
   <FilterPills label="Compare with:" values={availableTargets} selected={selectedTargets} onToggle={onToggleTarget} languageNames />
   <FilterPills label="Parts of speech (source):" values={POSITIONS} selected={includedPos} onToggle={onTogglePos} />
 </div>;
