@@ -10,6 +10,7 @@ import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+from languages import LANGUAGES
 from typing import Any
 from urllib.parse import quote
 
@@ -667,7 +668,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Export all structured etymology evidence from local Kaikki dumps.")
     parser.add_argument("--input-dir", type=Path, default=project_root / "pipeline" / "data")
     parser.add_argument("--output", type=Path, default=project_root / "pipeline" / "data" / "etymology_records.jsonl")
-    parser.add_argument("--languages", nargs="+", default=["sv", "da", "nb", "de", "en"])
+    parser.add_argument("--languages", nargs="+", default=[lang for lang in ("sv", "da", "nb", "de", "en") if lang in LANGUAGES])
     parser.add_argument("--force", action="store_true", help="Replace an existing output and manifest.")
     args = parser.parse_args()
     summary = export_records(args.input_dir, args.languages, args.output, args.force)

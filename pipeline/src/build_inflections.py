@@ -5,6 +5,7 @@ import os
 import sys
 import time
 from pathlib import Path
+from languages import LANGUAGES
 from collections import defaultdict
 import orjson
 import psycopg
@@ -26,7 +27,7 @@ def main():
 
     data_dir = root / "pipeline" / "data"
 
-    languages = ["sv", "de", "en", "da", "nb"]
+    languages = [lang for lang in ("sv", "de", "en", "da", "nb") if lang in LANGUAGES]
 
     print("Connecting to database...")
     with psycopg.connect(db_url) as conn:

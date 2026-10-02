@@ -59,12 +59,13 @@ COLUMNS = [
 
 
 def stream_parquet_rows(
-    parquet_path: Path, batch_size: int = 25000
+    parquet_path: Path, batch_size: int = 25000, columns: list[str] | None = None
 ) -> Iterator[tuple]:
     """Stream rows from Parquet file in batches as tuples."""
     pf = pq.ParquetFile(parquet_path)
-    for batch in pf.iter_batches(batch_size=batch_size, columns=COLUMNS):
-        col_data = [batch.column(col).to_pylist() for col in COLUMNS]
+    columns = columns or COLUMNS
+    for batch in pf.iter_batches(batch_size=batch_size, columns=columns):
+        col_data = [batch.column(col).to_pylist() for col in columns]
         for row in zip(*col_data):
             yield row
 
@@ -87,7 +88,8 @@ def seed_database(
                 print("Truncating word_comparisons table...")
                 cur.execute("TRUNCATE TABLE word_comparisons RESTART IDENTITY;")
 
-            cols_str = ", ".join(COLUMNS)
+            columns = COLUMNS + (['is_core'] if 'is_core' in pq.ParquetFile(parquet_path).schema.names else [])
+            cols_str = ", ".join(columns)
             copy_sql = f"COPY word_comparisons ({cols_str}) FROM STDIN"
 
             print(f"Reading from: {parquet_path}")
@@ -95,7 +97,7 @@ def seed_database(
 
             total_rows = 0
             with cur.copy(copy_sql) as copy:
-                for row in stream_parquet_rows(parquet_path, batch_size=batch_size):
+                for row in stream_parquet_rows(parquet_path, batch_size=batch_size, columns=columns):
                     copy.write_row(row)
                     total_rows += 1
                     if total_rows % 50000 == 0:

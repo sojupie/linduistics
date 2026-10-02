@@ -15,7 +15,8 @@ from typing import Dict, List, Set, Tuple
 import orjson
 import pyarrow.parquet as pq
 
-TARGET_LANGS = {"en", "de", "sv", "da", "nb"}
+from languages import LANGUAGES
+TARGET_LANGS = set(LANGUAGES)
 # Aliases in Wiktionary
 LANG_ALIASES = {
     "no": "nb",

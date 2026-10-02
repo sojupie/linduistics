@@ -34,7 +34,8 @@ from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
 
-TARGET_LANGS = ["en", "de", "sv", "da", "nb"]
+from languages import LANGUAGES
+TARGET_LANGS = list(LANGUAGES)
 LANG_ALIASES = {
     "no": "nb",
     "norwegian": "nb",
@@ -652,7 +653,9 @@ def main() -> None:
         default=data_dir / "all_comparisons.parquet",
         help="Output comparison Parquet path.",
     )
+    parser.add_argument('--english-dump', type=Path, default=en_dump)
     args = parser.parse_args()
+    en_dump = args.english_dump
     out_parquet = args.output
 
     print("Loading canonical lexicons...")
@@ -671,35 +674,6 @@ def main() -> None:
         for j in range(i + 1, len(sorted_langs)):
             unique_pairs.append((sorted_langs[i], sorted_langs[j]))
 
-    all_rows: List[dict] = []
-    category_counts: Dict[str, int] = defaultdict(int)
-    etymological_relations: Dict[str, int] = defaultdict(int)
-
-    for l_a, l_b in unique_pairs:
-        pair_key = (l_a, l_b)
-        mined = mined_by_pair.get(pair_key, set())
-        print(f"\nProcessing pair [{l_a} <-> {l_b}] ({len(mined):,} mined translation links)...")
-        pair_records = build_pair_dataset(
-            l_a, l_b, mined, lexicons, matcher,
-            translation_senses_by_pair.get(pair_key, {}),
-        )
-        all_rows.extend(pair_records)
-        for r in pair_records:
-            category_counts[r["category"]] += 1
-            etymological_relations[r["etymological_relation"]] += 1
-        print(f"  Generated {len(pair_records):,} symmetrical rows for [{l_a} <-> {l_b}].")
-
-    print(f"\nTotal comparison rows generated: {len(all_rows):,}")
-    print("Taxonomy distribution:")
-    for cat, cnt in sorted(category_counts.items(), key=lambda x: -x[1]):
-        print(f"  {cat:20}: {cnt:,} ({cnt / len(all_rows) * 100:.1f}%)")
-
-    print("Etymological relations:")
-    for relation, cnt in sorted(etymological_relations.items(), key=lambda x: -x[1]):
-        print(f"  {relation:25}: {cnt:,}")
-
-    # Serialize to Parquet
-    print(f"\nWriting to {out_parquet}...")
     schema = pa.schema([
         ("lang_a", pa.string()),
         ("word_a", pa.string()),
@@ -725,12 +699,45 @@ def main() -> None:
         ("etym_text_b", pa.string()),
         ("translation_source_senses", pa.string()),
     ])
+    out_parquet.parent.mkdir(parents=True, exist_ok=True)
+    temp_output = out_parquet.with_suffix(out_parquet.suffix + ".tmp")
+    total_rows = 0
+    category_counts: Dict[str, int] = defaultdict(int)
+    etymological_relations: Dict[str, int] = defaultdict(int)
 
-    cols = {name: [r[name] for r in all_rows] for name in schema.names}
-    arrays = [pa.array(cols[name], type=schema.field(name).type) for name in schema.names]
-    table = pa.Table.from_arrays(arrays, schema=schema)
-    pq.write_table(table, out_parquet, compression="zstd")
-    print(f"Successfully saved {table.num_rows:,} rows to {out_parquet}.")
+    try:
+        with pq.ParquetWriter(temp_output, schema, compression="zstd") as writer:
+            for l_a, l_b in unique_pairs:
+                pair_key = (l_a, l_b)
+                mined = mined_by_pair.get(pair_key, set())
+                print(f"\nProcessing pair [{l_a} <-> {l_b}] ({len(mined):,} mined translation links)...")
+                pair_records = build_pair_dataset(
+                    l_a, l_b, mined, lexicons, matcher,
+                    translation_senses_by_pair.get(pair_key, {}),
+                )
+                writer.write_table(pa.Table.from_pylist(pair_records, schema=schema))
+                total_rows += len(pair_records)
+                for r in pair_records:
+                    category_counts[r["category"]] += 1
+                    etymological_relations[r["etymological_relation"]] += 1
+                print(f"  Generated {len(pair_records):,} symmetrical rows for [{l_a} <-> {l_b}].")
+        
+                del pair_records
+        temp_output.replace(out_parquet)
+    except Exception:
+        temp_output.unlink(missing_ok=True)
+        raise
+
+    print(f"\nTotal comparison rows generated: {total_rows:,}")
+    print("Taxonomy distribution:")
+    for cat, cnt in sorted(category_counts.items(), key=lambda x: -x[1]):
+        print(f"  {cat:20}: {cnt:,} ({cnt / total_rows * 100:.1f}%)")
+
+    print("Etymological relations:")
+    for relation, cnt in sorted(etymological_relations.items(), key=lambda x: -x[1]):
+        print(f"  {relation:25}: {cnt:,}")
+
+    print(f"Successfully saved {total_rows:,} rows to {out_parquet}.")
 
 
 if __name__ == "__main__":

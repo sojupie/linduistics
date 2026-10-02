@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
+from languages import LANGUAGES
 import logging
 import sys
 from collections import defaultdict
@@ -15,7 +17,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 
-def build_clusters() -> Dict[str, dict]:
+def build_clusters(lemma_dir: Path = Path("pipeline/data"), comparisons: Path | None = None) -> Dict[str, dict]:
     """Aggregates cross-linguistic cognate cliques under ancestral Proto-Germanic roots."""
     clusters: Dict[str, dict] = defaultdict(
         lambda: {"proto": "", "members": [], "langs": set(), "sample_gloss": ""}
@@ -28,11 +30,11 @@ def build_clusters() -> Dict[str, dict]:
         "Proto-Indo-European",
     ]
 
-    languages = ["en", "de", "sv", "da", "nb"]
+    languages = LANGUAGES
 
     # Step 1: Read all 5 lemma tables
     for lang in languages:
-        parquet_path = f"pipeline/data/lemmas_{lang}.parquet"
+        parquet_path = lemma_dir / f"lemmas_{lang}.parquet"
         logger.info(f"Reading lemmas for {lang} from {parquet_path}...")
         tbl = pq.read_table(parquet_path)
         words = tbl.column("word").to_pylist()
@@ -71,16 +73,25 @@ def build_clusters() -> Dict[str, dict]:
                     c["sample_gloss"] = primary_gloss
 
     # Step 2: Cross-reference word_comparisons
-    logger.info("Cross-referencing verified word_comparisons in PostgreSQL...")
-    conn = psycopg.connect("postgresql://postgres:postgres@localhost:5432/linduistics")
-    cur = conn.cursor()
-    cur.execute("""
-        SELECT DISTINCT shared_etym_root, lang_a, word_a, ipa_a, pos_a, def_a, lang_b, word_b, ipa_b, pos_b, def_b
-        FROM word_comparisons
-        WHERE shared_etym_root IS NOT NULL AND category IN ('true_cognate', 'partial_cognate');
-    """)
+    columns = ['shared_etym_root', 'lang_a', 'word_a', 'ipa_a', 'pos_a', 'def_a',
+               'lang_b', 'word_b', 'ipa_b', 'pos_b', 'def_b']
+    if comparisons is None:
+        conn = psycopg.connect("postgresql://postgres:postgres@localhost:5432/linduistics")
+        with conn.cursor() as cur:
+            cur.execute("SELECT DISTINCT " + ','.join(columns) + " FROM word_comparisons WHERE shared_etym_root IS NOT NULL AND category IN ('true_cognate','partial_cognate')")
+            comparison_rows = cur.fetchall()
+        conn.close()
+    else:
+        comparison_rows = []
+        seen = set()
+        for batch in pq.ParquetFile(comparisons).iter_batches(columns=columns + ['category']):
+            for row in batch.to_pylist():
+                record = tuple(row[name] for name in columns)
+                if row['shared_etym_root'] and row['category'] in ('true_cognate', 'partial_cognate') and record not in seen:
+                    seen.add(record)
+                    comparison_rows.append(record)
 
-    for r, la, wa, ipaa, posa, defa, lb, wb, ipab, posb, defb in cur.fetchall():
+    for r, la, wa, ipaa, posa, defa, lb, wb, ipab, posb, defb in comparison_rows:
         if not r:
             continue
         r_clean = r.strip()
@@ -120,7 +131,6 @@ def build_clusters() -> Dict[str, dict]:
             if not c["sample_gloss"] and defb:
                 c["sample_gloss"] = defb
 
-    conn.close()
     return clusters
 
 

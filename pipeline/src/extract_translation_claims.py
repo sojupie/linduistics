@@ -14,7 +14,8 @@ import orjson
 
 from extract_etymology_records import source_entry_key
 
-TARGET_LANGS = {"en", "de", "sv", "da", "nb"}
+from languages import LANGUAGES
+TARGET_LANGS = set(LANGUAGES)
 SOURCE_LANGS = ("da", "de", "en", "nb", "sv")
 LANG_ALIASES = {
     "no": "nb",
