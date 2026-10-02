@@ -12,9 +12,6 @@ import type {
 } from '../types/linguistics';
 import { QUERY_CONFIG } from '../constants/config';
 
-const MAX_PAIR_PAGE_SIZE = 200;
-const MAX_CLUSTER_PAGE_SIZE = 100;
-
 export class ApiError extends Error {
   readonly statusCode: number;
 
@@ -66,17 +63,10 @@ export async function fetchPairs(params: PairsQueryParams = {}): Promise<PairsRe
   if (params.pos) query.set('pos', params.pos);
   if (params.limit !== undefined) query.set('limit', params.limit.toString());
   if (params.offset !== undefined) query.set('offset', params.offset.toString());
+  if (params.seed !== undefined) query.set('seed', params.seed.toString());
 
   const qs = query.toString();
   return apiClient<PairsResultDto>(qs ? `/api/pairs?${qs}` : '/api/pairs');
-}
-
-export async function fetchRandomPairs(params: PairsQueryParams = {}): Promise<PairsResultDto> {
-  const { total } = await fetchPairs({ ...params, limit: 1 });
-  if (!total) return { items: [], total: 0, limit: 0, offset: 0 };
-  const limit = Math.min(total, MAX_PAIR_PAGE_SIZE);
-  const offset = Math.floor(Math.random() * (total - limit + 1));
-  return fetchPairs({ ...params, limit, offset });
 }
 
 export async function inspectText(payload: {
@@ -137,17 +127,10 @@ export async function fetchClusters(params: ClustersQueryParams = {}): Promise<C
   if (params.q) query.set('q', params.q);
   if (params.limit !== undefined) query.set('limit', params.limit.toString());
   if (params.offset !== undefined) query.set('offset', params.offset.toString());
+  if (params.seed !== undefined) query.set('seed', params.seed.toString());
 
   const qs = query.toString();
   return apiClient<ClustersResultDto>(qs ? `/api/clusters?${qs}` : '/api/clusters');
-}
-
-export async function fetchRandomClusters(params: ClustersQueryParams = {}): Promise<ClustersResultDto> {
-  const { total } = await fetchClusters({ ...params, limit: 1 });
-  if (!total) return { items: [], total: 0, limit: 0, offset: 0 };
-  const limit = Math.min(total, MAX_CLUSTER_PAGE_SIZE);
-  const offset = Math.floor(Math.random() * (total - limit + 1));
-  return fetchClusters({ ...params, limit, offset });
 }
 
 export async function fetchClusterByRoot(root: string): Promise<CognateCluster | null> {

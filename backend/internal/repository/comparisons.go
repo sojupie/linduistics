@@ -90,9 +90,20 @@ func (r *ComparisonsRepository) QueryPairs(ctx context.Context, p models.PairsQu
 	}
 	queryArgs := append([]any(nil), args...)
 	orderBy := "phonetic_sim DESC, semantic_sim DESC"
+	idArg := 0
 	if p.ID > 0 {
 		queryArgs = append(queryArgs, p.ID)
-		orderBy = fmt.Sprintf("(id = $%d) DESC, %s", len(queryArgs), orderBy)
+		idArg = len(queryArgs)
+		orderBy = fmt.Sprintf("(id = $%d) DESC, %s", idArg, orderBy)
+	}
+	if p.Seed != 0 {
+		queryArgs = append(queryArgs, p.Seed)
+		seededOrder := fmt.Sprintf("md5(id::text || ':' || $%d::bigint::text), id ASC", len(queryArgs))
+		if idArg > 0 {
+			orderBy = fmt.Sprintf("(id = $%d) DESC, %s", idArg, seededOrder)
+		} else {
+			orderBy = seededOrder
+		}
 	}
 
 	dataQuery := fmt.Sprintf(`

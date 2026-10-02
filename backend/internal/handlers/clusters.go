@@ -27,6 +27,7 @@ func (h *ClustersHandler) HandleGetClusters(w http.ResponseWriter, r *http.Reque
 		Search:        q.Get("q"),
 		Limit:         ParseInt(q.Get("limit"), 25),
 		Offset:        ParseInt(q.Get("offset"), 0),
+		Seed:          int64(ParseInt(q.Get("seed"), 0)),
 	}
 
 	items, total, err := h.repo.QueryClusters(r.Context(), params)

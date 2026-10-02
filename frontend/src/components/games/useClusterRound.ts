@@ -1,9 +1,9 @@
 import { useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchRandomClusters } from '../../services/apiClient';
+import { fetchClusters } from '../../services/apiClient';
 import { useLanguagesQuery } from '../../services/queries';
 import { QUERY_CONFIG } from '../../constants/config';
-import { shuffle } from '../../utils/shuffle';
+import { createRandomSeed, shuffle } from '../../utils/shuffle';
 import type { CognateCluster, ClusterMember } from '../../types/linguistics';
 
 export const CLUSTER_ROUND_COUNT = 10;
@@ -40,10 +40,10 @@ export function useClusterRound(mode: ClusterMode) {
   const selectedTargetKey = selectedTargets.join(',');
   const [includedPos, setIncludedPos] = useState(['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det']);
   const [session, setSession] = useState(0);
-  const [sampleSeed, setSampleSeed] = useState(() => Math.random());
+  const [sampleSeed, setSampleSeed] = useState(createRandomSeed);
   const query = useQuery({
     queryKey: ['game-clusters', source, sampleSeed],
-    queryFn: () => fetchRandomClusters({ min_langs: 2, lang: source || undefined }),
+    queryFn: () => fetchClusters({ min_langs: 2, lang: source || undefined, limit: 100, seed: sampleSeed }),
     staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
   const [round, setRound] = useState<ClusterQuestion | null>(null);
@@ -70,7 +70,7 @@ export function useClusterRound(mode: ClusterMode) {
     setScore(0);
     setFinished(false);
     usedClusterIds.current.clear();
-    setSampleSeed(Math.random());
+    setSampleSeed(createRandomSeed());
     setSession((value) => value + 1);
   };
   const changeSource = (value: string) => {

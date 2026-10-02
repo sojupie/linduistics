@@ -42,6 +42,7 @@ type PairsQueryParams struct {
 	Pos                  string
 	Limit                int
 	Offset               int
+	Seed                 int64
 }
 
 type PairsResult struct {

@@ -28,6 +28,7 @@ type ClustersQueryParams struct {
 	Search        string
 	Limit         int
 	Offset        int
+	Seed          int64
 }
 
 type ClustersResult struct {

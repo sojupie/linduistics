@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
-import { fetchRandomPairs } from '../../services/apiClient';
+import { fetchPairs } from '../../services/apiClient';
 import { useLanguagesQuery } from '../../services/queries';
 import { QUERY_CONFIG } from '../../constants/config';
-import { shuffle } from '../../utils/shuffle';
+import { createRandomSeed, shuffle } from '../../utils/shuffle';
 
 const POSITIONS = ['noun', 'verb', 'adj', 'adv', 'prep', 'pron', 'intj', 'num', 'conj', 'det', 'name'];
 const isTrueCognate = (category: string) => ['true_cognate', 'full_cognate'].includes(category);
@@ -25,10 +25,10 @@ export function usePairGame(limit: number) {
   const selectedTargets = (chosenTargets ?? [availableTargets.includes('da') ? 'da' : availableTargets[0]]).filter((target): target is string => Boolean(target && availableTargets.includes(target)));
   const selectedTargetKey = selectedTargets.join(',');
   const [includedPos, setIncludedPos] = useState<string[]>(POSITIONS.filter((pos) => pos !== 'name'));
-  const [sampleSeed, setSampleSeed] = useState(() => Math.random());
+  const [sampleSeed, setSampleSeed] = useState(createRandomSeed);
   const pairsQuery = useQuery({
     queryKey: ['game-pairs', source, selectedTargets, sampleSeed],
-    queryFn: async () => (await Promise.all(selectedTargets.flatMap((target) => ['true_cognate', 'false_friend'].map((category) => fetchRandomPairs({ source, target, category }))))).flatMap((result) => result.items),
+    queryFn: async () => (await Promise.all(selectedTargets.flatMap((target) => ['true_cognate', 'false_friend'].map((category) => fetchPairs({ source, target, category, limit: 200, seed: sampleSeed }))))).flatMap((result) => result.items),
     enabled: selectedTargets.length > 0,
     staleTime: QUERY_CONFIG.PAIRS_STALE_TIME_MS,
   });
@@ -72,7 +72,7 @@ export function usePairGame(limit: number) {
     setGridTotal(0);
     setGridTarget('true');
     setFinished(false);
-    setSampleSeed(Math.random());
+    setSampleSeed(createRandomSeed());
     setSession((value) => value + 1);
   };
   const changeSource = (value: string) => {

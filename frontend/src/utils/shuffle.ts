@@ -6,3 +6,7 @@ export function shuffle<T>(items: readonly T[]): T[] {
   }
   return result;
 }
+
+export function createRandomSeed(): number {
+  return Math.floor(Math.random() * 2_147_483_646) + 1;
+}

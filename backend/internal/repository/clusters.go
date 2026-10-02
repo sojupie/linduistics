@@ -50,15 +50,22 @@ func (r *ClustersRepository) QueryClusters(ctx context.Context, p models.Cluster
 		return nil, 0, fmt.Errorf("count clusters error: %w", err)
 	}
 
+	orderBy := "language_count DESC, root ASC"
+	dataArgs := append([]any(nil), args...)
+	if p.Seed != 0 {
+		dataArgs = append(dataArgs, p.Seed)
+		orderBy = fmt.Sprintf("md5(id::text || ':' || $%d::bigint::text), id ASC", len(dataArgs))
+	}
+
 	dataQuery := fmt.Sprintf(`
 		SELECT id, root, proto_language, language_count, languages, members, sample_gloss
 		FROM cognate_clusters
 		%s
-		ORDER BY language_count DESC, root ASC
+		ORDER BY %s
 		LIMIT $%d OFFSET $%d
-	`, whereClause, len(args)+1, len(args)+2)
+	`, whereClause, orderBy, len(dataArgs)+1, len(dataArgs)+2)
 
-	dataArgs := append(args, p.Limit, p.Offset)
+	dataArgs = append(dataArgs, p.Limit, p.Offset)
 
 	rows, err := r.pool.Query(ctx, dataQuery, dataArgs...)
 	if err != nil {

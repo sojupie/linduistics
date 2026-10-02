@@ -40,6 +40,7 @@ func (h *PairsHandler) HandleGetPairs(w http.ResponseWriter, r *http.Request) {
 		Pos:                  q.Get("pos"),
 		Limit:                ParseInt(q.Get("limit"), 50),
 		Offset:               ParseInt(q.Get("offset"), 0),
+		Seed:                 int64(ParseInt(q.Get("seed"), 0)),
 	}
 
 	items, total, err := h.repo.QueryPairs(r.Context(), params)

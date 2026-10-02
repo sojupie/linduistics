@@ -44,6 +44,73 @@ func TestRepositoryQueries(t *testing.T) {
 		t.Fatal("expected items returned from QueryPairs")
 	}
 
+	seededParams := models.PairsQueryParams{SourceLang: "sv", TargetLang: "en", MaxPhon: 1, MaxSem: 1, Category: "true_cognate", Limit: 10, Seed: 12345}
+	seeded, _, err := repo.QueryPairs(context.Background(), seededParams)
+	if err != nil {
+		t.Fatalf("seeded QueryPairs failed: %v", err)
+	}
+	seededAgain, _, err := repo.QueryPairs(context.Background(), seededParams)
+	if err != nil {
+		t.Fatalf("repeat seeded QueryPairs failed: %v", err)
+	}
+	if len(seeded) != len(seededAgain) {
+		t.Fatalf("same seed returned different item counts: %d and %d", len(seeded), len(seededAgain))
+	}
+	for i := range seeded {
+		if seeded[i].ID != seededAgain[i].ID {
+			t.Fatalf("same seed changed order at item %d: %d != %d", i, seeded[i].ID, seededAgain[i].ID)
+		}
+	}
+	seededParams.Seed++
+	differentSeed, _, err := repo.QueryPairs(context.Background(), seededParams)
+	if err != nil {
+		t.Fatalf("different seeded QueryPairs failed: %v", err)
+	}
+	samePairOrder := len(differentSeed) == len(seeded)
+	for i := range seeded {
+		if i >= len(differentSeed) || seeded[i].ID != differentSeed[i].ID {
+			samePairOrder = false
+			break
+		}
+	}
+	if samePairOrder {
+		t.Fatal("different pair seeds returned the same item order")
+	}
+
+	clusterRepo := NewClustersRepository(db.Pool)
+	clusterParams := models.ClustersQueryParams{MinLanguages: 2, Language: "sv", Limit: 10, Seed: 12345}
+	seededClusters, _, err := clusterRepo.QueryClusters(context.Background(), clusterParams)
+	if err != nil {
+		t.Fatalf("seeded QueryClusters failed: %v", err)
+	}
+	seededClustersAgain, _, err := clusterRepo.QueryClusters(context.Background(), clusterParams)
+	if err != nil {
+		t.Fatalf("repeat seeded QueryClusters failed: %v", err)
+	}
+	if len(seededClusters) != len(seededClustersAgain) {
+		t.Fatalf("same seed returned different cluster counts: %d and %d", len(seededClusters), len(seededClustersAgain))
+	}
+	for i := range seededClusters {
+		if seededClusters[i].ID != seededClustersAgain[i].ID {
+			t.Fatalf("same seed changed cluster order at item %d: %d != %d", i, seededClusters[i].ID, seededClustersAgain[i].ID)
+		}
+	}
+	clusterParams.Seed++
+	differentSeedClusters, _, err := clusterRepo.QueryClusters(context.Background(), clusterParams)
+	if err != nil {
+		t.Fatalf("different seeded QueryClusters failed: %v", err)
+	}
+	sameClusterOrder := len(differentSeedClusters) == len(seededClusters)
+	for i := range seededClusters {
+		if i >= len(differentSeedClusters) || seededClusters[i].ID != differentSeedClusters[i].ID {
+			sameClusterOrder = false
+			break
+		}
+	}
+	if sameClusterOrder {
+		t.Fatal("different cluster seeds returned the same item order")
+	}
+
 	// A selected ID should lead matching local results, including reversed language order.
 	selected, selectedTotal, err := repo.QueryPairs(context.Background(), models.PairsQueryParams{
 		ID:         items[0].ID,

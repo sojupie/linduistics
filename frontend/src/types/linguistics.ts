@@ -198,6 +198,7 @@ export interface PairsQueryParams {
   pos?: string;
   limit?: number;
   offset?: number;
+  seed?: number;
 }
 
 export interface PairsResultDto {
@@ -244,6 +245,7 @@ export interface ClustersQueryParams {
   q?: string;
   limit?: number;
   offset?: number;
+  seed?: number;
 }
 
 export interface ClustersResultDto {
