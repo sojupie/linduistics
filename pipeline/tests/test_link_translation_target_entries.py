@@ -41,7 +41,7 @@ def test_target_entry_links_preserve_homographs_form_links_and_case_ambiguity(tm
         {"lang_code": "nb", "word": "går", "pos": "noun", "senses": [{"id": "nb-gård-noun"}]},
         {"lang_code": "nb", "word": "Går", "pos": "name", "senses": [{"id": "nb-Går-name"}]},
     ]
-    for lang in ("da", "de", "is", "nb", "nl", "sv"):
+    for lang in ("da", "de", "nb", "sv"):
         path = target_dir / f"kaikki_{lang}.jsonl"
         entries = source_entries if lang == "nb" else []
         path.write_text(

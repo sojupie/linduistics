@@ -14,7 +14,7 @@ import orjson
 from extract_etymology_records import source_entry_key, source_record
 from extract_translation_claims import _normalize_lang
 
-TARGET_LANGS = ("da", "de", "is", "nb", "nl", "sv")
+TARGET_LANGS = ("da", "de", "nb", "sv")
 ENTRY_FIELDS = ("id", "glosses", "raw_glosses", "tags", "form_of")
 
 

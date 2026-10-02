@@ -59,47 +59,25 @@ def classify_pair_senses(
     max_semantic_sim: float,
     is_archaic: bool = False,
     is_borrowed_layer: bool = False,
-    pos_a: str = "",
-    pos_b: str = "",
-    direct_translation_evidence: bool = False,
 ) -> AlignedClassification:
     """Classifies a word pair into granular micro-categories based on etymology and sense similarity."""
-    active_a = senses_a[0] if senses_a else ""
-    active_b = senses_b[0] if senses_b else ""
-
-    # Name-to-common word collisions are not false friends or cognates
-    if pos_a and pos_b and (pos_a == "name") != (pos_b == "name"):
-        return AlignedClassification(
-            category="independent_root",
-            etymological_relation="unknown",
-            active_sense_a=active_a,
-            active_sense_b=active_b,
-            semantic_sim=max_semantic_sim,
-        )
-
-    # Translation evidence anchors semantic affinity
-    effective_sem = max(max_semantic_sim, 0.90) if direct_translation_evidence else max_semantic_sim
-
     is_cognate = roots_are_cognate(root_a, root_b)
     distinct_origins = roots_are_distinct(root_a, root_b)
     min_len = min(len(word_a), len(word_b))
-
     surface_thresh = 0.75 if min_len <= 3 else 0.65
     high_surface = (ortho_sim >= surface_thresh or phono_sim >= surface_thresh)
-    # False friends require genuine deceptive surface similarity, not weak prefix noise
-    is_deceptive = (ortho_sim >= 0.82 or phono_sim >= 0.80) if min_len >= 4 else (ortho_sim >= 0.90 or phono_sim >= 0.85)
 
     if is_cognate:
         if is_borrowed_layer:
             category = "sister_loanword"
             relation = "borrowed_stratum"
-        elif effective_sem >= 0.80:
+        elif max_semantic_sim >= 0.85:
             category = "full_cognate"
             relation = "cognate"
-        elif effective_sem >= 0.35:
+        elif max_semantic_sim >= 0.55:
             category = "archaic_cognate" if is_archaic else "semantic_narrowing"
             relation = "cognate"
-        elif is_deceptive and not direct_translation_evidence and effective_sem <= 0.30:
+        elif high_surface:
             category = "cognate_false_friend"
             relation = "cognate"
         else:
@@ -109,10 +87,10 @@ def classify_pair_senses(
         if is_borrowed_layer:
             category = "sister_loanword"
             relation = "borrowed_stratum"
-        elif is_deceptive and not direct_translation_evidence and effective_sem <= 0.25:
+        elif high_surface:
             category = "accidental_lookalike"
             relation = "false_cognate"
-        elif effective_sem >= 0.65:
+        elif max_semantic_sim >= 0.70:
             category = "unrelated_equivalent"
             relation = "unrelated"
         else:
@@ -122,28 +100,32 @@ def classify_pair_senses(
         if is_borrowed_layer:
             category = "sister_loanword"
             relation = "borrowed_stratum"
-        elif high_surface and effective_sem >= 0.70:
-            category = "full_cognate"
-            relation = "unknown"
-        elif high_surface and effective_sem >= 0.40:
-            category = "semantic_narrowing"
-            relation = "unknown"
-        elif is_deceptive and not direct_translation_evidence and effective_sem <= 0.25:
-            category = "accidental_lookalike"
-            relation = "unknown"
-        elif effective_sem >= 0.65:
+        elif high_surface:
+            if max_semantic_sim >= 0.80:
+                category = "full_cognate"
+                relation = "unknown"
+            elif max_semantic_sim >= 0.50:
+                category = "semantic_narrowing"
+                relation = "unknown"
+            else:
+                category = "accidental_lookalike"
+                relation = "unknown"
+        elif max_semantic_sim >= 0.70:
             category = "unrelated_equivalent"
             relation = "unrelated"
         else:
             category = "independent_root"
             relation = "independent"
 
+    active_a = senses_a[0] if senses_a else ""
+    active_b = senses_b[0] if senses_b else ""
+
     return AlignedClassification(
         category=category,
         etymological_relation=relation,
         active_sense_a=active_a,
         active_sense_b=active_b,
-        semantic_sim=effective_sem,
+        semantic_sim=max_semantic_sim,
     )
 
 

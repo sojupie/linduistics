@@ -667,7 +667,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Export all structured etymology evidence from local Kaikki dumps.")
     parser.add_argument("--input-dir", type=Path, default=project_root / "pipeline" / "data")
     parser.add_argument("--output", type=Path, default=project_root / "pipeline" / "data" / "etymology_records.jsonl")
-    parser.add_argument("--languages", nargs="+", default=["sv", "da", "nb", "de", "en", "nl", "is"])
+    parser.add_argument("--languages", nargs="+", default=["sv", "da", "nb", "de", "en"])
     parser.add_argument("--force", action="store_true", help="Replace an existing output and manifest.")
     args = parser.parse_args()
     summary = export_records(args.input_dir, args.languages, args.output, args.force)

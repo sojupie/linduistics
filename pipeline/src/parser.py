@@ -54,29 +54,6 @@ _ANCESTRAL_LANG_ORDER = [
 ]
 
 
-def _extract_from_etymon(t: dict, lang_code: str, prefix: str) -> str:
-    expansion = t.get("expansion") or ""
-    if not expansion:
-        return ""
-    # 1. Match tree line format e.g. "Proto-Germanic *fadēr"
-    pattern = rf"{re.escape(prefix)}\s+\*?([^\s\?\+\[\(\)\|]+)"
-    m = re.search(pattern, expansion)
-    if m:
-        clean = clean_etymology_root(m.group(1))
-        if clean and not clean.isdigit() and len(clean) > 1:
-            term = "*" + clean.lstrip("*") if prefix.startswith("Proto") else clean
-            return f"{prefix} {term}"
-    # 2. Match JSON snippet format e.g. "term" : "*fadēr", ... "lang" : "gem-pro"
-    json_pattern = rf'"term"\s*:\s*"\*?([^"]+)"\s*,\s*"lang"\s*:\s*"{re.escape(lang_code)}"'
-    m_json = re.search(json_pattern, expansion)
-    if m_json:
-        clean = clean_etymology_root(m_json.group(1))
-        if clean and not clean.isdigit() and len(clean) > 1:
-            term = "*" + clean.lstrip("*") if prefix.startswith("Proto") else clean
-            return f"{prefix} {term}"
-    return ""
-
-
 def extract_etym_root(raw: dict) -> Tuple[str, str]:
     """Extracts (etym_root, etym_text) from raw Kaikki entry."""
     etym_text = (raw.get("etymology_text") or "").strip()
@@ -101,9 +78,6 @@ def extract_etym_root(raw: dict) -> Tuple[str, str]:
                         clean = "*" + term.lstrip("*") if prefix.startswith("Proto") else term
                         etym_root = f"{prefix} {clean}"
                         break
-            elif t.get("name") == "etymon":
-                etym_root = _extract_from_etymon(t, lang_code, prefix)
-
             if etym_root:
                 break
         if etym_root:

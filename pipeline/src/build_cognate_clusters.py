@@ -28,9 +28,9 @@ def build_clusters() -> Dict[str, dict]:
         "Proto-Indo-European",
     ]
 
-    languages = ["en", "de", "sv", "da", "nb", "nl", "is"]
+    languages = ["en", "de", "sv", "da", "nb"]
 
-    # Step 1: Read all lemma tables
+    # Step 1: Read all 5 lemma tables
     for lang in languages:
         parquet_path = f"pipeline/data/lemmas_{lang}.parquet"
         logger.info(f"Reading lemmas for {lang} from {parquet_path}...")

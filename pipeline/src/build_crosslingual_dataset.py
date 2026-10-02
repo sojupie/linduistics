@@ -2,7 +2,7 @@
 
 Combines Wiktionary translation graph mining with targeted surface collision
 search to generate an authoritative, balanced lexical comparison dataset
-across seven Germanic languages (42 directed pairs),
+across English, Swedish, German, Danish, and Norwegian Bokmål (20 directed pairs),
 with strict sense-level alignment, polysemous inventory, and etymological provenance.
 """
 
@@ -34,7 +34,7 @@ from ipa_normalizer import phonetic_similarity
 from linguistic_metrics import normalize_orthography, orthographic_similarity
 from semantic_matcher import SemanticMatcher
 
-TARGET_LANGS = ["en", "de", "sv", "da", "nb", "nl", "is"]
+TARGET_LANGS = ["en", "de", "sv", "da", "nb"]
 LANG_ALIASES = {
     "no": "nb",
     "norwegian": "nb",
@@ -42,8 +42,6 @@ LANG_ALIASES = {
     "german": "de",
     "swedish": "sv",
     "english": "en",
-    "dutch": "nl",
-    "icelandic": "is",
 }
 
 
@@ -419,10 +417,6 @@ def align_pair_senses(
             for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
             if key in s
         }
-        if "etym_root" not in source_metadata and meta_a.get("etym_root"):
-            source_metadata["etym_root"] = meta_a["etym_root"]
-        if "etym_text" not in source_metadata and meta_a.get("etym_text"):
-            source_metadata["etym_text"] = meta_a["etym_text"]
         annotated_a.append({
             **source_metadata,
             "sense_id": int(s.get("sense_id", i + 1)),
@@ -442,10 +436,6 @@ def align_pair_senses(
             for key in ("source_entry_key", "source_sense_id", "etymology_number", "etym_root", "etym_text")
             if key in s
         }
-        if "etym_root" not in source_metadata and meta_b.get("etym_root"):
-            source_metadata["etym_root"] = meta_b["etym_root"]
-        if "etym_text" not in source_metadata and meta_b.get("etym_text"):
-            source_metadata["etym_text"] = meta_b["etym_text"]
         annotated_b.append({
             **source_metadata,
             "sense_id": int(s.get("sense_id", j + 1)),
@@ -558,10 +548,10 @@ def build_pair_dataset(
 
         matched_a = next(s for s in senses_a if s["is_active_match"])
         matched_b = next(s for s in senses_b if s["is_active_match"])
-        etym_root_a = matched_a.get("etym_root") or meta_a.get("etym_root") or ""
-        etym_root_b = matched_b.get("etym_root") or meta_b.get("etym_root") or ""
-        etym_text_a = matched_a.get("etym_text") or meta_a.get("etym_text") or ""
-        etym_text_b = matched_b.get("etym_text") or meta_b.get("etym_text") or ""
+        etym_root_a = matched_a.get("etym_root") or ""
+        etym_root_b = matched_b.get("etym_root") or ""
+        etym_text_a = matched_a.get("etym_text") or ""
+        etym_text_b = matched_b.get("etym_text") or ""
         pos_a = matched_a.get("pos") or meta_a["pos"]
         pos_b = matched_b.get("pos") or meta_b["pos"]
 
@@ -674,7 +664,7 @@ def main() -> None:
     print("Initializing semantic matcher...")
     matcher = SemanticMatcher()
 
-    # Generate comparisons for each language combination (sorted order)
+    # Generate comparisons for all 10 language combinations (sorted order)
     unique_pairs = []
     sorted_langs = sorted(TARGET_LANGS)
     for i in range(len(sorted_langs)):

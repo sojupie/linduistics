@@ -14,8 +14,8 @@ import orjson
 
 from extract_etymology_records import source_entry_key
 
-TARGET_LANGS = {"en", "de", "sv", "da", "nb", "nl", "is"}
-SOURCE_LANGS = ("da", "de", "en", "is", "nb", "nl", "sv")
+TARGET_LANGS = {"en", "de", "sv", "da", "nb"}
+SOURCE_LANGS = ("da", "de", "en", "nb", "sv")
 LANG_ALIASES = {
     "no": "nb",
     "norwegian": "nb",
@@ -23,8 +23,6 @@ LANG_ALIASES = {
     "german": "de",
     "swedish": "sv",
     "english": "en",
-    "dutch": "nl",
-    "icelandic": "is",
 }
 
 

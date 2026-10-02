@@ -40,51 +40,25 @@ def classify_pair(
     pos_a: str = "",
     pos_b: str = "",
     direct_translation_evidence: bool = False,
-    word_a: str = "",
-    word_b: str = "",
 ) -> Tuple[str, str]:
     """Return a display category and the pair's etymological relation.
 
-    Combines surface similarity, semantics, and structured root evidence.
+    Similarity scores identify candidates. They cannot establish shared ancestry.
     """
     semantics = max_active_sem if max_active_sem is not None else s_sem
-    if direct_translation_evidence:
-        semantics = max(semantics, 0.90)
-
+    surface_match = s_phon >= 0.65 or s_orth >= 0.70
     origin = etymological_relation(etym_root_a, etym_root_b)
 
     # A name-to-common-word spelling collision is not a false-friend relation.
     if (pos_a == "name") != (pos_b == "name"):
         return "other", origin
 
-    min_len = min(len(word_a), len(word_b)) if (word_a and word_b) else 4
-    surface_match = (s_orth >= 0.70 or s_phon >= 0.65) if min_len >= 4 else (s_orth >= 0.80 or s_phon >= 0.75)
-    is_deceptive = (s_orth >= 0.82 or s_phon >= 0.80) if min_len >= 4 else (s_orth >= 0.90 or s_phon >= 0.85)
-
-    if origin == "cognate":
-        if semantics >= 0.75:
-            return "true_cognate", origin
-        if is_deceptive and semantics <= 0.30 and not direct_translation_evidence:
-            return "false_friend", origin
-        return "partial_cognate", origin
-
-    distinct_roots = bool(etym_root_a and etym_root_b and etym_root_a.strip() != etym_root_b.strip())
-
-    # If roots are confirmed distinct, surface similarity does not infer cognacy
-    if distinct_roots:
-        if is_deceptive and semantics <= 0.25 and not direct_translation_evidence:
-            return "false_friend", origin
-        if semantics >= 0.65 and not surface_match:
-            return "translation_pair", origin
-        return "other", origin
-
-    # Unknown / unconfirmed root layer (no conflicting root records)
-    if surface_match and semantics >= 0.70:
-        return "true_cognate", origin
-    if surface_match and semantics >= 0.40:
-        return "partial_cognate", origin
-    if is_deceptive and semantics <= 0.25 and not direct_translation_evidence:
+    # A source-attested translation conflicts with a false-friend inference;
+    # keep the candidate unclassified without changing its embedding score.
+    if surface_match and semantics <= 0.30 and not direct_translation_evidence:
         return "false_friend", origin
-    if semantics >= 0.65:
+    if origin == "cognate":
+        return ("true_cognate" if semantics >= 0.75 else "partial_cognate"), origin
+    if semantics >= 0.75 and not surface_match:
         return "translation_pair", origin
     return "other", origin
