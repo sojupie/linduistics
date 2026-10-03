@@ -69,7 +69,7 @@ def entry_keys(senses):
     return sorted(exact), alternatives
 
 
-def evaluate(destination, run_id):
+def evaluate(destination, run_id, variant):
     destination.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     source = OUTPUT / 'e1-run003'
@@ -103,7 +103,8 @@ def evaluate(destination, run_id):
     record_path = BASELINE / 'etymology_records.jsonl'
     print(f'Indexing historical sources for {len(wanted)} exact entry identities.', flush=True)
     records, forms, record_hash, source_count = source_records(record_path, wanted)
-    protocol = {'run_id': run_id, 'baseline_sha256': EXPECTED_HASH,
+    protocol = {'run_id': run_id, 'variant': variant, 'baseline_sha256': EXPECTED_HASH,
+        'source_variant_plan_sha256': digest(OUTPUT / 'E3_SOURCE_PLAN.md') if variant == 'sources' else None,
         'source_comparisons_sha256': digest(source / 'comparisons.json'),
         'source_records': str(record_path), 'source_records_sha256': record_hash,
         'source_manifest_sha256': digest(record_path.with_suffix(record_path.suffix + '.manifest.json')),
@@ -120,7 +121,7 @@ def evaluate(destination, run_id):
         predictions[identity] = {'root_control': etymological_relation(row['etym_root_a'], row['etym_root_b']),
             'roots': [row['etym_root_a'], row['etym_root_b']],
             'ambiguous_source_identities': [side[1] for side in sides],
-            'history': historical_relationships(sides[0][0], sides[1][0], records, forms)}
+            'history': historical_relationships(sides[0][0], sides[1][0], records, forms, shared_sources=variant == 'sources')}
     references = {r['case_id']: r for r in refs['cases']}
     results, concepts = [], []
     concept_reference = {r['case_id']: r for r in read_csv(OUTPUT / 'e0_concept_results.csv')}
@@ -129,10 +130,11 @@ def evaluate(destination, run_id):
         prediction = predictions[identity]
         if case['panel'] == 'open':
             reference = references[case['case_id']]
-            new = bool(prediction['history']['relationships']) and prediction['root_control'] == 'unknown'
+            whole = [r for r in prediction['history']['relationships'] if r['kind'] != 'shared_recorded_component_source']
+            new = bool(whole) and prediction['root_control'] == 'unknown'
             results.append({**case, **prediction, 'reference': reference, 'new_relationship_candidate': new,
                 'source_supported_recovery_candidate': new and reference['source_supported_positive'],
-                'component_control_claim_flag': bool(prediction['history']['relationships']) and reference['component_control']})
+                'component_control_claim_flag': bool(whole) and reference['component_control']})
         else:
             concepts.append({**case, **prediction, 'history_reference': concept_reference[case['case_id']]['history_reference']})
     assert len(results) == 207 and len(concepts) == 995
@@ -144,7 +146,7 @@ def evaluate(destination, run_id):
         per_pair[pair]['typed_relationship_supported'] += bool(r['history']['relationships'])
         per_pair[pair]['source_supported_recovery_candidates'] += r['source_supported_recovery_candidate']
     supported = [r for r in results if r['source_supported_recovery_candidate']]
-    summary = {'run_id': run_id, 'open_cases': len(results), 'concept_cases': len(concepts),
+    summary = {'run_id': run_id, 'variant': variant, 'open_cases': len(results), 'concept_cases': len(concepts),
         'root_control_supported': sum(r['root_control'] == 'cognate' for r in results),
         'typed_relationship_supported': sum(bool(r['history']['relationships']) for r in results),
         'new_relationship_candidates': sum(r['new_relationship_candidate'] for r in results),
@@ -166,6 +168,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=OUTPUT / 'e3-run001')
     parser.add_argument('--run-id', default='E3-001')
+    parser.add_argument('--variant', choices=['typed', 'sources'], default='typed')
     args = parser.parse_args()
     self_check()
-    evaluate(args.output, args.run_id)
+    evaluate(args.output, args.run_id, args.variant)

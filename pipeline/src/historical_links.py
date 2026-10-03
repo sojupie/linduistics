@@ -16,6 +16,10 @@ def record_form(record):
     return form(record['language_code'], record['word'])
 
 
+def valid_target(target):
+    return bool(target[0] and target[1] and any(character.isalnum() for character in target[1]))
+
+
 def source_index(records):
     entries, forms = {}, defaultdict(set)
     for record in records:
@@ -41,7 +45,7 @@ def paths(entry, entries, forms):
                 stopped.append({'entry': current, 'claim_index': index, 'reason': 'source_uncertain'})
                 continue
             target = form(claim.get('related_language'), claim.get('related_form'))
-            if not all(target):
+            if not valid_target(target):
                 stopped.append({'entry': current, 'claim_index': index, 'reason': 'missing_target'})
                 continue
             step = {'source_entry_key': current, 'source_url': record.get('source_url'),
@@ -64,7 +68,7 @@ def paths(entry, entries, forms):
     return found, stopped
 
 
-def historical_relationships(entry_keys_a, entry_keys_b, entries, forms):
+def historical_relationships(entry_keys_a, entry_keys_b, entries, forms, *, shared_sources=False):
     relationships, excluded, unresolved = [], [], []
     for side, keys in enumerate([entry_keys_a, entry_keys_b]):
         for identity in keys:
@@ -111,6 +115,28 @@ def historical_relationships(entry_keys_a, entry_keys_b, entries, forms):
                     relationships.append({'kind': kind, 'entries': [a, b],
                                           'paths': [pa, pb], 'ancestor_form': pa['target_form'],
                                           'identity_scope': 'entry' if pa['target_entry_key'] else 'recorded_form'})
+            if shared_sources:
+                sources = []
+                for identity in [a, b]:
+                    claims = defaultdict(list)
+                    for index, claim in enumerate(entries[identity].get('claims', [])):
+                        target = form(claim.get('related_language'), claim.get('related_form'))
+                        if (claim.get('relation') in TRANSMISSION | {'derived_from'}
+                                and not claim.get('source_uncertain') and valid_target(target)):
+                            claims[target].append({'source_entry_key': identity,
+                                'source_url': entries[identity].get('source_url'),
+                                'claim_index': index, 'evidence': claim})
+                    sources.append(claims)
+                component = any(claim.get('relation') in FORMATION - {'derived_from', 'rooted_in'}
+                                for identity in [a, b] for claim in entries[identity].get('claims', []))
+                for target in sorted(sources[0].keys() & sources[1].keys()):
+                    evidence = [sources[0][target], sources[1][target]]
+                    if not any(item['evidence']['relation'] == 'derived_from' for side in evidence for item in side):
+                        continue
+                    relationships.append({'kind': 'shared_recorded_component_source' if component
+                                          else 'shared_recorded_source_unspecified',
+                        'entries': [a, b], 'source_form': list(target), 'evidence_by_entry': evidence,
+                        'transmission': 'Unspecified by broad source relation; not inherited-cognate proof.'})
     return {'relationships': relationships, 'excluded_formation_claims': excluded,
             'unresolved_paths': unresolved, 'scope': 'Source entry pairs; not a claim about every headword homograph.'}
 
@@ -156,6 +182,15 @@ def self_check():
     entries, forms = source_index([borrowing, b])
     assert any(r['kind'] == 'direct_or_chained_borrowing'
                for r in historical_relationships(['a'], ['b'], entries, forms)['relationships'])
+    entries, forms = source_index([derived, b])
+    assert historical_relationships(['a'], ['b'], entries, forms, shared_sources=True)['relationships'][0]['kind'] == 'shared_recorded_source_unspecified'
+    component = derived | {'claims': derived['claims'] + [{'relation': 'compound_of'}]}
+    entries, forms = source_index([component, b])
+    assert historical_relationships(['a'], ['b'], entries, forms, shared_sources=True)['relationships'][0]['kind'] == 'shared_recorded_component_source'
+    placeholder_a = record('a', 'en', 'word', 'inherited_from', ('old', '-'))
+    placeholder_b = record('b', 'de', 'Wort', 'inherited_from', ('old', '-'))
+    entries, forms = source_index([placeholder_a, placeholder_b])
+    assert not historical_relationships(['a'], ['b'], entries, forms, shared_sources=True)['relationships']
     print('Historical links self-check passed.')
 
 
