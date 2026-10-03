@@ -14,6 +14,10 @@ The five-language dataset remains the deployed starting point, not a gold standa
 
 ### Conclusions for the next discussion
 
+The [follow-up conclusions](DATASET_EXPERIMENT_CONCLUSIONS.md) rank the promising
+directions, explain why they merit another test, and state what would support or
+weaken each hypothesis. They are recommendations, not adopted methods or new results.
+
 - E1's weak entry-order preference repaired 22 concept displays without losing a previously acceptable concept display. Its effect on broader headline quality was mixed. The old five-point threshold no longer automatically excludes the smaller gain.
 - E2's dictionary evidence was the strongest development classification signal: 169/197 compatible labels, versus 118 dense-only and 80 legacy. Those are source-guided agent-review results, not population accuracy. Cross-sense translation bridges, usage and grammatical scope still need correction.
 - E3 recovered useful historical evidence. E5 source review also exposed misplaced cognate mentions and missed prose qualifications. Keep the evidence available, but do not promote every recovered path into a historical label or game answer.
