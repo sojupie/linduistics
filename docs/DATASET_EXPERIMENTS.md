@@ -62,7 +62,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 
 | Experiment | Run ID | Plan/configuration | Report and case results | Outcome | Decision |
 | --- | --- | --- | --- | --- | --- |
-| E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json) | [Baseline coverage report](../pipeline/evaluation/E0_RUN001.md) | Coverage measured; quality review unfinished | Continue E0 |
+| E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json), [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md) | [Baseline evaluation report](../pipeline/evaluation/E0_RUN001.md) | Development review, coverage, diagnostic groups, and procedure recorded | Use for exploratory E1-E4 comparisons; preserve test families |
 | E1 | — | Awaiting E0 | Not run | Not measured | Pending |
 | E2 | — | Awaiting E0 and E1 | Not run | Not measured | Pending |
 | E3 | — | Awaiting E0 | Not run | Not measured | Pending |
@@ -73,7 +73,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 
 | ID | Question | Depends on | Current status |
 | --- | --- | --- | --- |
-| E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Running |
+| E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Complete |
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Planned |
 | E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Planned |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
@@ -133,6 +133,14 @@ Keep this interim record when appending the completed E0 result. Later findings 
 
 **Subsequent E0-001 checkpoint, 2026-10-03:** Open-vocabulary review now covers 100 of 207 development cases, with all packet hashes and development roles checked. The [run report](../pipeline/evaluation/E0_RUN001.md) records controls for valid matches, translated-gloss ambiguity, inactive selected definitions, historical agreement without current equivalence, and grammatical differences. The remaining 107 cases, hard-case groups, reference notation, and numerical gates are still pending. No classifier or published-data change has been adopted.
 
+### E0-001 — Completion record, 2026-10-03
+
+All 207 open-vocabulary development cases and 995 found development concept comparisons are reviewed. Source-guided agent judgments, unresolved readings, family roles, diagnostic groups, input hashes, and source-gap checks are saved. Explicit alternate spellings recover eight existing comparisons in addition to four recorded-inflection recoveries; the original exact-spelling coverage remains preserved.
+
+**Result:** The baseline hypothesis is supported as a diagnosis: independent coverage checks and blinded review expose systematic missing comparisons and unsuitable displayed meanings. No replacement method has yet been shown better. The completed review does not establish expert linguistic accuracy or accuracy across the whole dictionary.
+
+**Decision:** Use the saved evaluation procedure for exploratory experiments. [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md) fixes the numerical gates before E1-E4 variants. Begin E1 on its branch, holding candidates, encoder, maximum semantic score, and ancestry classification fixed. Preserve valid secondary records and inspect losses. Reserved test families remain for the combined evaluation after methods are frozen. No published data changed.
+
 ## E1 — Displayed meanings and secondary matches
 
 **Hypothesis:** source-entry sense order, usage labels, and explicit translation-sense evidence will select more appropriate ordinary meanings than maximum embedding similarity alone, while retaining genuine secondary correspondences.
@@ -148,7 +156,7 @@ Keep this interim record when appending the completed E0 result. Later findings 
 
 **Acceptance basis:** improve headline-meaning accuracy while staying within the agreed loss limit for valid secondary matches. Treat source order as a tested signal; do not assume a fixed numerical weighting works. Compare each variant separately.
 
-**Numerical limits:** To be recorded after E0, before implementing the variants.
+**Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E1 section.
 
 **Actual result:** Not run.
 
@@ -170,7 +178,7 @@ Keep this interim record when appending the completed E0 result. Later findings 
 
 **Acceptance basis:** improve practical classification at comparable coverage. Renaming unresolved records does not count as a gain. A richer internal representation can still support simple product labels.
 
-**Numerical limits:** To be recorded after E0, before implementing the variant.
+**Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E2 section.
 
 **Actual result:** Not run.
 
@@ -192,7 +200,7 @@ Keep this interim record when appending the completed E0 result. Later findings 
 
 **Acceptance basis:** recover additional reviewed relationships within the agreed false-link limit. Report the full positive and negative test sample; testing only known cognates cannot establish precision.
 
-**Numerical limits:** To be recorded after E0, before implementing the variant.
+**Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E3 section.
 
 **Actual result:** Not run.
 
@@ -215,7 +223,7 @@ Keep this interim record when appending the completed E0 result. Later findings 
 
 **Acceptance basis:** reduce unhelpful candidates while remaining within the agreed useful-pair loss limit. Candidate volume reduction alone is not success. Learn sound correspondences from development data only.
 
-**Numerical limits:** To be recorded after E0, before implementing the variants.
+**Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E4 section.
 
 **Actual result:** Not run.
 

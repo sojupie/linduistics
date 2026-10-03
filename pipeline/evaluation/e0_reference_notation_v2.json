@@ -1,0 +1,262 @@
+{
+  "supersedes": "e0_reference_notation.json; first extraction failed to recognize the whitespace before parentheses, reporting zero cases. This correction retains that record.",
+  "notation_cases": 8,
+  "cases_with_comparison": 8,
+  "cases": [
+    {
+      "case_id": "iecor:20-112-1:58-112-1",
+      "alternatives": {
+        "a": [
+          "næse"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "næse"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "da",
+          "word_a": "næse",
+          "lang_b": "nb",
+          "word_b": "nese",
+          "def_a": "nose",
+          "def_b": "a nose"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:22-112-1:58-112-1",
+      "alternatives": {
+        "a": [
+          "nose"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "nose"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "en",
+          "word_a": "nose",
+          "lang_b": "nb",
+          "word_b": "nese",
+          "def_a": "A protuberance on the face housing the nostrils, which are used to breathe or smell.",
+          "def_b": "a nose"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:27-112-1:58-112-1",
+      "alternatives": {
+        "a": [
+          "Nase"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "Nase"
+        ],
+        "b": [
+          "nese",
+          "nase"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "de",
+          "word_a": "Nase",
+          "lang_b": "nb",
+          "word_b": "nese",
+          "def_a": "nose",
+          "def_b": "a nose"
+        },
+        {
+          "lang_a": "de",
+          "word_a": "Nase",
+          "lang_b": "nb",
+          "word_b": "nase",
+          "def_a": "dummy; a mild insult",
+          "def_b": "form removed with the spelling reform of 2005; superseded by nese"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:58-112-1:69-112-1",
+      "alternatives": {
+        "a": [
+          "nese",
+          "nase"
+        ],
+        "b": [
+          "näsa"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "nese",
+          "nase"
+        ],
+        "b": [
+          "näsa"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "nb",
+          "word_a": "nese",
+          "lang_b": "sv",
+          "word_b": "näsa",
+          "def_a": "a nose",
+          "def_b": "nose of a human or other primate (or anthropomorphized being, especially if having a human-like nose, but sometimes more generally) (compare nos)"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:20-149-1:58-149-1",
+      "alternatives": {
+        "a": [
+          "røg"
+        ],
+        "b": [
+          "røyk",
+          "røk"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "røg"
+        ],
+        "b": [
+          "røyk"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "da",
+          "word_a": "røg",
+          "lang_b": "nb",
+          "word_b": "røyk",
+          "def_a": "smoke",
+          "def_b": "smoke"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:22-149-1:58-149-1",
+      "alternatives": {
+        "a": [
+          "smoke"
+        ],
+        "b": [
+          "røyk",
+          "røk"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "smoke"
+        ],
+        "b": [
+          "røyk"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "en",
+          "word_a": "smoke",
+          "lang_b": "nb",
+          "word_b": "røyk",
+          "def_a": "The visible vapor/vapour, gases, and fine particles given off by burning or smoldering material.",
+          "def_b": "smoke"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:27-149-1:58-149-1",
+      "alternatives": {
+        "a": [
+          "Rauch"
+        ],
+        "b": [
+          "røyk",
+          "røk"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "Rauch"
+        ],
+        "b": [
+          "røyk"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "de",
+          "word_a": "Rauch",
+          "lang_b": "nb",
+          "word_b": "røyk",
+          "def_a": "smoke, fume",
+          "def_b": "smoke"
+        }
+      ]
+    },
+    {
+      "case_id": "iecor:58-149-1:69-149-1",
+      "alternatives": {
+        "a": [
+          "røyk",
+          "røk"
+        ],
+        "b": [
+          "rök"
+        ]
+      },
+      "present_alternatives": {
+        "a": [
+          "røyk"
+        ],
+        "b": [
+          "rök"
+        ]
+      },
+      "candidate_rows": [
+        {
+          "lang_a": "nb",
+          "word_a": "røyk",
+          "lang_b": "sv",
+          "word_b": "rök",
+          "def_a": "smoke",
+          "def_b": "smoke"
+        }
+      ]
+    }
+  ],
+  "original_absent_cases": 58,
+  "limits": "Original coverage counts remain unchanged. Alternate-form existence does not verify the intended concept sense. Phrases and hyphenated forms remain separately reported unsupported inputs.",
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f"
+}

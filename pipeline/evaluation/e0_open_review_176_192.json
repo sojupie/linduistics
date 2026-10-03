@@ -1,0 +1,226 @@
+{
+  "packet_sha256": "26bfc3ab45b57119f4195555764c90bb13dba4591494d8c7fb4b39188eb99555",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "blinding": "Classifier predictions and numeric scores hidden; all active glosses and available etymology read.",
+  "rubric": "Assess modern overlap, historical support, and selected display separately. Generic shared categories are not entity identity. Missing dictionary senses do not prove non-equivalence.",
+  "judgments": [
+    {
+      "case_id": "dd6ce13617699f37",
+      "review_id": 176,
+      "lang_a": "da",
+      "word_a": "sommerhus",
+      "lang_b": "nb",
+      "word_b": "sommerfugl",
+      "meaning_profile": "disjoint_observed",
+      "history_evidence": "inferred_shared_component_only",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Summerhouse and butterfly differ. The shared summer component does not establish full-compound equivalence or ancestry."
+    },
+    {
+      "case_id": "4d390dd28cd95e5d",
+      "review_id": 177,
+      "lang_a": "da",
+      "word_a": "sameksistens",
+      "lang_b": "de",
+      "word_b": "Zusammenleben",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Living together is a form of coexistence, while coexistence can be broader. Local formations do not supply a common historical path."
+    },
+    {
+      "case_id": "c129c83130b53470",
+      "review_id": 178,
+      "lang_a": "da",
+      "word_a": "indlysende",
+      "lang_b": "de",
+      "word_b": "offenkundig",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Obvious/evident and overt/manifest overlap explicitly. Apparent must refer to evident rather than merely seeming; German history is absent."
+    },
+    {
+      "case_id": "f1b16632ff8321d5",
+      "review_id": 179,
+      "lang_a": "da",
+      "word_a": "prostitueret",
+      "lang_b": "en",
+      "word_b": "whore",
+      "meaning_profile": "related_meaning_not_equivalent_source_gap",
+      "history_evidence": "not_established",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "The selected English verb concerns a client action, not a prostituted person. Saved English senses omit the ordinary sex-worker noun; this omission should not be mistaken for proof of no real noun overlap.",
+      "references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/whore",
+          "checked": "2026-10-03",
+          "evidence": "The first noun sense explicitly identifies a person who performs sex acts for payment, with old-fashioned/offensive usage labels; this sense is absent from the saved baseline glosses."
+        }
+      ]
+    },
+    {
+      "case_id": "37f9d4344b6da7da",
+      "review_id": 180,
+      "lang_a": "nb",
+      "word_a": "skum",
+      "lang_b": "sv",
+      "word_b": "fradga",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Foam/froth overlaps explicitly. Swedish mouth-froth and verb uses and Norwegian lather differ in context; history is not connected here."
+    },
+    {
+      "case_id": "1f68e0fbb1b7fe13",
+      "review_id": 181,
+      "lang_a": "de",
+      "word_a": "Israelit",
+      "lang_b": "nb",
+      "word_b": "israeler",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "history_evidence": "shared_entity_base_recorded",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Israelite and a modern Israeli citizen refer to distinct categories despite the recorded Israel base. Same demonym-like form does not settle identity."
+    },
+    {
+      "case_id": "88592fb9eff286ce",
+      "review_id": 182,
+      "lang_a": "de",
+      "word_a": "lind",
+      "lang_b": "sv",
+      "word_b": "lina",
+      "meaning_profile": "disjoint_observed",
+      "history_evidence": "not_established",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Mild/gentle and rope/wire/line differ in grammar and meaning; the Swedish given name is another entry. Distinct immediate roots do not prove full unrelatedness."
+    },
+    {
+      "case_id": "e5dee91f98030aea",
+      "review_id": 183,
+      "lang_a": "da",
+      "word_a": "el",
+      "lang_b": "sv",
+      "word_b": "al",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "shared_ancestor_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both record alder and aluz ancestry. Two-letter forms can be valid cognates; Danish electricity is another entry."
+    },
+    {
+      "case_id": "8e57c6d9a8f04fe3",
+      "review_id": 184,
+      "lang_a": "de",
+      "word_a": "einschliessen",
+      "lang_b": "nb",
+      "word_b": "tilføye",
+      "meaning_profile": "forwarding_entry_unresolved",
+      "history_evidence": "not_established",
+      "headline_pair": "unresolved",
+      "reason": "German is only a spelling redirect to einschließen. Resolve the referenced lemma before deciding whether enclosure/including overlaps append; a redirect gloss is not a meaning."
+    },
+    {
+      "case_id": "881ecfa30bcb5407",
+      "review_id": 185,
+      "lang_a": "da",
+      "word_a": "mistænke",
+      "lang_b": "sv",
+      "word_b": "tro",
+      "meaning_profile": "contextual_partial_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Suspect and think-that-something-is-true can overlap in uncertain belief, while trusting a person can contrast with suspicion. The selected trust sense misses that contextual overlap."
+    },
+    {
+      "case_id": "bf1c680f9715c15a",
+      "review_id": 186,
+      "lang_a": "da",
+      "word_a": "bertel",
+      "lang_b": "nb",
+      "word_b": "berthel",
+      "meaning_profile": "related_name_forms_recorded",
+      "history_evidence": "borrowing_and_variant_recorded",
+      "headline_pair": "matches_documented_name_variant",
+      "reason": "Norwegian explicitly borrows Danish Berthel and identifies it as a spelling variant of Bertel. This is supported name-family correspondence, not merely generic male-name gloss similarity or same-person identity."
+    },
+    {
+      "case_id": "47948d2f334ce2c4",
+      "review_id": 187,
+      "lang_a": "da",
+      "word_a": "gen",
+      "lang_b": "de",
+      "word_b": "gen",
+      "meaning_profile": "disjoint_observed",
+      "history_evidence": "not_established",
+      "headline_pair": "inactive_selected_sense",
+      "reason": "Danish gene is not German directional gen, which is dated/inactive. Danish explicitly borrows capitalized German Gen, a different noun entry from gen."
+    },
+    {
+      "case_id": "61faae2af6f29b18",
+      "review_id": 188,
+      "lang_a": "da",
+      "word_a": "usand",
+      "lang_b": "de",
+      "word_b": "falsch",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_sense",
+      "reason": "False/untrue overlaps explicitly, while German wrong/fake/immoral/perfidious meanings are additional. Different recorded sources do not prove full unrelatedness."
+    },
+    {
+      "case_id": "3d7f303d520159a9",
+      "review_id": 189,
+      "lang_a": "de",
+      "word_a": "welche",
+      "lang_b": "sv",
+      "word_b": "vilken",
+      "meaning_profile": "ordinary_overlap_source_gap",
+      "history_evidence": "shared_ancestor_recorded",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Saved German some and Swedish exclamatory what-a do not match. Native German source records interrogative/relative welcher with welche inflections and Swedish vilken translation, establishing omitted ordinary which correspondence.",
+      "references": [
+        {
+          "url": "https://de.wiktionary.org/wiki/welcher",
+          "checked": "2026-10-03",
+          "evidence": "Interrogative and relative uses, inflection table containing welche, and Swedish vilken translation. Current page checked; permanent-link fetch timed out."
+        }
+      ]
+    },
+    {
+      "case_id": "9eb94ed76c72d5eb",
+      "review_id": 190,
+      "lang_a": "en",
+      "word_a": "indio",
+      "lang_b": "sv",
+      "word_b": "indigo",
+      "meaning_profile": "disjoint_observed",
+      "history_evidence": "not_established",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "The city or indigenous-person category and indigo colour/dye/plant do not share the saved senses."
+    },
+    {
+      "case_id": "dcc76d66294744de",
+      "review_id": 191,
+      "lang_a": "de",
+      "word_a": "Halm",
+      "lang_b": "sv",
+      "word_b": "halm",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "shared_ancestor_recorded",
+      "headline_pair": "matches_restricted_shared_sense",
+      "reason": "Stalk and straw/haulm overlap as plant-stem material with common halmaz ancestry, but generic stalk includes growing stems and straw is a more specific material/use."
+    },
+    {
+      "case_id": "ddc673ccdadda1c7",
+      "review_id": 192,
+      "lang_a": "da",
+      "word_a": "farer",
+      "lang_b": "nb",
+      "word_b": "fare",
+      "meaning_profile": "related_meaning_different_pos",
+      "history_evidence": "inferred_derivational_family",
+      "headline_pair": "inactive_selected_sense",
+      "reason": "A traveller is an agent, while travel/voyage is an action; both selected glosses are archaic/inactive. Norwegian also has active travel verbs and a separate danger entry."
+    }
+  ]
+}
