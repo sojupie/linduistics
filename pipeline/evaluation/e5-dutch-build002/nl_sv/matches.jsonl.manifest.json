@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T17:24:28.162126+00:00",
+  "source_records_file": "evidence.jsonl",
+  "source_records_sha256": "6dca2a651e29d03e8282ebf74f14613cd73e5eda04ea059dd484ec35834fd5bb",
+  "comparisons_file": "raw.parquet",
+  "comparisons_sha256": "440a9049f75af3b21727ee9736611064d251f63fe96abef2c4ec07d33732c1fb",
+  "generator_file": "audit_source_cognate_coverage.py",
+  "generator_sha256": "07bb233de724d2c4092f633f38c42158c5c42c39df4667f6daf450340fd625ad",
+  "matches_file": "matches.jsonl",
+  "matches_sha256": "4ff2b170b4b0e083951a1a768e13fe26938c950d502ae8005cb3afa9362fabc8",
+  "source_claim_candidate_matches": 465,
+  "matches_by_relation": {
+    "borrowed_from": 43,
+    "calque_of": 2,
+    "cognate_mention": 395,
+    "derived_from": 15,
+    "noncognate_mention": 10
+  },
+  "evidence_rows_by_candidate_category": {
+    "false_friend": 5,
+    "other": 337,
+    "partial_cognate": 22,
+    "translation_pair": 41,
+    "true_cognate": 60
+  },
+  "evidence_rows_by_target_identity": {
+    "ambiguous": 1,
+    "available": 464
+  },
+  "evidence_rows_by_form_match_method": {
+    "casefold_fallback": 14,
+    "exact": 451
+  },
+  "unique_candidates_with_source_claim_by_category": {
+    "false_friend": 5,
+    "other": 314,
+    "partial_cognate": 21,
+    "translation_pair": 40,
+    "true_cognate": 56
+  },
+  "unique_candidates_with_source_claim_by_category_and_relation": {
+    "false_friend": {
+      "borrowed_from": 1,
+      "cognate_mention": 4
+    },
+    "other": {
+      "borrowed_from": 39,
+      "calque_of": 2,
+      "cognate_mention": 253,
+      "derived_from": 13,
+      "noncognate_mention": 8
+    },
+    "partial_cognate": {
+      "cognate_mention": 21
+    },
+    "translation_pair": {
+      "borrowed_from": 1,
+      "cognate_mention": 39
+    },
+    "true_cognate": {
+      "cognate_mention": 54,
+      "derived_from": 2
+    }
+  },
+  "matching_rule": "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its related language and exact target-form spelling match the candidate. Case-folded matching is used only when no exact-form candidate exists for that source entry. Claims are entry-level; this does not assert that they apply to the selected target sense."
+}

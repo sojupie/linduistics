@@ -1,0 +1,6 @@
+{
+  "status": "verification_finished_but_protocol_write_failed",
+  "reason": "Passed a string rather than a pathlib.Path to digest while writing the final protocol.",
+  "checks": "All five full pair field, sense inventory, and inverse-row assertions completed and verification.json was saved.",
+  "next_check": "Correct the Path call and rerun into a fresh directory to preserve this failed run."
+}

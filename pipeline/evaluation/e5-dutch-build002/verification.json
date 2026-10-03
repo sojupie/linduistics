@@ -1,0 +1,147 @@
+{
+  "da:nl": {
+    "metrics": {
+      "rows": 63430,
+      "categories": {
+        "unrelated_equivalent": 13642,
+        "full_cognate": 10956,
+        "accidental_lookalike": 22780,
+        "independent_root": 8888,
+        "semantic_narrowing": 7056,
+        "cognate_false_friend": 94,
+        "semantic_divergence": 14
+      },
+      "relations": {
+        "unrelated": 13642,
+        "cognate": 2130,
+        "unknown": 34122,
+        "false_cognate": 4648,
+        "independent": 8888
+      },
+      "attached_claims": 892,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 44.22605919995112
+    },
+    "rows_verified": 63430,
+    "protocol_sha256": "1ab62e398cf896bf6aead3ddbfb9c8932e3aa2f4b989cc47b0f14c510b412564",
+    "final_sha256": "0eb791da2d300b240cc8d3125caf5110a98c9e787d8e77338d057e76e65ebf38",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "de:nl": {
+    "metrics": {
+      "rows": 216166,
+      "categories": {
+        "independent_root": 33570,
+        "full_cognate": 24176,
+        "accidental_lookalike": 101330,
+        "unrelated_equivalent": 29998,
+        "semantic_narrowing": 26780,
+        "cognate_false_friend": 304,
+        "semantic_divergence": 8
+      },
+      "relations": {
+        "independent": 33570,
+        "unknown": 136060,
+        "false_cognate": 12930,
+        "unrelated": 29998,
+        "cognate": 3608
+      },
+      "attached_claims": 6420,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 84.13943619997008
+    },
+    "rows_verified": 216166,
+    "protocol_sha256": "dc3b414f67797c1308000cd2266992b2efe6c7bd75e5d138e1271d2fabd862a8",
+    "final_sha256": "180d0b542e6d3b90657e80018b21b5ca73e2a03c662b952a9a4780c1cec13d8b",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "en:nl": {
+    "metrics": {
+      "rows": 365854,
+      "categories": {
+        "independent_root": 31814,
+        "unrelated_equivalent": 15162,
+        "full_cognate": 16000,
+        "semantic_narrowing": 47396,
+        "accidental_lookalike": 254224,
+        "cognate_false_friend": 1100,
+        "semantic_divergence": 158
+      },
+      "relations": {
+        "independent": 31814,
+        "unrelated": 15162,
+        "unknown": 297224,
+        "false_cognate": 17650,
+        "cognate": 4004
+      },
+      "attached_claims": 7908,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 250.60892540001078
+    },
+    "rows_verified": 365854,
+    "protocol_sha256": "62906007c65dd0341687e293fbef060c7549a38bf8d28e286f570ad0e0a7b21a",
+    "final_sha256": "3dd7f15e7e6c40d15547d5a9c1ac754d593e565d1932bf69d9d0d707b9765fc9",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "nb:nl": {
+    "metrics": {
+      "rows": 60352,
+      "categories": {
+        "full_cognate": 10004,
+        "independent_root": 8158,
+        "unrelated_equivalent": 13586,
+        "accidental_lookalike": 22100,
+        "semantic_narrowing": 6430,
+        "cognate_false_friend": 66,
+        "semantic_divergence": 8
+      },
+      "relations": {
+        "cognate": 1488,
+        "independent": 8158,
+        "unrelated": 13586,
+        "unknown": 32126,
+        "false_cognate": 4994
+      },
+      "attached_claims": 494,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 43.17863449995639
+    },
+    "rows_verified": 60352,
+    "protocol_sha256": "153ffb4e5ccb2c8df973390f5001db01a6a1611cf024d2f3b39a16cee02676a0",
+    "final_sha256": "9d8596f601a35c869969536b17f64b6a78a21f24c3fa95e942767b6256165535",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "nl:sv": {
+    "metrics": {
+      "rows": 97860,
+      "categories": {
+        "unrelated_equivalent": 22704,
+        "independent_root": 19946,
+        "full_cognate": 15398,
+        "semantic_narrowing": 10818,
+        "accidental_lookalike": 28844,
+        "cognate_false_friend": 132,
+        "semantic_divergence": 18
+      },
+      "relations": {
+        "unrelated": 22704,
+        "independent": 19946,
+        "cognate": 2088,
+        "unknown": 48908,
+        "false_cognate": 4214
+      },
+      "attached_claims": 930,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 56.476397300022654
+    },
+    "rows_verified": 97860,
+    "protocol_sha256": "005225a4fceeb78eb8fddd23f9a7e1fb31c9c3f7f5c34382d3a873e060d6b23a",
+    "final_sha256": "74b586bd9b5325a1a2127c66e7fc53862808371c1ec1490771284449f652e0df",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  }
+}
