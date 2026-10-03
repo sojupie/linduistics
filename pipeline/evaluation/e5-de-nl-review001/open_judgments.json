@@ -1,0 +1,321 @@
+{
+  "packet_sha256": "1489205e6a0bf225e1fb14178a38b5eef019bcd1ea05aa37693175f42342c619",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All 34 full source-sense inventories reviewed before scoring categories; technical and boat-type ambiguity retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Try/taste/tempt does not mean illuminate or ventilate."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Shatter or skip a stone does not mean shine/glitter."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "Andrew or an Andrew given name differs from the Andes mountain range."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Celestial stars, star shapes, ratings and celebrities overlap; several other German/Dutch senses differ."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "An earthenware pot and a named hamlet differ."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Word space overlaps with Dutch space; small spacer element and spacebar are distinct extensions."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Physical build/stature overlaps, with an additional German figurative reputation sense."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reason": "Rare German cupboard and archaic Dutch shape are different; Dutch has no recorded current sense."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A non-priest monk and a twite bird differ."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Legion overlaps with military and large-group uses. Historical subject labels on Roman legions do not prove the word itself obsolete."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote sunset."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote decorating."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote being perplexed; German usage qualifiers are retained."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Romantic/mating couple is within pair/duo; Dutch torque does not overlap."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Business franchise overlaps; Dutch legal exemption is additional."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "A wether is a sheep; mutton and metaphorical/name senses differ. Selected meat/animal display is not equivalent."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Accessories/supplies does not match legal provision, definition, condition or adverbial phrase."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Figurative deadening overlaps with numb/insensitive; literal blunting and truncation add differences."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "A trick and making do/managing are contextually associated, not equivalent actions or grammatical forms."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "specialized_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "A clutch could be an auxiliary mechanical apparatus, but the broad German gloss does not establish that technical match."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Wheel rim overlaps; German dialectal fallow-land sense does not."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Dinghy and yawl can name different boat types; these terse glosses do not resolve the vessel scope."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote skin warts."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Horse reins overlap; German figurative restraint/control is additional."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "A German river and a Dutch hamlet differ."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Beating someone up and conquering/defeating are associated but not equivalent; German uses are dated/regional."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Inciting overlaps; switching on, setting and increasing add Dutch senses."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Refining/cleansing and cleansing share the purification action."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both mean originating from within."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Descendant overlaps; German derivative broadens the inventory."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Immediately overlaps; German adjective present/immediate adds grammatical and temporal scope."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Acquiring/gaining overlaps with obtaining; purchase, inheritance and learning distinguish contexts."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Incitement/sedition overlap; Dutch insurrection extends the inventory."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Near overlaps across adjective/adverb contexts; Dutch preposition has an additional grammatical use."
+    }
+  ]
+}

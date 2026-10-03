@@ -1,0 +1,485 @@
+[
+  {
+    "review_id": 1,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Tie-dyeing and a dated chained dog differ.",
+    "word_a": "bandhani",
+    "word_b": "bandhond",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 2,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "An enough pronunciation spelling does not mean a posh/arrogant woman.",
+    "word_a": "nuff",
+    "word_b": "nuf",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 3,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Babbler/idiot, football kick and related slang actions are not blogger.",
+    "word_a": "blooter",
+    "word_b": "blogger",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 4,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Steering, cattle and the recorded surname do not match stars, ratings or celebrities.",
+    "word_a": "steer",
+    "word_b": "ster",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 5,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "An English surname/place and a Dutch preposition differ.",
+    "word_a": "pero",
+    "word_b": "per",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 6,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Plant reed overlaps; instrument, weaving, measures, stomach and names add distinct English senses.",
+    "word_a": "reed",
+    "word_b": "riet",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 7,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "The parsnip plant overlaps; English also names its edible root.",
+    "word_a": "parsnip",
+    "word_b": "pastinaak",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 8,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Hop plant and short jump overlap; English adds many meanings and Dutch adds hoopoe bird.",
+    "word_a": "hop",
+    "word_b": "hop",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 9,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote hematite iron oxide ore.",
+    "word_a": "hematite",
+    "word_b": "hematiet",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 10,
+    "meaning_profile": "related_meaning_not_equivalent",
+    "compatible_labels": [
+      "related_meanings",
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "A Roman-fort workshop and a factory are related production sites, not established equivalents. Historical subject matter is not proof of obsolete usage.",
+    "word_a": "fabrica",
+    "word_b": "fabriek",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 11,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote tiramisu dessert.",
+    "word_a": "tiramisu",
+    "word_b": "tiramisu",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 12,
+    "meaning_profile": "generic_name_match_unverified",
+    "compatible_labels": [
+      "unverified_name_identity"
+    ],
+    "scorable": true,
+    "reason": "Different surname spellings and generic surname glosses do not establish the same entity or lineage.",
+    "word_a": "burge",
+    "word_b": "burgers",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 13,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Gladly/happily/willingly overlaps with with pleasure/gladly; formal/regional Dutch usage is retained.",
+    "word_a": "gladly",
+    "word_b": "gaarne",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 14,
+    "meaning_profile": "regional_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Hydrogen overlaps only through a rare nonstandard English sense; other English water-related things differ.",
+    "word_a": "waterstuff",
+    "word_b": "waterstof",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 15,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both mean pertaining to entomology.",
+    "word_a": "entomological",
+    "word_b": "entomologisch",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 16,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Horticultural cultivation overlaps; English gardening/small-scale agriculture and Dutch specialized crop production have different breadth.",
+    "word_a": "horticulture",
+    "word_b": "tuinbouw",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 17,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Facial smile overlaps; English favour, drinks and verbal uses add distinct senses.",
+    "word_a": "smile",
+    "word_b": "glimlach",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 18,
+    "meaning_profile": "related_meaning_not_equivalent",
+    "compatible_labels": [
+      "related_meanings",
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "Refusing acceptance and denying/negating are related responses but not generally interchangeable.",
+    "word_a": "repudiation",
+    "word_b": "ontkenning",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 19,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "A pageant parade overlaps procession; beauty contests, ceremonies and obsolete theatrical platform do not all overlap.",
+    "word_a": "pageant",
+    "word_b": "optocht",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 20,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Multiple interpretation overlaps ambiguous; motives, uncertainty and noun uses add distinctions.",
+    "word_a": "equivocal",
+    "word_b": "dubbelzinnig",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 21,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Ducking under water overlaps diving; birds, fabric, evasion and many other English meanings differ.",
+    "word_a": "duck",
+    "word_b": "duiken",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 22,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "The cutting implement overlaps; English adds figurative shapes, moon, feather, blood-cell and verb uses.",
+    "word_a": "sickle",
+    "word_b": "sikkel",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 23,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Female sheep overlaps; English capitalization-collapsed ethnic group, language and abbreviation do not.",
+    "word_a": "ewe",
+    "word_b": "ooi",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 24,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Yellow colour overlaps; political, object, figurative, name and verb senses differ.",
+    "word_a": "yellow",
+    "word_b": "geel",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 25,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "French Reformed Protestant overlaps; adjective and narrower refugee/descendant uses add scope. Historical subject is not obsolete language.",
+    "word_a": "huguenot",
+    "word_b": "hugenoot",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 26,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Panoramic view overlaps vista; pictures and comprehensive survey add English uses.",
+    "word_a": "panorama",
+    "word_b": "panorama",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 27,
+    "meaning_profile": "generic_name_match_unverified",
+    "compatible_labels": [
+      "unverified_name_identity"
+    ],
+    "scorable": true,
+    "reason": "Generic English surname and Dutch given name do not establish shared named identity.",
+    "word_a": "goebel",
+    "word_b": "goedele",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 28,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Triose sugar and a triad differ.",
+    "word_a": "triaose",
+    "word_b": "trias",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 29,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Four-dimensional polytope and multiple pupils in an eye differ.",
+    "word_a": "polychoron",
+    "word_b": "polycoria",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 30,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Cake overlaps; other food types, obsolete English meat pudding and Dutch insult differ.",
+    "word_a": "gateau",
+    "word_b": "taart",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 31,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Arresting overlaps; breaking, debunking, sculpted bust, breasts and other English meanings differ from Dutch pickup/consideration.",
+    "word_a": "bust",
+    "word_b": "oppakken",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 32,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote an emulsifier.",
+    "word_a": "emulsifier",
+    "word_b": "emulgator",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 33,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Reverse/inverted overlaps; specialized mathematical and other noun/verb uses exceed Dutch reverse/vice versa.",
+    "word_a": "inverse",
+    "word_b": "omgekeerd",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 34,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Recently and just overlap; exclusivity, sibling status and the many Dutch net/adjective/name senses do not.",
+    "word_a": "only",
+    "word_b": "net",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  }
+]
