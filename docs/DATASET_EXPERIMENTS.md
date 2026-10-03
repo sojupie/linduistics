@@ -341,6 +341,10 @@ All six Icelandic reviews are complete: 510/711 independently expected concept c
 
 The unchanged E3 evidence method evaluated all 1,293 new-language development concept cases and 372 broader sample cases. Retrieval, suitable displays and historical paths are recorded separately in the [historical measurement report](../pipeline/evaluation/E5_HISTORY_RESULT.md). Both selected-entry and full-inventory scopes are preserved; 631 cases with selected-entry non-component evidence await source review. These are evidence candidates, not validated historical classifications or admission passes. Reserved cases and the live dataset remain unchanged.
 
+### E5 historical source review: first two groups complete
+
+All 109 supported broader-sample cases and all 15 supported different-expert-set concept cases have source reviews. The [review report](../pipeline/evaluation/E5_HISTORY_SOURCE_REVIEW.md) records misplaced cognate mentions, missing prose qualification and path-specific formation limits. A cloud/wolk edge actually refers to welkin; hin/hinn has a valid Norse path alongside a mis-scoped Germanic comparison. Other histories remain supported despite wrong selected meanings or different benchmark expert sets. Original counts remain evidence-retrieval measurements, not verified precision. There are 507 supported concept cases still to review; no automatic history promotion or live publication is approved.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.
