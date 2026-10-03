@@ -115,6 +115,22 @@ Divide development and test cases by word family. Keep both directions of a pair
 
 **Decision:** Continue E0's remaining source-notation, open-vocabulary/hard-case review, and acceptance-limit work before implementing E1-E4 variants. Development display review and family grouping are now recorded. No dataset change adopted.
 
+### E0-001 — Baseline evaluation, 2026-10-03
+
+| Field | Record |
+| --- | --- |
+| Status and reviewer | Running; Codex performed source-guided review. No independent human review has been collected. |
+| Hypothesis tested | Independent vocabulary and blinded review expose failures that dataset totals and familiar examples conceal. |
+| Control and inputs | Unchanged five-language baseline identified above; IE-CoR 1.1 concepts and expert annotations; pinned FrequencyWords source. Input versions and hashes are saved in the run protocols and [input manifest](../pipeline/evaluation/e0_input_manifest.json). |
+| Actual measurements | 1,441 of 1,712 expected concept comparisons found. Both displayed meanings matched the intended concept in 630 of 995 reviewed development comparisons. The run report provides counts by language pair, uncertainty, and exclusions. |
+| Additional review | 25 of 207 open-vocabulary development cases reviewed. These include omitted dictionary senses, named-entity identity, borrowing, and partial overlap. No accuracy estimate is claimed for this unfinished review. |
+| Interim interpretation | The baseline has measured coverage gaps and frequent concept-conditioned display failures. This supports testing candidate generation and sense selection; it does not yet establish which replacement works. |
+| Acceptance limits | E1-E4 numerical limits remain unset. Fix them after E0 and before implementing or scoring variants. |
+| Published-data changes | None. The baseline and live database remain unchanged. |
+| Decision and next action | Continue the remaining 182 open-vocabulary reviews, separate the planned hard-case groups, resolve reference-form notation, and freeze acceptance limits. Then compare E1 variants against the saved judgments. |
+
+Keep this interim record when appending the completed E0 result. Later findings must not erase what was known at this point.
+
 ## E1 — Displayed meanings and secondary matches
 
 **Hypothesis:** source-entry sense order, usage labels, and explicit translation-sense evidence will select more appropriate ordinary meanings than maximum embedding similarity alone, while retaining genuine secondary correspondences.
