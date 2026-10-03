@@ -6,11 +6,21 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
-E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2 tested dense-only and dictionary-evidence meaning profiles; neither implementation is adopted. E3's source-scoped historical evidence passes its development recovery gate and is accepted for final evaluation. E4–E5 remain planned.
+E0–E4 have development results and readable decisions. E5's Dutch and Icelandic source audits, full pair builds, structural checks and development meaning reviews are complete. Historical evidence was measured across all eleven new-language pairs; 124 of 631 supported cases have source reviews. The remaining historical reviews, game checks, representative E4 task-quality sample, assembled output and reserved-family/product evaluation are unfinished. No improved dataset has been published.
 
-**Next action:** run E4's candidate-generation comparisons independently, keeping baseline classification fixed. Carry E3's evidence layer into the final reserved-family evaluation, preserving entry scope and uncertainty. E2's [report](../pipeline/evaluation/E2_RUN002.md) records a separate follow-up: validate dictionary evidence against the actual endpoint sense, including current usage and contradictory qualifications, before adopting it.
+**Discussion checkpoint, 2026-10-04:** the user requested wrapping up this phase before deciding further steps. Do not start another experiment before that discussion. The proposed priority is to validate E2's dictionary evidence against the actual endpoint sense and usage, then improve retrieval of independently expected pairs that already have source entries. Historical evidence needs claim-subject and prose-qualification safeguards before automatic label or game use. Record a separate plan and criteria for each follow-up; do not silently extend an old experiment or tune on reserved results.
 
-The five-language baseline remains accepted. An experiment branch or a completed run does not mean its method has been adopted.
+The five-language dataset remains the deployed starting point, not a gold standard. An experiment branch or a completed run does not mean its method has been adopted.
+
+### Conclusions for the next discussion
+
+- E1's weak entry-order preference repaired 22 concept displays without losing a previously acceptable concept display. Its effect on broader headline quality was mixed. The old five-point threshold no longer automatically excludes the smaller gain.
+- E2's dictionary evidence was the strongest development classification signal: 169/197 compatible labels, versus 118 dense-only and 80 legacy. Those are source-guided agent-review results, not population accuracy. Cross-sense translation bridges, usage and grammatical scope still need correction.
+- E3 recovered useful historical evidence. E5 source review also exposed misplaced cognate mentions and missed prose qualifications. Keep the evidence available, but do not promote every recovered path into a historical label or game answer.
+- E4's unconditional prefix removal has an unresolved quality trade-off and loses nine independent cognate positives. The fixed-classifier agreement decline does not establish reduced usefulness. Phonetic retrieval recovered additional expected pairs but produced many weak additions.
+- E5 demonstrated reproducible expansion while preserving the old rows. It also demonstrated retrieval and display failures, rather than explaining them away as source absence: both accepted headwords exist for 51 missing Dutch comparisons and 146 missing Icelandic comparisons. New-language admission remains open.
+
+Before release, freeze the selected methods, evaluate the reserved families and actual product tasks, and record the benefits and losses separately. Finishing development runs is not the same as finishing that release evaluation.
 
 ## Starting point
 
@@ -77,7 +87,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E3 | E3-003 | [Typed-history plan](../pipeline/evaluation/E3_PLAN.md), [shared sources](../pipeline/evaluation/E3_SOURCE_PLAN.md), [caveats](../pipeline/evaluation/E3_CAVEAT_PLAN.md) | [Historical-evidence report](../pipeline/evaluation/E3_RUN003.md) | Five reviewed recoveries across three pairs; source scope and caveats retained | Accept evidence layer for final evaluation; no label replacement or publication |
 | E4 | A002; reassessment 002/003 | [Original plan](../pipeline/evaluation/E4_PLAN.md), [reassessment plan](../pipeline/evaluation/E4_REASSESSMENT_PLAN.md) | [Original result](../pipeline/evaluation/E4_RUN_A002.md), [reassessment](../pipeline/evaluation/E4_REASSESSMENT_RESULT.md) | Nine independent cognate positives lost; fixed-label proxy confounds candidate and classifier quality | Original rejection preserved; automatic rejection withdrawn; task-quality benefit inconclusive |
 | E4 | B001 | [Original phonetic plan](../pipeline/evaluation/E4_PLAN.md) | [Phonetic retrieval report](../pipeline/evaluation/E4_RUN_B001.md) | Eight learned and nine unlearned recoveries under the original test; quality limitations recorded | Revise; evaluate the demonstrated trade-offs under the new policy |
-| E5 | Admission 001; development reviews | [Admission plan](../pipeline/evaluation/E5_ADMISSION_PLAN.md), revised adoption policy below | [Dutch report](../pipeline/evaluation/E5_DUTCH_TRANSFER_RESULT.md), [Icelandic report](../pipeline/evaluation/E5_ICELANDIC_BUILD_RESULT.md) | Dutch reviews complete; three Icelandic reviews complete; independent retrieval gaps and label/display errors recorded | Admission and final evaluation incomplete; transfer comparisons are diagnostics, not gold-standard acceptance |
+| E5 | Admission 001; development reviews; historical measurement/review | [Admission plan](../pipeline/evaluation/E5_ADMISSION_PLAN.md), revised adoption policy below | [Dutch report](../pipeline/evaluation/E5_DUTCH_TRANSFER_RESULT.md), [complete Icelandic report](../pipeline/evaluation/E5_ICELANDIC_DEVELOPMENT_RESULT.md), [historical source review](../pipeline/evaluation/E5_HISTORY_SOURCE_REVIEW.md) | All eleven meaning reviews complete; 124 historical source reviews saved; retrieval gaps and label/display errors recorded | Admission and final evaluation incomplete; transfer comparisons are diagnostics, not gold-standard acceptance |
 
 ### Revised adoption policy
 
