@@ -300,9 +300,9 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 **Numerical limits:** To be recorded from E0 and the source audit, before judging admission.
 
-**Actual result:** Not run under this plan. The previous expansion is not evidence that these admission checks passed.
+**Actual result:** The [source audit](../pipeline/evaluation/E5_SOURCE_AUDIT.md) is complete. The unchanged parser accepts 60,067 Dutch and 17,209 Icelandic lemmas. Exact independent concept-form coverage is 170/171 for Dutch and 166/173 for Icelandic. Both are English-edition Wiktionary sources; source pronunciation is available on 72.3% and 84.3% of parsed lemmas, respectively. Unsupported pronunciation fallback remains empty. The old dataset and inputs are unchanged. New pair generation and admission scoring have not yet run.
 
-**Decision:** Pending.
+**Decision:** Proceed to admission tests, Dutch first, Icelandic second. Strong headword coverage permits a measured build; it does not approve displayed meanings, pair labels, or game use. Freeze per-pair development/test cases and numerical gates before scoring, then build Dutch's five old-language pairings and check old-output preservation. Repeat for Icelandic, including Dutch–Icelandic. The earlier expansion does not establish that these checks pass.
 
 ## Recording actual runs
 
