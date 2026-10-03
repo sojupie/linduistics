@@ -75,8 +75,13 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E2 | E2-001 | [Frozen meaning-profile plan](../pipeline/evaluation/E2_PLAN.md) | [Dense-only report and case results](../pipeline/evaluation/e2-run001/README.md) | 118/197 compatible, versus 80/197 legacy and 114/197 always-partial | Revise; do not adopt |
 | E2 | E2-002 | [Saved dictionary-evidence plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md) | [Dictionary-evidence report](../pipeline/evaluation/E2_RUN002.md) | 169/197 compatible; +25.9 points over dense-only; six new dense-control errors | Revise endpoint-sense checks; do not adopt |
 | E3 | E3-003 | [Typed-history plan](../pipeline/evaluation/E3_PLAN.md), [shared sources](../pipeline/evaluation/E3_SOURCE_PLAN.md), [caveats](../pipeline/evaluation/E3_CAVEAT_PLAN.md) | [Historical-evidence report](../pipeline/evaluation/E3_RUN003.md) | Five reviewed recoveries across three pairs; source scope and caveats retained | Accept evidence layer for final evaluation; no label replacement or publication |
-| E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
-| E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
+| E4 | A002; reassessment 002/003 | [Original plan](../pipeline/evaluation/E4_PLAN.md), [reassessment plan](../pipeline/evaluation/E4_REASSESSMENT_PLAN.md) | [Original result](../pipeline/evaluation/E4_RUN_A002.md), [reassessment](../pipeline/evaluation/E4_REASSESSMENT_RESULT.md) | Nine independent cognate positives lost; fixed-label proxy confounds candidate and classifier quality | Original rejection preserved; automatic rejection withdrawn; task-quality benefit inconclusive |
+| E4 | B001 | [Original phonetic plan](../pipeline/evaluation/E4_PLAN.md) | [Phonetic retrieval report](../pipeline/evaluation/E4_RUN_B001.md) | Eight learned and nine unlearned recoveries under the original test; quality limitations recorded | Revise; evaluate the demonstrated trade-offs under the new policy |
+| E5 | Admission 001; development reviews | [Admission plan](../pipeline/evaluation/E5_ADMISSION_PLAN.md), revised adoption policy below | [Dutch report](../pipeline/evaluation/E5_DUTCH_TRANSFER_RESULT.md), [Icelandic report](../pipeline/evaluation/E5_ICELANDIC_BUILD_RESULT.md) | Dutch reviews complete; three Icelandic reviews complete; independent retrieval gaps and label/display errors recorded | Admission and final evaluation incomplete; transfer comparisons are diagnostics, not gold-standard acceptance |
+
+### Revised adoption policy
+
+The baseline is a comparison control, not a gold standard. The original internally chosen thresholds remain part of each historical run. Adoption now follows [ADOPTION_CRITERIA_V2.md](../pipeline/evaluation/ADOPTION_CRITERIA_V2.md), recorded before the E4 reassessment. Evaluate independent expected-pair retrieval, displayed sense, historical relationship, modern meaning labels and reproducible broader quality separately. Baseline agreement and unchanged-input preservation diagnose regressions; they do not define improvement. No original failed run is silently relabeled as passing its original criterion.
 
 ## Experiment sequence
 
@@ -86,14 +91,14 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Complete; neither variant adopted |
 | E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Complete development comparison; neither implementation adopted |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Complete development comparison; evidence layer accepted for final evaluation |
-| E4 | Can better candidate generation reduce noise without losing useful comparisons? | E0 | Planned |
-| E5 | Can we add a language without degrading existing comparisons or hiding new errors? | Accepted methods and E0 | Planned |
+| E4 | Can better candidate generation reduce noise while making worthwhile retrieval trade-offs? | E0 | Development variants measured; reassessment recorded; final task-quality evidence remains |
+| E5 | Can we add useful language coverage with independently measured retrieval, display and classification quality? | Selected methods and E0 | Builds complete; development review and final evaluation incomplete |
 
 Start with E0, then E1. Test E2, E3, and E4 separately before evaluating their combined effect. E5 applies the accepted methods to one new language at a time.
 
 ### Concrete tests and decision limits
 
-These limits come from the saved [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md), not from the reviews' suggested release percentages. Keep the full protocol alongside each run. A percentage-point gain is an absolute difference between two percentages.
+The table below preserves the original limits from the saved [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md), not from the reviews' suggested release percentages. Current adoption uses the revised policy above; the five-point thresholds do not automatically reject or approve improvements. Keep the full protocol alongside each run. A percentage-point gain is an absolute difference between two percentages.
 
 | Experiment | Concrete change to test | Evidence required before adoption |
 | --- | --- | --- |
@@ -324,6 +329,10 @@ Every row in all six Icelandic builds passed the structural verifier: 216,788 di
 
 German–Icelandic finds 87/119 expected comparisons with 71 suitable displays and 16 wrong displays. English–Icelandic finds 80/118 with 54 suitable and 26 wrong. Retrieval declines 10.98 and 17.05 points against their old comparators; both fail transfer. Open-label agreement is 11/33 and 7/32, with one unresolved case each. Across the three completed Icelandic reviews, 75 of 103 missing comparisons have both accepted source headwords. Separate family intervals, all missing-source diagnoses and recurring selection failures are recorded in the [updated Icelandic report](../pipeline/evaluation/E5_ICELANDIC_BUILD_RESULT.md). Norwegian, Dutch and Swedish reviews remain. No word-specific changes or live publication were made.
 
+### E4 reassessment under the revised adoption policy
+
+The original E4-A002 criterion and rejection remain historical. The automatic rejection based on unchanged classifier agreement is withdrawn; candidate-quality improvement remains inconclusive. All nine lost development concept comparisons are independently annotated IE-CoR cognates. In the open diagnostic sample, the retained set includes 105 meaning-overlap comparisons, 71 with incompatible fixed labels. The removed set includes six meaning overlaps, 15 related-form comparisons and two supported/related name-form comparisons, as well as weak associations and potentially useful disjoint-form contrasts. Prefix removal also retains translation-polysemy and entry-identity failures. The [reassessment report](../pipeline/evaluation/E4_REASSESSMENT_RESULT.md) separates these outcomes, preserves every case, and specifies the representative task-quality measurement still needed. No new threshold, production change or publication was introduced.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.
@@ -351,8 +360,8 @@ Each completed run must include a readable account of what improved, what worsen
 
 ## Release decision
 
-After individual experiments pass, test their combined output against the accepted baseline. Check the actual lexicon and game behavior as well as offline records. Review a reproducible sample of changed and unchanged comparisons, and investigate systematic failures before publication.
+After selecting methods with demonstrated benefits and explicit trade-offs, test their combined output against independent references and reproducible broader samples. Compare the starting dataset to identify changes and losses. Check the actual lexicon and game behavior as well as offline records. Review changed and unchanged comparisons, and investigate systematic failures before publication.
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3's evidence layer is accepted for final evaluation, not publication. E4 is complete: unconditional prefix removal is rejected and phonetic retrieval requires revision. E5's Dutch development transfer tests pass, but Icelandic review, historical/game checks and final evaluation remain incomplete. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
+**Current release decision:** No new dataset is approved for publication. E1 and E2's original decisions remain recorded; their numerical gain thresholds no longer automatically determine adoption. E3's evidence layer is selected for final evaluation. E4's automatic proxy-based rejection is withdrawn: unconditional removal has a mixed result and its task-quality benefit remains inconclusive; phonetic retrieval also needs its quality trade-offs assessed. E5 transfer results are diagnostics, not proof of admission quality; Icelandic review, historical/game checks and final evaluation remain incomplete. The reproduced five-language dataset remains the deployed starting point, not a gold standard. After methods are fixed, evaluate independent expected vocabulary and history, displayed senses, meaning labels and broader samples on reserved families, then check actual lexicon, search, API and game behavior before deciding on release.

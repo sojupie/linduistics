@@ -1,0 +1,1015 @@
+{
+  "groups": {
+    "removed": {
+      "meaning_overlap": {
+        "cases": 6,
+        "compatible_label": 5,
+        "wrong_label": 1
+      },
+      "related_grammar_or_concepts": {
+        "cases": 15,
+        "wrong_label": 15
+      },
+      "verified_entity_or_recorded_name_forms": {
+        "cases": 2,
+        "wrong_label": 2
+      },
+      "different_entities": {
+        "cases": 4,
+        "wrong_label": 4
+      },
+      "unverified_names": {
+        "cases": 4,
+        "wrong_label": 4
+      },
+      "disjoint_observed": {
+        "cases": 33,
+        "wrong_label": 7,
+        "compatible_label": 26
+      },
+      "inactive_or_historical_only": {
+        "cases": 5,
+        "compatible_label": 4,
+        "wrong_label": 1
+      },
+      "unresolved": {
+        "cases": 2,
+        "unresolved_label_reference": 2
+      }
+    },
+    "retained": {
+      "meaning_overlap": {
+        "cases": 105,
+        "wrong_label": 71,
+        "compatible_label": 34
+      },
+      "related_grammar_or_concepts": {
+        "cases": 4,
+        "wrong_label": 3,
+        "compatible_label": 1
+      },
+      "verified_entity_or_recorded_name_forms": {
+        "cases": 4,
+        "compatible_label": 1,
+        "wrong_label": 3
+      },
+      "different_entities": {
+        "cases": 1,
+        "compatible_label": 1
+      },
+      "unverified_names": {
+        "cases": 0
+      },
+      "disjoint_observed": {
+        "cases": 7,
+        "wrong_label": 4,
+        "compatible_label": 3
+      },
+      "inactive_or_historical_only": {
+        "cases": 7,
+        "compatible_label": 5,
+        "wrong_label": 2
+      },
+      "unresolved": {
+        "cases": 8,
+        "unresolved_label_reference": 8
+      }
+    }
+  },
+  "by_pair": {
+    "da-de": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 0
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 2,
+          "compatible_label": 2
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 1,
+          "unresolved_label_reference": 1
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 12,
+          "wrong_label": 10,
+          "compatible_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      }
+    },
+    "da-en": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "disjoint_observed": {
+          "cases": 3,
+          "compatible_label": 3
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 11,
+          "compatible_label": 6,
+          "wrong_label": 5
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 0
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      }
+    },
+    "da-nb": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 0
+        },
+        "related_grammar_or_concepts": {
+          "cases": 4,
+          "wrong_label": 4
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 3,
+          "wrong_label": 1,
+          "compatible_label": 2
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 9,
+          "wrong_label": 6,
+          "compatible_label": 3
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 2,
+          "wrong_label": 1,
+          "compatible_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 1,
+          "unresolved_label_reference": 1
+        }
+      }
+    },
+    "da-sv": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "related_grammar_or_concepts": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 3,
+          "compatible_label": 3
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 9,
+          "wrong_label": 7,
+          "compatible_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 0
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      }
+    },
+    "de-en": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 0
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "unverified_names": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "disjoint_observed": {
+          "cases": 4,
+          "compatible_label": 4
+        },
+        "inactive_or_historical_only": {
+          "cases": 3,
+          "compatible_label": 3
+        },
+        "unresolved": {
+          "cases": 1,
+          "unresolved_label_reference": 1
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 12,
+          "wrong_label": 9,
+          "compatible_label": 3
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 0
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      }
+    },
+    "de-nb": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "related_grammar_or_concepts": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 3,
+          "compatible_label": 2,
+          "wrong_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 5,
+          "compatible_label": 3,
+          "wrong_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 0
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "unresolved": {
+          "cases": 2,
+          "unresolved_label_reference": 2
+        }
+      }
+    },
+    "de-sv": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "related_grammar_or_concepts": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "disjoint_observed": {
+          "cases": 4,
+          "compatible_label": 3,
+          "wrong_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 11,
+          "wrong_label": 9,
+          "compatible_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 2,
+          "wrong_label": 2
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "unresolved": {
+          "cases": 2,
+          "unresolved_label_reference": 2
+        }
+      }
+    },
+    "en-nb": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 0
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 15,
+          "wrong_label": 10,
+          "compatible_label": 5
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 2,
+          "unresolved_label_reference": 2
+        }
+      }
+    },
+    "en-sv": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 0
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 5,
+          "compatible_label": 3,
+          "wrong_label": 2
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 11,
+          "wrong_label": 9,
+          "compatible_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 0
+        },
+        "inactive_or_historical_only": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      }
+    },
+    "nb-sv": {
+      "removed": {
+        "meaning_overlap": {
+          "cases": 2,
+          "compatible_label": 2
+        },
+        "related_grammar_or_concepts": {
+          "cases": 3,
+          "wrong_label": 3
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 1,
+          "wrong_label": 1
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 5,
+          "wrong_label": 1,
+          "compatible_label": 4
+        },
+        "inactive_or_historical_only": {
+          "cases": 0
+        },
+        "unresolved": {
+          "cases": 0
+        }
+      },
+      "retained": {
+        "meaning_overlap": {
+          "cases": 10,
+          "compatible_label": 6,
+          "wrong_label": 4
+        },
+        "related_grammar_or_concepts": {
+          "cases": 0
+        },
+        "verified_entity_or_recorded_name_forms": {
+          "cases": 0
+        },
+        "different_entities": {
+          "cases": 0
+        },
+        "unverified_names": {
+          "cases": 0
+        },
+        "disjoint_observed": {
+          "cases": 1,
+          "compatible_label": 1
+        },
+        "inactive_or_historical_only": {
+          "cases": 2,
+          "compatible_label": 2
+        },
+        "unresolved": {
+          "cases": 1,
+          "unresolved_label_reference": 1
+        }
+      }
+    }
+  },
+  "independent_history_panel": {
+    "same_expert_set": {
+      "expected": 753,
+      "control_found": 662,
+      "retained_found": 653
+    },
+    "different_expert_sets": {
+      "expected": 415,
+      "control_found": 333,
+      "retained_found": 333
+    },
+    "not_annotated": {
+      "expected": 0,
+      "control_found": 0,
+      "retained_found": 0
+    }
+  },
+  "lost_expected_comparisons": [
+    {
+      "case_id": "iecor:58-108-1:69-108-1",
+      "concept_id": "108",
+      "concept": "near",
+      "expected_meaning": "Not far distant in time or space or degree or circumstances.",
+      "lang_a": "nb",
+      "word_a": "nært",
+      "lang_b": "sv",
+      "word_b": "nära",
+      "form_id_a": "58-108-1",
+      "form_id_b": "69-108-1",
+      "expert_sets_a": "264",
+      "expert_sets_b": "264",
+      "history_reference": "same_expert_set",
+      "source_a": "",
+      "source_b": "http://www.saob.se/artikel/?seek=nära",
+      "coverage_status": "found",
+      "category": "semantic_narrowing",
+      "relation": "unknown",
+      "display_a": "closely",
+      "display_b": "near, close",
+      "panel": "concept",
+      "family_group": "fd053dcdf77423d8",
+      "role": "development",
+      "pair": "nb-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "unresolved"
+    },
+    {
+      "case_id": "iecor:58-122-1:69-122-1",
+      "concept_id": "122",
+      "concept": "red",
+      "expected_meaning": "Having red as its colour.",
+      "lang_a": "nb",
+      "word_a": "rød",
+      "lang_b": "sv",
+      "word_b": "röd",
+      "form_id_a": "58-122-1",
+      "form_id_b": "69-122-1",
+      "expert_sets_a": "6592",
+      "expert_sets_b": "6592",
+      "history_reference": "same_expert_set",
+      "source_a": "",
+      "source_b": "http://www.saob.se/artikel/?seek=röd",
+      "coverage_status": "found",
+      "category": "full_cognate",
+      "relation": "cognate",
+      "display_a": "red",
+      "display_b": "red",
+      "panel": "concept",
+      "family_group": "f3e3f3605ea04e70",
+      "role": "development",
+      "pair": "nb-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "acceptable"
+    },
+    {
+      "case_id": "iecor:58-152-1:69-152-1",
+      "concept_id": "152",
+      "concept": "snow",
+      "expected_meaning": "The most common form of frozen precipitation, usually flakes or starlike crystals, matted ice needles, or combinations, and often rime-coated.",
+      "lang_a": "nb",
+      "word_a": "snø",
+      "lang_b": "sv",
+      "word_b": "snö",
+      "form_id_a": "58-152-1",
+      "form_id_b": "69-152-1",
+      "expert_sets_a": "303",
+      "expert_sets_b": "303",
+      "history_reference": "same_expert_set",
+      "source_a": "",
+      "source_b": "http://www.saob.se/artikel/?seek=snö",
+      "coverage_status": "found",
+      "category": "accidental_lookalike",
+      "relation": "false_cognate",
+      "display_a": "snow",
+      "display_b": "snow; frozen, crystalline water falling as precipitation",
+      "panel": "concept",
+      "family_group": "01d49a6eb50b2e56",
+      "role": "development",
+      "pair": "nb-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "acceptable"
+    },
+    {
+      "case_id": "iecor:20-179-1:69-179-1",
+      "concept_id": "179",
+      "concept": "tongue",
+      "expected_meaning": "The flexible muscular organ in the mouth that is used to move food around, for tasting and that is moved into various positions to modify the flow of air from the lungs in order to produce different sounds.",
+      "lang_a": "da",
+      "word_a": "tunge",
+      "lang_b": "sv",
+      "word_b": "tunga",
+      "form_id_a": "20-179-1",
+      "form_id_b": "69-179-1",
+      "expert_sets_a": "327",
+      "expert_sets_b": "327",
+      "history_reference": "same_expert_set",
+      "source_a": "http://ordnet.dk/ddo/ordbog?query=tunge",
+      "source_b": "http://www.saob.se/artikel/?seek=tunga",
+      "coverage_status": "found",
+      "category": "semantic_narrowing",
+      "relation": "cognate",
+      "display_a": "tongue",
+      "display_b": "a tongue (organ)",
+      "panel": "concept",
+      "family_group": "7511f70af2da0969",
+      "role": "development",
+      "pair": "da-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "acceptable"
+    },
+    {
+      "case_id": "iecor:20-188-1:58-188-1",
+      "concept_id": "188",
+      "concept": "water",
+      "expected_meaning": "Common liquid (H₂O) which forms rain, rivers, the sea, etc., and which makes up a large part of the bodies of organisms.",
+      "lang_a": "da",
+      "word_a": "vand",
+      "lang_b": "nb",
+      "word_b": "vann",
+      "form_id_a": "20-188-1",
+      "form_id_b": "58-188-1",
+      "expert_sets_a": "335",
+      "expert_sets_b": "335",
+      "history_reference": "same_expert_set",
+      "source_a": "http://ordnet.dk/ddo/ordbog?query=vand",
+      "source_b": "",
+      "coverage_status": "found",
+      "category": "semantic_narrowing",
+      "relation": "cognate",
+      "display_a": "soft drink",
+      "display_b": "an insipid or heavily diluted drink",
+      "panel": "concept",
+      "family_group": "48c5603e04e2de96",
+      "role": "development",
+      "pair": "da-nb",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "wrong_sense"
+    },
+    {
+      "case_id": "iecor:58-24-1:69-24-1",
+      "concept_id": "24",
+      "concept": "come",
+      "expected_meaning": "To move toward or to reach either the speaker, the person spoken to, or the subject of the speaker's narrative.",
+      "lang_a": "nb",
+      "word_a": "komme",
+      "lang_b": "sv",
+      "word_b": "komma",
+      "form_id_a": "58-24-1",
+      "form_id_b": "69-24-1",
+      "expert_sets_a": "7319",
+      "expert_sets_b": "7319",
+      "history_reference": "same_expert_set",
+      "source_a": "",
+      "source_b": "http://www.saob.se/artikel/?seek=komma",
+      "coverage_status": "found",
+      "category": "full_cognate",
+      "relation": "cognate",
+      "display_a": "to have an orgasm; to climax, come",
+      "display_b": "to come (to orgasm)",
+      "panel": "concept",
+      "family_group": "040101bfbc94001f",
+      "role": "development",
+      "pair": "nb-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "wrong_sense"
+    },
+    {
+      "case_id": "iecor:20-66-1:58-66-1",
+      "concept_id": "66",
+      "concept": "green",
+      "expected_meaning": "Having green as its colour; having the hue of that portion of the visible spectrum lying between yellow and blue, evoked in the human observer by radiant energy with wavelengths of approximately 490 to 570 nanometers.",
+      "lang_a": "da",
+      "word_a": "grøn",
+      "lang_b": "nb",
+      "word_b": "grønn",
+      "form_id_a": "20-66-1",
+      "form_id_b": "58-66-1",
+      "expert_sets_a": "231",
+      "expert_sets_b": "231",
+      "history_reference": "same_expert_set",
+      "source_a": "http://ordnet.dk/ddo/ordbog?query=grøn",
+      "source_b": "",
+      "coverage_status": "found",
+      "category": "full_cognate",
+      "relation": "cognate",
+      "display_a": "green (inexperienced)",
+      "display_b": "green (inexperienced)",
+      "panel": "concept",
+      "family_group": "7efafd0b9a652d06",
+      "role": "development",
+      "pair": "da-nb",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "wrong_sense"
+    },
+    {
+      "case_id": "iecor:20-72-1:27-72-1",
+      "concept_id": "72",
+      "concept": "hear",
+      "expected_meaning": "To perceive sound with the ear, without necessarily paying attention to it.",
+      "lang_a": "da",
+      "word_a": "høre",
+      "lang_b": "de",
+      "word_b": "hören",
+      "form_id_a": "20-72-1",
+      "form_id_b": "27-72-1",
+      "expert_sets_a": "237",
+      "expert_sets_b": "237",
+      "history_reference": "same_expert_set",
+      "source_a": "http://ordnet.dk/ddo/ordbog?query=høre",
+      "source_b": "",
+      "coverage_status": "found",
+      "category": "semantic_narrowing",
+      "relation": "unknown",
+      "display_a": "to hear (to perceive with the ears)",
+      "display_b": "hearing",
+      "panel": "concept",
+      "family_group": "8b66bed615490b00",
+      "role": "development",
+      "pair": "da-de",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "unresolved"
+    },
+    {
+      "case_id": "iecor:20-72-1:69-72-1",
+      "concept_id": "72",
+      "concept": "hear",
+      "expected_meaning": "To perceive sound with the ear, without necessarily paying attention to it.",
+      "lang_a": "da",
+      "word_a": "høre",
+      "lang_b": "sv",
+      "word_b": "höra",
+      "form_id_a": "20-72-1",
+      "form_id_b": "69-72-1",
+      "expert_sets_a": "237",
+      "expert_sets_b": "237",
+      "history_reference": "same_expert_set",
+      "source_a": "http://ordnet.dk/ddo/ordbog?query=høre",
+      "source_b": "http://www.saob.se/artikel/?seek=höra",
+      "coverage_status": "found",
+      "category": "semantic_narrowing",
+      "relation": "cognate",
+      "display_a": "to belong to (to be a natural part of something, with the preposition til)",
+      "display_b": "to belong (to), to be a (necessary) part of",
+      "panel": "concept",
+      "family_group": "8b66bed615490b00",
+      "role": "development",
+      "pair": "da-sv",
+      "channels": [
+        "prefix"
+      ],
+      "control": true,
+      "A": false,
+      "baseline_display_decision": "wrong_sense"
+    }
+  ],
+  "limits": "Frozen stratified diagnostic sample and source-guided agent meaning reviews; not independent candidate-quality gold or population precision. Expert same-set positives are limited to reference concepts."
+}
