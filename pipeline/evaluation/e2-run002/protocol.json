@@ -1,0 +1,23 @@
+{
+  "run_id": "E2-002",
+  "variant": "evidence",
+  "source_comparisons_sha256": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+  "dictionary_evidence_plan_sha256": "7d737dca7551fc2851b8f29227802a1ab25119f6681e21d42faa34781c6723b9",
+  "english_lemma_sha256": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b",
+  "requested_translation_identities": 624,
+  "resolved_translation_identities": 623,
+  "form_predictions_sha256": "8177746fc9a6f5d036961fff5f76bdc779a200b257aad957669553d7e7fc37c7",
+  "reference_sha256": "03ed9b376e9c55acbad6ac27ed1a192ab5c8518c8070c71c39fd4498211b1cc8",
+  "plan_sha256": "7f9a36967660db23543d4dcc96ffdee61b51d4631df9307a76f9e4fe1f15151f",
+  "classification_code_sha256": "f23c044c665e6a73304f72cf3334f7bce786a5aa23b0764a84b111c8a1298c7e",
+  "evaluation_code_sha256": "ab4871769f9610a803320c51e5b730dea822de36643f6fe3e145c36d67f31d81",
+  "parameters": {
+    "match_cosine": 0.75,
+    "association_cosine": 0.6,
+    "equivalent_directional_coverage": 0.8
+  },
+  "display": "Unchanged baseline in both arms",
+  "history": "Copied legacy field, not newly verified",
+  "seed": 20261003,
+  "write_policy": "New local result directory only; no database or input changes."
+}

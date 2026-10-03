@@ -1,0 +1,321 @@
+{
+  "run_id": "E2-002",
+  "variant": "evidence",
+  "cases": 207,
+  "scorable": 197,
+  "unresolved_references": 10,
+  "family_groups": 189,
+  "compatible_counts": {
+    "control": 80,
+    "variant": 169,
+    "always_partial": 114
+  },
+  "gain_percentage_points": 45.17766497461929,
+  "paired_family_95_interval": [
+    36.78756476683938,
+    53.333333333333336
+  ],
+  "per_pair": {
+    "en-sv": {
+      "cases": 19,
+      "control": 5,
+      "variant": 17,
+      "always_partial": 11
+    },
+    "nb-sv": {
+      "cases": 24,
+      "control": 15,
+      "variant": 20,
+      "always_partial": 12
+    },
+    "da-en": {
+      "cases": 20,
+      "control": 12,
+      "variant": 19,
+      "always_partial": 13
+    },
+    "de-nb": {
+      "cases": 13,
+      "control": 6,
+      "variant": 8,
+      "always_partial": 7
+    },
+    "en-nb": {
+      "cases": 20,
+      "control": 7,
+      "variant": 17,
+      "always_partial": 15
+    },
+    "de-sv": {
+      "cases": 23,
+      "control": 7,
+      "variant": 20,
+      "always_partial": 12
+    },
+    "de-en": {
+      "cases": 24,
+      "control": 10,
+      "variant": 24,
+      "always_partial": 13
+    },
+    "da-nb": {
+      "cases": 21,
+      "control": 6,
+      "variant": 16,
+      "always_partial": 9
+    },
+    "da-sv": {
+      "cases": 17,
+      "control": 7,
+      "variant": 14,
+      "always_partial": 10
+    },
+    "da-de": {
+      "cases": 16,
+      "control": 5,
+      "variant": 14,
+      "always_partial": 12
+    }
+  },
+  "diagnostic_groups": {
+    "related_forms_without_shared_prefix": {
+      "cases": 23,
+      "control": 2,
+      "variant": 23,
+      "always_partial": 23
+    },
+    "multiple_active_senses": {
+      "cases": 129,
+      "control": 43,
+      "variant": 112,
+      "always_partial": 88
+    },
+    "multiple_source_entries": {
+      "cases": 85,
+      "control": 26,
+      "variant": 74,
+      "always_partial": 62
+    },
+    "names_and_entity_identity": {
+      "cases": 48,
+      "control": 12,
+      "variant": 42,
+      "always_partial": 24
+    },
+    "composition_or_derivation": {
+      "cases": 72,
+      "control": 34,
+      "variant": 63,
+      "always_partial": 44
+    },
+    "different_recorded_root_languages": {
+      "cases": 25,
+      "control": 3,
+      "variant": 23,
+      "always_partial": 22
+    },
+    "inactive_usage": {
+      "cases": 47,
+      "control": 15,
+      "variant": 36,
+      "always_partial": 28
+    },
+    "borrowing": {
+      "cases": 59,
+      "control": 26,
+      "variant": 50,
+      "always_partial": 37
+    },
+    "missing_source_meaning": {
+      "cases": 4,
+      "control": 1,
+      "variant": 4,
+      "always_partial": 4
+    },
+    "short_words": {
+      "cases": 27,
+      "control": 4,
+      "variant": 21,
+      "always_partial": 22
+    },
+    "related_but_not_interchangeable": {
+      "cases": 19,
+      "control": 1,
+      "variant": 10,
+      "always_partial": 1
+    },
+    "prefix_collision_control": {
+      "cases": 33,
+      "control": 27,
+      "variant": 29,
+      "always_partial": 0
+    },
+    "secondary_or_historical_overlap": {
+      "cases": 7,
+      "control": 6,
+      "variant": 3,
+      "always_partial": 1
+    }
+  },
+  "confusion": {
+    "ordinary_overlap": {
+      "partial_overlap": 32,
+      "equivalent": 19,
+      "different_meanings": 1
+    },
+    "specialized_overlap_source_gap": {
+      "partial_overlap": 1
+    },
+    "generic_name_match_unverified": {
+      "unverified_name_identity": 3
+    },
+    "ordinary_partial_overlap": {
+      "partial_overlap": 43,
+      "equivalent": 1,
+      "different_meanings": 1
+    },
+    "same_named_entity": {
+      "entity_overlap": 1,
+      "different_entities": 1
+    },
+    "related_meaning_different_pos": {
+      "related_form": 9,
+      "different_meanings": 2,
+      "no_modern_sense_data": 1
+    },
+    "no_observed_overlap": {
+      "different_meanings": 2,
+      "related_form": 1,
+      "partial_overlap": 1
+    },
+    "same_named_entity_partial_profile": {
+      "entity_overlap": 1
+    },
+    "different_named_entities": {
+      "different_entities": 1
+    },
+    "disjoint_observed": {
+      "different_meanings": 29,
+      "partial_overlap": 2,
+      "related_form": 2,
+      "related_meanings": 2,
+      "no_modern_sense_data": 1
+    },
+    "no_active_overlap_observed": {
+      "no_modern_sense_data": 3,
+      "different_meanings": 1
+    },
+    "historical_overlap_only": {
+      "partial_overlap": 4,
+      "different_meanings": 2
+    },
+    "regional_partial_overlap": {
+      "partial_overlap": 3
+    },
+    "secondary_overlap": {
+      "partial_overlap": 1
+    },
+    "related_meaning_not_equivalent": {
+      "different_meanings": 3,
+      "partial_overlap": 1,
+      "equivalent": 2
+    },
+    "contextual_partial_overlap": {
+      "partial_overlap": 2,
+      "related_form": 1
+    },
+    "distinct_named_entities": {
+      "unverified_name_identity": 2,
+      "different_entities": 1
+    },
+    "ordinary_overlap_specialized_display_unresolved": {
+      "partial_overlap": 1
+    },
+    "material_use_partial_overlap": {
+      "partial_overlap": 1
+    },
+    "regional_overlap": {
+      "partial_overlap": 1
+    },
+    "ordinary_overlap_source_gap": {
+      "partial_overlap": 2
+    },
+    "inactive_overlap": {
+      "historical_overlap": 2
+    },
+    "generic_name_overlap_unresolved": {
+      "unverified_name_identity": 1
+    },
+    "specialized_overlap": {
+      "equivalent": 1
+    },
+    "related_name_forms": {
+      "unverified_name_identity": 1
+    },
+    "same_named_entity_partial_overlap": {
+      "entity_overlap": 1
+    },
+    "distinct_named_entity_and_common_concept": {
+      "different_meanings": 1
+    },
+    "related_meaning_not_equivalent_source_gap": {
+      "related_form": 1
+    },
+    "related_name_forms_recorded": {
+      "related_name_form": 1
+    }
+  },
+  "coverage_counts": {
+    "control": 175,
+    "variant": 207,
+    "always_partial": 207
+  },
+  "actionable_coverage_counts": {
+    "control": 175,
+    "variant": 194,
+    "always_partial": 207
+  },
+  "warning_counts": {
+    "control": {
+      "no_supported_match": 32
+    },
+    "variant": {
+      "unverified_name_identity": 7,
+      "no_modern_sense_data": 6
+    },
+    "always_partial": {}
+  },
+  "additional_comparisons": {
+    "always_partial": {
+      "difference_percentage_points": 27.918781725888326,
+      "paired_family_95_interval": [
+        20.5,
+        35.204081632653065
+      ]
+    },
+    "dense_only": {
+      "difference_percentage_points": 25.888324873096447,
+      "paired_family_95_interval": [
+        18.46153846153846,
+        33.333333333333336
+      ]
+    }
+  },
+  "flagged_losses": [],
+  "generic_name_controls": 4,
+  "generic_name_controls_flagged": true,
+  "compound_controls": 2,
+  "compound_controls_flagged": true,
+  "concept_positive_panel_label_counts": {
+    "partial_overlap": 849,
+    "equivalent": 128,
+    "related_form": 12,
+    "different_meanings": 5,
+    "unverified_name_identity": 1
+  },
+  "original_inputs_unchanged": true,
+  "gain_gate_met": true,
+  "coverage_gate_met": true,
+  "beats_always_partial": true,
+  "limits": "Compatibility with source-guided agent judgments, not expert accuracy. Unresolved cases remain visible. No history, display, candidate, or score changes."
+}

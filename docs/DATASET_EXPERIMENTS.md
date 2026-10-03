@@ -6,9 +6,9 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
-E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2-001 tested meaning coverage using embedding scores alone and was not adopted. E2-002 has a saved plan but no completed run. E3–E5 remain planned.
+E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2 tested dense-only and dictionary-evidence meaning profiles; neither implementation is adopted. E3–E5 remain planned.
 
-**Next action:** implement and evaluate [E2-002's dictionary-evidence variant](../pipeline/evaluation/E2_EVIDENCE_PLAN.md). Validate recorded translation references against the frozen source entries. Keep the encoder, scores, display selection, historical fields, and reference judgments fixed. Compare it with E2-001 and the trivial predictor that labels everything partial overlap. Review every newly incorrect prediction and lost correct prediction, then append the result and decision here.
+**Next action:** run E3's typed historical-link experiment independently, keeping baseline meanings, display selection, candidates, and encoder fixed. E2's [report](../pipeline/evaluation/E2_RUN002.md) records a separate follow-up: validate dictionary evidence against the actual endpoint sense, including current usage and contradictory qualifications, before adopting it.
 
 The five-language baseline remains accepted. An experiment branch or a completed run does not mean its method has been adopted.
 
@@ -73,7 +73,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json), [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md) | [Baseline evaluation report](../pipeline/evaluation/E0_RUN001.md) | Development review, coverage, diagnostic groups, and procedure recorded | Use for exploratory E1-E4 comparisons; preserve test families |
 | E1 | E1-003 | [Saved variants and corrections](../pipeline/evaluation/E1_PLAN.md) | [Display-selection report](../pipeline/evaluation/E1_RUN003.md) | A: no concept gain. B: +2.2 points, below the five-point gate; one open-sample match lost | Reject A as tested; revise B without adopting it |
 | E2 | E2-001 | [Frozen meaning-profile plan](../pipeline/evaluation/E2_PLAN.md) | [Dense-only report and case results](../pipeline/evaluation/e2-run001/README.md) | 118/197 compatible, versus 80/197 legacy and 114/197 always-partial | Revise; do not adopt |
-| E2 | E2-002 | [Saved dictionary-evidence plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md) | Not run | Not measured | Implement and evaluate separately |
+| E2 | E2-002 | [Saved dictionary-evidence plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md) | [Dictionary-evidence report](../pipeline/evaluation/E2_RUN002.md) | 169/197 compatible; +25.9 points over dense-only; six new dense-control errors | Revise endpoint-sense checks; do not adopt |
 | E3 | — | E0 complete; historical-link variant specified below | Not run | Not measured | Pending |
 | E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
 | E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
@@ -84,7 +84,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | --- | --- | --- | --- |
 | E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Complete |
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Complete; neither variant adopted |
-| E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | In progress; dense-only variant not adopted |
+| E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Complete development comparison; neither implementation adopted |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
 | E4 | Can better candidate generation reduce noise without losing useful comparisons? | E0 | Planned |
 | E5 | Can we add a language without degrading existing comparisons or hiding new errors? | Accepted methods and E0 | Planned |
@@ -217,15 +217,15 @@ The plan, code, exact input selection, new concept judgments, changed open-vocab
 
 The [readable report](../pipeline/evaluation/e2-run001/README.md) records the errors, measurements, controls, reproduction command, and unchanged inputs. Ordinary translated glosses can receive low embedding scores even when they record the same meaning. Lowering the threshold also risks admitting nearby but distinct concepts. This supports testing an additional source of evidence; it does not establish that the proposed dictionary-evidence variant works.
 
-### E2-002 — Planned follow-up, 2026-10-03
+### E2-002 — Completed development run, 2026-10-03
 
 **Hypothesis:** explicit translated glosses and validated source-sense translation links recover ordinary overlap missed by embedding scores, without inventing exact sense matches or ancestry.
 
 **Change:** add this evidence under the [saved plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md). Record its scope and original source references. A word-level translation can support possible overlap without proving that every sense is equivalent. Reject generic-name evidence and incompatible grammatical or contextual matches.
 
-**Actual result:** Not run.
+**Actual result:** 169/197 compatible labels (85.8%), versus 80 legacy, 118 dense-only, and 114 always-partial. The 25.9-point gain over dense-only has a paired family interval of 18.5–33.3; the gain over always-partial is 27.9 points (20.5–35.2). It gains 57 dense-control cases and loses six. Actionable coverage is 194/207; seven name warnings and six missing-modern-sense warnings are reported separately. All 28 remaining errors and ten unresolved cases are included in the [readable report](../pipeline/evaluation/E2_RUN002.md). Reproduction produced byte-identical result artifacts.
 
-**Decision:** Pending. Keep E2-001's inputs and scoring rubric fixed. Compare with legacy labels, E2-001, and the always-partial control; inspect all new errors and losses before deciding.
+**Decision:** Revise; do not adopt. The development gates pass, but translation references still bridge different endpoint senses or inactive uses. This supports dictionary evidence as a signal, not this implementation as a finished classifier. A later meaning experiment must confirm the endpoint sense and current usage. Continue E3 independently using baseline meaning and display inputs. No source scores, dataset records, or live database contents changed.
 
 ## E3 — Typed historical links
 
@@ -327,4 +327,4 @@ After individual experiments pass, test their combined output against the accept
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** Neither E1 variant nor E2-001 is approved. E2-002 and E3–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
+**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.

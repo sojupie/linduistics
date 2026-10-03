@@ -1,0 +1,25 @@
+{
+  "dense_predictions_unchanged_cases": 207,
+  "reproduction": {
+    "protocol.json": {
+      "byte_identical": true,
+      "sha256": "d4038ef14652de524ae46a6c5a8920b016b66a3c5ef68d543130de48dfd43214"
+    },
+    "case_results.json": {
+      "byte_identical": true,
+      "sha256": "5e26a0e6ba1b783a9b1d60d4a5196cf7be04f43d8e0d603c91b76901a67c29ac"
+    },
+    "metrics.json": {
+      "byte_identical": true,
+      "sha256": "f919bf41b507d255e39feb90ea625fcd67facc90406da0cc6013ae8e4c119c61"
+    }
+  },
+  "unresolved_translation_identities": [
+    [
+      "en|whore|noun||en-whore-en-noun-9-t9KUFg,en-whore-en-noun-eJbyP4iK,en-whore-en-noun-i~TRj9je,en-whore-en-noun-lEBZfIxR,en-whore-en-noun-ojqcM~SG",
+      "en-whore-en-noun-i~TRj9je"
+    ]
+  ],
+  "implementation_revision": "39cb791",
+  "check": "Dense labels and decisions identical for every open case; E2-002 JSON artifacts byte-identical on rerun."
+}
