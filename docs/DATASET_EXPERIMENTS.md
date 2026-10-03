@@ -63,10 +63,10 @@ Update this table after each run. Keep earlier run records below the correspondi
 | Experiment | Run ID | Plan/configuration | Report and case results | Outcome | Decision |
 | --- | --- | --- | --- | --- | --- |
 | E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json), [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md) | [Baseline evaluation report](../pipeline/evaluation/E0_RUN001.md) | Development review, coverage, diagnostic groups, and procedure recorded | Use for exploratory E1-E4 comparisons; preserve test families |
-| E1 | — | Awaiting E0 | Not run | Not measured | Pending |
+| E1 | — | E0 complete; display variants specified below | Not run | Not measured | Pending |
 | E2 | — | Awaiting E0 and E1 | Not run | Not measured | Pending |
-| E3 | — | Awaiting E0 | Not run | Not measured | Pending |
-| E4 | — | Awaiting E0 | Not run | Not measured | Pending |
+| E3 | — | E0 complete; historical-link variant specified below | Not run | Not measured | Pending |
+| E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
 | E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
 
 ## Experiment sequence
@@ -111,11 +111,13 @@ Divide development and test cases by word family. Keep both directions of a pair
 
 **Completion condition:** a readable baseline report, saved reviewed cases, and a frozen evaluation procedure. Before E1–E4 implementation, record their numerical acceptance limits using this baseline and the intended product use. Until then, those experiments are planned, not ready for release decisions.
 
-**Actual result:** E0-001 measured the unchanged baseline against 1,712 independently sourced concept comparisons: 1,441 found, 213 missing despite both exact headwords being present, and 58 involving an absent exact headword. Recorded inflections recovered 4 of the latter cases; most remaining forms are phrases or source notation. Independent frequency samples and family-grouped splits are saved. A blinded, source-guided agent review of 995 found development comparisons judged both displayed definitions suitable for the intended concept in 630 cases (63.3%; family-bootstrap interval 58.2%–68.3%). This is not independent human gold or vocabulary-wide accuracy. See the [run report](../pipeline/evaluation/E0_RUN001.md) for scope, source attribution, saved judgments, and remaining open-vocabulary/hard-case review.
+**Actual result:** Complete as an exploratory baseline evaluation. Of 1,712 independently sourced concept comparisons, 1,441 exist under exact reference spellings. Recorded inflections and explicit alternative spellings recover 12 further existing comparisons. Both displayed definitions suit the intended concept in 630 of 995 reviewed development comparisons (63.3%; family-bootstrap interval 58.2%–68.3%). All 207 open-vocabulary development cases are reviewed, with unresolved cases and diagnostic groups retained. These source-guided agent judgments do not establish independent human accuracy or accuracy across the whole dictionary. See the [readable report](../pipeline/evaluation/E0_RUN001.md).
 
-**Decision:** Continue E0's remaining source-notation, open-vocabulary/hard-case review, and acceptance-limit work before implementing E1-E4 variants. Development display review and family grouping are now recorded. No dataset change adopted.
+**Decision:** Use E0 for exploratory comparisons under the [saved acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md). Preserve reserved test families for the combined evaluation. No replacement method or published dataset change has been approved.
 
-### E0-001 — Baseline evaluation, 2026-10-03
+### E0-001 — Earlier interim record, 2026-10-03
+
+This checkpoint is preserved for history. The completion record below supersedes its status, remaining work, and unset acceptance limits.
 
 | Field | Record |
 | --- | --- |
