@@ -6,6 +6,11 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**Verification setup, 2026-10-04:** use the [verification protocol](DATASET_VERIFICATION.md)
+and its executable sampling/review tool before further improvement experiments.
+This records the evaluation design and review requirements; it does not adopt a
+method or change the existing results.
+
 E0–E4 have development results and readable decisions. E5's Dutch and Icelandic source audits, full pair builds, structural checks and development meaning reviews are complete. Historical evidence was measured across all eleven new-language pairs; 124 of 631 supported cases have source reviews. The remaining historical reviews, game checks, representative E4 task-quality sample, assembled output and reserved-family/product evaluation are unfinished. No improved dataset has been published.
 
 **Discussion checkpoint, 2026-10-04:** the user requested wrapping up this phase before deciding further steps. Do not start another experiment before that discussion. The proposed priority is to validate E2's dictionary evidence against the actual endpoint sense and usage, then improve retrieval of independently expected pairs that already have source entries. Historical evidence needs claim-subject and prose-qualification safeguards before automatic label or game use. Record a separate plan and criteria for each follow-up; do not silently extend an old experiment or tune on reserved results.

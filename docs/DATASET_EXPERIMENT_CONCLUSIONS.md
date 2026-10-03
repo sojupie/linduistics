@@ -355,3 +355,8 @@ trying E2 or E1 again. We need a defensible estimate of broader quality, a focus
 comparison of what changed, and an independent check of what is missing. Use
 those to judge the concrete improvements above, without replacing the old
 five-point gate with a new set of arbitrary gates.
+
+The [verification protocol](DATASET_VERIFICATION.md), recorded 2026-10-04, turns
+this conclusion into a repeatable procedure. It separates independent retrieval,
+display, meaning, history and task checks, and supplies a tool for frozen samples,
+explicit reviews and weighted reports. Use it before the proposed follow-ups.
