@@ -1,0 +1,72 @@
+{
+  "da": {
+    "1-200:headword": 161,
+    "1-200:recorded_form": 38,
+    "1-200:not_found": 1,
+    "201-1000:recorded_form": 36,
+    "201-1000:headword": 60,
+    "201-1000:not_found": 4,
+    "1001-5000:headword": 50,
+    "1001-5000:recorded_form": 36,
+    "1001-5000:not_found": 14,
+    "5001-20000:headword": 28,
+    "5001-20000:recorded_form": 33,
+    "5001-20000:not_found": 39
+  },
+  "de": {
+    "1-200:headword": 149,
+    "1-200:recorded_form": 49,
+    "1-200:not_found": 2,
+    "201-1000:headword": 62,
+    "201-1000:recorded_form": 34,
+    "201-1000:not_found": 4,
+    "1001-5000:headword": 57,
+    "1001-5000:recorded_form": 33,
+    "1001-5000:not_found": 10,
+    "5001-20000:headword": 55,
+    "5001-20000:not_found": 14,
+    "5001-20000:recorded_form": 31
+  },
+  "en": {
+    "1-200:headword": 188,
+    "1-200:recorded_form": 8,
+    "1-200:not_found": 4,
+    "201-1000:headword": 96,
+    "201-1000:recorded_form": 2,
+    "201-1000:not_found": 2,
+    "1001-5000:headword": 88,
+    "1001-5000:recorded_form": 10,
+    "1001-5000:not_found": 2,
+    "5001-20000:not_found": 7,
+    "5001-20000:headword": 75,
+    "5001-20000:recorded_form": 18
+  },
+  "sv": {
+    "1-200:headword": 158,
+    "1-200:recorded_form": 41,
+    "1-200:not_found": 1,
+    "201-1000:recorded_form": 27,
+    "201-1000:headword": 72,
+    "201-1000:not_found": 1,
+    "1001-5000:headword": 56,
+    "1001-5000:recorded_form": 38,
+    "1001-5000:not_found": 6,
+    "5001-20000:recorded_form": 36,
+    "5001-20000:headword": 49,
+    "5001-20000:not_found": 15
+  },
+  "nb": {
+    "1-200:headword": 158,
+    "1-200:recorded_form": 40,
+    "1-200:not_found": 2,
+    "201-1000:headword": 61,
+    "201-1000:recorded_form": 34,
+    "201-1000:not_found": 5,
+    "1001-5000:headword": 44,
+    "1001-5000:recorded_form": 47,
+    "1001-5000:not_found": 9,
+    "5001-20000:headword": 24,
+    "5001-20000:recorded_form": 41,
+    "5001-20000:not_found": 35
+  }
+}

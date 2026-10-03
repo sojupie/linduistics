@@ -1,0 +1,2730 @@
+[
+  {
+    "case_id": "524bd0e20d46a5ce",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.7957638949155807,
+    "semantic_sim": 0.2808725833892822
+  },
+  {
+    "case_id": "117a3c4f38bb23e8",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8789506223466661,
+    "semantic_sim": 0.9999999403953552
+  },
+  {
+    "case_id": "4ae0061c617e2b50",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.6500000059604645,
+    "semantic_sim": 0.17347663640975952
+  },
+  {
+    "case_id": "47948d2f334ce2c4",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 0.05549442023038864
+  },
+  {
+    "case_id": "61faae2af6f29b18",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.7303333282470703,
+    "semantic_sim": 0.9461789727210999
+  },
+  {
+    "case_id": "fcbf3d27fa81b953",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8848765426211886,
+    "semantic_sim": 0.4780242145061493
+  },
+  {
+    "case_id": "e3aeb5f495ab80e5",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9666666661699613,
+    "semantic_sim": 0.3183547258377075
+  },
+  {
+    "case_id": "ddbed6d9380e43a0",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9055555595291985,
+    "semantic_sim": 0.510552167892456
+  },
+  {
+    "case_id": "710eb84218c4c739",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8937499970197678,
+    "semantic_sim": 0.33067867159843445
+  },
+  {
+    "case_id": "b8767f334e76e101",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.7694444457689921,
+    "semantic_sim": 0.4068545401096344
+  },
+  {
+    "case_id": "d11a36e9490b3d7e",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.7967777729034424,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "3764db4ec383ba82",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.9259259253740311,
+    "semantic_sim": 0.9900534152984619
+  },
+  {
+    "case_id": "3cbbe4e6c9fcc398",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8633333444595337,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "468e618f6420770c",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.30000000000000004,
+    "phonetic_sim": 0.6714815033806695,
+    "semantic_sim": 0.9187623262405396
+  },
+  {
+    "case_id": "fde727b04fd3cf74",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6630000114440918,
+    "semantic_sim": 0.8065999746322632
+  },
+  {
+    "case_id": "41b82e5972d4c256",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.6198765171898736,
+    "semantic_sim": 0.5365322828292847
+  },
+  {
+    "case_id": "611913d2f89b5425",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.4516049491034614,
+    "semantic_sim": 0.5331917405128479
+  },
+  {
+    "case_id": "51101ecd953c5ac0",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.6230247020721436,
+    "semantic_sim": 0.5315402746200562
+  },
+  {
+    "case_id": "4d390dd28cd95e5d",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.3076923076923077,
+    "phonetic_sim": 0.633472204208374,
+    "semantic_sim": 0.5688709616661072
+  },
+  {
+    "case_id": "69e3486133b8b16f",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.5141975614759657,
+    "semantic_sim": 0.3929421603679657
+  },
+  {
+    "case_id": "62876ba0f1adade9",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.5917592843373616,
+    "semantic_sim": 0.4080674648284912
+  },
+  {
+    "case_id": "acf634397c20e3b0",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.5783333381017048,
+    "semantic_sim": 0.38697510957717896
+  },
+  {
+    "case_id": "02afec4b173d152a",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5714285714285714,
+    "phonetic_sim": 0.6333333253860474,
+    "semantic_sim": 0.5030156373977661
+  },
+  {
+    "case_id": "8ce8b27b09ef5467",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6877777775128682,
+    "semantic_sim": 0.5002056360244751
+  },
+  {
+    "case_id": "acf46ce73d7e4e7a",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5983333587646484,
+    "semantic_sim": 0.06439980864524841
+  },
+  {
+    "case_id": "1fe083bcdd017094",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8041666746139526,
+    "semantic_sim": 0.6161848306655884
+  },
+  {
+    "case_id": "50ecbfca7122569a",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.6,
+    "phonetic_sim": 0.8166666825612386,
+    "semantic_sim": 0.7943285703659058
+  },
+  {
+    "case_id": "e9a5bcd16787fad6",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7272727272727273,
+    "phonetic_sim": 0.8870555639266968,
+    "semantic_sim": 0.6015148162841797
+  },
+  {
+    "case_id": "d21dd8dc322da652",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.6163889169692993,
+    "semantic_sim": 0.5591311454772949
+  },
+  {
+    "case_id": "bace475ef419a347",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5714285714285714,
+    "phonetic_sim": 0.8438888887564341,
+    "semantic_sim": 0.7980677485466003
+  },
+  {
+    "case_id": "e3748a50bb46c5b3",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.6140909194946289,
+    "semantic_sim": 0.9294569492340088
+  },
+  {
+    "case_id": "2cf4420cd0f09f26",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.6147530873616536,
+    "semantic_sim": 0.8954848647117615
+  },
+  {
+    "case_id": "a33951f35af95d12",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5223231749101118,
+    "semantic_sim": 0.7648196220397949
+  },
+  {
+    "case_id": "c243387ec85514c1",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.23076923076923073,
+    "phonetic_sim": 0.5183760569645808,
+    "semantic_sim": 0.9597227573394775
+  },
+  {
+    "case_id": "c129c83130b53470",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.5329629580179851,
+    "semantic_sim": 0.899943470954895
+  },
+  {
+    "case_id": "b4aa4b88efa30f20",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.6693888902664185,
+    "semantic_sim": 0.15100045502185822
+  },
+  {
+    "case_id": "9653f921b7549ec7",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.6896825177328927,
+    "semantic_sim": 0.1140517070889473
+  },
+  {
+    "case_id": "d846447948b5a73d",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8583333392937978,
+    "semantic_sim": 0.1059013232588768
+  },
+  {
+    "case_id": "bfa90ea75247ffab",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.5718253680637905,
+    "semantic_sim": 0.3485221266746521
+  },
+  {
+    "case_id": "a8ad443bd051e70f",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8702380997794015,
+    "semantic_sim": 0.1458289623260498
+  },
+  {
+    "case_id": "ca2cbd7b44eb308a",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.629097193479538,
+    "semantic_sim": 0.33845120668411255
+  },
+  {
+    "case_id": "83c17d1c584ee4fe",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8036111116409301,
+    "semantic_sim": 0.3523397743701935
+  },
+  {
+    "case_id": "d93cbc65e48f5aa8",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.7538461501781757,
+    "semantic_sim": 0.5401335954666138
+  },
+  {
+    "case_id": "92e1933ea1aba6fe",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.75,
+    "semantic_sim": 0.3429713249206543
+  },
+  {
+    "case_id": "559797c9d349302d",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6666666666666667,
+    "phonetic_sim": 0.9749999990065893,
+    "semantic_sim": 0.5325378179550171
+  },
+  {
+    "case_id": "b6e6d1dcd8365eb5",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7085185315873888,
+    "semantic_sim": 0.8710602521896362
+  },
+  {
+    "case_id": "5ffe27cf8c1bbddb",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.7206790182325575,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "3491b9d4715b2edb",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.875,
+    "phonetic_sim": 0.8249999965940202,
+    "semantic_sim": 0.9791048765182495
+  },
+  {
+    "case_id": "fb0b99b4f597ab37",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8412962953249613,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "7ada13fb27467a48",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8533333341280619,
+    "semantic_sim": 0.9885060787200928
+  },
+  {
+    "case_id": "84300d048ec3e025",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.4756481250127157,
+    "semantic_sim": 0.6757928729057312
+  },
+  {
+    "case_id": "8bf3b0088e4b88af",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.49176770990545104,
+    "semantic_sim": 0.4266672730445862
+  },
+  {
+    "case_id": "740f84044bb639dd",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5945555686950683,
+    "semantic_sim": 0.5354911088943481
+  },
+  {
+    "case_id": "7ee8673501333cd0",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.580925914976332,
+    "semantic_sim": 0.4111492931842804
+  },
+  {
+    "case_id": "2438714a213ed09d",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.5126111030578613,
+    "semantic_sim": 0.4425710141658783
+  },
+  {
+    "case_id": "3ed5b61aa35e282d",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.16666666666666663,
+    "phonetic_sim": 0.6406944394111633,
+    "semantic_sim": 0.14208033680915833
+  },
+  {
+    "case_id": "be6c911ca3cec3f0",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.6371296246846516,
+    "semantic_sim": 0.4098705053329468
+  },
+  {
+    "case_id": "9b65aeb4aede32d1",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6403703689575195,
+    "semantic_sim": 0.5432432889938354
+  },
+  {
+    "case_id": "0b79d35fc8adae0a",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6937499940395355,
+    "semantic_sim": 0.5052436590194702
+  },
+  {
+    "case_id": "c3b108047faba23b",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.5621428830283028,
+    "semantic_sim": 0.3366731107234955
+  },
+  {
+    "case_id": "113c3702ede7be26",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8480000019073486,
+    "semantic_sim": 0.5893868803977966
+  },
+  {
+    "case_id": "adab6e04ea5edea2",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8956790102852715,
+    "semantic_sim": 0.6658130288124084
+  },
+  {
+    "case_id": "4beeb8c1b25059c4",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.7756944447755814,
+    "semantic_sim": 0.7910618782043457
+  },
+  {
+    "case_id": "930dea71e05b2dc1",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6,
+    "phonetic_sim": 0.7336419688330756,
+    "semantic_sim": 0.6393035650253296
+  },
+  {
+    "case_id": "f366d83036e6ea3d",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8219444513320923,
+    "semantic_sim": 0.5839244723320007
+  },
+  {
+    "case_id": "8dd2407d95dbaed1",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.5413888692855835,
+    "semantic_sim": 0.882183313369751
+  },
+  {
+    "case_id": "dd170d09314fcb5d",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.5203888893127442,
+    "semantic_sim": 0.7515472173690796
+  },
+  {
+    "case_id": "89227eb4f4e4d28b",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.5369047777993339,
+    "semantic_sim": 0.8813973665237427
+  },
+  {
+    "case_id": "6547bf2b5007e527",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.6472222089767456,
+    "semantic_sim": 0.7477744221687317
+  },
+  {
+    "case_id": "f1b16632ff8321d5",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.36944448947906494,
+    "semantic_sim": 0.8354815244674683
+  },
+  {
+    "case_id": "dd6ce13617699f37",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8234444499015808,
+    "semantic_sim": 0.15232495963573456
+  },
+  {
+    "case_id": "3778a5d7fa8b99c7",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8475000063578287,
+    "semantic_sim": 0.06813598424196243
+  },
+  {
+    "case_id": "e5046f842cb6c5e7",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8122222253254482,
+    "semantic_sim": 0.10274456441402435
+  },
+  {
+    "case_id": "669ac4c1f56c4ecd",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7422222409929549,
+    "semantic_sim": 0.09340114146471024
+  },
+  {
+    "case_id": "26b1e4652b521916",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8149999976158142,
+    "semantic_sim": 0.4164351522922516
+  },
+  {
+    "case_id": "6a6e6aab133fce26",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9678571415799004,
+    "semantic_sim": 0.34570246934890747
+  },
+  {
+    "case_id": "c7fc4d026cd2c168",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 0.5472084879875183
+  },
+  {
+    "case_id": "90b18673995805e0",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8049999952316285,
+    "semantic_sim": 0.29890912771224976
+  },
+  {
+    "case_id": "bb84b37896d85c41",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7272727272727273,
+    "phonetic_sim": 0.7525252428921786,
+    "semantic_sim": 0.44451382756233215
+  },
+  {
+    "case_id": "e8a7c6f0a1e83514",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8049999952316285,
+    "semantic_sim": 0.4455476403236389
+  },
+  {
+    "case_id": "da7fb984cd07257a",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.7046296397844951,
+    "semantic_sim": 0.8312194347381592
+  },
+  {
+    "case_id": "453f9c3d63a3394c",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8222222328186035,
+    "semantic_sim": 0.97128826379776
+  },
+  {
+    "case_id": "b0597cd8a40a073e",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "b0337d480ce5c69b",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9699999988079071,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "2c349cb045c9ca97",
+    "category": "full_cognate",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8250000029802322,
+    "semantic_sim": 0.962092936038971
+  },
+  {
+    "case_id": "dc8dbe30b476e7c2",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.5949999988079071,
+    "semantic_sim": 0.6515531539916992
+  },
+  {
+    "case_id": "eeebca1766e65248",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.39763885736465454,
+    "semantic_sim": 0.5675694346427917
+  },
+  {
+    "case_id": "1fa9b3eea2dcc096",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.2857142857142857,
+    "phonetic_sim": 0.5607638955116272,
+    "semantic_sim": 0.6176557540893555
+  },
+  {
+    "case_id": "08825ab2c0fc1d16",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.09999999999999998,
+    "phonetic_sim": 0.5547530916002061,
+    "semantic_sim": 0.44966959953308105
+  },
+  {
+    "case_id": "33b9794b24ec0f4c",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.581250011920929,
+    "semantic_sim": 0.6483701467514038
+  },
+  {
+    "case_id": "8401249afe759b67",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6666666666666667,
+    "phonetic_sim": 0.7208333313465118,
+    "semantic_sim": 0.49651390314102173
+  },
+  {
+    "case_id": "34c403c7f7677098",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.55,
+    "semantic_sim": 0.2852366268634796
+  },
+  {
+    "case_id": "280e309094e3ec0f",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8761666774749756,
+    "semantic_sim": 0.5635752081871033
+  },
+  {
+    "case_id": "bf1c680f9715c15a",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.9166666666666666,
+    "semantic_sim": 0.760854959487915
+  },
+  {
+    "case_id": "bb88e3e03cd98a86",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8305555582046509,
+    "semantic_sim": 0.8420203924179077
+  },
+  {
+    "case_id": "ddc673ccdadda1c7",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7650000095367432,
+    "semantic_sim": 0.6857955455780029
+  },
+  {
+    "case_id": "aba151b6b4db1d3e",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.6111110959734236,
+    "semantic_sim": 0.5240551829338074
+  },
+  {
+    "case_id": "1cfc74885278f56d",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.6424691147274442,
+    "semantic_sim": 0.717662513256073
+  },
+  {
+    "case_id": "1dba7204e5ebb11d",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.537333345413208,
+    "semantic_sim": 0.8965129256248474
+  },
+  {
+    "case_id": "3eab1d54fd287d9f",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.16666666666666663,
+    "phonetic_sim": 0.542129675547282,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "a02df4860ac1f27e",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.4444444444444444,
+    "phonetic_sim": 0.5714285714285714,
+    "semantic_sim": 0.8775578141212463
+  },
+  {
+    "case_id": "0f7d6d84faaa8781",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6949999928474426,
+    "semantic_sim": 0.7651212215423584
+  },
+  {
+    "case_id": "8b52b4307e5d7bd7",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.6877778053283692,
+    "semantic_sim": 0.07068692147731781
+  },
+  {
+    "case_id": "86c06989237f0699",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8047619206564767,
+    "semantic_sim": 0.2365020215511322
+  },
+  {
+    "case_id": "3536c683e0c74130",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.5217460564204625,
+    "semantic_sim": 0.2784251570701599
+  },
+  {
+    "case_id": "a88416a60784a056",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7111111027853829,
+    "semantic_sim": 0.32012537121772766
+  },
+  {
+    "case_id": "d779fef1cbdce1a0",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.6060185432434082,
+    "semantic_sim": 0.3213070034980774
+  },
+  {
+    "case_id": "b8adc0b9ef3168a9",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8741111040115357,
+    "semantic_sim": 0.35896560549736023
+  },
+  {
+    "case_id": "1d4a1c1e106e090e",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7212499976158142,
+    "semantic_sim": 0.30770617723464966
+  },
+  {
+    "case_id": "98aacfa0ac3dc812",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.9624999985098839,
+    "semantic_sim": 0.40213143825531006
+  },
+  {
+    "case_id": "9449e0906657cf02",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.7489682606288365,
+    "semantic_sim": 0.516133189201355
+  },
+  {
+    "case_id": "98fec27b0640a349",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5714285714285714,
+    "phonetic_sim": 0.6999999795641219,
+    "semantic_sim": 0.22033363580703735
+  },
+  {
+    "case_id": "77d33504e857a44d",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9277777738041348,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "31bdc5d8b95370f3",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.6838888883590698,
+    "semantic_sim": 0.9632344245910645
+  },
+  {
+    "case_id": "e475801ba7450cf3",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9431818181818182,
+    "semantic_sim": 0.9865143299102783
+  },
+  {
+    "case_id": "5a292d811c74838e",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8125,
+    "semantic_sim": 0.8270334005355835
+  },
+  {
+    "case_id": "a32a345b7cea9788",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8181818181818181,
+    "phonetic_sim": 0.8727272748947144,
+    "semantic_sim": 0.8942170143127441
+  },
+  {
+    "case_id": "881ecfa30bcb5407",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.125,
+    "phonetic_sim": 0.44172843297322595,
+    "semantic_sim": 0.38412052392959595
+  },
+  {
+    "case_id": "c133d6d47bb993e9",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.4285714285714286,
+    "phonetic_sim": 0.5282539640154158,
+    "semantic_sim": 0.6972379684448242
+  },
+  {
+    "case_id": "4a334bd4547e9ea6",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.2857142857142857,
+    "phonetic_sim": 0.5423809800829207,
+    "semantic_sim": 0.4988904893398285
+  },
+  {
+    "case_id": "c7417d79d1da4e9d",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6209259430567424,
+    "semantic_sim": 0.43996936082839966
+  },
+  {
+    "case_id": "e7e5e93b898fed07",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6190277934074402,
+    "semantic_sim": 0.4030928313732147
+  },
+  {
+    "case_id": "e5dee91f98030aea",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.7249999940395355,
+    "semantic_sim": 0.46077173948287964
+  },
+  {
+    "case_id": "1bb4ed176963f2d4",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.3359259366989136,
+    "semantic_sim": 0.5482024550437927
+  },
+  {
+    "case_id": "318bb3bc430bf9db",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.6000000238418579,
+    "semantic_sim": 0.4967342019081116
+  },
+  {
+    "case_id": "7175d42b3d291574",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.706250011920929,
+    "semantic_sim": 0.6446356773376465
+  },
+  {
+    "case_id": "c411a35ab49cb38d",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7363888919353485,
+    "semantic_sim": 0.582229495048523
+  },
+  {
+    "case_id": "55b68e0740f7f326",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.9000000017029899,
+    "semantic_sim": 0.7401130795478821
+  },
+  {
+    "case_id": "c1c45f6caba10cc4",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8157142911638533,
+    "semantic_sim": 0.5826796889305115
+  },
+  {
+    "case_id": "ff0354fd132a175f",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8571428571428572,
+    "semantic_sim": 0.5254757404327393
+  },
+  {
+    "case_id": "8ff4f621477e9a38",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.49752530184659094,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "d80c47c116117104",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.5961111187934875,
+    "semantic_sim": 0.8244352340698242
+  },
+  {
+    "case_id": "d80df78306050c6e",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.30000000000000004,
+    "phonetic_sim": 0.6354629596074421,
+    "semantic_sim": 0.7082346677780151
+  },
+  {
+    "case_id": "92ec23e8c943d1b3",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4193333625793457,
+    "semantic_sim": 0.9926027059555054
+  },
+  {
+    "case_id": "7399b436129f6b9b",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6115277707576752,
+    "semantic_sim": 0.8757694959640503
+  },
+  {
+    "case_id": "9d0e9c1b1a47b036",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8410000085830689,
+    "semantic_sim": 0.391431987285614
+  },
+  {
+    "case_id": "298450cf4f118d33",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7272727272727273,
+    "phonetic_sim": 0.7933333396911622,
+    "semantic_sim": 0.10359293222427368
+  },
+  {
+    "case_id": "ce63257877dd7ce1",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7150793756757463,
+    "semantic_sim": 0.37873512506484985
+  },
+  {
+    "case_id": "58b738d7bc7d7b24",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7021428516932896,
+    "semantic_sim": 0.009817412123084068
+  },
+  {
+    "case_id": "087198c5aea391e0",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8217460427965437,
+    "semantic_sim": 0.3391033113002777
+  },
+  {
+    "case_id": "5bcb7b18380de348",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.7928571360451835,
+    "semantic_sim": 0.24705246090888977
+  },
+  {
+    "case_id": "8a92889432233991",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.767555570602417,
+    "semantic_sim": 0.24132004380226135
+  },
+  {
+    "case_id": "939d0905929225ef",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8181818181818181,
+    "phonetic_sim": 0.8217777729034423,
+    "semantic_sim": 0.28104668855667114
+  },
+  {
+    "case_id": "90f7bd58460270f8",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.65,
+    "semantic_sim": 0.32848477363586426
+  },
+  {
+    "case_id": "d86775b0d51721c2",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.7713194489479065,
+    "semantic_sim": 0.1934821754693985
+  },
+  {
+    "case_id": "5495acc93ba3f796",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9499999992549419,
+    "semantic_sim": 0.8116061687469482
+  },
+  {
+    "case_id": "7e81b682d9869035",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8734444499015808,
+    "semantic_sim": 0.97910475730896
+  },
+  {
+    "case_id": "aa6d7db8982f2b58",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.666777777671814,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "de7de9c10e43b3fa",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6983333230018616,
+    "semantic_sim": 0.9859688878059387
+  },
+  {
+    "case_id": "b83aeb4342874126",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.801975303226047,
+    "semantic_sim": 0.824995756149292
+  },
+  {
+    "case_id": "8d128d263dca7bc0",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.485111141204834,
+    "semantic_sim": 0.5828697085380554
+  },
+  {
+    "case_id": "25deca27b86ca646",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.09999999999999998,
+    "phonetic_sim": 0.5554999351501465,
+    "semantic_sim": 0.551010251045227
+  },
+  {
+    "case_id": "828267618865d74c",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.5771604908837212,
+    "semantic_sim": 0.44797757267951965
+  },
+  {
+    "case_id": "8695f88bf063ed7c",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.6183333396911621,
+    "semantic_sim": 0.6749324798583984
+  },
+  {
+    "case_id": "b9b0af2e68f16dac",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.44755558967590336,
+    "semantic_sim": 0.29267722368240356
+  },
+  {
+    "case_id": "1ddc4967f366eb2b",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.30000000000000004,
+    "phonetic_sim": 0.5745138823986053,
+    "semantic_sim": 0.49714934825897217
+  },
+  {
+    "case_id": "18d631e4f6074cda",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.43125003576278687,
+    "semantic_sim": 0.46056151390075684
+  },
+  {
+    "case_id": "a4406b6f63e6d8ca",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.637499988079071,
+    "semantic_sim": 0.27184003591537476
+  },
+  {
+    "case_id": "5ae138da81d98ec6",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.2222222222222222,
+    "phonetic_sim": 0.4894444942474365,
+    "semantic_sim": 0.17622649669647217
+  },
+  {
+    "case_id": "641bd424779ed37a",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.47955555915832515,
+    "semantic_sim": 0.38709551095962524
+  },
+  {
+    "case_id": "26baf7ac5f3cd441",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8176190512520927,
+    "semantic_sim": 0.5300759077072144
+  },
+  {
+    "case_id": "9dae311612769848",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.795555567741394,
+    "semantic_sim": 0.6471301317214966
+  },
+  {
+    "case_id": "4350671919cdc8b6",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7457142898014614,
+    "semantic_sim": 0.5570977926254272
+  },
+  {
+    "case_id": "0e2341480dbdcee6",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8152222275733948,
+    "semantic_sim": 0.7166709303855896
+  },
+  {
+    "case_id": "5863ecca2fa8f99c",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8199999928474426,
+    "semantic_sim": 0.6413931846618652
+  },
+  {
+    "case_id": "af1f91f83b51f6a3",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.06666666666666665,
+    "phonetic_sim": 0.4709920883178711,
+    "semantic_sim": 0.7445563077926636
+  },
+  {
+    "case_id": "b4bf89ca5823d90f",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.23076923076923073,
+    "phonetic_sim": 0.5984615546006422,
+    "semantic_sim": 0.7426989078521729
+  },
+  {
+    "case_id": "2b5bdb944cf2c164",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.08333333333333337,
+    "phonetic_sim": 0.5406481424967449,
+    "semantic_sim": 0.749389111995697
+  },
+  {
+    "case_id": "2b9a5eaec4b51d30",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.08333333333333337,
+    "phonetic_sim": 0.5686419275071886,
+    "semantic_sim": 0.8324258327484131
+  },
+  {
+    "case_id": "9858680a40d66b12",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4995238440377372,
+    "semantic_sim": 0.7385037541389465
+  },
+  {
+    "case_id": "370125b1c10a59e6",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.709841251373291,
+    "semantic_sim": 0.4450269639492035
+  },
+  {
+    "case_id": "71dacf8785b2f5ac",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7714285680225917,
+    "semantic_sim": 0.1538543850183487
+  },
+  {
+    "case_id": "0684b41d2159e341",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7877777814865112,
+    "semantic_sim": 0.23479296267032623
+  },
+  {
+    "case_id": "db0ad6928b699be8",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8250000136239188,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "6cc63e8e4f424a86",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.9416666676600774,
+    "semantic_sim": 0.8256089687347412
+  },
+  {
+    "case_id": "9eea70bd66ca3b7f",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8166666626930237,
+    "semantic_sim": 0.15726608037948608
+  },
+  {
+    "case_id": "41745ccccb32d7b7",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8435555577278138,
+    "semantic_sim": 0.4782944321632385
+  },
+  {
+    "case_id": "561d630aa7684885",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9749999990065893,
+    "semantic_sim": 0.4926169812679291
+  },
+  {
+    "case_id": "7aeb9db4063f4c67",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.702777773141861,
+    "semantic_sim": 0.5348803997039795
+  },
+  {
+    "case_id": "126feb054f96596f",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7946031774793352,
+    "semantic_sim": 0.4369344711303711
+  },
+  {
+    "case_id": "1f68e0fbb1b7fe13",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8122222274541855,
+    "semantic_sim": 0.8312854170799255
+  },
+  {
+    "case_id": "292ce666f6f7e826",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.7988888919353485,
+    "semantic_sim": 0.8504297733306885
+  },
+  {
+    "case_id": "0a35128004a8705e",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8181818181818181,
+    "phonetic_sim": 0.8233950667911105,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "e40a113de8aba4a1",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7249999940395355,
+    "semantic_sim": 0.8494393825531006
+  },
+  {
+    "case_id": "0ec98202d1692001",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.6658730166299003,
+    "semantic_sim": 0.825605571269989
+  },
+  {
+    "case_id": "7d24b39e68754740",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5253703329298232,
+    "semantic_sim": 0.36754167079925537
+  },
+  {
+    "case_id": "8e57c6d9a8f04fe3",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.23076923076923073,
+    "phonetic_sim": 0.6109259128570557,
+    "semantic_sim": 0.05677080154418945
+  },
+  {
+    "case_id": "2b5f33a29b5074cf",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.5476666450500488,
+    "semantic_sim": 0.6285615563392639
+  },
+  {
+    "case_id": "81e7666c5d236fe5",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.4615972638130188,
+    "semantic_sim": 0.6825942397117615
+  },
+  {
+    "case_id": "c2ed089839d4fd7b",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5866666634877522,
+    "semantic_sim": 0.3673158586025238
+  },
+  {
+    "case_id": "2c84582720b9ca38",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5533333619435628,
+    "semantic_sim": 0.47553205490112305
+  },
+  {
+    "case_id": "56b9de4906e75403",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6899999976158142,
+    "semantic_sim": 0.5002056360244751
+  },
+  {
+    "case_id": "54133de7e63674b2",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.625,
+    "phonetic_sim": 0.7730158737727574,
+    "semantic_sim": 0.6201098561286926
+  },
+  {
+    "case_id": "3a557f935068172d",
+    "category": "semantic_narrowing",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.9291666646798452,
+    "semantic_sim": 0.8402848243713379
+  },
+  {
+    "case_id": "92c735e4fc76ad20",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.747000002861023,
+    "semantic_sim": 0.6671414375305176
+  },
+  {
+    "case_id": "7a921ef902f71dc2",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.853827158610026,
+    "semantic_sim": 0.5574787855148315
+  },
+  {
+    "case_id": "57c6ad82008c2357",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7876190458025252,
+    "semantic_sim": 0.7343557476997375
+  },
+  {
+    "case_id": "3930a120550c7816",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.5237500071525574,
+    "semantic_sim": 0.7977453470230103
+  },
+  {
+    "case_id": "96deed4941262ed3",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.5572222232818603,
+    "semantic_sim": 0.9028892517089844
+  },
+  {
+    "case_id": "2b9cb85510cc5564",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6064444303512573,
+    "semantic_sim": 0.7629585266113281
+  },
+  {
+    "case_id": "f0c4c5dcd1e012f9",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.08333333333333337,
+    "phonetic_sim": 0.4971604877048068,
+    "semantic_sim": 0.7092809677124023
+  },
+  {
+    "case_id": "ad2168d601d5fd91",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.6105555621060459,
+    "semantic_sim": 0.9999999403953552
+  },
+  {
+    "case_id": "cb9415d21d8dd3fc",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7785714353833879,
+    "semantic_sim": 0.4272328019142151
+  },
+  {
+    "case_id": "37ef142edb55c849",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8929999947547913,
+    "semantic_sim": 0.2027857005596161
+  },
+  {
+    "case_id": "15eb146dd62fa168",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8092592557271322,
+    "semantic_sim": 0.25962644815444946
+  },
+  {
+    "case_id": "88592fb9eff286ce",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.706250011920929,
+    "semantic_sim": 0.15736445784568787
+  },
+  {
+    "case_id": "eca7c4f4330075db",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.6970000028610229,
+    "semantic_sim": 0.23966605961322784
+  },
+  {
+    "case_id": "3d7f303d520159a9",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.16666666666666663,
+    "phonetic_sim": 0.7403703927993774,
+    "semantic_sim": 0.3831976056098938
+  },
+  {
+    "case_id": "00c1eaea96f6bee9",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 0.42633795738220215
+  },
+  {
+    "case_id": "43680dd251c4f009",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8991975320710076,
+    "semantic_sim": 0.376251757144928
+  },
+  {
+    "case_id": "dcc76d66294744de",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8999999985098839,
+    "semantic_sim": 0.25298425555229187
+  },
+  {
+    "case_id": "dbf8ffc483f49eda",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.75,
+    "semantic_sim": 0.5083252191543579
+  },
+  {
+    "case_id": "81232fc0f41ee420",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.7514814800686307,
+    "semantic_sim": 0.8998660445213318
+  },
+  {
+    "case_id": "d6a689f71715b07d",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.653666639328003,
+    "semantic_sim": 0.9378840923309326
+  },
+  {
+    "case_id": "66f339ab513c49f2",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7169841357639858,
+    "semantic_sim": 0.8341085910797119
+  },
+  {
+    "case_id": "aad21c6e08b8878b",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7857142857142857,
+    "phonetic_sim": 0.8196969682520086,
+    "semantic_sim": 0.9999998807907104
+  },
+  {
+    "case_id": "bed83fda3a4679fe",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8583333293596903,
+    "semantic_sim": 0.9041357040405273
+  },
+  {
+    "case_id": "8147baeaa5a4b1f9",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5587499737739563,
+    "semantic_sim": 0.36742448806762695
+  },
+  {
+    "case_id": "b3cec7d90cd7dda1",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.2727272727272727,
+    "phonetic_sim": 0.5093888759613037,
+    "semantic_sim": 0.5668628215789795
+  },
+  {
+    "case_id": "18bf3f9e9cef756a",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4642857142857143,
+    "semantic_sim": 0.6242372989654541
+  },
+  {
+    "case_id": "3b13e21b99c1ed90",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.30000000000000004,
+    "phonetic_sim": 0.539285727909633,
+    "semantic_sim": 0.5716904401779175
+  },
+  {
+    "case_id": "8c8cc3d0f14cbc60",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.555476222719465,
+    "semantic_sim": 0.5359100699424744
+  },
+  {
+    "case_id": "d1da32faace4adc6",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6863889098167419,
+    "semantic_sim": 0.48321372270584106
+  },
+  {
+    "case_id": "696b4d9597723995",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6000000238418579,
+    "semantic_sim": 0.5047289729118347
+  },
+  {
+    "case_id": "a839355dbda61227",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6,
+    "phonetic_sim": 0.6849999904632569,
+    "semantic_sim": 0.44857510924339294
+  },
+  {
+    "case_id": "63cdc5422a85cab0",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5983333587646484,
+    "semantic_sim": 0.029282746836543083
+  },
+  {
+    "case_id": "99f380da21e28775",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.6072222391764324,
+    "semantic_sim": 0.5080416202545166
+  },
+  {
+    "case_id": "a05c90df41057d75",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.825,
+    "semantic_sim": 0.506284236907959
+  },
+  {
+    "case_id": "be5f78f5256eaf32",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.851111114025116,
+    "semantic_sim": 0.5215871930122375
+  },
+  {
+    "case_id": "e3bb0b65c8859a38",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.4444444444444444,
+    "phonetic_sim": 0.6861111058129205,
+    "semantic_sim": 0.7780163884162903
+  },
+  {
+    "case_id": "8345073bf09f4fa3",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.7196296453475952,
+    "semantic_sim": 0.5447460412979126
+  },
+  {
+    "case_id": "1bcc880da33a6284",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7129861116409302,
+    "semantic_sim": 0.7736154794692993
+  },
+  {
+    "case_id": "4def90dad7f3a26e",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.30000000000000004,
+    "phonetic_sim": 0.5873456796010335,
+    "semantic_sim": 0.963262677192688
+  },
+  {
+    "case_id": "1d1422796c9ee4e6",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.09999999999999998,
+    "phonetic_sim": 0.4740123748779297,
+    "semantic_sim": 0.9159830808639526
+  },
+  {
+    "case_id": "ad00dda3ea74e7d6",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5655555384499686,
+    "semantic_sim": 0.7947437763214111
+  },
+  {
+    "case_id": "f14c80460dda7bce",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.5760185718536377,
+    "semantic_sim": 0.7712250351905823
+  },
+  {
+    "case_id": "448f5f6cbff08745",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.5588888645172119,
+    "semantic_sim": 0.8065657615661621
+  },
+  {
+    "case_id": "00b06cc0cd7a2b7a",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8333333333333334,
+    "semantic_sim": 0.6196556091308594
+  },
+  {
+    "case_id": "875ab8088d3c2c60",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7655555486679078,
+    "semantic_sim": 0.1490500569343567
+  },
+  {
+    "case_id": "ace6bbe3b59c1458",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8925925890604655,
+    "semantic_sim": 0.15101279318332672
+  },
+  {
+    "case_id": "6cc0d23a967a861e",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7714285850524902,
+    "semantic_sim": 0.06587487459182739
+  },
+  {
+    "case_id": "0f1e9dd1a51a8a41",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8600000143051147,
+    "semantic_sim": 0.2792944312095642
+  },
+  {
+    "case_id": "56ffb1199271264e",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.7697222232818604,
+    "semantic_sim": 0.4732120633125305
+  },
+  {
+    "case_id": "97782ea65f9234fb",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.831250011920929,
+    "semantic_sim": 0.4919208288192749
+  },
+  {
+    "case_id": "690a613ac912f6ae",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.5795555591583252,
+    "semantic_sim": 0.3289344310760498
+  },
+  {
+    "case_id": "a529496c07a91d08",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.7575000127156576,
+    "semantic_sim": 0.40110868215560913
+  },
+  {
+    "case_id": "1b80cd2fa8da9d9e",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.859135799937778,
+    "semantic_sim": 0.21749389171600342
+  },
+  {
+    "case_id": "0ae616a03089d4b6",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9541666656732559,
+    "semantic_sim": 0.8701910972595215
+  },
+  {
+    "case_id": "eac43b7b2917e3c6",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7272727272727273,
+    "phonetic_sim": 0.901818188753995,
+    "semantic_sim": 0.9810550212860107
+  },
+  {
+    "case_id": "68e6e64243bb9a3a",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.9416666676600774,
+    "semantic_sim": 0.8524264097213745
+  },
+  {
+    "case_id": "e3f68f3355fd33b0",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.7734444618225098,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "d858da1c99f6110b",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.6549382739596896,
+    "semantic_sim": 0.8763896226882935
+  },
+  {
+    "case_id": "96675c7f4e167162",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4424444675445557,
+    "semantic_sim": 0.38866403698921204
+  },
+  {
+    "case_id": "ac5b516ab867a75f",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.6140000104904175,
+    "semantic_sim": 0.4025314450263977
+  },
+  {
+    "case_id": "0d9718651128c2aa",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.5184721946716309,
+    "semantic_sim": 0.6646816730499268
+  },
+  {
+    "case_id": "5538fd8fea652f9d",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.6,
+    "phonetic_sim": 0.6349999904632568,
+    "semantic_sim": 0.517299234867096
+  },
+  {
+    "case_id": "b3a1530df0fc57a6",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4599999904632568,
+    "semantic_sim": 0.3330102562904358
+  },
+  {
+    "case_id": "d894317bad8d384a",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6062500178813934,
+    "semantic_sim": 0.48478251695632935
+  },
+  {
+    "case_id": "c0909d33dd50c475",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6666666666666667,
+    "phonetic_sim": 0.5935184955596924,
+    "semantic_sim": 0.5417437553405762
+  },
+  {
+    "case_id": "f42fe6b28e4d42c6",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6666666666666667,
+    "phonetic_sim": 0.6666666666666667,
+    "semantic_sim": 0.5269222259521484
+  },
+  {
+    "case_id": "7511bc295b9d349b",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.6349999904632568,
+    "semantic_sim": 0.4766523838043213
+  },
+  {
+    "case_id": "c02d4747240b936b",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6129166483879089,
+    "semantic_sim": 0.445273756980896
+  },
+  {
+    "case_id": "62b257feaeb8dbd3",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8004629611968994,
+    "semantic_sim": 0.6273897886276245
+  },
+  {
+    "case_id": "dd65dcc6edd8b2e3",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.7214285646166121,
+    "semantic_sim": 0.5492383241653442
+  },
+  {
+    "case_id": "6ad16b1db9b08286",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8266666730244955,
+    "semantic_sim": 0.6086528897285461
+  },
+  {
+    "case_id": "fef3222c551dbf73",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8073333382606507,
+    "semantic_sim": 0.6626700162887573
+  },
+  {
+    "case_id": "06847cc95d74d47e",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8200000166893006,
+    "semantic_sim": 0.5753973722457886
+  },
+  {
+    "case_id": "70cd7cc15bcacf87",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.09999999999999998,
+    "phonetic_sim": 0.5335556030273437,
+    "semantic_sim": 0.8503039479255676
+  },
+  {
+    "case_id": "e144f5ba0e777f09",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6406666755676269,
+    "semantic_sim": 0.9532086849212646
+  },
+  {
+    "case_id": "1ab86975396d7b32",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.1428571428571429,
+    "phonetic_sim": 0.5763888756434123,
+    "semantic_sim": 0.8521725535392761
+  },
+  {
+    "case_id": "daa8d59d7e970f0b",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.4416666626930237,
+    "semantic_sim": 0.7774629592895508
+  },
+  {
+    "case_id": "016aa93555724549",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.19999999999999996,
+    "phonetic_sim": 0.5922222137451172,
+    "semantic_sim": 0.9288630485534668
+  },
+  {
+    "case_id": "b3e05fa50c507ffd",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.7045000076293946,
+    "semantic_sim": 0.16270938515663147
+  },
+  {
+    "case_id": "10ba373da4a0940f",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7778888702392578,
+    "semantic_sim": 0.18703211843967438
+  },
+  {
+    "case_id": "e326692e1c653f4c",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7200000047683716,
+    "semantic_sim": 0.6104713678359985
+  },
+  {
+    "case_id": "064989c4ead0a5ef",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.6749999920527141,
+    "semantic_sim": 0.2194111943244934
+  },
+  {
+    "case_id": "9eb94ed76c72d5eb",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8583333293596903,
+    "semantic_sim": 0.19277682900428772
+  },
+  {
+    "case_id": "1c5dad79d53672e2",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6666666666666667,
+    "phonetic_sim": 0.6504629850387573,
+    "semantic_sim": 0.4582168459892273
+  },
+  {
+    "case_id": "156ef418b7978732",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.900555557012558,
+    "semantic_sim": 0.4737040400505066
+  },
+  {
+    "case_id": "ced0d1387965bd0d",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8937499970197678,
+    "semantic_sim": 0.5054422616958618
+  },
+  {
+    "case_id": "9392974043e37aab",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.375,
+    "phonetic_sim": 0.777916669845581,
+    "semantic_sim": 0.5097440481185913
+  },
+  {
+    "case_id": "198eaa0dbbbedaf3",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.775,
+    "semantic_sim": 0.33264103531837463
+  },
+  {
+    "case_id": "455bc30332d605f3",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.9149999976158142,
+    "semantic_sim": 0.8457626104354858
+  },
+  {
+    "case_id": "e92850518456bec2",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.125,
+    "phonetic_sim": 0.6616666657584054,
+    "semantic_sim": 0.8081566095352173
+  },
+  {
+    "case_id": "9064ecf20e1b5109",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.7130000114440918,
+    "semantic_sim": 0.8826271295547485
+  },
+  {
+    "case_id": "3eb314df3bb374a7",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.763611125946045,
+    "semantic_sim": 0.8828085064888
+  },
+  {
+    "case_id": "ecc73d2b8d00006e",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.7548148367140028,
+    "semantic_sim": 0.8215727806091309
+  },
+  {
+    "case_id": "a051137e3ed6d62f",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.11111111111111116,
+    "phonetic_sim": 0.6347916722297668,
+    "semantic_sim": 0.4691806435585022
+  },
+  {
+    "case_id": "56406c3a290794dc",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.18181818181818177,
+    "phonetic_sim": 0.5443749725818634,
+    "semantic_sim": 0.6523087024688721
+  },
+  {
+    "case_id": "056b656a38892374",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.4049999713897705,
+    "semantic_sim": 0.3620317578315735
+  },
+  {
+    "case_id": "72fc0aa8febf23a6",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.45916664600372314,
+    "semantic_sim": 0.5153642892837524
+  },
+  {
+    "case_id": "71340c9f4ea70bd6",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.5571428707667759,
+    "semantic_sim": 0.6470842361450195
+  },
+  {
+    "case_id": "0f059edbe554fae2",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6068518559137981,
+    "semantic_sim": 0.5440201163291931
+  },
+  {
+    "case_id": "73731129633dbcf7",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.6,
+    "phonetic_sim": 0.6490000247955322,
+    "semantic_sim": 0.19179540872573853
+  },
+  {
+    "case_id": "22ef5549c5118b06",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.57962961991628,
+    "semantic_sim": 0.49907422065734863
+  },
+  {
+    "case_id": "ef9ab6d9e24d05bc",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.25,
+    "phonetic_sim": 0.6388888955116272,
+    "semantic_sim": 0.2631896734237671
+  },
+  {
+    "case_id": "b56f5385a90a6351",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.6449999809265137,
+    "semantic_sim": 0.5314333438873291
+  },
+  {
+    "case_id": "e2f3aa8deed4e82f",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7870833277702332,
+    "semantic_sim": 0.6264392137527466
+  },
+  {
+    "case_id": "dbf7ec7dab46e24e",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.6153846153846154,
+    "phonetic_sim": 0.6618803464449369,
+    "semantic_sim": 0.5828285217285156
+  },
+  {
+    "case_id": "ac0624c0168f324e",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.7816666662693024,
+    "semantic_sim": 0.5278461575508118
+  },
+  {
+    "case_id": "5b47838d2eb4a300",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.721055555343628,
+    "semantic_sim": 0.6027007699012756
+  },
+  {
+    "case_id": "d3c947e7be4faf94",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.8937499970197678,
+    "semantic_sim": 0.6634352207183838
+  },
+  {
+    "case_id": "5c370bb32657ba3d",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.09090909090909094,
+    "phonetic_sim": 0.5612345536549885,
+    "semantic_sim": 0.7899097800254822
+  },
+  {
+    "case_id": "cf31b9d3a0f67c37",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.16666666666666663,
+    "phonetic_sim": 0.5529059996971717,
+    "semantic_sim": 0.809610903263092
+  },
+  {
+    "case_id": "43a41906e2211852",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.7,
+    "semantic_sim": 0.7564579844474792
+  },
+  {
+    "case_id": "b3a5280f0949f774",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.6473333358764648,
+    "semantic_sim": 0.789778470993042
+  },
+  {
+    "case_id": "f099c1ebda6de76d",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.36363636363636365,
+    "phonetic_sim": 0.5882323004982688,
+    "semantic_sim": 0.7780399322509766
+  },
+  {
+    "case_id": "0c2a670493f0d0c0",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.9499999992549419,
+    "semantic_sim": 0.29918015003204346
+  },
+  {
+    "case_id": "7ab68fcad43c659e",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.899999996026357,
+    "semantic_sim": 0.4009818136692047
+  },
+  {
+    "case_id": "8f94bc757ec4d939",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8600000023841858,
+    "semantic_sim": 0.02966824546456337
+  },
+  {
+    "case_id": "9c98cd5f79a1c310",
+    "category": "accidental_lookalike",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8833333353201548,
+    "semantic_sim": 0.3555799424648285
+  },
+  {
+    "case_id": "cfffb71df1d82fb0",
+    "category": "accidental_lookalike",
+    "etymological_relation": "false_cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9312499985098839,
+    "semantic_sim": 0.5986318588256836
+  },
+  {
+    "case_id": "93cefed14c4fc6e0",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 0.3913193941116333
+  },
+  {
+    "case_id": "b336595e07164f30",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7799999952316284,
+    "semantic_sim": 0.43882060050964355
+  },
+  {
+    "case_id": "ee93428a0734facf",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.7944444417953491,
+    "semantic_sim": 0.3666236698627472
+  },
+  {
+    "case_id": "486629eec19acd1b",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.8,
+    "phonetic_sim": 0.8600000023841858,
+    "semantic_sim": 0.2750985622406006
+  },
+  {
+    "case_id": "41b83b3434e0bed4",
+    "category": "cognate_false_friend",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 0.9200000017881393,
+    "semantic_sim": 0.30770614743232727
+  },
+  {
+    "case_id": "9c0464e9c3ee7491",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.875,
+    "phonetic_sim": 0.9125000014901161,
+    "semantic_sim": 0.9527145624160767
+  },
+  {
+    "case_id": "cc90eb61527bdf32",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8333333333333334,
+    "phonetic_sim": 0.8833333353201548,
+    "semantic_sim": 0.8571712970733643
+  },
+  {
+    "case_id": "60e41f7d3194ccf1",
+    "category": "full_cognate",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.6255555550257366,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "50c70cd8a1141e25",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7,
+    "phonetic_sim": 0.8203703694873385,
+    "semantic_sim": 0.8355361819267273
+  },
+  {
+    "case_id": "54910fa9204067a8",
+    "category": "full_cognate",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 1.0,
+    "phonetic_sim": 1.0,
+    "semantic_sim": 0.9024856686592102
+  },
+  {
+    "case_id": "53bda0ca46332b81",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.6317460196358817,
+    "semantic_sim": 0.517090916633606
+  },
+  {
+    "case_id": "c1bcbedcf92d04b2",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.08333333333333337,
+    "phonetic_sim": 0.5087962945302327,
+    "semantic_sim": 0.43142759799957275
+  },
+  {
+    "case_id": "1ea82c99f639210f",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.125,
+    "phonetic_sim": 0.5324999988079071,
+    "semantic_sim": 0.41261425614356995
+  },
+  {
+    "case_id": "9b9f4b6dabdcb634",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.7066666603088378,
+    "semantic_sim": 0.626818835735321
+  },
+  {
+    "case_id": "24147fd1f21e0b92",
+    "category": "independent_root",
+    "etymological_relation": "independent",
+    "orthographic_sim": 0.16666666666666663,
+    "phonetic_sim": 0.45870371659596765,
+    "semantic_sim": 0.33881473541259766
+  },
+  {
+    "case_id": "68c71e18f1d99d59",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.625,
+    "semantic_sim": 0.5092658400535583
+  },
+  {
+    "case_id": "b22638cbb9183e48",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.4,
+    "phonetic_sim": 0.6111111111111112,
+    "semantic_sim": 0.4740787744522095
+  },
+  {
+    "case_id": "637bbc4bdbfb40b9",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.6866666674613953,
+    "semantic_sim": 0.4477929174900055
+  },
+  {
+    "case_id": "d22a2cdf23e4d91d",
+    "category": "semantic_divergence",
+    "etymological_relation": "cognate",
+    "orthographic_sim": 0.5,
+    "phonetic_sim": 0.6340277791023254,
+    "semantic_sim": 0.5115902423858643
+  },
+  {
+    "case_id": "5f97e289d0116cb0",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7142857142857143,
+    "phonetic_sim": 0.8000000034059798,
+    "semantic_sim": 0.7236818671226501
+  },
+  {
+    "case_id": "9323985f5c917462",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.8687500059604645,
+    "semantic_sim": 0.7825971841812134
+  },
+  {
+    "case_id": "7fda4ea3d7051f7f",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.7777777777777778,
+    "phonetic_sim": 0.7614814970228407,
+    "semantic_sim": 0.6263663172721863
+  },
+  {
+    "case_id": "3d7c5415e61c4245",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.75,
+    "phonetic_sim": 0.9624999985098839,
+    "semantic_sim": 0.6152466535568237
+  },
+  {
+    "case_id": "26ce4ec237aa9248",
+    "category": "semantic_narrowing",
+    "etymological_relation": "unknown",
+    "orthographic_sim": 0.8571428571428572,
+    "phonetic_sim": 0.9000000017029899,
+    "semantic_sim": 0.7488359212875366
+  },
+  {
+    "case_id": "afe30940b6b3f6d1",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.6622222423553467,
+    "semantic_sim": 0.7320899963378906
+  },
+  {
+    "case_id": "fbc4959a9c2d657e",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.33333333333333337,
+    "phonetic_sim": 0.6420370472802056,
+    "semantic_sim": 1.0
+  },
+  {
+    "case_id": "c6ea140f9fcfc1a2",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.43074075380961097,
+    "semantic_sim": 0.8905105590820312
+  },
+  {
+    "case_id": "eeb6d0f02d6acaec",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.4285714285714286,
+    "phonetic_sim": 0.6000000068119594,
+    "semantic_sim": 0.9461602568626404
+  },
+  {
+    "case_id": "37f9d4344b6da7da",
+    "category": "unrelated_equivalent",
+    "etymological_relation": "unrelated",
+    "orthographic_sim": 0.0,
+    "phonetic_sim": 0.44000001748402917,
+    "semantic_sim": 0.8259155750274658
+  }
+]

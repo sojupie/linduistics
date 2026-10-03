@@ -30,11 +30,50 @@ Source reviews:
 
 We have **not** agreed to a particular sense-position formula, cross-encoder, supervised model, mandatory ancestry proof for every game, vocabulary cutoff, or the reviews' numerical release targets. Those require separate evidence and decisions.
 
+## How the reviews become experiments
+
+The agreement below concerns problems and testable directions. It does not establish that either review's proposed implementation will work.
+
+| Agreement from the reviews | Where it is discussed | Experiment | Evidence needed for a decision |
+| --- | --- | --- | --- |
+| Evaluate against vocabulary chosen independently of the generator. Counts and familiar examples do not measure quality. | Sonnet: verdict, annotation methodology, experiment 1. Gemini: benchmark architecture and frequency-grounded coverage. | E0 | Reviewed expected comparisons, missed comparisons, and baseline errors, with sampling and source records. |
+| A single best sense match can give an unsuitable headline meaning. Preserve other valid matches. | Sonnet: single winning sense and meaning profiles. Gemini: greedy sense alignment and primary versus maximal alignment. | E1 | More acceptable displayed meanings without an unacceptable loss of valid secondary matches. |
+| Historical relationship, current meaning, and form resemblance answer different questions. | Sonnet: separate dimensions. Gemini: orthogonal feature space. | E2 | Better practical labels at comparable useful coverage, including partial overlap, names, and compounds. |
+| Missing roots and unequal root strings do not prove unrelatedness. Use typed evidence and retain useful inference. | Sonnet: missing evidence and typed ancestry. Gemini: string-based roots and historical links. | E3 | Additional correct relationships, measured alongside false links and unsupported claims. |
+| Prefix search introduces noise and can miss regular sound changes. Measure both effects before replacing it. | Sonnet: candidate generation experiment. Gemini: prefix bias and multiple candidate channels. | E4 | Useful-pair recall and candidate quality for each channel, including comparisons absent from the baseline. |
+| Related words must stay together in evaluation splits; new languages need their own checks. | Sonnet: family splits and distribution shift. Gemini: leakage prevention and new-language evaluation. | E0, E5 | Saved family groups, untouched test cases, per-pair results, and existing-language regression checks. |
+
+The reviews also propose stricter game evidence, removing names, vocabulary cutoffs, specific models, and fixed sample sizes or thresholds. These remain proposals. We will test the relevant failure types before making those product or implementation choices.
+
+## Required output from each experiment
+
+An experiment is complete when this ledger links to all four items:
+
+1. **Saved plan:** hypothesis, control and variant, input versions, evaluation cases, and acceptance limits fixed before scoring the variant.
+2. **Reproducible run:** exact command, code revision, configuration, and saved results. Record whether the run changed any published data.
+3. **Readable comparison:** baseline and variant measurements, gains, losses, unresolved cases, and results by language pair and failure type.
+4. **Decision:** adopt, revise, or reject, with a reason and a concrete next action. A completed run can have an inconclusive result.
+
+Do not mark a hypothesis supported because the code runs, category proportions look plausible, or known examples improve. Do not mark an experiment complete when its only output is a data dump awaiting the user's inspection.
+
+### Result index
+
+Update this table after each run. Keep earlier run records below the corresponding experiment.
+
+| Experiment | Run ID | Plan/configuration | Report and case results | Outcome | Decision |
+| --- | --- | --- | --- | --- | --- |
+| E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json) | [Baseline coverage report](../pipeline/evaluation/E0_RUN001.md) | Coverage measured; quality review unfinished | Continue E0 |
+| E1 | — | Awaiting E0 | Not run | Not measured | Pending |
+| E2 | — | Awaiting E0 and E1 | Not run | Not measured | Pending |
+| E3 | — | Awaiting E0 | Not run | Not measured | Pending |
+| E4 | — | Awaiting E0 | Not run | Not measured | Pending |
+| E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
+
 ## Experiment sequence
 
 | ID | Question | Depends on | Current status |
 | --- | --- | --- | --- |
-| E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Planned |
+| E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Running |
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Planned |
 | E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Planned |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
@@ -72,9 +111,9 @@ Divide development and test cases by word family. Keep both directions of a pair
 
 **Completion condition:** a readable baseline report, saved reviewed cases, and a frozen evaluation procedure. Before E1–E4 implementation, record their numerical acceptance limits using this baseline and the intended product use. Until then, those experiments are planned, not ready for release decisions.
 
-**Actual result:** Not run. No reviewed benchmark or linguistic accuracy estimate has been established.
+**Actual result:** E0-001 measured the unchanged baseline against 1,712 independently sourced concept comparisons: 1,441 found, 213 missing despite both exact headwords being present, and 58 involving an absent exact headword. Independent frequency samples and a blinded comparison packet are saved. See the [run report](../pipeline/evaluation/E0_RUN001.md) for results by language pair, matching limits, source attribution, and remaining review work. Displayed-meaning and open-vocabulary accuracy are not yet established.
 
-**Decision:** Pending.
+**Decision:** Continue E0's form-mapping, meaning review, hard-case review, family grouping, and acceptance-limit work before implementing E1-E4 variants. No dataset change adopted.
 
 ## E1 — Displayed meanings and secondary matches
 
