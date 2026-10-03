@@ -248,3 +248,110 @@ including failures and unresolved outcomes.
 
 This file records priorities and hypotheses only. No follow-up experiment has
 been run or adopted as part of writing it. Experiment execution remains paused.
+
+## What the correctness reviews add
+
+Sources: [Sonnet's correctness review](sonnet_correctness.md) and
+[Gemini's correctness review](gemini_correctness.md), read 2026-10-04.
+These are external recommendations, not results from our dataset. They do not
+change the experiment ranking above. They give us a more economical way to test
+the promising methods and clarify which numerical claims we should avoid.
+
+### Recommendations to carry forward
+
+1. **Estimate broader quality from a probability sample.** Record how likely each
+   comparison was to be selected. Oversample rare labels when needed and weight
+   the results appropriately. Keep targeted error hunts separate from the estimate.
+   Our existing category-balanced reviews remain diagnostic; they are not a
+   population accuracy estimate.
+2. **Concentrate version comparisons on changed outputs.** Review a probability
+   sample of changed labels, selected senses and generated pairs. Keep a smaller
+   random sample of unchanged output to check shared errors and estimate absolute
+   quality. Equal labels do not mean equal displayed meanings. Both versions can
+   be wrong. Report new wins, new losses, both-correct and both-wrong cases.
+3. **Keep correctness questions separate.** Assess the comparison's purpose,
+   displayed sense, modern meaning label, historical claim and game eligibility.
+   A pair can succeed on one and fail on another. Allow supported, contradicted
+   and unresolved judgments for specific claims, with a recorded reason.
+4. **Keep the independent retrieval check.** A sample of generated rows cannot
+   reveal pairs that were never generated. Use IE-CoR within its stated scope and
+   additional independent references where appropriate. Preserve missing pairs
+   in that denominator.
+5. **Use automatic checks to find review candidates.** Reverse-record integrity,
+   signal conflicts, unstable thresholds, generic glosses and unusually connected
+   words can expose faults cheaply. These are structural checks or review signals;
+   they do not establish linguistic correctness.
+
+For changed candidate membership, record removed and added rows separately.
+Comparing correctness percentages over two different retained sets would repeat
+the E4 mistake. Use the independent retrieval panel for coverage and sampling
+weights for the broader candidate comparison.
+
+### Qualifications before turning the advice into rules
+
+- **Sample counts are planning estimates.** Roughly 380–400 simple random reviews
+  can give an approximately five-point margin for a binary population proportion
+  under the usual worst-case calculation. That does not promise the same margin
+  for every label, language pair, correlated family sample or unresolved claim.
+  Set the review budget from the desired estimate and sampling design. Review
+  quality and source uncertainty remain separate from sampling uncertainty.
+- **Family sampling needs weights too.** Keeping one comparison per family can
+  help reveal distinct error patterns, but it changes which rows are likely to
+  be reviewed. Do not treat that as a uniform row sample. Define whether the
+  estimate concerns rows or families and preserve its inclusion probabilities.
+- **Strata must have a coherent design.** Predicted label, frequency and selected
+  sense position overlap. Assign each row to a defined stratum, or account for
+  overlapping selection probabilities; do not pool overlapping groups as if
+  they were independent samples. Uniform sampling is still useful for overall
+  quality, even if rare labels need additional reviews.
+- **Reviewers need a common question and independent evidence.** Hide pipeline
+  scores and version identity. For independent meaning judgments, hide predicted
+  labels as well. A later claim-support review can show the specific assertion
+  without identifying which version made it. Independent overlapping reviews
+  can test consistency, but a fixed agreement score does not prove truth or
+  automatically diagnose bad guidelines. Two agents are not automatically two
+  independent linguistic experts.
+- **Vocabulary scope is a product choice.** Names, place names, technical terms,
+  old words and inflections are not inherently bad comparisons. Assess their
+  intended use and identity. Selecting ordinary vocabulary for a quiz does not
+  justify silently removing other legitimate entries from the lexicon.
+- **Dictionary position is not usage frequency.** A late sense can be appropriate;
+  a first sense can belong to the wrong entry. Sense-position distributions are
+  diagnostic. No fixed secondary-sense percentage establishes a bad selector.
+- **Graph consistency requires the same historical scope.** Compare exact entries,
+  typed relationships and compatible ancestors. Shared components, borrowing and
+  different homographs do not justify automatic cognacy closure. Missing edges
+  or residual labels are not themselves contradictory claims. The E3 graph has
+  known extraction errors, so it cannot independently certify its own labels.
+- **Connection counts are review signals.** Many matches can reflect polysemy,
+  productive derivation or legitimate names. A fixed limit of 15 cannot establish
+  a bad headword without examining those matches.
+- **Root masking is a useful stress test, not a guaranteed upper bound.** Hiding
+  recorded roots tests inference on that subset. Words with recorded ancestry
+  may differ from words without it; the direction of the bias is not established.
+- **The proposed 98% game precision is not an agreed release target.** Set criteria
+  for actual question and answer correctness, historical claims and task coverage
+  before testing. Neither that target nor the proposed agreement and diagnostic
+  thresholds should become automatic adoption rules without justification.
+
+### Model-assisted review: useful later, with a real reference sample
+
+Sonnet suggests prediction-powered inference: use model predictions over a large
+pool, then use trusted sampled judgments to correct the estimated result. This
+is an established statistical approach, described in the
+[original paper](https://arxiv.org/abs/2301.09633). It can reduce the cost of
+estimating quality when predictions are informative, under the method's sampling
+and statistical conditions.
+
+It does not turn model output into ground truth or correct systematic mistakes
+in the reference reviewers. Without a trustworthy reference sample, calling our
+agent reviews human calibration would be false. Treat this as a possible later
+efficiency improvement; weighted sampling and changed-output review are the
+simpler starting point. Any use of it needs a saved protocol rather than an
+informal bias adjustment.
+
+**Practical conclusion:** we do not need to inspect every generated pair before
+trying E2 or E1 again. We need a defensible estimate of broader quality, a focused
+comparison of what changed, and an independent check of what is missing. Use
+those to judge the concrete improvements above, without replacing the old
+five-point gate with a new set of arbitrary gates.
