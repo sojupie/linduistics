@@ -105,6 +105,7 @@ def evaluate(destination, run_id, variant):
     records, forms, record_hash, source_count = source_records(record_path, wanted)
     protocol = {'run_id': run_id, 'variant': variant, 'baseline_sha256': EXPECTED_HASH,
         'source_variant_plan_sha256': digest(OUTPUT / 'E3_SOURCE_PLAN.md') if variant == 'sources' else None,
+        'source_caveat_plan_sha256': digest(OUTPUT / 'E3_CAVEAT_PLAN.md'),
         'source_comparisons_sha256': digest(source / 'comparisons.json'),
         'source_records': str(record_path), 'source_records_sha256': record_hash,
         'source_manifest_sha256': digest(record_path.with_suffix(record_path.suffix + '.manifest.json')),
@@ -130,7 +131,8 @@ def evaluate(destination, run_id, variant):
         prediction = predictions[identity]
         if case['panel'] == 'open':
             reference = references[case['case_id']]
-            whole = [r for r in prediction['history']['relationships'] if r['kind'] != 'shared_recorded_component_source']
+            whole = [r for r in prediction['history']['relationships']
+                     if r['kind'] != 'shared_recorded_component_source' and not r['source_uncertain']]
             new = bool(whole) and prediction['root_control'] == 'unknown'
             results.append({**case, **prediction, 'reference': reference, 'new_relationship_candidate': new,
                 'source_supported_recovery_candidate': new and reference['source_supported_positive'],
@@ -149,6 +151,8 @@ def evaluate(destination, run_id, variant):
     summary = {'run_id': run_id, 'variant': variant, 'open_cases': len(results), 'concept_cases': len(concepts),
         'root_control_supported': sum(r['root_control'] == 'cognate' for r in results),
         'typed_relationship_supported': sum(bool(r['history']['relationships']) for r in results),
+        'cases_with_source_uncertain_relationships': [r['case_id'] for r in results
+            if any(rel['source_uncertain'] for rel in r['history']['relationships'])],
         'new_relationship_candidates': sum(r['new_relationship_candidate'] for r in results),
         'source_supported_recovery_candidates': len(supported),
         'recovery_candidate_pairs': sorted({f"{r['lang_a']}-{r['lang_b']}" for r in supported}),

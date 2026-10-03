@@ -137,6 +137,19 @@ def historical_relationships(entry_keys_a, entry_keys_b, entries, forms, *, shar
                                           else 'shared_recorded_source_unspecified',
                         'entries': [a, b], 'source_form': list(target), 'evidence_by_entry': evidence,
                         'transmission': 'Unspecified by broad source relation; not inherited-cognate proof.'})
+    for relation in relationships:
+        identities = set(relation['entries'])
+        for path in relation.get('paths', [relation.get('path', {})]):
+            identities.update(step['source_entry_key'] for step in path.get('path', []))
+        qualifications = []
+        for identity in sorted(identities):
+            record = entries[identity]
+            statuses = sorted({c['source_etymology_status'] for c in record.get('claims', [])
+                               if c.get('source_etymology_status') in {'unknown', 'uncertain'}})
+            qualifications.append({'source_entry_key': identity, 'source_url': record.get('source_url'),
+                                   'source_etymology_status': statuses, 'etymology_text': record.get('etymology_text')})
+        relation['source_qualifications'] = qualifications
+        relation['source_uncertain'] = any(q['source_etymology_status'] for q in qualifications)
     return {'relationships': relationships, 'excluded_formation_claims': excluded,
             'unresolved_paths': unresolved, 'scope': 'Source entry pairs; not a claim about every headword homograph.'}
 
@@ -191,6 +204,10 @@ def self_check():
     placeholder_b = record('b', 'de', 'Wort', 'inherited_from', ('old', '-'))
     entries, forms = source_index([placeholder_a, placeholder_b])
     assert not historical_relationships(['a'], ['b'], entries, forms, shared_sources=True)['relationships']
+    uncertain = derived | {'claims': derived['claims'] + [{'source_etymology_status': 'unknown'}]}
+    entries, forms = source_index([uncertain, b])
+    possible = historical_relationships(['a'], ['b'], entries, forms, shared_sources=True)['relationships'][0]
+    assert possible['source_uncertain'] and possible['kind'] == 'shared_recorded_source_unspecified'
     print('Historical links self-check passed.')
 
 
