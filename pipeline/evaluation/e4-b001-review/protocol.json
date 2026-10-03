@@ -1,0 +1,15 @@
+{
+  "source_hashes": {
+    "review_sample.json": "4c47e416459ec8afff0a76b256158b3392d1ca204ff696ae91520c918cd7fc83",
+    "concept_results.json": "b6e6ecb9058ac2acae1b53fa0257c8fa5dc45a74dc58199d0c7b50b770560532",
+    "protocol.json": "bd64437bab0b58b01b37529d1cba9096ed0a761f63d5306103bd5c457e143109"
+  },
+  "code_sha256": "fe8f0fb2c8930350179fa01c45525ef2f592d2f9f31d19db8fca82aed510ade8",
+  "control_replayed_comparisons": 1201,
+  "control_category_and_relation_disagreements": [],
+  "classifier_sha256": "dacb6d1bdcfcce0c3120b8257364efd7d54aba4636cf68878a9b15965fa2f7fc",
+  "alignment_sha256": "3c47b6d4121cbbcab97dc0fa18f7808a98ed77952e54d142c8b8b771e2e476a4",
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "note": "V2 scalar-score classification reproduced exactly; no E1/E2/E3 replacement. Full sense identities saved."
+}

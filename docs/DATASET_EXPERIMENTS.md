@@ -268,9 +268,17 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 **Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E4 section.
 
-**Actual result:** E4-A002 removed 523,280 prefix-only comparisons from the 819,227 undirected baseline rows. Development expected-pair recall fell from 995/1,168 to 986/1,168, losing nine ordinary comparisons. In the frozen open sample, compatible fixed labels fell from 80/197 (40.6%) to 45/128 retained cases (35.2%): −5.45 points, with a paired family interval of −10.90 to −0.34. All removed cases and original review reasons are in the [readable report](../pipeline/evaluation/E4_RUN_A002.md). Pronunciation retrieval is under separate evaluation.
+**Actual result:** E4-A002 removed 523,280 prefix-only comparisons from the 819,227 undirected baseline rows. Development expected-pair recall fell from 995/1,168 to 986/1,168, losing nine ordinary comparisons. In the frozen open sample, compatible fixed labels fell from 80/197 (40.6%) to 45/128 retained cases (35.2%): −5.45 points, with a paired family interval of −10.90 to −0.34. All removed cases and original review reasons are in the [readable report](../pipeline/evaluation/E4_RUN_A002.md).
 
 **Decision:** Reject unconditional prefix removal. It meets the recall-loss limits but fails the usefulness gate. Keep the original candidate control for E4-B; assess A+B separately. No production generator or database changed.
+
+### E4-B001 — Completed development run, 2026-10-03
+
+**Hypothesis:** learned pronunciation correspondences recover expected comparisons missed by spelling-dependent retrieval, without learning from evaluation families.
+
+**Actual result:** on 588 comparisons in separate evaluation families, the control finds 513, unlearned phonetic retrieval finds 522, and learned retrieval finds 521. The learned arm recovers eight expected comparisons across six language pairs, short of the ten-comparison gate. A+B finds 519. The original-source audit distinguishes recorded IPA from generated fallback; 2,369 of the 4,864 newly retrieved comparisons require some fallback. The unfiltered 60-case sample contains no supported modern meaning overlap: 43 weak matches, 16 potential pronunciation traps, and one restricted trap. All nine expected recoveries from either phonetic arm were reviewed. Two choose a secondary sense that does not suit the expected concept, and the unchanged classifier incorrectly calls `brænde` / `brennen` accidental lookalikes. Fixed categories and relations replay identically on all 1,201 frozen controls. Result artifacts reproduce byte-for-byte. The [report](../pipeline/evaluation/E4_RUN_B001.md) includes every reviewed case and the method's limits.
+
+**Decision:** Revise; do not adopt either phonetic rule. Candidate recall can improve while displays and classifications still fail. The simple correspondence model does not outperform the unlearned arm. Preserve E4's failed variants and proceed to E5 source admission using the accepted generator; do not silently replace prefixes or alter labels during expansion.
 
 ## E5 — New-language admission and regression checks
 
@@ -327,4 +335,4 @@ After individual experiments pass, test their combined output against the accept
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3's evidence layer is accepted for final evaluation, not publication. E4–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
+**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3's evidence layer is accepted for final evaluation, not publication. E4 is complete: unconditional prefix removal is rejected and phonetic retrieval requires revision. E5 remains untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
