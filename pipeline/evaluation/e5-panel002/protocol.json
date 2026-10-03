@@ -1,0 +1,13 @@
+{
+  "plan_sha256": "8e9b36764c7afc60dd9157d6486a9c2782633513525b96686cb9d681229aaf5a",
+  "old_split_sha256": "b07cf0cb30876cb7cd3904511490154e8d72c010e9d8bf87bf0295861dae5642",
+  "code_sha256": "d98c674bb4e3d3d895e5c5a790d977d613dcecabb8aeda7341043f4d5a2c3b73",
+  "reference_hashes": {
+    "cldf_forms.csv": "60ee8847ad2eb68de619a72669243f0179ccf1f2a58b44a54ce8f9a296d3c2ed",
+    "cldf_cognates.csv": "08473d6c668d266cb2477d2941a18563b219e8979d9b7e38a87b243b22a7fd34",
+    "cldf_parameters.csv": "659f799cca4cc76ee12e8d7388de57cc8d8b72553de24db479bb029a2215c0ea"
+  },
+  "prediction_inputs_read": false,
+  "source_of_new_links": "IE-CoR concepts, expert sets, lexical identity",
+  "limits": "Unrecorded historical links can remain unknown. Mixed inherited roles are diagnostic only."
+}
