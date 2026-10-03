@@ -131,6 +131,8 @@ Divide development and test cases by word family. Keep both directions of a pair
 
 Keep this interim record when appending the completed E0 result. Later findings must not erase what was known at this point.
 
+**Subsequent E0-001 checkpoint, 2026-10-03:** Open-vocabulary review now covers 100 of 207 development cases, with all packet hashes and development roles checked. The [run report](../pipeline/evaluation/E0_RUN001.md) records controls for valid matches, translated-gloss ambiguity, inactive selected definitions, historical agreement without current equivalence, and grammatical differences. The remaining 107 cases, hard-case groups, reference notation, and numerical gates are still pending. No classifier or published-data change has been adopted.
+
 ## E1 — Displayed meanings and secondary matches
 
 **Hypothesis:** source-entry sense order, usage labels, and explicit translation-sense evidence will select more appropriate ordinary meanings than maximum embedding similarity alone, while retaining genuine secondary correspondences.
