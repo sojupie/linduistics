@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "da": {
+      "lemmas": 22544,
+      "source_attested_stored_ipa": 6426,
+      "nonempty_stored_ipa": 22544
+    },
+    "de": {
+      "lemmas": 86390,
+      "source_attested_stored_ipa": 53562,
+      "nonempty_stored_ipa": 86390
+    },
+    "en": {
+      "lemmas": 536633,
+      "source_attested_stored_ipa": 72815,
+      "nonempty_stored_ipa": 536631
+    },
+    "nb": {
+      "lemmas": 21315,
+      "source_attested_stored_ipa": 3368,
+      "nonempty_stored_ipa": 21315
+    },
+    "sv": {
+      "lemmas": 53525,
+      "source_attested_stored_ipa": 4851,
+      "nonempty_stored_ipa": 53524
+    }
+  },
+  "elapsed_seconds": 31.050099599990062
+}
