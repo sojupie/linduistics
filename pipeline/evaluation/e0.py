@@ -209,13 +209,59 @@ def verify():
     print('E0 artifact counts, coverage, blinding, and unchanged baseline verified.')
 
 
+def map_forms():
+    """Resolve absent exact reference forms using recorded inflections, not guessed spelling."""
+    protocol = json.loads((OUTPUT / 'e0_protocol.json').read_text(encoding='utf-8'))
+    if digest(DATASET) != protocol['baseline_sha256']:
+        raise ValueError('Baseline content differs from the frozen protocol')
+    cases = [c for c in read_csv(OUTPUT / 'e0_concept_results.csv') if c['coverage_status'] == 'missing_exact_headword']
+    aliases = defaultdict(set)
+    needed = {(c[f'lang_{s}'], normalized(c[f'word_{s}'])) for c in cases for s in ['a', 'b']}
+    for lang in LANGUAGES.values():
+        headwords = {normalized(w) for w in pq.read_table(BASELINE / f'lemmas_{lang}.parquet', columns=['word']).column('word').to_pylist()}
+        for language, word in needed:
+            if language == lang and word in headwords:
+                aliases[(lang, word)].add(word)
+        for batch in pq.ParquetFile(BASELINE / f'word_forms_{lang}.parquet').iter_batches(columns=['form', 'lemma']):
+            for form in batch.to_pylist():
+                identity = (lang, normalized(form['form']))
+                if identity in needed:
+                    lemma = normalized(form['lemma'])
+                    if lemma in headwords:
+                        aliases[identity].add(lemma)
+    sought = defaultdict(list)
+    for c in cases:
+        for a in aliases[(c['lang_a'], normalized(c['word_a']))]:
+            for b in aliases[(c['lang_b'], normalized(c['word_b']))]:
+                sought[key(c['lang_a'], a, c['lang_b'], b)].append(c['case_id'])
+    matches = defaultdict(list)
+    for batch in pq.ParquetFile(DATASET).iter_batches(columns=['lang_a', 'word_a', 'lang_b', 'word_b', 'def_a', 'def_b']):
+        for row in batch.to_pylist():
+            if row['lang_a'] < row['lang_b']:
+                for case_id in sought.get(key(row['lang_a'], row['word_a'], row['lang_b'], row['word_b']), []):
+                    matches[case_id].append(row)
+    results = []
+    for c in cases:
+        a = sorted(aliases[(c['lang_a'], normalized(c['word_a']))])
+        b = sorted(aliases[(c['lang_b'], normalized(c['word_b']))])
+        status = 'recorded_lemma_pair_found' if matches[c['case_id']] else 'mapped_lemmas_without_pair' if a and b else 'no_recorded_mapping'
+        results.append({**c, 'mapped_lemmas_a': a, 'mapped_lemmas_b': b, 'mapping_status': status,
+                        'candidate_rows': matches[c['case_id']],
+                        'meaning_verification': 'not reviewed; a form mapping alone does not verify the concept sense'})
+    counts = Counter(r['mapping_status'] for r in results)
+    assert sum(counts.values()) == len(cases)
+    assert all(r['candidate_rows'] for r in results if r['mapping_status'] == 'recorded_lemma_pair_found')
+    save_json(OUTPUT / 'e0_form_mapping.json', {'counts': dict(counts), 'cases': results})
+    print(json.dumps(dict(counts), indent=2))
+
+
 if __name__ == '__main__':
     assert normalized(' Wasser ') == normalized('wasser')
     assert key('en', 'water', 'de', 'Wasser') == key('de', 'wasser', 'en', 'water')
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['prepare', 'audit', 'verify'])
+    parser.add_argument('action', choices=['prepare', 'audit', 'verify', 'map-forms'])
     parser.add_argument('--output', type=Path, default=OUTPUT, help='Separate directory for a new run; existing artifacts are never overwritten')
     args = parser.parse_args()
     OUTPUT = args.output
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    {'prepare': prepare, 'audit': audit, 'verify': verify}[args.action]()
+    {'prepare': prepare, 'audit': audit, 'verify': verify, 'map-forms': map_forms}[args.action]()
