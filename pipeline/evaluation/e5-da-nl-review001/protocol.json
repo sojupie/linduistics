@@ -1,0 +1,14 @@
+{
+  "pair": [
+    "da",
+    "nl"
+  ],
+  "seed": 20261003,
+  "final_sha256": "0eb791da2d300b240cc8d3125caf5110a98c9e787d8e77338d057e76e65ebf38",
+  "code_sha256": "3a0a08bb9f4ff707d3524c1cb8b28bde00339f7788cab6ae276091c1eba19cf7",
+  "panel_protocol_sha256": "29c85e72280b2f490b70035d6e405e0c8517615304a6e5edb2c6e399687473dc",
+  "review": "Source-guided agent judgment pending; not independent human gold.",
+  "sampling": "Five canonical rows per category, seeded reservoir; known reserved/bridge families withheld without replacements.",
+  "blinding": "Open packet omits categories and numeric scores. Source senses and claims remain available.",
+  "separation_limits": "Unknown families among open vocabulary may still overlap; no claim of complete historical family separation."
+}

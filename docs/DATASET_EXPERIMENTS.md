@@ -308,6 +308,10 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 The [admission plan](../pipeline/evaluation/E5_ADMISSION_PLAN.md) fixes transfer limits and separates them from release approval. The independent panel contains 1,900 new-pair cases: 1,293 development, 574 reserved, and 33 diagnostic cases linking previously separate development/test families. Preparation reproduces exactly. Seven-language translation mining preserves every old translation source reference and all 819,227 old candidate pairs in order. All 1,638,454 old final categories and relations replay exactly. A first replay's incorrect numeric conversion was corrected to the historical PostgreSQL-to-psycopg path and retained as a failed run. The [report](../pipeline/evaluation/E5_PREBUILD_RESULT.md) gives per-pair new translation counts, commands, and limits. Full new-pair sense alignment, reviews, admission decisions, assembled output preservation, and final product checks remain pending.
 
+### E5 Dutch builds — Complete; reviews in progress
+
+All five full Dutch pair builds are complete: 803,662 directed rows with 16,644 attached source claims. Development expected-pair retrieval is 98/115 for Danish, 106/117 for German, 105/116 for English, 96/116 for Norwegian, and 107/118 for Swedish. Danish–Dutch's complete concept review finds 77 suitable displays, 21 wrong senses, and 17 missing comparisons. It passes retrieval/display transfer against the old Danish comparator, but the separate open review finds only 13/32 compatible practical labels, with two unresolved. The [report](../pipeline/evaluation/E5_DUTCH_BUILD_RESULT.md) explains the recurring errors and why a transfer pass does not approve admission. Remaining Dutch reviews, Icelandic builds/reviews, historical/game checks, intervals, assembled preservation and final reserved/product evaluation remain pending.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.
