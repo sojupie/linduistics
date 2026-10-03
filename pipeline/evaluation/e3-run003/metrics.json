@@ -1,0 +1,102 @@
+{
+  "run_id": "E3-003",
+  "variant": "sources",
+  "open_cases": 207,
+  "concept_cases": 995,
+  "root_control_supported": 55,
+  "typed_relationship_supported": 60,
+  "cases_with_source_uncertain_relationships": [
+    "0ae616a03089d4b6",
+    "318bb3bc430bf9db"
+  ],
+  "new_relationship_candidates": 7,
+  "source_supported_recovery_candidates": 6,
+  "recovery_candidate_pairs": [
+    "da-de",
+    "de-en",
+    "de-nb",
+    "en-nb"
+  ],
+  "component_control_claim_flags": [],
+  "relationship_types": {
+    "explicit_cognate_statement": 20,
+    "shared_recorded_component_source": 11,
+    "shared_recorded_source_unspecified": 73,
+    "shared_recorded_inherited_ancestor": 64,
+    "direct_or_chained_borrowing": 1,
+    "shared_recorded_borrowing_source": 2,
+    "borrowing_and_inheritance_from_shared_source": 1
+  },
+  "unresolved_reasons": {
+    "source_entry_unavailable": 99,
+    "unavailable_target_entry": 1039,
+    "ambiguous_cognate_target": 58,
+    "ambiguous_target_entries": 18,
+    "missing_target": 4
+  },
+  "per_pair": {
+    "en-sv": {
+      "cases": 19,
+      "root_control_supported": 5,
+      "typed_relationship_supported": 5,
+      "source_supported_recovery_candidates": 0
+    },
+    "nb-sv": {
+      "cases": 25,
+      "root_control_supported": 8,
+      "typed_relationship_supported": 8,
+      "source_supported_recovery_candidates": 0
+    },
+    "de-nb": {
+      "cases": 15,
+      "root_control_supported": 3,
+      "typed_relationship_supported": 5,
+      "source_supported_recovery_candidates": 2
+    },
+    "da-de": {
+      "cases": 17,
+      "root_control_supported": 2,
+      "typed_relationship_supported": 3,
+      "source_supported_recovery_candidates": 2
+    },
+    "da-en": {
+      "cases": 20,
+      "root_control_supported": 7,
+      "typed_relationship_supported": 7,
+      "source_supported_recovery_candidates": 0
+    },
+    "en-nb": {
+      "cases": 22,
+      "root_control_supported": 6,
+      "typed_relationship_supported": 8,
+      "source_supported_recovery_candidates": 1
+    },
+    "de-sv": {
+      "cases": 25,
+      "root_control_supported": 7,
+      "typed_relationship_supported": 6,
+      "source_supported_recovery_candidates": 0
+    },
+    "de-en": {
+      "cases": 25,
+      "root_control_supported": 7,
+      "typed_relationship_supported": 8,
+      "source_supported_recovery_candidates": 1
+    },
+    "da-nb": {
+      "cases": 22,
+      "root_control_supported": 6,
+      "typed_relationship_supported": 6,
+      "source_supported_recovery_candidates": 0
+    },
+    "da-sv": {
+      "cases": 17,
+      "root_control_supported": 4,
+      "typed_relationship_supported": 4,
+      "source_supported_recovery_candidates": 0
+    }
+  },
+  "elapsed_seconds": 31.22,
+  "source_comparisons_unchanged": true,
+  "limits": "Recovery candidates require retained-source review. Unknown history is not a negative label. Development judgments are not independent human gold."
+}

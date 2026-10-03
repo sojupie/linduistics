@@ -1,0 +1,91 @@
+{
+  "reviewer": "Codex, retained source records and frozen E0 reasons; not independent human gold",
+  "recovery_review": [
+    {
+      "case_id": "3d7c5415e61c4245",
+      "review_id": 3,
+      "words": [
+        "felt",
+        "fält"
+      ],
+      "counted_recovery": false,
+      "reason": "Recorded source mention retained, but the frozen history review is inferred rather than source-supported; not counted.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "54133de7e63674b2",
+      "review_id": 44,
+      "words": [
+        "Quartier",
+        "kvarter"
+      ],
+      "counted_recovery": true,
+      "reason": "Confirmed entry-scoped source records; broad source links remain unspecified transmission.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "117a3c4f38bb23e8",
+      "review_id": 81,
+      "words": [
+        "kriterium",
+        "Kriterium"
+      ],
+      "counted_recovery": true,
+      "reason": "Confirmed entry-scoped source records; broad source links remain unspecified transmission.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "8695f88bf063ed7c",
+      "review_id": 85,
+      "words": [
+        "gegen",
+        "against"
+      ],
+      "counted_recovery": true,
+      "reason": "Confirmed entry-scoped source records; broad source links remain unspecified transmission.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "5538fd8fea652f9d",
+      "review_id": 108,
+      "words": [
+        "chaos",
+        "kaos"
+      ],
+      "counted_recovery": false,
+      "reason": "Name/common-word source entry mismatch; not counted as ordinary-word recovery.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "3cbbe4e6c9fcc398",
+      "review_id": 121,
+      "words": [
+        "botulisme",
+        "Botulismus"
+      ],
+      "counted_recovery": true,
+      "reason": "Confirmed entry-scoped source records; broad source links remain unspecified transmission.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    },
+    {
+      "case_id": "db0ad6928b699be8",
+      "review_id": 162,
+      "words": [
+        "Jupiter",
+        "jupiter"
+      ],
+      "counted_recovery": true,
+      "reason": "Confirmed entry-scoped source records; broad source links remain unspecified transmission.",
+      "source_records": "../e3-run002/recovered_source_records.json"
+    }
+  ],
+  "reviewed_recovery_count": 5,
+  "reviewed_recovery_pairs": [
+    "da-de",
+    "de-en",
+    "de-nb"
+  ],
+  "component_control_false_whole_word_claims": 0,
+  "gate_met": true,
+  "decision": "Accept the source-scoped evidence layer for reserved-family evaluation; do not publish or replace learner labels."
+}

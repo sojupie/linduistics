@@ -1,0 +1,2342 @@
+{
+  "sv|fält|noun||en-fält-sv-noun-FduRhID6,en-fält-sv-noun-WPc4S74e,en-fält-sv-noun-gpu3UfhM,en-fält-sv-noun-u8l-lGA1": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_sv.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/f%C3%A4lt#Swedish",
+    "source_entry_key": "sv|fält|noun||en-fält-sv-noun-FduRhID6,en-fält-sv-noun-WPc4S74e,en-fält-sv-noun-gpu3UfhM,en-fält-sv-noun-u8l-lGA1",
+    "language_code": "sv",
+    "language_name": "Swedish",
+    "word": "fält",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-fält-sv-noun-WPc4S74e",
+      "en-fält-sv-noun-u8l-lGA1",
+      "en-fält-sv-noun-gpu3UfhM",
+      "en-fält-sv-noun-FduRhID6"
+    ],
+    "source_senses": [
+      {
+        "id": "en-fält-sv-noun-WPc4S74e",
+        "glosses": [
+          "a field, a (physical) area, an open space in a landscape (for farming or battle)"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      },
+      {
+        "id": "en-fält-sv-noun-u8l-lGA1",
+        "glosses": [
+          "a field (of vectors, of forces)"
+        ],
+        "raw_glosses": [
+          "(mathematics, physics) a field (of vectors, of forces)"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      },
+      {
+        "id": "en-fält-sv-noun-gpu3UfhM",
+        "glosses": [
+          "a field (of interest), an area, a topic, a sphere (region of activity)"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      },
+      {
+        "id": "en-fält-sv-noun-FduRhID6",
+        "glosses": [
+          "array, a data structure designed to hold multiple elements"
+        ],
+        "raw_glosses": [
+          "(programming) array, a data structure designed to hold multiple elements"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      }
+    ],
+    "etymology_text": "From Old Swedish fält, from Middle Low German velt, from Old Saxon feld, from Proto-West Germanic *felþu, cognate with Old English feld, English field, also related to fjäll.",
+    "templates": [
+      {
+        "name": "dercat",
+        "args": {
+          "1": "sv",
+          "2": "gem-pro",
+          "3": "ine-pro"
+        },
+        "expansion": ""
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "sv",
+          "2": "gmq-osw",
+          "3": "fält"
+        },
+        "expansion": "Old Swedish fält"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "sv",
+          "2": "gml",
+          "3": "velt"
+        },
+        "expansion": "Middle Low German velt"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "sv",
+          "2": "osx",
+          "3": "feld"
+        },
+        "expansion": "Old Saxon feld"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "sv",
+          "2": "gmw-pro",
+          "3": "*felþu"
+        },
+        "expansion": "Proto-West Germanic *felþu"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "ang",
+          "2": "feld"
+        },
+        "expansion": "Old English feld"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "en",
+          "2": "field"
+        },
+        "expansion": "English field"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "dercat",
+        "relation": null,
+        "args": {
+          "1": "sv",
+          "2": "gem-pro",
+          "3": "ine-pro"
+        }
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "sv",
+          "2": "gmq-osw",
+          "3": "fält"
+        },
+        "related_language": "gmq-osw",
+        "related_form": "fält"
+      },
+      {
+        "template_index": 2,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "sv",
+          "2": "gml",
+          "3": "velt"
+        },
+        "related_language": "gml",
+        "related_form": "velt"
+      },
+      {
+        "template_index": 3,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "sv",
+          "2": "osx",
+          "3": "feld"
+        },
+        "related_language": "osx",
+        "related_form": "feld"
+      },
+      {
+        "template_index": 4,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "sv",
+          "2": "gmw-pro",
+          "3": "*felþu"
+        },
+        "related_language": "gmw-pro",
+        "related_form": "*felþu"
+      },
+      {
+        "template_index": 5,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "ang",
+          "2": "feld"
+        },
+        "related_language": "ang",
+        "related_form": "feld"
+      },
+      {
+        "template_index": 6,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "en",
+          "2": "field"
+        },
+        "related_language": "en",
+        "related_form": "field"
+      }
+    ]
+  },
+  "da|kriterium|noun||en-kriterium-da-noun-X0Nbgufp": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_da.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/kriterium#Danish",
+    "source_entry_key": "da|kriterium|noun||en-kriterium-da-noun-X0Nbgufp",
+    "language_code": "da",
+    "language_name": "Danish",
+    "word": "kriterium",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-kriterium-da-noun-X0Nbgufp"
+    ],
+    "source_senses": [
+      {
+        "id": "en-kriterium-da-noun-X0Nbgufp",
+        "glosses": [
+          "criterion"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      }
+    ],
+    "etymology_text": "From Ancient Greek κριτήριον (kritḗrion, “a test, a means of judging”).",
+    "templates": [
+      {
+        "name": "der",
+        "args": {
+          "1": "da",
+          "2": "grc",
+          "3": "κριτήριον",
+          "4": "",
+          "5": "a test, a means of judging"
+        },
+        "expansion": "Ancient Greek κριτήριον (kritḗrion, “a test, a means of judging”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "da",
+          "2": "grc",
+          "3": "κριτήριον",
+          "4": "",
+          "5": "a test, a means of judging"
+        },
+        "related_language": "grc",
+        "related_form": "κριτήριον"
+      }
+    ]
+  },
+  "da|botulisme|noun||en-botulisme-da-noun-DxsrVit0": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_da.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/botulisme#Danish",
+    "source_entry_key": "da|botulisme|noun||en-botulisme-da-noun-DxsrVit0",
+    "language_code": "da",
+    "language_name": "Danish",
+    "word": "botulisme",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-botulisme-da-noun-DxsrVit0"
+    ],
+    "source_senses": [
+      {
+        "id": "en-botulisme-da-noun-DxsrVit0",
+        "glosses": [
+          "botulism"
+        ],
+        "raw_glosses": [
+          "(pathology) botulism"
+        ],
+        "tags": [
+          "common-gender",
+          "no-plural"
+        ]
+      }
+    ],
+    "etymology_text": "Borrowed from German Botulismus.",
+    "templates": [
+      {
+        "name": "bor+",
+        "args": {
+          "1": "da",
+          "2": "de",
+          "3": "Botulismus"
+        },
+        "expansion": "Borrowed from German Botulismus"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "bor+",
+        "relation": "borrowed_from",
+        "args": {
+          "1": "da",
+          "2": "de",
+          "3": "Botulismus"
+        },
+        "related_language": "de",
+        "related_form": "Botulismus"
+      }
+    ]
+  },
+  "nb|Lesotho|name||en-Lesotho-nb-name-Za6fFy~M": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_nb.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Lesotho#Norwegian_Bokm%C3%A5l",
+    "source_entry_key": "nb|Lesotho|name||en-Lesotho-nb-name-Za6fFy~M",
+    "language_code": "nb",
+    "language_name": "Norwegian Bokmål",
+    "word": "Lesotho",
+    "part_of_speech": "name",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Lesotho-nb-name-Za6fFy~M"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Lesotho-nb-name-Za6fFy~M",
+        "glosses": [
+          "Lesotho; a country in Southern Africa, Africa, an enclave completely surrounded by South Africa, with Maseru as its capital."
+        ]
+      }
+    ],
+    "etymology_text": "Internationalism, based on Sotho Lesotho (“land of the Basotho (Sotho people)”). The immediate transmission route into Norwegian is unknown.\nThe Sotho name belongs to a characteristic noun-class pattern based on Sotho: Mosotho (“a Sotho person”), Basotho (“Sotho people”), Sesotho (“Sotho language”) and Lesotho (“land of the Basotho”).\nParallel international adaptations include Norwegian Nynorsk Lesotho, Afrikaans Lesotho, Swedish Lesotho, German Lesotho, Dutch Lesotho and English Lesotho.",
+    "templates": [
+      {
+        "name": "internationalism",
+        "args": {
+          "1": "nb"
+        },
+        "expansion": "Internationalism"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "st",
+          "3": "Lesotho",
+          "t": "land of the Basotho (Sotho people)"
+        },
+        "expansion": "Sotho Lesotho (“land of the Basotho (Sotho people)”)"
+      },
+      {
+        "name": "unk",
+        "args": {
+          "1": "nb",
+          "nocap": "1",
+          "nocat": "1"
+        },
+        "expansion": "unknown"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nn",
+          "2": "Lesotho"
+        },
+        "expansion": "Norwegian Nynorsk Lesotho"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "af",
+          "2": "Lesotho"
+        },
+        "expansion": "Afrikaans Lesotho"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "sv",
+          "2": "Lesotho"
+        },
+        "expansion": "Swedish Lesotho"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "de",
+          "2": "Lesotho"
+        },
+        "expansion": "German Lesotho"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nl",
+          "2": "Lesotho"
+        },
+        "expansion": "Dutch Lesotho"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "en",
+          "2": "Lesotho"
+        },
+        "expansion": "English Lesotho"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "internationalism",
+        "relation": null,
+        "args": {
+          "1": "nb"
+        },
+        "diffusion_type": "internationalism"
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "st",
+          "3": "Lesotho",
+          "t": "land of the Basotho (Sotho people)"
+        },
+        "related_language": "st",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 2,
+        "template_name": "unk",
+        "relation": null,
+        "args": {
+          "1": "nb",
+          "nocap": "1",
+          "nocat": "1"
+        },
+        "source_etymology_status": "unknown"
+      },
+      {
+        "template_index": 3,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nn",
+          "2": "Lesotho"
+        },
+        "related_language": "nn",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 4,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "af",
+          "2": "Lesotho"
+        },
+        "related_language": "af",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 5,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "sv",
+          "2": "Lesotho"
+        },
+        "related_language": "sv",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 6,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "de",
+          "2": "Lesotho"
+        },
+        "related_language": "de",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 7,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nl",
+          "2": "Lesotho"
+        },
+        "related_language": "nl",
+        "related_form": "Lesotho"
+      },
+      {
+        "template_index": 8,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "en",
+          "2": "Lesotho"
+        },
+        "related_language": "en",
+        "related_form": "Lesotho"
+      }
+    ]
+  },
+  "nb|Jupiter|name|1|en-Jupiter-nb-name-W~X-zz0Z,en-Jupiter-nb-name-uDwScaK-": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_nb.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Jupiter#Norwegian_Bokm%C3%A5l",
+    "source_entry_key": "nb|Jupiter|name|1|en-Jupiter-nb-name-W~X-zz0Z,en-Jupiter-nb-name-uDwScaK-",
+    "language_code": "nb",
+    "language_name": "Norwegian Bokmål",
+    "word": "Jupiter",
+    "part_of_speech": "name",
+    "etymology_number": "1",
+    "sense_ids": [
+      "en-Jupiter-nb-name-W~X-zz0Z",
+      "en-Jupiter-nb-name-uDwScaK-"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Jupiter-nb-name-W~X-zz0Z",
+        "glosses": [
+          "Jupiter; the fifth planet from the Sun and the largest planet in the Solar System, composed chiefly of hydrogen and helium"
+        ],
+        "raw_glosses": [
+          "(astronomy) Jupiter; the fifth planet from the Sun and the largest planet in the Solar System, composed chiefly of hydrogen and helium"
+        ]
+      },
+      {
+        "id": "en-Jupiter-nb-name-uDwScaK-",
+        "glosses": [
+          "Jupiter; the chief Roman god, ruler of the sky and weather and especially associated with thunder and lightning, corresponding to the Greek god Zeus"
+        ],
+        "raw_glosses": [
+          "(Roman mythology) Jupiter; the chief Roman god, ruler of the sky and weather and especially associated with thunder and lightning, corresponding to the Greek god Zeus"
+        ],
+        "tags": [
+          "Roman"
+        ]
+      }
+    ],
+    "etymology_text": "Internationalism, based on Latin Iuppiter (“Jupiter, the chief Roman god”), also Iūpiter. The Latin nominative continues an ancient vocative expression combining the name of the sky god with pater (“father”), essentially “Father Jove”; compare the oblique stem Iov-, seen in the genitive Iovis.\nThe name continues Proto-Italic *djous patēr (“sky father”), from *djous (“day, sky”) + *patēr (“father”), ultimately from Proto-Indo-European *dyḗws (“sky; sky god”) and *ph₂tḗr (“father”). The first element belongs to the Proto-Indo-European root *dyew- (“to be bright; day sky”).\nThe astronomical sense is transferred from the name of the deity. In the Greco-Roman planetary naming tradition, the planet came to bear the name of Jupiter, the supreme Roman god.\nClose cognates of the ancient divine title include Umbrian 𐌉𐌖𐌐𐌀𐌕𐌄𐌓 (iupater, “Jupiter”), Sanskrit द्यौष्पितृ (dyauṣpitṛ, “Sky Father”) and Ancient Greek Ζεῦ πάτερ (Zeû páter, “O father Zeus”). The first element also has cognates Hittite 𒅆𒄿𒌑𒍑, Old Armenian տիւ (tiw), Messapic ζισ (zis) and Lithuanian dievas (“god”).",
+    "templates": [
+      {
+        "name": "root",
+        "args": {
+          "1": "nb",
+          "2": "ine-pro",
+          "3": "*dyew-"
+        },
+        "expansion": ""
+      },
+      {
+        "name": "internationalism",
+        "args": {
+          "1": "nb"
+        },
+        "expansion": "Internationalism"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "la",
+          "3": "Iuppiter",
+          "t": "Jupiter, the chief Roman god"
+        },
+        "expansion": "Latin Iuppiter (“Jupiter, the chief Roman god”)"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "itc-pro",
+          "3": "*djous patēr",
+          "t": "sky father"
+        },
+        "expansion": "Proto-Italic *djous patēr (“sky father”)"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "ine-pro",
+          "3": "*dyḗws",
+          "t": "sky; sky god"
+        },
+        "expansion": "Proto-Indo-European *dyḗws (“sky; sky god”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "xum",
+          "2": "𐌉𐌖𐌐𐌀𐌕𐌄𐌓",
+          "t": "Jupiter"
+        },
+        "expansion": "Umbrian 𐌉𐌖𐌐𐌀𐌕𐌄𐌓 (iupater, “Jupiter”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "sa",
+          "2": "द्यौष्पितृ",
+          "t": "Sky Father"
+        },
+        "expansion": "Sanskrit द्यौष्पितृ (dyauṣpitṛ, “Sky Father”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "grc",
+          "2": "Ζεῦ πάτερ",
+          "t": "O father Zeus"
+        },
+        "expansion": "Ancient Greek Ζεῦ πάτερ (Zeû páter, “O father Zeus”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "hit",
+          "2": "𒅆𒄿𒌑𒍑"
+        },
+        "expansion": "Hittite 𒅆𒄿𒌑𒍑"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "xcl",
+          "2": "տիւ"
+        },
+        "expansion": "Old Armenian տիւ (tiw)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "cms",
+          "2": "ζισ"
+        },
+        "expansion": "Messapic ζισ (zis)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "lt",
+          "2": "dievas",
+          "t": "god"
+        },
+        "expansion": "Lithuanian dievas (“god”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "root",
+        "relation": "rooted_in",
+        "args": {
+          "1": "nb",
+          "2": "ine-pro",
+          "3": "*dyew-"
+        },
+        "related_language": "ine-pro",
+        "related_form": "*dyew-"
+      },
+      {
+        "template_index": 1,
+        "template_name": "internationalism",
+        "relation": null,
+        "args": {
+          "1": "nb"
+        },
+        "diffusion_type": "internationalism"
+      },
+      {
+        "template_index": 2,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "la",
+          "3": "Iuppiter",
+          "t": "Jupiter, the chief Roman god"
+        },
+        "related_language": "la",
+        "related_form": "Iuppiter"
+      },
+      {
+        "template_index": 3,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "itc-pro",
+          "3": "*djous patēr",
+          "t": "sky father"
+        },
+        "related_language": "itc-pro",
+        "related_form": "*djous patēr"
+      },
+      {
+        "template_index": 4,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "ine-pro",
+          "3": "*dyḗws",
+          "t": "sky; sky god"
+        },
+        "related_language": "ine-pro",
+        "related_form": "*dyḗws"
+      },
+      {
+        "template_index": 5,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "xum",
+          "2": "𐌉𐌖𐌐𐌀𐌕𐌄𐌓",
+          "t": "Jupiter"
+        },
+        "related_language": "xum",
+        "related_form": "𐌉𐌖𐌐𐌀𐌕𐌄𐌓"
+      },
+      {
+        "template_index": 6,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "sa",
+          "2": "द्यौष्पितृ",
+          "t": "Sky Father"
+        },
+        "related_language": "sa",
+        "related_form": "द्यौष्पितृ"
+      },
+      {
+        "template_index": 7,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "grc",
+          "2": "Ζεῦ πάτερ",
+          "t": "O father Zeus"
+        },
+        "related_language": "grc",
+        "related_form": "Ζεῦ πάτερ"
+      },
+      {
+        "template_index": 8,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "hit",
+          "2": "𒅆𒄿𒌑𒍑"
+        },
+        "related_language": "hit",
+        "related_form": "𒅆𒄿𒌑𒍑"
+      },
+      {
+        "template_index": 9,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "xcl",
+          "2": "տիւ"
+        },
+        "related_language": "xcl",
+        "related_form": "տիւ"
+      },
+      {
+        "template_index": 10,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "cms",
+          "2": "ζισ"
+        },
+        "related_language": "cms",
+        "related_form": "ζισ"
+      },
+      {
+        "template_index": 11,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "lt",
+          "2": "dievas",
+          "t": "god"
+        },
+        "related_language": "lt",
+        "related_form": "dievas"
+      }
+    ]
+  },
+  "nb|felt|noun|2|en-felt-nb-noun-eurrnkbn": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_nb.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/felt#Norwegian_Bokm%C3%A5l",
+    "source_entry_key": "nb|felt|noun|2|en-felt-nb-noun-eurrnkbn",
+    "language_code": "nb",
+    "language_name": "Norwegian Bokmål",
+    "word": "felt",
+    "part_of_speech": "noun",
+    "etymology_number": "2",
+    "sense_ids": [
+      "en-felt-nb-noun-eurrnkbn"
+    ],
+    "source_senses": [
+      {
+        "id": "en-felt-nb-noun-eurrnkbn",
+        "glosses": [
+          "field (in the military sense)"
+        ],
+        "tags": [
+          "masculine",
+          "uncountable"
+        ]
+      }
+    ],
+    "etymology_text": "From Middle Low German velt.",
+    "templates": [
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "gml",
+          "3": "velt"
+        },
+        "expansion": "Middle Low German velt"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "gml",
+          "3": "velt"
+        },
+        "related_language": "gml",
+        "related_form": "velt"
+      }
+    ]
+  },
+  "nb|kaos|noun||en-kaos-nb-noun-XVvdtXcQ": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_nb.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/kaos#Norwegian_Bokm%C3%A5l",
+    "source_entry_key": "nb|kaos|noun||en-kaos-nb-noun-XVvdtXcQ",
+    "language_code": "nb",
+    "language_name": "Norwegian Bokmål",
+    "word": "kaos",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-kaos-nb-noun-XVvdtXcQ"
+    ],
+    "source_senses": [
+      {
+        "id": "en-kaos-nb-noun-XVvdtXcQ",
+        "glosses": [
+          "chaos"
+        ],
+        "tags": [
+          "neuter",
+          "uncountable"
+        ]
+      }
+    ],
+    "etymology_text": "From Ancient Greek χάος (kháos, “vast chasm, void”).",
+    "templates": [
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "grc",
+          "3": "χάος",
+          "4": "",
+          "5": "vast chasm, void"
+        },
+        "expansion": "Ancient Greek χάος (kháos, “vast chasm, void”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "grc",
+          "3": "χάος",
+          "4": "",
+          "5": "vast chasm, void"
+        },
+        "related_language": "grc",
+        "related_form": "χάος"
+      }
+    ]
+  },
+  "nb|kvarter|noun|2|en-kvarter-nb-noun-2CMSDFNQ,en-kvarter-nb-noun-368Zwz0H": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_nb.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/kvarter#Norwegian_Bokm%C3%A5l",
+    "source_entry_key": "nb|kvarter|noun|2|en-kvarter-nb-noun-2CMSDFNQ,en-kvarter-nb-noun-368Zwz0H",
+    "language_code": "nb",
+    "language_name": "Norwegian Bokmål",
+    "word": "kvarter",
+    "part_of_speech": "noun",
+    "etymology_number": "2",
+    "sense_ids": [
+      "en-kvarter-nb-noun-368Zwz0H",
+      "en-kvarter-nb-noun-2CMSDFNQ"
+    ],
+    "source_senses": [
+      {
+        "id": "en-kvarter-nb-noun-368Zwz0H",
+        "glosses": [
+          "quarter (district, area; phase of the moon)"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      },
+      {
+        "id": "en-kvarter-nb-noun-2CMSDFNQ",
+        "glosses": [
+          "quarter-hour, quarter of an hour, 15 minutes"
+        ],
+        "tags": [
+          "neuter"
+        ]
+      }
+    ],
+    "etymology_text": "From Latin quartarius, via French quartier.",
+    "templates": [
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "la",
+          "3": "quartarius"
+        },
+        "expansion": "Latin quartarius"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "nb",
+          "2": "fr",
+          "3": "quartier"
+        },
+        "expansion": "French quartier"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "la",
+          "3": "quartarius"
+        },
+        "related_language": "la",
+        "related_form": "quartarius"
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "nb",
+          "2": "fr",
+          "3": "quartier"
+        },
+        "related_language": "fr",
+        "related_form": "quartier"
+      }
+    ]
+  },
+  "de|Jupiter|name||en-Jupiter-de-name-de:Q319,en-Jupiter-de-name-de:Q4649": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_de.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Jupiter#German",
+    "source_entry_key": "de|Jupiter|name||en-Jupiter-de-name-de:Q319,en-Jupiter-de-name-de:Q4649",
+    "language_code": "de",
+    "language_name": "German",
+    "word": "Jupiter",
+    "part_of_speech": "name",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Jupiter-de-name-de:Q319",
+      "en-Jupiter-de-name-de:Q4649"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Jupiter-de-name-de:Q319",
+        "glosses": [
+          "Jupiter"
+        ],
+        "raw_glosses": [
+          "(astronomy) Jupiter"
+        ],
+        "tags": [
+          "masculine",
+          "proper-noun",
+          "strong"
+        ]
+      },
+      {
+        "id": "en-Jupiter-de-name-de:Q4649",
+        "glosses": [
+          "Jupiter"
+        ],
+        "raw_glosses": [
+          "(Roman mythology) Jupiter"
+        ],
+        "tags": [
+          "Roman",
+          "masculine",
+          "proper-noun",
+          "strong"
+        ]
+      }
+    ],
+    "etymology_text": "Learned borrowing from Latin Iūpiter (“Jupiter”).",
+    "templates": [
+      {
+        "name": "lbor",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "Iuppiter",
+          "4": "Iūpiter",
+          "t": "Jupiter"
+        },
+        "expansion": "Learned borrowing from Latin Iūpiter (“Jupiter”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "lbor",
+        "relation": "borrowed_from",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "Iuppiter",
+          "4": "Iūpiter",
+          "t": "Jupiter"
+        },
+        "related_language": "la",
+        "related_form": "Iuppiter"
+      }
+    ]
+  },
+  "de|gegen|prep||en-gegen-de-prep-EMIrz0x2,en-gegen-de-prep-GwFPTkYH,en-gegen-de-prep-HiZoJBai,en-gegen-de-prep-RxFIIr64,en-gegen-de-prep-dbRjowuT,en-gegen-de-prep-iuL5Hlcf,en-gegen-de-prep-pxjj6a76,en-gegen-de-prep-sxnGF3Sw": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_de.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/gegen#German",
+    "source_entry_key": "de|gegen|prep||en-gegen-de-prep-EMIrz0x2,en-gegen-de-prep-GwFPTkYH,en-gegen-de-prep-HiZoJBai,en-gegen-de-prep-RxFIIr64,en-gegen-de-prep-dbRjowuT,en-gegen-de-prep-iuL5Hlcf,en-gegen-de-prep-pxjj6a76,en-gegen-de-prep-sxnGF3Sw",
+    "language_code": "de",
+    "language_name": "German",
+    "word": "gegen",
+    "part_of_speech": "prep",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-gegen-de-prep-pxjj6a76",
+      "en-gegen-de-prep-HiZoJBai",
+      "en-gegen-de-prep-RxFIIr64",
+      "en-gegen-de-prep-iuL5Hlcf",
+      "en-gegen-de-prep-dbRjowuT",
+      "en-gegen-de-prep-sxnGF3Sw",
+      "en-gegen-de-prep-GwFPTkYH",
+      "en-gegen-de-prep-EMIrz0x2"
+    ],
+    "source_senses": [
+      {
+        "id": "en-gegen-de-prep-pxjj6a76",
+        "glosses": [
+          "against"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-HiZoJBai",
+        "glosses": [
+          "toward (i.e. directed to someone/something)"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-RxFIIr64",
+        "glosses": [
+          "toward (i.e. in the direction of)"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-iuL5Hlcf",
+        "glosses": [
+          "approximately, around"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-dbRjowuT",
+        "glosses": [
+          "in exchange for"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-sxnGF3Sw",
+        "glosses": [
+          "facing"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-GwFPTkYH",
+        "glosses": [
+          "compare to"
+        ]
+      },
+      {
+        "id": "en-gegen-de-prep-EMIrz0x2",
+        "glosses": [
+          "for"
+        ],
+        "raw_glosses": [
+          "(medicine) for"
+        ]
+      }
+    ],
+    "etymology_text": "Inherited from Middle High German gegen, from Old High German gagan, from Proto-West Germanic *gagin, from Proto-Germanic *gagin. Cognate with Dutch tegen, English against, Icelandic gegn.",
+    "templates": [
+      {
+        "name": "yesno",
+        "args": {
+          "1": "",
+          "2": "i",
+          "3": "I"
+        },
+        "expansion": "I"
+      },
+      {
+        "name": "glossary",
+        "args": {
+          "1": "Inherited"
+        },
+        "expansion": "Inherited"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "de",
+          "2": "gmh",
+          "3": "gegen",
+          "4": "",
+          "5": "",
+          "lit": "",
+          "pos": "",
+          "tr": "",
+          "ts": "",
+          "id": "",
+          "sc": "",
+          "g": "",
+          "g2": "",
+          "g3": "",
+          "nocat": "",
+          "sort": ""
+        },
+        "expansion": "Middle High German gegen"
+      },
+      {
+        "name": "inh+",
+        "args": {
+          "1": "de",
+          "2": "gmh",
+          "3": "gegen"
+        },
+        "expansion": "Inherited from Middle High German gegen"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "de",
+          "2": "goh",
+          "3": "gagan"
+        },
+        "expansion": "Old High German gagan"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "de",
+          "2": "gmw-pro",
+          "3": "*gagin"
+        },
+        "expansion": "Proto-West Germanic *gagin"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "de",
+          "2": "gem-pro",
+          "3": "*gagin"
+        },
+        "expansion": "Proto-Germanic *gagin"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nl",
+          "2": "tegen"
+        },
+        "expansion": "Dutch tegen"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "en",
+          "2": "against"
+        },
+        "expansion": "English against"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "is",
+          "2": "gegn"
+        },
+        "expansion": "Icelandic gegn"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "yesno",
+        "relation": null,
+        "args": {
+          "1": "",
+          "2": "i",
+          "3": "I"
+        }
+      },
+      {
+        "template_index": 1,
+        "template_name": "glossary",
+        "relation": null,
+        "args": {
+          "1": "Inherited"
+        }
+      },
+      {
+        "template_index": 2,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "de",
+          "2": "gmh",
+          "3": "gegen",
+          "4": "",
+          "5": "",
+          "lit": "",
+          "pos": "",
+          "tr": "",
+          "ts": "",
+          "id": "",
+          "sc": "",
+          "g": "",
+          "g2": "",
+          "g3": "",
+          "nocat": "",
+          "sort": ""
+        },
+        "related_language": "gmh",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 3,
+        "template_name": "inh+",
+        "relation": "inherited_from",
+        "args": {
+          "1": "de",
+          "2": "gmh",
+          "3": "gegen"
+        },
+        "related_language": "gmh",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 4,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "de",
+          "2": "goh",
+          "3": "gagan"
+        },
+        "related_language": "goh",
+        "related_form": "gagan"
+      },
+      {
+        "template_index": 5,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "de",
+          "2": "gmw-pro",
+          "3": "*gagin"
+        },
+        "related_language": "gmw-pro",
+        "related_form": "*gagin"
+      },
+      {
+        "template_index": 6,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "de",
+          "2": "gem-pro",
+          "3": "*gagin"
+        },
+        "related_language": "gem-pro",
+        "related_form": "*gagin"
+      },
+      {
+        "template_index": 7,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nl",
+          "2": "tegen"
+        },
+        "related_language": "nl",
+        "related_form": "tegen"
+      },
+      {
+        "template_index": 8,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "en",
+          "2": "against"
+        },
+        "related_language": "en",
+        "related_form": "against"
+      },
+      {
+        "template_index": 9,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "is",
+          "2": "gegn"
+        },
+        "related_language": "is",
+        "related_form": "gegn"
+      }
+    ]
+  },
+  "de|Kriterium|noun||en-Kriterium-de-noun-X0Nbgufp": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_de.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Kriterium#German",
+    "source_entry_key": "de|Kriterium|noun||en-Kriterium-de-noun-X0Nbgufp",
+    "language_code": "de",
+    "language_name": "German",
+    "word": "Kriterium",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Kriterium-de-noun-X0Nbgufp"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Kriterium-de-noun-X0Nbgufp",
+        "glosses": [
+          "criterion"
+        ],
+        "tags": [
+          "neuter",
+          "strong"
+        ]
+      }
+    ],
+    "etymology_text": "Borrowed from Latin critērium, critērion, from Ancient Greek κριτήριον (kritḗrion).",
+    "templates": [
+      {
+        "name": "bor+",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "critērium, critērion"
+        },
+        "expansion": "Borrowed from Latin critērium, critērion"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "de",
+          "2": "grc",
+          "3": "κριτήριον"
+        },
+        "expansion": "Ancient Greek κριτήριον (kritḗrion)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "bor+",
+        "relation": "borrowed_from",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "critērium, critērion"
+        },
+        "related_language": "la",
+        "related_form": "critērium, critērion"
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "de",
+          "2": "grc",
+          "3": "κριτήριον"
+        },
+        "related_language": "grc",
+        "related_form": "κριτήριον"
+      }
+    ]
+  },
+  "de|Quartier|noun||en-Quartier-de-noun-Ozxl5mKk,en-Quartier-de-noun-Pr4Z2y2k": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_de.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Quartier#German",
+    "source_entry_key": "de|Quartier|noun||en-Quartier-de-noun-Ozxl5mKk,en-Quartier-de-noun-Pr4Z2y2k",
+    "language_code": "de",
+    "language_name": "German",
+    "word": "Quartier",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Quartier-de-noun-Ozxl5mKk",
+      "en-Quartier-de-noun-Pr4Z2y2k"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Quartier-de-noun-Ozxl5mKk",
+        "glosses": [
+          "accommodation, quarters"
+        ],
+        "tags": [
+          "neuter",
+          "strong"
+        ]
+      },
+      {
+        "id": "en-Quartier-de-noun-Pr4Z2y2k",
+        "glosses": [
+          "quarter, district, quartal, neighborhood of a city"
+        ],
+        "raw_glosses": [
+          "(especially Switzerland) quarter, district, quartal, neighborhood of a city"
+        ],
+        "tags": [
+          "Switzerland",
+          "especially",
+          "neuter",
+          "strong"
+        ]
+      }
+    ],
+    "etymology_text": "Borrowed from French quartier.",
+    "templates": [
+      {
+        "name": "ety",
+        "args": {
+          "1": "de",
+          "2": ":bor",
+          "3": "fr:quartier"
+        },
+        "expansion": "[Appendix:Glossary#loanword|Borrowed]] from\", \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"French\", \"term\" : \"quartier\", \"status\" : \"missing\", \"lang\" : \"fr\" } ], \"keyword\" : \"bor\" } ], \"lang_name\" : \"German\", \"term\" : \"Quartier\", \"status\" : \"ok\", \"lang\" : \"de\" }\" data-lang=\"de\" data-title=\"Quartier\">"
+      },
+      {
+        "name": "bor+",
+        "args": {
+          "1": "de",
+          "2": "fr",
+          "3": "quartier"
+        },
+        "expansion": "Borrowed from French quartier"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "ety",
+        "relation": "borrowed_from",
+        "marker": ":bor",
+        "source_uncertain": false,
+        "args": {
+          "1": "de",
+          "2": ":bor",
+          "3": "fr:quartier"
+        },
+        "related_language": "fr",
+        "related_form": "quartier"
+      },
+      {
+        "template_index": 1,
+        "template_name": "bor+",
+        "relation": "borrowed_from",
+        "args": {
+          "1": "de",
+          "2": "fr",
+          "3": "quartier"
+        },
+        "related_language": "fr",
+        "related_form": "quartier"
+      }
+    ]
+  },
+  "de|Botulismus|noun||en-Botulismus-de-noun-DxsrVit0": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_de.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Botulismus#German",
+    "source_entry_key": "de|Botulismus|noun||en-Botulismus-de-noun-DxsrVit0",
+    "language_code": "de",
+    "language_name": "German",
+    "word": "Botulismus",
+    "part_of_speech": "noun",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Botulismus-de-noun-DxsrVit0"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Botulismus-de-noun-DxsrVit0",
+        "glosses": [
+          "botulism"
+        ],
+        "tags": [
+          "masculine",
+          "no-plural",
+          "strong"
+        ]
+      }
+    ],
+    "etymology_text": "Pseudo-Latinism, coined from Latin botulus (“sausage”) with the addition of the Latinate suffix -ismus.",
+    "templates": [
+      {
+        "name": "pseudo-loan",
+        "args": {
+          "1": "de",
+          "2": "la"
+        },
+        "expansion": "Pseudo-Latinism"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "botulus",
+          "4": "",
+          "5": "sausage"
+        },
+        "expansion": "Latin botulus (“sausage”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "pseudo-loan",
+        "relation": "pseudo_loan_based_on",
+        "args": {
+          "1": "de",
+          "2": "la"
+        },
+        "related_language": "la",
+        "related_form": null
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "de",
+          "2": "la",
+          "3": "botulus",
+          "4": "",
+          "5": "sausage"
+        },
+        "related_language": "la",
+        "related_form": "botulus"
+      }
+    ]
+  },
+  "en|Lesotho|name||en-Lesotho-en-name-en:Q1013": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_en.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Lesotho#English",
+    "source_entry_key": "en|Lesotho|name||en-Lesotho-en-name-en:Q1013",
+    "language_code": "en",
+    "language_name": "English",
+    "word": "Lesotho",
+    "part_of_speech": "name",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Lesotho-en-name-en:Q1013"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Lesotho-en-name-en:Q1013",
+        "glosses": [
+          "A country in Southern Africa. Official name: Kingdom of Lesotho. Capital: Maseru."
+        ]
+      }
+    ],
+    "etymology_text": "From Sotho Lesotho (“Land of the Basotho (Sotho people)”).",
+    "templates": [
+      {
+        "name": "bor",
+        "args": {
+          "1": "en",
+          "2": "st",
+          "3": "Lesotho",
+          "t": "Land of the <i class=\"Latn mention\" lang=\"st\">Basotho</i> (Sotho people)"
+        },
+        "expansion": "Sotho Lesotho (“Land of the Basotho (Sotho people)”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "bor",
+        "relation": "borrowed_from",
+        "args": {
+          "1": "en",
+          "2": "st",
+          "3": "Lesotho",
+          "t": "Land of the <i class=\"Latn mention\" lang=\"st\">Basotho</i> (Sotho people)"
+        },
+        "related_language": "st",
+        "related_form": "Lesotho"
+      }
+    ]
+  },
+  "en|against|prep||en-against-en-prep-0mNzQxbR,en-against-en-prep-1TULsGl7,en-against-en-prep-3qchhts2,en-against-en-prep-6Ezt7VYh,en-against-en-prep-B2Kh-PXL,en-against-en-prep-ERGPOaMY,en-against-en-prep-HNa1mnch,en-against-en-prep-J~HOPb7f,en-against-en-prep-K0ed1yw1,en-against-en-prep-WrXjrG8A,en-against-en-prep-ZuRxRj5l,en-against-en-prep-bXUHjMRS,en-against-en-prep-jA2PMnud,en-against-en-prep-rs3S7SCJ,en-against-en-prep-t2-lmIKK,en-against-en-prep-t6Qw-UBd,en-against-en-prep-wxySrVFM": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_en.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/against#English",
+    "source_entry_key": "en|against|prep||en-against-en-prep-0mNzQxbR,en-against-en-prep-1TULsGl7,en-against-en-prep-3qchhts2,en-against-en-prep-6Ezt7VYh,en-against-en-prep-B2Kh-PXL,en-against-en-prep-ERGPOaMY,en-against-en-prep-HNa1mnch,en-against-en-prep-J~HOPb7f,en-against-en-prep-K0ed1yw1,en-against-en-prep-WrXjrG8A,en-against-en-prep-ZuRxRj5l,en-against-en-prep-bXUHjMRS,en-against-en-prep-jA2PMnud,en-against-en-prep-rs3S7SCJ,en-against-en-prep-t2-lmIKK,en-against-en-prep-t6Qw-UBd,en-against-en-prep-wxySrVFM",
+    "language_code": "en",
+    "language_name": "English",
+    "word": "against",
+    "part_of_speech": "prep",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-against-en-prep-ERGPOaMY",
+      "en-against-en-prep-bXUHjMRS",
+      "en-against-en-prep-J~HOPb7f",
+      "en-against-en-prep-t2-lmIKK",
+      "en-against-en-prep-ZuRxRj5l",
+      "en-against-en-prep-1TULsGl7",
+      "en-against-en-prep-3qchhts2",
+      "en-against-en-prep-0mNzQxbR",
+      "en-against-en-prep-wxySrVFM",
+      "en-against-en-prep-HNa1mnch",
+      "en-against-en-prep-B2Kh-PXL",
+      "en-against-en-prep-t6Qw-UBd",
+      "en-against-en-prep-jA2PMnud",
+      "en-against-en-prep-6Ezt7VYh",
+      "en-against-en-prep-rs3S7SCJ",
+      "en-against-en-prep-WrXjrG8A",
+      "en-against-en-prep-K0ed1yw1"
+    ],
+    "source_senses": [
+      {
+        "id": "en-against-en-prep-ERGPOaMY",
+        "glosses": [
+          "In a contrary direction to."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-bXUHjMRS",
+        "glosses": [
+          "In physical opposition to; in collision with."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-J~HOPb7f",
+        "glosses": [
+          "In physical contact with, so as to abut or be supported by."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-t2-lmIKK",
+        "glosses": [
+          "Close to, alongside."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-ZuRxRj5l",
+        "glosses": [
+          "In front of; before (a background)."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-1TULsGl7",
+        "glosses": [
+          "In contrast or comparison with."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-3qchhts2",
+        "glosses": [
+          "In competition with, versus."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-0mNzQxbR",
+        "glosses": [
+          "Contrary to; in conflict with."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-wxySrVFM",
+        "glosses": [
+          "In opposition to."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-HNa1mnch",
+        "glosses": [
+          "Of betting odds, denoting a worse-than-even chance."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-B2Kh-PXL",
+        "glosses": [
+          "In exchange for."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-t6Qw-UBd",
+        "glosses": [
+          "As counterbalance to."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-jA2PMnud",
+        "glosses": [
+          "As a charge on."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-6Ezt7VYh",
+        "glosses": [
+          "As protection from."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-rs3S7SCJ",
+        "glosses": [
+          "In anticipation of; in preparation for (a particular time, event etc.)."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-WrXjrG8A",
+        "glosses": [
+          "To be paid now in contrast to the following amount to be paid later under specified circumstances, usually that a movie is made or has started filming."
+        ],
+        "raw_glosses": [
+          "(Hollywood) To be paid now in contrast to the following amount to be paid later under specified circumstances, usually that a movie is made or has started filming."
+        ]
+      },
+      {
+        "id": "en-against-en-prep-K0ed1yw1",
+        "glosses": [
+          "Exposed to."
+        ],
+        "raw_glosses": [
+          "(obsolete) Exposed to."
+        ],
+        "tags": [
+          "obsolete"
+        ]
+      }
+    ],
+    "etymology_text": "Etymology tree\nProto-Indo-European *h₁én\nProto-Germanic *in\nProto-Indo-European *ǵʰengʰ-der.\nProto-Germanic *ganganąder.?\nProto-Germanic *gagin\nProto-Germanic *in gagin\nProto-West Germanic *in gagin\nOld English onġēander.\nMiddle English ayenes\nEnglish against\nFormed from Middle English ayenes, agenes, againes (“in opposition to”), a southern variant of agen, or directly from again, either way with adverbial genitive singular ending -es; the parasitic -t was added circa 1350, probably by confusion with the superlative ending -est. By surface analysis, again + -st (excrescent ending).\nCognate with Saterland Frisian juun (“against”), West Frisian tsjin (“against”), Dutch tegen (“against”), German Low German gegen (“against”), German gegen (“against”), Icelandic gegn (“against”).",
+    "templates": [
+      {
+        "name": "etymon",
+        "args": {
+          "1": "en",
+          "2": ":inh",
+          "3": "enm:ayenes",
+          "tree": "1"
+        },
+        "expansion": "Etymology tree\nProto-Indo-European *h₁én\nProto-Germanic *in\nProto-Indo-European *ǵʰengʰ-der.\nProto-Germanic *ganganąder.?\nProto-Germanic *gagin\nProto-Germanic *in gagin\nProto-West Germanic *in gagin\nOld English onġēander.\nMiddle English ayenes\nEnglish against\n[Appendix:Glossary#derived_terms|Derived]] from\", \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*h₁én\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*in\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" }, { \"children\" : [ { \"keyword_abbrev\" : \"der.\", \"is_uncertain\" : true, \"keyword_label\" : \"Derived from\", \"terms\" : [ { \"children\" : [ { \"keyword_abbrev\" : \"der.\", \"keyword_label\" : \"Derived from\", \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ǵʰengʰ-\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword\" : \"derived\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ganganą\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"keyword\" : \"derived\" }, { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"id\" : \"beside\", \"children\" : [ { \"terms\" : [ { \"is_uncertain\" : true, \"id\" : \"here\", \"children\" : [ ], \"status\" : \"ok\", \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ḱe\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"From\", \"keyword\" : \"from\" } ], \"status\" : \"ok\", \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ḱóm\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ga-\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" }, { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*kʷ-\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" }, { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*né\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"From\", \"is_group\" : true, \"keyword\" : \"affix\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*-gin\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*gagin\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"From\", \"is_group\" : true, \"keyword\" : \"affix\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*in gagin\", \"status\" : \"inline\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*in gagin\", \"status\" : \"inline\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" }, { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ ], \"status\" : \"missing\", \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ana-\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*ana-\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Old English\", \"term\" : \"on-\", \"lang\" : \"ang\" }, { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"is_duplicate\" : true, \"children\" : [ ], \"status\" : [ \"gem-pro\", \":der<unc>\", \"*ganganą\", \":afeq\", \"*ga-\", \"*-gin\" ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*gagin\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*gagin\", \"status\" : \"inline\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Old English\", \"term\" : \"ġeġn\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"From\", \"keyword\" : \"from\" } ], \"lang_name\" : \"Old English\", \"term\" : \"ġean\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Old English\", \"term\" : \"onġēan\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword\" : \"derived\" }, { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"is_duplicate\" : true, \"children\" : [ ], \"status\" : [ \"ang\", \":inh\", \"gmw-pro:*in gagin<ety:inh<gem-pro:*in gagin<ety:af<*in><*gagin>>>>\", \":afeq\", \"on-<id:prefix>\", \"ġean\" ], \"lang_name\" : \"Old English\", \"term\" : \"onġēan\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Middle English\", \"term\" : \"agayn\", \"status\" : \"ok\", \"lang\" : \"enm\" }, { \"id\" : \"adverbial\", \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*-as\", \"status\" : \"missing\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*-as\", \"status\" : \"ok\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Old English\", \"term\" : \"-es\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Middle English\", \"term\" : \"-es\", \"lang\" : \"enm\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Middle English\", \"term\" : \"ayenes\", \"status\" : \"ok\", \"lang\" : \"enm\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"English\", \"term\" : \"against\", \"status\" : \"ok\", \"lang\" : \"en\" }\" data-lang=\"en\" data-title=\"against\">"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "en",
+          "2": "enm",
+          "3": "ayenes"
+        },
+        "expansion": "Middle English ayenes"
+      },
+      {
+        "name": "surf",
+        "args": {
+          "1": "en",
+          "2": "again",
+          "3": "-st",
+          "pos2": "excrescent ending"
+        },
+        "expansion": "By surface analysis, again + -st (excrescent ending)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "stq",
+          "2": "juun",
+          "t": "against"
+        },
+        "expansion": "Saterland Frisian juun (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "fy",
+          "2": "tsjin",
+          "t": "against"
+        },
+        "expansion": "West Frisian tsjin (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nl",
+          "2": "tegen",
+          "t": "against"
+        },
+        "expansion": "Dutch tegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nds-de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "expansion": "German Low German gegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "expansion": "German gegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "is",
+          "2": "gegn",
+          "t": "against"
+        },
+        "expansion": "Icelandic gegn (“against”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "etymon",
+        "relation": "inherited_from",
+        "marker": ":inh",
+        "source_uncertain": false,
+        "args": {
+          "1": "en",
+          "2": ":inh",
+          "3": "enm:ayenes",
+          "tree": "1"
+        },
+        "related_language": "enm",
+        "related_form": "ayenes"
+      },
+      {
+        "template_index": 1,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "en",
+          "2": "enm",
+          "3": "ayenes"
+        },
+        "related_language": "enm",
+        "related_form": "ayenes"
+      },
+      {
+        "template_index": 2,
+        "template_name": "surf",
+        "relation": "surface_analysis",
+        "args": {
+          "1": "en",
+          "2": "again",
+          "3": "-st",
+          "pos2": "excrescent ending"
+        },
+        "related_language": "en",
+        "components": [
+          "again",
+          "-st"
+        ]
+      },
+      {
+        "template_index": 3,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "stq",
+          "2": "juun",
+          "t": "against"
+        },
+        "related_language": "stq",
+        "related_form": "juun"
+      },
+      {
+        "template_index": 4,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "fy",
+          "2": "tsjin",
+          "t": "against"
+        },
+        "related_language": "fy",
+        "related_form": "tsjin"
+      },
+      {
+        "template_index": 5,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nl",
+          "2": "tegen",
+          "t": "against"
+        },
+        "related_language": "nl",
+        "related_form": "tegen"
+      },
+      {
+        "template_index": 6,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nds-de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "related_language": "nds-de",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 7,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "related_language": "de",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 8,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "is",
+          "2": "gegn",
+          "t": "against"
+        },
+        "related_language": "is",
+        "related_form": "gegn"
+      }
+    ]
+  },
+  "en|against|conj||en-against-en-conj-xjXBMuKE": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_en.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/against#English",
+    "source_entry_key": "en|against|conj||en-against-en-conj-xjXBMuKE",
+    "language_code": "en",
+    "language_name": "English",
+    "word": "against",
+    "part_of_speech": "conj",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-against-en-conj-xjXBMuKE"
+    ],
+    "source_senses": [
+      {
+        "id": "en-against-en-conj-xjXBMuKE",
+        "glosses": [
+          "By the time that (something happened); before."
+        ],
+        "raw_glosses": [
+          "(obsolete) By the time that (something happened); before."
+        ],
+        "tags": [
+          "obsolete"
+        ]
+      }
+    ],
+    "etymology_text": "Etymology tree\nProto-Indo-European *h₁én\nProto-Germanic *in\nProto-Indo-European *ǵʰengʰ-der.\nProto-Germanic *ganganąder.?\nProto-Germanic *gagin\nProto-Germanic *in gagin\nProto-West Germanic *in gagin\nOld English onġēander.\nMiddle English ayenes\nEnglish against\nFormed from Middle English ayenes, agenes, againes (“in opposition to”), a southern variant of agen, or directly from again, either way with adverbial genitive singular ending -es; the parasitic -t was added circa 1350, probably by confusion with the superlative ending -est. By surface analysis, again + -st (excrescent ending).\nCognate with Saterland Frisian juun (“against”), West Frisian tsjin (“against”), Dutch tegen (“against”), German Low German gegen (“against”), German gegen (“against”), Icelandic gegn (“against”).",
+    "templates": [
+      {
+        "name": "etymon",
+        "args": {
+          "1": "en",
+          "2": ":inh",
+          "3": "enm:ayenes",
+          "tree": "1"
+        },
+        "expansion": "Etymology tree\nProto-Indo-European *h₁én\nProto-Germanic *in\nProto-Indo-European *ǵʰengʰ-der.\nProto-Germanic *ganganąder.?\nProto-Germanic *gagin\nProto-Germanic *in gagin\nProto-West Germanic *in gagin\nOld English onġēander.\nMiddle English ayenes\nEnglish against\n[Appendix:Glossary#derived_terms|Derived]] from\", \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*h₁én\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*in\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" }, { \"children\" : [ { \"keyword_abbrev\" : \"der.\", \"is_uncertain\" : true, \"keyword_label\" : \"Derived from\", \"terms\" : [ { \"children\" : [ { \"keyword_abbrev\" : \"der.\", \"keyword_label\" : \"Derived from\", \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ǵʰengʰ-\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword\" : \"derived\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ganganą\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"keyword\" : \"derived\" }, { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"id\" : \"beside\", \"children\" : [ { \"terms\" : [ { \"is_uncertain\" : true, \"id\" : \"here\", \"children\" : [ ], \"status\" : \"ok\", \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ḱe\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"From\", \"keyword\" : \"from\" } ], \"status\" : \"ok\", \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*ḱóm\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ga-\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" }, { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*kʷ-\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" }, { \"children\" : [ ], \"lang_name\" : \"Proto-Indo-European\", \"term\" : \"*né\", \"status\" : \"ok\", \"lang\" : \"ine-pro\" } ], \"keyword_label\" : \"From\", \"is_group\" : true, \"keyword\" : \"affix\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*-gin\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*gagin\", \"status\" : \"ok\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"From\", \"is_group\" : true, \"keyword\" : \"affix\" } ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*in gagin\", \"status\" : \"inline\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*in gagin\", \"status\" : \"inline\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" }, { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ { \"terms\" : [ { \"id\" : \"prefix\", \"children\" : [ ], \"status\" : \"missing\", \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*ana-\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*ana-\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Old English\", \"term\" : \"on-\", \"lang\" : \"ang\" }, { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"is_duplicate\" : true, \"children\" : [ ], \"status\" : [ \"gem-pro\", \":der<unc>\", \"*ganganą\", \":afeq\", \"*ga-\", \"*-gin\" ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*gagin\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*gagin\", \"status\" : \"inline\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Old English\", \"term\" : \"ġeġn\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"From\", \"keyword\" : \"from\" } ], \"lang_name\" : \"Old English\", \"term\" : \"ġean\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Old English\", \"term\" : \"onġēan\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword\" : \"derived\" }, { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"is_duplicate\" : true, \"children\" : [ ], \"status\" : [ \"ang\", \":inh\", \"gmw-pro:*in gagin<ety:inh<gem-pro:*in gagin<ety:af<*in><*gagin>>>>\", \":afeq\", \"on-<id:prefix>\", \"ġean\" ], \"lang_name\" : \"Old English\", \"term\" : \"onġēan\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Middle English\", \"term\" : \"agayn\", \"status\" : \"ok\", \"lang\" : \"enm\" }, { \"id\" : \"adverbial\", \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ { \"terms\" : [ { \"children\" : [ ], \"lang_name\" : \"Proto-Germanic\", \"term\" : \"*-as\", \"status\" : \"missing\", \"lang\" : \"gem-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Proto-West Germanic\", \"term\" : \"*-as\", \"status\" : \"ok\", \"lang\" : \"gmw-pro\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"Old English\", \"term\" : \"-es\", \"status\" : \"ok\", \"lang\" : \"ang\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"status\" : \"ok\", \"lang_name\" : \"Middle English\", \"term\" : \"-es\", \"lang\" : \"enm\" } ], \"is_group\" : true, \"keyword\" : \"afeq\", \"is_invisible\" : \"all\" } ], \"lang_name\" : \"Middle English\", \"term\" : \"ayenes\", \"status\" : \"ok\", \"lang\" : \"enm\" } ], \"keyword_label\" : \"Inherited from\", \"keyword\" : \"inherited\" } ], \"lang_name\" : \"English\", \"term\" : \"against\", \"status\" : \"ok\", \"lang\" : \"en\" }\" data-lang=\"en\" data-title=\"against\">"
+      },
+      {
+        "name": "inh",
+        "args": {
+          "1": "en",
+          "2": "enm",
+          "3": "ayenes"
+        },
+        "expansion": "Middle English ayenes"
+      },
+      {
+        "name": "surf",
+        "args": {
+          "1": "en",
+          "2": "again",
+          "3": "-st",
+          "pos2": "excrescent ending"
+        },
+        "expansion": "By surface analysis, again + -st (excrescent ending)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "stq",
+          "2": "juun",
+          "t": "against"
+        },
+        "expansion": "Saterland Frisian juun (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "fy",
+          "2": "tsjin",
+          "t": "against"
+        },
+        "expansion": "West Frisian tsjin (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nl",
+          "2": "tegen",
+          "t": "against"
+        },
+        "expansion": "Dutch tegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "nds-de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "expansion": "German Low German gegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "expansion": "German gegen (“against”)"
+      },
+      {
+        "name": "cog",
+        "args": {
+          "1": "is",
+          "2": "gegn",
+          "t": "against"
+        },
+        "expansion": "Icelandic gegn (“against”)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "etymon",
+        "relation": "inherited_from",
+        "marker": ":inh",
+        "source_uncertain": false,
+        "args": {
+          "1": "en",
+          "2": ":inh",
+          "3": "enm:ayenes",
+          "tree": "1"
+        },
+        "related_language": "enm",
+        "related_form": "ayenes"
+      },
+      {
+        "template_index": 1,
+        "template_name": "inh",
+        "relation": "inherited_from",
+        "args": {
+          "1": "en",
+          "2": "enm",
+          "3": "ayenes"
+        },
+        "related_language": "enm",
+        "related_form": "ayenes"
+      },
+      {
+        "template_index": 2,
+        "template_name": "surf",
+        "relation": "surface_analysis",
+        "args": {
+          "1": "en",
+          "2": "again",
+          "3": "-st",
+          "pos2": "excrescent ending"
+        },
+        "related_language": "en",
+        "components": [
+          "again",
+          "-st"
+        ]
+      },
+      {
+        "template_index": 3,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "stq",
+          "2": "juun",
+          "t": "against"
+        },
+        "related_language": "stq",
+        "related_form": "juun"
+      },
+      {
+        "template_index": 4,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "fy",
+          "2": "tsjin",
+          "t": "against"
+        },
+        "related_language": "fy",
+        "related_form": "tsjin"
+      },
+      {
+        "template_index": 5,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nl",
+          "2": "tegen",
+          "t": "against"
+        },
+        "related_language": "nl",
+        "related_form": "tegen"
+      },
+      {
+        "template_index": 6,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "nds-de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "related_language": "nds-de",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 7,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "de",
+          "2": "gegen",
+          "t": "against"
+        },
+        "related_language": "de",
+        "related_form": "gegen"
+      },
+      {
+        "template_index": 8,
+        "template_name": "cog",
+        "relation": "cognate_mention",
+        "args": {
+          "1": "is",
+          "2": "gegn",
+          "t": "against"
+        },
+        "related_language": "is",
+        "related_form": "gegn"
+      }
+    ]
+  },
+  "en|Chaos|name||en-Chaos-en-name-NACHt5Qu,en-Chaos-en-name-NZW14mEw,en-Chaos-en-name-nlT0B8WX": {
+    "source": "Wiktionary via Kaikki/Wiktextract",
+    "source_file": "kaikki_en.jsonl",
+    "source_url": "https://en.wiktionary.org/wiki/Chaos#English",
+    "source_entry_key": "en|Chaos|name||en-Chaos-en-name-NACHt5Qu,en-Chaos-en-name-NZW14mEw,en-Chaos-en-name-nlT0B8WX",
+    "language_code": "en",
+    "language_name": "English",
+    "word": "Chaos",
+    "part_of_speech": "name",
+    "etymology_number": null,
+    "sense_ids": [
+      "en-Chaos-en-name-NACHt5Qu",
+      "en-Chaos-en-name-nlT0B8WX",
+      "en-Chaos-en-name-NZW14mEw"
+    ],
+    "source_senses": [
+      {
+        "id": "en-Chaos-en-name-NACHt5Qu",
+        "glosses": [
+          "In Greek mythology, the primordial state of disorder that exists before the creation of the world, or the first being or deity to exist."
+        ],
+        "raw_glosses": [
+          "(Greek mythology) In Greek mythology, the primordial state of disorder that exists before the creation of the world, or the first being or deity to exist."
+        ],
+        "tags": [
+          "Greek"
+        ]
+      },
+      {
+        "id": "en-Chaos-en-name-nlT0B8WX",
+        "glosses": [
+          "A planetoid and cubewano orbiting in the Kuiper belt."
+        ],
+        "raw_glosses": [
+          "(astronomy) A planetoid and cubewano orbiting in the Kuiper belt."
+        ]
+      },
+      {
+        "id": "en-Chaos-en-name-NZW14mEw",
+        "glosses": [
+          "In the Warhammer franchise, a demonic antagonist that sends demons, monsters, warriors, and beasts to wage war on the games' setting."
+        ],
+        "raw_glosses": [
+          "(fantasy, science fiction) In the Warhammer franchise, a demonic antagonist that sends demons, monsters, warriors, and beasts to wage war on the games' setting."
+        ]
+      }
+    ],
+    "etymology_text": "From Latin chaos (“chaos”), from Ancient Greek χάος (kháos).",
+    "templates": [
+      {
+        "name": "der",
+        "args": {
+          "1": "en",
+          "2": "la",
+          "3": "chaos",
+          "4": "",
+          "5": "chaos"
+        },
+        "expansion": "Latin chaos (“chaos”)"
+      },
+      {
+        "name": "der",
+        "args": {
+          "1": "en",
+          "2": "grc",
+          "3": "χάος"
+        },
+        "expansion": "Ancient Greek χάος (kháos)"
+      }
+    ],
+    "claims": [
+      {
+        "template_index": 0,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "en",
+          "2": "la",
+          "3": "chaos",
+          "4": "",
+          "5": "chaos"
+        },
+        "related_language": "la",
+        "related_form": "chaos"
+      },
+      {
+        "template_index": 1,
+        "template_name": "der",
+        "relation": "derived_from",
+        "args": {
+          "1": "en",
+          "2": "grc",
+          "3": "χάος"
+        },
+        "related_language": "grc",
+        "related_form": "χάος"
+      }
+    ]
+  }
+}

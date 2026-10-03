@@ -6,9 +6,9 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
-E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2 tested dense-only and dictionary-evidence meaning profiles; neither implementation is adopted. E3–E5 remain planned.
+E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2 tested dense-only and dictionary-evidence meaning profiles; neither implementation is adopted. E3's source-scoped historical evidence passes its development recovery gate and is accepted for final evaluation. E4–E5 remain planned.
 
-**Next action:** run E3's typed historical-link experiment independently, keeping baseline meanings, display selection, candidates, and encoder fixed. E2's [report](../pipeline/evaluation/E2_RUN002.md) records a separate follow-up: validate dictionary evidence against the actual endpoint sense, including current usage and contradictory qualifications, before adopting it.
+**Next action:** run E4's candidate-generation comparisons independently, keeping baseline classification fixed. Carry E3's evidence layer into the final reserved-family evaluation, preserving entry scope and uncertainty. E2's [report](../pipeline/evaluation/E2_RUN002.md) records a separate follow-up: validate dictionary evidence against the actual endpoint sense, including current usage and contradictory qualifications, before adopting it.
 
 The five-language baseline remains accepted. An experiment branch or a completed run does not mean its method has been adopted.
 
@@ -74,7 +74,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E1 | E1-003 | [Saved variants and corrections](../pipeline/evaluation/E1_PLAN.md) | [Display-selection report](../pipeline/evaluation/E1_RUN003.md) | A: no concept gain. B: +2.2 points, below the five-point gate; one open-sample match lost | Reject A as tested; revise B without adopting it |
 | E2 | E2-001 | [Frozen meaning-profile plan](../pipeline/evaluation/E2_PLAN.md) | [Dense-only report and case results](../pipeline/evaluation/e2-run001/README.md) | 118/197 compatible, versus 80/197 legacy and 114/197 always-partial | Revise; do not adopt |
 | E2 | E2-002 | [Saved dictionary-evidence plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md) | [Dictionary-evidence report](../pipeline/evaluation/E2_RUN002.md) | 169/197 compatible; +25.9 points over dense-only; six new dense-control errors | Revise endpoint-sense checks; do not adopt |
-| E3 | — | E0 complete; historical-link variant specified below | Not run | Not measured | Pending |
+| E3 | E3-003 | [Typed-history plan](../pipeline/evaluation/E3_PLAN.md), [shared sources](../pipeline/evaluation/E3_SOURCE_PLAN.md), [caveats](../pipeline/evaluation/E3_CAVEAT_PLAN.md) | [Historical-evidence report](../pipeline/evaluation/E3_RUN003.md) | Five reviewed recoveries across three pairs; source scope and caveats retained | Accept evidence layer for final evaluation; no label replacement or publication |
 | E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
 | E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
 
@@ -85,7 +85,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Complete |
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Complete; neither variant adopted |
 | E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Complete development comparison; neither implementation adopted |
-| E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
+| E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Complete development comparison; evidence layer accepted for final evaluation |
 | E4 | Can better candidate generation reduce noise without losing useful comparisons? | E0 | Planned |
 | E5 | Can we add a language without degrading existing comparisons or hiding new errors? | Accepted methods and E0 | Planned |
 
@@ -245,9 +245,9 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 **Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E3 section.
 
-**Actual result:** Not run.
+**Actual result:** E3-001 recovered three source-reviewed relationships and missed the five-case gate. E3-002 added shared sources with unspecified transmission and separate component records. E3-003 retained source uncertainty and original etymology prose. After excluding an inferred-history candidate, a name/common-word scope mismatch, and unknown-route evidence from the confirmed gate, five reviewed recoveries remain across Danish–German, German–English, and German–Norwegian. No confirmed whole-word claim appeared in the 19 reviewed component controls. Reproduction artifacts match; elapsed time is reported separately. The [report](../pipeline/evaluation/E3_RUN003.md) includes the expert-set disagreements and source-supported misses.
 
-**Decision:** Pending.
+**Decision:** Accept the source-scoped evidence layer for final reserved-family evaluation. It does not replace learner labels or authorize publication. Broad derivation statements remain unspecified transmission, components remain partial, and missing paths do not establish unrelatedness. Consumers must use the relevant entry and meaning context rather than treating any graph relationship as whole-word cognacy. Preserve E3-001 and E3-002 as earlier diagnostic variants.
 
 ## E4 — Candidate generation and missing vocabulary
 
@@ -327,4 +327,4 @@ After individual experiments pass, test their combined output against the accept
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
+**Current release decision:** Neither E1 variant nor either E2 implementation is approved. E3's evidence layer is accepted for final evaluation, not publication. E4–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.

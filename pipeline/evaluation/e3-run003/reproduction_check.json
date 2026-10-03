@@ -1,0 +1,19 @@
+{
+  "run_id": "E3-003",
+  "artifacts": {
+    "protocol.json": {
+      "byte_identical": true,
+      "sha256": "782cbd423bd1c4984518b15f8ac19c514c61995500eb124d525a2d56d528c067"
+    },
+    "case_results.json": {
+      "byte_identical": true,
+      "sha256": "fbbfd08556567d5e581422752e10b68cb0db359a1f24c1b3c9c7c8241bc7f9b1"
+    },
+    "concept_results.json": {
+      "byte_identical": true,
+      "sha256": "1aa5c64521433831f0bc00d7a9fd315a6202ec16d23c09860f93ca813d3d1dad"
+    }
+  },
+  "implementation_revision": "376341b",
+  "metrics_identical_except_elapsed_seconds": true
+}
