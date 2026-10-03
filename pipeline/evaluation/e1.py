@@ -26,6 +26,11 @@ def score(destination, run_id):
     cases = [dict(r, panel=panel, family_group=roles[panel, r['case_id']]['family_group'])
              for panel, rows in [('concept', concepts), ('open', opened)] for r in rows]
     wanted = {key(r['lang_a'], r['word_a'], r['lang_b'], r['word_b']) for r in cases}
+    expected_displays = defaultdict(set)
+    for case in cases:
+        expected_displays[key(case['lang_a'], case['word_a'], case['lang_b'], case['word_b'])].add(
+            (case['display_a'], case['display_b']) if case['panel'] == 'concept' else (case['def_a'], case['def_b']))
+    assert all(len(displays) == 1 for displays in expected_displays.values()), 'Different frozen rows need separate identities'
     assert digest(DATASET) == EXPECTED_HASH
     protocol = {
         'experiment': 'E1', 'run_id': run_id, 'plan_sha256': digest(OUTPUT / 'E1_PLAN.md'),
@@ -43,8 +48,10 @@ def score(destination, run_id):
     rows = {}
     for batch in pq.ParquetFile(DATASET).iter_batches(batch_size=16384, columns=columns):
         for row in batch.to_pylist():
+            if row['lang_a'] >= row['lang_b']:
+                continue
             identity = key(row['lang_a'], row['word_a'], row['lang_b'], row['word_b'])
-            if identity in wanted and identity not in rows:
+            if identity in wanted and (row['def_a'], row['def_b']) in expected_displays[identity]:
                 rows[identity] = row
     assert len(rows) == len(wanted), (len(rows), len(wanted))
     matcher = SemanticMatcher()
@@ -97,6 +104,9 @@ def score(destination, run_id):
         record['displays'] = {}
         for variant, pair in displays.items():
             pair = pair if forward else pair[::-1]
+            if variant == 'control':
+                expected = (case['display_a'], case['display_b']) if case['panel'] == 'concept' else (case['def_a'], case['def_b'])
+                assert pair == expected, (case['case_id'], pair, expected)
             record['displays'][variant] = list(pair)
             if case['panel'] == 'concept':
                 for side, gloss in zip(['a', 'b'], pair):

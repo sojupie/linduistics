@@ -1,6 +1,6 @@
 # E1: choosing displayed meanings
 
-Runs: E1-001 and corrected E1-002. Fixed before scoring variants, 2026-10-03.
+Runs: E1-001, E1-002, and corrected E1-003. Fixed before scoring variants, 2026-10-03.
 
 ## Hypothesis and scope
 
@@ -15,6 +15,8 @@ The control is the saved baseline display, not a newly inferred replacement. Rec
 Both variants preserve the builder's active-sense eligibility and English source-sense restriction when the recorded identity resolves. If no active pair remains, retain the baseline display rather than manufacture an ordinary meaning.
 
 **E1-002 input correction:** E1-001 omitted `source_identity_candidates` when reconstructing translation eligibility from annotated baseline senses. The builder clears a selected identity when several same-gloss source senses are indistinguishable and retains their candidate identities. Resolve eligibility against that list as well as direct identities. This restores existing eligibility; it does not establish a unique source or historical origin. Preserve E1-001 as an invalid reconstruction run. Its apparent improvements or losses cannot decide the hypothesis. Parameters and evaluation cases remain unchanged for E1-002.
+
+**E1-003 row correction:** E1-002 exactly reconstructed its chosen rows, but those were not always the rows saved by E0. E0 took the last canonical-direction match for a case-normalized key; E1 initially took the first. Distinct German capitalizations and definitions can share that key. Select the row matching the frozen E0 display pair in canonical language direction and assert every control display equals its recorded E0 display. Preserve E1-002 and its reviews; reuse a review only for an identical concept/language/word/gloss identity. Keep the normalization issue visible for later identity work. E1 neither repairs it nor counts changing the underlying word as a selection gain.
 
 - **A: usage preference.** Consider pairs within 0.10 cosine units of the highest eligible pair. Minimize the number of sides marked with a restricted usage tag, then maximize cosine. Restricted tags: slang, vulgar, offensive, rare, dialectal, regional, poetic, literary, archaic, obsolete, dated. Domain tags and historical subject matter do not automatically receive a penalty.
 - **B: usage plus source order.** Start with A's close-score set and minimum usage restriction. Within that set, maximize cosine minus 0.05 times the average normalized sense rank of the two sides. Rank distinct sense identities within the same source entry, part of speech, and etymology group, in their recorded order. Multiple glosses belonging to one source sense share a rank. Missing source identity receives no order bonus or penalty. Dictionary order is not asserted to be corpus frequency.
