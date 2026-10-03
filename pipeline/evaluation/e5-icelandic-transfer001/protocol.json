@@ -1,0 +1,14 @@
+{
+  "code_sha256": "d7d539bf22566b6a688a2ab2f2bac80319efc396918c188b6f19c67cb1d4c79c",
+  "seed": 20261003,
+  "repetitions": 2000,
+  "language": "is",
+  "pending_reviews": [
+    "nb-is",
+    "nl-is",
+    "sv-is"
+  ],
+  "all_pair_reviews_complete": false,
+  "method": "Separate family bootstrap intervals for old and new cohorts; not a paired improvement confidence interval.",
+  "limits": "Intervals quantify family resampling, not correctness of source-guided agent judgments; no population accuracy claim from the open sample."
+}

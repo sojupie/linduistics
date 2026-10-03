@@ -1,4 +1,4 @@
-"""Record separate family intervals and source-headword diagnoses for Dutch reviews."""
+"""Record separate family intervals and source-headword diagnoses for completed reviews."""
 import argparse
 from collections import defaultdict
 import json
@@ -34,19 +34,24 @@ def intervals(records):
         samples_with_no_found_pairs=2000-len(display))
 
 
-def main(destination):
+def main(destination, language='nl'):
     destination.mkdir(exist_ok=False)
     old_split = json.loads((OUTPUT / 'e0_families_v2.json').read_text())
     old_roles = {r['case_id']: r for r in old_split['cases'] if r['panel'] == 'concept'}
     old_judgments = {r['case_id']: r['decisions']['control'] for r in
                      json.loads((OUTPUT / 'e1-run003/concept_case_results.json').read_text())}
     lookups = {}
-    for lang in ['da', 'de', 'en', 'nb', 'sv', 'nl']:
-        path = (ROOT / 'pipeline/data/e5-source-audit' if lang == 'nl' else BASELINE) / f'lemmas_{lang}.parquet'
+    for lang in ['da', 'de', 'en', 'nb', 'sv', 'nl'] + (['is'] if language == 'is' else []):
+        path = (ROOT / 'pipeline/data/e5-source-audit' if lang in ['nl', 'is'] else BASELINE) / f'lemmas_{lang}.parquet'
         lookups[lang] = {normalized(r['word']) for r in pq.read_table(path, columns=['word']).to_pylist()}
-    results = {}
-    for pair in ['da-nl', 'de-nl', 'en-nl', 'nb-nl', 'nl-sv']:
+    results, pending = {}, []
+    pairs = (['da-nl', 'de-nl', 'en-nl', 'nb-nl', 'nl-sv'] if language == 'nl' else
+             ['da-is', 'de-is', 'en-is', 'nb-is', 'nl-is', 'sv-is'])
+    for pair in pairs:
         directory = OUTPUT / f'e5-{pair}-review001'
+        if not (directory / 'scored_results.json').exists():
+            pending.append(pair)
+            continue
         cases = json.loads((directory / 'concept_packet.json').read_text())
         review = json.loads((directory / 'concept_judgments.json').read_text())
         assert digest(directory / 'concept_packet.json') == review['packet_sha256']
@@ -64,8 +69,10 @@ def main(destination):
             missing_comparisons=missing, missing_with_both_source_heads=sum(r['head_a_present'] and r['head_b_present'] for r in missing),
             scored_results=json.loads((directory / 'scored_results.json').read_text()),
             judgment_sha256=digest(directory / 'concept_judgments.json'), open_judgment_sha256=digest(directory / 'open_judgments.json'))
+    assert results, 'No completed reviews to measure'
     save_json(destination / 'results.json', results)
     save_json(destination / 'protocol.json', dict(code_sha256=digest(Path(__file__)), seed=SEED, repetitions=2000,
+        language=language, pending_reviews=pending, all_pair_reviews_complete=not pending,
         method='Separate family bootstrap intervals for old and new cohorts; not a paired improvement confidence interval.',
         limits='Intervals quantify family resampling, not correctness of source-guided agent judgments; no population accuracy claim from the open sample.'))
     for pair, r in results.items():
@@ -75,5 +82,7 @@ def main(destination):
 if __name__ == '__main__':
     assert intervals([dict(family_group='one', found=True, acceptable=True)])['found_pair_display_95'] == [100, 100]
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--language', choices=['nl', 'is'], default='nl')
     parser.add_argument('--output', type=Path, default=OUTPUT / 'e5-dutch-transfer001')
-    main(parser.parse_args().output)
+    args = parser.parse_args()
+    main(args.output, args.language)

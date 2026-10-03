@@ -1,0 +1,312 @@
+{
+  "packet_sha256": "35b6356e9fadf053edab916112fc3502ec060a567f8fe1cb03e2ab4467ef7f8d",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All full source inventories read before scoring fixed labels. Generic names and terse political-entity scope remain uncertain.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A given-name diminutive does not overlap inscrutable speech or a problem phrase."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A Czech surname does not overlap skin wrinkle."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Ordering, categorizing or mending does not overlap becoming dark."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Thai province and town do not overlap cold weather or wind."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Danish place name does not overlap garbage."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "A mountain mass overlaps a specific physical body in the general cohering mass sense, while geological and quantity-of-matter meanings have different scope."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Cleaning soap overlaps; English also records money, opera, brick, drug and verb senses."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Regional take is related to obtaining a grip or hold, but the observed verb and noun are not grammatical equivalents."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Possess and hold overlap; English includes many auxiliary and idiomatic meanings absent from the Icelandic inventory."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reason": "English blessed is marked obsolete/poetic; Icelandic is a given name, not the same modern meaning."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "generic_name_match_unverified",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "Both are described only as male given names; matching generic glosses do not verify a name equivalent."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Ferry operator overlaps; English also identifies the mythological Charon."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Traffic lane overlaps; English additionally records tracks, passages, computing and name senses."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "English distinguishes movement, militia, member and figurative moralist; terse Icelandic Taliban does not identify which of these senses it covers."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Alcoholic cocktail overlaps; English additionally has mixture, animal and verb senses."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Mystery or puzzle overlaps; English additionally records proteins, animal species and the wartime device."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Forklift vehicle overlaps; English additionally records the verb."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Headland overlaps; English garment, superhero, name and verb senses differ."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Human editor overlaps, while English also records film machine and software; the terse Icelandic gloss does not support all these extensions."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Physical bar overlaps; many English legal, musical and other senses and Icelandic action senses do not."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Owl bird overlaps; English metaphors, butterflies, football and verb senses and Icelandic name add different meanings."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Motorcar overlaps; English additionally records the dated verb and self-moving adjective."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Spatial length and duration overlap across inventories; English has many financial, slang, grammatical and name meanings absent in Icelandic."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe month; the obsolete English menstrual sense is separately inactive."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "English surname and places do not establish equivalence to the Icelandic male given name."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "English surname is not the named given-name equivalent Herman recorded on the Icelandic side."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Both inventories explicitly identify the same Norwegian city Alesund/Ålesund."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "English surname, objects and personal descriptions do not establish the Icelandic given-name identity."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reason": "English live torus senses do not overlap turf; dead grass is obsolete and still is not explicitly the same sod sense."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Dishwashing machine overlaps; English additionally records the worker and bird names."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Shoe-making worker overlaps; English additionally records fish and a surname."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe gladness or joy."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "same_named_entity_partial_profile",
+      "compatible_labels": [
+        "entity_overlap",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both identify the country Jordan; English additionally records many other places, people and archaic objects."
+    }
+  ]
+}
