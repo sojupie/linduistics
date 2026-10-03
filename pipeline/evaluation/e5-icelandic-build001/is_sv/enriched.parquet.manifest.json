@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T17:52:08.202300+00:00",
+  "inputs": {
+    "raw.parquet": "ed893bd2ae1eb9631140892772b169b0f1190a49afed403648844119e8878fb7",
+    "matches.jsonl": "a497ca8baafb0e2c8aac139992a71f7323dcb3085e2daf12f53df494f7bc24a0"
+  },
+  "output": "enriched.parquet",
+  "output_sha256": "0ab0bb0fc316d982f01785b3e4b8c1a0cd381728a84a6069ed42baa29683f169",
+  "comparison_rows": 37332,
+  "category_counts_before_and_after": {
+    "before": {
+      "false_friend": 7022,
+      "other": 19906,
+      "partial_cognate": 360,
+      "translation_pair": 8636,
+      "true_cognate": 1408
+    },
+    "after": {
+      "false_friend": 7022,
+      "other": 19906,
+      "partial_cognate": 360,
+      "translation_pair": 8636,
+      "true_cognate": 1408
+    }
+  },
+  "etymological_relation_counts_before_and_after": {
+    "before": {
+      "cognate": 1794,
+      "unknown": 35538
+    },
+    "after": {
+      "cognate": 1794,
+      "unknown": 35538
+    }
+  },
+  "candidate_categories_and_etymological_relations_changed": false,
+  "root_values_normalized": 0,
+  "scalar_root_values_rebuilt_from_active_sense": 0,
+  "comparison_rows_with_root_normalization": 0,
+  "comparison_rows_with_active_root_normalization": 0,
+  "comparison_rows_reclassified_from_root_data": 0,
+  "category_values_changed_from_root_cleanup": 0,
+  "etymological_relation_values_changed_from_root_cleanup": 0,
+  "source_claim_matches": 340,
+  "comparison_rows_enriched": 576,
+  "source_claim_matches_attached": 680,
+  "target_identity_status_attached": {
+    "ambiguous": 18,
+    "available": 662
+  },
+  "scope": "Claims are attached to the exact active source sense; target identity and claim scope remain explicit. This does not convert entry-level claims into pair-level classifications.",
+  "source_claim_match_records_unmatched": 0
+}

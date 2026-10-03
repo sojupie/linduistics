@@ -1,0 +1,491 @@
+[
+  {
+    "review_id": 1,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Broodiness and fabrication do not share an observed meaning.",
+    "word_a": "skruk",
+    "word_b": "skrök",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 2,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Scissors do not share the observed accuse or injure meanings.",
+    "word_a": "saks",
+    "word_b": "saka",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 3,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Blink or miss does not overlap a season or semester.",
+    "word_a": "misse",
+    "word_b": "misseri",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 4,
+    "meaning_profile": "no_active_overlap_observed",
+    "compatible_labels": [
+      "different_meanings",
+      "no_modern_sense_data"
+    ],
+    "scorable": true,
+    "reason": "Shed and shower do not overlap eggshell; the only Icelandic sense is marked archaic.",
+    "word_a": "skur",
+    "word_b": "skurn",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 5,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both inventories share skin wrinkles, but Danish also records the verb and Icelandic includes creases.",
+    "word_a": "rynke",
+    "word_b": "hrukka",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 6,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Narrow or slender does not overlap herder, livestock or assembler.",
+    "word_a": "smal",
+    "word_b": "smali",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 7,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Ham overlaps; Icelandic additionally records a slang personal description.",
+    "word_a": "skinke",
+    "word_b": "skinka",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 8,
+    "meaning_profile": "historical_overlap_only",
+    "compatible_labels": [
+      "historical_overlap",
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Danish that is dated; Icelandic records demonstrative and article meanings. This is not unrestricted modern equivalence.",
+    "word_a": "hin",
+    "word_b": "hinn",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 9,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both entries denote the vegetable leek.",
+    "word_a": "porre",
+    "word_b": "púrra",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 10,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both entries denote chloroform.",
+    "word_a": "kloroform",
+    "word_b": "klóróform",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 11,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both entries denote square root.",
+    "word_a": "kvadratrod",
+    "word_b": "kvaðratrót",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 12,
+    "meaning_profile": "same_named_entity",
+    "compatible_labels": [
+      "entity_overlap",
+      "equivalent"
+    ],
+    "scorable": true,
+    "reason": "Both entries explicitly identify the given-name equivalent William.",
+    "word_a": "vilhelm",
+    "word_b": "vilhjálmur",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 13,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both entries denote an amoeba.",
+    "word_a": "amøbe",
+    "word_b": "amaba",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 14,
+    "meaning_profile": "same_named_entity",
+    "compatible_labels": [
+      "entity_overlap",
+      "equivalent"
+    ],
+    "scorable": true,
+    "reason": "Both entries explicitly identify the same city Jerusalem.",
+    "word_a": "jerusalem",
+    "word_b": "jerúsalem",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 15,
+    "meaning_profile": "related_meaning_not_equivalent",
+    "compatible_labels": [
+      "related_meanings",
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "Confirm or verify can strengthen a position, but the observed action meanings are not equivalent.",
+    "word_a": "bekræfte",
+    "word_b": "styrkja",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 16,
+    "meaning_profile": "contextual_overlap_unresolved",
+    "compatible_labels": null,
+    "scorable": false,
+    "reason": "Summon or subpoena and sue are connected legal actions; the terse inventories do not establish interchangeable usage.",
+    "word_a": "stævne",
+    "word_b": "lögsækja",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": null
+  },
+  {
+    "review_id": 17,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Light or blond and a female given name are different observed meanings.",
+    "word_a": "lys",
+    "word_b": "björt",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 18,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Treachery overlaps; treason and fraud enlarge the respective inventories differently.",
+    "word_a": "forræderi",
+    "word_b": "svik",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 19,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Commerce and business overlap, with different breadth of the observed trade/business descriptions.",
+    "word_a": "handel",
+    "word_b": "viðskipti",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 20,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Oar overlaps; vein, grain, year and early do not.",
+    "word_a": "åre",
+    "word_b": "ár",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 21,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both inventories describe a river with an explicitly limited geographic or size scope.",
+    "word_a": "elv",
+    "word_b": "elfur",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 22,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Rowan overlaps; the archaic islet sense and given-name sense are additional meanings.",
+    "word_a": "røn",
+    "word_b": "reynir",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 23,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Who and relative that do not overlap adverbial how.",
+    "word_a": "hvem",
+    "word_b": "hvað",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 24,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Hatch or trapdoor overlaps part of the lid meaning; limb, penis and inmate do not.",
+    "word_a": "lem",
+    "word_b": "hlemmur",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 25,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Animal offspring overlaps; Danish additionally records child and brat meanings.",
+    "word_a": "unge",
+    "word_b": "ungi",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 26,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both inventories identify tarragon.",
+    "word_a": "estragon",
+    "word_b": "estragon",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 27,
+    "meaning_profile": "same_named_entity_partial_profile",
+    "compatible_labels": [
+      "entity_overlap",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Icelandic explicitly names Hannah; Danish records the given name, while Icelandic also records the verb design.",
+    "word_a": "hannah",
+    "word_b": "hanna",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 28,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Drunk and drown are different observed meanings, regardless of historical relationship.",
+    "word_a": "drukken",
+    "word_b": "drukkna",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 29,
+    "meaning_profile": "related_meaning_not_equivalent",
+    "compatible_labels": [
+      "related_meanings",
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "The language Old Norse and the adjective Nordic are related descriptions rather than equivalents.",
+    "word_a": "norrønt",
+    "word_b": "norrænn",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 30,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "When overlaps; Icelandic additionally records already or at once.",
+    "word_a": "når",
+    "word_b": "þegar",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 31,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Outcome or result overlaps; Danish attack and Icelandic success or achievement add differing meanings.",
+    "word_a": "udfald",
+    "word_b": "árangur",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 32,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Clown overlaps; Icelandic additionally records fish and liturgical-book meanings.",
+    "word_a": "klovn",
+    "word_b": "grallari",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 33,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Director as supervisor or manager overlaps manager or leader.",
+    "word_a": "direktør",
+    "word_b": "forstöðumaður",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 34,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both inventories explicitly identify the same oystercatcher species.",
+    "word_a": "strandskade",
+    "word_b": "tjaldur",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": true
+  }
+]

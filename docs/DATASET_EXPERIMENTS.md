@@ -316,6 +316,10 @@ All five full Dutch pair builds are complete: 803,662 directed rows with 16,644 
 
 All five Dutch concept and open-vocabulary reviews are complete. Each pair meets the specified retrieval and display transfer limits. Separate open-label agreement remains poor: 13/32 Danish, 11/32 German, 11/34 English, 12/33 Norwegian and 15/34 Swedish, with five unresolved cases in total. Of 70 missing reference comparisons, 51 have both headwords in the accepted source lookup. Separate family intervals, source diagnoses and the recurring display/category failures are recorded in the [complete Dutch review report](../pipeline/evaluation/E5_DUTCH_TRANSFER_RESULT.md). This is a development transfer result, not release approval. All six Icelandic pair builds have finished; their structural verification and linguistic reviews follow.
 
+### E5 Icelandic structural verification and first meaning review
+
+Every row in all six Icelandic builds passed the structural verifier: 216,788 directed rows, preserved source inventories and matching inverse comparisons. All six development review packets are frozen. The completed Danish–Icelandic review finds 73 suitable displays, 11 wrong displays and 33 missing expected comparisons. Retrieval falls 13.17 points against the old Danish comparator and fails the five-point transfer limit. Open-label agreement is 17/33 with one unresolved. The [Icelandic report](../pipeline/evaluation/E5_ICELANDIC_BUILD_RESULT.md) records the builds, first result and remaining checks. No Icelandic admission or release approval follows from structural verification.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.

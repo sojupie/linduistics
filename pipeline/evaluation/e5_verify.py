@@ -13,11 +13,12 @@ from pipeline.src.dataset_artifact import rows, check_row
 from extract_etymology_records import clean_etymology_root
 
 
-def verify(destination):
+def verify(destination, language='nl'):
     destination.mkdir(exist_ok=False)
     result = {}
-    for partner in ['da', 'de', 'en', 'nb', 'sv']:
-        pair = tuple(sorted([partner, 'nl']))
+    partners = ['da', 'de', 'en', 'nb', 'sv'] + (['nl'] if language == 'is' else [])
+    for partner in partners:
+        pair = tuple(sorted([partner, language]))
         directory = DATA / '_'.join(pair)
         protocol = json.loads((directory / 'protocol.json').read_text())
         for name, expected in protocol['artifacts'].items():
@@ -54,10 +55,13 @@ def verify(destination):
         print('Verified', pair, count, flush=True)
     save_json(destination / 'verification.json', result)
     save_json(destination / 'protocol.json', dict(code_sha256=digest(Path(__file__)),
-        scope='Every Dutch pair row: stage input hashes, preserved fields/senses, core null policy and symmetric inverse. New labels not judged by this structural check.'))
+        scope=f'Every {language} pair row: stage input hashes, preserved fields/senses, core null policy and symmetric inverse. New labels not judged by this structural check.'))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=OUTPUT / 'e5-dutch-build002')
-    verify(parser.parse_args().output)
+    parser.add_argument('--language', choices=['nl', 'is'], default='nl')
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    destination = args.output or OUTPUT / ('e5-dutch-build002' if args.language == 'nl' else 'e5-icelandic-build001')
+    verify(destination, args.language)

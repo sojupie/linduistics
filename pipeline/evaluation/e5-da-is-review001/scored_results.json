@@ -1,0 +1,21 @@
+{
+  "pair": [
+    "da",
+    "is"
+  ],
+  "concept_cases": 117,
+  "found": 84,
+  "acceptable": 73,
+  "wrong_sense": 11,
+  "missing": 33,
+  "recall_difference_points": -13.172448466566111,
+  "display_difference_points": 19.21245421245421,
+  "recall_transfer_pass": false,
+  "display_transfer_pass": true,
+  "open_scorable": 33,
+  "open_compatible": 17,
+  "open_unresolved": 1,
+  "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+  "reviewer": "Source-guided Codex agent, not independent human gold",
+  "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+}

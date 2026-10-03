@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T17:48:03.034330+00:00",
+  "source_records_file": "evidence.jsonl",
+  "source_records_sha256": "6dca2a651e29d03e8282ebf74f14613cd73e5eda04ea059dd484ec35834fd5bb",
+  "comparisons_file": "raw.parquet",
+  "comparisons_sha256": "fddcbfabd2e6fec7bb9e5a270ea58b54c7728207e3d8fb09d09953778c7c395d",
+  "generator_file": "audit_source_cognate_coverage.py",
+  "generator_sha256": "07bb233de724d2c4092f633f38c42158c5c42c39df4667f6daf450340fd625ad",
+  "matches_file": "matches.jsonl",
+  "matches_sha256": "23a641292f609cc5b09ab03a29aaeeaf281544e6767e5aaa2d5a8b26cf8468b1",
+  "source_claim_candidate_matches": 396,
+  "matches_by_relation": {
+    "borrowed_from": 170,
+    "calque_of": 10,
+    "cognate_mention": 202,
+    "derived_from": 11,
+    "noncognate_mention": 1,
+    "phono_semantic_match_to": 2
+  },
+  "evidence_rows_by_candidate_category": {
+    "false_friend": 5,
+    "other": 232,
+    "partial_cognate": 29,
+    "translation_pair": 26,
+    "true_cognate": 104
+  },
+  "evidence_rows_by_target_identity": {
+    "ambiguous": 2,
+    "available": 394
+  },
+  "evidence_rows_by_form_match_method": {
+    "casefold_fallback": 26,
+    "exact": 370
+  },
+  "unique_candidates_with_source_claim_by_category": {
+    "false_friend": 5,
+    "other": 220,
+    "partial_cognate": 27,
+    "translation_pair": 23,
+    "true_cognate": 94
+  },
+  "unique_candidates_with_source_claim_by_category_and_relation": {
+    "false_friend": {
+      "borrowed_from": 2,
+      "cognate_mention": 2,
+      "noncognate_mention": 1
+    },
+    "other": {
+      "borrowed_from": 132,
+      "calque_of": 9,
+      "cognate_mention": 73,
+      "derived_from": 6,
+      "phono_semantic_match_to": 1
+    },
+    "partial_cognate": {
+      "borrowed_from": 6,
+      "cognate_mention": 20,
+      "derived_from": 1
+    },
+    "translation_pair": {
+      "borrowed_from": 7,
+      "calque_of": 1,
+      "cognate_mention": 13,
+      "derived_from": 3,
+      "phono_semantic_match_to": 1
+    },
+    "true_cognate": {
+      "borrowed_from": 21,
+      "cognate_mention": 75,
+      "derived_from": 1
+    }
+  },
+  "matching_rule": "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its related language and exact target-form spelling match the candidate. Case-folded matching is used only when no exact-form candidate exists for that source entry. Claims are entry-level; this does not assert that they apply to the selected target sense."
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T17:51:28.741958+00:00",
+  "source_records_file": "evidence.jsonl",
+  "source_records_sha256": "6dca2a651e29d03e8282ebf74f14613cd73e5eda04ea059dd484ec35834fd5bb",
+  "comparisons_file": "raw.parquet",
+  "comparisons_sha256": "7a443c0263a7be1ac1f59392ba802c9e5c02f99f90599ef5df6622c0291be9d0",
+  "generator_file": "audit_source_cognate_coverage.py",
+  "generator_sha256": "07bb233de724d2c4092f633f38c42158c5c42c39df4667f6daf450340fd625ad",
+  "matches_file": "matches.jsonl",
+  "matches_sha256": "c7176128fdf105b979c9db8f8da4345a503485e48b94b3cf092b0ff7e986d13c",
+  "source_claim_candidate_matches": 65,
+  "matches_by_relation": {
+    "borrowed_from": 4,
+    "cognate_mention": 54,
+    "derived_from": 7
+  },
+  "evidence_rows_by_candidate_category": {
+    "false_friend": 1,
+    "other": 32,
+    "partial_cognate": 9,
+    "translation_pair": 8,
+    "true_cognate": 15
+  },
+  "evidence_rows_by_target_identity": {
+    "available": 65
+  },
+  "evidence_rows_by_form_match_method": {
+    "casefold_fallback": 2,
+    "exact": 63
+  },
+  "unique_candidates_with_source_claim_by_category": {
+    "false_friend": 1,
+    "other": 30,
+    "partial_cognate": 9,
+    "translation_pair": 7,
+    "true_cognate": 15
+  },
+  "unique_candidates_with_source_claim_by_category_and_relation": {
+    "false_friend": {
+      "cognate_mention": 1
+    },
+    "other": {
+      "borrowed_from": 4,
+      "cognate_mention": 20,
+      "derived_from": 6
+    },
+    "partial_cognate": {
+      "cognate_mention": 9
+    },
+    "translation_pair": {
+      "cognate_mention": 6,
+      "derived_from": 1
+    },
+    "true_cognate": {
+      "cognate_mention": 15
+    }
+  },
+  "matching_rule": "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its related language and exact target-form spelling match the candidate. Case-folded matching is used only when no exact-form candidate exists for that source entry. Claims are entry-level; this does not assert that they apply to the selected target sense."
+}
