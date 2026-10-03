@@ -1,5 +1,9 @@
 # Acceptance rules fixed after E0
 
+**Historical criteria:** these rules remain the original basis for the reported
+runs. Future adoption decisions use [ADOPTION_CRITERIA_V2.md](ADOPTION_CRITERIA_V2.md).
+Their internally chosen thresholds are not external accuracy standards.
+
 Date: 2026-10-03. These rules are fixed before implementing or scoring E1-E4 variants. They are project decisions based on the measured baseline and intended use, not thresholds established by either external review.
 
 The experiments use the frozen development cases. Results can support an exploratory method decision. They cannot establish expert linguistic accuracy: the open-vocabulary judgments were made by an agent, historical evidence often comes from the same dictionary as the pipeline, and some cases remain unresolved. The reserved test families are for the final combined evaluation, after methods and parameters are fixed.
