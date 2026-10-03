@@ -68,7 +68,58 @@ def name_variant(senses_a, senses_b, word_a, word_b):
     return None
 
 
-def profile_meanings(senses_a, senses_b, matrix, word_a, word_b):
+def lexical_alternatives(sense):
+    if is_redirect(sense) or GENERIC_NAME.match(sense['gloss']):
+        return set(), ''
+    main, separator, context = sense['gloss'].partition('(')
+    terms = set()
+    for term in re.split(r'[;,]|\s+or\s+', main):
+        term = re.sub(r'^(?:to|a|an|the)\s+', '', term.strip(), flags=re.I)
+        term = term.strip(' .:!\"“”').casefold()
+        if term and len(term.split()) <= 3:
+            terms.add(term)
+    return terms, context.rstrip(') .').casefold() if separator else ''
+
+
+def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation_evidence):
+    ordinary = [[s for s in senses if modern(s) and not is_name(s) and not is_redirect(s)]
+                for senses in [senses_a, senses_b]]
+    evidence = []
+    common_classes = {grammatical_class(s) for s in ordinary[0]} & {grammatical_class(s) for s in ordinary[1]}
+    for source in translation_evidence:
+        entry = source.get('source_entry_key', '').split('|')
+        if len(entry) < 2 or entry[0] != 'en' or not modern(source) or is_name(source) or is_redirect(source):
+            continue
+        if any(lang == 'en' and entry[1].casefold() != word.casefold()
+               for lang, word in [(lang_a, word_a), (lang_b, word_b)]):
+            continue
+        if grammatical_class(source) in common_classes:
+            evidence.append({'kind': 'source_sense_translation_link', 'scope': 'lexeme_class',
+                'source_entry_key': source['source_entry_key'], 'source_sense_id': source['source_sense_id'],
+                'gloss': source['gloss'], 'pos': source.get('pos')})
+    for side, (lang, word) in enumerate([(lang_a, word_a), (lang_b, word_b)]):
+        if lang != 'en':
+            continue
+        for sense in ordinary[1 - side]:
+            terms, context = lexical_alternatives(sense)
+            if word.casefold() in terms and grammatical_class(sense) in common_classes:
+                evidence.append({'kind': 'explicit_english_headword_gloss', 'scope': 'lexeme_class',
+                    'english_word': word, 'gloss': sense['gloss'], 'qualification': context, 'pos': sense.get('pos')})
+    for a in ordinary[0]:
+        for b in ordinary[1]:
+            terms_a, context_a = lexical_alternatives(a)
+            terms_b, context_b = lexical_alternatives(b)
+            shared = terms_a & terms_b
+            if (shared and grammatical_class(a) == grammatical_class(b)
+                    and not (context_a and context_b and context_a != context_b)):
+                evidence.append({'kind': 'shared_translated_lexical_alternative', 'scope': 'lexeme_class',
+                    'terms': sorted(shared), 'glosses': [a['gloss'], b['gloss']],
+                    'qualifications': [context_a, context_b], 'pos': a.get('pos')})
+    return evidence
+
+
+def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mode=False,
+                     lang_a='', lang_b='', translation_evidence=None):
     assert len(matrix) == len(senses_a) and all(len(row) == len(senses_b) for row in matrix)
     usable = [[i for i, sense in enumerate(senses) if modern(sense) and not is_redirect(sense)]
               for senses in [senses_a, senses_b]]
@@ -109,14 +160,27 @@ def profile_meanings(senses_a, senses_b, matrix, word_a, word_b):
                 types = (entity_types(a) & entity_types(b)) - {'person_name'}
                 if is_name(a) and is_name(b) and types and matrix[i][j] >= 0.75:
                     entity_pairs.append({'indices': [i, j], 'types': sorted(types)})
+                elif evidence_mode and is_name(a) and is_name(b):
+                    terms_a, context_a = lexical_alternatives(a)
+                    terms_b, context_b = lexical_alternatives(b)
+                    concrete = (entity_types(a) | entity_types(b)) - {'person_name'}
+                    if (terms_a & terms_b and concrete
+                            and not (context_a and context_b and context_a != context_b)):
+                        entity_pairs.append({'indices': [i, j], 'types': sorted(concrete),
+                            'basis': 'Inferred shared lexical alias and concrete entity context',
+                            'shared_aliases': sorted(terms_a & terms_b)})
     variant = name_variant([senses_a[i] for i in usable[0] if is_name(senses_a[i])],
                            [senses_b[i] for i in usable[1] if is_name(senses_b[i])], word_a, word_b)
+    lexical = word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b,
+                           translation_evidence or []) if evidence_mode else []
     if pairs:
         label = 'equivalent' if min(coverage) >= 0.80 else 'partial_overlap'
     elif entity_pairs:
         label = 'entity_overlap'
     elif variant:
         label = 'related_name_form'
+    elif lexical:
+        label = 'partial_overlap'
     elif all(any(is_name(senses[i]) for i in indices) for senses, indices in zip([senses_a, senses_b], usable)):
         named = [[senses[i] for i in indices if is_name(senses[i])]
                  for senses, indices in zip([senses_a, senses_b], usable)]
@@ -133,6 +197,7 @@ def profile_meanings(senses_a, senses_b, matrix, word_a, word_b):
     return {'label': label, 'directional_coverage': coverage, 'modern_pairs': pairs,
             'related_candidates': associated, 'inactive_pairs': historical,
             'entity_pairs': entity_pairs, 'name_variant_evidence': variant,
+            'word_overlap_evidence': lexical,
             'rejected_pair_evidence': rejected, 'usable_modern_senses': [len(s) for s in usable],
             'basis': 'Inferred from recorded meanings and grammatical context; not ancestry proof.'}
 
@@ -155,6 +220,18 @@ def self_check():
     assert profile_meanings([redirect], [a], [[0.9]], 'a', 'b')['label'] == 'no_modern_sense_data'
     heading = a | {'gloss': 'A person:'}
     assert profile_meanings([heading], [a], [[0.9]], 'a', 'b')['label'] == 'no_modern_sense_data'
+    translated = a | {'gloss': 'to sow'}
+    english = a | {'gloss': 'To scatter or plant seeds.'}
+    assert profile_meanings([translated], [english], [[0.25]], 'säen', 'sow',
+                            evidence_mode=True, lang_a='de', lang_b='en')['label'] == 'partial_overlap'
+    assert profile_meanings([translated | {'pos': 'noun'}], [english], [[0.25]], 'säen', 'sow',
+                            evidence_mode=True, lang_a='de', lang_b='en')['label'] != 'partial_overlap'
+    assert not word_overlap([a | {'gloss': 'nut (instrument bridge)'}],
+                            [a | {'gloss': 'nut (fastener)'}], 'a', 'b', 'de', 'sv', [])
+    source = english | {'source_entry_key': 'en|sow|verb|2', 'source_sense_id': 'sowing'}
+    assert word_overlap([translated], [english], 'säen', 'sow', 'de', 'en', [source])
+    assert not word_overlap([a], [english], 'säen', 'plant', 'de', 'en', [source])
+    assert not word_overlap([name], [name], 'Brown', 'Green', 'de', 'en', [source])
     print('Meaning profile self-check passed.')
 
 

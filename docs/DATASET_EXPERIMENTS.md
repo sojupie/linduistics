@@ -4,6 +4,14 @@
 
 This document records what we intend to test, why, and what actually happens. A planned improvement is a hypothesis until its results support it.
 
+## Where to resume
+
+E0 established an exploratory reference set. E1 tested display selection and adopted neither variant. E2-001 tested meaning coverage using embedding scores alone and was not adopted. E2-002 has a saved plan but no completed run. E3–E5 remain planned.
+
+**Next action:** implement and evaluate [E2-002's dictionary-evidence variant](../pipeline/evaluation/E2_EVIDENCE_PLAN.md). Validate recorded translation references against the frozen source entries. Keep the encoder, scores, display selection, historical fields, and reference judgments fixed. Compare it with E2-001 and the trivial predictor that labels everything partial overlap. Review every newly incorrect prediction and lost correct prediction, then append the result and decision here.
+
+The five-language baseline remains accepted. An experiment branch or a completed run does not mean its method has been adopted.
+
 ## Starting point
 
 The accepted five-language baseline has 1,638,454 directed comparison rows. Its final file is reproducible, and publication preserves its content. Its linguistic accuracy has not been established by an independent benchmark.
@@ -64,7 +72,8 @@ Update this table after each run. Keep earlier run records below the correspondi
 | --- | --- | --- | --- | --- | --- |
 | E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json), [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md) | [Baseline evaluation report](../pipeline/evaluation/E0_RUN001.md) | Development review, coverage, diagnostic groups, and procedure recorded | Use for exploratory E1-E4 comparisons; preserve test families |
 | E1 | E1-003 | [Saved variants and corrections](../pipeline/evaluation/E1_PLAN.md) | [Display-selection report](../pipeline/evaluation/E1_RUN003.md) | A: no concept gain. B: +2.2 points, below the five-point gate; one open-sample match lost | Reject A as tested; revise B without adopting it |
-| E2 | — | Awaiting E0 and E1 | Not run | Not measured | Pending |
+| E2 | E2-001 | [Frozen meaning-profile plan](../pipeline/evaluation/E2_PLAN.md) | [Dense-only report and case results](../pipeline/evaluation/e2-run001/README.md) | 118/197 compatible, versus 80/197 legacy and 114/197 always-partial | Revise; do not adopt |
+| E2 | E2-002 | [Saved dictionary-evidence plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md) | Not run | Not measured | Implement and evaluate separately |
 | E3 | — | E0 complete; historical-link variant specified below | Not run | Not measured | Pending |
 | E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
 | E5 | — | Awaiting accepted methods and source audit | Not run | Not measured | Pending |
@@ -75,12 +84,26 @@ Update this table after each run. Keep earlier run records below the correspondi
 | --- | --- | --- | --- |
 | E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Complete |
 | E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Complete; neither variant adopted |
-| E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Planned |
+| E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | In progress; dense-only variant not adopted |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
 | E4 | Can better candidate generation reduce noise without losing useful comparisons? | E0 | Planned |
 | E5 | Can we add a language without degrading existing comparisons or hiding new errors? | Accepted methods and E0 | Planned |
 
 Start with E0, then E1. Test E2, E3, and E4 separately before evaluating their combined effect. E5 applies the accepted methods to one new language at a time.
+
+### Concrete tests and decision limits
+
+These limits come from the saved [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md), not from the reviews' suggested release percentages. Keep the full protocol alongside each run. A percentage-point gain is an absolute difference between two percentages.
+
+| Experiment | Concrete change to test | Evidence required before adoption |
+| --- | --- | --- |
+| E1 | Prefer usable ordinary senses; test entry-local sense order separately. Preserve secondary matches. | At least five percentage points more acceptable displays, with a positive paired uncertainty interval; satisfy the saved secondary-match and subgroup-loss limits. Neither tested variant passed. |
+| E2 | Record meaning matches, grammatical context, history, and form separately. Test dictionary translation evidence alongside embedding scores. | At least five points more compatible practical labels, with a positive paired interval; useful coverage loss at most two points. Identify all reviewed generic-name and whole-compound errors. Compare with a trivial predictor as well as the legacy rules. |
+| E3 | Resolve typed inheritance, borrowing, and cognate links while preserving entry identity and source references. | Recover at least five additional reviewed, source-supported relationships across at least two language pairs; introduce no false path in the reviewed controls. Report inferred and documented relationships separately. |
+| E4 | First remove prefix retrieval; separately add retrieval based on sound correspondences. Keep classification fixed. | Expected-pair recall loss at most two points overall and five per language pair. Prefix removal needs at least five points better candidate usefulness with a positive paired interval. Added phonetic retrieval must recover at least ten missed expected pairs across at least two language pairs. |
+| E5 | Audit Dutch and Icelandic sources, then process one new language at a time through accepted stages. | Fix new-pair coverage and quality limits after the source audit, before scoring admission. Existing outputs must stay byte-equivalent when their inputs and rules are unchanged. Review each new language pairing separately. |
+
+For every test, save the input hashes, code revision, command, parameters, family split, and case results. Report losses and unresolved cases alongside gains. Review the failures ourselves and explain the result in prose; the user should not have to discover them by browsing the lexicon or reading JSON.
 
 ## E0 — Establish the baseline and evaluation sets
 
@@ -186,9 +209,23 @@ The plan, code, exact input selection, new concept judgments, changed open-vocab
 
 **Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E2 section.
 
+**Actual result:** E2-001 improved compatibility from 80/197 (40.6%) to 118/197 (59.9%). Its gain over legacy labels was 19.3 percentage points, with a paired family interval of 12.0–26.5. It recovered 48 cases and lost 10. However, predicting partial overlap for every case scored 114/197 (57.9%). The dense-only method's two-point gain over that control had an interval of −10.3–13.7, so the headline improvement does not establish a useful classifier. Ten unresolved reference cases remain outside scoring. These are source-guided agent judgments, not independently reviewed human truth.
+
+**Decision:** Revise; do not adopt E2-001. Its saved coverage count includes warning labels and must not be read as resolved meaning coverage. E2-002 will report actionable labels and warnings separately. Preserve the original run and reference mapping.
+
+### E2-001 — Completed development run, 2026-10-03
+
+The [readable report](../pipeline/evaluation/e2-run001/README.md) records the errors, measurements, controls, reproduction command, and unchanged inputs. Ordinary translated glosses can receive low embedding scores even when they record the same meaning. Lowering the threshold also risks admitting nearby but distinct concepts. This supports testing an additional source of evidence; it does not establish that the proposed dictionary-evidence variant works.
+
+### E2-002 — Planned follow-up, 2026-10-03
+
+**Hypothesis:** explicit translated glosses and validated source-sense translation links recover ordinary overlap missed by embedding scores, without inventing exact sense matches or ancestry.
+
+**Change:** add this evidence under the [saved plan](../pipeline/evaluation/E2_EVIDENCE_PLAN.md). Record its scope and original source references. A word-level translation can support possible overlap without proving that every sense is equivalent. Reject generic-name evidence and incompatible grammatical or contextual matches.
+
 **Actual result:** Not run.
 
-**Decision:** Pending.
+**Decision:** Pending. Keep E2-001's inputs and scoring rubric fixed. Compare with legacy labels, E2-001, and the always-partial control; inspect all new errors and losses before deciding.
 
 ## E3 — Typed historical links
 
@@ -290,4 +327,4 @@ After individual experiments pass, test their combined output against the accept
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** E1 variants have been evaluated, and neither is approved. E2-E5 remain untested under this plan. The reproducible five-language baseline remains the accepted dataset.
+**Current release decision:** Neither E1 variant nor E2-001 is approved. E2-002 and E3–E5 remain untested. The reproducible five-language baseline remains the accepted dataset. After methods are fixed, evaluate their combined output on reserved families and check actual lexicon, search, API, and game behavior before recording a release decision.
