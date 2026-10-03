@@ -1,0 +1,161 @@
+{
+  "languages": {
+    "nl": {
+      "raw_languages": {
+        "nl": 146492
+      },
+      "raw_counts": {
+        "entries": 146492,
+        "etymology_text": 64009,
+        "etymology_templates": 57843,
+        "recorded_ipa": 56315,
+        "translation_records": 1
+      },
+      "accepted_lemmas": 60067,
+      "accepted_source_entries": 64066,
+      "accepted_senses": 81605,
+      "active_senses": 76162,
+      "source_pronunciation_lemmas": 43408,
+      "etymology_text_lemmas": 50062,
+      "structured_root_lemmas": 6458,
+      "multiple_source_entry_lemmas": 3416,
+      "lemma_pos": {
+        "noun": 32368,
+        "adj": 6926,
+        "verb": 10103,
+        "intj": 258,
+        "adv": 817,
+        "article": 8,
+        "conj": 50,
+        "pron": 128,
+        "prep": 77,
+        "det": 65,
+        "name": 9085,
+        "contraction": 20,
+        "num": 145,
+        "phrase": 4,
+        "circumpos": 13
+      },
+      "sense_pos": {
+        "noun": 43574,
+        "adj": 9293,
+        "verb": 14615,
+        "name": 11446,
+        "intj": 407,
+        "adv": 1443,
+        "conj": 99,
+        "article": 9,
+        "prep": 189,
+        "pron": 211,
+        "det": 114,
+        "num": 154,
+        "contraction": 26,
+        "phrase": 5,
+        "circumpos": 20
+      },
+      "concept_forms": 171,
+      "exact_concept_forms_found": 170,
+      "found_concept_forms_with_pronunciation": 170,
+      "missing_concept_forms": [
+        {
+          "form_id": "21-45-1",
+          "word": "bang zijn",
+          "concept": "fear"
+        }
+      ]
+    },
+    "is": {
+      "raw_languages": {
+        "is": 25366
+      },
+      "raw_counts": {
+        "entries": 25366,
+        "etymology_text": 12500,
+        "etymology_templates": 11682,
+        "recorded_ipa": 16617,
+        "translation_records": 0
+      },
+      "accepted_lemmas": 17209,
+      "accepted_source_entries": 18171,
+      "accepted_senses": 23181,
+      "active_senses": 22730,
+      "source_pronunciation_lemmas": 14502,
+      "etymology_text_lemmas": 10353,
+      "structured_root_lemmas": 3534,
+      "multiple_source_entry_lemmas": 836,
+      "lemma_pos": {
+        "adv": 351,
+        "noun": 10997,
+        "name": 1742,
+        "verb": 1868,
+        "intj": 65,
+        "adj": 2047,
+        "pron": 51,
+        "num": 31,
+        "conj": 20,
+        "prep": 24,
+        "det": 5,
+        "phrase": 3,
+        "contraction": 5
+      },
+      "sense_pos": {
+        "adv": 468,
+        "conj": 37,
+        "noun": 14431,
+        "name": 2029,
+        "prep": 75,
+        "verb": 3208,
+        "adj": 2695,
+        "intj": 101,
+        "pron": 85,
+        "num": 31,
+        "particle": 1,
+        "det": 8,
+        "article": 1,
+        "phrase": 4,
+        "contraction": 7
+      },
+      "concept_forms": 173,
+      "exact_concept_forms_found": 166,
+      "found_concept_forms_with_pronunciation": 163,
+      "missing_concept_forms": [
+        {
+          "form_id": "36-45-1",
+          "word": "hræðast",
+          "concept": "fear"
+        },
+        {
+          "form_id": "36-184-1",
+          "word": "kasta upp",
+          "concept": "vomit"
+        },
+        {
+          "form_id": "36-45-2",
+          "word": "vera hræddur",
+          "concept": "fear"
+        },
+        {
+          "form_id": "36-87-1",
+          "word": "kné, hné",
+          "concept": "knee"
+        },
+        {
+          "form_id": "36-129-1",
+          "word": "morkinn",
+          "concept": "rotten"
+        },
+        {
+          "form_id": "36-215-1",
+          "word": "beiskur",
+          "concept": "bitter"
+        },
+        {
+          "form_id": "36-212-1",
+          "word": "í gær",
+          "concept": "yesterday"
+        }
+      ]
+    }
+  },
+  "elapsed_seconds": 6.825955200009048
+}
