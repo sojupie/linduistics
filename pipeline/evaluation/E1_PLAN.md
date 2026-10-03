@@ -1,6 +1,6 @@
 # E1: choosing displayed meanings
 
-Run: E1-001. Fixed before scoring variants, 2026-10-03.
+Runs: E1-001 and corrected E1-002. Fixed before scoring variants, 2026-10-03.
 
 ## Hypothesis and scope
 
@@ -13,6 +13,8 @@ Use the 995 found development concept comparisons and 207 open-vocabulary develo
 The control is the saved baseline display, not a newly inferred replacement. Reconstruct pairwise gloss scores with the existing normalized MiniLM encoder and pinned revision from `semantic_matcher.py`. Use the builder's clipping and identical-headword translation override. Report any difference between reconstructed and saved control selection; do not silently replace the control.
 
 Both variants preserve the builder's active-sense eligibility and English source-sense restriction when the recorded identity resolves. If no active pair remains, retain the baseline display rather than manufacture an ordinary meaning.
+
+**E1-002 input correction:** E1-001 omitted `source_identity_candidates` when reconstructing translation eligibility from annotated baseline senses. The builder clears a selected identity when several same-gloss source senses are indistinguishable and retains their candidate identities. Resolve eligibility against that list as well as direct identities. This restores existing eligibility; it does not establish a unique source or historical origin. Preserve E1-001 as an invalid reconstruction run. Its apparent improvements or losses cannot decide the hypothesis. Parameters and evaluation cases remain unchanged for E1-002.
 
 - **A: usage preference.** Consider pairs within 0.10 cosine units of the highest eligible pair. Minimize the number of sides marked with a restricted usage tag, then maximize cosine. Restricted tags: slang, vulgar, offensive, rare, dialectal, regional, poetic, literary, archaic, obsolete, dated. Domain tags and historical subject matter do not automatically receive a penalty.
 - **B: usage plus source order.** Start with A's close-score set and minimum usage restriction. Within that set, maximize cosine minus 0.05 times the average normalized sense rank of the two sides. Rank distinct sense identities within the same source entry, part of speech, and etymology group, in their recorded order. Multiple glosses belonging to one source sense share a rank. Missing source identity receives no order bonus or penalty. Dictionary order is not asserted to be corpus frequency.

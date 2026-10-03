@@ -16,7 +16,7 @@ from semantic_matcher import SemanticMatcher, DEFAULT_MODEL_NAME, DEFAULT_MODEL_
 from sense_display import eligible_pairs, select_display, self_check
 
 
-def score(destination):
+def score(destination, run_id):
     destination.mkdir(parents=True, exist_ok=False)
     families = json.loads((OUTPUT / 'e0_families_v2.json').read_text(encoding='utf-8'))
     roles = {(r['panel'], r['case_id']): r for r in families['cases']}
@@ -28,7 +28,7 @@ def score(destination):
     wanted = {key(r['lang_a'], r['word_a'], r['lang_b'], r['word_b']) for r in cases}
     assert digest(DATASET) == EXPECTED_HASH
     protocol = {
-        'experiment': 'E1', 'run_id': 'E1-001', 'plan_sha256': digest(OUTPUT / 'E1_PLAN.md'),
+        'experiment': 'E1', 'run_id': run_id, 'plan_sha256': digest(OUTPUT / 'E1_PLAN.md'),
         'baseline_sha256': EXPECTED_HASH, 'families_sha256': digest(OUTPUT / 'e0_families_v2.json'),
         'model': DEFAULT_MODEL_NAME, 'model_revision': DEFAULT_MODEL_REVISION, 'seed': SEED,
         'concept_cases': len(concepts), 'open_cases': len(opened), 'unique_comparisons': len(wanted),
@@ -113,7 +113,7 @@ def score(destination):
     save_json(destination / 'case_displays.json', results)
     changes = {v: sum(r['displays'][v] != r['displays']['control'] for r in results) for v in ['A', 'B']}
     controls = sum((r['def_a'], r['def_b']) != (r['reconstructed_control']['display_a'], r['reconstructed_control']['display_b']) for r in scored.values())
-    summary = {'run_id': 'E1-001', 'unique_glosses_encoded': len(glosses), 'seconds': time.monotonic() - started,
+    summary = {'run_id': run_id, 'unique_glosses_encoded': len(glosses), 'seconds': time.monotonic() - started,
         'cases': len(results), 'changed_cases': changes, 'new_concept_glosses_to_review': len(packet),
         'reconstructed_control_display_differences': controls,
         'status': 'Scored; new displays need blinded review before accuracy measurements.'}
@@ -124,6 +124,7 @@ def score(destination):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=OUTPUT / 'e1-run001')
+    parser.add_argument('--run-id', default='E1-001')
     args = parser.parse_args()
     self_check()
-    score(args.output)
+    score(args.output, args.run_id)

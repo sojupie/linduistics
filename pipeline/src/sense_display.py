@@ -31,7 +31,9 @@ def eligible_pairs(senses_a, senses_b, lang_a, lang_b, translation_refs):
     for side, (lang, senses) in enumerate(((lang_a, senses_a), (lang_b, senses_b))):
         if lang == 'en' and refs:
             anchored = [i for i in indices[side]
-                        if (senses[i].get('source_entry_key'), senses[i].get('source_sense_id')) in refs]
+                        if (senses[i].get('source_entry_key'), senses[i].get('source_sense_id')) in refs
+                        or any((c.get('source_entry_key'), c.get('source_sense_id')) in refs
+                               for c in senses[i].get('source_identity_candidates', []))]
             if anchored:
                 indices[side] = anchored
     return [(i, j) for i in indices[0] for j in indices[1]]
@@ -64,6 +66,9 @@ def self_check():
     assert entry_ranks([ordinary, ordinary, slang, slang | {'source_entry_key': 'other'}]) == [0, 0, 1, 0]
     anchored = ordinary | {'is_active': True}
     assert eligible_pairs([anchored, slang], [ordinary], 'en', 'de', [anchored]) == [(0, 0)]
+    ambiguous = ordinary | {'source_entry_key': None, 'source_sense_id': None,
+                            'source_identity_candidates': [anchored]}
+    assert eligible_pairs([ambiguous, slang], [ordinary], 'en', 'de', [anchored]) == [(0, 0)]
     assert eligible_pairs([ordinary | {'is_active': False}], [ordinary], 'en', 'de', []) == []
     assert select_display([ordinary], [ordinary], [[1]], [], 'A') is None
     historical = ordinary | {'tags': ['historical']}
