@@ -111,9 +111,9 @@ Divide development and test cases by word family. Keep both directions of a pair
 
 **Completion condition:** a readable baseline report, saved reviewed cases, and a frozen evaluation procedure. Before E1–E4 implementation, record their numerical acceptance limits using this baseline and the intended product use. Until then, those experiments are planned, not ready for release decisions.
 
-**Actual result:** E0-001 measured the unchanged baseline against 1,712 independently sourced concept comparisons: 1,441 found, 213 missing despite both exact headwords being present, and 58 involving an absent exact headword. Independent frequency samples and a blinded comparison packet are saved. See the [run report](../pipeline/evaluation/E0_RUN001.md) for results by language pair, matching limits, source attribution, and remaining review work. Displayed-meaning and open-vocabulary accuracy are not yet established.
+**Actual result:** E0-001 measured the unchanged baseline against 1,712 independently sourced concept comparisons: 1,441 found, 213 missing despite both exact headwords being present, and 58 involving an absent exact headword. Recorded inflections recovered 4 of the latter cases; most remaining forms are phrases or source notation. Independent frequency samples and family-grouped splits are saved. A blinded, source-guided agent review of 995 found development comparisons judged both displayed definitions suitable for the intended concept in 630 cases (63.3%; family-bootstrap interval 58.2%–68.3%). This is not independent human gold or vocabulary-wide accuracy. See the [run report](../pipeline/evaluation/E0_RUN001.md) for scope, source attribution, saved judgments, and remaining open-vocabulary/hard-case review.
 
-**Decision:** Continue E0's form-mapping, meaning review, hard-case review, family grouping, and acceptance-limit work before implementing E1-E4 variants. No dataset change adopted.
+**Decision:** Continue E0's remaining source-notation, open-vocabulary/hard-case review, and acceptance-limit work before implementing E1-E4 variants. Development display review and family grouping are now recorded. No dataset change adopted.
 
 ## E1 — Displayed meanings and secondary matches
 
