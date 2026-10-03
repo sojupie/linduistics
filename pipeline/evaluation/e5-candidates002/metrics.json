@@ -1,0 +1,98 @@
+{
+  "old_pair_regression": {
+    "da:de": {
+      "translation_candidates": 24558,
+      "surface_candidates": 16885,
+      "total": 41443,
+      "membership_and_order_equal": true
+    },
+    "da:en": {
+      "translation_candidates": 16080,
+      "surface_candidates": 75534,
+      "total": 91614,
+      "membership_and_order_equal": true
+    },
+    "da:nb": {
+      "translation_candidates": 11191,
+      "surface_candidates": 18292,
+      "total": 29483,
+      "membership_and_order_equal": true
+    },
+    "da:sv": {
+      "translation_candidates": 17453,
+      "surface_candidates": 20750,
+      "total": 38203,
+      "membership_and_order_equal": true
+    },
+    "de:en": {
+      "translation_candidates": 66645,
+      "surface_candidates": 179588,
+      "total": 246233,
+      "membership_and_order_equal": true
+    },
+    "de:nb": {
+      "translation_candidates": 23563,
+      "surface_candidates": 15637,
+      "total": 39200,
+      "membership_and_order_equal": true
+    },
+    "de:sv": {
+      "translation_candidates": 45985,
+      "surface_candidates": 23342,
+      "total": 69327,
+      "membership_and_order_equal": true
+    },
+    "en:nb": {
+      "translation_candidates": 15708,
+      "surface_candidates": 69110,
+      "total": 84818,
+      "membership_and_order_equal": true
+    },
+    "en:sv": {
+      "translation_candidates": 33548,
+      "surface_candidates": 108862,
+      "total": 142410,
+      "membership_and_order_equal": true
+    },
+    "nb:sv": {
+      "translation_candidates": 16764,
+      "surface_candidates": 19732,
+      "total": 36496,
+      "membership_and_order_equal": true
+    }
+  },
+  "all_old_final_labels_replayed": 1638454,
+  "old_categories": {
+    "full_cognate": 165482,
+    "independent_root": 191462,
+    "semantic_narrowing": 233192,
+    "unrelated_equivalent": 140088,
+    "accidental_lookalike": 903784,
+    "cognate_false_friend": 3930,
+    "semantic_divergence": 516
+  },
+  "translation_counts": {
+    "da:de": 24558,
+    "da:en": 16080,
+    "da:is": 7196,
+    "da:nb": 11191,
+    "da:nl": 17677,
+    "da:sv": 17453,
+    "de:en": 66645,
+    "de:is": 13562,
+    "de:nb": 23563,
+    "de:nl": 49824,
+    "de:sv": 45985,
+    "en:is": 8808,
+    "en:nb": 15708,
+    "en:nl": 35882,
+    "en:sv": 33548,
+    "is:nb": 6987,
+    "is:nl": 10530,
+    "is:sv": 10150,
+    "nb:nl": 17120,
+    "nb:sv": 16764,
+    "nl:sv": 30809
+  },
+  "elapsed_seconds": 100.89083910000045
+}

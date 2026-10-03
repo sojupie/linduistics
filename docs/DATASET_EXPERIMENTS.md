@@ -304,6 +304,10 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 **Decision:** Proceed to admission tests, Dutch first, Icelandic second. Strong headword coverage permits a measured build; it does not approve displayed meanings, pair labels, or game use. Freeze per-pair development/test cases and numerical gates before scoring, then build Dutch's five old-language pairings and check old-output preservation. Repeat for Icelandic, including Dutch–Icelandic. The earlier expansion does not establish that these checks pass.
 
+### E5 preparation and regression — Completed, 2026-10-03
+
+The [admission plan](../pipeline/evaluation/E5_ADMISSION_PLAN.md) fixes transfer limits and separates them from release approval. The independent panel contains 1,900 new-pair cases: 1,293 development, 574 reserved, and 33 diagnostic cases linking previously separate development/test families. Preparation reproduces exactly. Seven-language translation mining preserves every old translation source reference and all 819,227 old candidate pairs in order. All 1,638,454 old final categories and relations replay exactly. A first replay's incorrect numeric conversion was corrected to the historical PostgreSQL-to-psycopg path and retained as a failed run. The [report](../pipeline/evaluation/E5_PREBUILD_RESULT.md) gives per-pair new translation counts, commands, and limits. Full new-pair sense alignment, reviews, admission decisions, assembled output preservation, and final product checks remain pending.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.
