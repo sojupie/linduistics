@@ -1,0 +1,1697 @@
+{
+  "experiment": "E3",
+  "reviewer": "Existing source-guided E0 agent judgments; not independent human gold",
+  "rules": {
+    "positive_history_profiles": [
+      "borrowing_and_variant_recorded",
+      "borrowing_chain_recorded",
+      "borrowing_plus_inheritance_recorded",
+      "direct_borrowing_recorded",
+      "shared_ancestor_recorded",
+      "shared_borrowing_recorded",
+      "shared_borrowing_source_recorded",
+      "shared_external_name_source_recorded",
+      "shared_source_recorded"
+    ],
+    "component_control_profiles": [
+      "inferred_compound_family",
+      "inferred_partial_compound_family",
+      "inferred_shared_component_only",
+      "partial_compound_component_recorded",
+      "partial_compound_family_inferred",
+      "shared_component_only",
+      "shared_component_recorded",
+      "shared_compositional_source_recorded"
+    ],
+    "unknown_policy": "Unknown and inferred histories are not negative controls. Newly retrieved source records require explicit review before counting recovery."
+  },
+  "reference_files": {
+    "e0_open_review_001_025.json": "1142b484dc52a5ea7587a04e0b109a70733e9243e62765f590d29458bef473c0",
+    "e0_open_review_026_060.json": "a47a88908b808ec13e8b6d81b5192da67e5554bd8610f3e1a4c6e04c6cc9f69c",
+    "e0_open_review_061_080.json": "e60b027fd8f54e0e6e161f8db6575ed9cd3eb68c02f220ab657f7bc98f9a5a4f",
+    "e0_open_review_081_100.json": "5eff17d526f291d9a3011180a251d91dfee44ed391acad939d1164312440bdd9",
+    "e0_open_review_101_125.json": "b1724f459df573611f972f2842b73cc9ce54f99a418eebbb68f67af89f2eb0fb",
+    "e0_open_review_126_150.json": "a2927f6135c6505c94b1ce3a400e915b777a1c9f3e83323000ce42e8670ce8da",
+    "e0_open_review_151_175.json": "ed77091b006448d3ff8b29d720f0b430489b327a506b6a19d747c988e4f28284",
+    "e0_open_review_176_192.json": "7007587bd99fdfd9bde5c9da92ac0d2ee602f58cc2706ef69f9b0c13843bf6ac",
+    "e0_open_review_193_207.json": "1ad6d83b1f5de522e3828f224ee59c0c585f415af46fa29803c3cbc488d51fff"
+  },
+  "cases": [
+    {
+      "case_id": "9392974043e37aab",
+      "review_id": 1,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both record the rainbow phenomenon and Proto-Germanic regnabugo; English has additional uses.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "72fc0aa8febf23a6",
+      "review_id": 2,
+      "history_evidence": "not_established",
+      "reason": "Swedish native-edition mycology sense and its English pileus translation establish overlap omitted from the baseline target senses.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "3d7c5415e61c4245",
+      "review_id": 3,
+      "history_evidence": "shared_family_inferred_from_recorded_paths",
+      "reason": "Both mean field; borrowing histories involve German/Low German. Full ancestor-path verification remains separate.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "7d24b39e68754740",
+      "review_id": 4,
+      "history_evidence": "not_established",
+      "reason": "Performance can overlap rendition, but the generic glosses do not settle scope; NAOB supplies representation/reproduction evidence, not complete equivalence.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "4ae0061c617e2b50",
+      "review_id": 5,
+      "history_evidence": "not_established",
+      "reason": "Target only redirects to the former spelling Maß; its underlying senses must be resolved before comparison with Danish buttocks.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "7ada13fb27467a48",
+      "review_id": 6,
+      "history_evidence": "different_recorded_sources",
+      "reason": "Both are female given names; this is not identity. French/Latin versus Selene/Greek routes are recorded, without complete family resolution.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "0f059edbe554fae2",
+      "review_id": 7,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Demonstrative that is shared; English conjunction/relative uses and Swedish impersonal/article uses differ. Selected demonstrative versus placeholder functions are misaligned.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "3a557f935068172d",
+      "review_id": 8,
+      "history_evidence": "shared_borrowing_source_recorded",
+      "reason": "Both mean method and record Latin methodus from Greek methodos.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "0ae616a03089d4b6",
+      "review_id": 9,
+      "history_evidence": "shared_external_name_source_recorded",
+      "reason": "Both explicitly identify the country Lesotho, with matching capital/location and recorded Sotho name; generic proper-name filtering would discard a valid pair.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "ad00dda3ea74e7d6",
+      "review_id": 10,
+      "history_evidence": "different_recorded_sources",
+      "reason": "Cheating is shared, but German also has dizziness and harmless lying; separate recorded derivations do not prove unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "00b06cc0cd7a2b7a",
+      "review_id": 11,
+      "history_evidence": "shared_borrowing_source_recorded",
+      "reason": "Planning/agenda is shared and both record Latin agenda; English also has planner and ulterior-motive senses.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "cb9415d21d8dd3fc",
+      "review_id": 12,
+      "history_evidence": "not_established",
+      "reason": "Different male/female given-name descriptions do not establish equivalent name variants or a shared history.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "89227eb4f4e4d28b",
+      "review_id": 13,
+      "history_evidence": "partial_compound_family_inferred",
+      "reason": "Both are pedestrian bridges. Recorded decompositions differ: walking+bridge versus foot+bridge; shared whole-compound inheritance is not established.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "9c0464e9c3ee7491",
+      "review_id": 14,
+      "history_evidence": "family_inferred_not_attested",
+      "reason": "Adjective mysterious versus adverb mysteriously; useful grammatical comparison but not interchangeable forms or evidence of historical narrowing.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "7fda4ea3d7051f7f",
+      "review_id": 15,
+      "history_evidence": "partial_compound_component_recorded",
+      "reason": "Fox species versus Bengal region. Bengal+fox composition explains the shared component, not whole-word equivalence.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "5495acc93ba3f796",
+      "review_id": 16,
+      "history_evidence": "not_established",
+      "reason": "The selected Austrian town is explicitly the same in both; German also has several river senses.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "33b9794b24ec0f4c",
+      "review_id": 17,
+      "history_evidence": "different_recorded_roots",
+      "reason": "Without versus than/yet/and do not overlap in the supplied senses. Distinct recorded roots alone do not prove independent origin.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "24147fd1f21e0b92",
+      "review_id": 18,
+      "history_evidence": "not_established",
+      "reason": "Road sign and emblem are different default objects; symbol/sign contexts might overlap and require additional lexical evidence.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8bf3b0088e4b88af",
+      "review_id": 19,
+      "history_evidence": "not_established",
+      "reason": "Both have connection meanings. The selected English buses/systems sense is restricted; multiple other English meanings are not translations of forbindelse.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "fb0b99b4f597ab37",
+      "review_id": 20,
+      "history_evidence": "direct_borrowing_recorded",
+      "reason": "Danish explicitly borrows English brunch. Meal meaning is shared; direct borrowing differs from uninterrupted inherited cognacy.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "d6a689f71715b07d",
+      "review_id": 21,
+      "history_evidence": "different_recorded_sources",
+      "reason": "Wrinkle is shared; German also has fold and Swedish has verb/fabric uses. Whole histories remain unresolved.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8b52b4307e5d7bd7",
+      "review_id": 22,
+      "history_evidence": "not_established",
+      "reason": "Logic versus lodging have distinct supplied meanings despite close spelling.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9dae311612769848",
+      "review_id": 23,
+      "history_evidence": "not_established",
+      "reason": "Both generic surname glosses do not establish the same name. German also has the electrical unit, omitted from the selected display.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "68c71e18f1d99d59",
+      "review_id": 24,
+      "history_evidence": "historical_link_unresolved",
+      "reason": "Musical group versus strap. The Norwegian sense is borrowed from English band; a deeper relation to binding cannot be settled from these records alone.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8f94bc757ec4d939",
+      "review_id": 25,
+      "history_evidence": "not_established",
+      "reason": "The Moselle river and Moses are explicitly different named entities; names should be assessed by identity rather than generic category similarity.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "a4406b6f63e6d8ca",
+      "review_id": 26,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The sowing verbs share recorded Germanic ancestry and meaning. English female-animal and surname homographs must remain separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "b3e05fa50c507ffd",
+      "review_id": 27,
+      "history_evidence": "shared_component_only",
+      "reason": "Pain prevention or a protease inhibitor is not a religious opponent. Shared anti- does not relate the complete meanings.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "1b80cd2fa8da9d9e",
+      "review_id": 28,
+      "history_evidence": "shared_component_only",
+      "reason": "Chitin and an insect researcher differ; English entomolin is marked dated and rare/inactive. Shared entomon is only a component.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "1dba7204e5ebb11d",
+      "review_id": 29,
+      "history_evidence": "not_established",
+      "reason": "A requirement overlaps need/requirement, but demand and need are not equivalent in all contexts. Different recorded historical paths do not alone prove unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "18d631e4f6074cda",
+      "review_id": 30,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both identify yew plants with explicit common ancestry and a cognate statement. English wood, bow, and dialectal-you senses are additional uses.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "d858da1c99f6110b",
+      "review_id": 31,
+      "history_evidence": "not_established",
+      "reason": "Both identify a painting brush. The recorded compound versus Pinsel borrowing paths do not establish whole-word cognacy.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5ae138da81d98ec6",
+      "review_id": 32,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The shared weaning sense is present and ancestry is recorded. The selected English intransitive cease-to-depend gloss omits the transitive ordinary weaning counterpart; the child noun is another entry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "4a334bd4547e9ea6",
+      "review_id": 33,
+      "history_evidence": "not_established",
+      "reason": "Confectionery and candy overlap in ordinary use. The Swedish entry has no historical record here; common history is not established.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "b336595e07164f30",
+      "review_id": 34,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both descend through French tante, but the Swedish aunt sense is dated/inactive and its current older-woman use is broader than a kinship aunt.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "8147baeaa5a4b1f9",
+      "review_id": 35,
+      "history_evidence": "not_established",
+      "reason": "Injury or violation of rules is not invasion. These saved senses offer no mutual translation, although invasion can cause injury or violate rules.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "a529496c07a91d08",
+      "review_id": 36,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record statues and Latin statua through borrowing paths. English also has a statue-making verb and an inactive portrait sense.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "71dacf8785b2f5ac",
+      "review_id": 37,
+      "history_evidence": "not_established",
+      "reason": "A synapse and poorly informed opinion-giving name different concepts and parts of speech. The Norwegian derivation does not supply German historical evidence.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e2f3aa8deed4e82f",
+      "review_id": 38,
+      "history_evidence": "not_established",
+      "reason": "Glutaric-acid-related and glutamine name different chemical concepts and grammatical categories. Similar scientific vocabulary is not equivalence.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9d0e9c1b1a47b036",
+      "review_id": 39,
+      "history_evidence": "not_established",
+      "reason": "The two systematic element names are different, and the English entry is marked dated/inactive. Its hypothetical active equivalence must not be manufactured from their shared element-name pattern.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "2c349cb045c9ca97",
+      "review_id": 40,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both mean goose and record Old Norse gas and Proto-Germanic gans.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "da7fb984cd07257a",
+      "review_id": 41,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Sending is an action; a sender is its agent. The form relationship is a reasonable derivational inference, not a documented complete ancestry path here.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "c6ea140f9fcfc1a2",
+      "review_id": 42,
+      "history_evidence": "not_established",
+      "reason": "Both explicitly record effect/result. Latin effectus versus verka + suffix does not establish unrelated origins by itself.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "fbc4959a9c2d657e",
+      "review_id": 43,
+      "history_evidence": "inferred_partial_compound_family",
+      "reason": "Both mean lawn. Grass-like first components suggest partial family overlap, but plen and matta differ; whole-compound inherited cognacy is not documented.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "54133de7e63674b2",
+      "review_id": 44,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "The district sense overlaps, with German marked especially Switzerland. German accommodation and Norwegian quarter-hour/moon uses do not coincide. Both record French quartier.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "448f5f6cbff08745",
+      "review_id": 45,
+      "history_evidence": "not_established",
+      "reason": "Both record political hawk/hard-liner senses. Selected falcon versus hawk bird meanings differ; historical root strings also differ without independently proving unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "37ef142edb55c849",
+      "review_id": 46,
+      "history_evidence": "not_established",
+      "reason": "Helix and holy do not overlap in these senses. A Swedish Germanic root does not establish the German noun ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8c8cc3d0f14cbc60",
+      "review_id": 47,
+      "history_evidence": "not_established",
+      "reason": "Fearful/anxious and timid overlap in a fearful disposition, but anxiety need not imply timidity. Swedish history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "1cfc74885278f56d",
+      "review_id": 48,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Related is an adjective; a relative is a person. The similar family stems suggest a derivational relationship but the records do not provide its complete path.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e144f5ba0e777f09",
+      "review_id": 49,
+      "history_evidence": "not_established",
+      "reason": "Healthy overlaps explicitly. English sound has many unrelated homographs and Norwegian frisk also means fresh, keen, or refreshing. Unequal Germanic roots do not settle common ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "1ab86975396d7b32",
+      "review_id": 50,
+      "history_evidence": "not_established",
+      "reason": "Both explicitly mean discuss/debate. Other English senses are mostly inactive; Norwegian history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "83c17d1c584ee4fe",
+      "review_id": 51,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record Latin mysterium, but English has only historical/inactive substance or radio-source senses here. Those do not match the Danish ordinary mystery headline.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "93cefed14c4fc6e0",
+      "review_id": 52,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The settlement nouns share Old Norse byr. Current town/city versus village/hamlet meanings differ; Swedish town/city is marked obsolete. Verb and gust homographs are separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "60e41f7d3194ccf1",
+      "review_id": 53,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The tickling verbs share Old Norse kitla and Germanic kitilonan; Norwegian wedge senses belong to another historical entry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "08825ab2c0fc1d16",
+      "review_id": 54,
+      "history_evidence": "not_established",
+      "reason": "Companion and a business partner can overlap situationally, but these bare glosses do not establish a general interchangeable sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "d80df78306050c6e",
+      "review_id": 55,
+      "history_evidence": "inferred_partial_compound_family",
+      "reason": "Suspicious and distrustful overlap. Different bases for suspect and trust plus a negative prefix do not establish whole-word cognacy.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "6ad16b1db9b08286",
+      "review_id": 56,
+      "history_evidence": "not_established",
+      "reason": "Division, portion, role, and partially are not a pair/couple/few or golf par. Association with two things does not establish equivalent senses.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ca2cbd7b44eb308a",
+      "review_id": 57,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both ultimately record Greek margaron, but a spread and a pearl-related/acid adjective differ. Shared source history is not shared current meaning.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "7aeb9db4063f4c67",
+      "review_id": 58,
+      "history_evidence": "shared_source_recorded",
+      "reason": "Both record Old Norse jarl; the selected German Norse title and active Norwegian British earl use are different institutional titles. The matching Norse-title Norwegian sense is marked historical/inactive.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "696b4d9597723995",
+      "review_id": 59,
+      "history_evidence": "borrowing_plus_inheritance_recorded",
+      "reason": "The mythological creatures overlap, with Swedish specifying a female fairy/elf. German elf is borrowed from English while Swedish inherits the Germanic family; German eleven/team meanings are separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "5bcb7b18380de348",
+      "review_id": 60,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record Latin femina, but female committee and female-ostrich feather are not equivalent meanings.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "96675c7f4e167162",
+      "review_id": 61,
+      "history_evidence": "not_established",
+      "reason": "English hurry describes a specific defensive-pressure event, not generic pressure; urgency and pressure can coincide but these entries do not establish general interchangeability.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "0c2a670493f0d0c0",
+      "review_id": 62,
+      "history_evidence": "not_established",
+      "reason": "A fund and a font are different concepts. Only Norwegian historical evidence is recorded.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ced0d1387965bd0d",
+      "review_id": 63,
+      "history_evidence": "borrowing_plus_inheritance_recorded",
+      "reason": "Both record the Norse narrative sense and common saga source. English borrowing is narrower than Swedish fairy-tale/story uses; place-name homographs are separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "41b82e5972d4c256",
+      "review_id": 64,
+      "history_evidence": "not_established",
+      "reason": "Pedantic and finical can overlap in excessive fussiness, but affected/hoity-toity is not general pedantry. Sources do not establish shared history.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "559797c9d349302d",
+      "review_id": 65,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both record elf/fairy senses and Germanic albiz. English fantasy-race, fish, and Christmas uses are not all Danish counterparts; the male name is separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "54910fa9204067a8",
+      "review_id": 66,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Apostle overlaps explicitly, including religious and broader Swedish senses. Greek is recorded on one side and Old Swedish on the other; full common-source borrowing path is inferred, not fully recorded.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ad2168d601d5fd91",
+      "review_id": 67,
+      "history_evidence": "inferred_partial_compound_family",
+      "reason": "Both mean bulletproof. Recorded shot-plus-firm/secure composition supports structural analogy; common ancestry of both complete compounds is not established.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "7a921ef902f71dc2",
+      "review_id": 68,
+      "history_evidence": "not_established",
+      "reason": "An initiator is an agent; initiative is an act or disposition. Shared activity does not make these nouns equivalent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "064989c4ead0a5ef",
+      "review_id": 69,
+      "history_evidence": "not_established",
+      "reason": "The Pennsylvania borough and Swedish flat object/record meanings do not denote the same entity or concept.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5b47838d2eb4a300",
+      "review_id": 70,
+      "history_evidence": "not_established",
+      "reason": "Both saved senses are marked inactive, and voting versus a suffragette remains action versus person. Historical tagging itself does not prove a word is unusable; report this filtering boundary.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "26ce4ec237aa9248",
+      "review_id": 71,
+      "history_evidence": "derivation_recorded",
+      "reason": "Responsibility and being responsible are related but different grammatical meanings. Swedish explicitly derives the verb from ansvar; the whole cross-language history needs a further link.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "dd170d09314fcb5d",
+      "review_id": 72,
+      "history_evidence": "not_established",
+      "reason": "The strict English preposition sense matches Danish. The selected English broad adposition sense is wider and includes other positional classes.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "a32a345b7cea9788",
+      "review_id": 73,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Both mean misleading. Swedish records mis-plus-showing composition; Danish history is absent, so matching morphology supplies an inference rather than recorded ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "f099c1ebda6de76d",
+      "review_id": 74,
+      "history_evidence": "not_established",
+      "reason": "Both mean summarize. Different recorded morphological bases do not prove independent origins, and Swedish also records conclude.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "eeebca1766e65248",
+      "review_id": 75,
+      "history_evidence": "not_established",
+      "reason": "Both mean knead, with Norwegian specifying dough. Recorded Norse elta and knoda are different immediate sources, not independently proven unrelated roots. Danish mud is another grammatical entry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "aba151b6b4db1d3e",
+      "review_id": 76,
+      "history_evidence": "inferred_shared_component_only",
+      "reason": "Tray, hill, tool jaw, and backing are not a tailgate. Possible back-component resemblance concerns one historical entry, not the selected tray or the complete compound.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "b4aa4b88efa30f20",
+      "review_id": 77,
+      "history_evidence": "inferred_shared_component_only",
+      "reason": "Teacher and underside have no observed shared meaning. Similar under-components do not make the complete words cognates or translations.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "8a92889432233991",
+      "review_id": 78,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The sources connect sorrel-related old forms through Germanic ampraz, but current English tumour/flaw glosses omit the German plant meaning. Shared ancestry is separate from current semantic disjointness in these entries.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "57c6ad82008c2357",
+      "review_id": 79,
+      "history_evidence": "inferred_shared_component_only",
+      "reason": "Northeast and north coast differ. A north component can relate while the complete concepts and second components differ.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "6cc63e8e4f424a86",
+      "review_id": 80,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Both record the thrown discus object, but the selected Norwegian sport/action is not the object. Latin and Greek sources suggest a borrowing family without a full linking path in these entries.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "117a3c4f38bb23e8",
+      "review_id": 81,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both mean criterion and record Greek kriterion, German via Latin.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "b22638cbb9183e48",
+      "review_id": 82,
+      "history_evidence": "shared_component_recorded",
+      "reason": "A great-aunt is not any older woman. Norwegian family-friend senses can overlap Swedish older-woman address contextually; the aunt component history is shared, not the complete compound.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "de7de9c10e43b3fa",
+      "review_id": 83,
+      "history_evidence": "not_established",
+      "reason": "Both record wedge. English shim also has thin alignment material, software, and other senses; its physical-word origin is explicitly unknown.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "468e618f6420770c",
+      "review_id": 84,
+      "history_evidence": "not_established",
+      "reason": "Both record omen, while Danish notice/warning and German technical sign uses differ. Their recorded derivations do not establish whole-word unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8695f88bf063ed7c",
+      "review_id": 85,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Against/opposition overlaps explicitly with recorded gagin ancestry and a cognate statement; other directional, approximate, and grammatical uses do not all coincide.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "90b18673995805e0",
+      "review_id": 86,
+      "history_evidence": "derivation_and_shared_source_recorded",
+      "reason": "Norwegian drown is explicitly derived from remain-at-sea with the same historical blive source. The Danish passive auxiliary, become, and remain senses do not mean drown.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "eeb6d0f02d6acaec",
+      "review_id": 87,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Search/seeking overlaps, but Swedish also records applicants/claimants. Similar search stems support inference; the Swedish complete ancestry path is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "cc90eb61527bdf32",
+      "review_id": 88,
+      "history_evidence": "inferred_related_borrowing",
+      "reason": "Both mean hello, Swedish marked colloquial with a tentative blend history. A complete cross-language borrowing link is not recorded.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5a292d811c74838e",
+      "review_id": 89,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "To apply and applied are verb versus adjective/participle. Danish Latin history and form resemblance support a family inference, not exact grammatical equivalence.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "b3a5280f0949f774",
+      "review_id": 90,
+      "history_evidence": "not_established",
+      "reason": "A marijuana cigar and cigarette are related smoking products, not an exact shared sense. English blunt has many additional adjective, verb, and name uses; Swedish history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "087198c5aea391e0",
+      "review_id": 91,
+      "history_evidence": "not_established",
+      "reason": "The glosses describe related signaling-protein concepts but do not establish whether chemerin is a chemokine or an interchangeable term. A biochemical source check is needed; shared chemo-like form is insufficient.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5f97e289d0116cb0",
+      "review_id": 92,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Saving is an action; a money saver is an agent. Swedish records spara plus agent suffix, but the cross-language historical link is inferred.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "016aa93555724549",
+      "review_id": 93,
+      "history_evidence": "not_established",
+      "reason": "Both explicitly record the airborne jumping action. Many English secondary meanings and the Norwegian mare homograph differ. Germanic jump history and Norse hoppa do not by themselves settle common ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "3b13e21b99c1ed90",
+      "review_id": 94,
+      "history_evidence": "not_established",
+      "reason": "A string-instrument nut and a bolt nut are different objects. Their shared English translation word is a polysemy trap, not evidence that the source words share that sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ee93428a0734facf",
+      "review_id": 95,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The spherical ball and Swedish penis/testicle/buttock/balcony senses differ, despite explicit common balluz ancestry. The Norwegian dance homograph has another origin.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "c02d4747240b936b",
+      "review_id": 96,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both record home/dwelling and common haimaz ancestry. Selected English habitat-of-a-thing versus Norwegian origin/belonging is less direct than their ordinary dwelling correspondence.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "710eb84218c4c739",
+      "review_id": 97,
+      "history_evidence": "shared_source_recorded",
+      "reason": "Danish mood/caprice derives through Latin luna, while German Luna names the Roman deity or a given name. Shared lunar source does not establish present equivalence; warm is another Danish entry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "26baf7ac5f3cd441",
+      "review_id": 98,
+      "history_evidence": "not_established",
+      "reason": "A Latin-derived given name and an unspecified surname do not identify matching entities or documented name variants.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "280e309094e3ec0f",
+      "review_id": 99,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "A confirmand is a participant; confirming is an action. Related religious domain and similar forms do not make noun and verb equivalent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "81232fc0f41ee420",
+      "review_id": 100,
+      "history_evidence": "shared_entity_base_recorded",
+      "reason": "Both are formed from Mauritius, but Mauritian as a relational adjective and a Mauritian person are distinct grammatical meanings.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "828267618865d74c",
+      "review_id": 101,
+      "history_evidence": "not_established",
+      "reason": "English occasional/incidental overlaps the German gloss. Happening by chance is related but not the same as occurring incidentally; informal/relaxed meanings are additional English uses.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "dd65dcc6edd8b2e3",
+      "review_id": 102,
+      "history_evidence": "not_established",
+      "reason": "Granada city/province and other named places are not Gran Canaria. Norwegian granka is explicitly its island abbreviation.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "50c70cd8a1141e25",
+      "review_id": 103,
+      "history_evidence": "inferred_compound_family",
+      "reason": "Both explicitly identify grasshopper, Swedish also locust. Both record grass-plus-hop composition; cross-language ancestry of each component is inferred rather than traced here.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "eca7c4f4330075db",
+      "review_id": 104,
+      "history_evidence": "not_established",
+      "reason": "A mineral and a male given name are different concepts. The shared Alexander-like form does not establish a historical path in these records.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "056b656a38892374",
+      "review_id": 105,
+      "history_evidence": "not_established",
+      "reason": "Physical putting is explicitly shared, but Swedish he is Northern/regional and also a pronoun. English abstract, financial and other senses do not all match.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "02afec4b173d152a",
+      "review_id": 106,
+      "history_evidence": "shared_source_recorded",
+      "reason": "Both identify Sunday and explicitly record the sun-day calque family. German municipality and historical place-name entries are separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "92ec23e8c943d1b3",
+      "review_id": 107,
+      "history_evidence": "not_established",
+      "reason": "Both record an organized procession. Swedish paired/mated adjectival entries are homographs, not the selected parade sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5538fd8fea652f9d",
+      "review_id": 108,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record chaos with Greek khaos history. English mathematical, cosmological and named-entity senses need separate alignments.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "8ff4f621477e9a38",
+      "review_id": 109,
+      "history_evidence": "not_established",
+      "reason": "Both record kidnapping, with different morphological bases. Their histories are not connected by these local derivation records.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "71340c9f4ea70bd6",
+      "review_id": 110,
+      "history_evidence": "not_established",
+      "reason": "Both explicitly record napkin. English diaper, scarf and inactive sanitary-napkin uses are additional meanings, not established Swedish correspondences.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9323985f5c917462",
+      "review_id": 111,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "A single stimulus is explicitly recorded in Norwegian despite the stimuli form; automatic singular/plural rejection would be wrong. Norwegian collective and dope uses also occur; history is inferred.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9c98cd5f79a1c310",
+      "review_id": 112,
+      "history_evidence": "not_established",
+      "reason": "Very drunk and dare are distinct senses and parts of speech. Swedish historical derivation does not establish Norwegian history.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "6a6e6aab133fce26",
+      "review_id": 113,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both identify the Greek Titan Iapetus, with matching Greek source and Norwegian disambiguation distinguishing moon and ocean name forms.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "b0337d480ce5c69b",
+      "review_id": 114,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Both identify cholesterol. Greek components are recorded only in Norwegian, so the full common-source path on Danish remains inferred.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "2b5bdb944cf2c164",
+      "review_id": 115,
+      "history_evidence": "not_established",
+      "reason": "Decay/deterioration overlaps the state of dilapidation. German general decline/decadence and English building damage/payment usages are not wholly equivalent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "f0c4c5dcd1e012f9",
+      "review_id": 116,
+      "history_evidence": "not_established",
+      "reason": "Disguising/clouding can hide information, overlapping conceal/hide. Literal veiling and physical hiding are not interchangeable in every context; history is not established.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "70cd7cc15bcacf87",
+      "review_id": 117,
+      "history_evidence": "inferred_partial_compound_family",
+      "reason": "Both identify the working week. Recorded work-plus-week versus arbeid-plus-uke structures do not prove whole-compound inherited cognacy.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "bb84b37896d85c41",
+      "review_id": 118,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record Latin spectaculum history, but Danish disturbance/noise and Norwegian spectacular adjective differ in present meaning and grammar.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "d1da32faace4adc6",
+      "review_id": 119,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Elf/fairy overlap is explicit with common albiz ancestry, but German especially-evil chest-sitter and Swedish female mythological creature are not complete cultural equivalents.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "4beeb8c1b25059c4",
+      "review_id": 120,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The building-room nouns explicitly coincide and share ruman history. Space, compartment, verb, nautical and archaic adjectival uses need separate treatment.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "3cbbe4e6c9fcc398",
+      "review_id": 121,
+      "history_evidence": "direct_borrowing_recorded",
+      "reason": "Both identify botulism; Danish explicitly borrows the German term. This is borrowing rather than uninterrupted native cognacy.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "06847cc95d74d47e",
+      "review_id": 122,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "The generic addition/supplement meaning overlaps, but the selected English dietary dosage sense is not disambiguated by the bare Norwegian supplement gloss. Latin/French history suggests a borrowing family without a full connecting path here.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "8401249afe759b67",
+      "review_id": 123,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both explicitly record the penalty fine sense and botō history. Selected fine versus remedy misses that shared meaning; Danish booth is another historical entry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "34c403c7f7677098",
+      "review_id": 124,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both identify alder and record common aluz ancestry and cross-references. Danish electricity is another entry; short-form filtering would lose a valid tree word.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "0d9718651128c2aa",
+      "review_id": 125,
+      "history_evidence": "not_established",
+      "reason": "Thatch can be straw used as roofing, but also rushes/leaves and other material; straw is not always thatch. Recorded roof-covering versus halmr history does not establish a common path.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "d779fef1cbdce1a0",
+      "review_id": 126,
+      "history_evidence": "not_established",
+      "reason": "Wrong-word/Freudian-slip and hurrying/running-fast meanings differ. A foreword noun is another Danish entry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9858680a40d66b12",
+      "review_id": 127,
+      "history_evidence": "not_established",
+      "reason": "Both mean maize/corn, German regionally marked. Serbo-Croatian/Romanian versus Taino source paths do not by themselves prove completely unrelated ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "a33951f35af95d12",
+      "review_id": 128,
+      "history_evidence": "not_established",
+      "reason": "A fact and reality are related abstractions but not generally interchangeable nouns; these entries do not record a common exact sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "adab6e04ea5edea2",
+      "review_id": 129,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "The Danish discursive gloss supports overlap but leaves which English discourse/digression/reasoning senses apply unresolved. A full Danish borrowing path is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "3ed5b61aa35e282d",
+      "review_id": 130,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The thatching verbs share explicit takjanan ancestry and reciprocal cognate mentions. Roof-covering nouns and Danish charm entry must remain separate.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "be5f78f5256eaf32",
+      "review_id": 131,
+      "history_evidence": "not_established",
+      "reason": "Stem/stalk/handle meanings do not match the Swedish still adverb. Similar spelling is not meaning overlap.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "318bb3bc430bf9db",
+      "review_id": 132,
+      "history_evidence": "possible_shared_source_recorded",
+      "reason": "Subdue explicitly overlaps. Danish Norse kuga is stated, while Swedish marks the Danish/Norse source as only possible and offers an alternative; retain that uncertainty.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "611913d2f89b5425",
+      "review_id": 133,
+      "history_evidence": "not_established",
+      "reason": "Fake/feign overlaps, while Danish copy/imitate can also be non-deceptive. Different compositional bases do not establish a connected history here.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "6547bf2b5007e527",
+      "review_id": 134,
+      "history_evidence": "not_established",
+      "reason": "The adverb differently coincides explicitly. Danish also has an adjective different; grammatical identity must refer to the chosen adverb entry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "939d0905929225ef",
+      "review_id": 135,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Latin apostrophus is shared, and the English apostrophe-symbol sense is archaic/inactive. The selected active reverse-C numeral sign is not German inverted comma.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "99f380da21e28775",
+      "review_id": 136,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The saved German gloss only records reciprocal each-other, not the Swedish reflexive headline. German native-edition definitions and Swedish sig translations confirm omitted ordinary reflexive overlap; common sek ancestry is recorded.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "dbf8ffc483f49eda",
+      "review_id": 137,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The sources share puttaz history, but Swedish pot/kitty is not disambiguated as a cooking vessel. German bare pot also needs resolution before claiming a common current sense.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "b9b0af2e68f16dac",
+      "review_id": 138,
+      "history_evidence": "not_established",
+      "reason": "Weak can overlap not-strong flavor or intensity in mild, but not-serious/dangerous is not a general translation of weak. Distinct recorded roots alone do not establish unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9eea70bd66ca3b7f",
+      "review_id": 139,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Recorded malmaz history connects the forms, but tooth-grinding action and conifer heartwood differ in meaning and part of speech.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "1d1422796c9ee4e6",
+      "review_id": 140,
+      "history_evidence": "not_established",
+      "reason": "The bully meaning coincides, but German is dated/inactive. A valid historical overlap must be distinguished from a suitable modern active headline.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "84300d048ec3e025",
+      "review_id": 141,
+      "history_evidence": "not_established",
+      "reason": "Cookie/cracker overlaps the listed British and other regional biscuit meanings. American soft bread and technical/slang senses do not all match. Danish borrows cakes, not the English biscuit form.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "56ffb1199271264e",
+      "review_id": 142,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both identify winter and explicitly record wintruz ancestry. English metaphoric, verbal and name uses are additional meanings.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "aa6d7db8982f2b58",
+      "review_id": 143,
+      "history_evidence": "borrowing_chain_recorded",
+      "reason": "The financial budget meaning coincides. German explicitly borrows via French from English; old English bag and other senses should not dominate the comparison.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "fde727b04fd3cf74",
+      "review_id": 144,
+      "history_evidence": "not_established",
+      "reason": "Cup/goblet vessels overlap, but the chosen German cup/trophy sense differs from a generic Danish cup. Danish calyx/dicebox uses are also additional.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "3491b9d4715b2edb",
+      "review_id": 145,
+      "history_evidence": "not_established",
+      "reason": "Generic surname definitions do not establish Seefeld/Seefeldt as variants or identify the same people. Danish named biographies do not resolve the English surname.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ac5b516ab867a75f",
+      "review_id": 146,
+      "history_evidence": "not_established",
+      "reason": "Blunt edge/adjective meanings differ from stub/fragments, buttocks and children. A cigar versus its butt is likewise not the same sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "51101ecd953c5ac0",
+      "review_id": 147,
+      "history_evidence": "parallel_calque_recorded",
+      "reason": "Both identify aardvark with explicit Dutch/Afrikaans calque history. Matching conceptual construction need not mean all morphemes are inherited equivalents.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "66f339ab513c49f2",
+      "review_id": 148,
+      "history_evidence": "inferred_compound_family",
+      "reason": "Both identify insulated coolboxes and record cooling-plus-box composition. Complete cross-language historical paths are inferred rather than documented here.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "4def90dad7f3a26e",
+      "review_id": 149,
+      "history_evidence": "not_established",
+      "reason": "Precious-metal fineness coincides explicitly, Swedish rare but active. Its historical silver restriction and figurative quality sense are separately recorded.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "97782ea65f9234fb",
+      "review_id": 150,
+      "history_evidence": "shared_compositional_source_recorded",
+      "reason": "Both identify hemoglobin with recorded hemo/globin source components. Same scientific referent and shared constructed sources do not imply uninterrupted inherited transmission.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "f42fe6b28e4d42c6",
+      "review_id": 151,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Law/rule and correct regular order are associated, but bare rule is not an exact equivalent of arrangement. Norwegian law is obsolete/inactive; shared laga history is explicit.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "b83aeb4342874126",
+      "review_id": 152,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "A manuscript copy and pertaining to that copy are noun versus adjective. English fine-grained is another meaning; Greek history is recorded only for the German noun.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "c7417d79d1da4e9d",
+      "review_id": 153,
+      "history_evidence": "not_established",
+      "reason": "Scuffle/brawl and uproar/racket overlap, while Swedish fraction is a different use. Danish Latin history does not establish Swedish ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "524bd0e20d46a5ce",
+      "review_id": 154,
+      "history_evidence": "not_established",
+      "reason": "Pulsation and powdery have distinct meanings and grammatical roles. Their common prefix spelling is insufficient.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "0f7d6d84faaa8781",
+      "review_id": 155,
+      "history_evidence": "not_established",
+      "reason": "Fat/obese coincides explicitly. Danish fatty/cool/bold and homographic nouns, and Norwegian thick, are additional uses; different immediate roots do not independently prove unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ce63257877dd7ce1",
+      "review_id": 156,
+      "history_evidence": "not_established",
+      "reason": "Rendering and tapestry repair are not the same action; renters of property are also unrelated to rendering. German borrows render, not renter.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e92850518456bec2",
+      "review_id": 157,
+      "history_evidence": "not_established",
+      "reason": "Killer meanings coincide, with English assassin generally narrower. Swedish baneman is archaic/inactive, so suitable current display differs from valid historical overlap.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "1bcc880da33a6284",
+      "review_id": 158,
+      "history_evidence": "shared_entity_base_inferred",
+      "reason": "A Ukrainian person and Ukrainian as a relational adjective concern the same country but have distinct grammar and meanings.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "4350671919cdc8b6",
+      "review_id": 159,
+      "history_evidence": "not_established",
+      "reason": "A town/village name and a surname from German are not matching identities. Flat tire is another German entry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "669ac4c1f56c4ecd",
+      "review_id": 160,
+      "history_evidence": "not_established",
+      "reason": "Leap year and shoulder name different concepts. Similar short spellings provide no shared sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ff0354fd132a175f",
+      "review_id": 161,
+      "history_evidence": "derivation_and_borrowing_recorded",
+      "reason": "Danish explicitly calls Jorgine a feminine form of Jorgen; Swedish Jorgen borrows that Danish male name. The variants are related but are not interchangeable names of one person.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "db0ad6928b699be8",
+      "review_id": 162,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "German Jupiter includes astronomical and Roman-tagged entries; Norwegian disambiguates planet and deity and adds distinct places. The planet sense is shared; same spelling must not collapse all place names.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "3536c683e0c74130",
+      "review_id": 163,
+      "history_evidence": "not_established",
+      "reason": "Support/base/surface underneath and underdog do not share a recorded meaning. The under-like component alone is insufficient.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "1c5dad79d53672e2",
+      "review_id": 164,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "The scraping verbs match with common skraponan ancestry, but the selected Swedish squeegee is a tool rather than the English action. Other noun and verb meanings differ.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "8345073bf09f4fa3",
+      "review_id": 165,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Both record textile fringe; the chosen eyelash misses that shared sense. The Swedish male-name history belongs to another entry and does not supply fringe ancestry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "92e1933ea1aba6fe",
+      "review_id": 166,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Animal anus/scupper and gate/barrier openings are not exact translations in the saved senses despite common gata ancestry. Other English technical openings do not establish a Danish scupper counterpart here.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "9653f921b7549ec7",
+      "review_id": 167,
+      "history_evidence": "not_established",
+      "reason": "Livestock and an unspecified surname have no observed common concept or identity.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "d22a2cdf23e4d91d",
+      "review_id": 168,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Seashell overlaps explicitly with Swedish shell, and common skaljo history is recorded. Norwegian scale and Swedish peel/device-case meanings are additional.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "be6c911ca3cec3f0",
+      "review_id": 169,
+      "history_evidence": "borrowing_plus_inheritance_recorded",
+      "reason": "Both identify the Norse giant category with recorded etunaz history. English is a learned Norse borrowing, not uninterrupted native descent.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "58b738d7bc7d7b24",
+      "review_id": 170,
+      "history_evidence": "not_established",
+      "reason": "An idea/message and the Greek city Messene are different concepts. German borrowing from English message does not link it to Messene.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e3748a50bb46c5b3",
+      "review_id": 171,
+      "history_evidence": "not_established",
+      "reason": "Both identify kidnapping. Local derivational records do not provide a complete cross-language history.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "9449e0906657cf02",
+      "review_id": 172,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Both record rabid with the same German and Latin borrowing chain. Danish fanatic/brutal/coarse expansions require separate coverage checks.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "298450cf4f118d33",
+      "review_id": 173,
+      "history_evidence": "not_established",
+      "reason": "Chromatin and chrismation are distinct scientific and religious concepts. Greek colour versus chrism-related derivation does not establish complete historical unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "43680dd251c4f009",
+      "review_id": 174,
+      "history_evidence": "parallel_calque_recorded",
+      "reason": "The named Bonn hill/quarter and anatomical mons veneris are different referents even with an explicitly shared Latin calque.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "22ef5549c5118b06",
+      "review_id": 175,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Brewing beer/liquor and coffee overlaps with common brewwanan ancestry. Swedish pier/bridge and English brow/name entries have different histories.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "dd6ce13617699f37",
+      "review_id": 176,
+      "history_evidence": "inferred_shared_component_only",
+      "reason": "Summerhouse and butterfly differ. The shared summer component does not establish full-compound equivalence or ancestry.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "4d390dd28cd95e5d",
+      "review_id": 177,
+      "history_evidence": "not_established",
+      "reason": "Living together is a form of coexistence, while coexistence can be broader. Local formations do not supply a common historical path.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "c129c83130b53470",
+      "review_id": 178,
+      "history_evidence": "not_established",
+      "reason": "Obvious/evident and overt/manifest overlap explicitly. Apparent must refer to evident rather than merely seeming; German history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "f1b16632ff8321d5",
+      "review_id": 179,
+      "history_evidence": "not_established",
+      "reason": "The selected English verb concerns a client action, not a prostituted person. Saved English senses omit the ordinary sex-worker noun; this omission should not be mistaken for proof of no real noun overlap.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "37f9d4344b6da7da",
+      "review_id": 180,
+      "history_evidence": "not_established",
+      "reason": "Foam/froth overlaps explicitly. Swedish mouth-froth and verb uses and Norwegian lather differ in context; history is not connected here.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "1f68e0fbb1b7fe13",
+      "review_id": 181,
+      "history_evidence": "shared_entity_base_recorded",
+      "reason": "Israelite and a modern Israeli citizen refer to distinct categories despite the recorded Israel base. Same demonym-like form does not settle identity.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "88592fb9eff286ce",
+      "review_id": 182,
+      "history_evidence": "not_established",
+      "reason": "Mild/gentle and rope/wire/line differ in grammar and meaning; the Swedish given name is another entry. Distinct immediate roots do not prove full unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e5dee91f98030aea",
+      "review_id": 183,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both record alder and aluz ancestry. Two-letter forms can be valid cognates; Danish electricity is another entry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "8e57c6d9a8f04fe3",
+      "review_id": 184,
+      "history_evidence": "not_established",
+      "reason": "German is only a spelling redirect to einschließen. Resolve the referenced lemma before deciding whether enclosure/including overlaps append; a redirect gloss is not a meaning.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "881ecfa30bcb5407",
+      "review_id": 185,
+      "history_evidence": "not_established",
+      "reason": "Suspect and think-that-something-is-true can overlap in uncertain belief, while trusting a person can contrast with suspicion. The selected trust sense misses that contextual overlap.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "bf1c680f9715c15a",
+      "review_id": 186,
+      "history_evidence": "borrowing_and_variant_recorded",
+      "reason": "Norwegian explicitly borrows Danish Berthel and identifies it as a spelling variant of Bertel. This is supported name-family correspondence, not merely generic male-name gloss similarity or same-person identity.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "47948d2f334ce2c4",
+      "review_id": 187,
+      "history_evidence": "not_established",
+      "reason": "Danish gene is not German directional gen, which is dated/inactive. Danish explicitly borrows capitalized German Gen, a different noun entry from gen.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "61faae2af6f29b18",
+      "review_id": 188,
+      "history_evidence": "not_established",
+      "reason": "False/untrue overlaps explicitly, while German wrong/fake/immoral/perfidious meanings are additional. Different recorded sources do not prove full unrelatedness.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "3d7f303d520159a9",
+      "review_id": 189,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Saved German some and Swedish exclamatory what-a do not match. Native German source records interrogative/relative welcher with welche inflections and Swedish vilken translation, establishing omitted ordinary which correspondence.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "9eb94ed76c72d5eb",
+      "review_id": 190,
+      "history_evidence": "not_established",
+      "reason": "The city or indigenous-person category and indigo colour/dye/plant do not share the saved senses.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "dcc76d66294744de",
+      "review_id": 191,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Stalk and straw/haulm overlap as plant-stem material with common halmaz ancestry, but generic stalk includes growing stems and straw is a more specific material/use.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "ddc673ccdadda1c7",
+      "review_id": 192,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "A traveller is an agent, while travel/voyage is an action; both selected glosses are archaic/inactive. Norwegian also has active travel verbs and a separate danger entry.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "98fec27b0640a349",
+      "review_id": 193,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Both record Norse vindauga, but Swedish window is archaic/inactive; selected wind-source horizon point is not a window.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "18bf3f9e9cef756a",
+      "review_id": 194,
+      "history_evidence": "not_established",
+      "reason": "Extremely and abundantly/heavily can both express degree but do not generally modify the same predicates. The bare glosses cannot establish a common interchangeable sense.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "486629eec19acd1b",
+      "review_id": 195,
+      "history_evidence": "shared_ancestor_recorded",
+      "reason": "Conifer heartwood and ore/urban district/military field differ in saved modern meaning despite shared malmaz ancestry.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "e40a113de8aba4a1",
+      "review_id": 196,
+      "history_evidence": "not_established",
+      "reason": "German pure and Norwegian only/merely may overlap in restrictive constructions; bare versus but is not a shared headline. A related derivation is plausible but not documented in Norwegian here.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5ffe27cf8c1bbddb",
+      "review_id": 197,
+      "history_evidence": "shared_compositional_source_recorded",
+      "reason": "Both identify ytterbium and explicitly form it from Ytterby plus element suffix. Same element/source-name construction is useful equivalence, not uninterrupted native inherited vocabulary.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "dc8dbe30b476e7c2",
+      "review_id": 198,
+      "history_evidence": "not_established",
+      "reason": "Horny/frisky overlaps explicitly. Exuberance, health and cocktail uses differ. Danish kanhtaz versus Norwegian karskr is incomplete evidence for their full historical relation.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "e3f68f3355fd33b0",
+      "review_id": 199,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Both explicitly record chili. The Norwegian bare gloss does not establish every English pepper/powder/dish correspondence; shared borrowing is inferred because its history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "56406c3a290794dc",
+      "review_id": 200,
+      "history_evidence": "not_established",
+      "reason": "A technical-plan draughtsman belongs to the broader class of people who draw, but illustrator is not an exact universal equivalent. Game-piece and obsolete meanings are distinct.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "453f9c3d63a3394c",
+      "review_id": 201,
+      "history_evidence": "inferred_shared_borrowing",
+      "reason": "Donation coincides explicitly. Latin history is recorded only in Norwegian, so full Danish shared-source transmission remains inferred.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5863ecca2fa8f99c",
+      "review_id": 202,
+      "history_evidence": "shared_borrowing_recorded",
+      "reason": "Mixed cold dish and greens senses overlap with explicit Italian/French borrowing family. German Islamic prayer is another historical entry, not a salad meaning.",
+      "source_supported_positive": true,
+      "component_control": false
+    },
+    {
+      "case_id": "c411a35ab49cb38d",
+      "review_id": 203,
+      "history_evidence": "inferred_derivational_family",
+      "reason": "Give birth versus born are active verb and adjectival/participle meanings. Danish feeding and food senses are additional; Swedish full history is absent.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "ac0624c0168f324e",
+      "review_id": 204,
+      "history_evidence": "inferred_shared_component_only",
+      "reason": "Magnetic-moment units and magnetite mineral differ. A magnet-like component or topic does not establish exact meaning or full-word cognacy.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "b3a1530df0fc57a6",
+      "review_id": 205,
+      "history_evidence": "not_established",
+      "reason": "Domestic dog meaning explicitly overlaps, including Norwegian dog and female-dog senses. The English parent gloss a-person and selected female-dog counterpart miss it; secondary person/device senses should not dominate.",
+      "source_supported_positive": false,
+      "component_control": false
+    },
+    {
+      "case_id": "5c370bb32657ba3d",
+      "review_id": 206,
+      "history_evidence": "inferred_partial_compound_family",
+      "reason": "Both identify archdiocese. Recorded chief-plus-diocese versus arke-plus-stift constructions do not prove complete inherited component equivalence.",
+      "source_supported_positive": false,
+      "component_control": true
+    },
+    {
+      "case_id": "1ddc4967f366eb2b",
+      "review_id": 207,
+      "history_evidence": "shared_source_recorded",
+      "reason": "Both identify Thursday with recorded thunder-god-day source and reciprocal comparison. English adverb on-Thursday is a separate grammatical use.",
+      "source_supported_positive": true,
+      "component_control": false
+    }
+  ]
+}
