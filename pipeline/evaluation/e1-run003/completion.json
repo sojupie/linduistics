@@ -1,0 +1,35 @@
+{
+  "experiment": "E1",
+  "run_id": "E1-003",
+  "status": "complete",
+  "decisions": {
+    "A": "reject_as_tested",
+    "B": "revise_not_adopted"
+  },
+  "primary_gain_gate_met": {
+    "A": false,
+    "B": false
+  },
+  "published_data_changed": false,
+  "reconstructed_control_display_differences": 0,
+  "maximum_reconstructed_cosine_difference": 4.76837158203125e-07,
+  "original_comparisons_verified": 1201,
+  "secondary_matrix_cells_retained": 81143,
+  "report_sha256": "3bc95ef7e4be1f8801542321a6a03e53ce9b4e108fdbd14d786b5814a7642b9d",
+  "artifact_hashes": {
+    "case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+    "comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+    "concept_case_results.json": "0955e81b5fea97c2e01fbd69fa5c766ca31146312ee82847074d2cdadec202e0",
+    "concept_review.json": "bc9927f53cf9be4ec9ae7f1196e7fbec7026946fcfac13b64b63ffb279051928",
+    "concept_review_packet.json": "2d8a922c47eae165c13b224dca9d58b324ce569ae89d84a66ed2d34548e37ed1",
+    "metrics.json": "2fe5a33ec1c80a4be29f34672ab2e0db797da345c4e029313721c77e8e5af539",
+    "open_case_results.json": "cae181327815dcbdf0e123965a5326221a9ec58dbf6d48931e2e62d5121daf57",
+    "open_metrics.json": "90a33181c57aa791fa0b68f88890814c5f29db71ed99752b4dcf1b8477f6b36a",
+    "open_review.json": "2a3f6ac7f693a5568f0479974e95abde7eccf96afaa84884b1cec2637f112ea7",
+    "open_review_packet.json": "bde7113ee4306124b8862e1f229bacd14e44ab4edd68e3e45cdfd036c98d4052",
+    "protocol.json": "39fa717bb22df79eeaf230984e18deab45a350af833d65689161bdbfead43072",
+    "score_summary.json": "718bdd6a5f36fdd24a947c2ba8c6f8054cd58221e83c72ebb5f2dad336e79113"
+  },
+  "review_code_sha256": "a8324315c64f39af74c4c6efca36ec9754d3545441352ee8af8a0fe9c2bd5623",
+  "limitations": "Exploratory development judgments; reserved test families unopened."
+}

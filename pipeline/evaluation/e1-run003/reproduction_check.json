@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "source_run": "E1-003",
+  "repeat_run": "E1-reproduction",
+  "byte_identical_artifacts": {
+    "comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+    "case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+    "concept_review_packet.json": "2d8a922c47eae165c13b224dca9d58b324ce569ae89d84a66ed2d34548e37ed1",
+    "open_review_packet.json": "bde7113ee4306124b8862e1f229bacd14e44ab4edd68e3e45cdfd036c98d4052",
+    "concept_case_results.json": "0955e81b5fea97c2e01fbd69fa5c766ca31146312ee82847074d2cdadec202e0",
+    "open_case_results.json": "cae181327815dcbdf0e123965a5326221a9ec58dbf6d48931e2e62d5121daf57"
+  },
+  "metrics_identical_except_run_id": true,
+  "completion_hashes_verified": true,
+  "code_hashes_lf_normalized": {
+    "pipeline\\evaluation\\e1.py": "fa7df8935fcd2863511a033fd390b28b46b185b75d4da34979619997e6bf1473",
+    "pipeline\\evaluation\\e1_review.py": "a8324315c64f39af74c4c6efca36ec9754d3545441352ee8af8a0fe9c2bd5623",
+    "pipeline\\src\\sense_display.py": "f0f475c605c519dadfc0a1bfa3971eec200a91ed174768077c10b5160b416280",
+    "pipeline\\src\\semantic_matcher.py": "f3f076f81eed1c0f03b6bd7487834f044e312e056c487390df8e0aac7b3c52e8"
+  },
+  "procedure": "E1_REPRODUCE.md commands executed; reviews replayed only after exact packet hash checks.",
+  "reproduction_instructions_sha256": "fbf7ea001f2e844a1b11a7a8326badc46fb3b612563309ab8f0f361c0a03742f"
+}

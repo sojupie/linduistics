@@ -1,0 +1,104 @@
+{
+  "packet_sha256": "bde7113ee4306124b8862e1f229bacd14e44ab4edd68e3e45cdfd036c98d4052",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "rubric": "Assess whether the displayed pair shares a recorded sense; distinguish genuinely disjoint pairs from poorly selected overlaps. This is not correctness of a game question or ordinary whole-word equivalence.",
+  "blinding": "Variant names, classifier labels, and numeric scores hidden; all saved sense context available.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "case_id": "1c5dad79d53672e2",
+      "display_a": "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
+      "display_b": "to scrape, to scratch",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Ordinary physical scraping action on both sides."
+    },
+    {
+      "review_id": 2,
+      "case_id": "318bb3bc430bf9db",
+      "display_a": "to cow (to intimidate)",
+      "display_b": "to force into submission; to subdue, to suppress",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Intimidation and forcing submission overlap in the recorded ordinary uses."
+    },
+    {
+      "review_id": 3,
+      "case_id": "710eb84218c4c739",
+      "display_a": "mood",
+      "display_b": "Luna",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Mood is not the Roman goddess or given name; no shared sense is recorded."
+    },
+    {
+      "review_id": 4,
+      "case_id": "8a92889432233991",
+      "display_a": "sorrel (genus Rumex)",
+      "display_b": "A tumour, often accompanied by inflammation; pustule; varicose vein; pus; atter.",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Sorrel plant and inflamed tumour are distinct referents."
+    },
+    {
+      "review_id": 5,
+      "case_id": "90b18673995805e0",
+      "display_a": "to become (go from one state into another, with a predicative or the preposition til (“to”); the latter is preferred with nouns if a change is implied)",
+      "display_b": "to drown",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Becoming a state and drowning do not share the displayed modern meaning."
+    },
+    {
+      "review_id": 6,
+      "case_id": "ac5b516ab867a75f",
+      "display_a": "Having a thick edge or point; not sharp.",
+      "display_b": "a stub, stump, bit, fragment, piece, butt (of cigar, cigarette)",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Blunt adjective denotes lack of sharpness; stump noun denotes a remaining piece, not that property."
+    },
+    {
+      "review_id": 7,
+      "case_id": "b9b0af2e68f16dac",
+      "display_a": "weak, lacking in strength",
+      "display_b": "Not serious or dangerous.",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Generic lack of strength and lack of seriousness or danger are not interchangeable as written."
+    },
+    {
+      "review_id": 8,
+      "case_id": "c7417d79d1da4e9d",
+      "display_a": "uproar, tumult",
+      "display_b": "brawl, row, racket; trouble",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Uproar and racket or row share the disturbance reading."
+    },
+    {
+      "review_id": 9,
+      "case_id": "ced0d1387965bd0d",
+      "display_a": "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+      "display_b": "a female given name derived from the Swedish noun saga, used since the 19th century",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "An Icelandic narrative and a female given name are different readings; the recorded Swedish narrative reading remains available."
+    },
+    {
+      "review_id": 10,
+      "case_id": "d22a2cdf23e4d91d",
+      "display_a": "a mussel, shell (seashell)",
+      "display_b": "shell ((hard) external covering of an animal, egg, nut, various objects, etc. – used similarly to English)",
+      "headline_pair": "matches_shared_sense",
+      "reason": "The ordinary seashell reading fits the broader shell covering reading."
+    },
+    {
+      "review_id": 11,
+      "case_id": "dbf8ffc483f49eda",
+      "display_a": "pot",
+      "display_b": "pot, kitty",
+      "headline_pair": "unresolved",
+      "reason": "German bare pot lacks the context needed to establish the Swedish pooled-money or kitty reading."
+    },
+    {
+      "review_id": 12,
+      "case_id": "ee93428a0734facf",
+      "display_a": "ball (solid or hollow sphere)",
+      "display_b": "a buttock",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Sphere and buttock differ; the other recorded sexual or balcony readings also do not make this a shared modern sense."
+    }
+  ]
+}

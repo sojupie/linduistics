@@ -1,0 +1,244 @@
+{
+  "run_id": "E1-003",
+  "concept_cases": 995,
+  "family_groups": 104,
+  "concept_counts": {
+    "control": {
+      "wrong_sense": 259,
+      "acceptable": 630,
+      "restricted_sense": 99,
+      "unresolved": 7
+    },
+    "A": {
+      "wrong_sense": 259,
+      "acceptable": 630,
+      "restricted_sense": 99,
+      "unresolved": 7
+    },
+    "B": {
+      "wrong_sense": 240,
+      "acceptable": 652,
+      "restricted_sense": 96,
+      "unresolved": 7
+    }
+  },
+  "per_pair": {
+    "da-en": {
+      "control": {
+        "wrong_sense": 33,
+        "acceptable": 45,
+        "restricted_sense": 16,
+        "unresolved": 1
+      },
+      "A": {
+        "wrong_sense": 33,
+        "acceptable": 45,
+        "restricted_sense": 16,
+        "unresolved": 1
+      },
+      "B": {
+        "wrong_sense": 33,
+        "acceptable": 47,
+        "restricted_sense": 14,
+        "unresolved": 1
+      }
+    },
+    "da-de": {
+      "control": {
+        "acceptable": 68,
+        "restricted_sense": 11,
+        "wrong_sense": 15,
+        "unresolved": 1
+      },
+      "A": {
+        "acceptable": 68,
+        "restricted_sense": 11,
+        "wrong_sense": 15,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 71,
+        "restricted_sense": 11,
+        "wrong_sense": 12,
+        "unresolved": 1
+      }
+    },
+    "da-nb": {
+      "control": {
+        "acceptable": 80,
+        "wrong_sense": 18,
+        "restricted_sense": 2
+      },
+      "A": {
+        "acceptable": 80,
+        "wrong_sense": 18,
+        "restricted_sense": 2
+      },
+      "B": {
+        "acceptable": 85,
+        "wrong_sense": 14,
+        "restricted_sense": 1
+      }
+    },
+    "da-sv": {
+      "control": {
+        "acceptable": 71,
+        "restricted_sense": 9,
+        "wrong_sense": 22,
+        "unresolved": 1
+      },
+      "A": {
+        "acceptable": 71,
+        "restricted_sense": 9,
+        "wrong_sense": 22,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 75,
+        "wrong_sense": 18,
+        "restricted_sense": 9,
+        "unresolved": 1
+      }
+    },
+    "de-en": {
+      "control": {
+        "acceptable": 51,
+        "wrong_sense": 39,
+        "restricted_sense": 13
+      },
+      "A": {
+        "acceptable": 51,
+        "wrong_sense": 39,
+        "restricted_sense": 13
+      },
+      "B": {
+        "acceptable": 52,
+        "wrong_sense": 38,
+        "restricted_sense": 13
+      }
+    },
+    "en-nb": {
+      "control": {
+        "acceptable": 50,
+        "wrong_sense": 35,
+        "restricted_sense": 8
+      },
+      "A": {
+        "acceptable": 50,
+        "wrong_sense": 35,
+        "restricted_sense": 8
+      },
+      "B": {
+        "acceptable": 50,
+        "wrong_sense": 35,
+        "restricted_sense": 8
+      }
+    },
+    "en-sv": {
+      "control": {
+        "acceptable": 45,
+        "restricted_sense": 19,
+        "wrong_sense": 40,
+        "unresolved": 1
+      },
+      "A": {
+        "acceptable": 45,
+        "restricted_sense": 19,
+        "wrong_sense": 40,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 46,
+        "restricted_sense": 19,
+        "wrong_sense": 39,
+        "unresolved": 1
+      }
+    },
+    "de-nb": {
+      "control": {
+        "acceptable": 69,
+        "wrong_sense": 19,
+        "restricted_sense": 3,
+        "unresolved": 1
+      },
+      "A": {
+        "acceptable": 69,
+        "wrong_sense": 19,
+        "restricted_sense": 3,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 70,
+        "wrong_sense": 18,
+        "restricted_sense": 3,
+        "unresolved": 1
+      }
+    },
+    "de-sv": {
+      "control": {
+        "acceptable": 73,
+        "restricted_sense": 10,
+        "wrong_sense": 21
+      },
+      "A": {
+        "acceptable": 73,
+        "restricted_sense": 10,
+        "wrong_sense": 21
+      },
+      "B": {
+        "acceptable": 75,
+        "restricted_sense": 10,
+        "wrong_sense": 19
+      }
+    },
+    "nb-sv": {
+      "control": {
+        "acceptable": 78,
+        "unresolved": 2,
+        "wrong_sense": 17,
+        "restricted_sense": 8
+      },
+      "A": {
+        "acceptable": 78,
+        "unresolved": 2,
+        "wrong_sense": 17,
+        "restricted_sense": 8
+      },
+      "B": {
+        "acceptable": 81,
+        "unresolved": 2,
+        "wrong_sense": 14,
+        "restricted_sense": 8
+      }
+    }
+  },
+  "variants": {
+    "A": {
+      "gain_percentage_points": 0.0,
+      "paired_family_95_interval": [
+        0.0,
+        0.0
+      ],
+      "gained_cases": 0,
+      "lost_cases": 0,
+      "pair_loss_flags": [],
+      "primary_gain_gate_met": false,
+      "all_gain_and_pair_gates_met": false
+    },
+    "B": {
+      "gain_percentage_points": 2.2110552763819094,
+      "paired_family_95_interval": [
+        1.3555787278415015,
+        3.196803196803197
+      ],
+      "gained_cases": 22,
+      "lost_cases": 0,
+      "pair_loss_flags": [],
+      "primary_gain_gate_met": false,
+      "all_gain_and_pair_gates_met": false
+    }
+  },
+  "original_comparisons_verified": 1201,
+  "secondary_sense_matrix_cells": 81143,
+  "review_limits": "Source-guided agent judgments; not independent human accuracy. Open displays assessed separately."
+}

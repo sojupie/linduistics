@@ -1,0 +1,23 @@
+{
+  "experiment": "E1",
+  "run_id": "E1-003",
+  "plan_sha256": "49b2f9934fb0c19d524bcef69c8776cdbeecba0df876e64cee54e918fa0e63c7",
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "families_sha256": "b07cf0cb30876cb7cd3904511490154e8d72c010e9d8bf87bf0295861dae5642",
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "model_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "seed": 20261003,
+  "concept_cases": 995,
+  "open_cases": 207,
+  "unique_comparisons": 1201,
+  "parameters": {
+    "close_cosine_margin": 0.1,
+    "entry_order_weight": 0.05
+  },
+  "code_hashes": {
+    "C:\\Users\\ollem\\Git\\Github\\linduistics\\pipeline\\evaluation\\e1.py": "fa7df8935fcd2863511a033fd390b28b46b185b75d4da34979619997e6bf1473",
+    "pipeline\\src\\sense_display.py": "f0f475c605c519dadfc0a1bfa3971eec200a91ed174768077c10b5160b416280",
+    "pipeline\\src\\semantic_matcher.py": "f3f076f81eed1c0f03b6bd7487834f044e312e056c487390df8e0aac7b3c52e8"
+  },
+  "write_policy": "New local evaluation directory only; no database writes or source modifications."
+}

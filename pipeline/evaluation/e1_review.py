@@ -108,9 +108,56 @@ def summarize(run):
     print(json.dumps(summary, indent=2))
 
 
+def summarize_open(run):
+    controls = {}
+    for path in OUTPUT.glob('e0_open_review_*.json'):
+        for r in load(path)['judgments']:
+            assert r['case_id'] not in controls
+            controls[r['case_id']] = r
+    reviewed = load(run / 'open_review.json')
+    assert reviewed['packet_sha256'] == digest(run / 'open_review_packet.json')
+    packet = load(run / 'open_review_packet.json')
+    by_id = {r['review_id']: r for r in packet}
+    assert {r['review_id'] for r in reviewed['judgments']} == set(by_id)
+    changed = {}
+    for r in reviewed['judgments']:
+        assert all(r[k] == by_id[r['review_id']][k] for k in ['case_id', 'display_a', 'display_b'])
+        changed[r['case_id'], r['display_a'], r['display_b']] = r
+    counts, results = defaultdict(Counter), []
+    for case in load(run / 'case_displays.json'):
+        if case['panel'] != 'open':
+            continue
+        decisions = {'control': controls[case['case_id']]['headline_pair']}
+        for variant in ['A', 'B']:
+            pair = case['displays'][variant]
+            decisions[variant] = (decisions['control'] if pair == case['displays']['control'] else
+                                 changed[case['case_id'], *pair]['headline_pair'])
+        for variant, status in decisions.items():
+            counts[variant][status] += 1
+        results.append(dict(case, decisions=decisions))
+    assert len(results) == len(controls) == 207
+    slices = dict(load(OUTPUT / 'e0_open_summary_v2.json')['hard_case_groups'])
+    for case in results:
+        pair = f"pair:{case['lang_a']}-{case['lang_b']}"
+        slices.setdefault(pair, []).append(case['case_id'])
+    group_results = {}
+    for name, ids in slices.items():
+        selected = [r for r in results if r['case_id'] in set(ids)]
+        group_results[name] = {'cases': len(selected),
+            'shared_headline_counts': {v: sum(r['decisions'][v].startswith('matches_') for r in selected) for v in ['control', 'A', 'B']},
+            'changed_case_ids': {v: [r['case_id'] for r in selected if r['displays'][v] != r['displays']['control']] for v in ['A', 'B']}}
+    summary = {'run_id': load(run / 'protocol.json')['run_id'], 'cases': len(results), 'headline_counts': counts,
+        'shared_headline_counts': {v: sum(r['decisions'][v].startswith('matches_') for r in results) for v in ['control', 'A', 'B']},
+        'slices': group_results,
+        'limits': 'Not a population accuracy estimate. A disjoint pair may correctly show contrasting senses in a game. Renaming mismatch as no shared sense is not an improvement. Shared restricted senses remain distinct from ordinary whole-word equivalence.'}
+    save_json(run / 'open_case_results.json', results)
+    save_json(run / 'open_metrics.json', summary)
+    print(json.dumps({k: v for k, v in summary.items() if k != 'slices'}, indent=2))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', choices=['prepare-open', 'summarize'])
+    parser.add_argument('command', choices=['prepare-open', 'summarize', 'summarize-open'])
     parser.add_argument('--run', type=Path, default=OUTPUT / 'e1-run002')
     args = parser.parse_args()
-    (prepare_open if args.command == 'prepare-open' else summarize)(args.run)
+    {'prepare-open': prepare_open, 'summarize': summarize, 'summarize-open': summarize_open}[args.command](args.run)

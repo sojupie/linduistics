@@ -1,0 +1,1858 @@
+[
+  {
+    "case_id": "1c5dad79d53672e2",
+    "lang_a": "en",
+    "word_a": "scrape",
+    "lang_b": "sv",
+    "word_b": "skrapa",
+    "display_a": "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
+    "display_b": "to scrape, to scratch",
+    "senses_a": [
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-o9A6H2JM",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 1,
+        "gloss": "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
+        "pos": "verb",
+        "tags": [
+          "ambitransitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-aJTCsPAx",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 2,
+        "gloss": "To remove (something) by drawing an object along in this manner.",
+        "pos": "verb",
+        "tags": [
+          "transitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-hyRa4eA5",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 3,
+        "gloss": "To injure or damage by rubbing across a surface.",
+        "pos": "verb",
+        "tags": [
+          "transitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-T~J-M8pz",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 4,
+        "gloss": "To barely manage to achieve or attain.",
+        "pos": "verb",
+        "tags": [
+          "transitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-PF-MFxSn",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 5,
+        "gloss": "To collect or gather, especially without regard to the quality of what is chosen.",
+        "pos": "verb",
+        "tags": [
+          "transitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-IVvL~uZC",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 6,
+        "gloss": "To extract data by automated means from a format not intended to be machine-readable, such as a screenshot or a formatted web page.",
+        "pos": "verb",
+        "tags": [
+          "transitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-Q1KepV5h",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 7,
+        "gloss": "To occupy oneself with getting laboriously.",
+        "pos": "verb",
+        "tags": [
+          "intransitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-faQ8eDGV",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 8,
+        "gloss": "To play awkwardly and inharmoniously on a violin or similar instrument.",
+        "pos": "verb",
+        "tags": [
+          "ambitransitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-5QVsaGcu",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 9,
+        "gloss": "To draw back the right foot along the ground or floor when making a bow.",
+        "pos": "verb",
+        "tags": [
+          "intransitive"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|verb||en-scrape-en-verb-5QVsaGcu,en-scrape-en-verb-IVvL~uZC,en-scrape-en-verb-PF-MFxSn,en-scrape-en-verb-Q1KepV5h,en-scrape-en-verb-T~J-M8pz,en-scrape-en-verb-aJTCsPAx,en-scrape-en-verb-faQ8eDGV,en-scrape-en-verb-hyRa4eA5,en-scrape-en-verb-o9A6H2JM,en-scrape-en-verb-oDzQfj~P",
+        "source_sense_id": "en-scrape-en-verb-oDzQfj~P",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 10,
+        "gloss": "To express disapprobation of (a play, etc.) or to silence (a speaker) by drawing the feet back and forth upon the floor; usually with down.",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-0r~AeVvu",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 11,
+        "gloss": "A broad, shallow injury left by scraping (rather than a cut or a scratch).",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-0Jl9yXB7",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 12,
+        "gloss": "The sound or action of something being scraped.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-15ulx1t9",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 13,
+        "gloss": "Something removed by being scraped; a thin layer of something such as butter on bread.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-p4ROXmAm",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 14,
+        "gloss": "A fight, especially a fistfight without weapons.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-h3DYnhOq",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 15,
+        "gloss": "An awkward set of circumstances.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-xAKrOC0s",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 16,
+        "gloss": "A D and C or abortion; or, a miscarriage.",
+        "pos": "noun",
+        "tags": [
+          "UK",
+          "countable",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-Z-QyMaOb",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 17,
+        "gloss": "A shallow depression used by ground birds as a nest; a nest scrape.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-LQI8L~wC",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 18,
+        "gloss": "A shallow pit dug as a hideout.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-hSoq4Ss5",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 19,
+        "gloss": "A shave.",
+        "pos": "noun",
+        "tags": [
+          "UK",
+          "countable",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-lZxYDsvh",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 20,
+        "gloss": "Cheap butter.",
+        "pos": "noun",
+        "tags": [
+          "UK",
+          "obsolete",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": false
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-6qwsukHh",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 21,
+        "gloss": "Butter laid on bread in the thinnest possible manner, as though laid on and scraped off again.",
+        "pos": "noun",
+        "tags": [
+          "UK",
+          "obsolete",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": false
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-bUcL-1Ja",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 22,
+        "gloss": "A diminutive of the bend (especially of the bend sinister) which is half its width.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|scrape|noun||en-scrape-en-noun-0Jl9yXB7,en-scrape-en-noun-0r~AeVvu,en-scrape-en-noun-15ulx1t9,en-scrape-en-noun-6qwsukHh,en-scrape-en-noun-LQI8L~wC,en-scrape-en-noun-UmjZnTNm,en-scrape-en-noun-Z-QyMaOb,en-scrape-en-noun-bUcL-1Ja,en-scrape-en-noun-h3DYnhOq,en-scrape-en-noun-hSoq4Ss5,en-scrape-en-noun-lZxYDsvh,en-scrape-en-noun-p4ROXmAm,en-scrape-en-noun-xAKrOC0s",
+        "source_sense_id": "en-scrape-en-noun-UmjZnTNm",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).\nCognate with Dutch schrapen (“to scrape”), schrappen (“to strike through; to cancel; to scrap”), schrabben (“to scratch”), German schrappen (“to scrape”), Danish skrabe (“to scrape”), Icelandic skrapa (“to scrape”), Walloon screper (“to scrape”), Latin scri",
+        "sense_id": 23,
+        "gloss": "An intermittent shallow pond in a wetland or floodplain, often artificially created to attract birds.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|skrapa|verb||en-skrapa-sv-verb-WR1unJ~D",
+        "source_sense_id": "en-skrapa-sv-verb-WR1unJ~D",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 1,
+        "gloss": "to scrape, to scratch",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skrapa|noun||en-skrapa-sv-noun-6UURdQ63,en-skrapa-sv-noun-Km3KhkQb,en-skrapa-sv-noun-Nz4wo7Pp,en-skrapa-sv-noun-dP8PTXOo",
+        "source_sense_id": "en-skrapa-sv-noun-6UURdQ63",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 2,
+        "gloss": "a scraper (tool for scraping)",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skrapa|noun||en-skrapa-sv-noun-6UURdQ63,en-skrapa-sv-noun-Km3KhkQb,en-skrapa-sv-noun-Nz4wo7Pp,en-skrapa-sv-noun-dP8PTXOo",
+        "source_sense_id": "en-skrapa-sv-noun-Km3KhkQb",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 3,
+        "gloss": "a scraper (tool for scraping)",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skrapa|noun||en-skrapa-sv-noun-6UURdQ63,en-skrapa-sv-noun-Km3KhkQb,en-skrapa-sv-noun-Nz4wo7Pp,en-skrapa-sv-noun-dP8PTXOo",
+        "source_sense_id": "en-skrapa-sv-noun-Km3KhkQb",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 4,
+        "gloss": "a squeegee",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skrapa|noun||en-skrapa-sv-noun-6UURdQ63,en-skrapa-sv-noun-Km3KhkQb,en-skrapa-sv-noun-Nz4wo7Pp,en-skrapa-sv-noun-dP8PTXOo",
+        "source_sense_id": "en-skrapa-sv-noun-Nz4wo7Pp",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 5,
+        "gloss": "short for skyskrapa (“skyscraper”)",
+        "pos": "noun",
+        "tags": [
+          "abbreviation",
+          "alt-of",
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skrapa|noun||en-skrapa-sv-noun-6UURdQ63,en-skrapa-sv-noun-Km3KhkQb,en-skrapa-sv-noun-Nz4wo7Pp,en-skrapa-sv-noun-dP8PTXOo",
+        "source_sense_id": "en-skrapa-sv-noun-dP8PTXOo",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skrapōną",
+        "etym_text": "From Old Swedish skrapa, from Old Norse skrapa, from Proto-Germanic *skrapōną, *skrepaną, from Proto-Indo-European *skreb-, *skrep-.",
+        "sense_id": 6,
+        "gloss": "a telling off",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 1
+  },
+  {
+    "case_id": "318bb3bc430bf9db",
+    "lang_a": "da",
+    "word_a": "kue",
+    "lang_b": "sv",
+    "word_b": "kuva",
+    "display_a": "to cow (to intimidate)",
+    "display_b": "to force into submission; to subdue, to suppress",
+    "senses_a": [
+      {
+        "source_entry_key": "da|kue|verb||en-kue-da-verb-6n9wZKp8,en-kue-da-verb-Kz6bqc9r,en-kue-da-verb-miVFhfgi",
+        "source_sense_id": "en-kue-da-verb-miVFhfgi",
+        "etymology_number": null,
+        "etym_root": "Old Norse kúga",
+        "etym_text": "From Old Norse kúga (“to cow, force”).",
+        "sense_id": 1,
+        "gloss": "to cow (to intimidate)",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|kue|verb||en-kue-da-verb-6n9wZKp8,en-kue-da-verb-Kz6bqc9r,en-kue-da-verb-miVFhfgi",
+        "source_sense_id": "en-kue-da-verb-6n9wZKp8",
+        "etymology_number": null,
+        "etym_root": "Old Norse kúga",
+        "etym_text": "From Old Norse kúga (“to cow, force”).",
+        "sense_id": 2,
+        "gloss": "to subdue",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|kue|verb||en-kue-da-verb-6n9wZKp8,en-kue-da-verb-Kz6bqc9r,en-kue-da-verb-miVFhfgi",
+        "source_sense_id": "en-kue-da-verb-Kz6bqc9r",
+        "etymology_number": null,
+        "etym_root": "Old Norse kúga",
+        "etym_text": "From Old Norse kúga (“to cow, force”).",
+        "sense_id": 3,
+        "gloss": "to stunt (to check or hinder the growth or development)",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|kuva|verb||en-kuva-sv-verb-NkPktJ9n,en-kuva-sv-verb-kluUDYu0",
+        "source_sense_id": "en-kuva-sv-verb-NkPktJ9n",
+        "etymology_number": null,
+        "etym_root": "Old Norse kúga",
+        "etym_text": "Unknown. Possibly from Danish kue or Old Norse kúga. Possibly formed from Swedish kuv (“curve”), as in the English verb stoop. Compare origin of English cow (“intimidate”).",
+        "sense_id": 1,
+        "gloss": "to force into submission; to subdue, to suppress",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true,
+        "source_claims": [
+          {
+            "match_id": "e16e925013a2e5147ab8d0a888726208145cfcbd5dc4330f5fcd3a4e8482fc5d",
+            "relation": "derived_from",
+            "scope": {
+              "source": "entry",
+              "target": "form"
+            },
+            "source_uncertain": null,
+            "analysis_basis": null,
+            "related_language": "da",
+            "related_form": "kue",
+            "evidence": {
+              "template_index": 1,
+              "template_name": "der",
+              "args": {
+                "1": "sv",
+                "2": "da",
+                "3": "kue"
+              }
+            },
+            "source_entry": {
+              "source": "Wiktionary via Kaikki/Wiktextract",
+              "source_file": "kaikki_sv.jsonl",
+              "source_url": "https://en.wiktionary.org/wiki/kuva#Swedish",
+              "source_entry_key": "sv|kuva|verb||en-kuva-sv-verb-NkPktJ9n,en-kuva-sv-verb-kluUDYu0",
+              "language_code": "sv",
+              "word": "kuva",
+              "part_of_speech": "verb",
+              "etymology_number": null
+            },
+            "source_active_sense": {
+              "source_sense_id": "en-kuva-sv-verb-NkPktJ9n",
+              "gloss": "to force into submission; to subdue, to suppress",
+              "etymological_root": "Old Norse kúga"
+            },
+            "target_form_match": {
+              "language_code": "da",
+              "form": "kue",
+              "active_entry_key": "da|kue|verb||en-kue-da-verb-6n9wZKp8,en-kue-da-verb-Kz6bqc9r,en-kue-da-verb-miVFhfgi",
+              "active_sense_id": "en-kue-da-verb-6n9wZKp8",
+              "active_sense_gloss": "to subdue",
+              "active_sense_etymological_root": "Old Norse kúga",
+              "active_identity_status": "available",
+              "form_match_method": "exact",
+              "source_identity_candidates": []
+            }
+          }
+        ]
+      },
+      {
+        "source_entry_key": "sv|kuva|verb||en-kuva-sv-verb-NkPktJ9n,en-kuva-sv-verb-kluUDYu0",
+        "source_sense_id": "en-kuva-sv-verb-kluUDYu0",
+        "etymology_number": null,
+        "etym_root": "Old Norse kúga",
+        "etym_text": "Unknown. Possibly from Danish kue or Old Norse kúga. Possibly formed from Swedish kuv (“curve”), as in the English verb stoop. Compare origin of English cow (“intimidate”).",
+        "sense_id": 2,
+        "gloss": "to suppress (feelings, etc.)",
+        "pos": "verb",
+        "tags": [
+          "figuratively"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 2
+  },
+  {
+    "case_id": "710eb84218c4c739",
+    "lang_a": "da",
+    "word_a": "lune",
+    "lang_b": "de",
+    "word_b": "Luna",
+    "display_a": "mood",
+    "display_b": "Luna",
+    "senses_a": [
+      {
+        "source_entry_key": "da|lune|noun|1|en-lune-da-noun-2jcgQics,en-lune-da-noun-7g5PMJya,en-lune-da-noun-xSIaKEan",
+        "source_sense_id": "en-lune-da-noun-7g5PMJya",
+        "etymology_number": "1",
+        "etym_root": "Latin lūna",
+        "etym_text": "From Middle Low German lūne (“lunar phase, caprice”), from Latin lūna. Cognate with German Laune.",
+        "sense_id": 1,
+        "gloss": "mood",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|lune|noun|1|en-lune-da-noun-2jcgQics,en-lune-da-noun-7g5PMJya,en-lune-da-noun-xSIaKEan",
+        "source_sense_id": "en-lune-da-noun-xSIaKEan",
+        "etymology_number": "1",
+        "etym_root": "Latin lūna",
+        "etym_text": "From Middle Low German lūne (“lunar phase, caprice”), from Latin lūna. Cognate with German Laune.",
+        "sense_id": 2,
+        "gloss": "whim, caprice",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|lune|noun|1|en-lune-da-noun-2jcgQics,en-lune-da-noun-7g5PMJya,en-lune-da-noun-xSIaKEan",
+        "source_sense_id": "en-lune-da-noun-2jcgQics",
+        "etymology_number": "1",
+        "etym_root": "Latin lūna",
+        "etym_text": "From Middle Low German lūne (“lunar phase, caprice”), from Latin lūna. Cognate with German Laune.",
+        "sense_id": 3,
+        "gloss": "humor, humour",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|lune|verb|2|en-lune-da-verb-WGpxdb6s",
+        "source_sense_id": "en-lune-da-verb-WGpxdb6s",
+        "etymology_number": "2",
+        "etym_root": "Old Norse lugna",
+        "etym_text": "From Old Norse lugna (“to calm”).",
+        "sense_id": 4,
+        "gloss": "to warm",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "de|Luna|name||en-Luna-de-name-Dqu8A-XR,en-Luna-de-name-nXeiTQ9M",
+        "source_sense_id": "en-Luna-de-name-nXeiTQ9M",
+        "etymology_number": null,
+        "etym_root": "Latin Lūna",
+        "etym_text": "(Roman mythology): Latin Lūna",
+        "sense_id": 1,
+        "gloss": "Luna",
+        "pos": "name",
+        "tags": [
+          "Roman"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Luna|name||en-Luna-de-name-Dqu8A-XR,en-Luna-de-name-nXeiTQ9M",
+        "source_sense_id": "en-Luna-de-name-Dqu8A-XR",
+        "etymology_number": null,
+        "etym_root": "Latin Lūna",
+        "etym_text": "(Roman mythology): Latin Lūna",
+        "sense_id": 2,
+        "gloss": "a female given name of modern usage",
+        "pos": "name",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "review_id": 3
+  },
+  {
+    "case_id": "8a92889432233991",
+    "lang_a": "de",
+    "word_a": "Ampfer",
+    "lang_b": "en",
+    "word_b": "amper",
+    "display_a": "sorrel (genus Rumex)",
+    "display_b": "A tumour, often accompanied by inflammation; pustule; varicose vein; pus; atter.",
+    "senses_a": [
+      {
+        "source_entry_key": "de|Ampfer|noun||en-Ampfer-de-noun-nlVRxDjZ",
+        "source_sense_id": "en-Ampfer-de-noun-nlVRxDjZ",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *ampraz",
+        "etym_text": "From the equivalent Middle High German ampfer, Old High German ampfaro m, allied to the equivalent Old English ompre, from Proto-West Germanic *amprō; an adjective used as a substantive. Compare Dutch amper (“sharp, bitter, unripe”), Old Swedish amper, Old Norse apr (“sharp, chiefly of cold”) (for Proto-Germanic *ampraz); also Low German ampern (“to prove bitter to the taste”). Sauerampfer (also corrupted to Sauer-ramf) is a tautological compound like Windhund. In case *ampraz, from earlier Pre-",
+        "sense_id": 1,
+        "gloss": "sorrel (genus Rumex)",
+        "pos": "noun",
+        "tags": [
+          "masculine",
+          "strong"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "en|amper|noun|1|en-amper-en-noun-MuMaA4zi,en-amper-en-noun-SSJsuSMF",
+        "source_sense_id": "en-amper-en-noun-MuMaA4zi",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *ampraz",
+        "etym_text": "From Middle English ampre, from Old English ampre (“a dilated vein, varix, tumour, swelling; dock, sorrel”), from Proto-West Germanic *amprō, *amprā (“dock, sorrel”), which is related to Proto-Germanic *ampraz (“sharp”). Related to aber.",
+        "sense_id": 1,
+        "gloss": "A tumour, often accompanied by inflammation; pustule; varicose vein; pus; atter.",
+        "pos": "noun",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|amper|noun|1|en-amper-en-noun-MuMaA4zi,en-amper-en-noun-SSJsuSMF",
+        "source_sense_id": "en-amper-en-noun-SSJsuSMF",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *ampraz",
+        "etym_text": "From Middle English ampre, from Old English ampre (“a dilated vein, varix, tumour, swelling; dock, sorrel”), from Proto-West Germanic *amprō, *amprā (“dock, sorrel”), which is related to Proto-Germanic *ampraz (“sharp”). Related to aber.",
+        "sense_id": 2,
+        "gloss": "A defect or flaw, especially in cloth.",
+        "pos": "noun",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "review_id": 4
+  },
+  {
+    "case_id": "90b18673995805e0",
+    "lang_a": "da",
+    "word_a": "blive",
+    "lang_b": "nb",
+    "word_b": "blive",
+    "display_a": "to become (go from one state into another, with a predicative or the preposition til (“to”); the latter is preferred with nouns if a change is implied)",
+    "display_b": "to drown",
+    "senses_a": [
+      {
+        "source_entry_key": "da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",
+        "source_sense_id": "en-blive-da-verb-4pbjah3V",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *bilībaną",
+        "etym_text": "From Middle Low German bliven, from Old Saxon bilīƀan, from Proto-Germanic *bilībaną, cognate with German bleiben (“to remain”). In the sense “to become\", it replaced native vorde.",
+        "sense_id": 1,
+        "gloss": "to become (go from one state into another, with a predicative or the preposition til (“to”); the latter is preferred with nouns if a change is implied)",
+        "pos": "verb",
+        "tags": [
+          "copulative"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",
+        "source_sense_id": "en-blive-da-verb-cH6taUdC",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *bilībaną",
+        "etym_text": "From Middle Low German bliven, from Old Saxon bilīƀan, from Proto-Germanic *bilībaną, cognate with German bleiben (“to remain”). In the sense “to become\", it replaced native vorde.",
+        "sense_id": 2,
+        "gloss": "to be (used with the past participle to form the passive voice)",
+        "pos": "verb",
+        "tags": [
+          "auxiliary"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",
+        "source_sense_id": "en-blive-da-verb-C8RIV779",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *bilībaną",
+        "etym_text": "From Middle Low German bliven, from Old Saxon bilīƀan, from Proto-Germanic *bilībaną, cognate with German bleiben (“to remain”). In the sense “to become\", it replaced native vorde.",
+        "sense_id": 3,
+        "gloss": "to amount (to total or evaluate)",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",
+        "source_sense_id": "en-blive-da-verb-N66T3Yjh",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *bilībaną",
+        "etym_text": "From Middle Low German bliven, from Old Saxon bilīƀan, from Proto-Germanic *bilībaną, cognate with German bleiben (“to remain”). In the sense “to become\", it replaced native vorde.",
+        "sense_id": 4,
+        "gloss": "remain (to continue unchanged in place, form, or condition, or undiminished in quantity)",
+        "pos": "verb",
+        "tags": [
+          "intransitive"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "nb|blive|verb||en-blive-nb-verb-K13rKmk8",
+        "source_sense_id": "en-blive-nb-verb-K13rKmk8",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *bilībaną",
+        "etym_text": "From the expression blive på sjøen (literally “to remain at sea”). Thus the same word as bli (“to remain, become”), from Danish blive, from Middle Low German blîven, from Proto-Germanic *bilībaną.",
+        "sense_id": 1,
+        "gloss": "to drown",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true,
+        "source_claims": [
+          {
+            "match_id": "7ee8ec0209470a9252e9b3b4733fbbed00803e8b495fdc7da514b01e7de78a19",
+            "relation": "derived_from",
+            "scope": {
+              "source": "entry",
+              "target": "form"
+            },
+            "source_uncertain": null,
+            "analysis_basis": null,
+            "related_language": "da",
+            "related_form": "blive",
+            "evidence": {
+              "template_index": 1,
+              "template_name": "der",
+              "args": {
+                "1": "nb",
+                "2": "da",
+                "3": "blive"
+              }
+            },
+            "source_entry": {
+              "source": "Wiktionary via Kaikki/Wiktextract",
+              "source_file": "kaikki_nb.jsonl",
+              "source_url": "https://en.wiktionary.org/wiki/blive#Norwegian_Bokm%C3%A5l",
+              "source_entry_key": "nb|blive|verb||en-blive-nb-verb-K13rKmk8",
+              "language_code": "nb",
+              "word": "blive",
+              "part_of_speech": "verb",
+              "etymology_number": null
+            },
+            "source_active_sense": {
+              "source_sense_id": "en-blive-nb-verb-K13rKmk8",
+              "gloss": "to drown",
+              "etymological_root": "Proto-Germanic *bilībaną"
+            },
+            "target_form_match": {
+              "language_code": "da",
+              "form": "blive",
+              "active_entry_key": "da|blive|verb||en-blive-da-verb-4pbjah3V,en-blive-da-verb-C8RIV779,en-blive-da-verb-N66T3Yjh,en-blive-da-verb-cH6taUdC",
+              "active_sense_id": "en-blive-da-verb-cH6taUdC",
+              "active_sense_gloss": "to be (used with the past participle to form the passive voice)",
+              "active_sense_etymological_root": "Proto-Germanic *bilībaną",
+              "active_identity_status": "available",
+              "form_match_method": "exact",
+              "source_identity_candidates": []
+            }
+          }
+        ]
+      }
+    ],
+    "review_id": 5
+  },
+  {
+    "case_id": "ac5b516ab867a75f",
+    "lang_a": "en",
+    "word_a": "blunt",
+    "lang_b": "nb",
+    "word_b": "stump",
+    "display_a": "Having a thick edge or point; not sharp.",
+    "display_b": "a stub, stump, bit, fragment, piece, butt (of cigar, cigarette)",
+    "senses_a": [
+      {
+        "source_entry_key": "en|blunt|adj|1|en-blunt-en-adj-1QDJscF8,en-blunt-en-adj-DBkU-wdh,en-blunt-en-adj-GAaDQFKC,en-blunt-en-adj-Ls2AzcKY,en-blunt-en-adj-OUxUPUqp",
+        "source_sense_id": "en-blunt-en-adj-GAaDQFKC",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 1,
+        "gloss": "Having a thick edge or point; not sharp.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|adj|1|en-blunt-en-adj-1QDJscF8,en-blunt-en-adj-DBkU-wdh,en-blunt-en-adj-GAaDQFKC,en-blunt-en-adj-Ls2AzcKY,en-blunt-en-adj-OUxUPUqp",
+        "source_sense_id": "en-blunt-en-adj-Ls2AzcKY",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 2,
+        "gloss": "Dull in understanding; slow of discernment; opposed to acute.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|adj|1|en-blunt-en-adj-1QDJscF8,en-blunt-en-adj-DBkU-wdh,en-blunt-en-adj-GAaDQFKC,en-blunt-en-adj-Ls2AzcKY,en-blunt-en-adj-OUxUPUqp",
+        "source_sense_id": "en-blunt-en-adj-OUxUPUqp",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 3,
+        "gloss": "Abrupt in address; plain; unceremonious; wanting in the forms of civility; rough in manners or speech.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|adj|1|en-blunt-en-adj-1QDJscF8,en-blunt-en-adj-DBkU-wdh,en-blunt-en-adj-GAaDQFKC,en-blunt-en-adj-Ls2AzcKY,en-blunt-en-adj-OUxUPUqp",
+        "source_sense_id": "en-blunt-en-adj-1QDJscF8",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 4,
+        "gloss": "Hard to impress or penetrate.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|adj|1|en-blunt-en-adj-1QDJscF8,en-blunt-en-adj-DBkU-wdh,en-blunt-en-adj-GAaDQFKC,en-blunt-en-adj-Ls2AzcKY,en-blunt-en-adj-OUxUPUqp",
+        "source_sense_id": "en-blunt-en-adj-DBkU-wdh",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 5,
+        "gloss": "Slow or deficient in feeling: insensitive.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|noun|1|en-blunt-en-noun-J8QT-YIn,en-blunt-en-noun-VBCSukwG,en-blunt-en-noun-eK-BK4A2,en-blunt-en-noun-iECb4jXa,en-blunt-en-noun-~IybdRGS",
+        "source_sense_id": "en-blunt-en-noun-VBCSukwG",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 6,
+        "gloss": "A fencer's practice foil with a soft tip.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|noun|1|en-blunt-en-noun-J8QT-YIn,en-blunt-en-noun-VBCSukwG,en-blunt-en-noun-eK-BK4A2,en-blunt-en-noun-iECb4jXa,en-blunt-en-noun-~IybdRGS",
+        "source_sense_id": "en-blunt-en-noun-eK-BK4A2",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 7,
+        "gloss": "A short needle with a strong point.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|noun|1|en-blunt-en-noun-J8QT-YIn,en-blunt-en-noun-VBCSukwG,en-blunt-en-noun-eK-BK4A2,en-blunt-en-noun-iECb4jXa,en-blunt-en-noun-~IybdRGS",
+        "source_sense_id": "en-blunt-en-noun-iECb4jXa",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 8,
+        "gloss": "A marijuana cigar.",
+        "pos": "noun",
+        "tags": [
+          "US",
+          "countable",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|noun|1|en-blunt-en-noun-J8QT-YIn,en-blunt-en-noun-VBCSukwG,en-blunt-en-noun-eK-BK4A2,en-blunt-en-noun-iECb4jXa,en-blunt-en-noun-~IybdRGS",
+        "source_sense_id": "en-blunt-en-noun-J8QT-YIn",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 9,
+        "gloss": "Money.",
+        "pos": "noun",
+        "tags": [
+          "UK",
+          "archaic",
+          "slang",
+          "uncountable"
+        ],
+        "is_active": false
+      },
+      {
+        "source_entry_key": "en|blunt|noun|1|en-blunt-en-noun-J8QT-YIn,en-blunt-en-noun-VBCSukwG,en-blunt-en-noun-eK-BK4A2,en-blunt-en-noun-iECb4jXa,en-blunt-en-noun-~IybdRGS",
+        "source_sense_id": "en-blunt-en-noun-~IybdRGS",
+        "etymology_number": "1",
+        "etym_root": "Old English *blunt",
+        "etym_text": "From Middle English blunt, blont, from Old English *blunt, probably of North Germanic origin, possibly related to Old Norse blunda (“to shut eyes, to doze”), related to blind (> Icelandic blunda, Swedish blunda, Danish blunde).\nCompare the Scandinavian-German munitons term blind (“non-live, dummy”), opposite of skarp (“live”, literally, “sharp”): Swedish and Danish blind patron (“dummy round”), Danish blindt skud, German blinder schuss (“dummy shot”), blinde granate (“dummy grenade”).",
+        "sense_id": 10,
+        "gloss": "A playboating move resembling a cartwheel performed on a wave.",
+        "pos": "noun",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|verb|2|en-blunt-en-verb-4Oyjg8ir,en-blunt-en-verb-cG5NAAOM",
+        "source_sense_id": "en-blunt-en-verb-cG5NAAOM",
+        "etymology_number": "2",
+        "etym_root": "",
+        "etym_text": "From Middle English blunten, blonten, from the adjective (see above).",
+        "sense_id": 11,
+        "gloss": "To dull the edge or point of, by making it thicker; to make blunt.",
+        "pos": "verb",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|blunt|verb|2|en-blunt-en-verb-4Oyjg8ir,en-blunt-en-verb-cG5NAAOM",
+        "source_sense_id": "en-blunt-en-verb-4Oyjg8ir",
+        "etymology_number": "2",
+        "etym_root": "",
+        "etym_text": "From Middle English blunten, blonten, from the adjective (see above).",
+        "sense_id": 12,
+        "gloss": "To repress or weaken; to impair the force, keenness, or susceptibility, of",
+        "pos": "verb",
+        "tags": [
+          "figuratively"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Blunt|name||en-Blunt-en-name-MStumbFu,en-Blunt-en-name-su1yiRXa",
+        "source_sense_id": "en-Blunt-en-name-su1yiRXa",
+        "etymology_number": null,
+        "etym_root": "",
+        "etym_text": "Two possible origins:\n* From Anglo-Norman blunt (“blond”), a nickname for someone with fair hair or a light complexion.\n* From Middle English blunt (“dull, stupid”), a nickname for a stupid person.",
+        "sense_id": 13,
+        "gloss": "A surname transferred from the nickname.",
+        "pos": "name",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Blunt|name||en-Blunt-en-name-MStumbFu,en-Blunt-en-name-su1yiRXa",
+        "source_sense_id": "en-Blunt-en-name-MStumbFu",
+        "etymology_number": null,
+        "etym_root": "",
+        "etym_text": "Two possible origins:\n* From Anglo-Norman blunt (“blond”), a nickname for someone with fair hair or a light complexion.\n* From Middle English blunt (“dull, stupid”), a nickname for a stupid person.",
+        "sense_id": 14,
+        "gloss": "A minor city in Hughes County, South Dakota, United States.",
+        "pos": "name",
+        "tags": [
+          "countable",
+          "uncountable"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "nb|stump|noun||en-stump-nb-noun-AE5TOmuV,en-stump-nb-noun-uvTnjGif",
+        "source_sense_id": "en-stump-nb-noun-uvTnjGif",
+        "etymology_number": null,
+        "etym_root": "Old Norse stumpr",
+        "etym_text": "From Old Norse stumpr and Middle Low German stump.",
+        "sense_id": 1,
+        "gloss": "a stub, stump, bit, fragment, piece, butt (of cigar, cigarette)",
+        "pos": "noun",
+        "tags": [
+          "masculine"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "nb|stump|noun||en-stump-nb-noun-AE5TOmuV,en-stump-nb-noun-uvTnjGif",
+        "source_sense_id": "en-stump-nb-noun-AE5TOmuV",
+        "etymology_number": null,
+        "etym_root": "Old Norse stumpr",
+        "etym_text": "From Old Norse stumpr and Middle Low German stump.",
+        "sense_id": 2,
+        "gloss": "buttocks, little scamp, tiny tot",
+        "pos": "noun",
+        "tags": [
+          "humorous",
+          "masculine"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 6
+  },
+  {
+    "case_id": "b9b0af2e68f16dac",
+    "lang_a": "de",
+    "word_a": "schwach",
+    "lang_b": "en",
+    "word_b": "mild",
+    "display_a": "weak, lacking in strength",
+    "display_b": "Not serious or dangerous.",
+    "senses_a": [
+      {
+        "source_entry_key": "de|schwach|adj||en-schwach-de-adj-Lo4rXVH2,en-schwach-de-adj-SBukAZyd",
+        "source_sense_id": "en-schwach-de-adj-Lo4rXVH2",
+        "etymology_number": null,
+        "etym_root": "Proto-West Germanic *swak",
+        "etym_text": "From Middle High German swach, from Old High German *swah, from Proto-West Germanic *swak. Cognate with Dutch zwak, Scots swack, also English dialectal swack.",
+        "sense_id": 1,
+        "gloss": "weak, lacking in strength",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|schwach|adj||en-schwach-de-adj-Lo4rXVH2,en-schwach-de-adj-SBukAZyd",
+        "source_sense_id": "en-schwach-de-adj-SBukAZyd",
+        "etymology_number": null,
+        "etym_root": "Proto-West Germanic *swak",
+        "etym_text": "From Middle High German swach, from Old High German *swah, from Proto-West Germanic *swak. Cognate with Dutch zwak, Scots swack, also English dialectal swack.",
+        "sense_id": 2,
+        "gloss": "weak",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-l6arzvcJ",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 1,
+        "gloss": "Gentle and not easily angered",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-Bt6Caj9Y",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 2,
+        "gloss": "Of only moderate severity; not strict.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-8vHddAF6",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 3,
+        "gloss": "Conciliatory, nonpolemical; gentle in tone.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-qgaU4G2N",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 4,
+        "gloss": "Not overly felt or seriously intended.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-79T7ELH0",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 5,
+        "gloss": "Not serious or dangerous.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-XkzHr-0S",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 6,
+        "gloss": "Moderately warm, especially less cold than expected.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-rzgdgLsJ",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 7,
+        "gloss": "Acting gently and without causing harm.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|adj||en-mild-en-adj-79T7ELH0,en-mild-en-adj-8vHddAF6,en-mild-en-adj-Bt6Caj9Y,en-mild-en-adj-XkzHr-0S,en-mild-en-adj-l6arzvcJ,en-mild-en-adj-lVKXBuKv,en-mild-en-adj-qgaU4G2N,en-mild-en-adj-rzgdgLsJ",
+        "source_sense_id": "en-mild-en-adj-lVKXBuKv",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 8,
+        "gloss": "Not sharp or bitter; not strong in flavor.",
+        "pos": "adj",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|mild|noun||en-mild-en-noun-hfYIwKBE",
+        "source_sense_id": "en-mild-en-noun-hfYIwKBE",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *mildijaz",
+        "etym_text": "From Middle English milde, from Old English milde (“mild”), from Proto-Germanic *mildijaz (“mild”), from Proto-Indo-European *melh₂- (“to beat, pound, grind”).\nCognate with Scots mild, myld (“mild”), Saterland Frisian milde (“mild”), West Frisian myld (“mild”), Dutch mild (“mild”), Low German milde (“mild”), German mild (“mild”), Danish, Swedish and Norwegian Bokmål mild (“mild”), Icelandic mildur (“mild”), Latin mollis (“soft, gentle”), Lithuanian malonus (“pleasing, pleasant, kind”), Old Norse",
+        "sense_id": 9,
+        "gloss": "A relatively low-gravity beer, often with a dark colour; mild ale",
+        "pos": "noun",
+        "tags": [
+          "UK"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 7
+  },
+  {
+    "case_id": "c7417d79d1da4e9d",
+    "lang_a": "da",
+    "word_a": "tumult",
+    "lang_b": "sv",
+    "word_b": "bråk",
+    "display_a": "uproar, tumult",
+    "display_b": "brawl, row, racket; trouble",
+    "senses_a": [
+      {
+        "source_entry_key": "da|tumult|noun||en-tumult-da-noun-8DDzo7-q,en-tumult-da-noun-aYs1XtFg,en-tumult-da-noun-ucIa8IYx",
+        "source_sense_id": "en-tumult-da-noun-ucIa8IYx",
+        "etymology_number": null,
+        "etym_root": "Latin tumultus",
+        "etym_text": "From Latin tumultus (“noise, tumult”).",
+        "sense_id": 1,
+        "gloss": "uproar, tumult",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|tumult|noun||en-tumult-da-noun-8DDzo7-q,en-tumult-da-noun-aYs1XtFg,en-tumult-da-noun-ucIa8IYx",
+        "source_sense_id": "en-tumult-da-noun-8DDzo7-q",
+        "etymology_number": null,
+        "etym_root": "Latin tumultus",
+        "etym_text": "From Latin tumultus (“noise, tumult”).",
+        "sense_id": 2,
+        "gloss": "riot, disturbance",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "da|tumult|noun||en-tumult-da-noun-8DDzo7-q,en-tumult-da-noun-aYs1XtFg,en-tumult-da-noun-ucIa8IYx",
+        "source_sense_id": "en-tumult-da-noun-aYs1XtFg",
+        "etymology_number": null,
+        "etym_root": "Latin tumultus",
+        "etym_text": "From Latin tumultus (“noise, tumult”).",
+        "sense_id": 3,
+        "gloss": "scuffle",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|bråk|noun||en-bråk-sv-noun-LA8PRYGq,en-bråk-sv-noun-fLfQ7Ls5",
+        "source_sense_id": "en-bråk-sv-noun-fLfQ7Ls5",
+        "etymology_number": null,
+        "etym_root": "",
+        "etym_text": "",
+        "sense_id": 1,
+        "gloss": "brawl, row, racket; trouble",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|bråk|noun||en-bråk-sv-noun-LA8PRYGq,en-bråk-sv-noun-fLfQ7Ls5",
+        "source_sense_id": "en-bråk-sv-noun-LA8PRYGq",
+        "etymology_number": null,
+        "etym_root": "",
+        "etym_text": "",
+        "sense_id": 2,
+        "gloss": "fraction",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 8
+  },
+  {
+    "case_id": "ced0d1387965bd0d",
+    "lang_a": "en",
+    "word_a": "saga",
+    "lang_b": "sv",
+    "word_b": "saga",
+    "display_a": "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+    "display_b": "a female given name derived from the Swedish noun saga, used since the 19th century",
+    "senses_a": [
+      {
+        "source_entry_key": "en|saga|noun|1|en-saga-en-noun-X3acbN8m,en-saga-en-noun-b4EuWOqx",
+        "source_sense_id": "en-saga-en-noun-X3acbN8m",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *sagǭ",
+        "etym_text": "From Old Norse saga (“epic tale, story”), from Proto-Germanic *sagǭ (“saying, story”), from Proto-Indo-European *sekʷ- (“to say”).\nCognate with Old English sagu (“story, tale, statement”), Old High German saga (“an assertion, narrative, sermon, pronouncement”), Icelandic saga (“story, tale, history”), German Sage (“saga, legend, myth”). More at say; Doublet of saw.\nCompare typologically Ancient Greek ἔπος (épos) (whence epos, epic) << Proto-Indo-European *wekʷ- (“to speak”).",
+        "sense_id": 1,
+        "gloss": "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+        "pos": "noun",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|saga|noun|1|en-saga-en-noun-X3acbN8m,en-saga-en-noun-b4EuWOqx",
+        "source_sense_id": "en-saga-en-noun-b4EuWOqx",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *sagǭ",
+        "etym_text": "From Old Norse saga (“epic tale, story”), from Proto-Germanic *sagǭ (“saying, story”), from Proto-Indo-European *sekʷ- (“to say”).\nCognate with Old English sagu (“story, tale, statement”), Old High German saga (“an assertion, narrative, sermon, pronouncement”), Icelandic saga (“story, tale, history”), German Sage (“saga, legend, myth”). More at say; Doublet of saw.\nCompare typologically Ancient Greek ἔπος (épos) (whence epos, epic) << Proto-Indo-European *wekʷ- (“to speak”).",
+        "sense_id": 2,
+        "gloss": "Something with the qualities of such a saga; an epic, a long story.",
+        "pos": "noun",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Saga|name|1|en-Saga-en-name-1jkp6gV8,en-Saga-en-name-BzW-AS7k",
+        "source_sense_id": "en-Saga-en-name-BzW-AS7k",
+        "etymology_number": "1",
+        "etym_root": "",
+        "etym_text": "Borrowed from Japanese 佐賀(さが) (Saga).",
+        "sense_id": 3,
+        "gloss": "Saga Prefecture (a prefecture in western Kyushu, Japan)",
+        "pos": "name",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Saga|name|1|en-Saga-en-name-1jkp6gV8,en-Saga-en-name-BzW-AS7k",
+        "source_sense_id": "en-Saga-en-name-1jkp6gV8",
+        "etymology_number": "1",
+        "etym_root": "",
+        "etym_text": "Borrowed from Japanese 佐賀(さが) (Saga).",
+        "sense_id": 4,
+        "gloss": "The capital city of Saga Prefecture, Japan.",
+        "pos": "name",
+        "tags": [],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Saga|name|2|en-Saga-en-name-K7enfgqz",
+        "source_sense_id": "en-Saga-en-name-K7enfgqz",
+        "etymology_number": "2",
+        "etym_root": "Old Norse saga",
+        "etym_text": "From saga or its etymon Old Norse saga.",
+        "sense_id": 5,
+        "gloss": "A unisex given name.",
+        "pos": "name",
+        "tags": [
+          "rare"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "en|Saga|name|3|en-Saga-en-name-PvtMIuNt",
+        "source_sense_id": "en-Saga-en-name-PvtMIuNt",
+        "etymology_number": "3",
+        "etym_root": "",
+        "etym_text": "Borrowed from Tibetan ས་དགའ (sa dga').",
+        "sense_id": 6,
+        "gloss": "A county of Shigatse, Tibet Autonomous Region, China.",
+        "pos": "name",
+        "tags": [],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|saga|noun||en-saga-sv-noun-MSvytjmS,en-saga-sv-noun-TRSjt6a8,en-saga-sv-noun-wfIA9Uyq",
+        "source_sense_id": "en-saga-sv-noun-MSvytjmS",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *sagǭ",
+        "etym_text": "From Old Swedish sagha, from Old Norse saga, from Proto-Germanic *sagǭ. First attested in the mid-14th century\nCognate with Danish saghæ, Jutish save (“a narrative, a narration, a tale, a report”), Norwegian Nynorsk soge, Faroese søga, Icelandic saga, German Sage, English saw. Perhaps related to Lithuanian pasaka.",
+        "sense_id": 1,
+        "gloss": "a fairy tale",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|saga|noun||en-saga-sv-noun-MSvytjmS,en-saga-sv-noun-TRSjt6a8,en-saga-sv-noun-wfIA9Uyq",
+        "source_sense_id": "en-saga-sv-noun-TRSjt6a8",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *sagǭ",
+        "etym_text": "From Old Swedish sagha, from Old Norse saga, from Proto-Germanic *sagǭ. First attested in the mid-14th century\nCognate with Danish saghæ, Jutish save (“a narrative, a narration, a tale, a report”), Norwegian Nynorsk soge, Faroese søga, Icelandic saga, German Sage, English saw. Perhaps related to Lithuanian pasaka.",
+        "sense_id": 2,
+        "gloss": "a story, a tale (more generally)",
+        "pos": "noun",
+        "tags": [
+          "common-gender",
+          "figuratively"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|saga|noun||en-saga-sv-noun-MSvytjmS,en-saga-sv-noun-TRSjt6a8,en-saga-sv-noun-wfIA9Uyq",
+        "source_sense_id": "en-saga-sv-noun-wfIA9Uyq",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *sagǭ",
+        "etym_text": "From Old Swedish sagha, from Old Norse saga, from Proto-Germanic *sagǭ. First attested in the mid-14th century\nCognate with Danish saghæ, Jutish save (“a narrative, a narration, a tale, a report”), Norwegian Nynorsk soge, Faroese søga, Icelandic saga, German Sage, English saw. Perhaps related to Lithuanian pasaka.",
+        "sense_id": 3,
+        "gloss": "a saga",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|Saga|name||en-Saga-sv-name-qT8ocERx",
+        "source_sense_id": "en-Saga-sv-name-qT8ocERx",
+        "etymology_number": null,
+        "etym_root": "",
+        "etym_text": "",
+        "sense_id": 4,
+        "gloss": "a female given name derived from the Swedish noun saga, used since the 19th century",
+        "pos": "name",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 9
+  },
+  {
+    "case_id": "d22a2cdf23e4d91d",
+    "lang_a": "nb",
+    "word_a": "skjell",
+    "lang_b": "sv",
+    "word_b": "skal",
+    "display_a": "a mussel, shell (seashell)",
+    "display_b": "shell ((hard) external covering of an animal, egg, nut, various objects, etc. – used similarly to English)",
+    "senses_a": [
+      {
+        "source_entry_key": "nb|skjell|noun|1|en-skjell-nb-noun-L9UKqCby,en-skjell-nb-noun-jpc31JQB",
+        "source_sense_id": "en-skjell-nb-noun-jpc31JQB",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Norse skel, from Proto-Germanic *skaljō.",
+        "sense_id": 1,
+        "gloss": "a mussel, shell (seashell)",
+        "pos": "noun",
+        "tags": [
+          "feminine",
+          "masculine",
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "nb|skjell|noun|1|en-skjell-nb-noun-L9UKqCby,en-skjell-nb-noun-jpc31JQB",
+        "source_sense_id": "en-skjell-nb-noun-L9UKqCby",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Norse skel, from Proto-Germanic *skaljō.",
+        "sense_id": 2,
+        "gloss": "a scale",
+        "pos": "noun",
+        "tags": [
+          "feminine",
+          "masculine",
+          "neuter"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|skal|noun||en-skal-sv-noun-FZ61q7mZ,en-skal-sv-noun-G3hwZw1j,en-skal-sv-noun-wvXwEJ3E,en-skal-sv-noun-yb7oZ9dB",
+        "source_sense_id": "en-skal-sv-noun-yb7oZ9dB",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Swedish skal, from Old Norse skel, from Proto-Germanic *skaljō, from Proto-Indo-European *(s)kelH- (“to split, cleave”). Compare Danish skæl, Dutch schaal, Dutch schil, English shale, English shell, German Schale, Norwegian skjell.",
+        "sense_id": 1,
+        "gloss": "shell ((hard) external covering of an animal, egg, nut, various objects, etc. – used similarly to English)",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skal|noun||en-skal-sv-noun-FZ61q7mZ,en-skal-sv-noun-G3hwZw1j,en-skal-sv-noun-wvXwEJ3E,en-skal-sv-noun-yb7oZ9dB",
+        "source_sense_id": "en-skal-sv-noun-wvXwEJ3E",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Swedish skal, from Old Norse skel, from Proto-Germanic *skaljō, from Proto-Indo-European *(s)kelH- (“to split, cleave”). Compare Danish skæl, Dutch schaal, Dutch schil, English shale, English shell, German Schale, Norwegian skjell.",
+        "sense_id": 2,
+        "gloss": "peel, skin (outer layer or cover of a fruit or vegetable)",
+        "pos": "noun",
+        "tags": [
+          "neuter",
+          "uncountable",
+          "usually"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skal|noun||en-skal-sv-noun-FZ61q7mZ,en-skal-sv-noun-G3hwZw1j,en-skal-sv-noun-wvXwEJ3E,en-skal-sv-noun-yb7oZ9dB",
+        "source_sense_id": "en-skal-sv-noun-FZ61q7mZ",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Swedish skal, from Old Norse skel, from Proto-Germanic *skaljō, from Proto-Indo-European *(s)kelH- (“to split, cleave”). Compare Danish skæl, Dutch schaal, Dutch schil, English shale, English shell, German Schale, Norwegian skjell.",
+        "sense_id": 3,
+        "gloss": "a hard case (especially for a mobile phone, tablet computer, or the like)",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|skal|noun||en-skal-sv-noun-FZ61q7mZ,en-skal-sv-noun-G3hwZw1j,en-skal-sv-noun-wvXwEJ3E,en-skal-sv-noun-yb7oZ9dB",
+        "source_sense_id": "en-skal-sv-noun-G3hwZw1j",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *skaljō",
+        "etym_text": "From Old Swedish skal, from Old Norse skel, from Proto-Germanic *skaljō, from Proto-Indo-European *(s)kelH- (“to split, cleave”). Compare Danish skæl, Dutch schaal, Dutch schil, English shale, English shell, German Schale, Norwegian skjell.",
+        "sense_id": 4,
+        "gloss": "a shell",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 10
+  },
+  {
+    "case_id": "dbf8ffc483f49eda",
+    "lang_a": "de",
+    "word_a": "Pott",
+    "lang_b": "sv",
+    "word_b": "pott",
+    "display_a": "pot",
+    "display_b": "pot, kitty",
+    "senses_a": [
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-lOhlQDCA",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 1,
+        "gloss": "large cup",
+        "pos": "noun",
+        "tags": [
+          "masculine",
+          "regional",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-fIeavTqw",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 2,
+        "gloss": "pot (cooking vessel)",
+        "pos": "noun",
+        "tags": [
+          "masculine",
+          "regional",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-LGppnlLD",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 3,
+        "gloss": "pot; jar (storage vessel)",
+        "pos": "noun",
+        "tags": [
+          "masculine",
+          "regional",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-ylIx0l5q",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 4,
+        "gloss": "large ship",
+        "pos": "noun",
+        "tags": [
+          "informal",
+          "masculine",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-xOSBOkdn",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 5,
+        "gloss": "cup (sports trophy)",
+        "pos": "noun",
+        "tags": [
+          "informal",
+          "masculine",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-dKUcPOn~",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 6,
+        "gloss": "pot",
+        "pos": "noun",
+        "tags": [
+          "masculine",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|noun|1|en-Pott-de-noun-LGppnlLD,en-Pott-de-noun-dKUcPOn~,en-Pott-de-noun-dPf9HPCL,en-Pott-de-noun-fIeavTqw,en-Pott-de-noun-lOhlQDCA,en-Pott-de-noun-xOSBOkdn,en-Pott-de-noun-ylIx0l5q",
+        "source_sense_id": "en-Pott-de-noun-dPf9HPCL",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Middle Low German pot and Middle High German pot (West Central German, 12th century), from Old Saxon *pott, from Proto-West Germanic *pott, from Proto-Germanic *puttaz. See English pot for more.",
+        "sense_id": 7,
+        "gloss": "toilet",
+        "pos": "noun",
+        "tags": [
+          "colloquial",
+          "masculine",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|name|2|en-Pott-de-name-KNy3Owkm",
+        "source_sense_id": "en-Pott-de-name-KNy3Owkm",
+        "etymology_number": "2",
+        "etym_root": "",
+        "etym_text": "",
+        "sense_id": 8,
+        "gloss": "ellipsis of Ruhrpott; the Ruhr Area",
+        "pos": "name",
+        "tags": [
+          "abbreviation",
+          "alt-of",
+          "ellipsis",
+          "informal",
+          "masculine",
+          "proper-noun",
+          "strong"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "de|Pott|name|3|en-Pott-de-name-v2O7m9sM",
+        "source_sense_id": "en-Pott-de-name-v2O7m9sM",
+        "etymology_number": "3",
+        "etym_root": "",
+        "etym_text": "",
+        "sense_id": 9,
+        "gloss": "a surname",
+        "pos": "name",
+        "tags": [
+          "feminine",
+          "masculine",
+          "proper-noun",
+          "surname"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|pott|noun||en-pott-sv-noun-y2Dv~qTa",
+        "source_sense_id": "en-pott-sv-noun-y2Dv~qTa",
+        "etymology_number": null,
+        "etym_root": "Proto-Germanic *puttaz",
+        "etym_text": "From Old Norse pottr (“pot, tub, basin”), from Proto-Germanic *puttaz (“pot, jar, tub”). Doublet of potta.",
+        "sense_id": 1,
+        "gloss": "pot, kitty",
+        "pos": "noun",
+        "tags": [
+          "common-gender"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 11
+  },
+  {
+    "case_id": "ee93428a0734facf",
+    "lang_a": "nb",
+    "word_a": "ball",
+    "lang_b": "sv",
+    "word_b": "balle",
+    "display_a": "ball (solid or hollow sphere)",
+    "display_b": "a buttock",
+    "senses_a": [
+      {
+        "source_entry_key": "nb|ball|noun|1|en-ball-nb-noun-MEXbsaAO,en-ball-nb-noun-U3RRTwcF",
+        "source_sense_id": "en-ball-nb-noun-U3RRTwcF",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *balluz",
+        "etym_text": "From dialectal Norwegian, from Old Norse bǫllr, from Proto-Germanic *balluz. Displaced Danish bold, which was excluded from the standard already in 1907. The establishment of the Norwegian form may have been facilitated by the fact that Danish also has bal c (“billiard ball”), a borrowing from French balle f.",
+        "sense_id": 1,
+        "gloss": "ball (solid or hollow sphere)",
+        "pos": "noun",
+        "tags": [
+          "masculine"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "nb|ball|noun|1|en-ball-nb-noun-MEXbsaAO,en-ball-nb-noun-U3RRTwcF",
+        "source_sense_id": "en-ball-nb-noun-MEXbsaAO",
+        "etymology_number": "1",
+        "etym_root": "Proto-Germanic *balluz",
+        "etym_text": "From dialectal Norwegian, from Old Norse bǫllr, from Proto-Germanic *balluz. Displaced Danish bold, which was excluded from the standard already in 1907. The establishment of the Norwegian form may have been facilitated by the fact that Danish also has bal c (“billiard ball”), a borrowing from French balle f.",
+        "sense_id": 2,
+        "gloss": "ball (object, usually spherical, used for playing games)",
+        "pos": "noun",
+        "tags": [
+          "masculine"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "nb|ball|noun|2|en-ball-nb-noun-9monTTPw",
+        "source_sense_id": "en-ball-nb-noun-9monTTPw",
+        "etymology_number": "2",
+        "etym_root": "",
+        "etym_text": "Inherited from Danish bal n, from French bal m.",
+        "sense_id": 3,
+        "gloss": "ball (formal social occasion involving dancing)",
+        "pos": "noun",
+        "tags": [
+          "neuter"
+        ],
+        "is_active": true
+      }
+    ],
+    "senses_b": [
+      {
+        "source_entry_key": "sv|balle|noun|2|en-balle-sv-noun-1pbvj9W7,en-balle-sv-noun-Vo4l2jht,en-balle-sv-noun-Zaj~Ntu0",
+        "source_sense_id": "en-balle-sv-noun-Vo4l2jht",
+        "etymology_number": "2",
+        "etym_root": "Proto-Germanic *balluz",
+        "etym_text": "From Old Swedish balder, baller, from Old Norse bǫllr, from Proto-Germanic *balluz, from Proto-Indo-European *bʰel- (“to blow, inflate, swell”). Doublet of boll and bulle. Compare Old English bealluc, English bollock, Danish balde (“buttock”). First attested in 1520.",
+        "sense_id": 1,
+        "gloss": "a schlong, cock ((larger) penis)",
+        "pos": "noun",
+        "tags": [
+          "colloquial",
+          "common-gender",
+          "vulgar"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|balle|noun|2|en-balle-sv-noun-1pbvj9W7,en-balle-sv-noun-Vo4l2jht,en-balle-sv-noun-Zaj~Ntu0",
+        "source_sense_id": "en-balle-sv-noun-Zaj~Ntu0",
+        "etymology_number": "2",
+        "etym_root": "Proto-Germanic *balluz",
+        "etym_text": "From Old Swedish balder, baller, from Old Norse bǫllr, from Proto-Germanic *balluz, from Proto-Indo-European *bʰel- (“to blow, inflate, swell”). Doublet of boll and bulle. Compare Old English bealluc, English bollock, Danish balde (“buttock”). First attested in 1520.",
+        "sense_id": 2,
+        "gloss": "a testicle",
+        "pos": "noun",
+        "tags": [
+          "colloquial",
+          "common-gender",
+          "plural-normally"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|balle|noun|2|en-balle-sv-noun-1pbvj9W7,en-balle-sv-noun-Vo4l2jht,en-balle-sv-noun-Zaj~Ntu0",
+        "source_sense_id": "en-balle-sv-noun-1pbvj9W7",
+        "etymology_number": "2",
+        "etym_root": "Proto-Germanic *balluz",
+        "etym_text": "From Old Swedish balder, baller, from Old Norse bǫllr, from Proto-Germanic *balluz, from Proto-Indo-European *bʰel- (“to blow, inflate, swell”). Doublet of boll and bulle. Compare Old English bealluc, English bollock, Danish balde (“buttock”). First attested in 1520.",
+        "sense_id": 3,
+        "gloss": "a buttock",
+        "pos": "noun",
+        "tags": [
+          "Southern",
+          "colloquial",
+          "common-gender"
+        ],
+        "is_active": true
+      },
+      {
+        "source_entry_key": "sv|balle|noun|3|en-balle-sv-noun-6tGahGyx",
+        "source_sense_id": "en-balle-sv-noun-6tGahGyx",
+        "etymology_number": "3",
+        "etym_root": "",
+        "etym_text": "Originally formed in its definitive form ballen as a humorous contraction of balkongen (“the balcony”), partly influenced by the sense ballen (“the penis; the scrotum”).",
+        "sense_id": 4,
+        "gloss": "a balcony",
+        "pos": "noun",
+        "tags": [
+          "colloquial",
+          "common-gender",
+          "humorous"
+        ],
+        "is_active": true
+      }
+    ],
+    "review_id": 12
+  }
+]

@@ -63,7 +63,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | Experiment | Run ID | Plan/configuration | Report and case results | Outcome | Decision |
 | --- | --- | --- | --- | --- | --- |
 | E0 | E0-001 | [Frozen protocol](../pipeline/evaluation/e0_protocol.json), [acceptance rules](../pipeline/evaluation/E0_ACCEPTANCE.md) | [Baseline evaluation report](../pipeline/evaluation/E0_RUN001.md) | Development review, coverage, diagnostic groups, and procedure recorded | Use for exploratory E1-E4 comparisons; preserve test families |
-| E1 | — | E0 complete; display variants specified below | Not run | Not measured | Pending |
+| E1 | E1-003 | [Saved variants and corrections](../pipeline/evaluation/E1_PLAN.md) | [Display-selection report](../pipeline/evaluation/E1_RUN003.md) | A: no concept gain. B: +2.2 points, below the five-point gate; one open-sample match lost | Reject A as tested; revise B without adopting it |
 | E2 | — | Awaiting E0 and E1 | Not run | Not measured | Pending |
 | E3 | — | E0 complete; historical-link variant specified below | Not run | Not measured | Pending |
 | E4 | — | E0 complete; candidate variants specified below | Not run | Not measured | Pending |
@@ -74,7 +74,7 @@ Update this table after each run. Keep earlier run records below the correspondi
 | ID | Question | Depends on | Current status |
 | --- | --- | --- | --- |
 | E0 | Where does the baseline succeed, fail, or miss vocabulary? | — | Complete |
-| E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Planned |
+| E1 | Can we select better displayed meanings while preserving valid secondary matches? | E0 | Complete; neither variant adopted |
 | E2 | Can separate meaning and history results produce better pair classifications? | E0, E1 | Planned |
 | E3 | Can typed historical evidence recover relationships missed by root equality? | E0 | Planned |
 | E4 | Can better candidate generation reduce noise without losing useful comparisons? | E0 | Planned |
@@ -160,9 +160,13 @@ All 207 open-vocabulary development cases and 995 found development concept comp
 
 **Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E1 section.
 
-**Actual result:** Not run.
+**Actual result:** E1-003 preserved the exact E0 control rows and all secondary sense records. Usage preference alone remained at 630/995 acceptable concept displays. Adding a weak entry-order preference reached 652/995: a 2.21-point gain with a paired family interval of 1.36–3.20 points. It recovered 22 concept cases without losing a previously acceptable one, but remained below the fixed five-point gain threshold. In 207 open-vocabulary cases, it repaired one shared headline and broke another; the shared-headline count stayed at 96. See the [readable report](../pipeline/evaluation/E1_RUN003.md).
 
-**Decision:** Pending.
+**Decision:** Reject A as tested; revise B without adopting it. Keep baseline display selection in both E2 arms. Preserve E1-001 and E1-002 as failed control-reconstruction runs, rather than counting their apparent differences as linguistic gains. All original scores, categories, senses, and source claims remain unchanged. Reserved test families are unopened.
+
+### E1-003 — Completed development run, 2026-10-03
+
+The plan, code, exact input selection, new concept judgments, changed open-vocabulary reviews, paired measurements, subgroup losses, and failed-run corrections are linked in the [run report](../pipeline/evaluation/E1_RUN003.md). The source-order hypothesis has evidence of a modest concept-conditioned effect, but not enough to approve this selector. Entry order can favor the first meaning of a separate homograph over a later suitable meaning. E2 must assess grammatical context and meaning coverage separately from ancestry, without claiming an unadopted E1 gain.
 
 ## E2 — Separate pair meaning from historical relationship
 
@@ -173,7 +177,7 @@ All 207 open-vocabulary development cases and 995 found development concept comp
 - Control: current exclusive category derived from selected scalar scores and roots.
 - Variant: retain historical relationship, form resemblance, and the set of supported sense matches separately. Record whether ordinary meanings correspond, overlap is partial, or only secondary meanings match.
 - Define the product-label mapping explicitly before scoring it. Missing ancestry may coexist with a useful inferred category.
-- Keep the encoder and candidate set fixed. Evaluate E1's accepted sense-selection method as the common input to both arms.
+- Keep the encoder and candidate set fixed. Use the same display-selection method in both arms. E1-003 adopted neither variant, so the common input remains baseline display selection.
 - Do not infer directional historical narrowing from an intermediate similarity score. Keep compounds and generic name definitions as explicit review groups.
 
 **Measurements:** classification errors, useful labeled coverage, meaning-overlap errors, and systematic compound/name errors. Report historical claims and practical learning labels separately.
@@ -286,4 +290,4 @@ After individual experiments pass, test their combined output against the accept
 
 Record which experiments were accepted, which were rejected, remaining limitations, and the measured trade-offs. The developer is responsible for producing and checking these results; finding counterexamples must not depend on the user browsing the product.
 
-**Current release decision:** No methodological change has been evaluated or approved by this ledger. The reproducible five-language baseline remains the accepted dataset.
+**Current release decision:** E1 variants have been evaluated, and neither is approved. E2-E5 remain untested under this plan. The reproducible five-language baseline remains the accepted dataset.
