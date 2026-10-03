@@ -268,9 +268,9 @@ The [readable report](../pipeline/evaluation/e2-run001/README.md) records the er
 
 **Numerical limits:** Fixed in [E0_ACCEPTANCE.md](../pipeline/evaluation/E0_ACCEPTANCE.md), E4 section.
 
-**Actual result:** Not run.
+**Actual result:** E4-A002 removed 523,280 prefix-only comparisons from the 819,227 undirected baseline rows. Development expected-pair recall fell from 995/1,168 to 986/1,168, losing nine ordinary comparisons. In the frozen open sample, compatible fixed labels fell from 80/197 (40.6%) to 45/128 retained cases (35.2%): −5.45 points, with a paired family interval of −10.90 to −0.34. All removed cases and original review reasons are in the [readable report](../pipeline/evaluation/E4_RUN_A002.md). Pronunciation retrieval is under separate evaluation.
 
-**Decision:** Pending.
+**Decision:** Reject unconditional prefix removal. It meets the recall-loss limits but fails the usefulness gate. Keep the original candidate control for E4-B; assess A+B separately. No production generator or database changed.
 
 ## E5 — New-language admission and regression checks
 
