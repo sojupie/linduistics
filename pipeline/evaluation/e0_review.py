@@ -31,6 +31,37 @@ def prepare_packet():
         json.dump(items, stream, ensure_ascii=False, indent=2)
 
 
+def prepare_open_packet():
+    families = json.loads((OUTPUT / 'e0_families_v2.json').read_text(encoding='utf-8'))
+    development = {c['case_id'] for c in families['cases'] if c['panel'] == 'open' and c['role'] == 'development'}
+    cases = [c for c in json.loads((OUTPUT / 'e0_blind_review.json').read_text(encoding='utf-8')) if c['case_id'] in development]
+    for i, case in enumerate(cases):
+        case['review_id'] = i + 1
+    with (OUTPUT / 'e0_open_development_packet.json').open('x', encoding='utf-8') as stream:
+        json.dump(cases, stream, ensure_ascii=False, indent=2)
+
+
+def record_open(start, stop, judgments):
+    packet_path = OUTPUT / 'e0_open_development_packet.json'
+    packet = json.loads(packet_path.read_text(encoding='utf-8'))
+    cases = [r for r in packet if start <= r['review_id'] <= stop]
+    assert set(judgments) == {c['review_id'] for c in cases}
+    reviewed = []
+    for case in cases:
+        judgment = judgments[case['review_id']]
+        assert set(judgment) >= {'meaning_profile', 'history_evidence', 'headline_pair', 'reason'}
+        reviewed.append({'case_id': case['case_id'], 'review_id': case['review_id'],
+                         'lang_a': case['lang_a'], 'word_a': case['word_a'],
+                         'lang_b': case['lang_b'], 'word_b': case['word_b'], **judgment})
+    save_json(OUTPUT / f'e0_open_review_{start:03}_{stop:03}.json', {
+        'packet_sha256': digest(packet_path),
+        'reviewer': 'Codex agent, source-guided; not independent human gold',
+        'blinding': 'Classifier predictions and numeric scores hidden; all active glosses and available etymology read.',
+        'rubric': 'Assess modern overlap, historical support, and selected display separately. Generic shared categories are not entity identity. Missing dictionary senses do not prove non-equivalence.',
+        'judgments': reviewed,
+    })
+
+
 def record(start, stop, exceptions):
     """Save one completely read range; exceptions map ID to (decision, reason)."""
     packet_path = OUTPUT / 'e0_development_display_packet.json'
@@ -109,6 +140,6 @@ def summarize():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['prepare', 'summarize'])
+    parser.add_argument('action', choices=['prepare', 'prepare-open', 'summarize'])
     action = parser.parse_args().action
-    prepare_packet() if action == 'prepare' else summarize()
+    {'prepare': prepare_packet, 'prepare-open': prepare_open_packet, 'summarize': summarize}[action]()

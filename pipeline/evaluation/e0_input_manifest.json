@@ -1,0 +1,33 @@
+{
+  "experiment": "E0",
+  "baseline_and_lookup_hashes": {
+    "pipeline\\data\\reproduce-five-language-20261002\\all_comparisons_v2.parquet": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_da.parquet": "c8ecebc038293bbb9f7a073dc5c0fd870ec67902634af2833f92be64fb041305",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_de.parquet": "28cca7629b2a98bdf1dddc0b0ce2d347cb5ac230600a4d0368a9fe3a06ea90e5",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_en.parquet": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_nb.parquet": "0d28e9fc54e31b8239d49ad73c027fdc40a356f649c046e5ebc18913686ce43e",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_sv.parquet": "266be872b57105acbb9c8168aea2cc70e985bcf1d8af69e9861c14b4151d3241",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_da.parquet": "c9fcd2bb76b86057c8fbb78ef144b79c5a2c195da034f461c98b27460fc936ad",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_de.parquet": "c9e3371c9e2968960f6894db457f44d9299cafc928786ce8a5b0e5795963e68b",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_en.parquet": "83f7b9b4a4414c58d614d9eaff0a0ffc7ab7a83caa3584f1a2e6646aa25ee349",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_nb.parquet": "9e14e0b000e27c3df97b1a1a118c66eee10dd84bf41bac42c82ba955477c1279",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_sv.parquet": "57ec5662ddabe35e691833c93163670c43ca6ea0f07174f8c2a5a5d7b8ce8c4c"
+  },
+  "evaluation_code_hashes": {
+    "pipeline\\evaluation\\e0.py": "c8a5ae93fe64905fade8938bc6f58cced3ba0c42d5947135dfaa4d739286f35c",
+    "pipeline\\evaluation\\e0_frequency.py": "87728624404b9336a82c8f0c39132d0e6b2600ac2e34fda3353d0de3a22e4a8b",
+    "pipeline\\evaluation\\e0_review.py": "73f6342231a78b3c64da570747f2d238f74713bb3b5aca1b80bb3dd6b5f0d1ae",
+    "pipeline\\evaluation\\e0_split.py": "630d49e21f16af61e90d8beae3eb67b38462918900046ce9cd89407634d80394",
+    "pipeline\\src\\sense_aligner.py": "dacb6d1bdcfcce0c3120b8257364efd7d54aba4636cf68878a9b15965fa2f7fc"
+  },
+  "git_base_revision": "71f9765cde21b11b2a19f2d55d49134938e4ab20",
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "pyarrow": "25.0.1",
+  "reference_protocols": [
+    "e0_protocol.json",
+    "e0_frequency_protocol.json"
+  ],
+  "active_split": "e0_families_v2.json",
+  "write_policy": "Read-only baseline and lookups; evaluation files only.",
+  "code_revision_note": "Code hashes include working changes committed with this manifest; git_base_revision identifies their parent."
+}

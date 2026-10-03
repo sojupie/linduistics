@@ -188,6 +188,11 @@ def verify():
     """Check saved evidence consistency and unchanged baseline, without rerunning scoring."""
     protocol = json.loads((OUTPUT / 'e0_protocol.json').read_text(encoding='utf-8'))
     assert digest(DATASET) == protocol['baseline_sha256']
+    manifest_path = OUTPUT / 'e0_input_manifest.json'
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+        for name, expected in manifest['baseline_and_lookup_hashes'].items():
+            assert digest(ROOT / name) == expected, f'Frozen input changed: {name}'
     cases = read_csv(OUTPUT / 'e0_concept_cases.csv')
     results = read_csv(OUTPUT / 'e0_concept_results.csv')
     assert len(cases) == protocol['case_count'] == len(results)
