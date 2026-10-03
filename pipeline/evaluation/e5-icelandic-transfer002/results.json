@@ -1,0 +1,1970 @@
+{
+  "da-is": {
+    "new_intervals": {
+      "families": 103,
+      "expected_pair_recall_95": [
+        63.41463414634146,
+        80.17241379310344
+      ],
+      "found_pair_display_95": [
+        79.51807228915662,
+        93.75
+      ],
+      "end_to_end_display_95": [
+        52.84552845528455,
+        72.17391304347827
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        79.4392523364486,
+        89.80477223427332
+      ],
+      "found_pair_display_95": [
+        62.65984654731458,
+        72.8395061728395
+      ],
+      "end_to_end_display_95": [
+        52.232142857142854,
+        62.73684210526316
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:20-10-1:36-10-1",
+        "concept": "belly",
+        "word_a": "mave",
+        "word_b": "kviður",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-107-1:36-107-1",
+        "concept": "narrow",
+        "word_a": "smal",
+        "word_b": "mjór",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-108-1:36-108-1",
+        "concept": "near",
+        "word_a": "i nærheden",
+        "word_b": "nærri",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-115-1:36-115-1",
+        "concept": "one",
+        "word_a": "en",
+        "word_b": "einn",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-129-1:36-129-1",
+        "concept": "rotten",
+        "word_a": "rådden",
+        "word_b": "morkinn",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-130-1:36-130-1",
+        "concept": "round",
+        "word_a": "rund",
+        "word_b": "kringlóttur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-137-1:36-137-1",
+        "concept": "see",
+        "word_a": "se",
+        "word_b": "sjá",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-140-1:36-140-1",
+        "concept": "sharp",
+        "word_a": "skarp",
+        "word_b": "beittur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-144-1:36-144-1",
+        "concept": "skin",
+        "word_a": "hud",
+        "word_b": "húð",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-165-1:36-165-1",
+        "concept": "swell",
+        "word_a": "svulme",
+        "word_b": "bólgna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-167-1:36-167-1",
+        "concept": "tail",
+        "word_a": "hale",
+        "word_b": "rófa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-17-1:36-17-1",
+        "concept": "bone",
+        "word_a": "knogle",
+        "word_b": "bein",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-184-1:36-184-1",
+        "concept": "vomit",
+        "word_a": "kaste op",
+        "word_b": "kasta upp",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-20-1:36-20-1",
+        "concept": "burn",
+        "word_a": "brænde",
+        "word_b": "brenna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-206-1:36-206-1",
+        "concept": "year",
+        "word_a": "år",
+        "word_b": "ár",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-212-1:36-212-1",
+        "concept": "yesterday",
+        "word_a": "i går",
+        "word_b": "í gær",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-214-1:36-214-1",
+        "concept": "house",
+        "word_a": "hus",
+        "word_b": "hús",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-215-1:36-215-1",
+        "concept": "bitter",
+        "word_a": "bitter",
+        "word_b": "beiskur",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-219-1:36-219-1",
+        "concept": "run",
+        "word_a": "løbe",
+        "word_b": "hlaupa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-221-1:36-221-1",
+        "concept": "take",
+        "word_a": "tage",
+        "word_b": "taka",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-24-1:36-24-1",
+        "concept": "come",
+        "word_a": "komme",
+        "word_b": "koma",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-28-1:36-28-1",
+        "concept": "die",
+        "word_a": "dø",
+        "word_b": "deyja",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-30-1:36-30-1",
+        "concept": "dirty",
+        "word_a": "snavset",
+        "word_b": "skítugur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-36-1:36-36-1",
+        "concept": "ear",
+        "word_a": "øre",
+        "word_b": "eyra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-42-1:36-42-1",
+        "concept": "far",
+        "word_a": "langt væk",
+        "word_b": "langt",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-45-1:36-45-1",
+        "concept": "fear",
+        "word_a": "være bange",
+        "word_b": "hræðast",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-45-1:36-45-2",
+        "concept": "fear",
+        "word_a": "være bange",
+        "word_b": "vera hræddur",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-45-1:36-45-3",
+        "concept": "fear",
+        "word_a": "være bange",
+        "word_b": "óttast",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-58-1:36-58-1",
+        "concept": "foot",
+        "word_a": "fod",
+        "word_b": "fótur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-6-1:36-6-1",
+        "concept": "back",
+        "word_a": "ryg",
+        "word_b": "bak",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-71-1:36-71-1",
+        "concept": "head",
+        "word_a": "hoved",
+        "word_b": "höfuð",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-72-1:36-72-1",
+        "concept": "hear",
+        "word_a": "høre",
+        "word_b": "heyra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-87-1:36-87-1",
+        "concept": "knee",
+        "word_a": "knæ",
+        "word_b": "kné, hné",
+        "head_a_present": true,
+        "head_b_present": false
+      }
+    ],
+    "missing_with_both_source_heads": 23,
+    "scored_results": {
+      "pair": [
+        "da",
+        "is"
+      ],
+      "concept_cases": 117,
+      "found": 84,
+      "acceptable": 73,
+      "wrong_sense": 11,
+      "missing": 33,
+      "recall_difference_points": -13.172448466566111,
+      "display_difference_points": 19.21245421245421,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 33,
+      "open_compatible": 17,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "7bee3ab6d259c44042ebe0508a772fad28b6d5b00b0daea3a4c24c0780ad78a6",
+    "open_judgment_sha256": "3d1d9c2d7c00cb54512022f90634782aab4d7a266957b27fbae79286e75fc179"
+  },
+  "de-is": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        64.46280991735537,
+        81.25
+      ],
+      "found_pair_display_95": [
+        73.49397590361446,
+        89.1304347826087
+      ],
+      "end_to_end_display_95": [
+        50.81967213114754,
+        68.42105263157895
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        78.43137254901961,
+        89.49671772428884
+      ],
+      "found_pair_display_95": [
+        60.092807424593964,
+        73.19034852546918
+      ],
+      "end_to_end_display_95": [
+        49.572649572649574,
+        62.360801781737194
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:27-10-1:36-10-1",
+        "concept": "belly",
+        "word_a": "Bauch",
+        "word_b": "kviður",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-107-1:36-107-1",
+        "concept": "narrow",
+        "word_a": "eng",
+        "word_b": "mjór",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-108-1:36-108-1",
+        "concept": "near",
+        "word_a": "nahe",
+        "word_b": "nærri",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-129-1:36-129-1",
+        "concept": "rotten",
+        "word_a": "faul",
+        "word_b": "morkinn",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-130-1:36-130-1",
+        "concept": "round",
+        "word_a": "rund",
+        "word_b": "kringlóttur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-140-1:36-140-1",
+        "concept": "sharp",
+        "word_a": "scharf",
+        "word_b": "beittur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-159-1:36-159-1",
+        "concept": "star",
+        "word_a": "Stern",
+        "word_b": "stjarna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-165-1:36-165-1",
+        "concept": "swell",
+        "word_a": "schwellen",
+        "word_b": "bólgna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-167-1:36-167-1",
+        "concept": "tail",
+        "word_a": "Schwanz",
+        "word_b": "rófa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-17-1:36-17-1",
+        "concept": "bone",
+        "word_a": "Knochen",
+        "word_b": "bein",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-183-1:36-183-1",
+        "concept": "two",
+        "word_a": "zwei",
+        "word_b": "tveir",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-184-1:36-184-1",
+        "concept": "vomit",
+        "word_a": "sich übergeben",
+        "word_b": "kasta upp",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-186-1:36-186-1",
+        "concept": "hot",
+        "word_a": "warm",
+        "word_b": "heitur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-206-1:36-206-1",
+        "concept": "year",
+        "word_a": "Jahr",
+        "word_b": "ár",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-212-1:36-212-1",
+        "concept": "yesterday",
+        "word_a": "gestern",
+        "word_b": "í gær",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-214-1:36-214-1",
+        "concept": "house",
+        "word_a": "Haus",
+        "word_b": "hús",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-215-1:36-215-1",
+        "concept": "bitter",
+        "word_a": "bitter",
+        "word_b": "beiskur",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-219-1:36-219-1",
+        "concept": "run",
+        "word_a": "rennen",
+        "word_b": "hlaupa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-219-2:36-219-1",
+        "concept": "run",
+        "word_a": "laufen",
+        "word_b": "hlaupa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-221-1:36-221-1",
+        "concept": "take",
+        "word_a": "nehmen",
+        "word_b": "taka",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-28-1:36-28-1",
+        "concept": "die",
+        "word_a": "sterben",
+        "word_b": "deyja",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-30-1:36-30-1",
+        "concept": "dirty",
+        "word_a": "schmutzig",
+        "word_b": "skítugur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-36-1:36-36-1",
+        "concept": "ear",
+        "word_a": "Ohr",
+        "word_b": "eyra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-42-1:36-42-1",
+        "concept": "far",
+        "word_a": "weit",
+        "word_b": "langt",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-45-1:36-45-1",
+        "concept": "fear",
+        "word_a": "Angst haben",
+        "word_b": "hræðast",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-45-1:36-45-2",
+        "concept": "fear",
+        "word_a": "Angst haben",
+        "word_b": "vera hræddur",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-45-1:36-45-3",
+        "concept": "fear",
+        "word_a": "Angst haben",
+        "word_b": "óttast",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-58-1:36-58-1",
+        "concept": "foot",
+        "word_a": "Fuß",
+        "word_b": "fótur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-6-1:36-6-1",
+        "concept": "back",
+        "word_a": "Rücken",
+        "word_b": "bak",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-68-1:36-68-1",
+        "concept": "hair",
+        "word_a": "Haare",
+        "word_b": "hár",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-87-1:36-87-1",
+        "concept": "knee",
+        "word_a": "Knie",
+        "word_b": "kné, hné",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-92-1:36-92-1",
+        "concept": "left",
+        "word_a": "links",
+        "word_b": "vinstri",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 23,
+    "scored_results": {
+      "pair": [
+        "de",
+        "is"
+      ],
+      "concept_cases": 119,
+      "found": 87,
+      "acceptable": 71,
+      "wrong_sense": 16,
+      "missing": 32,
+      "recall_difference_points": -10.976777807897353,
+      "display_difference_points": 14.85727724373107,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 33,
+      "open_compatible": 11,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "a6bf98160223c77a693df0579f94e1365140c71ad755db8be038d1bb140962ec",
+    "open_judgment_sha256": "b6e34b62e15fc41f67e64301160e331a35ab887bb7fdfa7f4b629b21de06e9da"
+  },
+  "en-is": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        58.53658536585366,
+        76.52173913043478
+      ],
+      "found_pair_display_95": [
+        56.94444444444444,
+        77.92207792207792
+      ],
+      "end_to_end_display_95": [
+        36.58536585365854,
+        54.95495495495496
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        79.87152034261241,
+        89.49671772428884
+      ],
+      "found_pair_display_95": [
+        41.644562334217504,
+        55.77395577395578
+      ],
+      "end_to_end_display_95": [
+        35.031847133757964,
+        47.921225382932164
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:22-10-1:36-10-1",
+        "concept": "belly",
+        "word_a": "stomach",
+        "word_b": "kviður",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-107-1:36-107-1",
+        "concept": "narrow",
+        "word_a": "narrow",
+        "word_b": "mjór",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-108-1:36-108-1",
+        "concept": "near",
+        "word_a": "near",
+        "word_b": "nærri",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-129-1:36-129-1",
+        "concept": "rotten",
+        "word_a": "rotten",
+        "word_b": "morkinn",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-130-1:36-130-1",
+        "concept": "round",
+        "word_a": "round",
+        "word_b": "kringlóttur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-137-1:36-137-1",
+        "concept": "see",
+        "word_a": "see",
+        "word_b": "sjá",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-140-1:36-140-1",
+        "concept": "sharp",
+        "word_a": "sharp",
+        "word_b": "beittur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-144-1:36-144-1",
+        "concept": "skin",
+        "word_a": "skin",
+        "word_b": "húð",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-147-1:36-147-1",
+        "concept": "small",
+        "word_a": "small",
+        "word_b": "lítill",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-165-1:36-165-1",
+        "concept": "swell",
+        "word_a": "swell",
+        "word_b": "bólgna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-167-1:36-167-1",
+        "concept": "tail",
+        "word_a": "tail",
+        "word_b": "rófa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-17-1:36-17-1",
+        "concept": "bone",
+        "word_a": "bone",
+        "word_b": "bein",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-171-1:36-171-1",
+        "concept": "thick",
+        "word_a": "thick",
+        "word_b": "þykkur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-178-1:36-178-1",
+        "concept": "tie",
+        "word_a": "tie",
+        "word_b": "binda",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-18-1:36-18-1",
+        "concept": "chest",
+        "word_a": "chest",
+        "word_b": "brjóst",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-184-1:36-184-1",
+        "concept": "vomit",
+        "word_a": "be sick",
+        "word_b": "kasta upp",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-20-1:36-20-1",
+        "concept": "burn",
+        "word_a": "burn",
+        "word_b": "brenna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-203-1:36-203-1",
+        "concept": "forest",
+        "word_a": "woods",
+        "word_b": "skógur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-206-1:36-206-1",
+        "concept": "year",
+        "word_a": "year",
+        "word_b": "ár",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-210-1:36-210-1",
+        "concept": "navel",
+        "word_a": "belly-button",
+        "word_b": "nafli",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-212-1:36-212-1",
+        "concept": "yesterday",
+        "word_a": "yesterday",
+        "word_b": "í gær",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-214-1:36-214-1",
+        "concept": "house",
+        "word_a": "house",
+        "word_b": "hús",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-215-1:36-215-1",
+        "concept": "bitter",
+        "word_a": "bitter",
+        "word_b": "beiskur",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-219-1:36-219-1",
+        "concept": "run",
+        "word_a": "run",
+        "word_b": "hlaupa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-24-1:36-24-1",
+        "concept": "come",
+        "word_a": "come",
+        "word_b": "koma",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-28-1:36-28-1",
+        "concept": "die",
+        "word_a": "die",
+        "word_b": "deyja",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-30-1:36-30-1",
+        "concept": "dirty",
+        "word_a": "dirty",
+        "word_b": "skítugur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-36-1:36-36-1",
+        "concept": "ear",
+        "word_a": "ear",
+        "word_b": "eyra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-42-1:36-42-1",
+        "concept": "far",
+        "word_a": "far",
+        "word_b": "langt",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-45-1:36-45-1",
+        "concept": "fear",
+        "word_a": "be scared",
+        "word_b": "hræðast",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-45-1:36-45-2",
+        "concept": "fear",
+        "word_a": "be scared",
+        "word_b": "vera hræddur",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-45-1:36-45-3",
+        "concept": "fear",
+        "word_a": "be scared",
+        "word_b": "óttast",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-58-1:36-58-1",
+        "concept": "foot",
+        "word_a": "foot",
+        "word_b": "fótur",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-6-1:36-6-1",
+        "concept": "back",
+        "word_a": "back",
+        "word_b": "bak",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-72-1:36-72-1",
+        "concept": "hear",
+        "word_a": "hear",
+        "word_b": "heyra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-76-1:36-76-1",
+        "concept": "hit",
+        "word_a": "hit",
+        "word_b": "slá",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-87-1:36-87-1",
+        "concept": "knee",
+        "word_a": "knee",
+        "word_b": "kné, hné",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-91-1:36-91-1",
+        "concept": "leaf",
+        "word_a": "leaf",
+        "word_b": "blað",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 29,
+    "scored_results": {
+      "pair": [
+        "en",
+        "is"
+      ],
+      "concept_cases": 118,
+      "found": 80,
+      "acceptable": 54,
+      "wrong_sense": 26,
+      "missing": 38,
+      "recall_difference_points": -17.05187467899333,
+      "display_difference_points": 18.775510204081634,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 32,
+      "open_compatible": 7,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "d78979b0d3ba38e926ebd2b3a71d65e663a506d4686b648666dc717bc718965f",
+    "open_judgment_sha256": "3926848e65f13f34a5a312ee4efc9c0c9001deba80be33b4c98d74a72a6e45d2"
+  },
+  "nb-is": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        62.096774193548384,
+        78.63247863247864
+      ],
+      "found_pair_display_95": [
+        80.51948051948052,
+        94.52054794520548
+      ],
+      "end_to_end_display_95": [
+        52.94117647058823,
+        71.07438016528926
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        78.32618025751073,
+        88.57758620689656
+      ],
+      "found_pair_display_95": [
+        65.82278481012658,
+        76.92307692307692
+      ],
+      "end_to_end_display_95": [
+        54.06032482598608,
+        65.82809224318659
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:36-10-1:58-10-1",
+        "concept": "belly",
+        "word_a": "kviður",
+        "word_b": "mage",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-107-1:58-107-1",
+        "concept": "narrow",
+        "word_a": "mjór",
+        "word_b": "trang",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-108-1:58-108-1",
+        "concept": "near",
+        "word_a": "nærri",
+        "word_b": "nært",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-109-1:58-109-1",
+        "concept": "neck",
+        "word_a": "háls",
+        "word_b": "nakke",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-112-1:58-112-1",
+        "concept": "nose",
+        "word_a": "nef",
+        "word_b": "nese (nase)",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-115-1:58-115-1",
+        "concept": "one",
+        "word_a": "einn",
+        "word_b": "en",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-122-1:58-122-1",
+        "concept": "red",
+        "word_a": "rauður",
+        "word_b": "rød",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-129-1:58-129-1",
+        "concept": "rotten",
+        "word_a": "morkinn",
+        "word_b": "råtten",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-130-1:58-130-1",
+        "concept": "round",
+        "word_a": "kringlóttur",
+        "word_b": "rund",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-137-1:58-137-1",
+        "concept": "see",
+        "word_a": "sjá",
+        "word_b": "se",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-140-1:58-140-1",
+        "concept": "sharp",
+        "word_a": "beittur",
+        "word_b": "skarp",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-144-1:58-144-1",
+        "concept": "skin",
+        "word_a": "húð",
+        "word_b": "hud",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-149-1:58-149-1",
+        "concept": "smoke",
+        "word_a": "reykur",
+        "word_b": "røyk (røk)",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-150-1:58-150-1",
+        "concept": "smooth",
+        "word_a": "sléttur",
+        "word_b": "glatt",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-165-1:58-165-1",
+        "concept": "swell",
+        "word_a": "bólgna",
+        "word_b": "hovne",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-167-1:58-167-1",
+        "concept": "tail",
+        "word_a": "rófa",
+        "word_b": "hale",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-17-1:58-17-1",
+        "concept": "bone",
+        "word_a": "bein",
+        "word_b": "ben",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-184-1:58-184-1",
+        "concept": "vomit",
+        "word_a": "kasta upp",
+        "word_b": "kaste opp",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-206-1:58-206-1",
+        "concept": "year",
+        "word_a": "ár",
+        "word_b": "år",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-212-1:58-212-1",
+        "concept": "yesterday",
+        "word_a": "í gær",
+        "word_b": "i går",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-214-1:58-214-1",
+        "concept": "house",
+        "word_a": "hús",
+        "word_b": "hus",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-215-1:58-215-1",
+        "concept": "bitter",
+        "word_a": "beiskur",
+        "word_b": "bitter",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-219-1:58-219-1",
+        "concept": "run",
+        "word_a": "hlaupa",
+        "word_b": "løpe",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-221-1:58-221-1",
+        "concept": "take",
+        "word_a": "taka",
+        "word_b": "ta",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-24-1:58-24-1",
+        "concept": "come",
+        "word_a": "koma",
+        "word_b": "komme",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-28-1:58-28-1",
+        "concept": "die",
+        "word_a": "deyja",
+        "word_b": "dø",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-30-1:58-30-1",
+        "concept": "dirty",
+        "word_a": "skítugur",
+        "word_b": "skitten",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-36-1:58-36-1",
+        "concept": "ear",
+        "word_a": "eyra",
+        "word_b": "øre",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-45-1:58-45-1",
+        "concept": "fear",
+        "word_a": "hræðast",
+        "word_b": "frykte",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-45-2:58-45-1",
+        "concept": "fear",
+        "word_a": "vera hræddur",
+        "word_b": "frykte",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-58-1:58-58-1",
+        "concept": "foot",
+        "word_a": "fótur",
+        "word_b": "fot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-6-1:58-6-1",
+        "concept": "back",
+        "word_a": "bak",
+        "word_b": "rygg",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-66-1:58-66-1",
+        "concept": "green",
+        "word_a": "grænn",
+        "word_b": "grønn",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-71-1:58-71-1",
+        "concept": "head",
+        "word_a": "höfuð",
+        "word_b": "hode",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-87-1:58-87-1",
+        "concept": "knee",
+        "word_a": "kné, hné",
+        "word_b": "kne",
+        "head_a_present": false,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 25,
+    "scored_results": {
+      "pair": [
+        "is",
+        "nb"
+      ],
+      "concept_cases": 118,
+      "found": 83,
+      "acceptable": 73,
+      "wrong_sense": 10,
+      "missing": 35,
+      "recall_difference_points": -13.427250715386307,
+      "display_difference_points": 16.375579838734776,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 33,
+      "open_compatible": 13,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "306fbc8d93c8804dc1b01bbbc14c0697bdbd0d478c65f89b91cea8a3b0d823b5",
+    "open_judgment_sha256": "b0aa8ff3c403c338987efdd10f25f362dff1366801e910507d95e2dd324cabd6"
+  },
+  "nl-is": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        66.12903225806451,
+        83.1858407079646
+      ],
+      "found_pair_display_95": [
+        86.25,
+        97.59036144578313
+      ],
+      "end_to_end_display_95": [
+        60.0,
+        77.5
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        80.57996485061511,
+        89.60817717206133
+      ],
+      "found_pair_display_95": [
+        59.17948717948718,
+        68.54166666666667
+      ],
+      "end_to_end_display_95": [
+        49.56896551724138,
+        59.14855072463768
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:36-10-1:21-10-1",
+        "concept": "belly",
+        "word_a": "kviður",
+        "word_b": "buik",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-107-1:21-107-1",
+        "concept": "narrow",
+        "word_a": "mjór",
+        "word_b": "smal",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-108-1:21-108-1",
+        "concept": "near",
+        "word_a": "nærri",
+        "word_b": "dichtbij",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-129-1:21-129-1",
+        "concept": "rotten",
+        "word_a": "morkinn",
+        "word_b": "rot",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-130-1:21-130-1",
+        "concept": "round",
+        "word_a": "kringlóttur",
+        "word_b": "rond",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-137-1:21-137-1",
+        "concept": "see",
+        "word_a": "sjá",
+        "word_b": "zien",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-140-1:21-140-1",
+        "concept": "sharp",
+        "word_a": "beittur",
+        "word_b": "scherp",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-165-1:21-165-1",
+        "concept": "swell",
+        "word_a": "bólgna",
+        "word_b": "zwellen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-167-1:21-167-1",
+        "concept": "tail",
+        "word_a": "rófa",
+        "word_b": "staart",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-17-1:21-17-1",
+        "concept": "bone",
+        "word_a": "bein",
+        "word_b": "bot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-184-1:21-184-1",
+        "concept": "vomit",
+        "word_a": "kasta upp",
+        "word_b": "overgeven",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-20-1:21-20-1",
+        "concept": "burn",
+        "word_a": "brenna",
+        "word_b": "branden",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-206-1:21-206-1",
+        "concept": "year",
+        "word_a": "ár",
+        "word_b": "jaar",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-212-1:21-212-1",
+        "concept": "yesterday",
+        "word_a": "í gær",
+        "word_b": "gisteren",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-214-1:21-214-1",
+        "concept": "house",
+        "word_a": "hús",
+        "word_b": "huis",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-215-1:21-215-1",
+        "concept": "bitter",
+        "word_a": "beiskur",
+        "word_b": "bitter",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-219-1:21-219-1",
+        "concept": "run",
+        "word_a": "hlaupa",
+        "word_b": "rennen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-221-1:21-221-1",
+        "concept": "take",
+        "word_a": "taka",
+        "word_b": "nemen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-24-1:21-24-1",
+        "concept": "come",
+        "word_a": "koma",
+        "word_b": "komen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-28-1:21-28-1",
+        "concept": "die",
+        "word_a": "deyja",
+        "word_b": "sterven",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-28-1:21-28-2",
+        "concept": "die",
+        "word_a": "deyja",
+        "word_b": "doodgaan",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-30-1:21-30-1",
+        "concept": "dirty",
+        "word_a": "skítugur",
+        "word_b": "vies",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-36-1:21-36-1",
+        "concept": "ear",
+        "word_a": "eyra",
+        "word_b": "oor",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-42-1:21-42-1",
+        "concept": "far",
+        "word_a": "langt",
+        "word_b": "ver",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-45-1:21-45-1",
+        "concept": "fear",
+        "word_a": "hræðast",
+        "word_b": "bang zijn",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-45-2:21-45-1",
+        "concept": "fear",
+        "word_a": "vera hræddur",
+        "word_b": "bang zijn",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-45-3:21-45-1",
+        "concept": "fear",
+        "word_a": "óttast",
+        "word_b": "bang zijn",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-58-1:21-58-1",
+        "concept": "foot",
+        "word_a": "fótur",
+        "word_b": "voet",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-6-1:21-6-1",
+        "concept": "back",
+        "word_a": "bak",
+        "word_b": "rug",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-87-1:21-87-1",
+        "concept": "knee",
+        "word_a": "kné, hné",
+        "word_b": "knie",
+        "head_a_present": false,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 22,
+    "scored_results": {
+      "pair": [
+        "is",
+        "nl"
+      ],
+      "concept_cases": 119,
+      "found": 89,
+      "acceptable": 82,
+      "wrong_sense": 7,
+      "missing": 30,
+      "recall_difference_points": -10.443244655375105,
+      "display_difference_points": 28.305044226631605,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 34,
+      "open_compatible": 14,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "c01002850efcde37b589dd2a3938937a05aae8238df93fafd311c33fdf0a6e85",
+    "open_judgment_sha256": "497f83223abb7c6bb53ee82c0b4280852daedebfcf20c03af6a61529b68982c4"
+  },
+  "sv-is": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        64.0,
+        80.34188034188034
+      ],
+      "found_pair_display_95": [
+        72.63157894736842,
+        89.69072164948453
+      ],
+      "end_to_end_display_95": [
+        50.0,
+        68.33333333333333
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        83.77823408624229,
+        92.76595744680851
+      ],
+      "found_pair_display_95": [
+        58.61244019138756,
+        70.27707808564232
+      ],
+      "end_to_end_display_95": [
+        51.082251082251084,
+        62.78586278586278
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:36-10-1:69-10-1",
+        "concept": "belly",
+        "word_a": "kviður",
+        "word_b": "mage",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-107-1:69-107-1",
+        "concept": "narrow",
+        "word_a": "mjór",
+        "word_b": "smal",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-108-1:69-108-1",
+        "concept": "near",
+        "word_a": "nærri",
+        "word_b": "nära",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-129-1:69-129-1",
+        "concept": "rotten",
+        "word_a": "morkinn",
+        "word_b": "rutten",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-130-1:69-130-1",
+        "concept": "round",
+        "word_a": "kringlóttur",
+        "word_b": "rund",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-137-1:69-137-1",
+        "concept": "see",
+        "word_a": "sjá",
+        "word_b": "se",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-140-1:69-140-1",
+        "concept": "sharp",
+        "word_a": "beittur",
+        "word_b": "vass",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-152-1:69-152-1",
+        "concept": "snow",
+        "word_a": "snjór",
+        "word_b": "snö",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-165-1:69-165-1",
+        "concept": "swell",
+        "word_a": "bólgna",
+        "word_b": "svälla",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-167-1:69-167-1",
+        "concept": "tail",
+        "word_a": "rófa",
+        "word_b": "svans",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-17-1:69-17-1",
+        "concept": "bone",
+        "word_a": "bein",
+        "word_b": "ben",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-182-1:69-182-1",
+        "concept": "turn",
+        "word_a": "snúa",
+        "word_b": "vända",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-184-1:69-184-1",
+        "concept": "vomit",
+        "word_a": "kasta upp",
+        "word_b": "kräkas",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-20-1:69-20-1",
+        "concept": "burn",
+        "word_a": "brenna",
+        "word_b": "brinna",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-206-1:69-206-1",
+        "concept": "year",
+        "word_a": "ár",
+        "word_b": "år",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-212-1:69-212-1",
+        "concept": "yesterday",
+        "word_a": "í gær",
+        "word_b": "igår",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-215-1:69-215-1",
+        "concept": "bitter",
+        "word_a": "beiskur",
+        "word_b": "bitter",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-219-1:69-219-1",
+        "concept": "run",
+        "word_a": "hlaupa",
+        "word_b": "springa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-221-1:69-221-1",
+        "concept": "take",
+        "word_a": "taka",
+        "word_b": "ta",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-28-1:69-28-1",
+        "concept": "die",
+        "word_a": "deyja",
+        "word_b": "dö",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-30-1:69-30-1",
+        "concept": "dirty",
+        "word_a": "skítugur",
+        "word_b": "smutsig",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-36-1:69-36-1",
+        "concept": "ear",
+        "word_a": "eyra",
+        "word_b": "öra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-42-1:69-42-1",
+        "concept": "far",
+        "word_a": "langt",
+        "word_b": "långt borta",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-45-1:69-45-1",
+        "concept": "fear",
+        "word_a": "hræðast",
+        "word_b": "vara rädd",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-45-2:69-45-1",
+        "concept": "fear",
+        "word_a": "vera hræddur",
+        "word_b": "vara rädd",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-45-3:69-45-1",
+        "concept": "fear",
+        "word_a": "óttast",
+        "word_b": "vara rädd",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:36-58-1:69-58-1",
+        "concept": "foot",
+        "word_a": "fótur",
+        "word_b": "fot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-6-1:69-6-1",
+        "concept": "back",
+        "word_a": "bak",
+        "word_b": "rygg",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-66-1:69-66-1",
+        "concept": "green",
+        "word_a": "grænn",
+        "word_b": "grön",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-71-1:69-71-1",
+        "concept": "head",
+        "word_a": "höfuð",
+        "word_b": "huvud",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-72-1:69-72-1",
+        "concept": "hear",
+        "word_a": "heyra",
+        "word_b": "höra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-87-1:69-87-1",
+        "concept": "knee",
+        "word_a": "kné, hné",
+        "word_b": "knä",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:36-91-1:69-91-1",
+        "concept": "leaf",
+        "word_a": "blað",
+        "word_b": "löv",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 24,
+    "scored_results": {
+      "pair": [
+        "is",
+        "sv"
+      ],
+      "concept_cases": 120,
+      "found": 87,
+      "acceptable": 71,
+      "wrong_sense": 16,
+      "missing": 33,
+      "recall_difference_points": -15.96153846153846,
+      "display_difference_points": 17.116441779110446,
+      "recall_transfer_pass": false,
+      "display_transfer_pass": true,
+      "open_scorable": 30,
+      "open_compatible": 15,
+      "open_unresolved": 2,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "e00dd347f2261de0db547dd278d819606755c9d5cd2e0e27c30dd0ed3197fdb3",
+    "open_judgment_sha256": "4b461846e45a625a8015417fe16f31772700f78dd48c39b5340ebe437da01de2"
+  }
+}

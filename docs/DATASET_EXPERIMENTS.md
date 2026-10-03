@@ -333,6 +333,10 @@ German–Icelandic finds 87/119 expected comparisons with 71 suitable displays a
 
 The original E4-A002 criterion and rejection remain historical. The automatic rejection based on unchanged classifier agreement is withdrawn; candidate-quality improvement remains inconclusive. All nine lost development concept comparisons are independently annotated IE-CoR cognates. In the open diagnostic sample, the retained set includes 105 meaning-overlap comparisons, 71 with incompatible fixed labels. The removed set includes six meaning overlaps, 15 related-form comparisons and two supported/related name-form comparisons, as well as weak associations and potentially useful disjoint-form contrasts. Prefix removal also retains translation-polysemy and entry-identity failures. The [reassessment report](../pipeline/evaluation/E4_REASSESSMENT_RESULT.md) separates these outcomes, preserves every case, and specifies the representative task-quality measurement still needed. No new threshold, production change or publication was introduced.
 
+### E5 complete Icelandic development meaning review
+
+All six Icelandic reviews are complete: 510/711 independently expected concept comparisons are retrieved, with 424 suitable displays and 86 wrong displays. Of 201 missing comparisons, 146 have both accepted source headwords. Norwegian has 73 suitable displays of 83 found, Dutch 82/89 and Swedish 71/87; their separate open-label agreements are 13/33, 14/34 and 15/30. All original transfer-limit results remain saved as diagnostics, without automatically deciding adoption under the revised policy. The [complete report](../pipeline/evaluation/E5_ICELANDIC_DEVELOPMENT_RESULT.md) separates independent retrieval, display and modern-label results, preserves uncertainty, and identifies historical/game/reserved/product checks still required.
+
 ## Recording actual runs
 
 Append a record for each run under its experiment. Preserve failed hypotheses and rejected runs. Never replace an earlier result with the newest result.

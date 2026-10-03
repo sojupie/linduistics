@@ -1,0 +1,330 @@
+{
+  "packet_sha256": "d97ddb0ed729afb8a869bca0107dfdeedbf0b3005ed508d57e5b2de227c5f630",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All full inventories read before scoring saved labels; generic name identity and unresolved redirect kept separate.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Than and conjunction use overlap across inventories; how, but and yet have different scope."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Level or stage and climbing a ladder are connected concepts, but neither ladder noun nor climb verb is an observed equivalent of level."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Victory and cigar have no observed meaning overlap."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Consecrate, dedicate and a given name do not overlap weekend."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Husk and fart are different meanings and grammatical roles."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Bothering and regretting are related negative feelings or actions, not recorded interchangeable verbs."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Window overlaps part of a small opening or vent description; Norwegian also records eyes or eyelids."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Comb or pay does not overlap cope, capability, objects or control in the supplied inventories."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Digging and a ditch are action/result concepts, not interchangeable nouns; other Icelandic meanings also differ."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Bacon overlaps a narrower part of fatty pork; Norwegian also records body fat."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe the anatomical knee."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe babbling."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Size overlaps; Icelandic also records angle measure and quantity or value."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "generic_name_match_unverified",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "Generic male-name glosses do not establish that these are equivalent name forms; Norwegian also identifies a mythological dwarf."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Grid overlaps; Icelandic also records instep and grate."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Justice or fairness and righteousness concern moral rightness, but the supplied glosses do not establish interchangeable scope."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories explicitly identify Mustela erminea."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Power overlaps; Icelandic dominion and Norwegian influential country have differing scope."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Because overlaps; Icelandic also records the correlative comparison construction."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Deaf overlaps only through the dated Icelandic sense; its active dull, lifeless and pallid senses differ."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Both inventories explicitly identify the Oresund/Øresund strait."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe an abbot."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Tern overlaps; Icelandic additionally records maid or attendant."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Reflexive myself and objective me have related referents but different grammatical constraints; no exact interchangeable-form assertion is justified."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Ban or excommunication and swearing or taking an oath are different supplied meanings."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "forwarding_entry_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Norwegian includes a letter-case redirect whose underlying target sense is not resolved; ace does not establish overlap with the letter S, bocal or horse."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "To sate and full after eating are related verb/adjective meanings, not interchangeable forms."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Pheasant and a place keeping pheasants are animal/place relations rather than equivalents."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify amoeba."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories record convex shape; bowl-shaped wording may need orientation clarification but convex overlap is explicit."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a pharmacist."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a pediatrician."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe dried stockfish."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe climate."
+    }
+  ]
+}

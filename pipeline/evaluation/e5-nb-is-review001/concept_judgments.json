@@ -1,0 +1,833 @@
+{
+  "packet_sha256": "7e34215c3881750d5047489396d849c1e8e0fdca20e4dc8b318942703e2bf5ab",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All 118 development cases; full ambiguous inventories inspected for moon, root, salt, sweet, heart, ice, leaf, leg and louse. No category labels used.",
+  "judgments": [
+    {
+      "case_id": "iecor:36-10-1:58-10-1",
+      "family_group": "441b6a92a3e9137e",
+      "concept": "belly",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-101-1:58-101-1",
+      "family_group": "6259f64e6596f8b8",
+      "concept": "meat",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-102-1:58-102-1",
+      "family_group": "4b8303f8703d0dbe",
+      "concept": "moon",
+      "decision": "wrong_sense",
+      "reason": "Norwegian displays an artificial satellite rather than the natural moon; natural-moon senses exist."
+    },
+    {
+      "case_id": "iecor:36-106-1:58-106-1",
+      "family_group": "f79a10325a6906a0",
+      "concept": "name",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-107-1:58-107-1",
+      "family_group": "5853cc1921bdc6cc",
+      "concept": "narrow",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-108-1:58-108-1",
+      "family_group": "26427e10336f2492",
+      "concept": "near",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-109-1:58-109-1",
+      "family_group": "16fb74779ed82169",
+      "concept": "neck",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-11-1:58-11-1",
+      "family_group": "4443f8a5925d4ed6",
+      "concept": "big",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-110-1:58-110-1",
+      "family_group": "84f403f4ac679342",
+      "concept": "new",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-111-1:58-111-1",
+      "family_group": "cad7937a9618dab1",
+      "concept": "night",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-112-1:58-112-1",
+      "family_group": "765a5d015b97f0f8",
+      "concept": "nose",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-115-1:58-115-1",
+      "family_group": "d7f2f8f87330180e",
+      "concept": "one",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-119-1:58-119-1",
+      "family_group": "c929ac88a99b898b",
+      "concept": "pull",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-121-1:58-121-1",
+      "family_group": "bb9bb99f2415744b",
+      "concept": "rain",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-122-1:58-122-1",
+      "family_group": "7dd01ace33e01a58",
+      "concept": "red",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-124-1:58-124-1",
+      "family_group": "71dbef16986bceca",
+      "concept": "right",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-125-1:58-125-1",
+      "family_group": "c495381a8b8f788d",
+      "concept": "river",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-127-1:58-127-1",
+      "family_group": "9ca08ed6f9fa257d",
+      "concept": "root",
+      "decision": "wrong_sense",
+      "reason": "Norwegian displays a tooth root rather than a plant root; the plant sense exists."
+    },
+    {
+      "case_id": "iecor:36-129-1:58-129-1",
+      "family_group": "70b81a718faf6d24",
+      "concept": "rotten",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-13-1:58-13-1",
+      "family_group": "5f722ab6c252e6e6",
+      "concept": "bite",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-130-1:58-130-1",
+      "family_group": "9108304fa9cd97a8",
+      "concept": "round",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-132-1:58-132-1",
+      "family_group": "b466d0f475d21f73",
+      "concept": "salt",
+      "decision": "wrong_sense",
+      "reason": "Norwegian displays salty or salted rather than the substance salt."
+    },
+    {
+      "case_id": "iecor:36-137-1:58-137-1",
+      "family_group": "3d0bf199b4e6b04f",
+      "concept": "see",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-138-1:58-138-1",
+      "family_group": "6c20ae121c037be1",
+      "concept": "seed",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-14-1:58-14-1",
+      "family_group": "d20bfe0ea6009c02",
+      "concept": "black",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-140-1:58-140-1",
+      "family_group": "3b547a8530f87d5c",
+      "concept": "sharp",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-141-1:58-141-1",
+      "family_group": "26aa084314b7d298",
+      "concept": "short",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-144-1:58-144-1",
+      "family_group": "0cf259fa37dd3cf8",
+      "concept": "skin",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-145-1:58-145-1",
+      "family_group": "9ca7896c7d91a51e",
+      "concept": "sky",
+      "decision": "wrong_sense",
+      "reason": "Both displays select religious heaven rather than the visible sky."
+    },
+    {
+      "case_id": "iecor:36-147-1:58-147-1",
+      "family_group": "5853cc1921bdc6cc",
+      "concept": "small",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-149-1:58-149-1",
+      "family_group": "2feb3d0acb1cdc08",
+      "concept": "smoke",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-15-1:58-15-1",
+      "family_group": "31fd78925df54ea8",
+      "concept": "blood",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-150-1:58-150-1",
+      "family_group": "da1be9e30dc9b8d5",
+      "concept": "smooth",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-152-1:58-152-1",
+      "family_group": "a9565519ae19f3e8",
+      "concept": "snow",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-158-1:58-158-1",
+      "family_group": "30a8986a73ed83d5",
+      "concept": "stand",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-159-1:58-159-1",
+      "family_group": "a6265e90b53a9c62",
+      "concept": "star",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-162-1:58-162-1",
+      "family_group": "b5dc903f8cc82def",
+      "concept": "straight",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-164-1:58-164-1",
+      "family_group": "ecb3350078e168bb",
+      "concept": "sun",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-165-1:58-165-1",
+      "family_group": "6eafbc1a686ac56b",
+      "concept": "swell",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-167-1:58-167-1",
+      "family_group": "2f444a7512c102b1",
+      "concept": "tail",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-17-1:58-17-1",
+      "family_group": "eafd39a958172c02",
+      "concept": "bone",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-171-1:58-171-1",
+      "family_group": "e8af89ec38c656a6",
+      "concept": "thick",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-177-1:58-177-1",
+      "family_group": "d4eb7d04a352d4fe",
+      "concept": "throw",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-178-1:58-178-1",
+      "family_group": "dcfca6135305adcf",
+      "concept": "tie",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-179-1:58-179-1",
+      "family_group": "d23feeac6f29271a",
+      "concept": "tongue",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-18-1:58-18-1",
+      "family_group": "2eeb9af4d76b5103",
+      "concept": "chest",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-180-1:58-180-1",
+      "family_group": "fb1b62eba09eaccf",
+      "concept": "tooth",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-182-1:58-182-1",
+      "family_group": "d4eb7d04a352d4fe",
+      "concept": "turn",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-183-1:58-183-1",
+      "family_group": "62751c001db7e76d",
+      "concept": "two",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-184-1:58-184-1",
+      "family_group": "aadf35ba1df90107",
+      "concept": "vomit",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-186-1:58-186-1",
+      "family_group": "d97d31cc5dba89d9",
+      "concept": "hot",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-19-1:58-19-1",
+      "family_group": "8e07dcb7dc00e882",
+      "concept": "breathe",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-190-1:58-190-1",
+      "family_group": "13997d63304d11ce",
+      "concept": "wet",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-194-1:58-194-1",
+      "family_group": "f75da21cde7f54d6",
+      "concept": "white",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-196-1:58-196-1",
+      "family_group": "cfbab582fec7c5b7",
+      "concept": "wide",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-198-1:58-198-1",
+      "family_group": "1f47b967c569bd32",
+      "concept": "wind",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-20-1:58-20-1",
+      "family_group": "83a7058099898c24",
+      "concept": "burn",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-203-1:58-203-1",
+      "family_group": "00c9e54a894822cd",
+      "concept": "forest",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-206-1:58-206-1",
+      "family_group": "0267f8e4bce8efdc",
+      "concept": "year",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-207-1:58-207-1",
+      "family_group": "f05ec5581c499f20",
+      "concept": "yellow",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-209-1:58-209-1",
+      "family_group": "20420354e04dcaa6",
+      "concept": "thigh",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-210-1:58-210-1",
+      "family_group": "33dac1dc34cfc934",
+      "concept": "navel",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-212-1:58-212-1",
+      "family_group": "2f0e5f4aa3168044",
+      "concept": "yesterday",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-214-1:58-214-1",
+      "family_group": "60242b8fbcbf16e2",
+      "concept": "house",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-215-1:58-215-1",
+      "family_group": "5f722ab6c252e6e6",
+      "concept": "bitter",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-217-1:58-217-1",
+      "family_group": "091193ab90b1f9ca",
+      "concept": "sweet",
+      "decision": "wrong_sense",
+      "reason": "Both displays select cute rather than sweet taste."
+    },
+    {
+      "case_id": "iecor:36-219-1:58-219-1",
+      "family_group": "700bd62922f3a22e",
+      "concept": "run",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-22-1:58-22-1",
+      "family_group": "9ca7896c7d91a51e",
+      "concept": "cloud",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-220-1:58-220-1",
+      "family_group": "c929ac88a99b898b",
+      "concept": "carry",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-221-1:58-221-1",
+      "family_group": "315fabbc9212bbab",
+      "concept": "take",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-222-1:58-222-1",
+      "family_group": "0cf259fa37dd3cf8",
+      "concept": "hide",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-223-1:58-223-1",
+      "family_group": "4e01d71045f11958",
+      "concept": "cry",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-24-1:58-24-1",
+      "family_group": "eca1e1ab30f91c36",
+      "concept": "come",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-25-1:58-25-1",
+      "family_group": "a1c3401b6d48407d",
+      "concept": "count",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-27-1:58-27-1",
+      "family_group": "8de276ba77379229",
+      "concept": "day",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-28-1:58-28-1",
+      "family_group": "619af6b8971f65fe",
+      "concept": "die",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-29-1:58-29-1",
+      "family_group": "6bbe0d7326a864cd",
+      "concept": "dig",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-30-1:58-30-1",
+      "family_group": "5f6689870550db60",
+      "concept": "dirty",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-31-1:58-31-1",
+      "family_group": "a7ea73f56236b9a2",
+      "concept": "dog",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-32-1:58-32-1",
+      "family_group": "4249ac489e24adcd",
+      "concept": "drink",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-36-1:58-36-1",
+      "family_group": "2bb2bac68247c9b2",
+      "concept": "ear",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-38-1:58-38-1",
+      "family_group": "e50b098860c34600",
+      "concept": "eat",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-39-1:58-39-1",
+      "family_group": "8a61b264423ca05f",
+      "concept": "egg",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-40-1:58-40-1",
+      "family_group": "42e717a3c194a97e",
+      "concept": "eye",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-42-1:58-42-1",
+      "family_group": "cfbab582fec7c5b7",
+      "concept": "far",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-45-1:58-45-1",
+      "family_group": "4f60219a5f28fa55",
+      "concept": "fear",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-45-2:58-45-1",
+      "family_group": "4f60219a5f28fa55",
+      "concept": "fear",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-45-3:58-45-1",
+      "family_group": "4f60219a5f28fa55",
+      "concept": "fear",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-46-1:58-46-1",
+      "family_group": "353c769d05444cf2",
+      "concept": "feather",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-48-1:58-48-1",
+      "family_group": "2c4720181976ffc5",
+      "concept": "fight",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-48-2:58-48-1",
+      "family_group": "2c4720181976ffc5",
+      "concept": "fight",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-50-1:58-50-1",
+      "family_group": "e6b7a8db0a9093bd",
+      "concept": "fire",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-51-1:58-51-1",
+      "family_group": "43ac30d93a221ea0",
+      "concept": "fish",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-55-1:58-55-1",
+      "family_group": "58f5d762e78cd5a3",
+      "concept": "flower",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-58-1:58-58-1",
+      "family_group": "eafd39a958172c02",
+      "concept": "foot",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-6-1:58-6-1",
+      "family_group": "d42247a8b3866995",
+      "concept": "back",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-60-1:58-60-1",
+      "family_group": "c59401a47fdc3664",
+      "concept": "freeze",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-61-1:58-61-1",
+      "family_group": "858e23825275e4b1",
+      "concept": "fruit",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-64-1:58-64-1",
+      "family_group": "25a14ec64d4cf372",
+      "concept": "good",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-66-1:58-66-1",
+      "family_group": "f8d61d12783f5a57",
+      "concept": "green",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-68-1:58-68-1",
+      "family_group": "20cd7e4afc7d28df",
+      "concept": "hair",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-69-1:58-69-1",
+      "family_group": "3a8a585b79f8df9f",
+      "concept": "hand",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-7-1:58-7-1",
+      "family_group": "da1be9e30dc9b8d5",
+      "concept": "bad",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-71-1:58-71-1",
+      "family_group": "47559fd2068578a8",
+      "concept": "head",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-72-1:58-72-1",
+      "family_group": "83d8caf902e1332b",
+      "concept": "hear",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-73-1:58-73-1",
+      "family_group": "2db1b56164b4c112",
+      "concept": "heart",
+      "decision": "wrong_sense",
+      "reason": "Both displays select a heart symbol rather than the blood-pumping organ."
+    },
+    {
+      "case_id": "iecor:36-76-1:58-76-1",
+      "family_group": "1f754cefa188490d",
+      "concept": "hit",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-78-1:58-78-1",
+      "family_group": "d240fa29b7ddbe42",
+      "concept": "horn",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-8-1:58-8-1",
+      "family_group": "7d70cf8ae8c6ae79",
+      "concept": "bark",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-83-1:58-83-1",
+      "family_group": "9d346801b0c3ea2f",
+      "concept": "ice",
+      "decision": "wrong_sense",
+      "reason": "Icelandic displays ice cream rather than frozen water; an ice sense exists."
+    },
+    {
+      "case_id": "iecor:36-87-1:58-87-1",
+      "family_group": "071c30222dec0725",
+      "concept": "knee",
+      "decision": "missing",
+      "reason": "Expected reference comparison was not retrieved."
+    },
+    {
+      "case_id": "iecor:36-88-1:58-88-1",
+      "family_group": "cfbab582fec7c5b7",
+      "concept": "know",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-91-1:58-91-1",
+      "family_group": "e3cc3bad0ddae964",
+      "concept": "leaf",
+      "decision": "wrong_sense",
+      "reason": "Both displays select newspaper or magazine rather than the plant leaf."
+    },
+    {
+      "case_id": "iecor:36-92-1:58-92-1",
+      "family_group": "ed472aa8eb962272",
+      "concept": "left",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-93-1:58-93-1",
+      "family_group": "eafd39a958172c02",
+      "concept": "leg",
+      "decision": "wrong_sense",
+      "reason": "Icelandic displays foot rather than the groin-to-ankle limb."
+    },
+    {
+      "case_id": "iecor:36-96-1:58-96-1",
+      "family_group": "724a8e54de62fd40",
+      "concept": "liver",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-97-1:58-97-1",
+      "family_group": "55db80ca2e56ec40",
+      "concept": "long",
+      "decision": "acceptable",
+      "reason": "Displayed meanings cover the reference concept or an ordinary compatible instance."
+    },
+    {
+      "case_id": "iecor:36-98-1:58-98-1",
+      "family_group": "9b9236d89021f299",
+      "concept": "louse",
+      "decision": "wrong_sense",
+      "reason": "Norwegian displays a computer bug rather than a parasitic louse; a louse sense exists."
+    }
+  ]
+}
