@@ -1,0 +1,18 @@
+{
+  "run_id": "E2-001",
+  "source_comparisons_sha256": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+  "form_predictions_sha256": "8177746fc9a6f5d036961fff5f76bdc779a200b257aad957669553d7e7fc37c7",
+  "reference_sha256": "03ed9b376e9c55acbad6ac27ed1a192ab5c8518c8070c71c39fd4498211b1cc8",
+  "plan_sha256": "7f9a36967660db23543d4dcc96ffdee61b51d4631df9307a76f9e4fe1f15151f",
+  "classification_code_sha256": "cd8e80a6350459add6a6dac70c562eca42ea036c0f43d75d8f005aae70b0c506",
+  "evaluation_code_sha256": "fba8fd9c81bdcb19e31f9afe212785be4277564585bc9f0ff316b5f14648e026",
+  "parameters": {
+    "match_cosine": 0.75,
+    "association_cosine": 0.6,
+    "equivalent_directional_coverage": 0.8
+  },
+  "display": "Unchanged baseline in both arms",
+  "history": "Copied legacy field, not newly verified",
+  "seed": 20261003,
+  "write_policy": "New local result directory only; no database or input changes."
+}

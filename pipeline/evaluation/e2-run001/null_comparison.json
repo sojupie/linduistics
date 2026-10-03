@@ -1,0 +1,9 @@
+{
+  "difference_percentage_points": 2.030456852791878,
+  "paired_family_95_interval": [
+    -10.344827586206897,
+    13.68421052631579
+  ],
+  "method": "Paired family bootstrap, 2000 draws, seed 20261003. Null labels every case partial overlap.",
+  "decision": "Do not adopt dense-only profiles as a sufficient solution."
+}
