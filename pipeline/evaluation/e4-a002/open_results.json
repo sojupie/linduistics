@@ -1,0 +1,5241 @@
+[
+  {
+    "case_id": "9392974043e37aab",
+    "panel": "open",
+    "family_group": "83ba575ef94096e8",
+    "lang_a": "en",
+    "word_a": "rainbow",
+    "lang_b": "sv",
+    "word_b": "regnbåge",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "9392974043e37aab",
+      "review_id": 1,
+      "family_group": "83ba575ef94096e8",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record the rainbow phenomenon and Proto-Germanic regnabugo; English has additional uses."
+    }
+  },
+  {
+    "case_id": "72fc0aa8febf23a6",
+    "panel": "open",
+    "family_group": "f3ce8410d40ce578",
+    "lang_a": "en",
+    "word_a": "pileus",
+    "lang_b": "sv",
+    "word_b": "hatt",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "72fc0aa8febf23a6",
+      "review_id": 2,
+      "family_group": "f3ce8410d40ce578",
+      "meaning_profile": "specialized_overlap_source_gap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Swedish native-edition mycology sense and its English pileus translation establish overlap omitted from the baseline target senses."
+    }
+  },
+  {
+    "case_id": "3d7c5415e61c4245",
+    "panel": "open",
+    "family_group": "6921a8f8f9a5e372",
+    "lang_a": "nb",
+    "word_a": "felt",
+    "lang_b": "sv",
+    "word_b": "fält",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "3d7c5415e61c4245",
+      "review_id": 3,
+      "family_group": "6921a8f8f9a5e372",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean field; borrowing histories involve German/Low German. Full ancestor-path verification remains separate."
+    }
+  },
+  {
+    "case_id": "7d24b39e68754740",
+    "panel": "open",
+    "family_group": "239700623efb4d23",
+    "lang_a": "de",
+    "word_a": "Aufführung",
+    "lang_b": "nb",
+    "word_b": "gjengivelse",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "7d24b39e68754740",
+      "review_id": 4,
+      "family_group": "239700623efb4d23",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Performance can overlap rendition, but the generic glosses do not settle scope; NAOB supplies representation/reproduction evidence, not complete equivalence."
+    }
+  },
+  {
+    "case_id": "4ae0061c617e2b50",
+    "panel": "open",
+    "family_group": "259ede909b491f34",
+    "lang_a": "da",
+    "word_a": "mås",
+    "lang_b": "de",
+    "word_b": "Maaß",
+    "pair": "da-de",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": null,
+    "reference": {
+      "case_id": "4ae0061c617e2b50",
+      "review_id": 5,
+      "family_group": "259ede909b491f34",
+      "meaning_profile": "forwarding_entry_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Target only redirects to the former spelling Maß; its underlying senses must be resolved before comparison with Danish buttocks."
+    }
+  },
+  {
+    "case_id": "7ada13fb27467a48",
+    "panel": "open",
+    "family_group": "f2af2970f3f91d08",
+    "lang_a": "da",
+    "word_a": "celina",
+    "lang_b": "en",
+    "word_b": "celena",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "7ada13fb27467a48",
+      "review_id": 6,
+      "family_group": "f2af2970f3f91d08",
+      "meaning_profile": "generic_name_match_unverified",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "Both are female given names; this is not identity. French/Latin versus Selene/Greek routes are recorded, without complete family resolution."
+    }
+  },
+  {
+    "case_id": "0f059edbe554fae2",
+    "panel": "open",
+    "family_group": "9a793972fe9793b3",
+    "lang_a": "en",
+    "word_a": "that",
+    "lang_b": "sv",
+    "word_b": "det",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "0f059edbe554fae2",
+      "review_id": 7,
+      "family_group": "9a793972fe9793b3",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Demonstrative that is shared; English conjunction/relative uses and Swedish impersonal/article uses differ. Selected demonstrative versus placeholder functions are misaligned."
+    }
+  },
+  {
+    "case_id": "3a557f935068172d",
+    "panel": "open",
+    "family_group": "2430a1273ca07f73",
+    "lang_a": "de",
+    "word_a": "Methode",
+    "lang_b": "nb",
+    "word_b": "metode",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "3a557f935068172d",
+      "review_id": 8,
+      "family_group": "2430a1273ca07f73",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean method and record Latin methodus from Greek methodos."
+    }
+  },
+  {
+    "case_id": "0ae616a03089d4b6",
+    "panel": "open",
+    "family_group": "fd6178730394f066",
+    "lang_a": "en",
+    "word_a": "lesotho",
+    "lang_b": "nb",
+    "word_b": "lesotho",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "0ae616a03089d4b6",
+      "review_id": 9,
+      "family_group": "fd6178730394f066",
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly identify the country Lesotho, with matching capital/location and recorded Sotho name; generic proper-name filtering would discard a valid pair."
+    }
+  },
+  {
+    "case_id": "ad00dda3ea74e7d6",
+    "panel": "open",
+    "family_group": "84dcae601142dd05",
+    "lang_a": "de",
+    "word_a": "schwindeln",
+    "lang_b": "sv",
+    "word_b": "fuska",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "ad00dda3ea74e7d6",
+      "review_id": 10,
+      "family_group": "84dcae601142dd05",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Cheating is shared, but German also has dizziness and harmless lying; separate recorded derivations do not prove unrelatedness."
+    }
+  },
+  {
+    "case_id": "00b06cc0cd7a2b7a",
+    "panel": "open",
+    "family_group": "3cc01225a9299cdc",
+    "lang_a": "en",
+    "word_a": "agenda",
+    "lang_b": "nb",
+    "word_b": "agenda",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "00b06cc0cd7a2b7a",
+      "review_id": 11,
+      "family_group": "3cc01225a9299cdc",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Planning/agenda is shared and both record Latin agenda; English also has planner and ulterior-motive senses."
+    }
+  },
+  {
+    "case_id": "cb9415d21d8dd3fc",
+    "panel": "open",
+    "family_group": "2c6de223b550a112",
+    "lang_a": "de",
+    "word_a": "Hermina",
+    "lang_b": "sv",
+    "word_b": "herman",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "cb9415d21d8dd3fc",
+      "review_id": 12,
+      "family_group": "2c6de223b550a112",
+      "meaning_profile": "generic_name_match_unverified",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "Different male/female given-name descriptions do not establish equivalent name variants or a shared history."
+    }
+  },
+  {
+    "case_id": "89227eb4f4e4d28b",
+    "panel": "open",
+    "family_group": "cc7f9316047828ef",
+    "lang_a": "da",
+    "word_a": "gangbro",
+    "lang_b": "en",
+    "word_b": "footbridge",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "89227eb4f4e4d28b",
+      "review_id": 13,
+      "family_group": "cc7f9316047828ef",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both are pedestrian bridges. Recorded decompositions differ: walking+bridge versus foot+bridge; shared whole-compound inheritance is not established."
+    }
+  },
+  {
+    "case_id": "9c0464e9c3ee7491",
+    "panel": "open",
+    "family_group": "a48d05b0bbde0547",
+    "lang_a": "nb",
+    "word_a": "mystisk",
+    "lang_b": "sv",
+    "word_b": "mystiskt",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "9c0464e9c3ee7491",
+      "review_id": 14,
+      "family_group": "a48d05b0bbde0547",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Adjective mysterious versus adverb mysteriously; useful grammatical comparison but not interchangeable forms or evidence of historical narrowing."
+    }
+  },
+  {
+    "case_id": "7fda4ea3d7051f7f",
+    "panel": "open",
+    "family_group": "53147b25360549c5",
+    "lang_a": "nb",
+    "word_a": "bengalrev",
+    "lang_b": "sv",
+    "word_b": "bengalen",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "7fda4ea3d7051f7f",
+      "review_id": 15,
+      "family_group": "53147b25360549c5",
+      "meaning_profile": "no_observed_overlap",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Fox species versus Bengal region. Bengal+fox composition explains the shared component, not whole-word equivalence."
+    }
+  },
+  {
+    "case_id": "5495acc93ba3f796",
+    "panel": "open",
+    "family_group": "659438a7e2a7d40c",
+    "lang_a": "de",
+    "word_a": "Vils",
+    "lang_b": "en",
+    "word_b": "vils",
+    "pair": "de-en",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "5495acc93ba3f796",
+      "review_id": 16,
+      "family_group": "659438a7e2a7d40c",
+      "meaning_profile": "same_named_entity_partial_profile",
+      "compatible_labels": [
+        "entity_overlap",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The selected Austrian town is explicitly the same in both; German also has several river senses."
+    }
+  },
+  {
+    "case_id": "33b9794b24ec0f4c",
+    "panel": "open",
+    "family_group": "644c4a45accf8d7d",
+    "lang_a": "da",
+    "word_a": "uden",
+    "lang_b": "nb",
+    "word_b": "enn",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "33b9794b24ec0f4c",
+      "review_id": 17,
+      "family_group": "644c4a45accf8d7d",
+      "meaning_profile": "no_observed_overlap",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Without versus than/yet/and do not overlap in the supplied senses. Distinct recorded roots alone do not prove independent origin."
+    }
+  },
+  {
+    "case_id": "24147fd1f21e0b92",
+    "panel": "open",
+    "family_group": "422e131c8d3f3fdd",
+    "lang_a": "nb",
+    "word_a": "skilt",
+    "lang_b": "sv",
+    "word_b": "emblem",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "24147fd1f21e0b92",
+      "review_id": 18,
+      "family_group": "422e131c8d3f3fdd",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Road sign and emblem are different default objects; symbol/sign contexts might overlap and require additional lexical evidence."
+    }
+  },
+  {
+    "case_id": "8bf3b0088e4b88af",
+    "panel": "open",
+    "family_group": "3e59099f6a0c4bbd",
+    "lang_a": "da",
+    "word_a": "forbindelse",
+    "lang_b": "en",
+    "word_b": "link",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "8bf3b0088e4b88af",
+      "review_id": 19,
+      "family_group": "3e59099f6a0c4bbd",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both have connection meanings. The selected English buses/systems sense is restricted; multiple other English meanings are not translations of forbindelse."
+    }
+  },
+  {
+    "case_id": "fb0b99b4f597ab37",
+    "panel": "open",
+    "family_group": "4a178e56689820ee",
+    "lang_a": "da",
+    "word_a": "brunch",
+    "lang_b": "en",
+    "word_b": "brunch",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "fb0b99b4f597ab37",
+      "review_id": 20,
+      "family_group": "4a178e56689820ee",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Danish explicitly borrows English brunch. Meal meaning is shared; direct borrowing differs from uninterrupted inherited cognacy."
+    }
+  },
+  {
+    "case_id": "d6a689f71715b07d",
+    "panel": "open",
+    "family_group": "5037989ba9ed443b",
+    "lang_a": "de",
+    "word_a": "Falte",
+    "lang_b": "sv",
+    "word_b": "rynka",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "d6a689f71715b07d",
+      "review_id": 21,
+      "family_group": "5037989ba9ed443b",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Wrinkle is shared; German also has fold and Swedish has verb/fabric uses. Whole histories remain unresolved."
+    }
+  },
+  {
+    "case_id": "8b52b4307e5d7bd7",
+    "panel": "open",
+    "family_group": "1282f93cf8fbf4c8",
+    "lang_a": "da",
+    "word_a": "logik",
+    "lang_b": "sv",
+    "word_b": "logi",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "8b52b4307e5d7bd7",
+      "review_id": 22,
+      "family_group": "1282f93cf8fbf4c8",
+      "meaning_profile": "no_observed_overlap",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Logic versus lodging have distinct supplied meanings despite close spelling."
+    }
+  },
+  {
+    "case_id": "9dae311612769848",
+    "panel": "open",
+    "family_group": "62af29e9a917e77a",
+    "lang_a": "de",
+    "word_a": "Siemens",
+    "lang_b": "en",
+    "word_b": "sieben",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "9dae311612769848",
+      "review_id": 23,
+      "family_group": "62af29e9a917e77a",
+      "meaning_profile": "generic_name_match_unverified",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "Both generic surname glosses do not establish the same name. German also has the electrical unit, omitted from the selected display."
+    }
+  },
+  {
+    "case_id": "68c71e18f1d99d59",
+    "panel": "open",
+    "family_group": "993d1634b9e4107a",
+    "lang_a": "nb",
+    "word_a": "band",
+    "lang_b": "sv",
+    "word_b": "bindel",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "68c71e18f1d99d59",
+      "review_id": 24,
+      "family_group": "993d1634b9e4107a",
+      "meaning_profile": "no_observed_overlap",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Musical group versus strap. The Norwegian sense is borrowed from English band; a deeper relation to binding cannot be settled from these records alone."
+    }
+  },
+  {
+    "case_id": "8f94bc757ec4d939",
+    "panel": "open",
+    "family_group": "36fd428831e03e81",
+    "lang_a": "nb",
+    "word_a": "mosel",
+    "lang_b": "sv",
+    "word_b": "mose",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "8f94bc757ec4d939",
+      "review_id": 25,
+      "family_group": "36fd428831e03e81",
+      "meaning_profile": "different_named_entities",
+      "compatible_labels": [
+        "different_entities"
+      ],
+      "scorable": true,
+      "reference_reason": "The Moselle river and Moses are explicitly different named entities; names should be assessed by identity rather than generic category similarity."
+    }
+  },
+  {
+    "case_id": "a4406b6f63e6d8ca",
+    "panel": "open",
+    "family_group": "0e4e7f552b8ffc8e",
+    "lang_a": "de",
+    "word_a": "säen",
+    "lang_b": "en",
+    "word_b": "sow",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "a4406b6f63e6d8ca",
+      "review_id": 26,
+      "family_group": "0e4e7f552b8ffc8e",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The sowing verbs share recorded Germanic ancestry and meaning. English female-animal and surname homographs must remain separate."
+    }
+  },
+  {
+    "case_id": "b3e05fa50c507ffd",
+    "panel": "open",
+    "family_group": "11b2006a5ff650f6",
+    "lang_a": "en",
+    "word_a": "antipain",
+    "lang_b": "sv",
+    "word_b": "antipapist",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "b3e05fa50c507ffd",
+      "review_id": 27,
+      "family_group": "11b2006a5ff650f6",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Pain prevention or a protease inhibitor is not a religious opponent. Shared anti- does not relate the complete meanings."
+    }
+  },
+  {
+    "case_id": "1b80cd2fa8da9d9e",
+    "panel": "open",
+    "family_group": "1264393cfc78268d",
+    "lang_a": "en",
+    "word_a": "entomolin",
+    "lang_b": "nb",
+    "word_b": "entomolog",
+    "pair": "en-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "1b80cd2fa8da9d9e",
+      "review_id": 28,
+      "family_group": "1264393cfc78268d",
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reference_reason": "Chitin and an insect researcher differ; English entomolin is marked dated and rare/inactive. Shared entomon is only a component."
+    }
+  },
+  {
+    "case_id": "1dba7204e5ebb11d",
+    "panel": "open",
+    "family_group": "3303982c8f2d5107",
+    "lang_a": "da",
+    "word_a": "krav",
+    "lang_b": "nb",
+    "word_b": "behov",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "1dba7204e5ebb11d",
+      "review_id": 29,
+      "family_group": "3303982c8f2d5107",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "A requirement overlaps need/requirement, but demand and need are not equivalent in all contexts. Different recorded historical paths do not alone prove unrelatedness."
+    }
+  },
+  {
+    "case_id": "18d631e4f6074cda",
+    "panel": "open",
+    "family_group": "59e304beb223ccab",
+    "lang_a": "de",
+    "word_a": "Eibe",
+    "lang_b": "en",
+    "word_b": "yew",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "18d631e4f6074cda",
+      "review_id": 30,
+      "family_group": "59e304beb223ccab",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify yew plants with explicit common ancestry and a cognate statement. English wood, bow, and dialectal-you senses are additional uses."
+    }
+  },
+  {
+    "case_id": "d858da1c99f6110b",
+    "panel": "open",
+    "family_group": "79098528843a01fd",
+    "lang_a": "en",
+    "word_a": "paintbrush",
+    "lang_b": "nb",
+    "word_b": "pensel",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "d858da1c99f6110b",
+      "review_id": 31,
+      "family_group": "79098528843a01fd",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify a painting brush. The recorded compound versus Pinsel borrowing paths do not establish whole-word cognacy."
+    }
+  },
+  {
+    "case_id": "5ae138da81d98ec6",
+    "panel": "open",
+    "family_group": "1254e9bb275557aa",
+    "lang_a": "de",
+    "word_a": "entwöhnen",
+    "lang_b": "en",
+    "word_b": "wean",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "5ae138da81d98ec6",
+      "review_id": 32,
+      "family_group": "1254e9bb275557aa",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The shared weaning sense is present and ancestry is recorded. The selected English intransitive cease-to-depend gloss omits the transitive ordinary weaning counterpart; the child noun is another entry."
+    }
+  },
+  {
+    "case_id": "4a334bd4547e9ea6",
+    "panel": "open",
+    "family_group": "bb50fd025e81813f",
+    "lang_a": "da",
+    "word_a": "konfekt",
+    "lang_b": "sv",
+    "word_b": "snask",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "4a334bd4547e9ea6",
+      "review_id": 33,
+      "family_group": "bb50fd025e81813f",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Confectionery and candy overlap in ordinary use. The Swedish entry has no historical record here; common history is not established."
+    }
+  },
+  {
+    "case_id": "b336595e07164f30",
+    "panel": "open",
+    "family_group": "e7b122e8fa3e126d",
+    "lang_a": "nb",
+    "word_a": "tante",
+    "lang_b": "sv",
+    "word_b": "tant",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "b336595e07164f30",
+      "review_id": 34,
+      "family_group": "e7b122e8fa3e126d",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Both descend through French tante, but the Swedish aunt sense is dated/inactive and its current older-woman use is broader than a kinship aunt."
+    }
+  },
+  {
+    "case_id": "8147baeaa5a4b1f9",
+    "panel": "open",
+    "family_group": "12ce451dba5e2dca",
+    "lang_a": "de",
+    "word_a": "verletzen",
+    "lang_b": "sv",
+    "word_b": "invadera",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "8147baeaa5a4b1f9",
+      "review_id": 35,
+      "family_group": "12ce451dba5e2dca",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Injury or violation of rules is not invasion. These saved senses offer no mutual translation, although invasion can cause injury or violate rules."
+    }
+  },
+  {
+    "case_id": "a529496c07a91d08",
+    "panel": "open",
+    "family_group": "5e702eaab19001c2",
+    "lang_a": "en",
+    "word_a": "statue",
+    "lang_b": "nb",
+    "word_b": "statue",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "a529496c07a91d08",
+      "review_id": 36,
+      "family_group": "5e702eaab19001c2",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record statues and Latin statua through borrowing paths. English also has a statue-making verb and an inactive portrait sense."
+    }
+  },
+  {
+    "case_id": "71dacf8785b2f5ac",
+    "panel": "open",
+    "family_group": "4dddf7f434dcb65d",
+    "lang_a": "de",
+    "word_a": "Synapse",
+    "lang_b": "nb",
+    "word_b": "synse",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "71dacf8785b2f5ac",
+      "review_id": 37,
+      "family_group": "4dddf7f434dcb65d",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "A synapse and poorly informed opinion-giving name different concepts and parts of speech. The Norwegian derivation does not supply German historical evidence."
+    }
+  },
+  {
+    "case_id": "e2f3aa8deed4e82f",
+    "panel": "open",
+    "family_group": "cf396257b041fb52",
+    "lang_a": "en",
+    "word_a": "glutaric",
+    "lang_b": "sv",
+    "word_b": "glutamin",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "e2f3aa8deed4e82f",
+      "review_id": 38,
+      "family_group": "cf396257b041fb52",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Glutaric-acid-related and glutamine name different chemical concepts and grammatical categories. Similar scientific vocabulary is not equivalence."
+    }
+  },
+  {
+    "case_id": "9d0e9c1b1a47b036",
+    "panel": "open",
+    "family_group": "7a26fbedab3452f2",
+    "lang_a": "de",
+    "word_a": "Ununhexium",
+    "lang_b": "en",
+    "word_b": "ununtrium",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "9d0e9c1b1a47b036",
+      "review_id": 39,
+      "family_group": "7a26fbedab3452f2",
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reference_reason": "The two systematic element names are different, and the English entry is marked dated/inactive. Its hypothetical active equivalence must not be manufactured from their shared element-name pattern."
+    }
+  },
+  {
+    "case_id": "2c349cb045c9ca97",
+    "panel": "open",
+    "family_group": "382a2bf82960aad8",
+    "lang_a": "da",
+    "word_a": "gås",
+    "lang_b": "nb",
+    "word_b": "gås",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "2c349cb045c9ca97",
+      "review_id": 40,
+      "family_group": "382a2bf82960aad8",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean goose and record Old Norse gas and Proto-Germanic gans."
+    }
+  },
+  {
+    "case_id": "da7fb984cd07257a",
+    "panel": "open",
+    "family_group": "78dae9ed2e7bec88",
+    "lang_a": "da",
+    "word_a": "sende",
+    "lang_b": "nb",
+    "word_b": "sender",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "da7fb984cd07257a",
+      "review_id": 41,
+      "family_group": "78dae9ed2e7bec88",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Sending is an action; a sender is its agent. The form relationship is a reasonable derivational inference, not a documented complete ancestry path here."
+    }
+  },
+  {
+    "case_id": "c6ea140f9fcfc1a2",
+    "panel": "open",
+    "family_group": "d7e3f873fe58a8c0",
+    "lang_a": "nb",
+    "word_a": "effekt",
+    "lang_b": "sv",
+    "word_b": "verkan",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "c6ea140f9fcfc1a2",
+      "review_id": 42,
+      "family_group": "d7e3f873fe58a8c0",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly record effect/result. Latin effectus versus verka + suffix does not establish unrelated origins by itself."
+    }
+  },
+  {
+    "case_id": "fbc4959a9c2d657e",
+    "panel": "open",
+    "family_group": "218a04892a0095b4",
+    "lang_a": "nb",
+    "word_a": "gressplen",
+    "lang_b": "sv",
+    "word_b": "gräsmatta",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "fbc4959a9c2d657e",
+      "review_id": 43,
+      "family_group": "218a04892a0095b4",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean lawn. Grass-like first components suggest partial family overlap, but plen and matta differ; whole-compound inherited cognacy is not documented."
+    }
+  },
+  {
+    "case_id": "54133de7e63674b2",
+    "panel": "open",
+    "family_group": "760036e2bb3d81f7",
+    "lang_a": "de",
+    "word_a": "Quartier",
+    "lang_b": "nb",
+    "word_b": "kvarter",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "54133de7e63674b2",
+      "review_id": 44,
+      "family_group": "760036e2bb3d81f7",
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The district sense overlaps, with German marked especially Switzerland. German accommodation and Norwegian quarter-hour/moon uses do not coincide. Both record French quartier."
+    }
+  },
+  {
+    "case_id": "448f5f6cbff08745",
+    "panel": "open",
+    "family_group": "f5a997fae0cf9d73",
+    "lang_a": "de",
+    "word_a": "Falke",
+    "lang_b": "sv",
+    "word_b": "hök",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "448f5f6cbff08745",
+      "review_id": 45,
+      "family_group": "f5a997fae0cf9d73",
+      "meaning_profile": "secondary_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record political hawk/hard-liner senses. Selected falcon versus hawk bird meanings differ; historical root strings also differ without independently proving unrelatedness."
+    }
+  },
+  {
+    "case_id": "37ef142edb55c849",
+    "panel": "open",
+    "family_group": "cfe96b31aca08274",
+    "lang_a": "de",
+    "word_a": "Helix",
+    "lang_b": "sv",
+    "word_b": "helig",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "37ef142edb55c849",
+      "review_id": 46,
+      "family_group": "cfe96b31aca08274",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Helix and holy do not overlap in these senses. A Swedish Germanic root does not establish the German noun ancestry."
+    }
+  },
+  {
+    "case_id": "8c8cc3d0f14cbc60",
+    "panel": "open",
+    "family_group": "ef313935c5830cfb",
+    "lang_a": "de",
+    "word_a": "ängstlich",
+    "lang_b": "sv",
+    "word_b": "timid",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "8c8cc3d0f14cbc60",
+      "review_id": 47,
+      "family_group": "ef313935c5830cfb",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Fearful/anxious and timid overlap in a fearful disposition, but anxiety need not imply timidity. Swedish history is absent."
+    }
+  },
+  {
+    "case_id": "1cfc74885278f56d",
+    "panel": "open",
+    "family_group": "3941c0af14f1f826",
+    "lang_a": "da",
+    "word_a": "beslægtet",
+    "lang_b": "nb",
+    "word_b": "slektning",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "1cfc74885278f56d",
+      "review_id": 48,
+      "family_group": "3941c0af14f1f826",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Related is an adjective; a relative is a person. The similar family stems suggest a derivational relationship but the records do not provide its complete path."
+    }
+  },
+  {
+    "case_id": "e144f5ba0e777f09",
+    "panel": "open",
+    "family_group": "aeb3e8db2af2f507",
+    "lang_a": "en",
+    "word_a": "sound",
+    "lang_b": "nb",
+    "word_b": "frisk",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "e144f5ba0e777f09",
+      "review_id": 49,
+      "family_group": "aeb3e8db2af2f507",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Healthy overlaps explicitly. English sound has many unrelated homographs and Norwegian frisk also means fresh, keen, or refreshing. Unequal Germanic roots do not settle common ancestry."
+    }
+  },
+  {
+    "case_id": "1ab86975396d7b32",
+    "panel": "open",
+    "family_group": "e8170f05feb27e66",
+    "lang_a": "en",
+    "word_a": "discuss",
+    "lang_b": "nb",
+    "word_b": "drøfte",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "1ab86975396d7b32",
+      "review_id": 50,
+      "family_group": "e8170f05feb27e66",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly mean discuss/debate. Other English senses are mostly inactive; Norwegian history is absent."
+    }
+  },
+  {
+    "case_id": "83c17d1c584ee4fe",
+    "panel": "open",
+    "family_group": "d1def178cc6e9c0d",
+    "lang_a": "da",
+    "word_a": "mysterium",
+    "lang_b": "en",
+    "word_b": "mysterium",
+    "pair": "da-en",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "83c17d1c584ee4fe",
+      "review_id": 51,
+      "family_group": "d1def178cc6e9c0d",
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record Latin mysterium, but English has only historical/inactive substance or radio-source senses here. Those do not match the Danish ordinary mystery headline."
+    }
+  },
+  {
+    "case_id": "93cefed14c4fc6e0",
+    "panel": "open",
+    "family_group": "3e447b466945641f",
+    "lang_a": "nb",
+    "word_a": "by",
+    "lang_b": "sv",
+    "word_b": "by",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "93cefed14c4fc6e0",
+      "review_id": 52,
+      "family_group": "3e447b466945641f",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "The settlement nouns share Old Norse byr. Current town/city versus village/hamlet meanings differ; Swedish town/city is marked obsolete. Verb and gust homographs are separate."
+    }
+  },
+  {
+    "case_id": "60e41f7d3194ccf1",
+    "panel": "open",
+    "family_group": "4936f8bf223f6490",
+    "lang_a": "nb",
+    "word_a": "kile",
+    "lang_b": "sv",
+    "word_b": "kittla",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "60e41f7d3194ccf1",
+      "review_id": 53,
+      "family_group": "4936f8bf223f6490",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The tickling verbs share Old Norse kitla and Germanic kitilonan; Norwegian wedge senses belong to another historical entry."
+    }
+  },
+  {
+    "case_id": "08825ab2c0fc1d16",
+    "panel": "open",
+    "family_group": "5c1477b56e544eef",
+    "lang_a": "da",
+    "word_a": "ledsager",
+    "lang_b": "nb",
+    "word_b": "kompanjong",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "08825ab2c0fc1d16",
+      "review_id": 54,
+      "family_group": "5c1477b56e544eef",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Companion and a business partner can overlap situationally, but these bare glosses do not establish a general interchangeable sense."
+    }
+  },
+  {
+    "case_id": "d80df78306050c6e",
+    "panel": "open",
+    "family_group": "787a4b2dc0dfcccd",
+    "lang_a": "da",
+    "word_a": "mistænksom",
+    "lang_b": "sv",
+    "word_b": "misstrogen",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "d80df78306050c6e",
+      "review_id": 55,
+      "family_group": "787a4b2dc0dfcccd",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Suspicious and distrustful overlap. Different bases for suspect and trust plus a negative prefix do not establish whole-word cognacy."
+    }
+  },
+  {
+    "case_id": "6ad16b1db9b08286",
+    "panel": "open",
+    "family_group": "c54d758cec64bac0",
+    "lang_a": "en",
+    "word_a": "part",
+    "lang_b": "nb",
+    "word_b": "par",
+    "pair": "en-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "6ad16b1db9b08286",
+      "review_id": 56,
+      "family_group": "c54d758cec64bac0",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Division, portion, role, and partially are not a pair/couple/few or golf par. Association with two things does not establish equivalent senses."
+    }
+  },
+  {
+    "case_id": "ca2cbd7b44eb308a",
+    "panel": "open",
+    "family_group": "800d2c78817d33bb",
+    "lang_a": "da",
+    "word_a": "margarine",
+    "lang_b": "en",
+    "word_b": "margaric",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "ca2cbd7b44eb308a",
+      "review_id": 57,
+      "family_group": "800d2c78817d33bb",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Both ultimately record Greek margaron, but a spread and a pearl-related/acid adjective differ. Shared source history is not shared current meaning."
+    }
+  },
+  {
+    "case_id": "7aeb9db4063f4c67",
+    "panel": "open",
+    "family_group": "c206858c5ad2202b",
+    "lang_a": "de",
+    "word_a": "Jarl",
+    "lang_b": "nb",
+    "word_b": "jarl",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "7aeb9db4063f4c67",
+      "review_id": 58,
+      "family_group": "c206858c5ad2202b",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record Old Norse jarl; the selected German Norse title and active Norwegian British earl use are different institutional titles. The matching Norse-title Norwegian sense is marked historical/inactive."
+    }
+  },
+  {
+    "case_id": "696b4d9597723995",
+    "panel": "open",
+    "family_group": "410504b204544b4c",
+    "lang_a": "de",
+    "word_a": "Elf",
+    "lang_b": "sv",
+    "word_b": "älva",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "696b4d9597723995",
+      "review_id": 59,
+      "family_group": "410504b204544b4c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The mythological creatures overlap, with Swedish specifying a female fairy/elf. German elf is borrowed from English while Swedish inherits the Germanic family; German eleven/team meanings are separate."
+    }
+  },
+  {
+    "case_id": "5bcb7b18380de348",
+    "panel": "open",
+    "family_group": "4858a88992313d1b",
+    "lang_a": "de",
+    "word_a": "Feminat",
+    "lang_b": "en",
+    "word_b": "femina",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "5bcb7b18380de348",
+      "review_id": 60,
+      "family_group": "4858a88992313d1b",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record Latin femina, but female committee and female-ostrich feather are not equivalent meanings."
+    }
+  },
+  {
+    "case_id": "96675c7f4e167162",
+    "panel": "open",
+    "family_group": "f00ab4c50dc6d330",
+    "lang_a": "en",
+    "word_a": "hurry",
+    "lang_b": "nb",
+    "word_b": "press",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "96675c7f4e167162",
+      "review_id": 61,
+      "family_group": "f00ab4c50dc6d330",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "English hurry describes a specific defensive-pressure event, not generic pressure; urgency and pressure can coincide but these entries do not establish general interchangeability."
+    }
+  },
+  {
+    "case_id": "0c2a670493f0d0c0",
+    "panel": "open",
+    "family_group": "9277911d7bfb73ba",
+    "lang_a": "nb",
+    "word_a": "fond",
+    "lang_b": "sv",
+    "word_b": "font",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "0c2a670493f0d0c0",
+      "review_id": 62,
+      "family_group": "9277911d7bfb73ba",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "A fund and a font are different concepts. Only Norwegian historical evidence is recorded."
+    }
+  },
+  {
+    "case_id": "ced0d1387965bd0d",
+    "panel": "open",
+    "family_group": "8254cdf272962f79",
+    "lang_a": "en",
+    "word_a": "saga",
+    "lang_b": "sv",
+    "word_b": "saga",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "ced0d1387965bd0d",
+      "review_id": 63,
+      "family_group": "8254cdf272962f79",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record the Norse narrative sense and common saga source. English borrowing is narrower than Swedish fairy-tale/story uses; place-name homographs are separate."
+    }
+  },
+  {
+    "case_id": "41b82e5972d4c256",
+    "panel": "open",
+    "family_group": "1e5aa47f6cef4282",
+    "lang_a": "da",
+    "word_a": "pedantisk",
+    "lang_b": "de",
+    "word_b": "etepetete",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "41b82e5972d4c256",
+      "review_id": 64,
+      "family_group": "1e5aa47f6cef4282",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Pedantic and finical can overlap in excessive fussiness, but affected/hoity-toity is not general pedantry. Sources do not establish shared history."
+    }
+  },
+  {
+    "case_id": "559797c9d349302d",
+    "panel": "open",
+    "family_group": "410504b204544b4c",
+    "lang_a": "da",
+    "word_a": "alf",
+    "lang_b": "en",
+    "word_b": "elf",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "559797c9d349302d",
+      "review_id": 65,
+      "family_group": "410504b204544b4c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record elf/fairy senses and Germanic albiz. English fantasy-race, fish, and Christmas uses are not all Danish counterparts; the male name is separate."
+    }
+  },
+  {
+    "case_id": "54910fa9204067a8",
+    "panel": "open",
+    "family_group": "10977d5492ad8d1c",
+    "lang_a": "nb",
+    "word_a": "apostel",
+    "lang_b": "sv",
+    "word_b": "apostel",
+    "pair": "nb-sv",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "54910fa9204067a8",
+      "review_id": 66,
+      "family_group": "10977d5492ad8d1c",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Apostle overlaps explicitly, including religious and broader Swedish senses. Greek is recorded on one side and Old Swedish on the other; full common-source borrowing path is inferred, not fully recorded."
+    }
+  },
+  {
+    "case_id": "ad2168d601d5fd91",
+    "panel": "open",
+    "family_group": "3dbd5bb5d255b822",
+    "lang_a": "de",
+    "word_a": "schussfest",
+    "lang_b": "nb",
+    "word_b": "skuddsikker",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "ad2168d601d5fd91",
+      "review_id": 67,
+      "family_group": "3dbd5bb5d255b822",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean bulletproof. Recorded shot-plus-firm/secure composition supports structural analogy; common ancestry of both complete compounds is not established."
+    }
+  },
+  {
+    "case_id": "7a921ef902f71dc2",
+    "panel": "open",
+    "family_group": "b26ac6683100b768",
+    "lang_a": "de",
+    "word_a": "Initiator",
+    "lang_b": "nb",
+    "word_b": "initiativ",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "7a921ef902f71dc2",
+      "review_id": 68,
+      "family_group": "b26ac6683100b768",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "An initiator is an agent; initiative is an act or disposition. Shared activity does not make these nouns equivalent."
+    }
+  },
+  {
+    "case_id": "064989c4ead0a5ef",
+    "panel": "open",
+    "family_group": "c2366214a84b8bad",
+    "lang_a": "en",
+    "word_a": "platea",
+    "lang_b": "sv",
+    "word_b": "platta",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "064989c4ead0a5ef",
+      "review_id": 69,
+      "family_group": "c2366214a84b8bad",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "The Pennsylvania borough and Swedish flat object/record meanings do not denote the same entity or concept."
+    }
+  },
+  {
+    "case_id": "5b47838d2eb4a300",
+    "panel": "open",
+    "family_group": "a75b530b897a0ce2",
+    "lang_a": "en",
+    "word_a": "suffragate",
+    "lang_b": "sv",
+    "word_b": "suffragett",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "5b47838d2eb4a300",
+      "review_id": 70,
+      "family_group": "a75b530b897a0ce2",
+      "meaning_profile": "no_active_overlap_observed",
+      "compatible_labels": [
+        "different_meanings",
+        "no_modern_sense_data"
+      ],
+      "scorable": true,
+      "reference_reason": "Both saved senses are marked inactive, and voting versus a suffragette remains action versus person. Historical tagging itself does not prove a word is unusable; report this filtering boundary."
+    }
+  },
+  {
+    "case_id": "26ce4ec237aa9248",
+    "panel": "open",
+    "family_group": "7691866961c66386",
+    "lang_a": "nb",
+    "word_a": "ansvar",
+    "lang_b": "sv",
+    "word_b": "ansvara",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "26ce4ec237aa9248",
+      "review_id": 71,
+      "family_group": "7691866961c66386",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Responsibility and being responsible are related but different grammatical meanings. Swedish explicitly derives the verb from ansvar; the whole cross-language history needs a further link."
+    }
+  },
+  {
+    "case_id": "dd170d09314fcb5d",
+    "panel": "open",
+    "family_group": "7fbfbcec682fb4fe",
+    "lang_a": "da",
+    "word_a": "forholdsord",
+    "lang_b": "en",
+    "word_b": "preposition",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "dd170d09314fcb5d",
+      "review_id": 72,
+      "family_group": "7fbfbcec682fb4fe",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The strict English preposition sense matches Danish. The selected English broad adposition sense is wider and includes other positional classes."
+    }
+  },
+  {
+    "case_id": "a32a345b7cea9788",
+    "panel": "open",
+    "family_group": "6ee83747667c50b9",
+    "lang_a": "da",
+    "word_a": "misvisende",
+    "lang_b": "sv",
+    "word_b": "missvisande",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "a32a345b7cea9788",
+      "review_id": 73,
+      "family_group": "6ee83747667c50b9",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean misleading. Swedish records mis-plus-showing composition; Danish history is absent, so matching morphology supplies an inference rather than recorded ancestry."
+    }
+  },
+  {
+    "case_id": "f099c1ebda6de76d",
+    "panel": "open",
+    "family_group": "4fd917a57f11a08c",
+    "lang_a": "en",
+    "word_a": "summarize",
+    "lang_b": "sv",
+    "word_b": "sammanfatta",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "f099c1ebda6de76d",
+      "review_id": 74,
+      "family_group": "4fd917a57f11a08c",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean summarize. Different recorded morphological bases do not prove independent origins, and Swedish also records conclude."
+    }
+  },
+  {
+    "case_id": "eeebca1766e65248",
+    "panel": "open",
+    "family_group": "04f916cb09de0937",
+    "lang_a": "da",
+    "word_a": "ælte",
+    "lang_b": "nb",
+    "word_b": "kna",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "eeebca1766e65248",
+      "review_id": 75,
+      "family_group": "04f916cb09de0937",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean knead, with Norwegian specifying dough. Recorded Norse elta and knoda are different immediate sources, not independently proven unrelated roots. Danish mud is another grammatical entry."
+    }
+  },
+  {
+    "case_id": "aba151b6b4db1d3e",
+    "panel": "open",
+    "family_group": "eca5bc099c9cfe6d",
+    "lang_a": "da",
+    "word_a": "bakke",
+    "lang_b": "nb",
+    "word_b": "bakluke",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "aba151b6b4db1d3e",
+      "review_id": 76,
+      "family_group": "eca5bc099c9cfe6d",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Tray, hill, tool jaw, and backing are not a tailgate. Possible back-component resemblance concerns one historical entry, not the selected tray or the complete compound."
+    }
+  },
+  {
+    "case_id": "b4aa4b88efa30f20",
+    "panel": "open",
+    "family_group": "f2ab9f5c973da2f6",
+    "lang_a": "da",
+    "word_a": "underviser",
+    "lang_b": "en",
+    "word_b": "underside",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "b4aa4b88efa30f20",
+      "review_id": 77,
+      "family_group": "f2ab9f5c973da2f6",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Teacher and underside have no observed shared meaning. Similar under-components do not make the complete words cognates or translations."
+    }
+  },
+  {
+    "case_id": "8a92889432233991",
+    "panel": "open",
+    "family_group": "a075d31a592011e3",
+    "lang_a": "de",
+    "word_a": "Ampfer",
+    "lang_b": "en",
+    "word_b": "amper",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "8a92889432233991",
+      "review_id": 78,
+      "family_group": "a075d31a592011e3",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "The sources connect sorrel-related old forms through Germanic ampraz, but current English tumour/flaw glosses omit the German plant meaning. Shared ancestry is separate from current semantic disjointness in these entries."
+    }
+  },
+  {
+    "case_id": "57c6ad82008c2357",
+    "panel": "open",
+    "family_group": "ef3908469e7d645f",
+    "lang_a": "de",
+    "word_a": "Nordost",
+    "lang_b": "nb",
+    "word_b": "nordkyst",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "57c6ad82008c2357",
+      "review_id": 79,
+      "family_group": "ef3908469e7d645f",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Northeast and north coast differ. A north component can relate while the complete concepts and second components differ."
+    }
+  },
+  {
+    "case_id": "6cc63e8e4f424a86",
+    "panel": "open",
+    "family_group": "8fe47a7f628abe5b",
+    "lang_a": "de",
+    "word_a": "Diskus",
+    "lang_b": "nb",
+    "word_b": "diskos",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "6cc63e8e4f424a86",
+      "review_id": 80,
+      "family_group": "8fe47a7f628abe5b",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record the thrown discus object, but the selected Norwegian sport/action is not the object. Latin and Greek sources suggest a borrowing family without a full linking path in these entries."
+    }
+  },
+  {
+    "case_id": "117a3c4f38bb23e8",
+    "panel": "open",
+    "family_group": "4709e41d953adf50",
+    "lang_a": "da",
+    "word_a": "kriterium",
+    "lang_b": "de",
+    "word_b": "Kriterium",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "117a3c4f38bb23e8",
+      "review_id": 81,
+      "family_group": "4709e41d953adf50",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean criterion and record Greek kriterion, German via Latin."
+    }
+  },
+  {
+    "case_id": "b22638cbb9183e48",
+    "panel": "open",
+    "family_group": "e7b122e8fa3e126d",
+    "lang_a": "nb",
+    "word_a": "filletante",
+    "lang_b": "sv",
+    "word_b": "tant",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "b22638cbb9183e48",
+      "review_id": 82,
+      "family_group": "e7b122e8fa3e126d",
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "A great-aunt is not any older woman. Norwegian family-friend senses can overlap Swedish older-woman address contextually; the aunt component history is shared, not the complete compound."
+    }
+  },
+  {
+    "case_id": "de7de9c10e43b3fa",
+    "panel": "open",
+    "family_group": "bcc61ef444f92dd9",
+    "lang_a": "de",
+    "word_a": "Keil",
+    "lang_b": "en",
+    "word_b": "shim",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "de7de9c10e43b3fa",
+      "review_id": 83,
+      "family_group": "bcc61ef444f92dd9",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record wedge. English shim also has thin alignment material, software, and other senses; its physical-word origin is explicitly unknown."
+    }
+  },
+  {
+    "case_id": "468e618f6420770c",
+    "panel": "open",
+    "family_group": "247a9766e960cef1",
+    "lang_a": "da",
+    "word_a": "varsel",
+    "lang_b": "de",
+    "word_b": "Vorzeichen",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "468e618f6420770c",
+      "review_id": 84,
+      "family_group": "247a9766e960cef1",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record omen, while Danish notice/warning and German technical sign uses differ. Their recorded derivations do not establish whole-word unrelatedness."
+    }
+  },
+  {
+    "case_id": "8695f88bf063ed7c",
+    "panel": "open",
+    "family_group": "c20f607c00cf13bf",
+    "lang_a": "de",
+    "word_a": "gegen",
+    "lang_b": "en",
+    "word_b": "against",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "8695f88bf063ed7c",
+      "review_id": 85,
+      "family_group": "c20f607c00cf13bf",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Against/opposition overlaps explicitly with recorded gagin ancestry and a cognate statement; other directional, approximate, and grammatical uses do not all coincide."
+    }
+  },
+  {
+    "case_id": "90b18673995805e0",
+    "panel": "open",
+    "family_group": "02b5b29b4c6f0b8d",
+    "lang_a": "da",
+    "word_a": "blive",
+    "lang_b": "nb",
+    "word_b": "blive",
+    "pair": "da-nb",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "90b18673995805e0",
+      "review_id": 86,
+      "family_group": "02b5b29b4c6f0b8d",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Norwegian drown is explicitly derived from remain-at-sea with the same historical blive source. The Danish passive auxiliary, become, and remain senses do not mean drown."
+    }
+  },
+  {
+    "case_id": "eeb6d0f02d6acaec",
+    "panel": "open",
+    "family_group": "2dd4a128fc33c447",
+    "lang_a": "nb",
+    "word_a": "søk",
+    "lang_b": "sv",
+    "word_b": "sökande",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "eeb6d0f02d6acaec",
+      "review_id": 87,
+      "family_group": "2dd4a128fc33c447",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Search/seeking overlaps, but Swedish also records applicants/claimants. Similar search stems support inference; the Swedish complete ancestry path is absent."
+    }
+  },
+  {
+    "case_id": "cc90eb61527bdf32",
+    "panel": "open",
+    "family_group": "6e5dd75d22cabec2",
+    "lang_a": "nb",
+    "word_a": "hallo",
+    "lang_b": "sv",
+    "word_b": "halloj",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "cc90eb61527bdf32",
+      "review_id": 88,
+      "family_group": "6e5dd75d22cabec2",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean hello, Swedish marked colloquial with a tentative blend history. A complete cross-language borrowing link is not recorded."
+    }
+  },
+  {
+    "case_id": "5a292d811c74838e",
+    "panel": "open",
+    "family_group": "a3c41272e5b98973",
+    "lang_a": "da",
+    "word_a": "applicere",
+    "lang_b": "sv",
+    "word_b": "applicerad",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "5a292d811c74838e",
+      "review_id": 89,
+      "family_group": "a3c41272e5b98973",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "To apply and applied are verb versus adjective/participle. Danish Latin history and form resemblance support a family inference, not exact grammatical equivalence."
+    }
+  },
+  {
+    "case_id": "b3a5280f0949f774",
+    "panel": "open",
+    "family_group": "0aa33f1adab50b63",
+    "lang_a": "en",
+    "word_a": "blunt",
+    "lang_b": "sv",
+    "word_b": "joint",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "b3a5280f0949f774",
+      "review_id": 90,
+      "family_group": "0aa33f1adab50b63",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A marijuana cigar and cigarette are related smoking products, not an exact shared sense. English blunt has many additional adjective, verb, and name uses; Swedish history is absent."
+    }
+  },
+  {
+    "case_id": "087198c5aea391e0",
+    "panel": "open",
+    "family_group": "9b3ad1c186a79ae4",
+    "lang_a": "de",
+    "word_a": "Chemokin",
+    "lang_b": "en",
+    "word_b": "chemerin",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": null,
+    "reference": {
+      "case_id": "087198c5aea391e0",
+      "review_id": 91,
+      "family_group": "9b3ad1c186a79ae4",
+      "meaning_profile": "specialized_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "The glosses describe related signaling-protein concepts but do not establish whether chemerin is a chemokine or an interchangeable term. A biochemical source check is needed; shared chemo-like form is insufficient."
+    }
+  },
+  {
+    "case_id": "5f97e289d0116cb0",
+    "panel": "open",
+    "family_group": "aeb43ee76d41036b",
+    "lang_a": "nb",
+    "word_a": "spare",
+    "lang_b": "sv",
+    "word_b": "sparare",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "5f97e289d0116cb0",
+      "review_id": 92,
+      "family_group": "aeb43ee76d41036b",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Saving is an action; a money saver is an agent. Swedish records spara plus agent suffix, but the cross-language historical link is inferred."
+    }
+  },
+  {
+    "case_id": "016aa93555724549",
+    "panel": "open",
+    "family_group": "f2fe0ec16f169b67",
+    "lang_a": "en",
+    "word_a": "jump",
+    "lang_b": "nb",
+    "word_b": "hoppe",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "016aa93555724549",
+      "review_id": 93,
+      "family_group": "f2fe0ec16f169b67",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly record the airborne jumping action. Many English secondary meanings and the Norwegian mare homograph differ. Germanic jump history and Norse hoppa do not by themselves settle common ancestry."
+    }
+  },
+  {
+    "case_id": "3b13e21b99c1ed90",
+    "panel": "open",
+    "family_group": "b7b5edad8f2e068e",
+    "lang_a": "de",
+    "word_a": "Obersattel",
+    "lang_b": "sv",
+    "word_b": "mutter",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "3b13e21b99c1ed90",
+      "review_id": 94,
+      "family_group": "b7b5edad8f2e068e",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "A string-instrument nut and a bolt nut are different objects. Their shared English translation word is a polysemy trap, not evidence that the source words share that sense."
+    }
+  },
+  {
+    "case_id": "ee93428a0734facf",
+    "panel": "open",
+    "family_group": "c4d32470110619fc",
+    "lang_a": "nb",
+    "word_a": "ball",
+    "lang_b": "sv",
+    "word_b": "balle",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "ee93428a0734facf",
+      "review_id": 95,
+      "family_group": "c4d32470110619fc",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "The spherical ball and Swedish penis/testicle/buttock/balcony senses differ, despite explicit common balluz ancestry. The Norwegian dance homograph has another origin."
+    }
+  },
+  {
+    "case_id": "c02d4747240b936b",
+    "panel": "open",
+    "family_group": "8f7eb92b2200b869",
+    "lang_a": "en",
+    "word_a": "home",
+    "lang_b": "nb",
+    "word_b": "hjem",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "c02d4747240b936b",
+      "review_id": 96,
+      "family_group": "8f7eb92b2200b869",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record home/dwelling and common haimaz ancestry. Selected English habitat-of-a-thing versus Norwegian origin/belonging is less direct than their ordinary dwelling correspondence."
+    }
+  },
+  {
+    "case_id": "710eb84218c4c739",
+    "panel": "open",
+    "family_group": "4f5bdca596252db9",
+    "lang_a": "da",
+    "word_a": "lune",
+    "lang_b": "de",
+    "word_b": "Luna",
+    "pair": "da-de",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "710eb84218c4c739",
+      "review_id": 97,
+      "family_group": "4f5bdca596252db9",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Danish mood/caprice derives through Latin luna, while German Luna names the Roman deity or a given name. Shared lunar source does not establish present equivalence; warm is another Danish entry."
+    }
+  },
+  {
+    "case_id": "26baf7ac5f3cd441",
+    "panel": "open",
+    "family_group": "34a91b8f5d0383d6",
+    "lang_a": "de",
+    "word_a": "Julian",
+    "lang_b": "en",
+    "word_b": "julmann",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "26baf7ac5f3cd441",
+      "review_id": 98,
+      "family_group": "34a91b8f5d0383d6",
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "A Latin-derived given name and an unspecified surname do not identify matching entities or documented name variants."
+    }
+  },
+  {
+    "case_id": "280e309094e3ec0f",
+    "panel": "open",
+    "family_group": "6ae5d4bfc0b53f83",
+    "lang_a": "da",
+    "word_a": "konfirmand",
+    "lang_b": "nb",
+    "word_b": "konfirmere",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "280e309094e3ec0f",
+      "review_id": 99,
+      "family_group": "6ae5d4bfc0b53f83",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A confirmand is a participant; confirming is an action. Related religious domain and similar forms do not make noun and verb equivalent."
+    }
+  },
+  {
+    "case_id": "81232fc0f41ee420",
+    "panel": "open",
+    "family_group": "9c16ac9ea6b8bab7",
+    "lang_a": "de",
+    "word_a": "mauritisch",
+    "lang_b": "sv",
+    "word_b": "mauritier",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "81232fc0f41ee420",
+      "review_id": 100,
+      "family_group": "9c16ac9ea6b8bab7",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Both are formed from Mauritius, but Mauritian as a relational adjective and a Mauritian person are distinct grammatical meanings."
+    }
+  },
+  {
+    "case_id": "828267618865d74c",
+    "panel": "open",
+    "family_group": "393e75db289795a0",
+    "lang_a": "de",
+    "word_a": "beiläufig",
+    "lang_b": "en",
+    "word_b": "casual",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "828267618865d74c",
+      "review_id": 101,
+      "family_group": "393e75db289795a0",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "English occasional/incidental overlaps the German gloss. Happening by chance is related but not the same as occurring incidentally; informal/relaxed meanings are additional English uses."
+    }
+  },
+  {
+    "case_id": "dd65dcc6edd8b2e3",
+    "panel": "open",
+    "family_group": "9e33a36f18549266",
+    "lang_a": "en",
+    "word_a": "granada",
+    "lang_b": "nb",
+    "word_b": "granka",
+    "pair": "en-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "dd65dcc6edd8b2e3",
+      "review_id": 102,
+      "family_group": "9e33a36f18549266",
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "Granada city/province and other named places are not Gran Canaria. Norwegian granka is explicitly its island abbreviation."
+    }
+  },
+  {
+    "case_id": "50c70cd8a1141e25",
+    "panel": "open",
+    "family_group": "10ccebd8758eb554",
+    "lang_a": "nb",
+    "word_a": "gresshoppe",
+    "lang_b": "sv",
+    "word_b": "gräshoppa",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "50c70cd8a1141e25",
+      "review_id": 103,
+      "family_group": "10ccebd8758eb554",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly identify grasshopper, Swedish also locust. Both record grass-plus-hop composition; cross-language ancestry of each component is inferred rather than traced here."
+    }
+  },
+  {
+    "case_id": "eca7c4f4330075db",
+    "panel": "open",
+    "family_group": "cbcff8112c6410ce",
+    "lang_a": "de",
+    "word_a": "Alexandrit",
+    "lang_b": "sv",
+    "word_b": "alexander",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "eca7c4f4330075db",
+      "review_id": 104,
+      "family_group": "cbcff8112c6410ce",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "A mineral and a male given name are different concepts. The shared Alexander-like form does not establish a historical path in these records."
+    }
+  },
+  {
+    "case_id": "056b656a38892374",
+    "panel": "open",
+    "family_group": "848d75e4f5ec1231",
+    "lang_a": "en",
+    "word_a": "put",
+    "lang_b": "sv",
+    "word_b": "he",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "056b656a38892374",
+      "review_id": 105,
+      "family_group": "848d75e4f5ec1231",
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Physical putting is explicitly shared, but Swedish he is Northern/regional and also a pronoun. English abstract, financial and other senses do not all match."
+    }
+  },
+  {
+    "case_id": "02afec4b173d152a",
+    "panel": "open",
+    "family_group": "7452f22bd53cd58e",
+    "lang_a": "da",
+    "word_a": "søndag",
+    "lang_b": "de",
+    "word_b": "Sonntag",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "02afec4b173d152a",
+      "review_id": 106,
+      "family_group": "7452f22bd53cd58e",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify Sunday and explicitly record the sun-day calque family. German municipality and historical place-name entries are separate."
+    }
+  },
+  {
+    "case_id": "92ec23e8c943d1b3",
+    "panel": "open",
+    "family_group": "1931071ced16f9e9",
+    "lang_a": "da",
+    "word_a": "optog",
+    "lang_b": "sv",
+    "word_b": "parad",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "92ec23e8c943d1b3",
+      "review_id": 107,
+      "family_group": "1931071ced16f9e9",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record an organized procession. Swedish paired/mated adjectival entries are homographs, not the selected parade sense."
+    }
+  },
+  {
+    "case_id": "5538fd8fea652f9d",
+    "panel": "open",
+    "family_group": "d8062855f121ef89",
+    "lang_a": "en",
+    "word_a": "chaos",
+    "lang_b": "nb",
+    "word_b": "kaos",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "5538fd8fea652f9d",
+      "review_id": 108,
+      "family_group": "d8062855f121ef89",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record chaos with Greek khaos history. English mathematical, cosmological and named-entity senses need separate alignments."
+    }
+  },
+  {
+    "case_id": "8ff4f621477e9a38",
+    "panel": "open",
+    "family_group": "ab13988b56433ed0",
+    "lang_a": "da",
+    "word_a": "bortførelse",
+    "lang_b": "sv",
+    "word_b": "kidnappning",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "8ff4f621477e9a38",
+      "review_id": 109,
+      "family_group": "ab13988b56433ed0",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record kidnapping, with different morphological bases. Their histories are not connected by these local derivation records."
+    }
+  },
+  {
+    "case_id": "71340c9f4ea70bd6",
+    "panel": "open",
+    "family_group": "f85a3377c56a9839",
+    "lang_a": "en",
+    "word_a": "napkin",
+    "lang_b": "sv",
+    "word_b": "servett",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "71340c9f4ea70bd6",
+      "review_id": 110,
+      "family_group": "f85a3377c56a9839",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly record napkin. English diaper, scarf and inactive sanitary-napkin uses are additional meanings, not established Swedish correspondences."
+    }
+  },
+  {
+    "case_id": "9323985f5c917462",
+    "panel": "open",
+    "family_group": "9d19d7dc907c284c",
+    "lang_a": "nb",
+    "word_a": "stimuli",
+    "lang_b": "sv",
+    "word_b": "stimulus",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "9323985f5c917462",
+      "review_id": 111,
+      "family_group": "9d19d7dc907c284c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "A single stimulus is explicitly recorded in Norwegian despite the stimuli form; automatic singular/plural rejection would be wrong. Norwegian collective and dope uses also occur; history is inferred."
+    }
+  },
+  {
+    "case_id": "9c98cd5f79a1c310",
+    "panel": "open",
+    "family_group": "9ed3f547622b9ab3",
+    "lang_a": "nb",
+    "word_a": "drita",
+    "lang_b": "sv",
+    "word_b": "drista",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "9c98cd5f79a1c310",
+      "review_id": 112,
+      "family_group": "9ed3f547622b9ab3",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Very drunk and dare are distinct senses and parts of speech. Swedish historical derivation does not establish Norwegian history."
+    }
+  },
+  {
+    "case_id": "6a6e6aab133fce26",
+    "panel": "open",
+    "family_group": "7d2f4928edbc80ea",
+    "lang_a": "da",
+    "word_a": "iapetos",
+    "lang_b": "nb",
+    "word_b": "iapetos",
+    "pair": "da-nb",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "6a6e6aab133fce26",
+      "review_id": 113,
+      "family_group": "7d2f4928edbc80ea",
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify the Greek Titan Iapetus, with matching Greek source and Norwegian disambiguation distinguishing moon and ocean name forms."
+    }
+  },
+  {
+    "case_id": "b0337d480ce5c69b",
+    "panel": "open",
+    "family_group": "f1703addfe1e97b2",
+    "lang_a": "da",
+    "word_a": "kolesterol",
+    "lang_b": "nb",
+    "word_b": "kolesterol",
+    "pair": "da-nb",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "b0337d480ce5c69b",
+      "review_id": 114,
+      "family_group": "f1703addfe1e97b2",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify cholesterol. Greek components are recorded only in Norwegian, so the full common-source path on Danish remains inferred."
+    }
+  },
+  {
+    "case_id": "2b5bdb944cf2c164",
+    "panel": "open",
+    "family_group": "7b63352f7005bc8b",
+    "lang_a": "de",
+    "word_a": "Verfall",
+    "lang_b": "en",
+    "word_b": "dilapidation",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "2b5bdb944cf2c164",
+      "review_id": 115,
+      "family_group": "7b63352f7005bc8b",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Decay/deterioration overlaps the state of dilapidation. German general decline/decadence and English building damage/payment usages are not wholly equivalent."
+    }
+  },
+  {
+    "case_id": "f0c4c5dcd1e012f9",
+    "panel": "open",
+    "family_group": "81b5121a7c88e933",
+    "lang_a": "de",
+    "word_a": "verschleiern",
+    "lang_b": "nb",
+    "word_b": "gjemme",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "f0c4c5dcd1e012f9",
+      "review_id": 116,
+      "family_group": "81b5121a7c88e933",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Disguising/clouding can hide information, overlapping conceal/hide. Literal veiling and physical hiding are not interchangeable in every context; history is not established."
+    }
+  },
+  {
+    "case_id": "70cd7cc15bcacf87",
+    "panel": "open",
+    "family_group": "6a94253625b54ff2",
+    "lang_a": "en",
+    "word_a": "workweek",
+    "lang_b": "nb",
+    "word_b": "arbeidsuke",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "70cd7cc15bcacf87",
+      "review_id": 117,
+      "family_group": "6a94253625b54ff2",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify the working week. Recorded work-plus-week versus arbeid-plus-uke structures do not prove whole-compound inherited cognacy."
+    }
+  },
+  {
+    "case_id": "bb84b37896d85c41",
+    "panel": "open",
+    "family_group": "e5e2b4345d083a52",
+    "lang_a": "da",
+    "word_a": "spektakel",
+    "lang_b": "nb",
+    "word_b": "spektakulær",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "bb84b37896d85c41",
+      "review_id": 118,
+      "family_group": "e5e2b4345d083a52",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record Latin spectaculum history, but Danish disturbance/noise and Norwegian spectacular adjective differ in present meaning and grammar."
+    }
+  },
+  {
+    "case_id": "d1da32faace4adc6",
+    "panel": "open",
+    "family_group": "410504b204544b4c",
+    "lang_a": "de",
+    "word_a": "Alb",
+    "lang_b": "sv",
+    "word_b": "älva",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "d1da32faace4adc6",
+      "review_id": 119,
+      "family_group": "410504b204544b4c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Elf/fairy overlap is explicit with common albiz ancestry, but German especially-evil chest-sitter and Swedish female mythological creature are not complete cultural equivalents."
+    }
+  },
+  {
+    "case_id": "4beeb8c1b25059c4",
+    "panel": "open",
+    "family_group": "ddeb8835542a0c9c",
+    "lang_a": "da",
+    "word_a": "rum",
+    "lang_b": "en",
+    "word_b": "room",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "4beeb8c1b25059c4",
+      "review_id": 120,
+      "family_group": "ddeb8835542a0c9c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The building-room nouns explicitly coincide and share ruman history. Space, compartment, verb, nautical and archaic adjectival uses need separate treatment."
+    }
+  },
+  {
+    "case_id": "3cbbe4e6c9fcc398",
+    "panel": "open",
+    "family_group": "66fdf6820258d99e",
+    "lang_a": "da",
+    "word_a": "botulisme",
+    "lang_b": "de",
+    "word_b": "Botulismus",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "3cbbe4e6c9fcc398",
+      "review_id": 121,
+      "family_group": "66fdf6820258d99e",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify botulism; Danish explicitly borrows the German term. This is borrowing rather than uninterrupted native cognacy."
+    }
+  },
+  {
+    "case_id": "06847cc95d74d47e",
+    "panel": "open",
+    "family_group": "d7b020d7161eecef",
+    "lang_a": "en",
+    "word_a": "supplement",
+    "lang_b": "nb",
+    "word_b": "supplement",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "06847cc95d74d47e",
+      "review_id": 122,
+      "family_group": "d7b020d7161eecef",
+      "meaning_profile": "ordinary_overlap_specialized_display_unresolved",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The generic addition/supplement meaning overlaps, but the selected English dietary dosage sense is not disambiguated by the bare Norwegian supplement gloss. Latin/French history suggests a borrowing family without a full connecting path here."
+    }
+  },
+  {
+    "case_id": "8401249afe759b67",
+    "panel": "open",
+    "family_group": "3080379bcc312c4a",
+    "lang_a": "da",
+    "word_a": "bod",
+    "lang_b": "nb",
+    "word_b": "bot",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "8401249afe759b67",
+      "review_id": 123,
+      "family_group": "3080379bcc312c4a",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly record the penalty fine sense and botō history. Selected fine versus remedy misses that shared meaning; Danish booth is another historical entry."
+    }
+  },
+  {
+    "case_id": "34c403c7f7677098",
+    "panel": "open",
+    "family_group": "c3b76a6c2154def5",
+    "lang_a": "da",
+    "word_a": "el",
+    "lang_b": "nb",
+    "word_b": "older",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "34c403c7f7677098",
+      "review_id": 124,
+      "family_group": "c3b76a6c2154def5",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify alder and record common aluz ancestry and cross-references. Danish electricity is another entry; short-form filtering would lose a valid tree word."
+    }
+  },
+  {
+    "case_id": "0d9718651128c2aa",
+    "panel": "open",
+    "family_group": "9ab9a297d12d6bb5",
+    "lang_a": "en",
+    "word_a": "thatch",
+    "lang_b": "nb",
+    "word_b": "halm",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "0d9718651128c2aa",
+      "review_id": 125,
+      "family_group": "9ab9a297d12d6bb5",
+      "meaning_profile": "material_use_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Thatch can be straw used as roofing, but also rushes/leaves and other material; straw is not always thatch. Recorded roof-covering versus halmr history does not establish a common path."
+    }
+  },
+  {
+    "case_id": "d779fef1cbdce1a0",
+    "panel": "open",
+    "family_group": "7bb5071076c2593e",
+    "lang_a": "da",
+    "word_a": "fortale",
+    "lang_b": "sv",
+    "word_b": "forta",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "d779fef1cbdce1a0",
+      "review_id": 126,
+      "family_group": "7bb5071076c2593e",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Wrong-word/Freudian-slip and hurrying/running-fast meanings differ. A foreword noun is another Danish entry."
+    }
+  },
+  {
+    "case_id": "9858680a40d66b12",
+    "panel": "open",
+    "family_group": "7415ab87b113f8f9",
+    "lang_a": "de",
+    "word_a": "Kukuruz",
+    "lang_b": "en",
+    "word_b": "maize",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "9858680a40d66b12",
+      "review_id": 127,
+      "family_group": "7415ab87b113f8f9",
+      "meaning_profile": "regional_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both mean maize/corn, German regionally marked. Serbo-Croatian/Romanian versus Taino source paths do not by themselves prove completely unrelated ancestry."
+    }
+  },
+  {
+    "case_id": "a33951f35af95d12",
+    "panel": "open",
+    "family_group": "fd748fd65dfbda7f",
+    "lang_a": "da",
+    "word_a": "kendsgerning",
+    "lang_b": "de",
+    "word_b": "Wirklichkeit",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "a33951f35af95d12",
+      "review_id": 128,
+      "family_group": "fd748fd65dfbda7f",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A fact and reality are related abstractions but not generally interchangeable nouns; these entries do not record a common exact sense."
+    }
+  },
+  {
+    "case_id": "adab6e04ea5edea2",
+    "panel": "open",
+    "family_group": "ad9df23fd79e3dc7",
+    "lang_a": "da",
+    "word_a": "diskursiv",
+    "lang_b": "en",
+    "word_b": "discursive",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "adab6e04ea5edea2",
+      "review_id": 129,
+      "family_group": "ad9df23fd79e3dc7",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The Danish discursive gloss supports overlap but leaves which English discourse/digression/reasoning senses apply unresolved. A full Danish borrowing path is absent."
+    }
+  },
+  {
+    "case_id": "3ed5b61aa35e282d",
+    "panel": "open",
+    "family_group": "9ab9a297d12d6bb5",
+    "lang_a": "da",
+    "word_a": "tække",
+    "lang_b": "en",
+    "word_b": "thatch",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "3ed5b61aa35e282d",
+      "review_id": 130,
+      "family_group": "9ab9a297d12d6bb5",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The thatching verbs share explicit takjanan ancestry and reciprocal cognate mentions. Roof-covering nouns and Danish charm entry must remain separate."
+    }
+  },
+  {
+    "case_id": "be5f78f5256eaf32",
+    "panel": "open",
+    "family_group": "4f003bab39cfaced",
+    "lang_a": "de",
+    "word_a": "Stiel",
+    "lang_b": "sv",
+    "word_b": "still",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "be5f78f5256eaf32",
+      "review_id": 131,
+      "family_group": "4f003bab39cfaced",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Stem/stalk/handle meanings do not match the Swedish still adverb. Similar spelling is not meaning overlap."
+    }
+  },
+  {
+    "case_id": "318bb3bc430bf9db",
+    "panel": "open",
+    "family_group": "f84e1f275d98b546",
+    "lang_a": "da",
+    "word_a": "kue",
+    "lang_b": "sv",
+    "word_b": "kuva",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "318bb3bc430bf9db",
+      "review_id": 132,
+      "family_group": "f84e1f275d98b546",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Subdue explicitly overlaps. Danish Norse kuga is stated, while Swedish marks the Danish/Norse source as only possible and offers an alternative; retain that uncertainty."
+    }
+  },
+  {
+    "case_id": "611913d2f89b5425",
+    "panel": "open",
+    "family_group": "802642c9c2a98141",
+    "lang_a": "da",
+    "word_a": "eftergøre",
+    "lang_b": "de",
+    "word_b": "vortäuschen",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "611913d2f89b5425",
+      "review_id": 133,
+      "family_group": "802642c9c2a98141",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Fake/feign overlaps, while Danish copy/imitate can also be non-deceptive. Different compositional bases do not establish a connected history here."
+    }
+  },
+  {
+    "case_id": "6547bf2b5007e527",
+    "panel": "open",
+    "family_group": "a48dc1d67938018d",
+    "lang_a": "da",
+    "word_a": "anderledes",
+    "lang_b": "en",
+    "word_b": "differently",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "6547bf2b5007e527",
+      "review_id": 134,
+      "family_group": "a48dc1d67938018d",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The adverb differently coincides explicitly. Danish also has an adjective different; grammatical identity must refer to the chosen adverb entry."
+    }
+  },
+  {
+    "case_id": "939d0905929225ef",
+    "panel": "open",
+    "family_group": "17ecae64bffca91b",
+    "lang_a": "de",
+    "word_a": "Apostroph",
+    "lang_b": "en",
+    "word_b": "apostrophus",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "939d0905929225ef",
+      "review_id": 135,
+      "family_group": "17ecae64bffca91b",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Latin apostrophus is shared, and the English apostrophe-symbol sense is archaic/inactive. The selected active reverse-C numeral sign is not German inverted comma."
+    }
+  },
+  {
+    "case_id": "99f380da21e28775",
+    "panel": "open",
+    "family_group": "0d8e7cabf92df305",
+    "lang_a": "de",
+    "word_a": "sich",
+    "lang_b": "sv",
+    "word_b": "sig",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "99f380da21e28775",
+      "review_id": 136,
+      "family_group": "0d8e7cabf92df305",
+      "meaning_profile": "ordinary_overlap_source_gap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The saved German gloss only records reciprocal each-other, not the Swedish reflexive headline. German native-edition definitions and Swedish sig translations confirm omitted ordinary reflexive overlap; common sek ancestry is recorded."
+    }
+  },
+  {
+    "case_id": "dbf8ffc483f49eda",
+    "panel": "open",
+    "family_group": "9c753938f1a40ae8",
+    "lang_a": "de",
+    "word_a": "Pott",
+    "lang_b": "sv",
+    "word_b": "pott",
+    "pair": "de-sv",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": null,
+    "reference": {
+      "case_id": "dbf8ffc483f49eda",
+      "review_id": 137,
+      "family_group": "9c753938f1a40ae8",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "The sources share puttaz history, but Swedish pot/kitty is not disambiguated as a cooking vessel. German bare pot also needs resolution before claiming a common current sense."
+    }
+  },
+  {
+    "case_id": "b9b0af2e68f16dac",
+    "panel": "open",
+    "family_group": "bd89747eda00f251",
+    "lang_a": "de",
+    "word_a": "schwach",
+    "lang_b": "en",
+    "word_b": "mild",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "b9b0af2e68f16dac",
+      "review_id": 138,
+      "family_group": "bd89747eda00f251",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Weak can overlap not-strong flavor or intensity in mild, but not-serious/dangerous is not a general translation of weak. Distinct recorded roots alone do not establish unrelatedness."
+    }
+  },
+  {
+    "case_id": "9eea70bd66ca3b7f",
+    "panel": "open",
+    "family_group": "541a9597bfab0522",
+    "lang_a": "de",
+    "word_a": "malmen",
+    "lang_b": "nb",
+    "word_b": "malme",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "9eea70bd66ca3b7f",
+      "review_id": 139,
+      "family_group": "541a9597bfab0522",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Recorded malmaz history connects the forms, but tooth-grinding action and conifer heartwood differ in meaning and part of speech."
+    }
+  },
+  {
+    "case_id": "1d1422796c9ee4e6",
+    "panel": "open",
+    "family_group": "7e7e7cf5929eddfb",
+    "lang_a": "de",
+    "word_a": "kujonieren",
+    "lang_b": "sv",
+    "word_b": "mobba",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "1d1422796c9ee4e6",
+      "review_id": 140,
+      "family_group": "7e7e7cf5929eddfb",
+      "meaning_profile": "inactive_overlap",
+      "compatible_labels": [
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The bully meaning coincides, but German is dated/inactive. A valid historical overlap must be distinguished from a suitable modern active headline."
+    }
+  },
+  {
+    "case_id": "84300d048ec3e025",
+    "panel": "open",
+    "family_group": "093b5a35a00b3a03",
+    "lang_a": "da",
+    "word_a": "kiks",
+    "lang_b": "en",
+    "word_b": "biscuit",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "84300d048ec3e025",
+      "review_id": 141,
+      "family_group": "093b5a35a00b3a03",
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Cookie/cracker overlaps the listed British and other regional biscuit meanings. American soft bread and technical/slang senses do not all match. Danish borrows cakes, not the English biscuit form."
+    }
+  },
+  {
+    "case_id": "56ffb1199271264e",
+    "panel": "open",
+    "family_group": "37371261025a99f4",
+    "lang_a": "en",
+    "word_a": "winter",
+    "lang_b": "nb",
+    "word_b": "vinter",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "56ffb1199271264e",
+      "review_id": 142,
+      "family_group": "37371261025a99f4",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify winter and explicitly record wintruz ancestry. English metaphoric, verbal and name uses are additional meanings."
+    }
+  },
+  {
+    "case_id": "aa6d7db8982f2b58",
+    "panel": "open",
+    "family_group": "25b1952a78c5f9b5",
+    "lang_a": "de",
+    "word_a": "Budget",
+    "lang_b": "en",
+    "word_b": "budget",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "aa6d7db8982f2b58",
+      "review_id": 143,
+      "family_group": "25b1952a78c5f9b5",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The financial budget meaning coincides. German explicitly borrows via French from English; old English bag and other senses should not dominate the comparison."
+    }
+  },
+  {
+    "case_id": "fde727b04fd3cf74",
+    "panel": "open",
+    "family_group": "34ec133b5a5609af",
+    "lang_a": "da",
+    "word_a": "bæger",
+    "lang_b": "de",
+    "word_b": "Pokal",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "fde727b04fd3cf74",
+      "review_id": 144,
+      "family_group": "34ec133b5a5609af",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Cup/goblet vessels overlap, but the chosen German cup/trophy sense differs from a generic Danish cup. Danish calyx/dicebox uses are also additional."
+    }
+  },
+  {
+    "case_id": "3491b9d4715b2edb",
+    "panel": "open",
+    "family_group": "b779961845442a0a",
+    "lang_a": "da",
+    "word_a": "seefeld",
+    "lang_b": "en",
+    "word_b": "seefeldt",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "3491b9d4715b2edb",
+      "review_id": 145,
+      "family_group": "b779961845442a0a",
+      "meaning_profile": "generic_name_overlap_unresolved",
+      "compatible_labels": [
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "Generic surname definitions do not establish Seefeld/Seefeldt as variants or identify the same people. Danish named biographies do not resolve the English surname."
+    }
+  },
+  {
+    "case_id": "ac5b516ab867a75f",
+    "panel": "open",
+    "family_group": "0aa33f1adab50b63",
+    "lang_a": "en",
+    "word_a": "blunt",
+    "lang_b": "nb",
+    "word_b": "stump",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "ac5b516ab867a75f",
+      "review_id": 146,
+      "family_group": "0aa33f1adab50b63",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Blunt edge/adjective meanings differ from stub/fragments, buttocks and children. A cigar versus its butt is likewise not the same sense."
+    }
+  },
+  {
+    "case_id": "51101ecd953c5ac0",
+    "panel": "open",
+    "family_group": "f3fc382505951f5f",
+    "lang_a": "da",
+    "word_a": "jordsvin",
+    "lang_b": "de",
+    "word_b": "Erdferkel",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "51101ecd953c5ac0",
+      "review_id": 147,
+      "family_group": "f3fc382505951f5f",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify aardvark with explicit Dutch/Afrikaans calque history. Matching conceptual construction need not mean all morphemes are inherited equivalents."
+    }
+  },
+  {
+    "case_id": "66f339ab513c49f2",
+    "panel": "open",
+    "family_group": "eac9ce375aa16b05",
+    "lang_a": "de",
+    "word_a": "Kühlbox",
+    "lang_b": "sv",
+    "word_b": "kylbox",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "66f339ab513c49f2",
+      "review_id": 148,
+      "family_group": "eac9ce375aa16b05",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify insulated coolboxes and record cooling-plus-box composition. Complete cross-language historical paths are inferred rather than documented here."
+    }
+  },
+  {
+    "case_id": "4def90dad7f3a26e",
+    "panel": "open",
+    "family_group": "00138f69a87f772e",
+    "lang_a": "de",
+    "word_a": "Feingehalt",
+    "lang_b": "sv",
+    "word_b": "lödighet",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "4def90dad7f3a26e",
+      "review_id": 149,
+      "family_group": "00138f69a87f772e",
+      "meaning_profile": "specialized_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Precious-metal fineness coincides explicitly, Swedish rare but active. Its historical silver restriction and figurative quality sense are separately recorded."
+    }
+  },
+  {
+    "case_id": "97782ea65f9234fb",
+    "panel": "open",
+    "family_group": "b7368be5851ebb1b",
+    "lang_a": "en",
+    "word_a": "hemoglobin",
+    "lang_b": "nb",
+    "word_b": "hemoglobin",
+    "pair": "en-nb",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "97782ea65f9234fb",
+      "review_id": 150,
+      "family_group": "b7368be5851ebb1b",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify hemoglobin with recorded hemo/globin source components. Same scientific referent and shared constructed sources do not imply uninterrupted inherited transmission."
+    }
+  },
+  {
+    "case_id": "f42fe6b28e4d42c6",
+    "panel": "open",
+    "family_group": "87d959bf4104751f",
+    "lang_a": "en",
+    "word_a": "law",
+    "lang_b": "nb",
+    "word_b": "lag",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": null,
+    "reference": {
+      "case_id": "f42fe6b28e4d42c6",
+      "review_id": 151,
+      "family_group": "87d959bf4104751f",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Law/rule and correct regular order are associated, but bare rule is not an exact equivalent of arrangement. Norwegian law is obsolete/inactive; shared laga history is explicit."
+    }
+  },
+  {
+    "case_id": "b83aeb4342874126",
+    "panel": "open",
+    "family_group": "ab375e470958d562",
+    "lang_a": "de",
+    "word_a": "Apograph",
+    "lang_b": "en",
+    "word_b": "apographic",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "b83aeb4342874126",
+      "review_id": 152,
+      "family_group": "ab375e470958d562",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A manuscript copy and pertaining to that copy are noun versus adjective. English fine-grained is another meaning; Greek history is recorded only for the German noun."
+    }
+  },
+  {
+    "case_id": "c7417d79d1da4e9d",
+    "panel": "open",
+    "family_group": "951ea68f8b897e25",
+    "lang_a": "da",
+    "word_a": "tumult",
+    "lang_b": "sv",
+    "word_b": "bråk",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "c7417d79d1da4e9d",
+      "review_id": 153,
+      "family_group": "951ea68f8b897e25",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Scuffle/brawl and uproar/racket overlap, while Swedish fraction is a different use. Danish Latin history does not establish Swedish ancestry."
+    }
+  },
+  {
+    "case_id": "524bd0e20d46a5ce",
+    "panel": "open",
+    "family_group": "8af00acb9365736a",
+    "lang_a": "da",
+    "word_a": "pulsering",
+    "lang_b": "de",
+    "word_b": "pulverig",
+    "pair": "da-de",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "524bd0e20d46a5ce",
+      "review_id": 154,
+      "family_group": "8af00acb9365736a",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Pulsation and powdery have distinct meanings and grammatical roles. Their common prefix spelling is insufficient."
+    }
+  },
+  {
+    "case_id": "0f7d6d84faaa8781",
+    "panel": "open",
+    "family_group": "13d474143b355872",
+    "lang_a": "da",
+    "word_a": "fed",
+    "lang_b": "nb",
+    "word_b": "tykk",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "0f7d6d84faaa8781",
+      "review_id": 155,
+      "family_group": "13d474143b355872",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Fat/obese coincides explicitly. Danish fatty/cool/bold and homographic nouns, and Norwegian thick, are additional uses; different immediate roots do not independently prove unrelatedness."
+    }
+  },
+  {
+    "case_id": "ce63257877dd7ce1",
+    "panel": "open",
+    "family_group": "c72ac02e07dfc0eb",
+    "lang_a": "de",
+    "word_a": "rendern",
+    "lang_b": "en",
+    "word_b": "renter",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "ce63257877dd7ce1",
+      "review_id": 156,
+      "family_group": "c72ac02e07dfc0eb",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Rendering and tapestry repair are not the same action; renters of property are also unrelated to rendering. German borrows render, not renter."
+    }
+  },
+  {
+    "case_id": "e92850518456bec2",
+    "panel": "open",
+    "family_group": "9681f9aac74a2c9c",
+    "lang_a": "en",
+    "word_a": "assassin",
+    "lang_b": "sv",
+    "word_b": "baneman",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "e92850518456bec2",
+      "review_id": 157,
+      "family_group": "9681f9aac74a2c9c",
+      "meaning_profile": "inactive_overlap",
+      "compatible_labels": [
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Killer meanings coincide, with English assassin generally narrower. Swedish baneman is archaic/inactive, so suitable current display differs from valid historical overlap."
+    }
+  },
+  {
+    "case_id": "1bcc880da33a6284",
+    "panel": "open",
+    "family_group": "2d50803fcad69275",
+    "lang_a": "de",
+    "word_a": "Ukrainer",
+    "lang_b": "sv",
+    "word_b": "ukrainsk",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "1bcc880da33a6284",
+      "review_id": 158,
+      "family_group": "2d50803fcad69275",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A Ukrainian person and Ukrainian as a relational adjective concern the same country but have distinct grammar and meanings."
+    }
+  },
+  {
+    "case_id": "4350671919cdc8b6",
+    "panel": "open",
+    "family_group": "c9f3f2b343817af8",
+    "lang_a": "de",
+    "word_a": "Platten",
+    "lang_b": "en",
+    "word_b": "platzer",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "4350671919cdc8b6",
+      "review_id": 159,
+      "family_group": "c9f3f2b343817af8",
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reference_reason": "A town/village name and a surname from German are not matching identities. Flat tire is another German entry."
+    }
+  },
+  {
+    "case_id": "669ac4c1f56c4ecd",
+    "panel": "open",
+    "family_group": "a55a7b32988f59c4",
+    "lang_a": "da",
+    "word_a": "skudår",
+    "lang_b": "nb",
+    "word_b": "skulder",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "669ac4c1f56c4ecd",
+      "review_id": 160,
+      "family_group": "a55a7b32988f59c4",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Leap year and shoulder name different concepts. Similar short spellings provide no shared sense."
+    }
+  },
+  {
+    "case_id": "ff0354fd132a175f",
+    "panel": "open",
+    "family_group": "72484fded42a0cf8",
+    "lang_a": "da",
+    "word_a": "jørgine",
+    "lang_b": "sv",
+    "word_b": "jörgen",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "ff0354fd132a175f",
+      "review_id": 161,
+      "family_group": "72484fded42a0cf8",
+      "meaning_profile": "related_name_forms",
+      "compatible_labels": [
+        "related_name_form",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Danish explicitly calls Jorgine a feminine form of Jorgen; Swedish Jorgen borrows that Danish male name. The variants are related but are not interchangeable names of one person."
+    }
+  },
+  {
+    "case_id": "db0ad6928b699be8",
+    "panel": "open",
+    "family_group": "49ba6c4a9a90ff51",
+    "lang_a": "de",
+    "word_a": "Jupiter",
+    "lang_b": "nb",
+    "word_b": "jupiter",
+    "pair": "de-nb",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "db0ad6928b699be8",
+      "review_id": 162,
+      "family_group": "49ba6c4a9a90ff51",
+      "meaning_profile": "same_named_entity_partial_overlap",
+      "compatible_labels": [
+        "entity_overlap",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "German Jupiter includes astronomical and Roman-tagged entries; Norwegian disambiguates planet and deity and adds distinct places. The planet sense is shared; same spelling must not collapse all place names."
+    }
+  },
+  {
+    "case_id": "3536c683e0c74130",
+    "panel": "open",
+    "family_group": "b66bc8899672b2cf",
+    "lang_a": "da",
+    "word_a": "underlag",
+    "lang_b": "sv",
+    "word_b": "underdog",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "3536c683e0c74130",
+      "review_id": 163,
+      "family_group": "b66bc8899672b2cf",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Support/base/surface underneath and underdog do not share a recorded meaning. The under-like component alone is insufficient."
+    }
+  },
+  {
+    "case_id": "1c5dad79d53672e2",
+    "panel": "open",
+    "family_group": "24b8ec2f958977ec",
+    "lang_a": "en",
+    "word_a": "scrape",
+    "lang_b": "sv",
+    "word_b": "skrapa",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "1c5dad79d53672e2",
+      "review_id": 164,
+      "family_group": "24b8ec2f958977ec",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "The scraping verbs match with common skraponan ancestry, but the selected Swedish squeegee is a tool rather than the English action. Other noun and verb meanings differ."
+    }
+  },
+  {
+    "case_id": "8345073bf09f4fa3",
+    "panel": "open",
+    "family_group": "837c97da12d53f2b",
+    "lang_a": "de",
+    "word_a": "Franse",
+    "lang_b": "sv",
+    "word_b": "frans",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "8345073bf09f4fa3",
+      "review_id": 165,
+      "family_group": "837c97da12d53f2b",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record textile fringe; the chosen eyelash misses that shared sense. The Swedish male-name history belongs to another entry and does not supply fringe ancestry."
+    }
+  },
+  {
+    "case_id": "92e1933ea1aba6fe",
+    "panel": "open",
+    "family_group": "28aff1fdef7c76e5",
+    "lang_a": "da",
+    "word_a": "gat",
+    "lang_b": "en",
+    "word_b": "gate",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "92e1933ea1aba6fe",
+      "review_id": 166,
+      "family_group": "28aff1fdef7c76e5",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Animal anus/scupper and gate/barrier openings are not exact translations in the saved senses despite common gata ancestry. Other English technical openings do not establish a Danish scupper counterpart here."
+    }
+  },
+  {
+    "case_id": "9653f921b7549ec7",
+    "panel": "open",
+    "family_group": "6118213754766d2b",
+    "lang_a": "da",
+    "word_a": "kreatur",
+    "lang_b": "en",
+    "word_b": "kreager",
+    "pair": "da-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "9653f921b7549ec7",
+      "review_id": 167,
+      "family_group": "6118213754766d2b",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Livestock and an unspecified surname have no observed common concept or identity."
+    }
+  },
+  {
+    "case_id": "d22a2cdf23e4d91d",
+    "panel": "open",
+    "family_group": "93d3cac753a15f94",
+    "lang_a": "nb",
+    "word_a": "skjell",
+    "lang_b": "sv",
+    "word_b": "skal",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "d22a2cdf23e4d91d",
+      "review_id": 168,
+      "family_group": "93d3cac753a15f94",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Seashell overlaps explicitly with Swedish shell, and common skaljo history is recorded. Norwegian scale and Swedish peel/device-case meanings are additional."
+    }
+  },
+  {
+    "case_id": "be6c911ca3cec3f0",
+    "panel": "open",
+    "family_group": "dd2b77f68543b70b",
+    "lang_a": "da",
+    "word_a": "jætte",
+    "lang_b": "en",
+    "word_b": "jotun",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "be6c911ca3cec3f0",
+      "review_id": 169,
+      "family_group": "dd2b77f68543b70b",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify the Norse giant category with recorded etunaz history. English is a learned Norse borrowing, not uninterrupted native descent."
+    }
+  },
+  {
+    "case_id": "58b738d7bc7d7b24",
+    "panel": "open",
+    "family_group": "5bd8fc8cddb027a4",
+    "lang_a": "de",
+    "word_a": "Message",
+    "lang_b": "en",
+    "word_b": "messene",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "58b738d7bc7d7b24",
+      "review_id": 170,
+      "family_group": "5bd8fc8cddb027a4",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "An idea/message and the Greek city Messene are different concepts. German borrowing from English message does not link it to Messene."
+    }
+  },
+  {
+    "case_id": "e3748a50bb46c5b3",
+    "panel": "open",
+    "family_group": "ab13988b56433ed0",
+    "lang_a": "da",
+    "word_a": "bortførelse",
+    "lang_b": "de",
+    "word_b": "Entführung",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "e3748a50bb46c5b3",
+      "review_id": 171,
+      "family_group": "ab13988b56433ed0",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify kidnapping. Local derivational records do not provide a complete cross-language history."
+    }
+  },
+  {
+    "case_id": "9449e0906657cf02",
+    "panel": "open",
+    "family_group": "a2c0cdae8586c99b",
+    "lang_a": "da",
+    "word_a": "rabiat",
+    "lang_b": "sv",
+    "word_b": "rabiat",
+    "pair": "da-sv",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "9449e0906657cf02",
+      "review_id": 172,
+      "family_group": "a2c0cdae8586c99b",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record rabid with the same German and Latin borrowing chain. Danish fanatic/brutal/coarse expansions require separate coverage checks."
+    }
+  },
+  {
+    "case_id": "298450cf4f118d33",
+    "panel": "open",
+    "family_group": "23572faeb4dfff08",
+    "lang_a": "de",
+    "word_a": "Chromatin",
+    "lang_b": "en",
+    "word_b": "chrismation",
+    "pair": "de-en",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "298450cf4f118d33",
+      "review_id": 173,
+      "family_group": "23572faeb4dfff08",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Chromatin and chrismation are distinct scientific and religious concepts. Greek colour versus chrism-related derivation does not establish complete historical unrelatedness."
+    }
+  },
+  {
+    "case_id": "43680dd251c4f009",
+    "panel": "open",
+    "family_group": "bd8fa796119cfd2f",
+    "lang_a": "de",
+    "word_a": "Venusberg",
+    "lang_b": "sv",
+    "word_b": "venusberg",
+    "pair": "de-sv",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "43680dd251c4f009",
+      "review_id": 174,
+      "family_group": "bd8fa796119cfd2f",
+      "meaning_profile": "distinct_named_entity_and_common_concept",
+      "compatible_labels": [
+        "different_meanings",
+        "different_entities"
+      ],
+      "scorable": true,
+      "reference_reason": "The named Bonn hill/quarter and anatomical mons veneris are different referents even with an explicitly shared Latin calque."
+    }
+  },
+  {
+    "case_id": "22ef5549c5118b06",
+    "panel": "open",
+    "family_group": "ae9070cddd393280",
+    "lang_a": "en",
+    "word_a": "brew",
+    "lang_b": "sv",
+    "word_b": "brygga",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "22ef5549c5118b06",
+      "review_id": 175,
+      "family_group": "ae9070cddd393280",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Brewing beer/liquor and coffee overlaps with common brewwanan ancestry. Swedish pier/bridge and English brow/name entries have different histories."
+    }
+  },
+  {
+    "case_id": "dd6ce13617699f37",
+    "panel": "open",
+    "family_group": "b930fa39244db9a2",
+    "lang_a": "da",
+    "word_a": "sommerhus",
+    "lang_b": "nb",
+    "word_b": "sommerfugl",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "dd6ce13617699f37",
+      "review_id": 176,
+      "family_group": "b930fa39244db9a2",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Summerhouse and butterfly differ. The shared summer component does not establish full-compound equivalence or ancestry."
+    }
+  },
+  {
+    "case_id": "4d390dd28cd95e5d",
+    "panel": "open",
+    "family_group": "dac42a94fc4cab57",
+    "lang_a": "da",
+    "word_a": "sameksistens",
+    "lang_b": "de",
+    "word_b": "Zusammenleben",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "4d390dd28cd95e5d",
+      "review_id": 177,
+      "family_group": "dac42a94fc4cab57",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Living together is a form of coexistence, while coexistence can be broader. Local formations do not supply a common historical path."
+    }
+  },
+  {
+    "case_id": "c129c83130b53470",
+    "panel": "open",
+    "family_group": "3c06a107ab3e75d3",
+    "lang_a": "da",
+    "word_a": "indlysende",
+    "lang_b": "de",
+    "word_b": "offenkundig",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "c129c83130b53470",
+      "review_id": 178,
+      "family_group": "3c06a107ab3e75d3",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Obvious/evident and overt/manifest overlap explicitly. Apparent must refer to evident rather than merely seeming; German history is absent."
+    }
+  },
+  {
+    "case_id": "f1b16632ff8321d5",
+    "panel": "open",
+    "family_group": "8de7e4f473eb1185",
+    "lang_a": "da",
+    "word_a": "prostitueret",
+    "lang_b": "en",
+    "word_b": "whore",
+    "pair": "da-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "f1b16632ff8321d5",
+      "review_id": 179,
+      "family_group": "8de7e4f473eb1185",
+      "meaning_profile": "related_meaning_not_equivalent_source_gap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "The selected English verb concerns a client action, not a prostituted person. Saved English senses omit the ordinary sex-worker noun; this omission should not be mistaken for proof of no real noun overlap."
+    }
+  },
+  {
+    "case_id": "37f9d4344b6da7da",
+    "panel": "open",
+    "family_group": "722e4fb99e74818c",
+    "lang_a": "nb",
+    "word_a": "skum",
+    "lang_b": "sv",
+    "word_b": "fradga",
+    "pair": "nb-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "37f9d4344b6da7da",
+      "review_id": 180,
+      "family_group": "722e4fb99e74818c",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Foam/froth overlaps explicitly. Swedish mouth-froth and verb uses and Norwegian lather differ in context; history is not connected here."
+    }
+  },
+  {
+    "case_id": "1f68e0fbb1b7fe13",
+    "panel": "open",
+    "family_group": "1e1eff0d03df9b86",
+    "lang_a": "de",
+    "word_a": "Israelit",
+    "lang_b": "nb",
+    "word_b": "israeler",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "1f68e0fbb1b7fe13",
+      "review_id": 181,
+      "family_group": "1e1eff0d03df9b86",
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Israelite and a modern Israeli citizen refer to distinct categories despite the recorded Israel base. Same demonym-like form does not settle identity."
+    }
+  },
+  {
+    "case_id": "88592fb9eff286ce",
+    "panel": "open",
+    "family_group": "a8dfe0f9e05822f2",
+    "lang_a": "de",
+    "word_a": "lind",
+    "lang_b": "sv",
+    "word_b": "lina",
+    "pair": "de-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "88592fb9eff286ce",
+      "review_id": 182,
+      "family_group": "a8dfe0f9e05822f2",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Mild/gentle and rope/wire/line differ in grammar and meaning; the Swedish given name is another entry. Distinct immediate roots do not prove full unrelatedness."
+    }
+  },
+  {
+    "case_id": "e5dee91f98030aea",
+    "panel": "open",
+    "family_group": "c3b76a6c2154def5",
+    "lang_a": "da",
+    "word_a": "el",
+    "lang_b": "sv",
+    "word_b": "al",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "e5dee91f98030aea",
+      "review_id": 183,
+      "family_group": "c3b76a6c2154def5",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record alder and aluz ancestry. Two-letter forms can be valid cognates; Danish electricity is another entry."
+    }
+  },
+  {
+    "case_id": "8e57c6d9a8f04fe3",
+    "panel": "open",
+    "family_group": "4e02f5adef0717f1",
+    "lang_a": "de",
+    "word_a": "einschliessen",
+    "lang_b": "nb",
+    "word_b": "tilføye",
+    "pair": "de-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "8e57c6d9a8f04fe3",
+      "review_id": 184,
+      "family_group": "4e02f5adef0717f1",
+      "meaning_profile": "forwarding_entry_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "German is only a spelling redirect to einschließen. Resolve the referenced lemma before deciding whether enclosure/including overlaps append; a redirect gloss is not a meaning."
+    }
+  },
+  {
+    "case_id": "881ecfa30bcb5407",
+    "panel": "open",
+    "family_group": "2b176d8251445092",
+    "lang_a": "da",
+    "word_a": "mistænke",
+    "lang_b": "sv",
+    "word_b": "tro",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "881ecfa30bcb5407",
+      "review_id": 185,
+      "family_group": "2b176d8251445092",
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Suspect and think-that-something-is-true can overlap in uncertain belief, while trusting a person can contrast with suspicion. The selected trust sense misses that contextual overlap."
+    }
+  },
+  {
+    "case_id": "bf1c680f9715c15a",
+    "panel": "open",
+    "family_group": "86a21a4d4598cc55",
+    "lang_a": "da",
+    "word_a": "bertel",
+    "lang_b": "nb",
+    "word_b": "berthel",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "bf1c680f9715c15a",
+      "review_id": 186,
+      "family_group": "86a21a4d4598cc55",
+      "meaning_profile": "related_name_forms_recorded",
+      "compatible_labels": [
+        "related_name_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Norwegian explicitly borrows Danish Berthel and identifies it as a spelling variant of Bertel. This is supported name-family correspondence, not merely generic male-name gloss similarity or same-person identity."
+    }
+  },
+  {
+    "case_id": "47948d2f334ce2c4",
+    "panel": "open",
+    "family_group": "129347e49ca8f56b",
+    "lang_a": "da",
+    "word_a": "gen",
+    "lang_b": "de",
+    "word_b": "gen",
+    "pair": "da-de",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "47948d2f334ce2c4",
+      "review_id": 187,
+      "family_group": "129347e49ca8f56b",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Danish gene is not German directional gen, which is dated/inactive. Danish explicitly borrows capitalized German Gen, a different noun entry from gen."
+    }
+  },
+  {
+    "case_id": "61faae2af6f29b18",
+    "panel": "open",
+    "family_group": "7db1f1e7614936a4",
+    "lang_a": "da",
+    "word_a": "usand",
+    "lang_b": "de",
+    "word_b": "falsch",
+    "pair": "da-de",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "61faae2af6f29b18",
+      "review_id": 188,
+      "family_group": "7db1f1e7614936a4",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "False/untrue overlaps explicitly, while German wrong/fake/immoral/perfidious meanings are additional. Different recorded sources do not prove full unrelatedness."
+    }
+  },
+  {
+    "case_id": "3d7f303d520159a9",
+    "panel": "open",
+    "family_group": "cf9b1b243a250ecd",
+    "lang_a": "de",
+    "word_a": "welche",
+    "lang_b": "sv",
+    "word_b": "vilken",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "3d7f303d520159a9",
+      "review_id": 189,
+      "family_group": "cf9b1b243a250ecd",
+      "meaning_profile": "ordinary_overlap_source_gap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Saved German some and Swedish exclamatory what-a do not match. Native German source records interrogative/relative welcher with welche inflections and Swedish vilken translation, establishing omitted ordinary which correspondence."
+    }
+  },
+  {
+    "case_id": "9eb94ed76c72d5eb",
+    "panel": "open",
+    "family_group": "4d33c58553bed642",
+    "lang_a": "en",
+    "word_a": "indio",
+    "lang_b": "sv",
+    "word_b": "indigo",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "9eb94ed76c72d5eb",
+      "review_id": 190,
+      "family_group": "4d33c58553bed642",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "The city or indigenous-person category and indigo colour/dye/plant do not share the saved senses."
+    }
+  },
+  {
+    "case_id": "dcc76d66294744de",
+    "panel": "open",
+    "family_group": "46b207abeb4c1b1e",
+    "lang_a": "de",
+    "word_a": "Halm",
+    "lang_b": "sv",
+    "word_b": "halm",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "dcc76d66294744de",
+      "review_id": 191,
+      "family_group": "46b207abeb4c1b1e",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Stalk and straw/haulm overlap as plant-stem material with common halmaz ancestry, but generic stalk includes growing stems and straw is a more specific material/use."
+    }
+  },
+  {
+    "case_id": "ddc673ccdadda1c7",
+    "panel": "open",
+    "family_group": "5cd199f2602f44b0",
+    "lang_a": "da",
+    "word_a": "farer",
+    "lang_b": "nb",
+    "word_b": "fare",
+    "pair": "da-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "ddc673ccdadda1c7",
+      "review_id": 192,
+      "family_group": "5cd199f2602f44b0",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "A traveller is an agent, while travel/voyage is an action; both selected glosses are archaic/inactive. Norwegian also has active travel verbs and a separate danger entry."
+    }
+  },
+  {
+    "case_id": "98fec27b0640a349",
+    "panel": "open",
+    "family_group": "b9ebbacfa0084e3a",
+    "lang_a": "da",
+    "word_a": "vindue",
+    "lang_b": "sv",
+    "word_b": "vindöga",
+    "pair": "da-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "98fec27b0640a349",
+      "review_id": 193,
+      "family_group": "b9ebbacfa0084e3a",
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Both record Norse vindauga, but Swedish window is archaic/inactive; selected wind-source horizon point is not a window."
+    }
+  },
+  {
+    "case_id": "18bf3f9e9cef756a",
+    "panel": "open",
+    "family_group": "d6d91283d182d91d",
+    "lang_a": "de",
+    "word_a": "extrem",
+    "lang_b": "sv",
+    "word_b": "ymnigt",
+    "pair": "de-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": null,
+    "reference": {
+      "case_id": "18bf3f9e9cef756a",
+      "review_id": 194,
+      "family_group": "d6d91283d182d91d",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reference_reason": "Extremely and abundantly/heavily can both express degree but do not generally modify the same predicates. The bare glosses cannot establish a common interchangeable sense."
+    }
+  },
+  {
+    "case_id": "486629eec19acd1b",
+    "panel": "open",
+    "family_group": "541a9597bfab0522",
+    "lang_a": "nb",
+    "word_a": "malme",
+    "lang_b": "sv",
+    "word_b": "malm",
+    "pair": "nb-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "different_meanings",
+    "compatible": true,
+    "reference": {
+      "case_id": "486629eec19acd1b",
+      "review_id": 195,
+      "family_group": "541a9597bfab0522",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Conifer heartwood and ore/urban district/military field differ in saved modern meaning despite shared malmaz ancestry."
+    }
+  },
+  {
+    "case_id": "e40a113de8aba4a1",
+    "panel": "open",
+    "family_group": "de4d0e6ebf468c21",
+    "lang_a": "de",
+    "word_a": "bar",
+    "lang_b": "nb",
+    "word_b": "bare",
+    "pair": "de-nb",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "equivalent",
+    "compatible": false,
+    "reference": {
+      "case_id": "e40a113de8aba4a1",
+      "review_id": 196,
+      "family_group": "de4d0e6ebf468c21",
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "German pure and Norwegian only/merely may overlap in restrictive constructions; bare versus but is not a shared headline. A related derivation is plausible but not documented in Norwegian here."
+    }
+  },
+  {
+    "case_id": "5ffe27cf8c1bbddb",
+    "panel": "open",
+    "family_group": "2363f085495fc511",
+    "lang_a": "da",
+    "word_a": "ytterbium",
+    "lang_b": "en",
+    "word_b": "ytterbium",
+    "pair": "da-en",
+    "channel": "exact",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "5ffe27cf8c1bbddb",
+      "review_id": 197,
+      "family_group": "2363f085495fc511",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify ytterbium and explicitly form it from Ytterby plus element suffix. Same element/source-name construction is useful equivalence, not uninterrupted native inherited vocabulary."
+    }
+  },
+  {
+    "case_id": "dc8dbe30b476e7c2",
+    "panel": "open",
+    "family_group": "6db7a487c4f9dc87",
+    "lang_a": "da",
+    "word_a": "kåd",
+    "lang_b": "nb",
+    "word_b": "karsk",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "dc8dbe30b476e7c2",
+      "review_id": 198,
+      "family_group": "6db7a487c4f9dc87",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Horny/frisky overlaps explicitly. Exuberance, health and cocktail uses differ. Danish kanhtaz versus Norwegian karskr is incomplete evidence for their full historical relation."
+    }
+  },
+  {
+    "case_id": "e3f68f3355fd33b0",
+    "panel": "open",
+    "family_group": "8a8ff966ee4296b4",
+    "lang_a": "en",
+    "word_a": "chili",
+    "lang_b": "nb",
+    "word_b": "chili",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "e3f68f3355fd33b0",
+      "review_id": 199,
+      "family_group": "8a8ff966ee4296b4",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both explicitly record chili. The Norwegian bare gloss does not establish every English pepper/powder/dish correspondence; shared borrowing is inferred because its history is absent."
+    }
+  },
+  {
+    "case_id": "56406c3a290794dc",
+    "panel": "open",
+    "family_group": "3cc1c432c12eee24",
+    "lang_a": "en",
+    "word_a": "draughtsman",
+    "lang_b": "sv",
+    "word_b": "ritare",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "56406c3a290794dc",
+      "review_id": 200,
+      "family_group": "3cc1c432c12eee24",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "A technical-plan draughtsman belongs to the broader class of people who draw, but illustrator is not an exact universal equivalent. Game-piece and obsolete meanings are distinct."
+    }
+  },
+  {
+    "case_id": "453f9c3d63a3394c",
+    "panel": "open",
+    "family_group": "b36c5144582aa833",
+    "lang_a": "da",
+    "word_a": "donation",
+    "lang_b": "nb",
+    "word_b": "donasjon",
+    "pair": "da-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "453f9c3d63a3394c",
+      "review_id": 201,
+      "family_group": "b36c5144582aa833",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Donation coincides explicitly. Latin history is recorded only in Norwegian, so full Danish shared-source transmission remains inferred."
+    }
+  },
+  {
+    "case_id": "5863ecca2fa8f99c",
+    "panel": "open",
+    "family_group": "01e17e2a05e7e2f2",
+    "lang_a": "de",
+    "word_a": "Salat",
+    "lang_b": "en",
+    "word_b": "salad",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "partial_overlap",
+    "compatible": true,
+    "reference": {
+      "case_id": "5863ecca2fa8f99c",
+      "review_id": 202,
+      "family_group": "01e17e2a05e7e2f2",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Mixed cold dish and greens senses overlap with explicit Italian/French borrowing family. German Islamic prayer is another historical entry, not a salad meaning."
+    }
+  },
+  {
+    "case_id": "c411a35ab49cb38d",
+    "panel": "open",
+    "family_group": "542a5a3478668cfa",
+    "lang_a": "da",
+    "word_a": "føde",
+    "lang_b": "sv",
+    "word_b": "född",
+    "pair": "da-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "c411a35ab49cb38d",
+      "review_id": 203,
+      "family_group": "542a5a3478668cfa",
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reference_reason": "Give birth versus born are active verb and adjectival/participle meanings. Danish feeding and food senses are additional; Swedish full history is absent."
+    }
+  },
+  {
+    "case_id": "ac0624c0168f324e",
+    "panel": "open",
+    "family_group": "71b8209fde11a7f6",
+    "lang_a": "en",
+    "word_a": "magneton",
+    "lang_b": "sv",
+    "word_b": "magnetit",
+    "pair": "en-sv",
+    "channel": "prefix",
+    "retained_A": false,
+    "label": "partial_overlap",
+    "compatible": false,
+    "reference": {
+      "case_id": "ac0624c0168f324e",
+      "review_id": 204,
+      "family_group": "71b8209fde11a7f6",
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reference_reason": "Magnetic-moment units and magnetite mineral differ. A magnet-like component or topic does not establish exact meaning or full-word cognacy."
+    }
+  },
+  {
+    "case_id": "b3a1530df0fc57a6",
+    "panel": "open",
+    "family_group": "21626bad9ab9c133",
+    "lang_a": "en",
+    "word_a": "dog",
+    "lang_b": "nb",
+    "word_b": "bikkje",
+    "pair": "en-nb",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "no_supported_match",
+    "compatible": false,
+    "reference": {
+      "case_id": "b3a1530df0fc57a6",
+      "review_id": 205,
+      "family_group": "21626bad9ab9c133",
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Domestic dog meaning explicitly overlaps, including Norwegian dog and female-dog senses. The English parent gloss a-person and selected female-dog counterpart miss it; secondary person/device senses should not dominate."
+    }
+  },
+  {
+    "case_id": "5c370bb32657ba3d",
+    "panel": "open",
+    "family_group": "457118f36f5a839f",
+    "lang_a": "en",
+    "word_a": "archdiocese",
+    "lang_b": "sv",
+    "word_b": "ärkestift",
+    "pair": "en-sv",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "equivalent",
+    "compatible": true,
+    "reference": {
+      "case_id": "5c370bb32657ba3d",
+      "review_id": 206,
+      "family_group": "457118f36f5a839f",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify archdiocese. Recorded chief-plus-diocese versus arke-plus-stift constructions do not prove complete inherited component equivalence."
+    }
+  },
+  {
+    "case_id": "1ddc4967f366eb2b",
+    "panel": "open",
+    "family_group": "38f524a3f99f4c2f",
+    "lang_a": "de",
+    "word_a": "Donnerstag",
+    "lang_b": "en",
+    "word_b": "thursday",
+    "pair": "de-en",
+    "channel": "translation",
+    "retained_A": true,
+    "label": "different_meanings",
+    "compatible": false,
+    "reference": {
+      "case_id": "1ddc4967f366eb2b",
+      "review_id": 207,
+      "family_group": "38f524a3f99f4c2f",
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reference_reason": "Both identify Thursday with recorded thunder-god-day source and reciprocal comparison. English adverb on-Thursday is a separate grammatical use."
+    }
+  }
+]

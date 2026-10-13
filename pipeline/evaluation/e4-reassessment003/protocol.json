@@ -1,0 +1,14 @@
+{
+  "code_sha256": "4df73e240d40288b0f53a5a128390cea885c50007d7722e65a9ffcb00b1fd52c",
+  "plan_sha256": "dec7d9746bad9fcd7912823e1537c94cfc9bf89c9c1b234762b07ad72b0ceca5",
+  "adoption_policy_sha256": "ea3ed7c17ca8adb54173d57f65836a4f33f3fa66f848ddc572de3fb996adc008",
+  "input_hashes": {
+    "e4-a002\\open_results.json": "651e0033829ad4921da73e2cff8b8e7ee1f783b204351b69b7a981531b702170",
+    "e4-a002\\concept_results.json": "a123626ccb5e1f312af00b18630b36ce1843362b197f8bcfab7ef2736204c905",
+    "e0_concept_cases.csv": "6a23efcf186564c480ed306d4c5e5c87a5565ae785449adb244dcccb8e7a33e4",
+    "e1-run003\\concept_case_results.json": "0955e81b5fea97c2e01fbd69fa5c766ca31146312ee82847074d2cdadec202e0"
+  },
+  "scope": "All original E4 development open cases and concept cases; no reserved predictions.",
+  "original_decision_preserved": true,
+  "original_judgments_changed": false
+}

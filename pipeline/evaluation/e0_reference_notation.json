@@ -1,0 +1,8 @@
+{
+  "notation_cases": 0,
+  "cases_with_comparison": 0,
+  "cases": [],
+  "original_absent_cases": 58,
+  "limits": "Original coverage counts remain unchanged. Alternate-form existence does not verify the intended concept sense. Phrases and hyphenated forms remain separately reported unsupported inputs.",
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f"
+}

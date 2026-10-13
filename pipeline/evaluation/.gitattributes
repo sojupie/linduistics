@@ -1,0 +1,7 @@
+*.json -text whitespace=cr-at-eol
+*.csv -text whitespace=cr-at-eol
+E1_*.md -text whitespace=cr-at-eol
+E2_*.md -text whitespace=cr-at-eol
+E3_*.md -text whitespace=cr-at-eol
+E4_*.md -text whitespace=cr-at-eol
+E5_*.md -text whitespace=cr-at-eol

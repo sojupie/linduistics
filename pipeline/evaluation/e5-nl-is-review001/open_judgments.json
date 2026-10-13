@@ -1,0 +1,341 @@
+{
+  "packet_sha256": "9287045070e6b9531df18d5c484603d1257f6ec38e7ee13babebc82be479fab5",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All full source inventories read before fixed-label scoring; terse koff meaning unresolved; grammar, regional and name identity scope retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Feeling poorly and a slipper do not overlap."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Arrogance and larynx do not overlap."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Getting lost or straying and mansion do not overlap."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Costume or guise and equipment do not establish observed overlap."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Memory, motif, toast and keepsake do not overlap tiny."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe the file or rasp tool."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "specialized_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Dutch gives only koff while Icelandic describes a hut or hovel; the terse specialist gloss does not establish its meaning."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Skill or art and a cunning plan concern ability and its application, but no interchangeable meaning is recorded."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Assembly overlap exists in the historically tagged Dutch thing sense; current matter or object does not equal parliament."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe skin wart."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe seraph, with elaboration on the angel type."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Winter overlaps through the regional/proscribed Icelandic form, which also has age-counting year meaning; Dutch has an additional surname."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Both inventories explicitly identify the same Luxembourg country, province, city and canton."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe Beninese relation to Benin."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Know overlaps; check, remember and know how add different scopes."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe disgusting or revolting."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Material resources overlap instruments or aids in some contexts, but household necessities and museum acquisitions are not unrestricted equivalents."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a plebiscite or referendum."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Animal enclosure overlaps; Dutch also has a place name."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Fraud overlaps a narrower part of cheating; Icelandic additionally describes sneaking by cheating."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Icelandic explicitly marks comparative better; Dutch supplied senses describe high quality or recovery without the comparative constraint."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Deaf overlaps only through a dated Icelandic sense; active pallid or dull meanings differ."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both describe dreaming, with explicitly different subject-case constructions; impersonal syntax does not turn it into a different experience."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Icelandic adverb how and Dutch who or names are different meanings."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Louse overlaps; Dutch explicitly includes several pest insects and Icelandic adds a personal description or bug."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "related_name_forms",
+      "compatible_labels": [
+        "related_name_form",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "The recorded Alexander and Alexandra descriptions identify masculine and feminine forms of the related name family, not interchangeable names or same people."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "A generic male given name and surname transferred from an unspecified given name do not establish a shared name identity."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Germanic language family and a German-language idiom or word are related linguistic descriptions rather than equivalent categories."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Belgian and Belgium describe a person/category and a country, not equivalent referents."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Icelandic explicitly records Michael and Dutch explicitly names the Michael equivalent; this supports name-form correspondence, not same-person identity."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe politeness."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Put or place overlaps; both inventories also include different decision, opening, supposition or qualification meanings."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Traditional overlaps; Dutch additionally records the adverb traditionally."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe urine."
+    },
+    {
+      "review_id": 35,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe landlord."
+    }
+  ]
+}

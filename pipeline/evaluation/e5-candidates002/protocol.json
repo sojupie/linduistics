@@ -1,0 +1,32 @@
+{
+  "code_sha256": "7977582284f590de7e0d297f4d205d9dcaf47b97786c6bd486dd25ae52fefa51",
+  "builder_sha256": "3c47b6d4121cbbcab97dc0fa18f7808a98ed77952e54d142c8b8b771e2e476a4",
+  "plan_sha256": "8e9b36764c7afc60dd9157d6486a9c2782633513525b96686cb9d681229aaf5a",
+  "panel_protocol_sha256": "29c85e72280b2f490b70035d6e405e0c8517615304a6e5edb2c6e399687473dc",
+  "lemma_hashes": {
+    "da": "c8ecebc038293bbb9f7a073dc5c0fd870ec67902634af2833f92be64fb041305",
+    "de": "28cca7629b2a98bdf1dddc0b0ce2d347cb5ac230600a4d0368a9fe3a06ea90e5",
+    "en": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b",
+    "nb": "0d28e9fc54e31b8239d49ad73c027fdc40a356f649c046e5ebc18913686ce43e",
+    "sv": "266be872b57105acbb9c8168aea2cc70e985bcf1d8af69e9861c14b4151d3241",
+    "nl": "f585ef6b9b5086a9894151dc2cfc798f02f226d12486b25ff2f2f85c9634b9ac",
+    "is": "1116b7de193b71a0642502cec74581b59fe830e9f1aac884ed804cc95d4992c8"
+  },
+  "english_source_sha256": "e38fe0e9b53e3387673fe46429a02b3dcecfd3e5bf5771d7766c5afa6fd41f25",
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "translation_artifacts": {
+    "translations_da_is.parquet": "38d0bd2f64093f82e4b49c5b2155a7defe907fd710a6e1fd63b1879a206dee51",
+    "translations_da_nl.parquet": "b963901a5b5227c4b61679e72aa06cff92ad8860d4d61aed661869308f86618d",
+    "translations_de_is.parquet": "5efb61e26f6808d8fa1a5a88486849e02c0cda63d3a826d64205f76fc01bd614",
+    "translations_de_nl.parquet": "aa3697abc5b40b5edf29e0c400c0c8e38bc503eb2267f99cb1ccf25ec199f9c3",
+    "translations_en_is.parquet": "ee27956619d56ff018023dfd3b664210c2f34d3a0d3978b6626d1ebe92a6b9ee",
+    "translations_en_nl.parquet": "60b57b42eb858bfc2165fdc569be5816f7918f552c4b763e43737199a4d3ef93",
+    "translations_is_nb.parquet": "c5f6c4a3b0bb288726790cacb465c6a33c389a0b59bead13fd427fa6d919fec3",
+    "translations_is_nl.parquet": "599c72ec149359e7057d4cb62f1409f53c34afa7a5812234ff962a66e3a03481",
+    "translations_is_sv.parquet": "6ddf2de2cdeb698acb97726e1109095cc75bea51ced5a253b4e2977c39250a81",
+    "translations_nb_nl.parquet": "0487384c67855c470cee1a1933c49129f9f9def98715213bd43665fc6c94de32",
+    "translations_nl_sv.parquet": "7970d98f8c50caef86815428e2f2e4b1ee44ece3ff1a3ff51b19c595d561a16f"
+  },
+  "scope": "Full old candidate membership/order, translation source references, and scalar V2 label replay. New translations only; new sense alignment and labels not yet built.",
+  "score_conversion": "Historical text -> PostgreSQL REAL -> psycopg text-result conversion, checked against every old final label. Read-only SQL; no database mutation."
+}

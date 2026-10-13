@@ -1,0 +1,22 @@
+{
+  "rows": 23068,
+  "categories": {
+    "accidental_lookalike": 8072,
+    "full_cognate": 3682,
+    "independent_root": 2182,
+    "semantic_narrowing": 2072,
+    "unrelated_equivalent": 6998,
+    "cognate_false_friend": 46,
+    "semantic_divergence": 16
+  },
+  "relations": {
+    "false_cognate": 2648,
+    "unknown": 10008,
+    "independent": 2182,
+    "unrelated": 6998,
+    "cognate": 1232
+  },
+  "attached_claims": 356,
+  "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+  "elapsed_seconds": 29.810621599957813
+}

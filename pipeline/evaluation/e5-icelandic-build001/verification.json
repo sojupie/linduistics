@@ -1,0 +1,176 @@
+{
+  "da:is": {
+    "metrics": {
+      "rows": 22706,
+      "categories": {
+        "full_cognate": 3920,
+        "unrelated_equivalent": 7006,
+        "independent_root": 2362,
+        "semantic_narrowing": 2214,
+        "accidental_lookalike": 7110,
+        "cognate_false_friend": 76,
+        "semantic_divergence": 18
+      },
+      "relations": {
+        "unknown": 9350,
+        "unrelated": 7006,
+        "independent": 2362,
+        "cognate": 1566,
+        "false_cognate": 2422
+      },
+      "attached_claims": 792,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 30.058312399953138
+    },
+    "rows_verified": 22706,
+    "protocol_sha256": "45140818d18fdaa829752a6d9d475d2400c46f8e5db1150cdb9be8da9f416da7",
+    "final_sha256": "3b253cde34e124bedc9ebe2cad0dab8abdde9e355138277e1a70e44ae5a1fbde",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "de:is": {
+    "metrics": {
+      "rows": 38284,
+      "categories": {
+        "full_cognate": 3814,
+        "unrelated_equivalent": 14282,
+        "independent_root": 7096,
+        "accidental_lookalike": 10540,
+        "semantic_narrowing": 2470,
+        "cognate_false_friend": 70,
+        "semantic_divergence": 12
+      },
+      "relations": {
+        "unknown": 13604,
+        "unrelated": 14282,
+        "independent": 7096,
+        "cognate": 846,
+        "false_cognate": 2456
+      },
+      "attached_claims": 406,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 37.16645860002609
+    },
+    "rows_verified": 38284,
+    "protocol_sha256": "17e65a0602f85aba730da6c4002f0b14f29eea25e6b56b42b204845cd62b0742",
+    "final_sha256": "eec8dc4d20ae191bd26db1281bb4cca7ab1d50afeddef88a3d1744b5c4288ffb",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "en:is": {
+    "metrics": {
+      "rows": 66408,
+      "categories": {
+        "full_cognate": 1498,
+        "independent_root": 9468,
+        "accidental_lookalike": 44808,
+        "semantic_narrowing": 6192,
+        "unrelated_equivalent": 3972,
+        "cognate_false_friend": 268,
+        "semantic_divergence": 202
+      },
+      "relations": {
+        "unknown": 48372,
+        "independent": 9468,
+        "false_cognate": 3510,
+        "unrelated": 3972,
+        "cognate": 1086
+      },
+      "attached_claims": 1288,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 95.65857999998843
+    },
+    "rows_verified": 66408,
+    "protocol_sha256": "4273fb08451c76065ce12df5e373f8859dc5c9dbf7254fc3fd14fdf5d73f2921",
+    "final_sha256": "64c939d58805aad8ac5defa416213eb4f3a45f798d42e59ecfce5f03614c4d05",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "is:nb": {
+    "metrics": {
+      "rows": 23068,
+      "categories": {
+        "accidental_lookalike": 8072,
+        "full_cognate": 3682,
+        "independent_root": 2182,
+        "semantic_narrowing": 2072,
+        "unrelated_equivalent": 6998,
+        "cognate_false_friend": 46,
+        "semantic_divergence": 16
+      },
+      "relations": {
+        "false_cognate": 2648,
+        "unknown": 10008,
+        "independent": 2182,
+        "unrelated": 6998,
+        "cognate": 1232
+      },
+      "attached_claims": 356,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 29.810621599957813
+    },
+    "rows_verified": 23068,
+    "protocol_sha256": "044758c43dd4fe9f8a0391fd0abda4fbda26bac8b3f4031cb2ce61d14438f265",
+    "final_sha256": "86e9d5adda6e2257e0e8ab717d678e2d34d8e6566df11ddf1a90c8e956471626",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "is:sv": {
+    "metrics": {
+      "rows": 37332,
+      "categories": {
+        "accidental_lookalike": 14670,
+        "independent_root": 4286,
+        "full_cognate": 4702,
+        "semantic_narrowing": 3694,
+        "unrelated_equivalent": 9868,
+        "semantic_divergence": 16,
+        "cognate_false_friend": 96
+      },
+      "relations": {
+        "unknown": 18296,
+        "independent": 4286,
+        "unrelated": 9868,
+        "cognate": 1794,
+        "false_cognate": 3088
+      },
+      "attached_claims": 680,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 36.07312989997445
+    },
+    "rows_verified": 37332,
+    "protocol_sha256": "985777221cc0cdd3ba3af131418f0d47d7006984c13bc8bc383c7e7ad3cd3793",
+    "final_sha256": "c8d663665f79888765b86920550e258ab2c43ad4644bd74ad22fe5bd0fd20727",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  },
+  "is:nl": {
+    "metrics": {
+      "rows": 28990,
+      "categories": {
+        "full_cognate": 2784,
+        "independent_root": 4854,
+        "unrelated_equivalent": 12142,
+        "semantic_narrowing": 1698,
+        "accidental_lookalike": 7462,
+        "semantic_divergence": 10,
+        "cognate_false_friend": 40
+      },
+      "relations": {
+        "unknown": 9534,
+        "independent": 4854,
+        "unrelated": 12142,
+        "false_cognate": 1570,
+        "cognate": 890
+      },
+      "attached_claims": 130,
+      "core_policy": "null: no independently justified new core membership; no core filter used for admission",
+      "elapsed_seconds": 32.68595139996614
+    },
+    "rows_verified": 28990,
+    "protocol_sha256": "ed08c202f05c6bd6a0f9e29b5f95cacbee99716e591236289fbe562bbc5b0ccf",
+    "final_sha256": "87671de55ce70e085e16a9201b10b95c192790eda93d7b262df8178251e262bf",
+    "all_original_senses_and_nonderived_fields_preserved": true,
+    "all_inverse_rows_equal": true
+  }
+}

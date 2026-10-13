@@ -1,0 +1,316 @@
+{
+  "packet_sha256": "d32e8632aff308460ac95bcbd2d0a7855f5275c6f99c15b5ffe1ffa226c707bd",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All 33 full inventories reviewed before scoring; named places, adjective/name relations and duration/occasion distinctions retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Hilt overlaps; guard, pommel and figurative control are distinct extensions. Selected pommel versus handle display is not equivalent."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Ship and ski differ."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Neither/nor conjunction and cheese-making/caseation/assimilation verbs differ."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote a wind gust."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Second-person plural pronoun and named hamlet differ."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Leave of absence and permission are contextually associated but not generally the same meaning."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Be verb and being/creature noun are related grammatical forms; Dutch auxiliary usage adds context."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Fish roe overlaps with Southern Dutch roe; Norwegian spawn and rowan add distinctions."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "Goddess or dwarf planet Ceres differs from a Dutch neighbourhood."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Tend verb and tendency noun differ grammatically."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Namibian adjective is related to the Namibia place name, not an interchangeable form."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both mean humanistic."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Numerator overlaps; Dutch counting person and devices add meanings."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote telegraphy."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "same_named_entity_partial_profile",
+      "compatible_labels": [
+        "entity_overlap",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "The Norwegian capital Oslo is explicitly shared; other Norwegian US-place entries are distinct."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Purchase noun overlaps; Dutch also records an inflected verb form."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Battle overlaps; stroke, kind, camps, fields, competitions and names add distinct senses."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Part of town is a narrower district use; district also permits non-urban subdivisions."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Spokesperson overlaps; Dutch also has an obsolete literal voicepipe sense, excluded from ordinary overlap."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Schoolboy is a narrower pupil/student instance; learner/apprentice scope is wider."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Giving birth and feeding differ."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Goose overlaps; Dutch entire determiner/adverb and surname do not."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A given name and removed knot spelling do not mean scourge/knout or boor."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Personal neighbour is archaic in Dutch; countries/states can still be neighbours in a specified context."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Time duration/era and time as an occasion/instance are related but not interchangeable; Dutch also has reversal."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Louse/pest overlaps; Norwegian stitches, seeds, rock symbol and software bug add meanings."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Loosely adverb and loess sediment differ."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Software documentation is a narrower documentation use."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Granite rock and graphite mineral differ."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote foliage."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Crazy/mad overlaps; Norwegian brittle/crunchy and Dutch fool differ."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote constipation."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote demography."
+    }
+  ]
+}

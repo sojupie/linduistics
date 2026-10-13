@@ -1,0 +1,10 @@
+{
+  "status": "failed_before_admission_scoring",
+  "reason": "The replay used Python binary32 rounding, which does not reproduce PostgreSQL REAL values returned through psycopg text results.",
+  "first_disagreement": {"word_a": "bent", "word_b": "Benedikt", "saved_category": "full_cognate", "incorrect_replay_category": "unrelated_equivalent"},
+  "saved_phonetic_score": 0.6500000059604645,
+  "binary32_rounding": 0.6499999761581421,
+  "next_check": "Use dataset_artifact.py's actual read-only PostgreSQL text-to-REAL-to-psycopg conversion, then replay every old row.",
+  "translation_links_mined": 480040,
+  "production_changes": false
+}

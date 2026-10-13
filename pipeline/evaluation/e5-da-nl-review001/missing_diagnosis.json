@@ -1,0 +1,138 @@
+[
+  {
+    "case_id": "iecor:20-108-1:21-108-1",
+    "concept": "near",
+    "word_a": "i nærheden",
+    "word_b": "dichtbij",
+    "head_a_present": false,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-115-1:21-115-1",
+    "concept": "one",
+    "word_a": "en",
+    "word_b": "een",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-124-1:21-124-1",
+    "concept": "right",
+    "word_a": "højre",
+    "word_b": "rechts",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-137-1:21-137-1",
+    "concept": "see",
+    "word_a": "se",
+    "word_b": "zien",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-17-1:21-17-1",
+    "concept": "bone",
+    "word_a": "knogle",
+    "word_b": "bot",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-184-1:21-184-1",
+    "concept": "vomit",
+    "word_a": "kaste op",
+    "word_b": "overgeven",
+    "head_a_present": false,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-212-1:21-212-1",
+    "concept": "yesterday",
+    "word_a": "i går",
+    "word_b": "gisteren",
+    "head_a_present": false,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-219-1:21-219-1",
+    "concept": "run",
+    "word_a": "løbe",
+    "word_b": "rennen",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-221-1:21-221-1",
+    "concept": "take",
+    "word_a": "tage",
+    "word_b": "nemen",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-28-1:21-28-1",
+    "concept": "die",
+    "word_a": "dø",
+    "word_b": "sterven",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-28-1:21-28-2",
+    "concept": "die",
+    "word_a": "dø",
+    "word_b": "doodgaan",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-30-1:21-30-1",
+    "concept": "dirty",
+    "word_a": "snavset",
+    "word_b": "vies",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-36-1:21-36-1",
+    "concept": "ear",
+    "word_a": "øre",
+    "word_b": "oor",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-42-1:21-42-1",
+    "concept": "far",
+    "word_a": "langt væk",
+    "word_b": "ver",
+    "head_a_present": false,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-45-1:21-45-1",
+    "concept": "fear",
+    "word_a": "være bange",
+    "word_b": "bang zijn",
+    "head_a_present": false,
+    "head_b_present": false
+  },
+  {
+    "case_id": "iecor:20-71-1:21-71-1",
+    "concept": "head",
+    "word_a": "hoved",
+    "word_b": "hoofd",
+    "head_a_present": true,
+    "head_b_present": true
+  },
+  {
+    "case_id": "iecor:20-72-1:21-72-1",
+    "concept": "hear",
+    "word_a": "høre",
+    "word_b": "horen",
+    "head_a_present": true,
+    "head_b_present": true
+  }
+]

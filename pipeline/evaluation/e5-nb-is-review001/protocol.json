@@ -1,0 +1,14 @@
+{
+  "pair": [
+    "is",
+    "nb"
+  ],
+  "seed": 20261003,
+  "final_sha256": "86e9d5adda6e2257e0e8ab717d678e2d34d8e6566df11ddf1a90c8e956471626",
+  "code_sha256": "ce5bd5fd3d06e9e5c216ddc8a35df90058c1ec2af4bc55d33f12698d8303e42f",
+  "panel_protocol_sha256": "29c85e72280b2f490b70035d6e405e0c8517615304a6e5edb2c6e399687473dc",
+  "review": "Source-guided agent judgment pending; not independent human gold.",
+  "sampling": "Five canonical rows per category, seeded reservoir; known reserved/bridge families withheld without replacements.",
+  "blinding": "Open packet omits categories and numeric scores. Source senses and claims remain available.",
+  "separation_limits": "Unknown families among open vocabulary may still overlap; no claim of complete historical family separation."
+}

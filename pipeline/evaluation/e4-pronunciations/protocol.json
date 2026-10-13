@@ -1,0 +1,25 @@
+{
+  "source_hashes": {
+    "pipeline\\data\\kaikki_da.jsonl": "c1782b489514765b960408c1b1fdc21f343c3ba4823ec9af709f39b01a8abc7a",
+    "pipeline\\data\\kaikki_de.jsonl": "db551663e13e917884a90bdf89f01d5d09e7c3dd46eeaa8d6b3deb904c75917e",
+    "pipeline\\data\\kaikki_en.jsonl": "e38fe0e9b53e3387673fe46429a02b3dcecfd3e5bf5771d7766c5afa6fd41f25",
+    "pipeline\\data\\kaikki_nb.jsonl": "8aefc87034058ea2276eea9779f67b2ce122f646841e92955446f4b6ab2ee9ad",
+    "pipeline\\data\\kaikki_sv.jsonl": "89faff8e49dccc32cbea87de565656a77cc2a775ce50fea7757ab71707a49bd7"
+  },
+  "lookup_hashes": {
+    "pipeline\\data\\reproduce-five-language-20261002\\all_comparisons_v2.parquet": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_da.parquet": "c8ecebc038293bbb9f7a073dc5c0fd870ec67902634af2833f92be64fb041305",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_de.parquet": "28cca7629b2a98bdf1dddc0b0ce2d347cb5ac230600a4d0368a9fe3a06ea90e5",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_en.parquet": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_nb.parquet": "0d28e9fc54e31b8239d49ad73c027fdc40a356f649c046e5ebc18913686ce43e",
+    "pipeline\\data\\reproduce-five-language-20261002\\lemmas_sv.parquet": "266be872b57105acbb9c8168aea2cc70e985bcf1d8af69e9861c14b4151d3241",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_da.parquet": "c9fcd2bb76b86057c8fbb78ef144b79c5a2c195da034f461c98b27460fc936ad",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_de.parquet": "c9e3371c9e2968960f6894db457f44d9299cafc928786ce8a5b0e5795963e68b",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_en.parquet": "83f7b9b4a4414c58d614d9eaff0a0ffc7ab7a83caa3584f1a2e6646aa25ee349",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_nb.parquet": "9e14e0b000e27c3df97b1a1a118c66eee10dd84bf41bac42c82ba955477c1279",
+    "pipeline\\data\\reproduce-five-language-20261002\\word_forms_sv.parquet": "57ec5662ddabe35e691833c93163670c43ca6ea0f07174f8c2a5a5d7b8ce8c4c"
+  },
+  "parser_sha256": "043ea1bce366dd3090f4d8234905ccb73b66393ec9414629e1f2c3174faf1184",
+  "code_sha256": "08eb716d8f1888ac43f5a90b88820dc1ff5fb21b8d1b69b9d5a7536ab0ac8266",
+  "scope": "Matching IPA on an accepted headword source entry; not a sense-specific pronunciation guarantee."
+}

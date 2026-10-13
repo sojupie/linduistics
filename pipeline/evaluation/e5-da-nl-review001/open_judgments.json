@@ -1,0 +1,322 @@
+{
+  "packet_sha256": "01330f7bbe13f1d0559f2d64de8007a49bf74098c767b4f4f911e92f7993fb59",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "Full source-sense inventories read before scoring fixed labels; specialist and terse-gloss uncertainty retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "regional_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Dune overlap is explicitly dialectal on the Dutch side; ordinary Dutch cliff meaning differs."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Bud, knob and slang head do not denote pig grunt, stomach rumble or student status."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Deep-frying and a Frisian woman are different. Danish source POS noun is suspect and requires grammar review."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Several waterway, duct and broadcast senses overlap, but communication channel and specific named strait scope differ."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "A West African country and a Dutch neighbourhood are different named places."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "specialized_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "The Dutch gloss describes part/whole substitution, commonly synecdoche; its exact scope relative to metonymy needs specialist review."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Danish carve is tagged obsolete; Dutch cut is current."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Shell overlaps; peel/skull versus bowl/measuring scale do not."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Danish time words and Dutch urging, contrast and surprise particles have no observed equivalent modern sense in these inventories."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Body/torso does not mean goitre, plant head or bird gullet."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Motor adjective and motor skill noun are related but cannot substitute grammatically."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote tuberculosis."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote idolatry."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote an ion."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Genetic adjective and genetics noun differ grammatically."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "specialized_overlap_source_gap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Cress includes garden cress in Lepidium; Dutch names pepperwort plants in that genus. Species-level scope is not established by the terse Danish gloss."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Cunningness may mean cleverness or deceit; the terse gloss does not establish its overlap with ingenuity/intelligence."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Soul and phantom/ghost are associated spiritual concepts, not interchangeable meanings."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Proposing a plan and handing something in are related in some contexts but not equivalent actions."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Just/fair and correct overlap in evaluations but are not synonyms in these recorded senses."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Exorbitant and excessive share the intended excessive degree."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "The ordinary goose sense overlaps; Dutch also contains determiner, adverb and surname senses."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Personal neighbour sense is archaic in Dutch; countries/states can still be neighbours. Context must specify the referent."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote practising or training."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Obsequious/subservient overlaps; unthinking obedience and slave-related Dutch senses add distinctions."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Deduce and dedicate are different actions."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Superior person and standing/into a standing position are different."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Form/mould overlaps, while constitute, educate and confirm add Dutch senses."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Tickets overlap; Dutch also includes notes and banknotes."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote carelessness."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Weight/burden overlaps; cargo hold, vice and antlers do not."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Neighbourhood/district overlaps; a turf-extraction canal is an extra Dutch sense."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Truth noun and actual/actually do not denote the same thing or action."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote the semicolon punctuation mark."
+    }
+  ]
+}

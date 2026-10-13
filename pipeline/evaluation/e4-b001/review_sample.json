@@ -1,0 +1,362 @@
+[
+  {
+    "lang_a": "da",
+    "word_a": "araber",
+    "lang_b": "de",
+    "word_b": "bauchnabel"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "binde",
+    "lang_b": "de",
+    "word_b": "bitter"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "femten",
+    "lang_b": "de",
+    "word_b": "werfen"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "fryse",
+    "lang_b": "de",
+    "word_b": "flosse"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "rift",
+    "lang_b": "de",
+    "word_b": "rechts"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "tunge",
+    "lang_b": "de",
+    "word_b": "tolle"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "anden",
+    "lang_b": "en",
+    "word_b": "know"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "bænk",
+    "lang_b": "en",
+    "word_b": "burn"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "dag",
+    "lang_b": "en",
+    "word_b": "dachs"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "fjer",
+    "lang_b": "en",
+    "word_b": "phek"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "net",
+    "lang_b": "en",
+    "word_b": "neck"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "snavset",
+    "lang_b": "en",
+    "word_b": "manset"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "bære",
+    "lang_b": "nb",
+    "word_b": "bine"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "navle",
+    "lang_b": "nb",
+    "word_b": "tavle"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "navle",
+    "lang_b": "nb",
+    "word_b": "varsle"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "navn",
+    "lang_b": "nb",
+    "word_b": "naken"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "nitte",
+    "lang_b": "nb",
+    "word_b": "vite"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "vid",
+    "lang_b": "nb",
+    "word_b": "viking"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "barn",
+    "lang_b": "sv",
+    "word_b": "namn"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "ben",
+    "lang_b": "sv",
+    "word_b": "bett"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "hus",
+    "lang_b": "sv",
+    "word_b": "holl."
+  },
+  {
+    "lang_a": "da",
+    "word_a": "løbe",
+    "lang_b": "sv",
+    "word_b": "döda"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "nævner",
+    "lang_b": "sv",
+    "word_b": "navel"
+  },
+  {
+    "lang_a": "da",
+    "word_a": "våd",
+    "lang_b": "sv",
+    "word_b": "nådd"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "beissen",
+    "lang_b": "en",
+    "word_b": "bizen"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "kommen",
+    "lang_b": "en",
+    "word_b": "common"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "laune",
+    "lang_b": "en",
+    "word_b": "round"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "lekt",
+    "lang_b": "en",
+    "word_b": "left"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "neu",
+    "lang_b": "en",
+    "word_b": "knarr"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "tank",
+    "lang_b": "en",
+    "word_b": "tongue"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "blatt",
+    "lang_b": "nb",
+    "word_b": "blits"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "fokker",
+    "lang_b": "nb",
+    "word_b": "nakke"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "haut",
+    "lang_b": "nb",
+    "word_b": "høyt"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "mieter",
+    "lang_b": "nb",
+    "word_b": "vite"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "wissen",
+    "lang_b": "nb",
+    "word_b": "vest"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "zeh",
+    "lang_b": "nb",
+    "word_b": "se"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "eng",
+    "lang_b": "sv",
+    "word_b": "bäng"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "knochen",
+    "lang_b": "sv",
+    "word_b": "klonken"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "nehmen",
+    "lang_b": "sv",
+    "word_b": "jemen"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "sehen",
+    "lang_b": "sv",
+    "word_b": "lian"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "verstecken",
+    "lang_b": "sv",
+    "word_b": "fönster"
+  },
+  {
+    "lang_a": "de",
+    "word_a": "weit",
+    "lang_b": "sv",
+    "word_b": "vart"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "blood",
+    "lang_b": "nb",
+    "word_b": "bad"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "burn",
+    "lang_b": "nb",
+    "word_b": "bønn"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "castor",
+    "lang_b": "nb",
+    "word_b": "kaste"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "dostie",
+    "lang_b": "nb",
+    "word_b": "kaste"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "sharp",
+    "lang_b": "nb",
+    "word_b": "lapp"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "tallinn",
+    "lang_b": "nb",
+    "word_b": "tann"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "bask",
+    "lang_b": "sv",
+    "word_b": "bark"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "bowna",
+    "lang_b": "sv",
+    "word_b": "blomma"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "heeger",
+    "lang_b": "sv",
+    "word_b": "höger"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "leaton",
+    "lang_b": "sv",
+    "word_b": "liten"
+  },
+  {
+    "lang_a": "en",
+    "word_a": "pull",
+    "lang_b": "sv",
+    "word_b": "pol."
+  },
+  {
+    "lang_a": "en",
+    "word_a": "sun",
+    "lang_b": "sv",
+    "word_b": "sen"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "alta",
+    "lang_b": "sv",
+    "word_b": "äta"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "blest",
+    "lang_b": "sv",
+    "word_b": "blöt"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "fot",
+    "lang_b": "sv",
+    "word_b": "shot"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "frita",
+    "lang_b": "sv",
+    "word_b": "frysa"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "hvit",
+    "lang_b": "sv",
+    "word_b": "lit"
+  },
+  {
+    "lang_a": "nb",
+    "word_a": "sol",
+    "lang_b": "sv",
+    "word_b": "kjol"
+  }
+]

@@ -1,0 +1,8651 @@
+[
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "b",
+    "counts": {
+      "b": 2
+    },
+    "chosen": "b",
+    "families": [
+      "5c7f526e4a80867c",
+      "993d1634b9e4107a"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "d",
+    "counts": {
+      "t": 3,
+      "e": 1
+    },
+    "chosen": "t",
+    "families": [
+      "5c7f526e4a80867c",
+      "b3bea9db212b8ff0",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "e",
+    "counts": {
+      "ɪ": 4,
+      "e": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "003b059618b9ad58",
+      "6d29735e38c4a8ee",
+      "993d1634b9e4107a",
+      "d413427177490cba"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "6d29735e38c4a8ee",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "j",
+    "counts": {
+      "x": 1,
+      "ɡ": 1,
+      "h": 1
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "k",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "l",
+    "counts": {
+      "l": 3,
+      "p": 1
+    },
+    "chosen": "l",
+    "families": [
+      "6d29735e38c4a8ee",
+      "e1ba6da3e84c1196",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "m",
+    "counts": {
+      "m": 2
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e",
+      "6d29735e38c4a8ee"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "n",
+    "counts": {
+      "n": 11,
+      "ə": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "993d1634b9e4107a",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "o",
+    "counts": {
+      "c": 1,
+      "a": 1,
+      "ʊ": 1,
+      "u": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "r",
+    "counts": {
+      "a": 1,
+      "ʁ": 3,
+      "r": 4
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "s",
+    "counts": {
+      "z": 1,
+      "ʃ": 4,
+      "t": 1,
+      "s": 1
+    },
+    "chosen": "ʃ",
+    "families": [
+      "01d49a6eb50b2e56",
+      "4e1e25112d2dbcd4",
+      "d413427177490cba",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "t",
+    "counts": {
+      "t": 2,
+      "d": 1,
+      "c": 2
+    },
+    "chosen": "c",
+    "families": [
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "u",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "v",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "w",
+    "counts": {
+      "b": 1
+    },
+    "chosen": "b",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "y",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ð",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "250b3c80827c2fd0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ø",
+    "counts": {
+      "ʊ": 2,
+      "o": 1,
+      "ø": 1
+    },
+    "chosen": "ʊ",
+    "families": [
+      "5c7f526e4a80867c",
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "œ",
+    "counts": {
+      "o": 1,
+      "k": 1,
+      "y": 1
+    },
+    "chosen": "k",
+    "families": [
+      "aaf3c46a6b042fc0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɐ",
+    "counts": {
+      "r": 1,
+      "ɐ": 1
+    },
+    "chosen": "r",
+    "families": [
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɑ",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɔ",
+    "counts": {
+      "o": 1,
+      "ə": 1,
+      "j": 1,
+      "ʊ": 1,
+      "a": 1,
+      "ɡ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ə",
+    "counts": {
+      "t": 1,
+      "ə": 5
+    },
+    "chosen": "ə",
+    "families": [
+      "3df0382da7b179c4",
+      "633f368d2ae4302c",
+      "8b66bed615490b00",
+      "993d1634b9e4107a",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɛ",
+    "counts": {
+      "a": 1,
+      "ɛ": 2,
+      "ŋ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 3,
+      "k": 1,
+      "n": 1,
+      "x": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ɪ",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ʁ",
+    "counts": {
+      "ʁ": 3,
+      "r": 3
+    },
+    "chosen": "r",
+    "families": [
+      "250b3c80827c2fd0",
+      "8b66bed615490b00",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ʔ",
+    "counts": {
+      "ə": 2,
+      "t": 3,
+      "n": 1,
+      "ɪ": 1,
+      "r": 1,
+      "a": 1,
+      "l": 1,
+      "ŋ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "6bfce1698781f108",
+      "8bff354d15ff7698",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "de",
+    "symbol": "ˢ",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "a",
+    "counts": {
+      "a": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "d",
+    "counts": {
+      "t": 1,
+      "æ": 1,
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "e",
+    "counts": {
+      "ʌ": 1,
+      "ə": 1,
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "d413427177490cba",
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "h",
+    "counts": {
+      "h": 5
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "j",
+    "counts": {
+      "ɑ": 1,
+      "ɪ": 1,
+      "h": 1
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "k",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "l",
+    "counts": {
+      "ʊ": 1,
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "n",
+    "counts": {
+      "n": 9,
+      "t": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "o",
+    "counts": {
+      "u": 1,
+      "ʊ": 1,
+      "ɛ": 1,
+      "ɔ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "r",
+    "counts": {
+      "ə": 1,
+      "ɹ": 2,
+      "ʔ": 1
+    },
+    "chosen": "ɹ",
+    "families": [
+      "1c2b6940399a7baa",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "s",
+    "counts": {
+      "ʊ": 1,
+      "s": 4,
+      "ʃ": 1
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "5c36f1e77a287bba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "t",
+    "counts": {
+      "t": 3,
+      "θ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "u",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "v",
+    "counts": {
+      "w": 1
+    },
+    "chosen": "w",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "w",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "y",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ð",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "5c36f1e77a287bba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ø",
+    "counts": {
+      "w": 1,
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "703957648c576402",
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "œ",
+    "counts": {
+      "ɛ": 1,
+      "i": 1
+    },
+    "chosen": "i",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ɑ",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ɔ",
+    "counts": {
+      "u": 1,
+      "n": 1,
+      "j": 1,
+      "a": 1,
+      "ɛ": 1,
+      "æ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ə",
+    "counts": {
+      "z": 1,
+      "k": 1,
+      "ə": 2,
+      "d": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "703957648c576402",
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ɛ",
+    "counts": {
+      "ə": 1,
+      "ɹ": 1,
+      "ɪ": 1,
+      "ɑ": 1
+    },
+    "chosen": "ɑ",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ɡ",
+    "counts": {
+      "ɛ": 1,
+      "ŋ": 1,
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ʁ",
+    "counts": {
+      "ɹ": 3
+    },
+    "chosen": "ɹ",
+    "families": [
+      "547b1671c71f585e",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ʔ",
+    "counts": {
+      "d": 4,
+      "ʊ": 1,
+      "ɚ": 1,
+      "ɪ": 1,
+      "ə": 3,
+      "i": 1
+    },
+    "chosen": "d",
+    "families": [
+      "2c8d2876e930fa30",
+      "6bfce1698781f108",
+      "8bff354d15ff7698",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "en",
+    "symbol": "ˢ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "d",
+    "counts": {
+      "t": 1,
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "52977342facc8394"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "e",
+    "counts": {
+      "e": 1,
+      "ɪ": 1
+    },
+    "chosen": "e",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "h",
+    "counts": {
+      "h": 3
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "i",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "j",
+    "counts": {
+      "j": 2,
+      "ʏ": 1
+    },
+    "chosen": "j",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "k",
+    "counts": {
+      "c": 1,
+      "k": 2
+    },
+    "chosen": "k",
+    "families": [
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "l",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "n",
+    "counts": {
+      "n": 9
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "o",
+    "counts": {
+      "ʉ": 1,
+      "u": 2,
+      "d": 1
+    },
+    "chosen": "u",
+    "families": [
+      "6bfce1698781f108",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "r",
+    "counts": {
+      "ʈ": 1,
+      "r": 2,
+      "ɾ": 2
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "s",
+    "counts": {
+      "s": 3
+    },
+    "chosen": "s",
+    "families": [
+      "079eace9326ef5da",
+      "4e1e25112d2dbcd4",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "t",
+    "counts": {
+      "t": 4
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "u",
+    "counts": {
+      "ʉ": 1
+    },
+    "chosen": "ʉ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "v",
+    "counts": {
+      "ʋ": 1
+    },
+    "chosen": "ʋ",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "w",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "079eace9326ef5da"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ð",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ø",
+    "counts": {
+      "œ": 1,
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "52977342facc8394"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "œ",
+    "counts": {
+      "ø": 2
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɐ",
+    "counts": {
+      "r": 1
+    },
+    "chosen": "r",
+    "families": [
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɑ",
+    "counts": {
+      "æ": 1
+    },
+    "chosen": "æ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɒ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "079eace9326ef5da"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɔ",
+    "counts": {
+      "o": 2,
+      "ɔ": 2,
+      "œ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ə",
+    "counts": {
+      "ə": 3,
+      "ɛ": 2
+    },
+    "chosen": "ə",
+    "families": [
+      "1a51b55eae6d35f4",
+      "551040f096bc078e",
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɡ",
+    "counts": {
+      "k": 2,
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ʁ",
+    "counts": {
+      "ɾ": 2
+    },
+    "chosen": "ɾ",
+    "families": [
+      "547b1671c71f585e",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ʔ",
+    "counts": {
+      "ɾ": 1,
+      "ɽ": 1
+    },
+    "chosen": "ɽ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "nb",
+    "symbol": "ˢ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "o": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "d",
+    "counts": {
+      "t": 2,
+      "d": 3
+    },
+    "chosen": "d",
+    "families": [
+      "52977342facc8394",
+      "ac1ef0426379b872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "e",
+    "counts": {
+      "ɛ": 1,
+      "ø": 1,
+      "ɪ": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "01d49a6eb50b2e56"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "f",
+    "counts": {
+      "f": 3
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "410504b204544b4c",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "i",
+    "counts": {
+      "ɛ": 1,
+      "ɡ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "j",
+    "counts": {
+      "k": 1,
+      "ɡ": 1,
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "k",
+    "counts": {
+      "ɕ": 1,
+      "k": 3
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "l",
+    "counts": {
+      "l": 5
+    },
+    "chosen": "l",
+    "families": [
+      "410504b204544b4c",
+      "43a186604806d5ae",
+      "ac1ef0426379b872",
+      "e7f2e2d7d00fddd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "n",
+    "counts": {
+      "n": 10
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "o",
+    "counts": {
+      "u": 2,
+      "o": 1,
+      "ɵ": 1,
+      "v": 1
+    },
+    "chosen": "u",
+    "families": [
+      "250b3c80827c2fd0",
+      "410504b204544b4c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "r",
+    "counts": {
+      "r": 10
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "7efafd0b9a652d06",
+      "9a5085d48504cb94",
+      "a6e95cfca42fb8ac",
+      "d2965b73e67c0cce",
+      "e754106b6b393000",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "s",
+    "counts": {
+      "s": 7,
+      "ɧ": 1
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "079eace9326ef5da",
+      "2c8d2876e930fa30",
+      "3df0382da7b179c4",
+      "5c36f1e77a287bba",
+      "d413427177490cba",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "t",
+    "counts": {
+      "t": 4,
+      "ɕ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc",
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "u",
+    "counts": {
+      "ʉ": 1
+    },
+    "chosen": "ʉ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "v",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "w",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "079eace9326ef5da"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "y",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ð",
+    "counts": {
+      "t": 2,
+      "d": 2
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4",
+      "410504b204544b4c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ø",
+    "counts": {
+      "œ": 1,
+      "ø": 5
+    },
+    "chosen": "ø",
+    "families": [
+      "52977342facc8394",
+      "5c36f1e77a287bba",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "œ",
+    "counts": {
+      "ø": 2,
+      "ʏ": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɑ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɒ",
+    "counts": {
+      "u": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "ac1ef0426379b872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɔ",
+    "counts": {
+      "o": 5,
+      "ɔ": 1,
+      "ø": 1,
+      "a": 1
+    },
+    "chosen": "o",
+    "families": [
+      "2c8d2876e930fa30",
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac",
+      "e7f2e2d7d00fddd4",
+      "f32e3051771e573c"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ə",
+    "counts": {
+      "ɛ": 1,
+      "a": 8,
+      "ɵ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "633f368d2ae4302c",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "9a5085d48504cb94",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 3,
+      "ɪ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɡ",
+    "counts": {
+      "k": 3,
+      "ɡ": 4
+    },
+    "chosen": "ɡ",
+    "families": [
+      "7efafd0b9a652d06",
+      "9a5085d48504cb94",
+      "aaf3c46a6b042fc0",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ɪ",
+    "counts": {
+      "ŋ": 1
+    },
+    "chosen": "ŋ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ʁ",
+    "counts": {
+      "r": 6
+    },
+    "chosen": "r",
+    "families": [
+      "250b3c80827c2fd0",
+      "547b1671c71f585e",
+      "8b66bed615490b00",
+      "aaf3c46a6b042fc0",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ʔ",
+    "counts": {
+      "d": 3,
+      "t": 2
+    },
+    "chosen": "d",
+    "families": [
+      "43a186604806d5ae",
+      "8bff354d15ff7698",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "da",
+    "target_language": "sv",
+    "symbol": "ˢ",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "ɛ": 1,
+      "r": 1,
+      "o": 1,
+      "ʔ": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "b",
+    "counts": {
+      "b": 2,
+      "w": 1
+    },
+    "chosen": "b",
+    "families": [
+      "5c7f526e4a80867c",
+      "993d1634b9e4107a"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "c",
+    "counts": {
+      "o": 1,
+      "t": 2
+    },
+    "chosen": "t",
+    "families": [
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "d",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "e",
+    "counts": {
+      "ɑ": 1,
+      "e": 2,
+      "d": 1
+    },
+    "chosen": "e",
+    "families": [
+      "01d49a6eb50b2e56",
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "h",
+    "counts": {
+      "h": 4,
+      "j": 1
+    },
+    "chosen": "h",
+    "families": [
+      "6d29735e38c4a8ee",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "j",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "k",
+    "counts": {
+      "k": 1,
+      "ɡ": 1,
+      "œ": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "l",
+    "counts": {
+      "ð": 1,
+      "l": 3,
+      "ʔ": 1
+    },
+    "chosen": "l",
+    "families": [
+      "6d29735e38c4a8ee",
+      "e1ba6da3e84c1196",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "m",
+    "counts": {
+      "m": 2
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e",
+      "6d29735e38c4a8ee"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "n",
+    "counts": {
+      "n": 11,
+      "ʔ": 1,
+      "ɡ": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "993d1634b9e4107a",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "o",
+    "counts": {
+      "ɔ": 1,
+      "œ": 1,
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "703957648c576402"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "p",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "r",
+    "counts": {
+      "ʁ": 3,
+      "ʔ": 1,
+      "r": 4,
+      "ɐ": 1
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "s",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "5c7f526e4a80867c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "t",
+    "counts": {
+      "ə": 1,
+      "d": 3,
+      "ʔ": 3,
+      "s": 1,
+      "t": 2
+    },
+    "chosen": "d",
+    "families": [
+      "5c7f526e4a80867c",
+      "b3bea9db212b8ff0",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "u",
+    "counts": {
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "6bfce1698781f108"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "v",
+    "counts": {
+      "ˢ": 1,
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "x",
+    "counts": {
+      "j": 1,
+      "ɡ": 1
+    },
+    "chosen": "j",
+    "families": [
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "y",
+    "counts": {
+      "œ": 1
+    },
+    "chosen": "œ",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "z",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ø",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ŋ",
+    "counts": {
+      "ɛ": 1,
+      "ʔ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ɐ",
+    "counts": {
+      "ɐ": 1
+    },
+    "chosen": "ɐ",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ɔ",
+    "counts": {
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ə",
+    "counts": {
+      "ə": 5,
+      "ʔ": 2,
+      "ɔ": 1,
+      "n": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "3df0382da7b179c4",
+      "633f368d2ae4302c",
+      "8b66bed615490b00",
+      "993d1634b9e4107a",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "u": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ɡ",
+    "counts": {
+      "ɪ": 1,
+      "ɡ": 3,
+      "j": 1,
+      "ɔ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ɪ",
+    "counts": {
+      "e": 4,
+      "y": 1,
+      "ʔ": 1
+    },
+    "chosen": "e",
+    "families": [
+      "003b059618b9ad58",
+      "6d29735e38c4a8ee",
+      "993d1634b9e4107a",
+      "d413427177490cba"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ʁ",
+    "counts": {
+      "ʁ": 3,
+      "r": 3
+    },
+    "chosen": "r",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "5c7f526e4a80867c",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ʃ",
+    "counts": {
+      "s": 4
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "4e1e25112d2dbcd4",
+      "d413427177490cba",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "da",
+    "symbol": "ʊ",
+    "counts": {
+      "ø": 2,
+      "ɔ": 1,
+      "o": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "5c7f526e4a80867c",
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "a",
+    "counts": {
+      "ɪ": 2,
+      "a": 2,
+      "ʊ": 1,
+      "w": 1,
+      "ɔ": 1,
+      "æ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "b",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "c",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "d",
+    "counts": {
+      "θ": 1
+    },
+    "chosen": "θ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "e",
+    "counts": {
+      "e": 1,
+      "ʊ": 1,
+      "æ": 1,
+      "ɪ": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "f",
+    "counts": {
+      "f": 3
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "43a186604806d5ae",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "j",
+    "counts": {
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "k",
+    "counts": {
+      "k": 2
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "l",
+    "counts": {
+      "l": 3
+    },
+    "chosen": "l",
+    "families": [
+      "da6a87c0f9a99f80",
+      "e1ba6da3e84c1196",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "n",
+    "counts": {
+      "n": 10,
+      "d": 1,
+      "ɪ": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6",
+      "fd053dcdf77423d8"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "o",
+    "counts": {
+      "u": 1,
+      "ɛ": 1,
+      "ɪ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "p",
+    "counts": {
+      "ʊ": 1
+    },
+    "chosen": "ʊ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "r",
+    "counts": {
+      "ɹ": 2,
+      "ə": 2,
+      "e": 1,
+      "ʔ": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "703957648c576402",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "s",
+    "counts": {
+      "t": 1,
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "82e510a250558fd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "t",
+    "counts": {
+      "t": 5,
+      "d": 4
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "82e510a250558fd4",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "u",
+    "counts": {
+      "ʊ": 1
+    },
+    "chosen": "ʊ",
+    "families": [
+      "6bfce1698781f108"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "v",
+    "counts": {
+      "w": 2,
+      "u": 1
+    },
+    "chosen": "w",
+    "families": [
+      "48c5603e04e2de96",
+      "da6a87c0f9a99f80"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "x",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "y",
+    "counts": {
+      "i": 1
+    },
+    "chosen": "i",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "z",
+    "counts": {
+      "z": 1
+    },
+    "chosen": "z",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ø",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ŋ",
+    "counts": {
+      "ŋ": 1
+    },
+    "chosen": "ŋ",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ɐ",
+    "counts": {
+      "ə": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ə",
+    "counts": {
+      "ə": 4,
+      "n": 1,
+      "ɚ": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "43a186604806d5ae",
+      "82e510a250558fd4",
+      "8b66bed615490b00",
+      "fd053dcdf77423d8"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ɛ",
+    "counts": {
+      "ɑ": 2,
+      "ɛ": 3
+    },
+    "chosen": "ɛ",
+    "families": [
+      "82e510a250558fd4",
+      "da6a87c0f9a99f80",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ɡ",
+    "counts": {
+      "ɪ": 1,
+      "j": 2,
+      "ɡ": 2
+    },
+    "chosen": "j",
+    "families": [
+      "82e510a250558fd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ɪ",
+    "counts": {
+      "ʌ": 1,
+      "ɪ": 3
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ʁ",
+    "counts": {
+      "ɹ": 4
+    },
+    "chosen": "ɹ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ʃ",
+    "counts": {
+      "s": 4,
+      "ʃ": 1
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "da6a87c0f9a99f80"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ʊ",
+    "counts": {
+      "ɪ": 1,
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "en",
+    "symbol": "ʏ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "e": 1,
+      "ɾ": 1,
+      "œ": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "c",
+    "counts": {
+      "t": 1,
+      "ɛ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "e",
+    "counts": {
+      "æ": 1
+    },
+    "chosen": "æ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "h",
+    "counts": {
+      "h": 2,
+      "j": 1
+    },
+    "chosen": "h",
+    "families": [
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "j",
+    "counts": {
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "l",
+    "counts": {
+      "ɽ": 1
+    },
+    "chosen": "ɽ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "n",
+    "counts": {
+      "n": 8
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "o",
+    "counts": {
+      "o": 1,
+      "ø": 1
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "r",
+    "counts": {
+      "ɾ": 1,
+      "r": 2,
+      "t": 1
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "s",
+    "counts": {
+      "n": 1
+    },
+    "chosen": "n",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "t",
+    "counts": {
+      "ə": 1,
+      "t": 3
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "u",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "6bfce1698781f108"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "v",
+    "counts": {
+      "u": 1,
+      "ʋ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "x",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "y",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ɔ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ə",
+    "counts": {
+      "ə": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "ʉ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ɡ",
+    "counts": {
+      "ɪ": 1,
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ʁ",
+    "counts": {
+      "ɾ": 2,
+      "r": 1
+    },
+    "chosen": "ɾ",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ʃ",
+    "counts": {
+      "s": 1,
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "nb",
+    "symbol": "ʊ",
+    "counts": {
+      "ʏ": 1,
+      "ʉ": 1
+    },
+    "chosen": "ʉ",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "a",
+    "counts": {
+      "a": 4,
+      "ɛ": 2,
+      "ø": 2,
+      "o": 2
+    },
+    "chosen": "a",
+    "families": [
+      "1b86ab0fc044c064",
+      "48c5603e04e2de96",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "c",
+    "counts": {
+      "u": 1,
+      "t": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "d",
+    "counts": {
+      "ɕ": 1
+    },
+    "chosen": "ɕ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "e",
+    "counts": {
+      "ɛ": 1,
+      "ø": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "2c8d2876e930fa30"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "h",
+    "counts": {
+      "h": 2,
+      "j": 1
+    },
+    "chosen": "h",
+    "families": [
+      "8b66bed615490b00",
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "j",
+    "counts": {
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "k",
+    "counts": {
+      "k": 2,
+      "ɡ": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "l",
+    "counts": {
+      "l": 2
+    },
+    "chosen": "l",
+    "families": [
+      "e7f2e2d7d00fddd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "m",
+    "counts": {
+      "m": 2
+    },
+    "chosen": "m",
+    "families": [
+      "1b86ab0fc044c064",
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "n",
+    "counts": {
+      "n": 9
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "o",
+    "counts": {
+      "o": 1,
+      "ø": 2
+    },
+    "chosen": "ø",
+    "families": [
+      "703957648c576402",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "r",
+    "counts": {
+      "r": 8,
+      "n": 1
+    },
+    "chosen": "r",
+    "families": [
+      "1b86ab0fc044c064",
+      "1c2b6940399a7baa",
+      "250b3c80827c2fd0",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "a6e95cfca42fb8ac",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "s",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "t",
+    "counts": {
+      "ɛ": 1,
+      "t": 3,
+      "d": 3
+    },
+    "chosen": "d",
+    "families": [
+      "8bff354d15ff7698",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "v",
+    "counts": {
+      "v": 3
+    },
+    "chosen": "v",
+    "families": [
+      "1b86ab0fc044c064",
+      "48c5603e04e2de96",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "x",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "y",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "z",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ø",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ə",
+    "counts": {
+      "a": 4,
+      "t": 1,
+      "ɛ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "3df0382da7b179c4",
+      "633f368d2ae4302c",
+      "8b66bed615490b00",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "ʉ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ɡ",
+    "counts": {
+      "ŋ": 1,
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "633f368d2ae4302c",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ɪ",
+    "counts": {
+      "ɔ": 1,
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "b3bea9db212b8ff0",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ʁ",
+    "counts": {
+      "r": 6
+    },
+    "chosen": "r",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "aaf3c46a6b042fc0",
+      "b3bea9db212b8ff0",
+      "e754106b6b393000"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ʃ",
+    "counts": {
+      "s": 3,
+      "ɧ": 1,
+      "k": 1
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ʊ",
+    "counts": {
+      "k": 1,
+      "ɵ": 1
+    },
+    "chosen": "k",
+    "families": [
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "de",
+    "target_language": "sv",
+    "symbol": "ʏ",
+    "counts": {
+      "ʏ": 1
+    },
+    "chosen": "ʏ",
+    "families": [
+      "aaf3c46a6b042fc0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "a",
+    "counts": {
+      "a": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "d",
+    "counts": {
+      "ʔ": 4,
+      "d": 1,
+      "ə": 1
+    },
+    "chosen": "ʔ",
+    "families": [
+      "2c8d2876e930fa30",
+      "6bfce1698781f108",
+      "8bff354d15ff7698",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "e",
+    "counts": {
+      "ɑ": 1
+    },
+    "chosen": "ɑ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "h",
+    "counts": {
+      "h": 5,
+      "j": 1
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "i",
+    "counts": {
+      "ʔ": 1,
+      "œ": 1
+    },
+    "chosen": "œ",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "j",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "k",
+    "counts": {
+      "k": 1,
+      "ə": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "l",
+    "counts": {
+      "u": 1,
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "n",
+    "counts": {
+      "n": 9,
+      "ɔ": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "s",
+    "counts": {
+      "s": 4
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "5c36f1e77a287bba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "t",
+    "counts": {
+      "d": 1,
+      "t": 3,
+      "n": 1,
+      "ð": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "u",
+    "counts": {
+      "ɔ": 1,
+      "ˢ": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "v",
+    "counts": {
+      "w": 1
+    },
+    "chosen": "w",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "w",
+    "counts": {
+      "v": 1,
+      "ø": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "z",
+    "counts": {
+      "ə": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "æ",
+    "counts": {
+      "d": 1,
+      "ɔ": 1
+    },
+    "chosen": "d",
+    "families": [
+      "2c8d2876e930fa30"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ŋ",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɑ",
+    "counts": {
+      "j": 1,
+      "ɛ": 1
+    },
+    "chosen": "j",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1,
+      "o": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ə",
+    "counts": {
+      "ɛ": 1,
+      "e": 1,
+      "r": 1,
+      "ʔ": 3,
+      "ə": 2
+    },
+    "chosen": "ʔ",
+    "families": [
+      "e1ba6da3e84c1196",
+      "f1703addfe1e97b2",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɚ",
+    "counts": {
+      "ʔ": 1
+    },
+    "chosen": "ʔ",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɛ",
+    "counts": {
+      "œ": 1,
+      "ɡ": 1,
+      "ɔ": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1,
+      "y": 1,
+      "ʔ": 1,
+      "ɛ": 1,
+      "ø": 2,
+      "j": 1,
+      "e": 2
+    },
+    "chosen": "e",
+    "families": [
+      "d413427177490cba",
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ɹ",
+    "counts": {
+      "ʁ": 3,
+      "ɛ": 1,
+      "r": 2
+    },
+    "chosen": "ʁ",
+    "families": [
+      "547b1671c71f585e",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ʃ",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ʊ",
+    "counts": {
+      "s": 1,
+      "ʔ": 1,
+      "l": 1,
+      "o": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ʌ",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "ʔ",
+    "counts": {
+      "r": 1
+    },
+    "chosen": "r",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "da",
+    "symbol": "θ",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "d",
+    "counts": {
+      "t": 4,
+      "n": 1
+    },
+    "chosen": "t",
+    "families": [
+      "6bfce1698781f108",
+      "8bff354d15ff7698",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "e",
+    "counts": {
+      "e": 1,
+      "r": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "f",
+    "counts": {
+      "f": 3
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "43a186604806d5ae",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "i",
+    "counts": {
+      "y": 1
+    },
+    "chosen": "y",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "j",
+    "counts": {
+      "j": 1,
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "82e510a250558fd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "k",
+    "counts": {
+      "k": 2
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "l",
+    "counts": {
+      "l": 3
+    },
+    "chosen": "l",
+    "families": [
+      "da6a87c0f9a99f80",
+      "e1ba6da3e84c1196",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "n",
+    "counts": {
+      "n": 10,
+      "ə": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6",
+      "fd053dcdf77423d8"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "s",
+    "counts": {
+      "ʃ": 4,
+      "s": 1
+    },
+    "chosen": "ʃ",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "da6a87c0f9a99f80"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "t",
+    "counts": {
+      "t": 5,
+      "c": 1,
+      "s": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "2c8d2876e930fa30",
+      "4e1e25112d2dbcd4",
+      "82e510a250558fd4",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "u",
+    "counts": {
+      "o": 1,
+      "v": 1,
+      "ʊ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "v",
+    "counts": {
+      "b": 1
+    },
+    "chosen": "b",
+    "families": [
+      "e1ba6da3e84c1196"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "w",
+    "counts": {
+      "a": 1,
+      "v": 2
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96",
+      "da6a87c0f9a99f80"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "z",
+    "counts": {
+      "z": 1
+    },
+    "chosen": "z",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "æ",
+    "counts": {
+      "e": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ŋ",
+    "counts": {
+      "ŋ": 1
+    },
+    "chosen": "ŋ",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɑ",
+    "counts": {
+      "ɛ": 2
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ə",
+    "counts": {
+      "ə": 4,
+      "r": 2,
+      "ɐ": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "43a186604806d5ae",
+      "82e510a250558fd4",
+      "8b66bed615490b00",
+      "fd053dcdf77423d8"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɚ",
+    "counts": {
+      "ə": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɛ",
+    "counts": {
+      "o": 1,
+      "ɛ": 3
+    },
+    "chosen": "ɛ",
+    "families": [
+      "82e510a250558fd4",
+      "da6a87c0f9a99f80",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɪ",
+    "counts": {
+      "a": 2,
+      "x": 1,
+      "ɡ": 1,
+      "ɪ": 3,
+      "n": 1,
+      "o": 1,
+      "ʊ": 1,
+      "ʏ": 1,
+      "ø": 1,
+      "e": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ɹ",
+    "counts": {
+      "ʁ": 4,
+      "r": 2
+    },
+    "chosen": "ʁ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ʃ",
+    "counts": {
+      "ʃ": 1
+    },
+    "chosen": "ʃ",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ʊ",
+    "counts": {
+      "a": 1,
+      "e": 1,
+      "p": 1,
+      "u": 1
+    },
+    "chosen": "a",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ʌ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "ʔ",
+    "counts": {
+      "r": 1
+    },
+    "chosen": "r",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "de",
+    "symbol": "θ",
+    "counts": {
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "a",
+    "counts": {
+      "a": 1,
+      "ʏ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "d",
+    "counts": {
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "e",
+    "counts": {
+      "æ": 1
+    },
+    "chosen": "æ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "h",
+    "counts": {
+      "h": 3,
+      "ɾ": 1
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "i",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "j",
+    "counts": {
+      "o": 1,
+      "ɡ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "l",
+    "counts": {
+      "ɽ": 1
+    },
+    "chosen": "ɽ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "n",
+    "counts": {
+      "n": 7
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "s",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "t",
+    "counts": {
+      "t": 4,
+      "n": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "u",
+    "counts": {
+      "o": 1,
+      "u": 1,
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "w",
+    "counts": {
+      "e": 1,
+      "ʋ": 1
+    },
+    "chosen": "e",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "æ",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɑ",
+    "counts": {
+      "n": 1,
+      "t": 1
+    },
+    "chosen": "n",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1,
+      "r": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɛ",
+    "counts": {
+      "ø": 1,
+      "ʉ": 1,
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 2,
+      "ɾ": 1,
+      "ə": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ɹ",
+    "counts": {
+      "ɾ": 3,
+      "ɛ": 1,
+      "ʉ": 1
+    },
+    "chosen": "ɾ",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ʃ",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ʊ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "6bfce1698781f108"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "nb",
+    "symbol": "ʔ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "d",
+    "counts": {
+      "d": 4
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "e",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "h",
+    "counts": {
+      "h": 4,
+      "r": 1
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "i",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "j",
+    "counts": {
+      "o": 1,
+      "ɡ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "k",
+    "counts": {
+      "k": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "l",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "n",
+    "counts": {
+      "n": 8
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "s",
+    "counts": {
+      "s": 3,
+      "ɛ": 1
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "5c36f1e77a287bba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "t",
+    "counts": {
+      "t": 6,
+      "r": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "2c8d2876e930fa30",
+      "48c5603e04e2de96",
+      "5c36f1e77a287bba",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "u",
+    "counts": {
+      "o": 2,
+      "k": 1
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "w",
+    "counts": {
+      "ɛ": 1,
+      "v": 1,
+      "ø": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "z",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "æ",
+    "counts": {
+      "o": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ŋ",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɑ",
+    "counts": {
+      "n": 1,
+      "t": 1
+    },
+    "chosen": "n",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ə",
+    "counts": {
+      "ɛ": 1,
+      "ø": 1,
+      "a": 2,
+      "r": 1
+    },
+    "chosen": "a",
+    "families": [
+      "703957648c576402",
+      "8b66bed615490b00"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɚ",
+    "counts": {
+      "n": 1
+    },
+    "chosen": "n",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɛ",
+    "counts": {
+      "ø": 1,
+      "ʉ": 1,
+      "o": 1,
+      "ɵ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɪ",
+    "counts": {
+      "ŋ": 1,
+      "ɔ": 1,
+      "r": 3,
+      "ɪ": 2
+    },
+    "chosen": "r",
+    "families": [
+      "703957648c576402",
+      "8b66bed615490b00",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ɹ",
+    "counts": {
+      "r": 4,
+      "a": 1,
+      "ɵ": 1
+    },
+    "chosen": "r",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ʃ",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ʊ",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "ʔ",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "en",
+    "target_language": "sv",
+    "symbol": "θ",
+    "counts": {
+      "ɕ": 1
+    },
+    "chosen": "ɕ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "c",
+    "counts": {
+      "k": 1
+    },
+    "chosen": "k",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "d",
+    "counts": {
+      "d": 1,
+      "o": 1
+    },
+    "chosen": "d",
+    "families": [
+      "52977342facc8394"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "e",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "h",
+    "counts": {
+      "h": 3
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "j",
+    "counts": {
+      "j": 2
+    },
+    "chosen": "j",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "k",
+    "counts": {
+      "k": 2,
+      "ɡ": 2
+    },
+    "chosen": "k",
+    "families": [
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "l",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "n",
+    "counts": {
+      "n": 9
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "o",
+    "counts": {
+      "ɔ": 2
+    },
+    "chosen": "ɔ",
+    "families": [
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "r",
+    "counts": {
+      "r": 2,
+      "ɐ": 1
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "s",
+    "counts": {
+      "s": 3
+    },
+    "chosen": "s",
+    "families": [
+      "079eace9326ef5da",
+      "4e1e25112d2dbcd4",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "t",
+    "counts": {
+      "ð": 1,
+      "d": 1,
+      "t": 4
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "u",
+    "counts": {
+      "ˢ": 1,
+      "ɒ": 1,
+      "o": 2
+    },
+    "chosen": "o",
+    "families": [
+      "6bfce1698781f108",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "æ",
+    "counts": {
+      "ɑ": 1
+    },
+    "chosen": "ɑ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ø",
+    "counts": {
+      "œ": 2,
+      "ø": 1
+    },
+    "chosen": "œ",
+    "families": [
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "œ",
+    "counts": {
+      "ø": 1,
+      "ɔ": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɔ",
+    "counts": {
+      "ɔ": 2
+    },
+    "chosen": "ɔ",
+    "families": [
+      "8bff354d15ff7698",
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ə",
+    "counts": {
+      "ə": 3
+    },
+    "chosen": "ə",
+    "families": [
+      "1a51b55eae6d35f4",
+      "551040f096bc078e",
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "ə": 2
+    },
+    "chosen": "ə",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɡ",
+    "counts": {
+      "w": 1,
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1,
+      "i": 1,
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɽ",
+    "counts": {
+      "ʔ": 1
+    },
+    "chosen": "ʔ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ɾ",
+    "counts": {
+      "ʁ": 2,
+      "ʔ": 1,
+      "r": 2
+    },
+    "chosen": "r",
+    "families": [
+      "530560e2e6d43b8e",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ʈ",
+    "counts": {
+      "r": 1
+    },
+    "chosen": "r",
+    "families": [
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ʉ",
+    "counts": {
+      "u": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ʋ",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "da",
+    "symbol": "ʏ",
+    "counts": {
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "e",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "h",
+    "counts": {
+      "h": 2
+    },
+    "chosen": "h",
+    "families": [
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "j",
+    "counts": {
+      "h": 1
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "k",
+    "counts": {
+      "ʃ": 1,
+      "x": 1
+    },
+    "chosen": "x",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "n",
+    "counts": {
+      "n": 8,
+      "s": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "o",
+    "counts": {
+      "o": 1,
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "r",
+    "counts": {
+      "ʁ": 1,
+      "r": 2
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "s",
+    "counts": {
+      "ʃ": 1
+    },
+    "chosen": "ʃ",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "t",
+    "counts": {
+      "t": 3,
+      "c": 1,
+      "r": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "u",
+    "counts": {
+      "v": 1,
+      "u": 1,
+      "ɔ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "6bfce1698781f108"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "æ",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ø",
+    "counts": {
+      "o": 1,
+      "y": 1
+    },
+    "chosen": "o",
+    "families": [
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "œ",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɔ",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ə",
+    "counts": {
+      "t": 1,
+      "ə": 1
+    },
+    "chosen": "t",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "c": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɪ",
+    "counts": {
+      "ɡ": 1,
+      "ɪ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɽ",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ɾ",
+    "counts": {
+      "ʁ": 2,
+      "r": 1,
+      "a": 1
+    },
+    "chosen": "ʁ",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ʉ",
+    "counts": {
+      "ɛ": 1,
+      "ʊ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ʋ",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "de",
+    "symbol": "ʏ",
+    "counts": {
+      "ʊ": 1
+    },
+    "chosen": "ʊ",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "a",
+    "counts": {
+      "a": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "d",
+    "counts": {
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "e",
+    "counts": {
+      "w": 1
+    },
+    "chosen": "w",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "h",
+    "counts": {
+      "h": 3
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "k",
+    "counts": {
+      "ʃ": 1,
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "n",
+    "counts": {
+      "n": 7,
+      "ɑ": 1,
+      "t": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "ca33d87660418cfe",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "o",
+    "counts": {
+      "u": 1,
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "r",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "ca33d87660418cfe"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "s",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "t",
+    "counts": {
+      "t": 4,
+      "ɑ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "u",
+    "counts": {
+      "u": 1,
+      "ʊ": 1,
+      "ɛ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "æ",
+    "counts": {
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ø",
+    "counts": {
+      "ɛ": 1,
+      "i": 1
+    },
+    "chosen": "i",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɔ",
+    "counts": {
+      "æ": 1
+    },
+    "chosen": "æ",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ə",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɛ",
+    "counts": {
+      "ɹ": 1,
+      "ʔ": 1
+    },
+    "chosen": "ɹ",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɡ",
+    "counts": {
+      "j": 1,
+      "ɡ": 2
+    },
+    "chosen": "ɡ",
+    "families": [
+      "6bfce1698781f108",
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɽ",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ɾ",
+    "counts": {
+      "ɹ": 3,
+      "ɪ": 1,
+      "h": 1
+    },
+    "chosen": "ɹ",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ʉ",
+    "counts": {
+      "ɛ": 1,
+      "ɹ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ʋ",
+    "counts": {
+      "w": 1
+    },
+    "chosen": "w",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "en",
+    "symbol": "ʏ",
+    "counts": {
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "a",
+    "counts": {
+      "a": 2
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "c",
+    "counts": {
+      "ɕ": 1
+    },
+    "chosen": "ɕ",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "d",
+    "counts": {
+      "d": 2
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4",
+      "52977342facc8394"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "e",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "003b059618b9ad58"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "h",
+    "counts": {
+      "h": 2
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "j",
+    "counts": {
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "k",
+    "counts": {
+      "k": 4
+    },
+    "chosen": "k",
+    "families": [
+      "079eace9326ef5da",
+      "1c2b6940399a7baa",
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "l",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "n",
+    "counts": {
+      "n": 8
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "o",
+    "counts": {
+      "o": 2
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "r",
+    "counts": {
+      "r": 2
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "s",
+    "counts": {
+      "ɧ": 1,
+      "s": 2
+    },
+    "chosen": "s",
+    "families": [
+      "079eace9326ef5da",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "t",
+    "counts": {
+      "t": 5,
+      "k": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "25ba0123bd7af428",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "u",
+    "counts": {
+      "o": 1,
+      "u": 1,
+      "ɵ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "æ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ø",
+    "counts": {
+      "ø": 3
+    },
+    "chosen": "ø",
+    "families": [
+      "52977342facc8394",
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "œ",
+    "counts": {
+      "œ": 1,
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɔ",
+    "counts": {
+      "ɔ": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ə",
+    "counts": {
+      "ɛ": 1,
+      "a": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɛ",
+    "counts": {
+      "ɛ": 2,
+      "a": 2,
+      "ɑ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 3
+    },
+    "chosen": "ɡ",
+    "families": [
+      "079eace9326ef5da",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɪ",
+    "counts": {
+      "ŋ": 1,
+      "ɛ": 1,
+      "ɪ": 1
+    },
+    "chosen": "ŋ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɽ",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ɾ",
+    "counts": {
+      "r": 6
+    },
+    "chosen": "r",
+    "families": [
+      "530560e2e6d43b8e",
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "a6e95cfca42fb8ac",
+      "da954366564c99b4",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ʈ",
+    "counts": {
+      "t": 1
+    },
+    "chosen": "t",
+    "families": [
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ʉ",
+    "counts": {
+      "ʉ": 1,
+      "ɵ": 1
+    },
+    "chosen": "ɵ",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ʋ",
+    "counts": {
+      "v": 1
+    },
+    "chosen": "v",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "nb",
+    "target_language": "sv",
+    "symbol": "ʏ",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "633f368d2ae4302c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "ə": 8,
+      "ɔ": 1
+    },
+    "chosen": "ə",
+    "families": [
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "633f368d2ae4302c",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "9a5085d48504cb94",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "d",
+    "counts": {
+      "ʔ": 3,
+      "ð": 2,
+      "d": 3
+    },
+    "chosen": "d",
+    "families": [
+      "52977342facc8394",
+      "ac1ef0426379b872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "f",
+    "counts": {
+      "f": 3
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "410504b204544b4c",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "j",
+    "counts": {
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "k",
+    "counts": {
+      "k": 3,
+      "j": 1,
+      "ɡ": 3
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "l",
+    "counts": {
+      "l": 5
+    },
+    "chosen": "l",
+    "families": [
+      "410504b204544b4c",
+      "43a186604806d5ae",
+      "ac1ef0426379b872",
+      "e7f2e2d7d00fddd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "n",
+    "counts": {
+      "n": 10
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "o",
+    "counts": {
+      "ɔ": 5,
+      "o": 1,
+      "a": 1,
+      "ɒ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "2c8d2876e930fa30",
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac",
+      "e7f2e2d7d00fddd4",
+      "f32e3051771e573c"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "r",
+    "counts": {
+      "ʁ": 6,
+      "r": 10
+    },
+    "chosen": "r",
+    "families": [
+      "1c2b6940399a7baa",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "7efafd0b9a652d06",
+      "9a5085d48504cb94",
+      "a6e95cfca42fb8ac",
+      "d2965b73e67c0cce",
+      "e754106b6b393000",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "s",
+    "counts": {
+      "s": 7
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "079eace9326ef5da",
+      "2c8d2876e930fa30",
+      "3df0382da7b179c4",
+      "5c36f1e77a287bba",
+      "d413427177490cba",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "t",
+    "counts": {
+      "ð": 2,
+      "d": 2,
+      "ʔ": 2,
+      "t": 4
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc",
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "u",
+    "counts": {
+      "o": 2,
+      "ɒ": 1
+    },
+    "chosen": "o",
+    "families": [
+      "250b3c80827c2fd0",
+      "410504b204544b4c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "v",
+    "counts": {
+      "ˢ": 1,
+      "v": 1,
+      "o": 1
+    },
+    "chosen": "o",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ø",
+    "counts": {
+      "œ": 2,
+      "ø": 5,
+      "e": 1,
+      "ɔ": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "52977342facc8394",
+      "5c36f1e77a287bba",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ŋ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "œ",
+    "counts": {
+      "ø": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɔ",
+    "counts": {
+      "ɔ": 1,
+      "y": 1
+    },
+    "chosen": "y",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɕ",
+    "counts": {
+      "k": 1,
+      "t": 1
+    },
+    "chosen": "k",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɛ",
+    "counts": {
+      "ə": 1,
+      "ɛ": 3,
+      "e": 1,
+      "ɑ": 1,
+      "i": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɡ",
+    "counts": {
+      "w": 1,
+      "ɡ": 4,
+      "j": 1,
+      "i": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "7efafd0b9a652d06",
+      "9a5085d48504cb94",
+      "aaf3c46a6b042fc0",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɧ",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɪ",
+    "counts": {
+      "ɛ": 1,
+      "e": 1
+    },
+    "chosen": "e",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ɵ",
+    "counts": {
+      "o": 1,
+      "ə": 1
+    },
+    "chosen": "o",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ʉ",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "da",
+    "symbol": "ʏ",
+    "counts": {
+      "œ": 1
+    },
+    "chosen": "œ",
+    "families": [
+      "aaf3c46a6b042fc0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "a",
+    "counts": {
+      "a": 4,
+      "ə": 4,
+      "c": 1
+    },
+    "chosen": "a",
+    "families": [
+      "1b86ab0fc044c064",
+      "48c5603e04e2de96",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "d",
+    "counts": {
+      "t": 3
+    },
+    "chosen": "t",
+    "families": [
+      "8bff354d15ff7698",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "h",
+    "counts": {
+      "h": 2
+    },
+    "chosen": "h",
+    "families": [
+      "8b66bed615490b00",
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "j",
+    "counts": {
+      "h": 1
+    },
+    "chosen": "h",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "k",
+    "counts": {
+      "ʊ": 1,
+      "k": 2,
+      "ʃ": 1,
+      "x": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872",
+      "b3bea9db212b8ff0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "l",
+    "counts": {
+      "l": 2
+    },
+    "chosen": "l",
+    "families": [
+      "e7f2e2d7d00fddd4",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "m",
+    "counts": {
+      "m": 2
+    },
+    "chosen": "m",
+    "families": [
+      "1b86ab0fc044c064",
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "n",
+    "counts": {
+      "n": 9,
+      "r": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "o",
+    "counts": {
+      "o": 1,
+      "e": 1,
+      "a": 2,
+      "j": 1
+    },
+    "chosen": "a",
+    "families": [
+      "71f4a923f8142acc",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "r",
+    "counts": {
+      "ʁ": 6,
+      "r": 8
+    },
+    "chosen": "r",
+    "families": [
+      "1b86ab0fc044c064",
+      "1c2b6940399a7baa",
+      "250b3c80827c2fd0",
+      "530560e2e6d43b8e",
+      "703957648c576402",
+      "8b66bed615490b00",
+      "a6e95cfca42fb8ac",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "s",
+    "counts": {
+      "z": 1,
+      "ʃ": 3
+    },
+    "chosen": "ʃ",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "e7f2e2d7d00fddd4"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "t",
+    "counts": {
+      "t": 3,
+      "ə": 1,
+      "c": 1,
+      "s": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "2c8d2876e930fa30",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "u",
+    "counts": {
+      "c": 1
+    },
+    "chosen": "c",
+    "families": [
+      "250b3c80827c2fd0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "v",
+    "counts": {
+      "v": 3
+    },
+    "chosen": "v",
+    "families": [
+      "1b86ab0fc044c064",
+      "48c5603e04e2de96",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ø",
+    "counts": {
+      "o": 2,
+      "a": 2,
+      "e": 1,
+      "y": 1,
+      "ø": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c",
+      "e754106b6b393000"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ŋ",
+    "counts": {
+      "ɡ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɔ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɕ",
+    "counts": {
+      "d": 1
+    },
+    "chosen": "d",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɛ",
+    "counts": {
+      "t": 1,
+      "a": 2,
+      "e": 1,
+      "ɛ": 2,
+      "ə": 1
+    },
+    "chosen": "a",
+    "families": [
+      "003b059618b9ad58",
+      "3df0382da7b179c4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 3,
+      "k": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "633f368d2ae4302c",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɧ",
+    "counts": {
+      "ʃ": 1
+    },
+    "chosen": "ʃ",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "b3bea9db212b8ff0",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ɵ",
+    "counts": {
+      "ʊ": 1
+    },
+    "chosen": "ʊ",
+    "families": [
+      "1c2b6940399a7baa"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ʉ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "de",
+    "symbol": "ʏ",
+    "counts": {
+      "ʏ": 1
+    },
+    "chosen": "ʏ",
+    "families": [
+      "aaf3c46a6b042fc0"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "z": 1,
+      "ɹ": 1,
+      "ɔ": 1,
+      "k": 1,
+      "ə": 2,
+      "æ": 1,
+      "ʔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "633f368d2ae4302c",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "d",
+    "counts": {
+      "d": 4
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "h",
+    "counts": {
+      "h": 4
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8b66bed615490b00",
+      "8bff354d15ff7698",
+      "f32e3051771e573c"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "k",
+    "counts": {
+      "k": 1,
+      "ŋ": 1,
+      "ʃ": 1,
+      "u": 1
+    },
+    "chosen": "k",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "l",
+    "counts": {
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "n",
+    "counts": {
+      "n": 8,
+      "ɑ": 1,
+      "ɚ": 1
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "01d49a6eb50b2e56",
+      "3df0382da7b179c4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "o",
+    "counts": {
+      "u": 2,
+      "æ": 1,
+      "j": 1,
+      "ɛ": 1
+    },
+    "chosen": "u",
+    "families": [
+      "551040f096bc078e",
+      "71f4a923f8142acc"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "r",
+    "counts": {
+      "ɹ": 4,
+      "t": 1,
+      "ɪ": 3,
+      "ə": 1,
+      "h": 1
+    },
+    "chosen": "ɹ",
+    "families": [
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "b3bea9db212b8ff0",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "s",
+    "counts": {
+      "ʊ": 1,
+      "s": 3
+    },
+    "chosen": "s",
+    "families": [
+      "01d49a6eb50b2e56",
+      "2c8d2876e930fa30",
+      "5c36f1e77a287bba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "t",
+    "counts": {
+      "t": 6,
+      "ɑ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "2c8d2876e930fa30",
+      "48c5603e04e2de96",
+      "5c36f1e77a287bba",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "v",
+    "counts": {
+      "w": 1
+    },
+    "chosen": "w",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ø",
+    "counts": {
+      "ɛ": 1,
+      "ə": 1,
+      "w": 1,
+      "i": 1
+    },
+    "chosen": "i",
+    "families": [
+      "7efafd0b9a652d06"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ŋ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɔ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɕ",
+    "counts": {
+      "θ": 1
+    },
+    "chosen": "θ",
+    "families": [
+      "13d474143b355872"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɛ",
+    "counts": {
+      "ə": 1,
+      "w": 1,
+      "e": 1,
+      "s": 1
+    },
+    "chosen": "e",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɡ",
+    "counts": {
+      "j": 1,
+      "ɡ": 1
+    },
+    "chosen": "j",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 2
+    },
+    "chosen": "ɪ",
+    "families": [
+      "b3bea9db212b8ff0",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ɵ",
+    "counts": {
+      "ɹ": 1,
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "en",
+    "symbol": "ʉ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "a",
+    "counts": {
+      "a": 2,
+      "ɛ": 2,
+      "ə": 1,
+      "ɔ": 1
+    },
+    "chosen": "a",
+    "families": [
+      "48c5603e04e2de96",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "d",
+    "counts": {
+      "d": 2
+    },
+    "chosen": "d",
+    "families": [
+      "1a51b55eae6d35f4",
+      "52977342facc8394"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "f",
+    "counts": {
+      "f": 2
+    },
+    "chosen": "f",
+    "families": [
+      "1c2b6940399a7baa",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "h",
+    "counts": {
+      "h": 2
+    },
+    "chosen": "h",
+    "families": [
+      "1a51b55eae6d35f4",
+      "8bff354d15ff7698"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "j",
+    "counts": {
+      "j": 1
+    },
+    "chosen": "j",
+    "families": [
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "k",
+    "counts": {
+      "k": 4,
+      "t": 1
+    },
+    "chosen": "k",
+    "families": [
+      "079eace9326ef5da",
+      "1c2b6940399a7baa",
+      "d2965b73e67c0cce",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "l",
+    "counts": {
+      "ɽ": 1,
+      "l": 1
+    },
+    "chosen": "l",
+    "families": [
+      "43a186604806d5ae"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "m",
+    "counts": {
+      "m": 1
+    },
+    "chosen": "m",
+    "families": [
+      "551040f096bc078e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "n",
+    "counts": {
+      "n": 8
+    },
+    "chosen": "n",
+    "families": [
+      "003b059618b9ad58",
+      "48c5603e04e2de96",
+      "4e1e25112d2dbcd4",
+      "547b1671c71f585e",
+      "551040f096bc078e",
+      "7efafd0b9a652d06",
+      "8bff354d15ff7698",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "o",
+    "counts": {
+      "o": 2,
+      "u": 1
+    },
+    "chosen": "o",
+    "families": [
+      "551040f096bc078e",
+      "a6e95cfca42fb8ac"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "r",
+    "counts": {
+      "ɾ": 6,
+      "r": 2
+    },
+    "chosen": "ɾ",
+    "families": [
+      "530560e2e6d43b8e",
+      "547b1671c71f585e",
+      "7efafd0b9a652d06",
+      "a6e95cfca42fb8ac",
+      "da954366564c99b4",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": true
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "s",
+    "counts": {
+      "s": 2
+    },
+    "chosen": "s",
+    "families": [
+      "079eace9326ef5da",
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "t",
+    "counts": {
+      "t": 5,
+      "ʈ": 1
+    },
+    "chosen": "t",
+    "families": [
+      "1c2b6940399a7baa",
+      "25ba0123bd7af428",
+      "530560e2e6d43b8e",
+      "71f4a923f8142acc",
+      "dafd35c6a20635c6"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "u",
+    "counts": {
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "079eace9326ef5da"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "v",
+    "counts": {
+      "ʋ": 1
+    },
+    "chosen": "ʋ",
+    "families": [
+      "48c5603e04e2de96"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ø",
+    "counts": {
+      "ø": 3,
+      "œ": 1
+    },
+    "chosen": "ø",
+    "families": [
+      "52977342facc8394",
+      "7efafd0b9a652d06",
+      "f3e3f3605ea04e70"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ŋ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "547b1671c71f585e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "œ",
+    "counts": {
+      "œ": 1
+    },
+    "chosen": "œ",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɑ",
+    "counts": {
+      "ɛ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "da954366564c99b4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɔ",
+    "counts": {
+      "ɔ": 1
+    },
+    "chosen": "ɔ",
+    "families": [
+      "d2965b73e67c0cce"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɕ",
+    "counts": {
+      "c": 1
+    },
+    "chosen": "c",
+    "families": [
+      "25ba0123bd7af428"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɛ",
+    "counts": {
+      "ə": 1,
+      "e": 1,
+      "æ": 1,
+      "ɛ": 2,
+      "ɪ": 1
+    },
+    "chosen": "ɛ",
+    "families": [
+      "4e1e25112d2dbcd4",
+      "530560e2e6d43b8e"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɡ",
+    "counts": {
+      "ɡ": 3,
+      "ʏ": 1
+    },
+    "chosen": "ɡ",
+    "families": [
+      "079eace9326ef5da",
+      "7efafd0b9a652d06",
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɧ",
+    "counts": {
+      "s": 1
+    },
+    "chosen": "s",
+    "families": [
+      "4e1e25112d2dbcd4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɪ",
+    "counts": {
+      "ɪ": 1
+    },
+    "chosen": "ɪ",
+    "families": [
+      "d413427177490cba"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ɵ",
+    "counts": {
+      "ʉ": 1,
+      "u": 1
+    },
+    "chosen": "u",
+    "families": [
+      "1a51b55eae6d35f4"
+    ],
+    "accepted": false
+  },
+  {
+    "source_language": "sv",
+    "target_language": "nb",
+    "symbol": "ʉ",
+    "counts": {
+      "ʉ": 1
+    },
+    "chosen": "ʉ",
+    "families": [
+      "f1703addfe1e97b2"
+    ],
+    "accepted": false
+  }
+]

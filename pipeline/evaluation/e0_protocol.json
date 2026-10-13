@@ -1,0 +1,36 @@
+{
+  "experiment": "E0",
+  "phase": "independent concept panel and baseline sampling",
+  "seed": 20261003,
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "reference": "IE-CoR 1.1, Heggarty, Anderson and Scarborough (2024), CC-BY 4.0",
+  "source_hashes": {
+    "cldf_cldf-metadata.json": "f5bc92b0cad1435bb6deb11c0a2da2bfff29b9a5cbb02d3405f3192a194430d7",
+    "cldf_cognates.csv": "08473d6c668d266cb2477d2941a18563b219e8979d9b7e38a87b243b22a7fd34",
+    "cldf_cognatesets.csv": "983e3bd5d1f1dc5b834d449a627b0cd7a0722946cf7915aa6c8522883d26d850",
+    "cldf_forms.csv": "60ee8847ad2eb68de619a72669243f0179ccf1f2a58b44a54ce8f9a296d3c2ed",
+    "cldf_languages.csv": "f0c276a915600c9a2a731fe1e960f10f13f5832c390853b5de6c28af3f6b2e9f",
+    "cldf_parameters.csv": "659f799cca4cc76ee12e8d7388de57cc8d8b72553de24db479bb029a2215c0ea",
+    "cldf_sources.bib": "1f1eebddc31e5cf9b28116cb882a24d08f2508386a4af90a9437021a48152fbe",
+    "LICENSE": "945fbcb37deca05bccd7c3ca0e261679f1f5373515504fdbad68f6f3cf6f49b9",
+    "README.md": "0a7af4382dea556c3765262dd235dd3b31b434b2ae093612acca91b4a109db9f"
+  },
+  "concept_panel": "Census of all between-language form combinations in the five selected modern varieties",
+  "case_count": 1712,
+  "matching": "NFC, trim, casefold; exact reference spelling. No guessed lemmas or edit-distance mapping.",
+  "existing_sample": "5 undirected rows per language-pair/category via seeded reservoir; both directions grouped",
+  "review": {
+    "meaning": "Judge headline and secondary matches against published concept definition and disambiguation; record acceptable alternatives and unresolved cases.",
+    "history": "Same expert set is source-supported cognacy. Different sets are disagreement with this reference, not proof of wholly unrelated origins.",
+    "blinding": "Review packet excludes pipeline labels and numeric scores.",
+    "gold_limits": "Published expert annotations support the concept panel only. AI judgments on open vocabulary are not independent gold."
+  },
+  "split_status": "Family-grouped development/test assignment required before E1; no variants scored yet.",
+  "remaining_e0_work": [
+    "Independent frequency panel",
+    "Hard-case and displayed-meaning review",
+    "Family splits and clustered uncertainty",
+    "Numerical acceptance limits for E1-E4"
+  ],
+  "write_policy": "Local evaluation artifacts only; no live database writes."
+}

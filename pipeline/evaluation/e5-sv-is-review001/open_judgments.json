@@ -1,0 +1,306 @@
+{
+  "packet_sha256": "d039a0de5761d01453e4c2e7c3ce0f9b5d684fa27f294a3171ad638248579440",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All full source inventories read before fixed-label scoring; untranslated phrase and spelling redirect remain unresolved; meaning, grammar and entity scope separate.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Writing or a letter and a scream do not overlap."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Killing and bank meanings do not overlap."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Knowing or checking and penalty do not overlap."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Memory and placing explosive mines do not overlap."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Icelandic only points to an untranslated phrase; its action meaning is not supplied, so do not invent overlap with the Swedish name."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Grasping and a garden fork can be associated, but the supplied noun meanings are not interchangeable."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Ray or skate fish and magpie or personal insult do not overlap."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Physical thickness overlaps; stout or fat and extensive or voluminous have differing scope."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Rock ptarmigan is included within the broader ptarmigan description; species identity across the full Swedish scope is not established."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe envy."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe kayak."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe Syrian relation."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify the same Scania region and Skane county."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "forwarding_entry_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Swedish redirects its selected spelling to är and also records archaic ever; the redirect meaning is not supplied in the inventory."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Which or what overlaps; Swedish adds grammatical neuter restriction and further relative or exclamatory scope."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a vehicle headlight."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Alleged or supposed overlaps, but Swedish explicitly adds not-actually-so qualification absent from the Icelandic description."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Goalpost is a narrower part of post; Swedish additionally has heraldic and utility-pole senses."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "historical_overlap_only",
+      "compatible_labels": [
+        "historical_overlap",
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Deaf overlaps only via the dated Icelandic sense; active pallid or dull meanings differ."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify Sunday."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe narwhal."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Adverb how and pronoun who do not overlap."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify Saturday."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Pheasant and a place keeping pheasants are related animal/place descriptions, not equivalents."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Crystal noun and nearly crystallized adjective are related substance/state descriptions with different grammar."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Thrush bird overlaps; Icelandic additionally records a given name."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "The act noun dare or provocation relates to urging action, but the Swedish verb and supernatural-power noun are not equivalent forms."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe emoji."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Manufacture overlaps; Swedish additionally records artistic production and output."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe hairdresser, with Swedish also naming barber."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Smoothie overlaps; Icelandic additionally records hurry or rush."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe Ghanaian relation."
+    }
+  ]
+}

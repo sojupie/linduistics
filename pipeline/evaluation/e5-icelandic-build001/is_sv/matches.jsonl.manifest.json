@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T17:52:06.738120+00:00",
+  "source_records_file": "evidence.jsonl",
+  "source_records_sha256": "6dca2a651e29d03e8282ebf74f14613cd73e5eda04ea059dd484ec35834fd5bb",
+  "comparisons_file": "raw.parquet",
+  "comparisons_sha256": "ed893bd2ae1eb9631140892772b169b0f1190a49afed403648844119e8878fb7",
+  "generator_file": "audit_source_cognate_coverage.py",
+  "generator_sha256": "07bb233de724d2c4092f633f38c42158c5c42c39df4667f6daf450340fd625ad",
+  "matches_file": "matches.jsonl",
+  "matches_sha256": "a497ca8baafb0e2c8aac139992a71f7323dcb3085e2daf12f53df494f7bc24a0",
+  "source_claim_candidate_matches": 340,
+  "matches_by_relation": {
+    "borrowed_from": 7,
+    "calque_of": 2,
+    "cognate_mention": 327,
+    "derived_from": 4
+  },
+  "evidence_rows_by_candidate_category": {
+    "false_friend": 8,
+    "other": 144,
+    "partial_cognate": 36,
+    "translation_pair": 10,
+    "true_cognate": 142
+  },
+  "evidence_rows_by_target_identity": {
+    "ambiguous": 9,
+    "available": 331
+  },
+  "evidence_rows_by_form_match_method": {
+    "casefold_fallback": 12,
+    "exact": 328
+  },
+  "unique_candidates_with_source_claim_by_category": {
+    "false_friend": 7,
+    "other": 124,
+    "partial_cognate": 31,
+    "translation_pair": 10,
+    "true_cognate": 116
+  },
+  "unique_candidates_with_source_claim_by_category_and_relation": {
+    "false_friend": {
+      "cognate_mention": 7
+    },
+    "other": {
+      "borrowed_from": 5,
+      "calque_of": 2,
+      "cognate_mention": 114,
+      "derived_from": 4
+    },
+    "partial_cognate": {
+      "borrowed_from": 1,
+      "cognate_mention": 30
+    },
+    "translation_pair": {
+      "cognate_mention": 10
+    },
+    "true_cognate": {
+      "borrowed_from": 1,
+      "cognate_mention": 115
+    }
+  },
+  "matching_rule": "A normalized claim is matched when its source entry has an unambiguous active comparison sense and its related language and exact target-form spelling match the candidate. Case-folded matching is used only when no exact-form candidate exists for that source entry. Claims are entry-level; this does not assert that they apply to the selected target sense."
+}

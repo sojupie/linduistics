@@ -50,3 +50,7 @@ scratch/
 pipeline/scratch/
 DJR-Fonts-*/
 /img*
+
+# Reproducible historical evidence records; retain metrics and protocol in Git.
+pipeline/evaluation/e5-history001/case_results.json
+pipeline/evaluation/e5-history001/source_review_candidates.json

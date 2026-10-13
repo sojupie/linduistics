@@ -1,0 +1,418 @@
+{
+  "run_id": "E1-003",
+  "cases": 207,
+  "headline_counts": {
+    "control": {
+      "matches_shared_sense": 85,
+      "mismatched_selected_senses": 78,
+      "unresolved": 6,
+      "unsupported_generic_match": 4,
+      "related_grammatical_form": 1,
+      "no_shared_display_sense": 5,
+      "matches_shared_restricted_sense": 1,
+      "inactive_selected_sense": 8,
+      "restricted_selected_sense": 8,
+      "matches_restricted_shared_sense": 9,
+      "overbroad_selected_sense": 1,
+      "matches_documented_name_variant": 1
+    },
+    "A": {
+      "matches_shared_sense": 85,
+      "mismatched_selected_senses": 76,
+      "unresolved": 7,
+      "unsupported_generic_match": 4,
+      "related_grammatical_form": 1,
+      "no_shared_display_sense": 6,
+      "matches_shared_restricted_sense": 1,
+      "inactive_selected_sense": 8,
+      "restricted_selected_sense": 8,
+      "matches_restricted_shared_sense": 9,
+      "overbroad_selected_sense": 1,
+      "matches_documented_name_variant": 1
+    },
+    "B": {
+      "matches_shared_sense": 86,
+      "mismatched_selected_senses": 74,
+      "unresolved": 7,
+      "unsupported_generic_match": 4,
+      "related_grammatical_form": 1,
+      "no_shared_display_sense": 9,
+      "matches_shared_restricted_sense": 1,
+      "inactive_selected_sense": 8,
+      "restricted_selected_sense": 7,
+      "matches_restricted_shared_sense": 8,
+      "overbroad_selected_sense": 1,
+      "matches_documented_name_variant": 1
+    }
+  },
+  "shared_headline_counts": {
+    "control": 96,
+    "A": 96,
+    "B": 96
+  },
+  "slices": {
+    "related_forms_without_shared_prefix": {
+      "cases": 24,
+      "shared_headline_counts": {
+        "control": 16,
+        "A": 16,
+        "B": 17
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "1c5dad79d53672e2",
+          "d22a2cdf23e4d91d"
+        ]
+      }
+    },
+    "multiple_active_senses": {
+      "cases": 134,
+      "shared_headline_counts": {
+        "control": 68,
+        "A": 68,
+        "B": 68
+      },
+      "changed_case_ids": {
+        "A": [
+          "ee93428a0734facf",
+          "dbf8ffc483f49eda"
+        ],
+        "B": [
+          "ced0d1387965bd0d",
+          "8a92889432233991",
+          "90b18673995805e0",
+          "ee93428a0734facf",
+          "710eb84218c4c739",
+          "318bb3bc430bf9db",
+          "dbf8ffc483f49eda",
+          "b9b0af2e68f16dac",
+          "ac5b516ab867a75f",
+          "c7417d79d1da4e9d",
+          "1c5dad79d53672e2",
+          "d22a2cdf23e4d91d"
+        ]
+      }
+    },
+    "multiple_source_entries": {
+      "cases": 89,
+      "shared_headline_counts": {
+        "control": 47,
+        "A": 47,
+        "B": 47
+      },
+      "changed_case_ids": {
+        "A": [
+          "ee93428a0734facf",
+          "dbf8ffc483f49eda"
+        ],
+        "B": [
+          "ced0d1387965bd0d",
+          "ee93428a0734facf",
+          "710eb84218c4c739",
+          "dbf8ffc483f49eda",
+          "b9b0af2e68f16dac",
+          "ac5b516ab867a75f",
+          "1c5dad79d53672e2"
+        ]
+      }
+    },
+    "names_and_entity_identity": {
+      "cases": 50,
+      "shared_headline_counts": {
+        "control": 23,
+        "A": 23,
+        "B": 22
+      },
+      "changed_case_ids": {
+        "A": [
+          "dbf8ffc483f49eda"
+        ],
+        "B": [
+          "ced0d1387965bd0d",
+          "710eb84218c4c739",
+          "dbf8ffc483f49eda",
+          "ac5b516ab867a75f"
+        ]
+      }
+    },
+    "composition_or_derivation": {
+      "cases": 74,
+      "shared_headline_counts": {
+        "control": 40,
+        "A": 40,
+        "B": 40
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "8a92889432233991"
+        ]
+      }
+    },
+    "different_recorded_root_languages": {
+      "cases": 26,
+      "shared_headline_counts": {
+        "control": 18,
+        "A": 18,
+        "B": 17
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "ced0d1387965bd0d",
+          "710eb84218c4c739",
+          "b9b0af2e68f16dac",
+          "ac5b516ab867a75f"
+        ]
+      }
+    },
+    "inactive_usage": {
+      "cases": 48,
+      "shared_headline_counts": {
+        "control": 18,
+        "A": 18,
+        "B": 19
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "ac5b516ab867a75f",
+          "1c5dad79d53672e2"
+        ]
+      }
+    },
+    "borrowing": {
+      "cases": 60,
+      "shared_headline_counts": {
+        "control": 34,
+        "A": 34,
+        "B": 33
+      },
+      "changed_case_ids": {
+        "A": [
+          "ee93428a0734facf"
+        ],
+        "B": [
+          "ced0d1387965bd0d",
+          "ee93428a0734facf"
+        ]
+      }
+    },
+    "missing_source_meaning": {
+      "cases": 4,
+      "shared_headline_counts": {
+        "control": 0,
+        "A": 0,
+        "B": 0
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": []
+      }
+    },
+    "short_words": {
+      "cases": 29,
+      "shared_headline_counts": {
+        "control": 15,
+        "A": 15,
+        "B": 15
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "318bb3bc430bf9db"
+        ]
+      }
+    },
+    "related_but_not_interchangeable": {
+      "cases": 19,
+      "shared_headline_counts": {
+        "control": 0,
+        "A": 0,
+        "B": 0
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": []
+      }
+    },
+    "prefix_collision_control": {
+      "cases": 33,
+      "shared_headline_counts": {
+        "control": 0,
+        "A": 0,
+        "B": 0
+      },
+      "changed_case_ids": {
+        "A": [
+          "ee93428a0734facf"
+        ],
+        "B": [
+          "90b18673995805e0",
+          "ee93428a0734facf",
+          "710eb84218c4c739"
+        ]
+      }
+    },
+    "secondary_or_historical_overlap": {
+      "cases": 7,
+      "shared_headline_counts": {
+        "control": 0,
+        "A": 0,
+        "B": 0
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "8a92889432233991"
+        ]
+      }
+    },
+    "pair:en-sv": {
+      "cases": 19,
+      "shared_headline_counts": {
+        "control": 8,
+        "A": 8,
+        "B": 8
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "ced0d1387965bd0d",
+          "1c5dad79d53672e2"
+        ]
+      }
+    },
+    "pair:nb-sv": {
+      "cases": 25,
+      "shared_headline_counts": {
+        "control": 11,
+        "A": 11,
+        "B": 11
+      },
+      "changed_case_ids": {
+        "A": [
+          "ee93428a0734facf"
+        ],
+        "B": [
+          "ee93428a0734facf",
+          "d22a2cdf23e4d91d"
+        ]
+      }
+    },
+    "pair:de-nb": {
+      "cases": 15,
+      "shared_headline_counts": {
+        "control": 5,
+        "A": 5,
+        "B": 5
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": []
+      }
+    },
+    "pair:da-de": {
+      "cases": 17,
+      "shared_headline_counts": {
+        "control": 11,
+        "A": 11,
+        "B": 11
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "710eb84218c4c739"
+        ]
+      }
+    },
+    "pair:da-en": {
+      "cases": 20,
+      "shared_headline_counts": {
+        "control": 11,
+        "A": 11,
+        "B": 11
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": []
+      }
+    },
+    "pair:en-nb": {
+      "cases": 22,
+      "shared_headline_counts": {
+        "control": 13,
+        "A": 13,
+        "B": 13
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "ac5b516ab867a75f"
+        ]
+      }
+    },
+    "pair:de-sv": {
+      "cases": 25,
+      "shared_headline_counts": {
+        "control": 8,
+        "A": 8,
+        "B": 8
+      },
+      "changed_case_ids": {
+        "A": [
+          "dbf8ffc483f49eda"
+        ],
+        "B": [
+          "dbf8ffc483f49eda"
+        ]
+      }
+    },
+    "pair:de-en": {
+      "cases": 25,
+      "shared_headline_counts": {
+        "control": 10,
+        "A": 10,
+        "B": 10
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "8a92889432233991",
+          "b9b0af2e68f16dac"
+        ]
+      }
+    },
+    "pair:da-nb": {
+      "cases": 22,
+      "shared_headline_counts": {
+        "control": 10,
+        "A": 10,
+        "B": 10
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "90b18673995805e0"
+        ]
+      }
+    },
+    "pair:da-sv": {
+      "cases": 17,
+      "shared_headline_counts": {
+        "control": 9,
+        "A": 9,
+        "B": 9
+      },
+      "changed_case_ids": {
+        "A": [],
+        "B": [
+          "318bb3bc430bf9db",
+          "c7417d79d1da4e9d"
+        ]
+      }
+    }
+  },
+  "limits": "Not a population accuracy estimate. A disjoint pair may correctly show contrasting senses in a game. Renaming mismatch as no shared sense is not an improvement. Shared restricted senses remain distinct from ordinary whole-word equivalence."
+}

@@ -1,0 +1,496 @@
+[
+  {
+    "review_id": 1,
+    "meaning_profile": "contextual_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "An auction lot can be an article/item; plot, premises and clothing/equipment scopes differ. The selected plot/item display is not equivalent.",
+    "word_a": "perceel",
+    "word_b": "persedel",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 2,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Limping and withers differ.",
+    "word_a": "manken",
+    "word_b": "manke",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 3,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "A Dutch village and dementia differ.",
+    "word_a": "demen",
+    "word_b": "demens",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 4,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "A given name and a vernacular expression differ.",
+    "word_a": "folkmar",
+    "word_b": "folkmun",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 5,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Trivial/insignificant and comfort/well-being differ.",
+    "word_a": "triviaal",
+    "word_b": "trivsel",
+    "category": "accidental_lookalike",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 6,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "A spiny chestnut cupule and a cushion differ.",
+    "word_a": "bolster",
+    "word_b": "bolster",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 7,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Tripod mount and broadcasting/transport/research stations differ.",
+    "word_a": "statief",
+    "word_b": "station",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 8,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Tiles overlap; Swedish includes brick material and brick objects.",
+    "word_a": "tegel",
+    "word_b": "tegel",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 9,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Us/ourselves overlaps; Dutch possessive our and metric ounce differ.",
+    "word_a": "ons",
+    "word_b": "oss",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 10,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Principal/main and based on a principle differ.",
+    "word_a": "principaal",
+    "word_b": "principiell",
+    "category": "cognate_false_friend",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 11,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote a countess.",
+    "word_a": "gravin",
+    "word_b": "grevinna",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 12,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote someone who studies Romance languages; student here can mean scholar rather than a novice student.",
+    "word_a": "romanist",
+    "word_b": "romanist",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 13,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Sister, nun and nurse overlap, with dated/formal Dutch kin usage and fictive kin/address distinctions.",
+    "word_a": "zuster",
+    "word_b": "syster",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 14,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both share concept/idea and draft/sketch senses.",
+    "word_a": "concept",
+    "word_b": "koncept",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 15,
+    "meaning_profile": "related_meaning_different_pos",
+    "compatible_labels": [
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "Title/name verb and title noun are grammatical relatives.",
+    "word_a": "titelen",
+    "word_b": "titel",
+    "category": "full_cognate",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 16,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Water channels overlap; named river, chutes and Swedish running verbs add distinct scope.",
+    "word_a": "geul",
+    "word_b": "ränna",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 17,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Hypothetical and irrelevant differ.",
+    "word_a": "hypothetisch",
+    "word_b": "irrelevant",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 18,
+    "meaning_profile": "contextual_overlap_unresolved",
+    "compatible_labels": null,
+    "scorable": false,
+    "reason": "Confused may mean mentally puzzled or disordered; terse source gloss does not fix its overlap with messy/chaotic.",
+    "word_a": "verward",
+    "word_b": "rörig",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": null
+  },
+  {
+    "review_id": 19,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "A felony is a narrower evil deed/misdeed; the Belgian legal qualifier matters.",
+    "word_a": "misdaad",
+    "word_b": "illgärning",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 20,
+    "meaning_profile": "related_meaning_not_equivalent",
+    "compatible_labels": [
+      "related_meanings",
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "Disrespectful/irreverent and unserious/flippant are associated attitudes, not generally interchangeable.",
+    "word_a": "oneerbiedig",
+    "word_b": "oseriös",
+    "category": "independent_root",
+    "mapped_label": "no_supported_match",
+    "compatible": false
+  },
+  {
+    "review_id": 21,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Goose overlaps; determiner, adverb, names, butter, sandwich and marijuana uses differ.",
+    "word_a": "gans",
+    "word_b": "gås",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 22,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Rabble/plebs overlaps; Swedish additionally permits a non-derogatory disorderly crowd.",
+    "word_a": "gepeupel",
+    "word_b": "pöbel",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 23,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Dutch urging/contrast/surprise particles do not match Swedish present time/moment senses.",
+    "word_a": "nou",
+    "word_b": "nu",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": true
+  },
+  {
+    "review_id": 24,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Hewing overlaps; holding spelling variant and Swedish biting/grabbing/hurting differ. Selected hew/grab display is unsuitable.",
+    "word_a": "houwen",
+    "word_b": "hugga",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 25,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote a skin wart.",
+    "word_a": "wrat",
+    "word_b": "vårta",
+    "category": "semantic_divergence",
+    "mapped_label": "different_meanings",
+    "compatible": false
+  },
+  {
+    "review_id": 26,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Gun silencer overlaps; damper and vehicle exhaust silencer have wider scope.",
+    "word_a": "demper",
+    "word_b": "ljuddämpare",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 27,
+    "meaning_profile": "disjoint_observed",
+    "compatible_labels": [
+      "different_meanings"
+    ],
+    "scorable": true,
+    "reason": "Irritable/angry and bad/shitty differ.",
+    "word_a": "pissig",
+    "word_b": "pissig",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 28,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Hyperlinking overlaps; betrayal and physical linking do not all overlap.",
+    "word_a": "linken",
+    "word_b": "länka",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 29,
+    "meaning_profile": "related_meaning_different_pos",
+    "compatible_labels": [
+      "related_form"
+    ],
+    "scorable": true,
+    "reason": "Shop verb and shopping noun differ grammatically.",
+    "word_a": "shoppen",
+    "word_b": "shopping",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": false
+  },
+  {
+    "review_id": 30,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Handiwork/handicraft overlaps; Swedish abstract craft and craftsmanship broaden the inventory.",
+    "word_a": "handwerk",
+    "word_b": "hantverk",
+    "category": "semantic_narrowing",
+    "mapped_label": "partial_overlap",
+    "compatible": true
+  },
+  {
+    "review_id": 31,
+    "meaning_profile": "ordinary_overlap",
+    "compatible_labels": [
+      "equivalent",
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Both denote a limit/limitation.",
+    "word_a": "limiet",
+    "word_b": "begränsning",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": true
+  },
+  {
+    "review_id": 32,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Dedicating a work overlaps; state of commitment and concrete dedication text differ.",
+    "word_a": "dedicatie",
+    "word_b": "tillägnan",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 33,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Transparency overlaps; Swedish ready, cloud-free and easy-to-understand senses differ.",
+    "word_a": "doorzichtig",
+    "word_b": "klar",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 34,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Mistake overlaps; failed hit, Miss title and cat call differ.",
+    "word_a": "blunder",
+    "word_b": "miss",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  },
+  {
+    "review_id": 35,
+    "meaning_profile": "ordinary_partial_overlap",
+    "compatible_labels": [
+      "partial_overlap"
+    ],
+    "scorable": true,
+    "reason": "Spending time overlaps; devotion, payment, sparing and historical acquisition differ.",
+    "word_a": "doorbrengen",
+    "word_b": "ägna",
+    "category": "unrelated_equivalent",
+    "mapped_label": "equivalent",
+    "compatible": false
+  }
+]

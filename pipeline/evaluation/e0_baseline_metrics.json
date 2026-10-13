@@ -1,0 +1,618 @@
+{
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "concept_coverage": {
+    "da-en": {
+      "found": 137,
+      "missing_comparison": 26,
+      "missing_exact_headword": 6
+    },
+    "da-de": {
+      "found": 139,
+      "missing_comparison": 26,
+      "missing_exact_headword": 6
+    },
+    "da-nb": {
+      "found": 146,
+      "missing_comparison": 15,
+      "missing_exact_headword": 8
+    },
+    "da-sv": {
+      "found": 148,
+      "missing_comparison": 18,
+      "missing_exact_headword": 5
+    },
+    "de-en": {
+      "found": 150,
+      "missing_comparison": 18,
+      "missing_exact_headword": 4
+    },
+    "en-nb": {
+      "found": 135,
+      "missing_comparison": 28,
+      "missing_exact_headword": 7
+    },
+    "en-sv": {
+      "found": 149,
+      "missing_comparison": 19,
+      "missing_exact_headword": 4
+    },
+    "de-nb": {
+      "found": 135,
+      "missing_comparison": 30,
+      "missing_exact_headword": 7
+    },
+    "de-sv": {
+      "found": 150,
+      "missing_comparison": 20,
+      "missing_exact_headword": 4
+    },
+    "nb-sv": {
+      "found": 152,
+      "missing_comparison": 13,
+      "missing_exact_headword": 7
+    }
+  },
+  "sampling_cells": [
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "accidental_lookalike",
+      "population": 12937,
+      "sample": 5,
+      "inclusion_probability": 0.0003864883667001623
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "cognate_false_friend",
+      "population": 53,
+      "sample": 5,
+      "inclusion_probability": 0.09433962264150944
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "full_cognate",
+      "population": 7770,
+      "sample": 5,
+      "inclusion_probability": 0.0006435006435006435
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "independent_root",
+      "population": 7134,
+      "sample": 5,
+      "inclusion_probability": 0.0007008690776562938
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "semantic_divergence",
+      "population": 6,
+      "sample": 5,
+      "inclusion_probability": 0.8333333333333334
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "semantic_narrowing",
+      "population": 5258,
+      "sample": 5,
+      "inclusion_probability": 0.0009509319132750095
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "de",
+      "category": "unrelated_equivalent",
+      "population": 8285,
+      "sample": 5,
+      "inclusion_probability": 0.0006035003017501509
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "accidental_lookalike",
+      "population": 63265,
+      "sample": 5,
+      "inclusion_probability": 7.903264048051846e-05
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "cognate_false_friend",
+      "population": 335,
+      "sample": 5,
+      "inclusion_probability": 0.014925373134328358
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "full_cognate",
+      "population": 4770,
+      "sample": 5,
+      "inclusion_probability": 0.0010482180293501049
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "independent_root",
+      "population": 6335,
+      "sample": 5,
+      "inclusion_probability": 0.0007892659826361484
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "semantic_divergence",
+      "population": 69,
+      "sample": 5,
+      "inclusion_probability": 0.07246376811594203
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "semantic_narrowing",
+      "population": 13758,
+      "sample": 5,
+      "inclusion_probability": 0.0003634249164122692
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "en",
+      "category": "unrelated_equivalent",
+      "population": 3082,
+      "sample": 5,
+      "inclusion_probability": 0.0016223231667748216
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "accidental_lookalike",
+      "population": 12314,
+      "sample": 5,
+      "inclusion_probability": 0.00040604190352444374
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "cognate_false_friend",
+      "population": 60,
+      "sample": 5,
+      "inclusion_probability": 0.08333333333333333
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "full_cognate",
+      "population": 8686,
+      "sample": 5,
+      "inclusion_probability": 0.0005756389592447617
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "independent_root",
+      "population": 1635,
+      "sample": 5,
+      "inclusion_probability": 0.0030581039755351682
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "semantic_divergence",
+      "population": 2,
+      "sample": 2,
+      "inclusion_probability": 1.0
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "semantic_narrowing",
+      "population": 4470,
+      "sample": 5,
+      "inclusion_probability": 0.0011185682326621924
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "nb",
+      "category": "unrelated_equivalent",
+      "population": 2316,
+      "sample": 5,
+      "inclusion_probability": 0.002158894645941278
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "accidental_lookalike",
+      "population": 13364,
+      "sample": 5,
+      "inclusion_probability": 0.000374139479197845
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "cognate_false_friend",
+      "population": 86,
+      "sample": 5,
+      "inclusion_probability": 0.05813953488372093
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "full_cognate",
+      "population": 9849,
+      "sample": 5,
+      "inclusion_probability": 0.0005076657528683116
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "independent_root",
+      "population": 3745,
+      "sample": 5,
+      "inclusion_probability": 0.0013351134846461949
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "semantic_divergence",
+      "population": 3,
+      "sample": 3,
+      "inclusion_probability": 1.0
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "semantic_narrowing",
+      "population": 6461,
+      "sample": 5,
+      "inclusion_probability": 0.000773874013310633
+    },
+    {
+      "lang_a": "da",
+      "lang_b": "sv",
+      "category": "unrelated_equivalent",
+      "population": 4695,
+      "sample": 5,
+      "inclusion_probability": 0.0010649627263045794
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "accidental_lookalike",
+      "population": 152263,
+      "sample": 5,
+      "inclusion_probability": 3.2837918601367374e-05
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "cognate_false_friend",
+      "population": 614,
+      "sample": 5,
+      "inclusion_probability": 0.008143322475570033
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "full_cognate",
+      "population": 13916,
+      "sample": 5,
+      "inclusion_probability": 0.00035929864903707964
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "independent_root",
+      "population": 31216,
+      "sample": 5,
+      "inclusion_probability": 0.0001601742696053306
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "semantic_divergence",
+      "population": 76,
+      "sample": 5,
+      "inclusion_probability": 0.06578947368421052
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "semantic_narrowing",
+      "population": 35347,
+      "sample": 5,
+      "inclusion_probability": 0.0001414547203440179
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "en",
+      "category": "unrelated_equivalent",
+      "population": 12801,
+      "sample": 5,
+      "inclusion_probability": 0.00039059448480587456
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "accidental_lookalike",
+      "population": 12829,
+      "sample": 5,
+      "inclusion_probability": 0.000389741990802089
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "cognate_false_friend",
+      "population": 63,
+      "sample": 5,
+      "inclusion_probability": 0.07936507936507936
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "full_cognate",
+      "population": 6872,
+      "sample": 5,
+      "inclusion_probability": 0.0007275902211874273
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "independent_root",
+      "population": 6393,
+      "sample": 5,
+      "inclusion_probability": 0.000782105427811669
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "semantic_divergence",
+      "population": 2,
+      "sample": 2,
+      "inclusion_probability": 1.0
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "semantic_narrowing",
+      "population": 4568,
+      "sample": 5,
+      "inclusion_probability": 0.0010945709281961471
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "nb",
+      "category": "unrelated_equivalent",
+      "population": 8473,
+      "sample": 5,
+      "inclusion_probability": 0.0005901097604154372
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "accidental_lookalike",
+      "population": 18145,
+      "sample": 5,
+      "inclusion_probability": 0.0002755580049600441
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "cognate_false_friend",
+      "population": 70,
+      "sample": 5,
+      "inclusion_probability": 0.07142857142857142
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "full_cognate",
+      "population": 11034,
+      "sample": 5,
+      "inclusion_probability": 0.00045314482508609753
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "independent_root",
+      "population": 16629,
+      "sample": 5,
+      "inclusion_probability": 0.0003006795357507968
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "semantic_divergence",
+      "population": 5,
+      "sample": 5,
+      "inclusion_probability": 1.0
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "semantic_narrowing",
+      "population": 8295,
+      "sample": 5,
+      "inclusion_probability": 0.0006027727546714888
+    },
+    {
+      "lang_a": "de",
+      "lang_b": "sv",
+      "category": "unrelated_equivalent",
+      "population": 15149,
+      "sample": 5,
+      "inclusion_probability": 0.00033005478909498974
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "accidental_lookalike",
+      "population": 61314,
+      "sample": 5,
+      "inclusion_probability": 8.154744430309555e-05
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "cognate_false_friend",
+      "population": 284,
+      "sample": 5,
+      "inclusion_probability": 0.017605633802816902
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "full_cognate",
+      "population": 3446,
+      "sample": 5,
+      "inclusion_probability": 0.0014509576320371445
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "independent_root",
+      "population": 5744,
+      "sample": 5,
+      "inclusion_probability": 0.0008704735376044568
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "semantic_divergence",
+      "population": 31,
+      "sample": 5,
+      "inclusion_probability": 0.16129032258064516
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "semantic_narrowing",
+      "population": 10783,
+      "sample": 5,
+      "inclusion_probability": 0.0004636928498562552
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "nb",
+      "category": "unrelated_equivalent",
+      "population": 3216,
+      "sample": 5,
+      "inclusion_probability": 0.001554726368159204
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "accidental_lookalike",
+      "population": 92132,
+      "sample": 5,
+      "inclusion_probability": 5.426996049146876e-05
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "cognate_false_friend",
+      "population": 349,
+      "sample": 5,
+      "inclusion_probability": 0.014326647564469915
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "full_cognate",
+      "population": 7045,
+      "sample": 5,
+      "inclusion_probability": 0.0007097232079489
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "independent_root",
+      "population": 13684,
+      "sample": 5,
+      "inclusion_probability": 0.00036539023677287344
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "semantic_divergence",
+      "population": 60,
+      "sample": 5,
+      "inclusion_probability": 0.08333333333333333
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "semantic_narrowing",
+      "population": 21284,
+      "sample": 5,
+      "inclusion_probability": 0.00023491824844953956
+    },
+    {
+      "lang_a": "en",
+      "lang_b": "sv",
+      "category": "unrelated_equivalent",
+      "population": 7856,
+      "sample": 5,
+      "inclusion_probability": 0.0006364562118126273
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "accidental_lookalike",
+      "population": 13329,
+      "sample": 5,
+      "inclusion_probability": 0.00037512191462225225
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "cognate_false_friend",
+      "population": 51,
+      "sample": 5,
+      "inclusion_probability": 0.09803921568627451
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "full_cognate",
+      "population": 9353,
+      "sample": 5,
+      "inclusion_probability": 0.0005345878327809259
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "independent_root",
+      "population": 3216,
+      "sample": 5,
+      "inclusion_probability": 0.001554726368159204
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "semantic_divergence",
+      "population": 4,
+      "sample": 4,
+      "inclusion_probability": 1.0
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "semantic_narrowing",
+      "population": 6372,
+      "sample": 5,
+      "inclusion_probability": 0.0007846829880728185
+    },
+    {
+      "lang_a": "nb",
+      "lang_b": "sv",
+      "category": "unrelated_equivalent",
+      "population": 4171,
+      "sample": 5,
+      "inclusion_probability": 0.0011987532965715656
+    }
+  ],
+  "quality_status": "Coverage measured; displayed meanings and open-vocabulary labels not yet reviewed."
+}

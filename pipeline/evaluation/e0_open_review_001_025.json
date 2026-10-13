@@ -1,0 +1,322 @@
+{
+  "packet_sha256": "26bfc3ab45b57119f4195555764c90bb13dba4591494d8c7fb4b39188eb99555",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "blinding": "Classifier predictions and numeric scores hidden; all active glosses and available etymology read.",
+  "rubric": "Assess modern overlap, historical support, and selected display separately. Generic shared categories are not entity identity. Missing dictionary senses do not prove non-equivalence.",
+  "judgments": [
+    {
+      "case_id": "9392974043e37aab",
+      "review_id": 1,
+      "lang_a": "en",
+      "word_a": "rainbow",
+      "lang_b": "sv",
+      "word_b": "regnbåge",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "shared_ancestor_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both record the rainbow phenomenon and Proto-Germanic regnabugo; English has additional uses."
+    },
+    {
+      "case_id": "72fc0aa8febf23a6",
+      "review_id": 2,
+      "lang_a": "en",
+      "word_a": "pileus",
+      "lang_b": "sv",
+      "word_b": "hatt",
+      "meaning_profile": "specialized_overlap_source_gap",
+      "history_evidence": "not_established",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Swedish native-edition mycology sense and its English pileus translation establish overlap omitted from the baseline target senses.",
+      "references": [
+        {
+          "url": "https://sv.wiktionary.org/w/index.php?title=hatt&oldid=4107160",
+          "checked": "2026-10-03",
+          "evidence": "Mycology definition of mushroom cap; English translations cap and pileus. Revision predates the frozen baseline."
+        }
+      ]
+    },
+    {
+      "case_id": "3d7c5415e61c4245",
+      "review_id": 3,
+      "lang_a": "nb",
+      "word_a": "felt",
+      "lang_b": "sv",
+      "word_b": "fält",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "shared_family_inferred_from_recorded_paths",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both mean field; borrowing histories involve German/Low German. Full ancestor-path verification remains separate."
+    },
+    {
+      "case_id": "7d24b39e68754740",
+      "review_id": 4,
+      "lang_a": "de",
+      "word_a": "Aufführung",
+      "lang_b": "nb",
+      "word_b": "gjengivelse",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "history_evidence": "not_established",
+      "headline_pair": "unresolved",
+      "reason": "Performance can overlap rendition, but the generic glosses do not settle scope; NAOB supplies representation/reproduction evidence, not complete equivalence.",
+      "references": [
+        {
+          "url": "https://naob.no/ordbok/gjengivelse",
+          "checked": "2026-10-03",
+          "evidence": "Nominal derivative of gjengi, including representation/depiction; complete performance equivalence is not established by this entry."
+        }
+      ]
+    },
+    {
+      "case_id": "4ae0061c617e2b50",
+      "review_id": 5,
+      "lang_a": "da",
+      "word_a": "mås",
+      "lang_b": "de",
+      "word_b": "Maaß",
+      "meaning_profile": "forwarding_entry_unresolved",
+      "history_evidence": "not_established",
+      "headline_pair": "unresolved",
+      "reason": "Target only redirects to the former spelling Maß; its underlying senses must be resolved before comparison with Danish buttocks."
+    },
+    {
+      "case_id": "7ada13fb27467a48",
+      "review_id": 6,
+      "lang_a": "da",
+      "word_a": "celina",
+      "lang_b": "en",
+      "word_b": "celena",
+      "meaning_profile": "generic_name_match_unverified",
+      "history_evidence": "different_recorded_sources",
+      "headline_pair": "unsupported_generic_match",
+      "reason": "Both are female given names; this is not identity. French/Latin versus Selene/Greek routes are recorded, without complete family resolution."
+    },
+    {
+      "case_id": "0f059edbe554fae2",
+      "review_id": 7,
+      "lang_a": "en",
+      "word_a": "that",
+      "lang_b": "sv",
+      "word_b": "det",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "shared_ancestor_recorded",
+      "headline_pair": "mismatched_selected_senses",
+      "reason": "Demonstrative that is shared; English conjunction/relative uses and Swedish impersonal/article uses differ. Selected demonstrative versus placeholder functions are misaligned."
+    },
+    {
+      "case_id": "3a557f935068172d",
+      "review_id": 8,
+      "lang_a": "de",
+      "word_a": "Methode",
+      "lang_b": "nb",
+      "word_b": "metode",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "shared_borrowing_source_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both mean method and record Latin methodus from Greek methodos."
+    },
+    {
+      "case_id": "0ae616a03089d4b6",
+      "review_id": 9,
+      "lang_a": "en",
+      "word_a": "lesotho",
+      "lang_b": "nb",
+      "word_b": "lesotho",
+      "meaning_profile": "same_named_entity",
+      "history_evidence": "shared_external_name_source_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both explicitly identify the country Lesotho, with matching capital/location and recorded Sotho name; generic proper-name filtering would discard a valid pair."
+    },
+    {
+      "case_id": "ad00dda3ea74e7d6",
+      "review_id": 10,
+      "lang_a": "de",
+      "word_a": "schwindeln",
+      "lang_b": "sv",
+      "word_b": "fuska",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "different_recorded_sources",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Cheating is shared, but German also has dizziness and harmless lying; separate recorded derivations do not prove unrelatedness."
+    },
+    {
+      "case_id": "00b06cc0cd7a2b7a",
+      "review_id": 11,
+      "lang_a": "en",
+      "word_a": "agenda",
+      "lang_b": "nb",
+      "word_b": "agenda",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "shared_borrowing_source_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Planning/agenda is shared and both record Latin agenda; English also has planner and ulterior-motive senses."
+    },
+    {
+      "case_id": "cb9415d21d8dd3fc",
+      "review_id": 12,
+      "lang_a": "de",
+      "word_a": "Hermina",
+      "lang_b": "sv",
+      "word_b": "herman",
+      "meaning_profile": "generic_name_match_unverified",
+      "history_evidence": "not_established",
+      "headline_pair": "unsupported_generic_match",
+      "reason": "Different male/female given-name descriptions do not establish equivalent name variants or a shared history."
+    },
+    {
+      "case_id": "89227eb4f4e4d28b",
+      "review_id": 13,
+      "lang_a": "da",
+      "word_a": "gangbro",
+      "lang_b": "en",
+      "word_b": "footbridge",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "partial_compound_family_inferred",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Both are pedestrian bridges. Recorded decompositions differ: walking+bridge versus foot+bridge; shared whole-compound inheritance is not established."
+    },
+    {
+      "case_id": "9c0464e9c3ee7491",
+      "review_id": 14,
+      "lang_a": "nb",
+      "word_a": "mystisk",
+      "lang_b": "sv",
+      "word_b": "mystiskt",
+      "meaning_profile": "related_meaning_different_pos",
+      "history_evidence": "family_inferred_not_attested",
+      "headline_pair": "related_grammatical_form",
+      "reason": "Adjective mysterious versus adverb mysteriously; useful grammatical comparison but not interchangeable forms or evidence of historical narrowing."
+    },
+    {
+      "case_id": "7fda4ea3d7051f7f",
+      "review_id": 15,
+      "lang_a": "nb",
+      "word_a": "bengalrev",
+      "lang_b": "sv",
+      "word_b": "bengalen",
+      "meaning_profile": "no_observed_overlap",
+      "history_evidence": "partial_compound_component_recorded",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Fox species versus Bengal region. Bengal+fox composition explains the shared component, not whole-word equivalence."
+    },
+    {
+      "case_id": "5495acc93ba3f796",
+      "review_id": 16,
+      "lang_a": "de",
+      "word_a": "Vils",
+      "lang_b": "en",
+      "word_b": "vils",
+      "meaning_profile": "same_named_entity_partial_profile",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_sense",
+      "reason": "The selected Austrian town is explicitly the same in both; German also has several river senses."
+    },
+    {
+      "case_id": "33b9794b24ec0f4c",
+      "review_id": 17,
+      "lang_a": "da",
+      "word_a": "uden",
+      "lang_b": "nb",
+      "word_b": "enn",
+      "meaning_profile": "no_observed_overlap",
+      "history_evidence": "different_recorded_roots",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Without versus than/yet/and do not overlap in the supplied senses. Distinct recorded roots alone do not prove independent origin."
+    },
+    {
+      "case_id": "24147fd1f21e0b92",
+      "review_id": 18,
+      "lang_a": "nb",
+      "word_a": "skilt",
+      "lang_b": "sv",
+      "word_b": "emblem",
+      "meaning_profile": "contextual_overlap_unresolved",
+      "history_evidence": "not_established",
+      "headline_pair": "unresolved",
+      "reason": "Road sign and emblem are different default objects; symbol/sign contexts might overlap and require additional lexical evidence."
+    },
+    {
+      "case_id": "8bf3b0088e4b88af",
+      "review_id": 19,
+      "lang_a": "da",
+      "word_a": "forbindelse",
+      "lang_b": "en",
+      "word_b": "link",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "matches_shared_restricted_sense",
+      "reason": "Both have connection meanings. The selected English buses/systems sense is restricted; multiple other English meanings are not translations of forbindelse."
+    },
+    {
+      "case_id": "fb0b99b4f597ab37",
+      "review_id": 20,
+      "lang_a": "da",
+      "word_a": "brunch",
+      "lang_b": "en",
+      "word_b": "brunch",
+      "meaning_profile": "ordinary_overlap",
+      "history_evidence": "direct_borrowing_recorded",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Danish explicitly borrows English brunch. Meal meaning is shared; direct borrowing differs from uninterrupted inherited cognacy."
+    },
+    {
+      "case_id": "d6a689f71715b07d",
+      "review_id": 21,
+      "lang_a": "de",
+      "word_a": "Falte",
+      "lang_b": "sv",
+      "word_b": "rynka",
+      "meaning_profile": "ordinary_partial_overlap",
+      "history_evidence": "different_recorded_sources",
+      "headline_pair": "matches_shared_sense",
+      "reason": "Wrinkle is shared; German also has fold and Swedish has verb/fabric uses. Whole histories remain unresolved."
+    },
+    {
+      "case_id": "8b52b4307e5d7bd7",
+      "review_id": 22,
+      "lang_a": "da",
+      "word_a": "logik",
+      "lang_b": "sv",
+      "word_b": "logi",
+      "meaning_profile": "no_observed_overlap",
+      "history_evidence": "not_established",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Logic versus lodging have distinct supplied meanings despite close spelling."
+    },
+    {
+      "case_id": "9dae311612769848",
+      "review_id": 23,
+      "lang_a": "de",
+      "word_a": "Siemens",
+      "lang_b": "en",
+      "word_b": "sieben",
+      "meaning_profile": "generic_name_match_unverified",
+      "history_evidence": "not_established",
+      "headline_pair": "unsupported_generic_match",
+      "reason": "Both generic surname glosses do not establish the same name. German also has the electrical unit, omitted from the selected display."
+    },
+    {
+      "case_id": "68c71e18f1d99d59",
+      "review_id": 24,
+      "lang_a": "nb",
+      "word_a": "band",
+      "lang_b": "sv",
+      "word_b": "bindel",
+      "meaning_profile": "no_observed_overlap",
+      "history_evidence": "historical_link_unresolved",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "Musical group versus strap. The Norwegian sense is borrowed from English band; a deeper relation to binding cannot be settled from these records alone."
+    },
+    {
+      "case_id": "8f94bc757ec4d939",
+      "review_id": 25,
+      "lang_a": "nb",
+      "word_a": "mosel",
+      "lang_b": "sv",
+      "word_b": "mose",
+      "meaning_profile": "different_named_entities",
+      "history_evidence": "not_established",
+      "headline_pair": "no_shared_display_sense",
+      "reason": "The Moselle river and Moses are explicitly different named entities; names should be assessed by identity rather than generic category similarity."
+    }
+  ]
+}

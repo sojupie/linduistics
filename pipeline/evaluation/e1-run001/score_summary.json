@@ -1,0 +1,13 @@
+{
+  "run_id": "E1-001",
+  "unique_glosses_encoded": 5970,
+  "seconds": 14.679892299987841,
+  "cases": 1202,
+  "changed_cases": {
+    "A": 36,
+    "B": 89
+  },
+  "new_concept_glosses_to_review": 55,
+  "reconstructed_control_display_differences": 32,
+  "status": "Scored; new displays need blinded review before accuracy measurements."
+}

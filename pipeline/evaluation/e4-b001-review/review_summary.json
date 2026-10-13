@@ -1,0 +1,73 @@
+{
+  "sample_assessments": {
+    "weak_match": 43,
+    "potential_phonetic_trap": 16,
+    "restricted_phonetic_trap": 1
+  },
+  "sample_modern_meaning_overlap": 0,
+  "expected_recoveries_reviewed": 9,
+  "recovered_displays_suiting_reference_concept": 7,
+  "additional_pronunciation_origin": {
+    "both_source_attested": 2495,
+    "requires_some_generated_fallback": 2369
+  },
+  "gains": [
+    {
+      "case_id": "iecor:22-137-1:58-137-1",
+      "word_a": "see",
+      "word_b": "se",
+      "languages": "en-nb",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:22-137-1:69-137-1",
+      "word_a": "see",
+      "word_b": "se",
+      "languages": "en-sv",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:20-17-1:27-17-1",
+      "word_a": "knogle",
+      "word_b": "Knochen",
+      "languages": "da-de",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:20-179-1:27-179-1",
+      "word_a": "tunge",
+      "word_b": "Zunge",
+      "languages": "da-de",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:20-219-1:58-219-1",
+      "word_a": "løbe",
+      "word_b": "løpe",
+      "languages": "da-nb",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:22-24-1:69-24-1",
+      "word_a": "come",
+      "word_b": "komma",
+      "languages": "en-sv",
+      "both_source_attested": true
+    },
+    {
+      "case_id": "iecor:22-58-1:58-58-1",
+      "word_a": "foot",
+      "word_b": "fot",
+      "languages": "en-nb",
+      "both_source_attested": false
+    },
+    {
+      "case_id": "iecor:27-58-1:58-58-1",
+      "word_a": "Fuß",
+      "word_b": "fot",
+      "languages": "de-nb",
+      "both_source_attested": false
+    }
+  ],
+  "limits": "Source-guided agent judgments, not independent human precision estimates. Pronunciation attestation is headword-scoped."
+}

@@ -1,0 +1,116 @@
+{
+  "recall": {
+    "all": {
+      "cases": 588,
+      "control": 513,
+      "A": 511,
+      "unlearned": 522,
+      "B": 521,
+      "A_plus_B": 519
+    },
+    "da-de": {
+      "cases": 58,
+      "control": 48,
+      "A": 48,
+      "unlearned": 51,
+      "B": 50,
+      "A_plus_B": 50
+    },
+    "da-en": {
+      "cases": 57,
+      "control": 46,
+      "A": 46,
+      "unlearned": 46,
+      "B": 46,
+      "A_plus_B": 46
+    },
+    "da-nb": {
+      "cases": 57,
+      "control": 50,
+      "A": 50,
+      "unlearned": 51,
+      "B": 51,
+      "A_plus_B": 51
+    },
+    "da-sv": {
+      "cases": 59,
+      "control": 53,
+      "A": 52,
+      "unlearned": 53,
+      "B": 53,
+      "A_plus_B": 52
+    },
+    "de-en": {
+      "cases": 59,
+      "control": 54,
+      "A": 54,
+      "unlearned": 54,
+      "B": 54,
+      "A_plus_B": 54
+    },
+    "de-nb": {
+      "cases": 59,
+      "control": 50,
+      "A": 50,
+      "unlearned": 51,
+      "B": 51,
+      "A_plus_B": 51
+    },
+    "de-sv": {
+      "cases": 61,
+      "control": 54,
+      "A": 54,
+      "unlearned": 54,
+      "B": 54,
+      "A_plus_B": 54
+    },
+    "en-nb": {
+      "cases": 58,
+      "control": 51,
+      "A": 51,
+      "unlearned": 53,
+      "B": 53,
+      "A_plus_B": 53
+    },
+    "en-sv": {
+      "cases": 60,
+      "control": 52,
+      "A": 52,
+      "unlearned": 54,
+      "B": 54,
+      "A_plus_B": 54
+    },
+    "nb-sv": {
+      "cases": 60,
+      "control": 55,
+      "A": 54,
+      "unlearned": 55,
+      "B": 55,
+      "A_plus_B": 54
+    }
+  },
+  "calibration_cases": 580,
+  "training_pairs": 268,
+  "training_families": 49,
+  "evaluation_families": 50,
+  "accepted_replacements": 31,
+  "queries": 1156,
+  "source_attested_queries": 906,
+  "missing_query_lemmas": 28,
+  "missing_query_ipa": 28,
+  "additional_candidate_counts": {
+    "da-nb": 449,
+    "da-sv": 477,
+    "da-de": 484,
+    "da-en": 500,
+    "de-en": 502,
+    "de-nb": 481,
+    "de-sv": 491,
+    "en-sv": 526,
+    "en-nb": 520,
+    "nb-sv": 434
+  },
+  "all_additional_candidates": 4864,
+  "unlearned_additional_candidates": 4842,
+  "elapsed_seconds": 99.74803949997295
+}

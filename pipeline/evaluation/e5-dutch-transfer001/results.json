@@ -1,0 +1,862 @@
+{
+  "da-nl": {
+    "new_intervals": {
+      "families": 103,
+      "expected_pair_recall_95": [
+        77.96610169491525,
+        91.52542372881356
+      ],
+      "found_pair_display_95": [
+        70.70707070707071,
+        86.27450980392157
+      ],
+      "end_to_end_display_95": [
+        58.4070796460177,
+        75.45454545454545
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        79.4392523364486,
+        89.80477223427332
+      ],
+      "found_pair_display_95": [
+        62.65984654731458,
+        72.8395061728395
+      ],
+      "end_to_end_display_95": [
+        52.232142857142854,
+        62.73684210526316
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:20-108-1:21-108-1",
+        "concept": "near",
+        "word_a": "i nærheden",
+        "word_b": "dichtbij",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-115-1:21-115-1",
+        "concept": "one",
+        "word_a": "en",
+        "word_b": "een",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-124-1:21-124-1",
+        "concept": "right",
+        "word_a": "højre",
+        "word_b": "rechts",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-137-1:21-137-1",
+        "concept": "see",
+        "word_a": "se",
+        "word_b": "zien",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-17-1:21-17-1",
+        "concept": "bone",
+        "word_a": "knogle",
+        "word_b": "bot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-184-1:21-184-1",
+        "concept": "vomit",
+        "word_a": "kaste op",
+        "word_b": "overgeven",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-212-1:21-212-1",
+        "concept": "yesterday",
+        "word_a": "i går",
+        "word_b": "gisteren",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-219-1:21-219-1",
+        "concept": "run",
+        "word_a": "løbe",
+        "word_b": "rennen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-221-1:21-221-1",
+        "concept": "take",
+        "word_a": "tage",
+        "word_b": "nemen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-28-1:21-28-1",
+        "concept": "die",
+        "word_a": "dø",
+        "word_b": "sterven",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-28-1:21-28-2",
+        "concept": "die",
+        "word_a": "dø",
+        "word_b": "doodgaan",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-30-1:21-30-1",
+        "concept": "dirty",
+        "word_a": "snavset",
+        "word_b": "vies",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-36-1:21-36-1",
+        "concept": "ear",
+        "word_a": "øre",
+        "word_b": "oor",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-42-1:21-42-1",
+        "concept": "far",
+        "word_a": "langt væk",
+        "word_b": "ver",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-45-1:21-45-1",
+        "concept": "fear",
+        "word_a": "være bange",
+        "word_b": "bang zijn",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:20-71-1:21-71-1",
+        "concept": "head",
+        "word_a": "hoved",
+        "word_b": "hoofd",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:20-72-1:21-72-1",
+        "concept": "hear",
+        "word_a": "høre",
+        "word_b": "horen",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 12,
+    "scored_results": {
+      "pair": [
+        "da",
+        "nl"
+      ],
+      "concept_cases": 115,
+      "found": 98,
+      "acceptable": 77,
+      "wrong_sense": 21,
+      "missing": 17,
+      "recall_difference_points": 0.2500710429099162,
+      "display_difference_points": 10.879120879120874,
+      "recall_transfer_pass": true,
+      "display_transfer_pass": true,
+      "open_scorable": 32,
+      "open_compatible": 13,
+      "open_unresolved": 2,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "74fd72ff1f03ba819b270ec7387ecd330df99374c2a8d6643f9177243f7bd8fe",
+    "open_judgment_sha256": "77e149757caa3d9742ab110ac30c9e6059e2e54e903473c9ca7e9698f01680dc"
+  },
+  "de-nl": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        85.08771929824562,
+        95.57522123893806
+      ],
+      "found_pair_display_95": [
+        74.07407407407408,
+        89.32038834951456
+      ],
+      "end_to_end_display_95": [
+        66.38655462184875,
+        81.81818181818181
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        78.43137254901961,
+        89.49671772428884
+      ],
+      "found_pair_display_95": [
+        60.092807424593964,
+        73.19034852546918
+      ],
+      "end_to_end_display_95": [
+        49.572649572649574,
+        62.360801781737194
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:27-137-1:21-137-1",
+        "concept": "see",
+        "word_a": "sehen",
+        "word_b": "zien",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-17-1:21-17-1",
+        "concept": "bone",
+        "word_a": "Knochen",
+        "word_b": "bot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-184-1:21-184-1",
+        "concept": "vomit",
+        "word_a": "sich übergeben",
+        "word_b": "overgeven",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-20-1:21-20-1",
+        "concept": "burn",
+        "word_a": "brennen",
+        "word_b": "branden",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-219-2:21-219-1",
+        "concept": "run",
+        "word_a": "laufen",
+        "word_b": "rennen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-28-1:21-28-2",
+        "concept": "die",
+        "word_a": "sterben",
+        "word_b": "doodgaan",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-36-1:21-36-1",
+        "concept": "ear",
+        "word_a": "Ohr",
+        "word_b": "oor",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-42-1:21-42-1",
+        "concept": "far",
+        "word_a": "weit",
+        "word_b": "ver",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-45-1:21-45-1",
+        "concept": "fear",
+        "word_a": "Angst haben",
+        "word_b": "bang zijn",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:27-58-1:21-58-1",
+        "concept": "foot",
+        "word_a": "Fuß",
+        "word_b": "voet",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:27-68-1:21-68-1",
+        "concept": "hair",
+        "word_a": "Haare",
+        "word_b": "haar",
+        "head_a_present": false,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 8,
+    "scored_results": {
+      "pair": [
+        "de",
+        "nl"
+      ],
+      "concept_cases": 117,
+      "found": 106,
+      "acceptable": 87,
+      "wrong_sense": 19,
+      "missing": 11,
+      "recall_difference_points": 6.5122690929142575,
+      "display_difference_points": 15.323553539545431,
+      "recall_transfer_pass": true,
+      "display_transfer_pass": true,
+      "open_scorable": 32,
+      "open_compatible": 11,
+      "open_unresolved": 2,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "ce39b921b5f7ac26c82924d31d3dee38f862631ded4b1e2ae8b39971e2b25e84",
+    "open_judgment_sha256": "251493336f6fddb6dd4b31b84c5b12a081c681bba1e783dee68aad404ea6caae"
+  },
+  "en-nl": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        84.070796460177,
+        95.6896551724138
+      ],
+      "found_pair_display_95": [
+        53.333333333333336,
+        72.11538461538461
+      ],
+      "end_to_end_display_95": [
+        47.45762711864407,
+        66.10169491525424
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        79.87152034261241,
+        89.49671772428884
+      ],
+      "found_pair_display_95": [
+        41.644562334217504,
+        55.77395577395578
+      ],
+      "end_to_end_display_95": [
+        35.031847133757964,
+        47.921225382932164
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:22-137-1:21-137-1",
+        "concept": "see",
+        "word_a": "see",
+        "word_b": "zien",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-17-1:21-17-1",
+        "concept": "bone",
+        "word_a": "bone",
+        "word_b": "bot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-184-1:21-184-1",
+        "concept": "vomit",
+        "word_a": "be sick",
+        "word_b": "overgeven",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-203-1:21-203-1",
+        "concept": "forest",
+        "word_a": "woods",
+        "word_b": "bos",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-210-1:21-210-1",
+        "concept": "navel",
+        "word_a": "belly-button",
+        "word_b": "navel",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-219-1:21-219-1",
+        "concept": "run",
+        "word_a": "run",
+        "word_b": "rennen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-36-1:21-36-1",
+        "concept": "ear",
+        "word_a": "ear",
+        "word_b": "oor",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-45-1:21-45-1",
+        "concept": "fear",
+        "word_a": "be scared",
+        "word_b": "bang zijn",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:22-58-1:21-58-1",
+        "concept": "foot",
+        "word_a": "foot",
+        "word_b": "voet",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-6-1:21-6-1",
+        "concept": "back",
+        "word_a": "back",
+        "word_b": "rug",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:22-76-1:21-76-1",
+        "concept": "hit",
+        "word_a": "hit",
+        "word_b": "slaan",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 8,
+    "scored_results": {
+      "pair": [
+        "en",
+        "nl"
+      ],
+      "concept_cases": 116,
+      "found": 105,
+      "acceptable": 66,
+      "wrong_sense": 39,
+      "missing": 11,
+      "recall_difference_points": 5.668756530825492,
+      "display_difference_points": 14.132653061224488,
+      "recall_transfer_pass": true,
+      "display_transfer_pass": true,
+      "open_scorable": 34,
+      "open_compatible": 11,
+      "open_unresolved": 0,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "b6b0178bf485b197fd676fd5f1ef77d8b90df3cc4dc2a9c9321e878c67191d76",
+    "open_judgment_sha256": "2e14c6f7d6b0526c3086a06b12eef52d5dcdf2fedcf7ca0eea46373b352b4196"
+  },
+  "nb-nl": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        75.89285714285714,
+        89.0909090909091
+      ],
+      "found_pair_display_95": [
+        77.08333333333333,
+        93.10344827586206
+      ],
+      "end_to_end_display_95": [
+        61.94690265486726,
+        79.1304347826087
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        78.32618025751073,
+        88.57758620689656
+      ],
+      "found_pair_display_95": [
+        65.82278481012658,
+        76.92307692307692
+      ],
+      "end_to_end_display_95": [
+        54.06032482598608,
+        65.82809224318659
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:58-108-1:21-108-1",
+        "concept": "near",
+        "word_a": "nært",
+        "word_b": "dichtbij",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-112-1:21-112-1",
+        "concept": "nose",
+        "word_a": "nese (nase)",
+        "word_b": "neus",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-115-1:21-115-1",
+        "concept": "one",
+        "word_a": "en",
+        "word_b": "een",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-124-1:21-124-1",
+        "concept": "right",
+        "word_a": "høyre",
+        "word_b": "rechts",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-129-1:21-129-1",
+        "concept": "rotten",
+        "word_a": "råtten",
+        "word_b": "rot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-137-1:21-137-1",
+        "concept": "see",
+        "word_a": "se",
+        "word_b": "zien",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-144-1:21-144-1",
+        "concept": "skin",
+        "word_a": "hud",
+        "word_b": "huid",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-149-1:21-149-1",
+        "concept": "smoke",
+        "word_a": "røyk (røk)",
+        "word_b": "rook",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-165-1:21-165-1",
+        "concept": "swell",
+        "word_a": "hovne",
+        "word_b": "zwellen",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-17-1:21-17-1",
+        "concept": "bone",
+        "word_a": "ben",
+        "word_b": "bot",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-184-1:21-184-1",
+        "concept": "vomit",
+        "word_a": "kaste opp",
+        "word_b": "overgeven",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-206-1:21-206-1",
+        "concept": "year",
+        "word_a": "år",
+        "word_b": "jaar",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-212-1:21-212-1",
+        "concept": "yesterday",
+        "word_a": "i går",
+        "word_b": "gisteren",
+        "head_a_present": false,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-219-1:21-219-1",
+        "concept": "run",
+        "word_a": "løpe",
+        "word_b": "rennen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-24-1:21-24-1",
+        "concept": "come",
+        "word_a": "komme",
+        "word_b": "komen",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-28-1:21-28-2",
+        "concept": "die",
+        "word_a": "dø",
+        "word_b": "doodgaan",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-36-1:21-36-1",
+        "concept": "ear",
+        "word_a": "øre",
+        "word_b": "oor",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-42-1:21-42-1",
+        "concept": "far",
+        "word_a": "langt",
+        "word_b": "ver",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:58-45-1:21-45-1",
+        "concept": "fear",
+        "word_a": "frykte",
+        "word_b": "bang zijn",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:58-71-1:21-71-1",
+        "concept": "head",
+        "word_a": "hode",
+        "word_b": "hoofd",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 14,
+    "scored_results": {
+      "pair": [
+        "nb",
+        "nl"
+      ],
+      "concept_cases": 116,
+      "found": 96,
+      "acceptable": 82,
+      "wrong_sense": 14,
+      "missing": 20,
+      "recall_difference_points": -1.0076130765785951,
+      "display_difference_points": 13.840439276485784,
+      "recall_transfer_pass": true,
+      "display_transfer_pass": true,
+      "open_scorable": 33,
+      "open_compatible": 12,
+      "open_unresolved": 0,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "bb44db0fff8bc033305752d9e27df2306025ad96007e2eaa7c45cdb6376fef21",
+    "open_judgment_sha256": "7289554ceb443c64e20b6802af7bb53e60f95f63096af9d8a96abf2ba5dc537e"
+  },
+  "nl-sv": {
+    "new_intervals": {
+      "families": 104,
+      "expected_pair_recall_95": [
+        85.71428571428571,
+        95.53571428571429
+      ],
+      "found_pair_display_95": [
+        73.26732673267327,
+        89.0909090909091
+      ],
+      "end_to_end_display_95": [
+        65.21739130434783,
+        81.81818181818181
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "comparator_intervals": {
+      "families": 105,
+      "expected_pair_recall_95": [
+        83.77823408624229,
+        92.76595744680851
+      ],
+      "found_pair_display_95": [
+        58.61244019138756,
+        70.27707808564232
+      ],
+      "end_to_end_display_95": [
+        51.082251082251084,
+        62.78586278586278
+      ],
+      "samples_with_no_found_pairs": 0
+    },
+    "missing_comparisons": [
+      {
+        "case_id": "iecor:21-137-1:69-137-1",
+        "concept": "see",
+        "word_a": "zien",
+        "word_b": "se",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-152-1:69-152-1",
+        "concept": "snow",
+        "word_a": "sneeuw",
+        "word_b": "snö",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-17-1:69-17-1",
+        "concept": "bone",
+        "word_a": "bot",
+        "word_b": "ben",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-182-1:69-182-1",
+        "concept": "turn",
+        "word_a": "draaien",
+        "word_b": "vända",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-206-1:69-206-1",
+        "concept": "year",
+        "word_a": "jaar",
+        "word_b": "år",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-219-1:69-219-1",
+        "concept": "run",
+        "word_a": "rennen",
+        "word_b": "springa",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-28-2:69-28-1",
+        "concept": "die",
+        "word_a": "doodgaan",
+        "word_b": "dö",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-36-1:69-36-1",
+        "concept": "ear",
+        "word_a": "oor",
+        "word_b": "öra",
+        "head_a_present": true,
+        "head_b_present": true
+      },
+      {
+        "case_id": "iecor:21-42-1:69-42-1",
+        "concept": "far",
+        "word_a": "ver",
+        "word_b": "långt borta",
+        "head_a_present": true,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:21-45-1:69-45-1",
+        "concept": "fear",
+        "word_a": "bang zijn",
+        "word_b": "vara rädd",
+        "head_a_present": false,
+        "head_b_present": false
+      },
+      {
+        "case_id": "iecor:21-71-1:69-71-1",
+        "concept": "head",
+        "word_a": "hoofd",
+        "word_b": "huvud",
+        "head_a_present": true,
+        "head_b_present": true
+      }
+    ],
+    "missing_with_both_source_heads": 9,
+    "scored_results": {
+      "pair": [
+        "nl",
+        "sv"
+      ],
+      "concept_cases": 118,
+      "found": 107,
+      "acceptable": 87,
+      "wrong_sense": 20,
+      "missing": 11,
+      "recall_difference_points": 2.2164276401564598,
+      "display_difference_points": 16.815657591764865,
+      "recall_transfer_pass": true,
+      "display_transfer_pass": true,
+      "open_scorable": 34,
+      "open_compatible": 15,
+      "open_unresolved": 1,
+      "interpretation": "Development transfer only; descriptive comparison, not paired accuracy or release approval.",
+      "reviewer": "Source-guided Codex agent, not independent human gold",
+      "remaining": "Source diagnosis for missing comparisons, game eligibility, separate historical evidence and reserved-family/product checks."
+    },
+    "judgment_sha256": "de1c98b4c4f57e48cfdd8af01abfcecacc079ef765d9f090c0f61d96d6bbcac2",
+    "open_judgment_sha256": "e1bcab776d163f9312a4144e9914759b9811890106b4ae77184652acd0792646"
+  }
+}

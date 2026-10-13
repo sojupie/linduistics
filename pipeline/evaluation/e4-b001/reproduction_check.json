@@ -1,0 +1,22 @@
+{
+  "e4-a002": {
+    "byte_identical_artifacts": {
+      "concept_results.json": true,
+      "open_results.json": true,
+      "protocol.json": true
+    },
+    "metrics_equal_excluding_elapsed": true
+  },
+  "e4-b001": {
+    "byte_identical_artifacts": {
+      "additional_candidates.json": true,
+      "concept_results.json": true,
+      "correspondences.json": true,
+      "protocol.json": true,
+      "queries.json": true,
+      "review_sample.json": true,
+      "training_pairs.json": true
+    },
+    "metrics_equal_excluding_elapsed": true
+  }
+}

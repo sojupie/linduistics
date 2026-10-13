@@ -1,0 +1,28 @@
+{
+  "pair": [
+    "da",
+    "is"
+  ],
+  "model_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "source_candidate_protocol_sha256": "7a7a248240edc274dc9cb4ddf9176938175280d83457301397d11c108ddd640e",
+  "evidence_sha256": "6dca2a651e29d03e8282ebf74f14613cd73e5eda04ea059dd484ec35834fd5bb",
+  "plan_sha256": "8e9b36764c7afc60dd9157d6486a9c2782633513525b96686cb9d681229aaf5a",
+  "code_sha256": "52dfc89bc58a6cecd0afce3e7fcca257673ce7517c564dd2c4eedabeecc8ba90",
+  "pipeline_code_hashes": {
+    "build_crosslingual_dataset.py": "3c47b6d4121cbbcab97dc0fa18f7808a98ed77952e54d142c8b8b771e2e476a4",
+    "semantic_matcher.py": "f3f076f81eed1c0f03b6bd7487834f044e312e056c487390df8e0aac7b3c52e8",
+    "sense_aligner.py": "dacb6d1bdcfcce0c3120b8257364efd7d54aba4636cf68878a9b15965fa2f7fc",
+    "audit_source_cognate_coverage.py": "07bb233de724d2c4092f633f38c42158c5c42c39df4667f6daf450340fd625ad",
+    "enrich_comparisons_with_source_claims.py": "cbe7e719972a8828c3b016c496f387f22bfc9439ca5961548816a46bd6b4933a"
+  },
+  "artifacts": {
+    "enriched.parquet": "422926876f17098b703afde8fcb84281e2d6e1be19a7cb1389449a430d10315d",
+    "enriched.parquet.manifest.json": "605fec9d9adad9bd4e4034dcfb381f4978b90d1c21700d2a6d1b34c952435fd8",
+    "final.parquet": "3b253cde34e124bedc9ebe2cad0dab8abdde9e355138277e1a70e44ae5a1fbde",
+    "matches.jsonl": "23a641292f609cc5b09ab03a29aaeeaf281544e6767e5aaa2d5a8b26cf8468b1",
+    "matches.jsonl.manifest.json": "4cd1c342403145427d203b95a727e1b78ac5caf4622629d9e47dea514c35cf38",
+    "metrics.json": "931e9814a6fc79d49dea33a4c2f11f3550f5c37a71a92ff542225ef680693358",
+    "raw.parquet": "fddcbfabd2e6fec7bb9e5a270ea58b54c7728207e3d8fb09d09953778c7c395d"
+  },
+  "scope": "Complete new pair; original parser/candidates/alignment/evidence enrichment/V2 classification; no live publication."
+}

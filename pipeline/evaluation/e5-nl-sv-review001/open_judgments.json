@@ -1,0 +1,327 @@
+{
+  "packet_sha256": "b810001482b13ded3fd01cf4e94e7b4801f22439e6e0c69cf7eb8145377e5f21",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "All 35 full inventories reviewed before scoring; contextual confusion ambiguity retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "contextual_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "An auction lot can be an article/item; plot, premises and clothing/equipment scopes differ. The selected plot/item display is not equivalent."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Limping and withers differ."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A Dutch village and dementia differ."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A given name and a vernacular expression differ."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Trivial/insignificant and comfort/well-being differ."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "A spiny chestnut cupule and a cushion differ."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Tripod mount and broadcasting/transport/research stations differ."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Tiles overlap; Swedish includes brick material and brick objects."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Us/ourselves overlaps; Dutch possessive our and metric ounce differ."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Principal/main and based on a principle differ."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote a countess."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote someone who studies Romance languages; student here can mean scholar rather than a novice student."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Sister, nun and nurse overlap, with dated/formal Dutch kin usage and fictive kin/address distinctions."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both share concept/idea and draft/sketch senses."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Title/name verb and title noun are grammatical relatives."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Water channels overlap; named river, chutes and Swedish running verbs add distinct scope."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Hypothetical and irrelevant differ."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "contextual_overlap_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "Confused may mean mentally puzzled or disordered; terse source gloss does not fix its overlap with messy/chaotic."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "A felony is a narrower evil deed/misdeed; the Belgian legal qualifier matters."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "related_meaning_not_equivalent",
+      "compatible_labels": [
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Disrespectful/irreverent and unserious/flippant are associated attitudes, not generally interchangeable."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Goose overlaps; determiner, adverb, names, butter, sandwich and marijuana uses differ."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Rabble/plebs overlaps; Swedish additionally permits a non-derogatory disorderly crowd."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Dutch urging/contrast/surprise particles do not match Swedish present time/moment senses."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Hewing overlaps; holding spelling variant and Swedish biting/grabbing/hurting differ. Selected hew/grab display is unsuitable."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote a skin wart."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Gun silencer overlaps; damper and vehicle exhaust silencer have wider scope."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Irritable/angry and bad/shitty differ."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Hyperlinking overlaps; betrayal and physical linking do not all overlap."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "Shop verb and shopping noun differ grammatically."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Handiwork/handicraft overlaps; Swedish abstract craft and craftsmanship broaden the inventory."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both denote a limit/limitation."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Dedicating a work overlaps; state of commitment and concrete dedication text differ."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Transparency overlaps; Swedish ready, cloud-free and easy-to-understand senses differ."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Mistake overlaps; failed hit, Miss title and cat call differ."
+    },
+    {
+      "review_id": 35,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Spending time overlaps; devotion, payment, sparing and historical acquisition differ."
+    }
+  ]
+}

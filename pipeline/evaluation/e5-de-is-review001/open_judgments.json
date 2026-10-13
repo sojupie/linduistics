@@ -1,0 +1,321 @@
+{
+  "packet_sha256": "72465c29a55c65140ded02645fecb7539e36b3cdc46b2d827899cd1ee76140b6",
+  "mapping_source": "e2_reference.json unchanged mapping",
+  "reviewer": "Codex agent, source-guided; not independent human gold",
+  "scope": "Full source inventories read before scoring fixed labels; redirect uncertainty retained.",
+  "judgments": [
+    {
+      "review_id": 1,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Drama and pulling or dragging have no observed meaning overlap."
+    },
+    {
+      "review_id": 2,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Skin or creature does not overlap head, skull or page header."
+    },
+    {
+      "review_id": 3,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Air overlaps; Icelandic also records sky, attic and ceiling."
+    },
+    {
+      "review_id": 4,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Skin or creature does not overlap autumn."
+    },
+    {
+      "review_id": 5,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "False narrative, tale and news do not overlap maiden."
+    },
+    {
+      "review_id": 6,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "Hearth room and bunk describe different parts of a dwelling."
+    },
+    {
+      "review_id": 7,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "An eyelet is a type of hole; Icelandic also records schedule gaps."
+    },
+    {
+      "review_id": 8,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Embers overlap; German heat and Icelandic given name add different senses."
+    },
+    {
+      "review_id": 9,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Skinny or meager overlaps; German adds fat-free food and nutrient-poor land."
+    },
+    {
+      "review_id": 10,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify Moor as a person of the historical people, not an obsolete usage flag."
+    },
+    {
+      "review_id": 11,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Knowledge overlaps; German skills, awareness and science add breadth."
+    },
+    {
+      "review_id": 12,
+      "meaning_profile": "same_named_entity",
+      "compatible_labels": [
+        "entity_overlap",
+        "equivalent"
+      ],
+      "scorable": true,
+      "reason": "Both inventories explicitly identify the country Bolivia."
+    },
+    {
+      "review_id": 13,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Aunt overlaps; Icelandic also records cousin and niece, German colloquial woman."
+    },
+    {
+      "review_id": 14,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Drum nouns overlap in the inventories despite the selected Icelandic verb; German adds machine and revolver parts."
+    },
+    {
+      "review_id": 15,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Expletive use overlaps; Icelandic vulgarity and additional adjective meanings require usage distinctions."
+    },
+    {
+      "review_id": 16,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Nervous unrest and anxiety overlap in part; movement, political unrest and plant meanings do not."
+    },
+    {
+      "review_id": 17,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "School subject overlaps a narrower part of subject or field; Icelandic also records branch and article."
+    },
+    {
+      "review_id": 18,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "A storage tank is a kind of container, with narrower liquid or gas use."
+    },
+    {
+      "review_id": 19,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "The recorded bomb, dessert and slang adjective senses do not explicitly record sensational news; do not infer a missing metaphor."
+    },
+    {
+      "review_id": 20,
+      "meaning_profile": "forwarding_entry_unresolved",
+      "compatible_labels": null,
+      "scorable": false,
+      "reason": "German is only a spelling redirect to Anstoss/Anstoß; the actual target meanings are absent from this inventory."
+    },
+    {
+      "review_id": 21,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe the file tool."
+    },
+    {
+      "review_id": 22,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Mead overlaps; Icelandic additionally has broad poetic or humorous alcoholic beverage use."
+    },
+    {
+      "review_id": 23,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories identify leek."
+    },
+    {
+      "review_id": 24,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Sunday overlaps; German also records place names."
+    },
+    {
+      "review_id": 25,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a thief."
+    },
+    {
+      "review_id": 26,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe a brothel."
+    },
+    {
+      "review_id": 27,
+      "meaning_profile": "distinct_named_entities",
+      "compatible_labels": [
+        "different_entities",
+        "unverified_name_identity"
+      ],
+      "scorable": true,
+      "reason": "German is a surname and Icelandic a female given name, not a verified name equivalent."
+    },
+    {
+      "review_id": 28,
+      "meaning_profile": "disjoint_observed",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "reason": "The German inventory describes arsane; Icelandic explicitly describes the element arsenic, not the same recorded substance."
+    },
+    {
+      "review_id": 29,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Cracking sound and crack or flaw overlap; quirky personality and deficit senses differ in scope."
+    },
+    {
+      "review_id": 30,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Money overlaps; Icelandic also records livestock, assets and a rune."
+    },
+    {
+      "review_id": 31,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe arthritis."
+    },
+    {
+      "review_id": 32,
+      "meaning_profile": "related_meaning_different_pos",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "reason": "German records the action fellate as a vulgar secondary sense; Icelandic is the act noun blowjob, requiring grammar distinction."
+    },
+    {
+      "review_id": 33,
+      "meaning_profile": "ordinary_overlap",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Both inventories describe the pancreas."
+    },
+    {
+      "review_id": 34,
+      "meaning_profile": "ordinary_partial_overlap",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "reason": "Dragging overlaps; German also records grinding, training and demolition."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "experiment": "E5 source audit",
+  "plan_sha256": "7a3edf60d106a62af2ced467f84cf2fc78de223fe1961849a97e3fa7797595ab",
+  "raw_source_hashes": {
+    "pipeline\\data\\kaikki_nl.jsonl": "1f6ed26d77ded4f1538cfe5a9769e11faa90cad42c8b243f827252bef95a92a0",
+    "pipeline\\data\\kaikki_is.jsonl": "5af881c61ae477a35350d1e99728627c84ddcc6205475774d6c3b3ef8b8caa06"
+  },
+  "parser_sha256": "043ea1bce366dd3090f4d8234905ccb73b66393ec9414629e1f2c3174faf1184",
+  "code_sha256": "818f0d54d71e50559599a6da57734b453abe9ce114ff4bf3f1495a23cc918b81",
+  "reference_hashes": {
+    "cldf_forms.csv": "60ee8847ad2eb68de619a72669243f0179ccf1f2a58b44a54ce8f9a296d3c2ed",
+    "cldf_languages.csv": "f0c276a915600c9a2a731fe1e960f10f13f5832c390853b5de6c28af3f6b2e9f",
+    "cldf_parameters.csv": "659f799cca4cc76ee12e8d7388de57cc8d8b72553de24db479bb029a2215c0ea"
+  },
+  "parsed_lookup_hashes": {
+    "lemmas_is.parquet": "1116b7de193b71a0642502cec74581b59fe830e9f1aac884ed804cc95d4992c8",
+    "lemmas_nl.parquet": "f585ef6b9b5086a9894151dc2cfc798f02f226d12486b25ff2f2f85c9634b9ac"
+  },
+  "pronunciation": "No Dutch/Icelandic G2P converter exists; unsupported fallback remains empty.",
+  "scope": "Source-only audit before candidate admission. No pair predictions or reserved family review."
+}

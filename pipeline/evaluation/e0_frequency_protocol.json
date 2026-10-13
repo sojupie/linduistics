@@ -1,0 +1,33 @@
+{
+  "seed": 20261003,
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/README.md",
+      "sha256": "a92fcc50e27f7b2d5860ec1c1ce794dc4c892d945bfa4c8c3136cdfd213ee710"
+    },
+    "da_50k.txt": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/content/2018/da/da_50k.txt",
+      "sha256": "6a83e4deb5e38d873b1ccfb4be4fb25903878c07c8522af708027ac8b540c6b1"
+    },
+    "de_50k.txt": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/content/2018/de/de_50k.txt",
+      "sha256": "d9e50546fd7e8b6fe6542a2b33c51d1331092b2a3916ec09f80d97856068705b"
+    },
+    "en_50k.txt": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/content/2018/en/en_50k.txt",
+      "sha256": "5351ff405b1126ef555791dd4d9798a48e3e9a501a9fc481a9da957752cfb458"
+    },
+    "sv_50k.txt": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/content/2018/sv/sv_50k.txt",
+      "sha256": "566d0614a54f3c243bca4097c9bb824d46275abff31582157e73c166b7089500"
+    },
+    "no_50k.txt": {
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/525f9b560de45753a5ea01069454e72e9aa541c6/content/2018/no/no_50k.txt",
+      "sha256": "d5808d8ec04603b765c09c06a03f0273ccf36bb35a3902287e56b7e7d872ca92"
+    }
+  },
+  "revision": "525f9b560de45753a5ea01069454e72e9aa541c6",
+  "license": "FrequencyWords data CC-BY-SA 4.0; code MIT; OpenSubtitles2018 source",
+  "sampling": "200 most frequent tokens, then 100 tokens in each of three rank bands, per source language",
+  "limits": "Subtitle tokens are not lemmas or a general population estimate. no is not an independently verified Bokmal corpus."
+}

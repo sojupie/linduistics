@@ -1,0 +1,2242 @@
+{
+  "reviewer": "Codex source-guided review; not independent human annotation",
+  "scope": "All 109 supported broader-sample cases and all 15 supported concept cases with different IE-CoR expert sets. Other supported concept cases remain pending.",
+  "source_review_complete": false,
+  "supported_cases": 631,
+  "reviewed_cases": 124,
+  "pending_cases": 507,
+  "judgments": [
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:6",
+      "panel": "open",
+      "word_a": "metonymi",
+      "word_b": "metonymia",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|metonymi|noun||en-metonymi-da-noun-P6sE8pBn"
+        ],
+        [
+          "nl|metonymia|noun||en-metonymia-nl-noun-vFaSTOK~"
+        ]
+      ],
+      "source_note": "Both sources trace the terms through Late Latin metonymia and Greek metonymia. Shared source is supported; the specialist definition mismatch remains unresolved."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:7",
+      "panel": "open",
+      "word_a": "snide",
+      "word_b": "snijden",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|snide|verb||en-snide-da-verb-5hnMQlkb"
+        ],
+        [
+          "nl|snijden|verb||en-snijden-nl-verb-1M9vpHcE"
+        ]
+      ],
+      "source_note": "Both descend from recorded snithana; the Danish entry is historical. Historical relation does not establish current interchangeable uses."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:8",
+      "panel": "open",
+      "word_a": "skal",
+      "word_b": "schaal",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|skal|noun|1|en-skal-da-noun-0Q3ekUp7,en-skal-da-noun-KBnMKE4P,en-skal-da-noun-jBpkpRWL"
+        ],
+        [
+          "nl|schaal|noun|1|en-schaal-nl-noun-mk0aY-6F"
+        ]
+      ],
+      "source_note": "Both record Germanic skalo. Shell overlap is supported; broad source relation leaves transmission unspecified."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:9",
+      "panel": "open",
+      "word_a": "nu",
+      "word_b": "nou",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|nu|noun||en-nu-da-noun-8arF9s1z,en-nu-da-noun-YY3Fg3nd,en-nu-da-noun-chECB7ZJ"
+        ],
+        [
+          "nl|nou|adv||en-nou-nl-adv-92nFFOmQ,en-nou-nl-adv-FuS8elaJ,en-nou-nl-adv-tNton2da"
+        ]
+      ],
+      "source_note": "Both record Germanic nu. Noun moment and modal particle are distinct displayed uses despite related entries."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:10",
+      "panel": "open",
+      "word_a": "krop",
+      "word_b": "krop",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|krop|noun||en-krop-da-noun-FG4ma3P3,en-krop-da-noun-Jrse0s7f,en-krop-da-noun-LmSldlai,en-krop-da-noun-WJaDbrud,en-krop-da-noun-Yj5vtZYn"
+        ],
+        [
+          "nl|krop|noun||en-krop-nl-noun-0wGchAVZ,en-krop-nl-noun-GPCN4bck,en-krop-nl-noun-KkIS7w91,en-krop-nl-noun-ObnSdWx9,en-krop-nl-noun-pWFr3RZ0"
+        ]
+      ],
+      "source_note": "Both record Germanic kruppaz. Torso and goitre displays remain distinct meanings."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:22",
+      "panel": "open",
+      "word_a": "gås",
+      "word_b": "gans",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|gås|noun|1|en-gås-da-noun-wtN90FdX"
+        ],
+        [
+          "nl|gans|noun|1|en-gans-nl-noun-FBdEd8Nj"
+        ]
+      ],
+      "source_note": "Both record Germanic gans. The Danish prose explicitly names Dutch gans; goose scope differs across the inventories."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:23",
+      "panel": "open",
+      "word_a": "nabo",
+      "word_b": "nabuur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|nabo|noun||en-nabo-da-noun-lozPZUw1"
+        ],
+        [
+          "nl|nabuur|noun||en-nabuur-nl-noun-j~lNQzXA,en-nabuur-nl-noun-lozPZUw1,en-nabuur-nl-noun-ndQAUu2Y"
+        ]
+      ],
+      "source_note": "The Dutch source explicitly compares Danish nabo. These independently formed near/inhabitant compounds support a related family; a cognate mention alone does not prove inheritance of the complete compound."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:24",
+      "panel": "open",
+      "word_a": "øve",
+      "word_b": "oefenen",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|øve|verb||en-øve-da-verb-Bfv4~Xd4,en-øve-da-verb-zhc2s-qh"
+        ],
+        [
+          "nl|oefenen|verb||en-oefenen-nl-verb-ft5RRWTy"
+        ]
+      ],
+      "source_note": "Both record Germanic obijana; Dutch oefenen is an iterative formation. Shared source is supported without claiming unchanged whole-word formation."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "da-nl:open:29",
+      "panel": "open",
+      "word_a": "billet",
+      "word_b": "biljet",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|billet|noun||en-billet-da-noun--oNp8bn4"
+        ],
+        [
+          "nl|biljet|noun||en-biljet-nl-noun-9j40oDTx,en-biljet-nl-noun-NisOufLW,en-biljet-nl-noun-zBe-8Jsp"
+        ]
+      ],
+      "source_note": "Both sources record French billet borrowing. The loan relationship is supported and kept separate from native inherited cognacy."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:4",
+      "panel": "open",
+      "word_a": "Stern",
+      "word_b": "ster",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Stern|noun||en-Stern-de-noun-1xwGWzOm,en-Stern-de-noun-7mP5z3ze,en-Stern-de-noun-A26Heujo,en-Stern-de-noun-J~J74gRT,en-Stern-de-noun-WlaQ-QhR,en-Stern-de-noun-cIMEVBWY,en-Stern-de-noun-dAQPtGrk,en-Stern-de-noun-uiG~Mxgg"
+        ],
+        [
+          "nl|ster|noun|1|en-ster-nl-noun-1oSi-LD1,en-ster-nl-noun-SYWUnnT3,en-ster-nl-noun-U6tLXz6J,en-ster-nl-noun-dHypJxSn,en-ster-nl-noun-r~02jtxt"
+        ]
+      ],
+      "source_note": "Both inherit West Germanic sterno. Star history is supported independently of the inventories' other meanings."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:6",
+      "panel": "open",
+      "word_a": "Spatium",
+      "word_b": "spatie",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Spatium|noun||en-Spatium-de-noun-5rmbur77,en-Spatium-de-noun-QNV3Zcvm,en-Spatium-de-noun-de:metal_type"
+        ],
+        [
+          "nl|spatie|noun||en-spatie-nl-noun-P0nbv-BR,en-spatie-nl-noun-auoqAg3o"
+        ]
+      ],
+      "source_note": "Both explicitly borrow Latin spatium. Duplicate paths are repeated evidence, not independent confirmation."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:7",
+      "panel": "open",
+      "word_a": "Statur",
+      "word_b": "statuur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Statur|noun||en-Statur-de-noun-p94VPa8W,en-Statur-de-noun-tqfRolIc"
+        ],
+        [
+          "nl|statuur|noun||en-statuur-nl-noun-I2UYYAuC"
+        ]
+      ],
+      "source_note": "Both trace to Latin statura. Shared source is supported; the templates do not specify the complete transmission route."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:8",
+      "panel": "open",
+      "word_a": "Schapp",
+      "word_b": "schape",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Schapp|noun||en-Schapp-de-noun-IgUFz7uw,en-Schapp-de-noun-~NwTYDY9"
+        ],
+        [
+          "nl|schape|noun||en-schape-nl-noun-brVzy2zf"
+        ]
+      ],
+      "source_note": "Both record Germanic skapa. Chest and historical shape displays are not a modern equivalent pair."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:9",
+      "panel": "open",
+      "word_a": "Frater",
+      "word_b": "frater",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Frater|noun||en-Frater-de-noun-Wt2pOmuW"
+        ],
+        [
+          "nl|frater|noun||en-frater-nl-noun-o-U~GzRN"
+        ]
+      ],
+      "source_note": "Dutch bird frater is likely onomatopoeic; Latin frater is only a suggested alternative. The shared-Latin path is qualified, not established. The extractor failed to retain this prose qualification."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:10",
+      "panel": "open",
+      "word_a": "Legion",
+      "word_b": "legioen",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Legion|noun||en-Legion-de-noun-FhTO7sUK"
+        ],
+        [
+          "nl|legioen|noun||en-legioen-nl-noun-1BkY4tQz,en-legioen-nl-noun-gaZ8Cnqg,en-legioen-nl-noun-zwlN2tyT"
+        ]
+      ],
+      "source_note": "Both trace to Latin legio, with French transmission on the Dutch side. This supports shared source rather than purely native inheritance."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:21",
+      "panel": "open",
+      "word_a": "Felge",
+      "word_b": "velg",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Felge|noun|1|en-Felge-de-noun-C9YbVxt6"
+        ],
+        [
+          "nl|velg|noun||en-velg-nl-noun-0fxRyw8s"
+        ]
+      ],
+      "source_note": "Both record Germanic felgo and German explicitly names Dutch velg. Wheel-rim history is supported."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:22",
+      "panel": "open",
+      "word_a": "Jolle",
+      "word_b": "jol",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Jolle|noun||en-Jolle-de-noun-OUez3Pqr"
+        ],
+        [
+          "nl|jol|noun||en-jol-nl-noun-gYBc82cO"
+        ]
+      ],
+      "source_note": "Dutch jol is only possibly from Low German jolle; the deeper Indo-European route is also possible. Both recovered paths need these qualifications; the current extractor omits them."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:23",
+      "panel": "open",
+      "word_a": "Warze",
+      "word_b": "wrat",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Warze|noun||en-Warze-de-noun-niJ5G0aY"
+        ],
+        [
+          "nl|wrat|noun||en-wrat-nl-noun-Q75Ee2bP"
+        ]
+      ],
+      "source_note": "Both record Germanic warton and explicit cross-language mentions. One German mention gloss says to grow, but the independent shared ancestor supports the noun pair."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "de-nl:open:24",
+      "panel": "open",
+      "word_a": "Zügel",
+      "word_b": "teugel",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Zügel|noun||en-Zügel-de-noun-N1BEIKkJ,en-Zügel-de-noun-x~S4FZgk"
+        ],
+        [
+          "nl|teugel|noun||en-teugel-nl-noun-l8MKmnSG"
+        ]
+      ],
+      "source_note": "The complete Germanic tugilaz word and explicit Dutch cognate mention support the relation. The broad component flag is overly conservative because a same-language suffix analysis also appears; it does not invalidate the explicit statement."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:6",
+      "panel": "open",
+      "word_a": "reed",
+      "word_b": "riet",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|reed|noun|1|en-reed-en-noun-6CSiCtP2,en-reed-en-noun-AL7h9X2L,en-reed-en-noun-Ag1fZvN1,en-reed-en-noun-I4YICMYM,en-reed-en-noun-Zb7UNkEv,en-reed-en-noun-e2a8keST,en-reed-en-noun-en:music,en-reed-en-noun-en:plant,en-reed-en-noun-en:weaving,en-reed-en-noun-i4RGYhxv,en-reed-en-noun-vRdFaXXV,en-reed-en-noun-y787h03T"
+        ],
+        [
+          "nl|riet|noun||en-riet-nl-noun-2CUuXXj5"
+        ]
+      ],
+      "source_note": "Shared West Germanic hreud and explicit riet mention are supported. English says the further origin is uncertain; this qualifies deeper origin, not the recorded West Germanic comparison."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:7",
+      "panel": "open",
+      "word_a": "parsnip",
+      "word_b": "pastinaak",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|parsnip|noun||en-parsnip-en-noun-zD-eLOwn,en-parsnip-en-noun-~IHTJvWx"
+        ],
+        [
+          "nl|pastinaak|noun||en-pastinaak-nl-noun-SmUeeiMb"
+        ]
+      ],
+      "source_note": "Both record Latin pastinaca. The English form underwent additional French and English reshaping; shared source is supported without asserting identical formation."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:8",
+      "panel": "open",
+      "word_a": "hop",
+      "word_b": "hop",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|hop|noun|2|en-hop-en-noun-AZJh-asS,en-hop-en-noun-GyFyZg04,en-hop-en-noun-en:flower,en-hop-en-noun-n1bZmJVS"
+        ],
+        [
+          "nl|hop|noun|2|en-hop-nl-noun-7Qq3iKDp"
+        ]
+      ],
+      "source_note": "Shared Middle Dutch hoppe and Germanic huppo are supported. The deeper Indo-European origin is only possible and must remain qualified."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:9",
+      "panel": "open",
+      "word_a": "hematite",
+      "word_b": "hematiet",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|hematite|noun||en-hematite-en-noun-VPlvIgz4"
+        ],
+        [
+          "nl|hematiet|noun||en-hematiet-nl-noun-LFRSFFHd"
+        ]
+      ],
+      "source_note": "Both trace to Greek haimatites. The source describes the complete mineral name, not merely a shared blood component."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:10",
+      "panel": "open",
+      "word_a": "fabrica",
+      "word_b": "fabriek",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|fabrica|noun||en-fabrica-en-noun-b7AKDr4u"
+        ],
+        [
+          "nl|fabriek|noun||en-fabriek-nl-noun-BsiqqT2A"
+        ]
+      ],
+      "source_note": "English borrows Latin fabrica; Dutch offers Latin fabrica or French fabrique. Shared Latin source is plausible, but direct Dutch borrowing from Latin is an alternative route, not uniquely established."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:11",
+      "panel": "open",
+      "word_a": "tiramisu",
+      "word_b": "tiramisu",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|tiramisu|noun||en-tiramisu-en-noun-Nxl8zmT9"
+        ],
+        [
+          "nl|tiramisu|noun||en-tiramisu-nl-noun-CLccpIKQ"
+        ]
+      ],
+      "source_note": "Both explicitly borrow Italian tiramisu. The shared borrowing path is supported."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:21",
+      "panel": "open",
+      "word_a": "duck",
+      "word_b": "duiken",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|duck|verb|1|en-duck-en-verb-04712XFX,en-duck-en-verb-XFRZR5VT,en-duck-en-verb-bL2wLNjW,en-duck-en-verb-cjJ9kRLo,en-duck-en-verb-eJNCt7RA,en-duck-en-verb-tk-dWKSR,en-duck-en-verb-~78BBHO4"
+        ],
+        [
+          "nl|duiken|verb||en-duiken-nl-verb-uoMMtPVz"
+        ]
+      ],
+      "source_note": "Both trace the verbs to Germanic dukana and explicitly compare duck/duiken. Displayed head-lowering and diving uses still require the separate meaning assessment."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:22",
+      "panel": "open",
+      "word_a": "sickle",
+      "word_b": "sikkel",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|sickle|noun||en-sickle-en-noun-2tgUE8Pr,en-sickle-en-noun-RaBNCvb0,en-sickle-en-noun-en:Q42233"
+        ],
+        [
+          "nl|sikkel|noun||en-sikkel-nl-noun-ZL1s24FU"
+        ]
+      ],
+      "source_note": "Both record West Germanic sikilu and an explicit cognate statement. The common form itself was an early Latin borrowing; the relation is not proof of purely native Germanic origin."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:23",
+      "panel": "open",
+      "word_a": "ewe",
+      "word_b": "ooi",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|ewe|noun||en-ewe-en-noun-en:Q2409684"
+        ],
+        [
+          "nl|ooi|noun||en-ooi-nl-noun-IyDkLhEW"
+        ]
+      ],
+      "source_note": "Both record West Germanic awi and Germanic awiz, with explicit cross-language mentions. The ewe relationship is supported."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:24",
+      "panel": "open",
+      "word_a": "yellow",
+      "word_b": "geel",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|yellow|noun|1|en-yellow-en-noun-5Ma50rO3,en-yellow-en-noun-7BWAWJT4,en-yellow-en-noun-Q64DnEjE,en-yellow-en-noun-SwEFpWQH,en-yellow-en-noun-W-x9S7at,en-yellow-en-noun-XXi3WqDE,en-yellow-en-noun-ip4efwQ8,en-yellow-en-noun-tJLWdfEo,en-yellow-en-noun-wfi~Hl9g"
+        ],
+        [
+          "nl|geel|noun||en-geel-nl-noun-dZLxf1tM"
+        ]
+      ],
+      "source_note": "Both record West Germanic gelu and Germanic gelwaz. The shared color entry is supported; supplemental comparisons to other colors do not change this pair."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:25",
+      "panel": "open",
+      "word_a": "huguenot",
+      "word_b": "hugenoot",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|Huguenot|noun||en-Huguenot-en-noun-9e~2CE85"
+        ],
+        [
+          "nl|hugenoot|noun||en-hugenoot-nl-noun-OogN3efX,en-hugenoot-nl-noun-yo0TcDij"
+        ]
+      ],
+      "source_note": "Both trace to French huguenot. The English prose qualifies its further origin as uncertain, not the French source correspondence."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "en-nl:open:26",
+      "panel": "open",
+      "word_a": "panorama",
+      "word_b": "panorama",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|panorama|noun||en-panorama-en-noun-Lk0VEqHV,en-panorama-en-noun-pD3Cbpg9,en-panorama-en-noun-taIWAb28"
+        ],
+        [
+          "nl|panorama|noun||en-panorama-nl-noun-P74eLi0K"
+        ]
+      ],
+      "source_note": "Dutch explicitly borrows English panorama. The direct whole-word path is supported; the English Greek-component formation is a separate fact."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:6",
+      "panel": "open",
+      "word_a": "permisjon",
+      "word_b": "permissie",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|permisjon|noun||en-permisjon-nb-noun-yZ-t~zrE"
+        ],
+        [
+          "nl|permissie|noun||en-permissie-nl-noun-~esziS0Y"
+        ]
+      ],
+      "source_note": "Both trace to Latin permissio. Leave of absence and permission are related but not the same displayed use."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:7",
+      "panel": "open",
+      "word_a": "være",
+      "word_b": "wezen",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|være|verb|1|en-være-nb-verb-CvEgfuq9"
+        ],
+        [
+          "nl|wezen|noun|1|en-wezen-nl-noun-JPGGp1HP,en-wezen-nl-noun-JhQrTbtU,en-wezen-nl-noun-LNbsoZf2"
+        ]
+      ],
+      "source_note": "The shared wesana verb is supported. Dutch noun wezen is explicitly a substantivization; Norwegian has suppletive present forms. This is a derived family relation, not proof that every inflected form shares one root."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:8",
+      "panel": "open",
+      "word_a": "rogn",
+      "word_b": "roge",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|rogn|noun|1|en-rogn-nb-noun-65VoRGpC,en-rogn-nb-noun-cMfNNAnO"
+        ],
+        [
+          "nl|roge|noun||en-roge-nl-noun-cY5kkjH9"
+        ]
+      ],
+      "source_note": "Both record Germanic hrugnaz. The roe comparison is supported within its regional and usage limits."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:9",
+      "panel": "open",
+      "word_a": "ceres",
+      "word_b": "ceres",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|Ceres|name||en-Ceres-nb-name-49wJIX47,en-Ceres-nb-name-HiysuGy8"
+        ],
+        [
+          "nl|Ceres|name||en-Ceres-nl-name-hmyfX9cz"
+        ]
+      ],
+      "source_note": "Both record Latin Ceres, but the displayed goddess and Dutch neighborhood are different entities. Shared name history does not establish entity identity."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:10",
+      "panel": "open",
+      "word_a": "tendere",
+      "word_b": "tendens",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|tendere|verb||en-tendere-nb-verb-J6-bNNXN"
+        ],
+        [
+          "nl|tendens|noun||en-tendens-nl-noun-tkWTdXCv"
+        ]
+      ],
+      "source_note": "Both trace to Latin tendere; Norwegian passes through German. Verb and tendency noun remain different formations and parts of speech."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:14",
+      "panel": "open",
+      "word_a": "telegrafi",
+      "word_b": "telegrafie",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|telegrafi|noun||en-telegrafi-nb-noun-uIzg3H92"
+        ],
+        [
+          "nl|telegrafie|noun||en-telegrafie-nl-noun-uIzg3H92"
+        ]
+      ],
+      "source_note": "Both explicitly borrow French telegraphie. Same-language surface analyses do not invalidate the common complete loan."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:21",
+      "panel": "open",
+      "word_a": "føde",
+      "word_b": "voeden",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|føde|verb||en-føde-nb-verb-JsOwYidA"
+        ],
+        [
+          "nl|voeden|verb||en-voeden-nl-verb-tFTu-3EE"
+        ]
+      ],
+      "source_note": "Both record Germanic fodijana and an explicit voeden mention. Birth and feeding displays are distinct despite the related entries."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "nb-nl:open:22",
+      "panel": "open",
+      "word_a": "gås",
+      "word_b": "gans",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nb|gås|noun||en-gås-nb-noun-gMe6Evez"
+        ],
+        [
+          "nl|gans|noun|1|en-gans-nl-noun-FBdEd8Nj"
+        ]
+      ],
+      "source_note": "Both record Germanic gans. Goose history is supported; the Dutch definition has broader stated scope."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:6",
+      "panel": "open",
+      "word_a": "bolster",
+      "word_b": "bolster",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|bolster|noun||en-bolster-nl-noun-P6SjdBqI"
+        ],
+        [
+          "sv|bolster|noun||en-bolster-sv-noun-njJFOHjt"
+        ]
+      ],
+      "source_note": "Both record Germanic bulstraz. Bur and pillow are distinct displayed meanings of historically related words."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:8",
+      "panel": "open",
+      "word_a": "tegel",
+      "word_b": "tegel",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|tegel|noun||en-tegel-nl-noun-i2aLiZSq"
+        ],
+        [
+          "sv|tegel|noun||en-tegel-sv-noun-X-wLmbiF"
+        ]
+      ],
+      "source_note": "Both record Germanic tigulon. Dutch further records Latin tegula; inherited common early loan and ultimate borrowing are compatible facts."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:9",
+      "panel": "open",
+      "word_a": "ons",
+      "word_b": "oss",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|ons|pron|1|en-ons-nl-pron-6omQnq7l,en-ons-nl-pron-z4TOj2nN"
+        ],
+        [
+          "sv|oss|pron||en-oss-sv-pron-JHXCn~oP,en-oss-sv-pron-pNH2zPay"
+        ]
+      ],
+      "source_note": "Both record Germanic uns. Objective pronoun history is supported without claiming complete inventory equivalence."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:13",
+      "panel": "open",
+      "word_a": "zuster",
+      "word_b": "syster",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|zuster|noun||en-zuster-nl-noun--kn3RSj4,en-zuster-nl-noun-3mNTokmU,en-zuster-nl-noun-8-WX2Ygj,en-zuster-nl-noun-ATCEBRq3"
+        ],
+        [
+          "sv|syster|noun||en-syster-sv-noun-HZ5y8iK9,en-syster-sv-noun-LJyUcoCo,en-syster-sv-noun-WfbwJLQY"
+        ]
+      ],
+      "source_note": "Both record Germanic swester. The Dutch prose specifically explains the sister-to-nurse development; the selected nurse senses do not invalidate the historical relation."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:21",
+      "panel": "open",
+      "word_a": "gans",
+      "word_b": "gås",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|gans|noun|1|en-gans-nl-noun-FBdEd8Nj"
+        ],
+        [
+          "sv|gås|noun|1|en-gås-sv-noun-Tztu~j3R,en-gås-sv-noun-di3XYmSj,en-gås-sv-noun-gMe6Evez,en-gås-sv-noun-okx6RHPn,en-gås-sv-noun-~sGEdvo1"
+        ]
+      ],
+      "source_note": "Both record Germanic gans. Swedish prose qualifies the other senses as developments from goose flotation; that does not change the goose relationship."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:23",
+      "panel": "open",
+      "word_a": "nou",
+      "word_b": "nu",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|nou|adv||en-nou-nl-adv-92nFFOmQ,en-nou-nl-adv-FuS8elaJ,en-nou-nl-adv-tNton2da"
+        ],
+        [
+          "sv|nu|noun||en-nu-sv-noun-MgIhSLEz,en-nu-sv-noun-uAHZ3w~f"
+        ]
+      ],
+      "source_note": "Both record Germanic nu. Modal particle and noun moment are different uses; a shared ancestor does not make these displays equivalent."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:24",
+      "panel": "open",
+      "word_a": "houwen",
+      "word_b": "hugga",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|houwen|verb|1|en-houwen-nl-verb-Ca4I~c98"
+        ],
+        [
+          "sv|hugga|verb||en-hugga-sv-verb-ARQCA-WU,en-hugga-sv-verb-uZkN3f4M,en-hugga-sv-verb-wjjS4xjq,en-hugga-sv-verb-wxDfmZTQ"
+        ]
+      ],
+      "source_note": "Both record Germanic hawwana. Hewing and forcefully grabbing displays are different uses of related entries."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:25",
+      "panel": "open",
+      "word_a": "wrat",
+      "word_b": "vårta",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|wrat|noun||en-wrat-nl-noun-Q75Ee2bP"
+        ],
+        [
+          "sv|vårta|noun||en-vårta-sv-noun-dB5TuS3z"
+        ]
+      ],
+      "source_note": "Both record Germanic warton. The Dutch irregular sound development is explicitly discussed, not evidence against the documented relation."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "nl-sv:open:30",
+      "panel": "open",
+      "word_a": "handwerk",
+      "word_b": "hantverk",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "nl|handwerk|noun||en-handwerk-nl-noun-sOisskJ~"
+        ],
+        [
+          "sv|hantverk|noun||en-hantverk-sv-noun-aio7fbsu,en-hantverk-sv-noun-e6sxUhW6,en-hantverk-sv-noun-z8CW64rI"
+        ]
+      ],
+      "source_note": "Both record the complete Germanic handuwerka and an explicit cognate mention. Additional hand/work formation claims cause an overly broad component flag; they do not make the complete ancestor a component-only match."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:6",
+      "panel": "open",
+      "word_a": "smal",
+      "word_b": "smali",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|smal|adj||en-smal-da-adj-5zIOYbzZ,en-smal-da-adj-ulkGfjh5"
+        ],
+        [
+          "is|smali|noun||en-smali-is-noun-T54iyEkw,en-smali-is-noun-eZQNEC8B,en-smali-is-noun-zSd-JcGU,en-smali-is-noun-~GAhry1O"
+        ]
+      ],
+      "source_note": "Icelandic smali develops through livestock and a shortened herdsman compound from the small adjective. The broad shared smalaz source supports a derivational family, not inherited equivalence of whole words."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:7",
+      "panel": "open",
+      "word_a": "skinke",
+      "word_b": "skinka",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|skinke|noun||en-skinke-da-noun-Dsz-JjZo"
+        ],
+        [
+          "is|skinka|noun||en-skinka-is-noun-1d5A6KWU,en-skinka-is-noun-T9way3Ku"
+        ]
+      ],
+      "source_note": "Both record Low German schinke borrowing. Deeper shared forms are supported; the Icelandic tanning use remains a separate semantic development."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:8",
+      "panel": "open",
+      "word_a": "hin",
+      "word_b": "hinn",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|hin|pron||en-hin-da-pron-IP6fLAuM"
+        ],
+        [
+          "is|hinn|pron||en-hinn-is-pron-PrXFxgIV"
+        ]
+      ],
+      "source_note": "Shared Old Norse hinn is supported. Danish prose explicitly calls Germanic jainaz phonologically distinct; the extracted shared jainaz path is mis-scoped and must be excluded without discarding the valid hinn path."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:9",
+      "panel": "open",
+      "word_a": "porre",
+      "word_b": "púrra",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|porre|noun||en-porre-da-noun-~m9Nillg"
+        ],
+        [
+          "is|púrra|noun||en-púrra-is-noun-ddfOfU27"
+        ]
+      ],
+      "source_note": "Icelandic explicitly records Danish porre borrowing. Latin porrum is also recorded on both sides; the direct borrowing remains supported."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:13",
+      "panel": "open",
+      "word_a": "amøbe",
+      "word_b": "amaba",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|amøbe|noun||en-amøbe-da-noun-wlNAoTl6"
+        ],
+        [
+          "is|amaba|noun||en-amaba-is-noun-wlNAoTl6"
+        ]
+      ],
+      "source_note": "Both trace to Greek amoibe. Icelandic borrows Danish amoba, a different spelling from the row's amobe, so this run does not establish a direct resolved row-to-row borrowing path."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:20",
+      "panel": "open",
+      "word_a": "åre",
+      "word_b": "ár",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|åre|noun|2|en-åre-da-noun-6iJDBoed"
+        ],
+        [
+          "is|ár|noun|2|en-ár-is-noun-IeX4mml1"
+        ]
+      ],
+      "source_note": "Both record Old Norse ar and Germanic airo for oar. The selected etymology entries match this meaning."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:21",
+      "panel": "open",
+      "word_a": "elv",
+      "word_b": "elfur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|elv|noun||en-elv-da-noun-Tt0fhBWA"
+        ],
+        [
+          "is|elfur|noun|1|en-elfur-is-noun-Io4dAiZK"
+        ]
+      ],
+      "source_note": "Both record Old Norse elfr and Germanic albi; Danish is borrowed from Norwegian. Shared source is supported, with the borrowing route preserved in prose."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:22",
+      "panel": "open",
+      "word_a": "røn",
+      "word_b": "reynir",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|røn|noun|1|en-røn-da-noun-14hDAM9Y"
+        ],
+        [
+          "is|reynir|noun|1|en-reynir-is-noun-c4wIDqEk"
+        ]
+      ],
+      "source_note": "Both record Old Norse reynir. Danish also relates the form to red; the complete reynir correspondence is supported."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:23",
+      "panel": "open",
+      "word_a": "hvem",
+      "word_b": "hvað",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|hvem|pron||en-hvem-da-pron-0A8lJM0Z,en-hvem-da-pron-btAzcUC9"
+        ],
+        [
+          "is|hvað|adv||en-hvað-is-adv-ry8GHlyl"
+        ]
+      ],
+      "source_note": "The Icelandic interrogative is explicitly a neuter formation and conflation involving hwaz. Shared source supports a grammatical family; who and adverbial how are not equivalent forms."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:24",
+      "panel": "open",
+      "word_a": "lem",
+      "word_b": "hlemmur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|lem|noun|2|en-lem-da-noun-7qjsDUUI,en-lem-da-noun-pFW0Vs6B"
+        ],
+        [
+          "is|hlemmur|noun||en-hlemmur-is-noun-daAvnXDz"
+        ]
+      ],
+      "source_note": "Both record Old Norse hlemmr and Germanic hlammiz. Lid/trapdoor scope remains a separate meaning distinction."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:25",
+      "panel": "open",
+      "word_a": "unge",
+      "word_b": "ungi",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|unge|noun|1|en-unge-da-noun-6AU4Cqcg,en-unge-da-noun-XHfX~Y9R,en-unge-da-noun-bYBZA1Tc"
+        ],
+        [
+          "is|ungi|noun|1|en-ungi-is-noun-VOhiwZuG"
+        ]
+      ],
+      "source_note": "Both inherit Old Norse ungi. Its older adjectival derivation does not invalidate the shared complete noun."
+    },
+    {
+      "pair": "da-is",
+      "case_id": "da-is:open:26",
+      "panel": "open",
+      "word_a": "estragon",
+      "word_b": "estragon",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "da|estragon|noun||en-estragon-da-noun-wiDhIPti"
+        ],
+        [
+          "is|estragon|noun||en-estragon-is-noun-iXli79Wf"
+        ]
+      ],
+      "source_note": "Both explicitly borrow French estragon. Shared loan history is supported."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:3",
+      "panel": "open",
+      "word_a": "Luft",
+      "word_b": "loft",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Luft|noun||en-Luft-de-noun-K9H6unSo,en-Luft-de-noun-rrb1K9wR"
+        ],
+        [
+          "is|loft|noun||en-loft-is-noun-0a8Anxp4,en-loft-is-noun-BfUU-ufK,en-loft-is-noun-lvFukpBH,en-loft-is-noun-n-Qw5SdG"
+        ]
+      ],
+      "source_note": "German prose explicitly compares Icelandic loft in the air word's history. The statement supports the selected noun entries."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:6",
+      "panel": "open",
+      "word_a": "Flett",
+      "word_b": "flet",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Flett|noun||en-Flett-de-noun-H0-PIYwf"
+        ],
+        [
+          "is|flet|noun||en-flet-is-noun-N0JEq155"
+        ]
+      ],
+      "source_note": "Both record Germanic flatja. Large hearth room and bunk remain different displayed meanings."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:7",
+      "panel": "open",
+      "word_a": "Gatt",
+      "word_b": "gat",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Gatt|noun|1|en-Gatt-de-noun-QYpy2jop"
+        ],
+        [
+          "is|gat|noun|1|en-gat-is-noun-9AeD4Z1Z,en-gat-is-noun-myipYTRr"
+        ]
+      ],
+      "source_note": "Both record Germanic gata, with Low German borrowing on the German side. The broad relation does not assert purely native inheritance on both sides."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:8",
+      "panel": "open",
+      "word_a": "Glut",
+      "word_b": "glóð",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Glut|noun||en-Glut-de-noun-GZbRrMZ-,en-Glut-de-noun-awdRSFIn"
+        ],
+        [
+          "is|glóð|noun||en-glóð-is-noun-f-9rRNIa"
+        ]
+      ],
+      "source_note": "Both record Germanic glodiz and an explicit Icelandic cognate mention. Heat and embers scope is separately reviewed."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:9",
+      "panel": "open",
+      "word_a": "mager",
+      "word_b": "magur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|mager|adj||en-mager-de-adj-9RFNjtOa,en-mager-de-adj-SEOQ4rXr,en-mager-de-adj-f2a--ZLK"
+        ],
+        [
+          "is|magur|adj||en-magur-is-adj-Gg3CJ7Wq,en-magur-is-adj-JSP77VOi"
+        ]
+      ],
+      "source_note": "Both record Germanic magraz and Indo-European mh2kros. Common forms support the relation without implying full overlap of skinny/thin uses."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:10",
+      "panel": "open",
+      "word_a": "Maure",
+      "word_b": "mári",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Maure|noun||en-Maure-de-noun-4eXXYHOW"
+        ],
+        [
+          "is|Mári|noun||en-Mári-is-noun-YH2Iifmc"
+        ]
+      ],
+      "source_note": "Both trace to Latin Maurus. This is a shared historical source, not evidence of independent native Germanic inheritance."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:21",
+      "panel": "open",
+      "word_a": "Feile",
+      "word_b": "þjöl",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Feile|noun||en-Feile-de-noun-O-woHqKZ"
+        ],
+        [
+          "is|þjöl|noun||en-þjöl-is-noun-cb3J8w7g"
+        ]
+      ],
+      "source_note": "Both record Germanic finhlo. Different intermediary forms are documented; broad shared-source evidence is supported."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:22",
+      "panel": "open",
+      "word_a": "Met",
+      "word_b": "mjöður",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Met|noun||en-Met-de-noun-vzW~mp~S"
+        ],
+        [
+          "is|mjöður|noun||en-mjöður-is-noun-dYs4hpDL,en-mjöður-is-noun-iyELOmI8"
+        ]
+      ],
+      "source_note": "Both record Germanic meduz and Indo-European medhu. Common mead source is supported, independently of further honey comparisons."
+    },
+    {
+      "pair": "de-is",
+      "case_id": "de-is:open:25",
+      "panel": "open",
+      "word_a": "Dieb",
+      "word_b": "þjófur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "de|Dieb|noun||en-Dieb-de-noun-fODZK6UF"
+        ],
+        [
+          "is|þjófur|noun||en-þjófur-is-noun-jdKa3ZmS"
+        ]
+      ],
+      "source_note": "Both record Germanic theubaz. Thief entry history is supported."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:6",
+      "panel": "open",
+      "word_a": "massif",
+      "word_b": "massi",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|massif|noun||en-massif-en-noun-7~uqZLHQ,en-massif-en-noun-KCywzWvL"
+        ],
+        [
+          "is|massi|noun||en-massi-is-noun-3cC6VIed,en-massi-is-noun-vTxLt7ug"
+        ]
+      ],
+      "source_note": "Both trace to Latin massa, but massif has a French adjectival route and massi is a mass noun. Shared source supports related formations rather than inherited whole-word identity."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:7",
+      "panel": "open",
+      "word_a": "soap",
+      "word_b": "sápa",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|soap|noun|1|en-soap-en-noun-2p9cHQfK,en-soap-en-noun-Sfuaurzd,en-soap-en-noun-en:chemistry,en-soap-en-noun-h6tgj3Ny,en-soap-en-noun-wrMtN8BQ"
+        ],
+        [
+          "is|sápa|noun||en-sápa-is-noun-c2vC1OCU"
+        ]
+      ],
+      "source_note": "Both record Old English sape and Germanic saipon, with an explicit Icelandic mention. The source does not establish the precise transmission of Old English into Icelandic; the deeper Indo-European route is additionally uncertain in the tree."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:10",
+      "panel": "open",
+      "word_a": "benedight",
+      "word_b": "benedikt",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|benedight|adj||en-benedight-en-adj-Q-qwWBn0"
+        ],
+        [
+          "is|Benedikt|name||en-Benedikt-is-name-EK4133WS"
+        ]
+      ],
+      "source_note": "Both record Latin benedictus, one as an archaic adjective and one through a name. Shared source does not establish current meaning overlap or generic personal-name identity."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:21",
+      "panel": "open",
+      "word_a": "owl",
+      "word_b": "ugla",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|owl|noun||en-owl-en-noun-4QgCfIrH,en-owl-en-noun-JpppyTtR,en-owl-en-noun-Xp1cQ3Q2,en-owl-en-noun-YJ9a-WuY,en-owl-en-noun-en:Q8021345"
+        ],
+        [
+          "is|ugla|noun||en-ugla-is-noun-EPcSe5gL"
+        ]
+      ],
+      "source_note": "Both record the complete Germanic uwwulon owl form. Earlier imitative or alternative origin remains qualified; it does not invalidate that common intermediate form."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:23",
+      "panel": "open",
+      "word_a": "long",
+      "word_b": "langur",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|long|adj|1|en-long-en-adj-0j805FqE,en-long-en-adj-1-cjCgmP,en-long-en-adj-F4o-eQhn,en-long-en-adj-MrF2ffDb,en-long-en-adj-QOt3DIT2,en-long-en-adj-XGKZLeRQ,en-long-en-adj-Xrnm6jTR,en-long-en-adj-en:finance,en-long-en-adj-en:lengthy,en-long-en-adj-en:lengthy1,en-long-en-adj-en:lengthy1,en-long-en-adj-en:lengthy1,en-long-en-adj-i3Pb2DSa,en-long-en-adj-jARtyAXk,en-long-en-adj-jxlcuiGq,en-long-en-adj-mpMh6aRg,en-long-en-adj-q8TsspnF,en-long-en-adj-s0iEIblI,en-long-en-adj-uC6qn8oJ"
+        ],
+        [
+          "is|langur|adj||en-langur-is-adj-JB2vLnU6,en-langur-is-adj-Y98cacZi"
+        ]
+      ],
+      "source_note": "Both record Germanic langaz and Indo-European dlonghos. English duration and Icelandic height are distinct selected uses despite the shared entry history."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "en-is:open:24",
+      "panel": "open",
+      "word_a": "month",
+      "word_b": "mánuður",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "en|month|noun||en-month-en-noun-QFW1zidJ,en-month-en-noun-en:Q5151,en-month-en-noun-j-PdXWF2"
+        ],
+        [
+          "is|mánuður|noun||en-mánuður-is-noun-pcfRcZ4o"
+        ]
+      ],
+      "source_note": "Both record Germanic menoths and an explicit Icelandic cognate mention. Further moon/measure derivation is qualified and is not needed for the supported month relation."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:6",
+      "panel": "open",
+      "word_a": "angra",
+      "word_b": "angre",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|angra|verb||en-angra-is-verb-NGAyj8Q2"
+        ],
+        [
+          "nb|angre|verb||en-angre-nb-verb-GB52gJs1"
+        ]
+      ],
+      "source_note": "Both record Old Norse angra. Bothering and regretting are related meanings, not interchangeable displays."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:8",
+      "panel": "open",
+      "word_a": "greiða",
+      "word_b": "greie",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|greiða|verb|2|en-greiða-is-verb-IgbsUSDq,en-greiða-is-verb-qRHfpRag"
+        ],
+        [
+          "nb|greie|verb|1|en-greie-nb-verb-5wa9lA6Q,en-greie-nb-verb-Z8uVUvpu,en-greie-nb-verb-bEkJRumM"
+        ]
+      ],
+      "source_note": "Both record Old Norse greida and Germanic garaidijana. Paying and being able are distinct current displays."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:9",
+      "panel": "open",
+      "word_a": "gröftur",
+      "word_b": "grøft",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|gröftur|noun||en-gröftur-is-noun-FWrtH5sh,en-gröftur-is-noun-JWUsIf2y,en-gröftur-is-noun-jTn3KwcT,en-gröftur-is-noun-pWuufF8x,en-gröftur-is-noun-sYn4FHHP"
+        ],
+        [
+          "nb|grøft|noun||en-grøft-nb-noun-iWQFrsVf,en-grøft-nb-noun-yc6rFuak"
+        ]
+      ],
+      "source_note": "Both record the complete Old Norse groftr. Additional suffix decomposition caused the broad component flag; the whole-word Old Norse inheritance path is independently supported."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:10",
+      "panel": "open",
+      "word_a": "flesk",
+      "word_b": "flesk",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|flesk|noun||en-flesk-is-noun-nMoHAzQu"
+        ],
+        [
+          "nb|flesk|noun|1|en-flesk-nb-noun-GFB6A7Lx,en-flesk-nb-noun-ptmaeG2n"
+        ]
+      ],
+      "source_note": "Both record Old Norse flesk and an explicit Icelandic mention. Norwegian qualifies the further origin as uncertain; keep that deeper uncertainty separate from the common Norse word."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:11",
+      "panel": "open",
+      "word_a": "kné",
+      "word_b": "kne",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|kné|noun||en-kné-is-noun-V~z3A6Hj"
+        ],
+        [
+          "nb|kne|noun||en-kne-nb-noun-r3TJCNxo"
+        ]
+      ],
+      "source_note": "Both record Old Norse kne and Germanic knewa. Knee history is supported; repeated paths are not independent evidence."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:14",
+      "panel": "open",
+      "word_a": "sindri",
+      "word_b": "sindre",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|Sindri|name||en-Sindri-is-name-h8YdwBAs"
+        ],
+        [
+          "nb|Sindre|name||en-Sindre-nb-name-Flh55o2w,en-Sindre-nb-name-h8YdwBAs"
+        ]
+      ],
+      "source_note": "Both name entries trace to Old Norse Sindri. This supports related name forms but does not resolve the earlier generic-name meaning judgment or identify a particular person."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:20",
+      "panel": "open",
+      "word_a": "daufur",
+      "word_b": "døv",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|daufur|adj||en-daufur-is-adj-5dB8CK1a,en-daufur-is-adj-RJfosuz6,en-daufur-is-adj-gg7~uHSk,en-daufur-is-adj-j2jqAoLb"
+        ],
+        [
+          "nb|døv|adj||en-døv-nb-adj-gg7~uHSk"
+        ]
+      ],
+      "source_note": "Both record Old Norse daufr and Germanic daubaz, with Danish transmission on the Norwegian side. Pallid and deaf displays remain distinct and the recorded overlap is historical."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:21",
+      "panel": "open",
+      "word_a": "eyrarsund",
+      "word_b": "øresund",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|Eyrarsund|name||en-Eyrarsund-is-name-5-jwSW4i"
+        ],
+        [
+          "nb|Øresund|name||en-Øresund-nb-name-taKBCvl7"
+        ]
+      ],
+      "source_note": "The Norwegian source explicitly names Icelandic Eyrarsund and both displays identify the same strait. Component analyses coexist with a supported whole-name correspondence."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:22",
+      "panel": "open",
+      "word_a": "ábóti",
+      "word_b": "abbed",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|ábóti|noun||en-ábóti-is-noun-QIJ12JW6"
+        ],
+        [
+          "nb|abbed|noun||en-abbed-nb-noun-iw2nXs3v"
+        ]
+      ],
+      "source_note": "Shared Old Norse aboti is supported. Old English transmission is described as likely and variant-dependent, so the deeper shared-source paths need that qualification; do not reject the common Norse form."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:23",
+      "panel": "open",
+      "word_a": "þerna",
+      "word_b": "terne",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|þerna|noun|2|en-þerna-is-noun-d9Hu-vfm"
+        ],
+        [
+          "nb|terne|noun||en-terne-nb-noun-2hdrlqyu"
+        ]
+      ],
+      "source_note": "Both record Old Norse therna for the tern. The whole-word source correspondence is supported."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:24",
+      "panel": "open",
+      "word_a": "mig",
+      "word_b": "meg",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|mig|pron||en-mig-is-pron-4G4wm2az,en-mig-is-pron-bXjkW1Lc"
+        ],
+        [
+          "nb|meg|pron||en-meg-nb-pron--U3xHM4y"
+        ]
+      ],
+      "source_note": "Both record Old Norse mik. Reflexive myself and objective me are grammatical variants with distinct displayed uses."
+    },
+    {
+      "pair": "nb-is",
+      "case_id": "nb-is:open:29",
+      "panel": "open",
+      "word_a": "amaba",
+      "word_b": "amøbe",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|amaba|noun||en-amaba-is-noun-wlNAoTl6"
+        ],
+        [
+          "nb|amøbe|noun||en-amøbe-nb-noun-c-YK0SYd"
+        ]
+      ],
+      "source_note": "Both trace to Greek amoibe. Icelandic additionally gives Danish transmission; broad source evidence does not uniquely settle the complete Norwegian route."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:6",
+      "panel": "open",
+      "word_a": "þjöl",
+      "word_b": "vijl",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|þjöl|noun||en-þjöl-is-noun-cb3J8w7g"
+        ],
+        [
+          "nl|vijl|noun|1|en-vijl-nl-noun-qhCDFNz2"
+        ]
+      ],
+      "source_note": "Both record Germanic finhlo. Shared file-tool source is supported despite differing documented intermediaries."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:7",
+      "panel": "open",
+      "word_a": "kofi",
+      "word_b": "kof",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|kofi|noun||en-kofi-is-noun-kQB--aEA,en-kofi-is-noun-krup47FZ"
+        ],
+        [
+          "nl|kof|noun||en-kof-nl-noun-Yo5LAv4D"
+        ]
+      ],
+      "source_note": "Both record Germanic kubo. The boat and shanty meanings require the saved specialist review; shared source does not resolve that semantic uncertainty."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:8",
+      "panel": "open",
+      "word_a": "list",
+      "word_b": "list",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|list|noun||en-list-is-noun-087JkRIl,en-list-is-noun-nFPAdNes"
+        ],
+        [
+          "nl|list|noun||en-list-nl-noun-1FavS0Gu"
+        ]
+      ],
+      "source_note": "Both record Germanic listiz. Skill and cunning plan are related but not equivalent displayed uses."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:9",
+      "panel": "open",
+      "word_a": "þing",
+      "word_b": "ding",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|þing|noun||en-þing-is-noun-fuFi8hPO,en-þing-is-noun-m9HRJjdM"
+        ],
+        [
+          "nl|ding|noun|1|en-ding-nl-noun-73aloGw5,en-ding-nl-noun-XggGml4o"
+        ]
+      ],
+      "source_note": "Both record Germanic thinga. Assembly/parliament and thing are historically related; current meaning overlap is a separate restricted/historical issue."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:10",
+      "panel": "open",
+      "word_a": "varta",
+      "word_b": "wrat",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|varta|noun||en-varta-is-noun-niJ5G0aY"
+        ],
+        [
+          "nl|wrat|noun||en-wrat-nl-noun-Q75Ee2bP"
+        ]
+      ],
+      "source_note": "Both record Germanic warton. Shared wart history is supported despite the documented irregular Dutch development."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:12",
+      "panel": "open",
+      "word_a": "vetur",
+      "word_b": "winter",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|vetur|noun||en-vetur-is-noun-X3ccnl-d,en-vetur-is-noun-XboJD78y"
+        ],
+        [
+          "nl|winter|noun||en-winter-nl-noun-MMVGH8J7"
+        ]
+      ],
+      "source_note": "Both record Germanic wintruz. Winter source is supported; regional inventory differences remain separate."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:15",
+      "panel": "open",
+      "word_a": "vita",
+      "word_b": "weten",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|vita|verb|1|en-vita-is-verb-Sx2a7Dzc,en-vita-is-verb-mI1EnWdI"
+        ],
+        [
+          "nl|weten|verb|1|en-weten-nl-verb-D-uE47Jd,en-weten-nl-verb-DN8SzSwi,en-weten-nl-verb-OC7Eux0Z"
+        ]
+      ],
+      "source_note": "Both record Germanic witana. The source also gives different deeper forms of the same root; exact deepest-root spelling is unnecessary for this relation."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:21",
+      "panel": "open",
+      "word_a": "betri",
+      "word_b": "beter",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|betri|adj||en-betri-is-adj-DXIGXlDT"
+        ],
+        [
+          "nl|beter|adj||en-beter-nl-adj-3otkiuFb,en-beter-nl-adj-JgP--5yh,en-beter-nl-adj-W1xWfJoe"
+        ]
+      ],
+      "source_note": "Both record Germanic batizo. Comparative and generic high-quality displays remain different grammatical scope; common source does not justify equivalence of displayed definitions."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:22",
+      "panel": "open",
+      "word_a": "daufur",
+      "word_b": "doof",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|daufur|adj||en-daufur-is-adj-5dB8CK1a,en-daufur-is-adj-RJfosuz6,en-daufur-is-adj-gg7~uHSk,en-daufur-is-adj-j2jqAoLb"
+        ],
+        [
+          "nl|doof|adj|1|en-doof-nl-adj-gg7~uHSk"
+        ]
+      ],
+      "source_note": "Both record Germanic daubaz. Pallid/deaf selected meanings remain distinct; historical overlap does not settle current label correctness."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:23",
+      "panel": "open",
+      "word_a": "dreyma",
+      "word_b": "dromen",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|dreyma|verb||en-dreyma-is-verb-ax4U4LLK"
+        ],
+        [
+          "nl|dromen|verb|1|en-dromen-nl-verb-3I7ASTb5"
+        ]
+      ],
+      "source_note": "Both record Germanic draumijana. Icelandic experiencer syntax is explicitly described; the syntactic difference does not invalidate the historical word comparison."
+    },
+    {
+      "pair": "nl-is",
+      "case_id": "nl-is:open:24",
+      "panel": "open",
+      "word_a": "hvað",
+      "word_b": "wie",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|hvað|adv||en-hvað-is-adv-ry8GHlyl"
+        ],
+        [
+          "nl|wie|pron||en-wie-nl-pron-PbefBgOU,en-wie-nl-pron-gmXoHfxX"
+        ]
+      ],
+      "source_note": "Shared hwaz supports an interrogative family through Icelandic neuter formation and conflation. How and who are different forms and displayed meanings."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:6",
+      "panel": "open",
+      "word_a": "greip",
+      "word_b": "grep",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|greip|noun|1|en-greip-is-noun-TaVIIlLa"
+        ],
+        [
+          "sv|grep|noun||en-grep-sv-noun-eiZ77lVW"
+        ]
+      ],
+      "source_note": "Both record Old Norse greip and Germanic graipo, with an explicit Swedish comparison in Icelandic prose. Grasp/tool meanings are related, not equivalent displays."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:7",
+      "panel": "open",
+      "word_a": "skata",
+      "word_b": "skata",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|skata|noun||en-skata-is-noun-h7r9u-6U"
+        ],
+        [
+          "sv|skata|noun||en-skata-sv-noun-5jneA41m,en-skata-sv-noun-q6iKi9s-"
+        ]
+      ],
+      "source_note": "The common Old Norse skata and cross-language mentions are supported for ray and magpie developments. Deeper skade derivation is speculative; preserve this qualification on the broad path rather than rejecting the common Norse word."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:8",
+      "panel": "open",
+      "word_a": "digur",
+      "word_b": "diger",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|digur|adj||en-digur-is-adj-3RBpNQb5"
+        ],
+        [
+          "sv|diger|adj||en-diger-sv-adj-p~7NLlZp"
+        ]
+      ],
+      "source_note": "Both record Old Norse digr and Germanic digraz. Shared stout/thick source is supported with separately assessed current scope."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:9",
+      "panel": "open",
+      "word_a": "rjúpa",
+      "word_b": "ripa",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|rjúpa|noun||en-rjúpa-is-noun-vErKFnk4"
+        ],
+        [
+          "sv|ripa|noun||en-ripa-sv-noun-0NplGP1-"
+        ]
+      ],
+      "source_note": "Both record Old Norse rjupa. The ptarmigan comparison is supported; species and generic scope remain separate."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:10",
+      "panel": "open",
+      "word_a": "öfund",
+      "word_b": "avund",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|öfund|noun||en-öfund-is-noun-~JE2jyA2"
+        ],
+        [
+          "sv|avund|noun||en-avund-sv-noun-~JE2jyA2"
+        ]
+      ],
+      "source_note": "Both record Old Norse ofund and Germanic abundiz. Envy history is supported."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:13",
+      "panel": "open",
+      "word_a": "skánn",
+      "word_b": "skåne",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|Skánn|name||en-Skánn-is-name-UPltk-uJ,en-Skánn-is-name-Vq8tbGCD"
+        ],
+        [
+          "sv|Skåne|name||en-Skåne-sv-name-UPltk-uJ,en-Skåne-sv-name-Vq8tbGCD"
+        ]
+      ],
+      "source_note": "Both place-name entries record Old Norse Skaney and Germanic Skadinawjo and identify the same region. This supports the name comparison, not a general personal-name matching rule."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:19",
+      "panel": "open",
+      "word_a": "daufur",
+      "word_b": "döv",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|daufur|adj||en-daufur-is-adj-5dB8CK1a,en-daufur-is-adj-RJfosuz6,en-daufur-is-adj-gg7~uHSk,en-daufur-is-adj-j2jqAoLb"
+        ],
+        [
+          "sv|döv|adj||en-döv-sv-adj-IR2nhtlk"
+        ]
+      ],
+      "source_note": "Both record Old Norse daufr and Germanic daubaz. Pallid/deaf displays remain different; recorded historical overlap is not current synonymy."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:21",
+      "panel": "open",
+      "word_a": "náhvalur",
+      "word_b": "narval",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|náhvalur|noun||en-náhvalur-is-noun-H8yNoAmA"
+        ],
+        [
+          "sv|narval|noun||en-narval-sv-noun-1uSU0mXk"
+        ]
+      ],
+      "source_note": "Both record Old Norse nahvalr, but the Icelandic compound derivation and Swedish metathesis route are qualified as probable. Retain those qualifications rather than presenting an unqualified complete transmission."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:22",
+      "panel": "open",
+      "word_a": "hvað",
+      "word_b": "vem",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|hvað|adv||en-hvað-is-adv-ry8GHlyl"
+        ],
+        [
+          "sv|vem|pron||en-vem-sv-pron-PbefBgOU"
+        ]
+      ],
+      "source_note": "Shared hwaz supports a grammatical family through the Icelandic neuter/conflated form. The selected how and who uses are not equivalent."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:23",
+      "panel": "open",
+      "word_a": "laugardagur",
+      "word_b": "lördag",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|laugardagur|noun||en-laugardagur-is-noun-2-Ncc2PC"
+        ],
+        [
+          "sv|lördag|noun||en-lördag-sv-noun-cyPd~EWr"
+        ]
+      ],
+      "source_note": "Both inherit the complete Old Norse laugardagr. The day-name correspondence is supported without inferring every modern cultural use is identical."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "sv-is:open:26",
+      "panel": "open",
+      "word_a": "þröstur",
+      "word_b": "trast",
+      "display_decision": null,
+      "history_reference": null,
+      "selected_entry_scope": [
+        [
+          "is|þröstur|noun||en-þröstur-is-noun-ybu1rZAP"
+        ],
+        [
+          "sv|trast|noun||en-trast-sv-noun-jGeBGgNs"
+        ]
+      ],
+      "source_note": "Both record Old Norse throstr and an explicit Swedish cognate mention. Deeper forms differ, but the common Norse word supports the thrush comparison."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "iecor:20-130-1:21-130-1",
+      "panel": "concept",
+      "word_a": "rund",
+      "word_b": "rond",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "da|rund|adj||en-rund-da-adj-3M6A-ocA,en-rund-da-adj-LUleiD~N,en-rund-da-adj-tWjPHwR8"
+        ],
+        [
+          "nl|rond|adj||en-rond-nl-adj-5jNMccYO,en-rond-nl-adj-tWjPHwR8"
+        ]
+      ],
+      "source_note": "rund/rond: both trace through French to Latin rotundus. Shared loan source is supported; different expert sets do not refute it."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "iecor:20-141-1:21-141-1",
+      "panel": "concept",
+      "word_a": "kort",
+      "word_b": "kort",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "da|kort|adj|1|en-kort-da-adj--bAHi131,en-kort-da-adj-KaiCW9JC"
+        ],
+        [
+          "nl|kort|adj|1|en-kort-nl-adj--bAHi131"
+        ]
+      ],
+      "source_note": "kort/kort: common West Germanic kurt is recorded, with early Latin borrowing on the Dutch side and Low German transmission into Danish. Different expert sets can reflect borrowing history."
+    },
+    {
+      "pair": "da-nl",
+      "case_id": "iecor:20-182-1:21-182-1",
+      "panel": "concept",
+      "word_a": "dreje",
+      "word_b": "draaien",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "da|dreje|verb||en-dreje-da-verb-4s29iXOP,en-dreje-da-verb-9itWmLDa,en-dreje-da-verb-BMrOpkTb,en-dreje-da-verb-Ig2wVqMJ,en-dreje-da-verb-dDNhR9jD"
+        ],
+        [
+          "nl|draaien|verb||en-draaien-nl-verb-FOWwgRqI,en-draaien-nl-verb-KV4XMenk,en-draaien-nl-verb-gcHnbgHP,en-draaien-nl-verb-jzpXcEz2,en-draaien-nl-verb-mQmnMGqo,en-draaien-nl-verb-tBTdui4e"
+        ]
+      ],
+      "source_note": "dreje/draaien: explicit cross-language mention and common Germanic/West Germanic sources support the relationship, while Danish records Low German transmission."
+    },
+    {
+      "pair": "de-nl",
+      "case_id": "iecor:27-130-1:21-130-1",
+      "panel": "concept",
+      "word_a": "rund",
+      "word_b": "rond",
+      "display_decision": "wrong_sense",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "de|rund|adv||en-rund-de-adv-f0dDnDes,en-rund-de-adv-pKAMhA~D"
+        ],
+        [
+          "nl|rond|prep||en-rond-nl-prep-f8pcNAJy,en-rond-nl-prep-pKAMhA~D"
+        ]
+      ],
+      "source_note": "rund/rond: shared Latin/French history is supported, but the selected adverb/preposition around meanings do not match the benchmark round adjective."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "iecor:22-130-1:21-130-1",
+      "panel": "concept",
+      "word_a": "round",
+      "word_b": "rond",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|round|adj|1|en-round-en-adj-737xfwJm,en-round-en-adj-9saSFU43,en-round-en-adj-EWzBLLlr,en-round-en-adj-F4eqHFfv,en-round-en-adj-MdkmE~cS,en-round-en-adj-RIa5WbgT,en-round-en-adj-UmpGlj~b,en-round-en-adj-XVfi3tv6,en-round-en-adj-cm2u6pGC,en-round-en-adj-iKTFxUjz,en-round-en-adj-iQQ9aHcX,en-round-en-adj-sBNlNzGp,en-round-en-adj-tLGAzqPu,en-round-en-adj-~BN7I~S6"
+        ],
+        [
+          "nl|rond|adj||en-rond-nl-adj-5jNMccYO,en-rond-nl-adj-tWjPHwR8"
+        ]
+      ],
+      "source_note": "round/rond: both record Latin rotundus through French. Shared borrowing ancestry is supported without equating expert-set membership."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "iecor:22-182-1:21-182-1",
+      "panel": "concept",
+      "word_a": "turn",
+      "word_b": "draaien",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|turn|verb|1|en-turn-en-verb-0Uv7hIWs,en-turn-en-verb-59k3f9Ny,en-turn-en-verb-5hYjR4J0,en-turn-en-verb-5jJjm80B,en-turn-en-verb-7RwukMIa,en-turn-en-verb-85NEaxZ2,en-turn-en-verb-ArUQk-Me,en-turn-en-verb-BmOX4kzY,en-turn-en-verb-Cc5Bjin-,en-turn-en-verb-DgwWeo-H,en-turn-en-verb-EKDndKqX,en-turn-en-verb-HmmlzgTa,en-turn-en-verb-J0suxaU9,en-turn-en-verb-OTJeObuG,en-turn-en-verb-RG4fxieI,en-turn-en-verb-RpMVUtPD,en-turn-en-verb-SOOq1Wk9,en-turn-en-verb-U2FjPVFD,en-turn-en-verb-UdHrbokw,en-turn-en-verb-VHLzgVua,en-turn-en-verb-ZJ4n5aKw,en-turn-en-verb-a4fxX9Gd,en-turn-en-verb-bQHicS4S,en-turn-en-verb-cXIUk3kN,en-turn-en-verb-csf9btmj,en-turn-en-verb-en:become,en-turn-en-verb-gBC-mat1,en-turn-en-verb-hJymyNMj,en-turn-en-verb-m8dfSSkj,en-turn-en-verb-p6ZsBPHy,en-turn-en-verb-qKi7deyE,en-turn-en-verb-qOIkfaRB,en-turn-en-verb-uWI65ZJQ,en-turn-en-verb-wXNFKctQ,en-turn-en-verb-xfr-hZTd"
+        ],
+        [
+          "nl|draaien|verb||en-draaien-nl-verb-FOWwgRqI,en-draaien-nl-verb-KV4XMenk,en-draaien-nl-verb-gcHnbgHP,en-draaien-nl-verb-jzpXcEz2,en-draaien-nl-verb-mQmnMGqo,en-draaien-nl-verb-tBTdui4e"
+        ]
+      ],
+      "source_note": "turn/draaien: shared Indo-European terh1 is a distant root connection through distinct formations and English Latin/French borrowing. It is not proof of inherited whole-word cognacy at the benchmark's level."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "iecor:22-22-1:21-22-1",
+      "panel": "concept",
+      "word_a": "cloud",
+      "word_b": "wolk",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|cloud|noun||en-cloud-en-noun--VAZ80Df,en-cloud-en-noun--cKUumID,en-cloud-en-noun-10sdBk55,en-cloud-en-noun-2EcXVeEr,en-cloud-en-noun-8BTgsfXt,en-cloud-en-noun-F0MfJiBO,en-cloud-en-noun-JFA5VpgH,en-cloud-en-noun-L-U9PywJ,en-cloud-en-noun-YCzVt7Jm,en-cloud-en-noun-en:Q8074,en-cloud-en-noun-en:internet,en-cloud-en-noun-en:telecommunication,en-cloud-en-noun-oLBRz45Y,en-cloud-en-noun-pZxbV5mU,en-cloud-en-noun-xyEhrgM-"
+        ],
+        [
+          "nl|wolk|noun||en-wolk-nl-noun-NOLX7yAK,en-wolk-nl-noun-bPoZjfrM,en-wolk-nl-noun-fB~UNse7,en-wolk-nl-noun-zqbSme4B"
+        ]
+      ],
+      "source_note": "cloud/wolk: reject the explicit cognate edge. English prose applies the Dutch wolk mention to displaced welkne/welkin, not cloud. Cloud has klutaz ancestry and wolk has wolkn; their ordinary translation comparison remains valid."
+    },
+    {
+      "pair": "en-nl",
+      "case_id": "iecor:22-39-1:21-39-1",
+      "panel": "concept",
+      "word_a": "egg",
+      "word_b": "ei",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|egg|noun|1|en-egg-en-noun--gTolg2l,en-egg-en-noun--yEcaQ4i,en-egg-en-noun-0ZsnUKs8,en-egg-en-noun-BGJAg0ZH,en-egg-en-noun-DB1fT37i,en-egg-en-noun-E6ww2F1C,en-egg-en-noun-HizlqfLK,en-egg-en-noun-Hnt9umkr,en-egg-en-noun-K6z6u5kj,en-egg-en-noun-NviFm2w3,en-egg-en-noun-Oh-aj1SW,en-egg-en-noun-VJAvIkD7,en-egg-en-noun-XI0wYhqR,en-egg-en-noun-YSsMkxz3,en-egg-en-noun-en:Q93189,en-egg-en-noun-en:cellular_automata,en-egg-en-noun-en:trans_person,en-egg-en-noun-en:trans_person1,en-egg-en-noun-rlXBj9z4,en-egg-en-noun-wefW6ymj"
+        ],
+        [
+          "nl|ei|noun|1|en-ei-nl-noun-NHB8P0Df,en-ei-nl-noun-dfNrtRqI"
+        ]
+      ],
+      "source_note": "egg/ei: common Germanic ajja is recorded; English egg enters through Norse borrowing and replaces native ey. Different expert sets do not disprove the shared historical source."
+    },
+    {
+      "pair": "nb-nl",
+      "case_id": "iecor:58-141-1:21-141-1",
+      "panel": "concept",
+      "word_a": "kort",
+      "word_b": "kort",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "nb|kort|adj|1|en-kort-nb-adj--bAHi131,en-kort-nb-adj-KaiCW9JC,en-kort-nb-adj-ZvflFTqV"
+        ],
+        [
+          "nl|kort|adj|1|en-kort-nl-adj--bAHi131"
+        ]
+      ],
+      "source_note": "kort/kort: both trace to Latin curtus, with Low German/Norse transmission into Norwegian. Shared borrowing history is supported."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "iecor:21-130-1:69-130-1",
+      "panel": "concept",
+      "word_a": "rond",
+      "word_b": "rund",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "nl|rond|adj||en-rond-nl-adj-5jNMccYO,en-rond-nl-adj-tWjPHwR8"
+        ],
+        [
+          "sv|rund|adj||en-rund-sv-adj-M7g9r5MJ,en-rund-sv-adj-har534YO,en-rund-sv-adj-qXsJMXMO"
+        ]
+      ],
+      "source_note": "rond/rund: both trace through French, with Low German transmission into Swedish. Shared source is supported."
+    },
+    {
+      "pair": "nl-sv",
+      "case_id": "iecor:21-141-1:69-141-1",
+      "panel": "concept",
+      "word_a": "kort",
+      "word_b": "kort",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "nl|kort|adj|1|en-kort-nl-adj--bAHi131"
+        ],
+        [
+          "sv|kort|adj|1|en-kort-sv-adj--bAHi131"
+        ]
+      ],
+      "source_note": "kort/kort: both record West Germanic kurt and Latin curtus; Swedish records Low German transmission. Shared source is supported with borrowing routes retained."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "iecor:22-127-1:36-127-1",
+      "panel": "concept",
+      "word_a": "root",
+      "word_b": "rót",
+      "display_decision": "wrong_sense",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|root|noun|1|en-root-en-noun-en:aviation,en-root-en-noun-en:computer_dir,en-root-en-noun-en:computer_user,en-root-en-noun-en:engineering,en-root-en-noun-en:etymon,en-root-en-noun-en:hair,en-root-en-noun-en:lowest,en-root-en-noun-en:math,en-root-en-noun-en:math_sqrt,en-root-en-noun-en:mathematical_analysis,en-root-en-noun-en:music,en-root-en-noun-en:node,en-root-en-noun-en:origin,en-root-en-noun-en:penis,en-root-en-noun-en:tooth,en-root-en-noun-en:underground_plant_part,en-root-en-noun-en:untreated_hair,en-root-en-noun-en:vegetable,en-root-en-noun-en:word"
+        ],
+        [
+          "is|rót|noun|1|en-rót-is-noun-RrojybKh,en-rót-is-noun-SBNJTRN-,en-rót-is-noun-SBNJTRN-1,en-rót-is-noun-SBNJTRN-1"
+        ]
+      ],
+      "source_note": "root/rot: English explicitly names Icelandic rot and both record the Norse/Germanic root, with Norse borrowing into English. Selected figurative origin meanings are wrong for the benchmark plant-root concept."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "iecor:22-39-1:36-39-1",
+      "panel": "concept",
+      "word_a": "egg",
+      "word_b": "egg",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|egg|noun|1|en-egg-en-noun--gTolg2l,en-egg-en-noun--yEcaQ4i,en-egg-en-noun-0ZsnUKs8,en-egg-en-noun-BGJAg0ZH,en-egg-en-noun-DB1fT37i,en-egg-en-noun-E6ww2F1C,en-egg-en-noun-HizlqfLK,en-egg-en-noun-Hnt9umkr,en-egg-en-noun-K6z6u5kj,en-egg-en-noun-NviFm2w3,en-egg-en-noun-Oh-aj1SW,en-egg-en-noun-VJAvIkD7,en-egg-en-noun-XI0wYhqR,en-egg-en-noun-YSsMkxz3,en-egg-en-noun-en:Q93189,en-egg-en-noun-en:cellular_automata,en-egg-en-noun-en:trans_person,en-egg-en-noun-en:trans_person1,en-egg-en-noun-rlXBj9z4,en-egg-en-noun-wefW6ymj"
+        ],
+        [
+          "is|egg|noun|1|en-egg-is-noun--aOY~hXQ,en-egg-is-noun-DtYuxrOX,en-egg-is-noun-D~Tx7vi6"
+        ]
+      ],
+      "source_note": "egg/egg: common Norse egg and Germanic ajja are supported; Norse borrowing into English explains why expert-set membership alone is an insufficient negative reference."
+    },
+    {
+      "pair": "en-is",
+      "case_id": "iecor:22-8-1:36-8-1",
+      "panel": "concept",
+      "word_a": "bark",
+      "word_b": "börkur",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "en|bark|noun|2|en-bark-en-noun-BDmECDwd,en-bark-en-noun-VAPG7ozB,en-bark-en-noun-en:Q184453,en-bark-en-noun-en:candy,en-bark-en-noun-en:crust,en-bark-en-noun-ifqjx2f5"
+        ],
+        [
+          "is|börkur|noun||en-börkur-is-noun-0LXgaXSD"
+        ]
+      ],
+      "source_note": "bark/borkur: English explicitly names Icelandic borkur and records Norse borrowing. The common Norse and Germanic forms support the relationship; the deeper birch/Indo-European derivation is only probable."
+    },
+    {
+      "pair": "sv-is",
+      "case_id": "iecor:36-8-1:69-8-1",
+      "panel": "concept",
+      "word_a": "börkur",
+      "word_b": "bark",
+      "display_decision": "acceptable",
+      "history_reference": "different_expert_sets",
+      "selected_entry_scope": [
+        [
+          "is|börkur|noun||en-börkur-is-noun-0LXgaXSD"
+        ],
+        [
+          "sv|bark|noun|1|en-bark-sv-noun-K~MkdPq9"
+        ]
+      ],
+      "source_note": "borkur/bark: both record common Norse borkr and Germanic barkuz. Different expert sets do not invalidate this documented correspondence; its transmission detail remains outside what broad derived_from templates establish."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": "E3-002",
+  "variant": "sources",
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "source_variant_plan_sha256": "4e936a328b23234849405eb3b9dbfc54828931dc7752af6d89f08f4d6f619278",
+  "source_comparisons_sha256": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+  "source_records": "C:\\Users\\ollem\\Git\\Github\\linduistics\\pipeline\\data\\reproduce-five-language-20261002\\etymology_records.jsonl",
+  "source_records_sha256": "717e04e01608216d3d00bd8eab63c65f28a28fb587a7fe73148429532cf6d961",
+  "source_manifest_sha256": "6174e207fb2c1862b2835751640691c9248add63c495caf1650500c96703ea5e",
+  "source_index_entries": 710110,
+  "loaded_source_entries": 1468,
+  "endpoint_identities_requested": 1609,
+  "endpoint_identities_resolved": 1451,
+  "reference_sha256": "8a798e3e65525031c66d4e4a954d199052b92db4cf03fc23be285d9e6b642984",
+  "plan_sha256": "7a47c19edd59d929ad2ef453f03c7e5da4c0735954b5ffe8a5db652763c7ee15",
+  "code_sha256": {
+    "C:\\Users\\ollem\\Git\\Github\\linduistics\\pipeline\\evaluation\\e3.py": "71c35f8d6165fc6e0a273c9af9555168e35e233f0efa32431622c0543c6e64bd",
+    "pipeline\\src\\historical_links.py": "6fdea821c0d4f5b821c9247d8920a0787bafbeb58f53541bd08f6e4473482e40"
+  },
+  "meaning_and_display": "Original baseline; neither E1 nor E2 adopted",
+  "write_policy": "New local result directory; no source, live database, or production changes."
+}

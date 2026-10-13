@@ -1,0 +1,13 @@
+{
+  "code_sha256": "4c5b6e9b1d980a13faf091eb4b43370e2320c39f03c5f4ce1bde1a27165f448a",
+  "input_sha256": {
+    "source_review_candidates.json": "75d9d22ce61c50a807adeea3555cecef53fa419df1584dc1bc62c38c3aaac2ed",
+    "source_review_notes.json": "a54ec2549e16e4818be281b03341b24e89fcbc66bcc86e0d8b3f7f25f57f2ef8",
+    "protocol.json": "e261b2cc2f4909a023af4f53ce59d197afaf29bb679e991a5c8bdea1ea08e9e0",
+    "metrics.json": "0af755d17503f8ce571a9adb3f7d03e10ac8769a11f2b13377adc2ee65344f8e"
+  },
+  "review_basis": "Recorded source prose, selected definitions, and recovered path targets read together.",
+  "independence": "Agent source review, not independent human historical truth.",
+  "production_changes": false,
+  "reserved_cases_used": false
+}
