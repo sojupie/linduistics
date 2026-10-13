@@ -69,3 +69,9 @@ better independently checked output, not reproduction of the control's mistakes.
 
 No database import, service start, branch switch or new experiment was performed
 while recording this plan.
+
+## Recovery completed
+
+The user subsequently authorized this plan. The [recovery result](FEDORA_RECOVERY_RESULT.md)
+records the restored application, full import checks, browser checks, recovery
+fixes and successful E2 replay. Use that result for current state.

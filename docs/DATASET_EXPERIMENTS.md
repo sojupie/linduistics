@@ -6,6 +6,12 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**Fedora recovery, 2026-10-14:** the accepted five-language build is running again,
+and the later experiment/verification history is recovered. See the
+[recovery result](FEDORA_RECOVERY_RESULT.md). E2's original 207 profiles and
+decisions reproduce unchanged; no improved method has been adopted. Next, freeze
+the sense-scoped E2 follow-up under the existing verification protocol.
+
 **Verification setup, 2026-10-04:** use the [verification protocol](DATASET_VERIFICATION.md)
 and its executable sampling/review tool before further improvement experiments.
 This records the evaluation design and review requirements; it does not adopt a
