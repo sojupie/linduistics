@@ -33,10 +33,10 @@ export const CognateGrid: React.FC = () => {
           {game.gridScore !== null && <div className="mt-2"><AnswerFeedbackBadge selected={chosen} correct={correct} /></div>}
         </button>;
       })}</div>
-      <div className="mt-4 flex flex-wrap items-center gap-3">{game.gridScore === null ? <button type="button" onClick={() => game.setGridScore(game.questionItems.filter((item) => {
+      <div className="mt-4 flex flex-wrap items-center gap-3">{game.gridScore === null ? <><button type="button" disabled={game.selected.length === 0} onClick={() => game.setGridScore(game.questionItems.filter((item) => {
         const correct = game.gridTarget === 'true' ? ['true_cognate', 'full_cognate'].includes(item.category) : ['false_friend', 'cognate_false_friend', 'accidental_lookalike'].includes(item.category);
         return game.selected.includes(item.id) === correct;
-      }).length)} className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 typo-overline px-4 py-2">Check Grid</button> : <>
+      }).length)} className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 disabled:border-book-rule disabled:bg-page-muted disabled:text-ink-muted typo-overline px-4 py-2">Check Grid</button>{game.selected.length === 0 && <span className="typo-sublabel text-ink-muted">Select at least one pair before checking.</span>}</> : <>
         {game.gridTarget === 'true' && <p className="basis-full typo-sublabel">True cognates checked. Next, find false friends: pairs that look or sound alike but mean different things.</p>}
         <button type="button" onClick={() => { game.setGridTotal((value) => value + game.gridScore!); if (game.gridTarget === 'true') { game.setGridTarget('false'); game.setSelected([]); game.setGridScore(null); } else game.setFinished(true); }} className="border border-ink-main bg-ink-main text-page-bg hover:bg-stone-800 typo-overline px-4 py-2">{game.gridTarget === 'true' ? 'Start false friends grid' : 'See Results'} <MaterialSymbol icon="arrow_forward" size={18} /></button>
       </>}{game.gridScore !== null && <span className="typo-sublabel text-ink-muted">{game.gridScore} correct in this grid</span>}</div>
