@@ -46,6 +46,15 @@ def normalized(word):
     return unicodedata.normalize('NFC', word.strip()).casefold()
 
 
+def frozen_input_hashes():
+    """Read historical Windows paths on either platform; preserve the manifest."""
+    original = json.loads((OUTPUT / 'e0_input_manifest.json').read_text(encoding='utf-8'))['baseline_and_lookup_hashes']
+    portable = {name.replace('\\', '/'): expected for name, expected in original.items()}
+    if len(portable) != len(original):
+        raise ValueError('Duplicate normalized input paths in frozen manifest')
+    return portable
+
+
 def key(lang_a, word_a, lang_b, word_b):
     return tuple(sorted(((lang_a, normalized(word_a)), (lang_b, normalized(word_b)))))
 
@@ -190,8 +199,7 @@ def verify():
     assert digest(DATASET) == protocol['baseline_sha256']
     manifest_path = OUTPUT / 'e0_input_manifest.json'
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-        for name, expected in manifest['baseline_and_lookup_hashes'].items():
+        for name, expected in frozen_input_hashes().items():
             assert digest(ROOT / name) == expected, f'Frozen input changed: {name}'
     cases = read_csv(OUTPUT / 'e0_concept_cases.csv')
     results = read_csv(OUTPUT / 'e0_concept_results.csv')

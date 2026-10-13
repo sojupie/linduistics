@@ -10,7 +10,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import psycopg
 
-from e0 import ROOT, OUTPUT, BASELINE, DATASET, digest, save_json
+from e0 import ROOT, OUTPUT, BASELINE, DATASET, digest, frozen_input_hashes, save_json
 
 sys.path.insert(0, str(ROOT / 'pipeline/src'))
 import build_crosslingual_dataset as builder
@@ -20,7 +20,7 @@ from sense_aligner import classify_pair_senses
 def run(destination):
     destination.mkdir(parents=True, exist_ok=False)
     started = time.perf_counter()
-    inputs = json.loads((OUTPUT / 'e0_input_manifest.json').read_text())['baseline_and_lookup_hashes']
+    inputs = frozen_input_hashes()
     for name, expected in inputs.items():
         assert digest(ROOT / name) == expected, name
     new_protocol = json.loads((OUTPUT / 'e5-source-audit/protocol.json').read_text())

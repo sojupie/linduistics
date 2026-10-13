@@ -12,7 +12,7 @@ import pyarrow.parquet as pq
 from rapidfuzz import process
 from rapidfuzz.distance import Levenshtein
 
-from e0 import BASELINE, DATASET, OUTPUT, ROOT, SEED, digest, key, read_csv, save_json
+from e0 import BASELINE, DATASET, OUTPUT, ROOT, SEED, digest, frozen_input_hashes, key, read_csv, save_json
 
 sys.path.insert(0, str(ROOT / 'pipeline/src'))
 from linguistic_metrics import normalize_orthography
@@ -24,7 +24,7 @@ def load(path):
 
 
 def verified_inputs():
-    hashes = load(OUTPUT / 'e0_input_manifest.json')['baseline_and_lookup_hashes']
+    hashes = frozen_input_hashes()
     for name, expected in hashes.items():
         assert digest(ROOT / name) == expected, name
     return hashes

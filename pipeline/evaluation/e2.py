@@ -9,7 +9,7 @@ import pyarrow as pa
 import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
-from e0 import BASELINE, OUTPUT, SEED, digest, key, save_json
+from e0 import BASELINE, OUTPUT, ROOT, SEED, digest, frozen_input_hashes, key, save_json
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from meaning_profile import profile_meanings, self_check
@@ -59,8 +59,7 @@ def evaluate(destination, run_id, variant):
     sources, wanted = translation_sources(rows) if variant == 'evidence' else ({}, set())
     lookup = BASELINE / 'lemmas_en.parquet'
     if variant == 'evidence':
-        manifest = load(OUTPUT / 'e0_input_manifest.json')
-        assert digest(lookup) == manifest['baseline_and_lookup_hashes'][str(lookup.relative_to(Path.cwd()))]
+        assert digest(lookup) == frozen_input_hashes()[lookup.relative_to(ROOT).as_posix()]
     cases = load(source / 'case_displays.json')
     roles = {(r['panel'], r['case_id']): r for r in load(OUTPUT / 'e0_families_v2.json')['cases']}
     assert all(roles[r['panel'], r['case_id']]['role'] == 'development' for r in cases)
