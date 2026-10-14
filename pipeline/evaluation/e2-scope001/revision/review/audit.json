@@ -1,0 +1,520 @@
+{
+  "plan_path": "/home/sojupie/git/linduistics/pipeline/data/e2-scope-20261014/revision/review_plan.json",
+  "plan_sha256": "0868a40bfaede8c83be81dda2e5e3b7386537b8933f90e26ca0b2611cbb5cf50",
+  "code_sha256": "810e6303fe95105924bfb95c27b2761fdf0e167eff14059b04674dd2455ac847",
+  "packet_sha256": "55cc75efa15202b1385cfa5f0c7daa4c8022ba3ca46263c0d1799c4180822747",
+  "strata": {
+    "da-de": {
+      "N": 26,
+      "n": 5,
+      "probability": 0.19230769230769232,
+      "weight": 5.2
+    },
+    "da-en": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "da-nb": {
+      "N": 6,
+      "n": 5,
+      "probability": 0.8333333333333334,
+      "weight": 1.2
+    },
+    "da-sv": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "de-en": {
+      "N": 35,
+      "n": 5,
+      "probability": 0.14285714285714285,
+      "weight": 7.0
+    },
+    "de-nb": {
+      "N": 27,
+      "n": 5,
+      "probability": 0.18518518518518517,
+      "weight": 5.4
+    },
+    "de-sv": {
+      "N": 29,
+      "n": 5,
+      "probability": 0.1724137931034483,
+      "weight": 5.8
+    },
+    "en-nb": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "en-sv": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "nb-sv": {
+      "N": 13,
+      "n": 5,
+      "probability": 0.38461538461538464,
+      "weight": 2.6
+    }
+  },
+  "cases": [
+    {
+      "id": "e471569ff84d60270901",
+      "family": "547b1671c71f585e",
+      "stratum": "da-de",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "family": "1bd41d7fd7248775",
+      "stratum": "da-de",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "family": "54f5e65f7603f73b",
+      "stratum": "da-de",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "family": "542a5a3478668cfa+d0a2580d1abc3b8f",
+      "stratum": "da-de",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "family": "54f5e65f7603f73b",
+      "stratum": "da-de",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "family": "82d79a924f801345+da954366564c99b4",
+      "stratum": "da-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "family": "48c5603e04e2de96+9a5085d48504cb94",
+      "stratum": "da-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "d868848751027f04426a",
+      "family": "5c36f1e77a287bba+bb50fd025e81813f",
+      "stratum": "da-en",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "family": "5df7da873ff49f7b",
+      "stratum": "da-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "family": "6d29735e38c4a8ee",
+      "stratum": "da-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "family": "9ab9a297d12d6bb5+f5b8bfd26db2e660",
+      "stratum": "da-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "family": "9ab9a297d12d6bb5+e58c0f6ba2bd97e1",
+      "stratum": "da-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "family": "1b451e9c27835e57+c3ec0d2aba014c0f",
+      "stratum": "da-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "family": "e7f2e2d7d00fddd4+f34ffeb194903e1a",
+      "stratum": "da-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "family": "21626bad9ab9c133",
+      "stratum": "da-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "family": "951ea68f8b897e25+e5e2b4345d083a52",
+      "stratum": "da-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "family": "13d474143b355872",
+      "stratum": "da-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "family": "6a7f998958ee6123+e8db11910abb56fb",
+      "stratum": "da-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "family": "46b207abeb4c1b1e+e58c0f6ba2bd97e1",
+      "stratum": "da-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "family": "46b207abeb4c1b1e+f5b8bfd26db2e660",
+      "stratum": "da-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "family": "410504b204544b4c",
+      "stratum": "de-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "family": "1a51b55eae6d35f4+4c1f9b361f8cca17",
+      "stratum": "de-en",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "family": "0aa33f1adab50b63+3aac70d2444370a5",
+      "stratum": "de-en",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "family": "5df7da873ff49f7b+d2965b73e67c0cce",
+      "stratum": "de-en",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "family": "1f73270ee8f776a7+410504b204544b4c",
+      "stratum": "de-en",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "family": "250b3c80827c2fd0+f3e3f3605ea04e70",
+      "stratum": "de-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "family": "338dbe560a6e3681",
+      "stratum": "de-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "family": "1bd41d7fd7248775",
+      "stratum": "de-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "family": "46b207abeb4c1b1e+f5b8bfd26db2e660",
+      "stratum": "de-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "family": "01e17e2a05e7e2f2+27662b5d792d0953",
+      "stratum": "de-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "family": "a91658d50755521d+de4d0e6ebf468c21",
+      "stratum": "de-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "family": "6a7f998958ee6123+e8db11910abb56fb",
+      "stratum": "de-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "family": "81b5121a7c88e933",
+      "stratum": "de-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "family": "a84e11cf85597142+ac1ef0426379b872",
+      "stratum": "de-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "family": "4c1f9b361f8cca17+722e4fb99e74818c",
+      "stratum": "de-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "family": "ae9070cddd393280+c3ec0d2aba014c0f",
+      "stratum": "en-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "family": "5cd199f2602f44b0+c3ec0d2aba014c0f",
+      "stratum": "en-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "family": "34b4ad9ab8f89aaf+43a186604806d5ae",
+      "stratum": "en-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "family": "6db7a487c4f9dc87+aeb3e8db2af2f507",
+      "stratum": "en-nb",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "family": "6d29735e38c4a8ee",
+      "stratum": "en-nb",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "family": "410504b204544b4c",
+      "stratum": "en-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "family": "46b207abeb4c1b1e+9ab9a297d12d6bb5",
+      "stratum": "en-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "family": "6a7f998958ee6123+e8db11910abb56fb",
+      "stratum": "en-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "family": "5df7da873ff49f7b",
+      "stratum": "en-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "family": "1f73270ee8f776a7+5f2fe00814be05e7",
+      "stratum": "en-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "family": "b7d2b674bd71321b+e7b122e8fa3e126d",
+      "stratum": "nb-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "family": "93d3cac753a15f94+a91658d50755521d",
+      "stratum": "nb-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "family": "54f5e65f7603f73b+c3ec0d2aba014c0f",
+      "stratum": "nb-sv",
+      "versions": {
+        "A": "control",
+        "B": "variant"
+      }
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "family": "1f73270ee8f776a7+f2fe0ec16f169b67",
+      "stratum": "nb-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "family": "e58c0f6ba2bd97e1+f5b8bfd26db2e660",
+      "stratum": "nb-sv",
+      "versions": {
+        "A": "variant",
+        "B": "control"
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "phase": "development",
+  "plan_sha256": "73ec1ddc4b1fc2b55071aa9ef96c3c24982b8d72af8e6be85f9b68501c3c813d",
+  "seed": 20261014,
+  "baseline_sha256": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+  "families_sha256": "b07cf0cb30876cb7cd3904511490154e8d72c010e9d8bf87bf0295861dae5642",
+  "frame_sha256": "ee70d9d1bea8f5120af850429b2db735337dffe19cce19b4e2a1c545112f43a4",
+  "packet_sha256": "c16b7e6ff055327759a1eddf46c85b3d67ef628bb1f21a6ed117a8542cd92b29",
+  "english_lemmas_sha256": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b",
+  "strata": {
+    "da-de": {
+      "N": 26,
+      "n": 5,
+      "probability": 0.19230769230769232,
+      "weight": 5.2
+    },
+    "da-en": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "da-nb": {
+      "N": 6,
+      "n": 5,
+      "probability": 0.8333333333333334,
+      "weight": 1.2
+    },
+    "da-sv": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "de-en": {
+      "N": 35,
+      "n": 5,
+      "probability": 0.14285714285714285,
+      "weight": 7.0
+    },
+    "de-nb": {
+      "N": 27,
+      "n": 5,
+      "probability": 0.18518518518518517,
+      "weight": 5.4
+    },
+    "de-sv": {
+      "N": 29,
+      "n": 5,
+      "probability": 0.1724137931034483,
+      "weight": 5.8
+    },
+    "en-nb": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "en-sv": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "nb-sv": {
+      "N": 13,
+      "n": 5,
+      "probability": 0.38461538461538464,
+      "weight": 2.6
+    }
+  },
+  "excluded": {
+    "unknown_assignment": 809213,
+    "reserved_or_mixed": 8631,
+    "familiar_comparison": 1201
+  },
+  "frame_cases": 182,
+  "sample_cases": 50,
+  "scope": "Previously unreviewed comparisons in known development families only; not the whole dataset.",
+  "code_sha256": "0ca17f33f50e4482be0eec7d5daafd6d1a94f504c7f3d43499607288c1262c43",
+  "source_identity_requests": 79
+}

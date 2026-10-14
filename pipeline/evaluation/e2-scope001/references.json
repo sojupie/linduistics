@@ -1,0 +1,565 @@
+{
+  "packet_sha256": "c16b7e6ff055327759a1eddf46c85b3d67ef628bb1f21a6ed117a8542cd92b29",
+  "reviewer": "source-guided agent; not human gold",
+  "cases": [
+    {
+      "id": "e471569ff84d60270901",
+      "compatible_labels": [
+        "equivalent",
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Ordinary rain translations; useful noun comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Both noun inventories describe rain; German place names and surname are separate entries."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful colour comparison with a grammatical distinction.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish adjective black matches the concept of German noun black; Danish noun sort/kind/quality is not that colour noun."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "compatible_labels": [],
+      "scorable": false,
+      "display_status": "contradicted",
+      "candidate_note": "A potentially useful white-colour comparison needs its redirect resolved.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German Weiss supplies only an alternative-spelling record. The target meaning cannot be settled from this inventory, and blank is not the intended white-colour headline."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful food/nourishment comparison, with additional meanings retained.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Both have food nouns; Danish also has give birth/feed verbs and German meal/groceries and a place name."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "compatible_labels": [],
+      "scorable": false,
+      "display_status": "contradicted",
+      "candidate_note": "A potentially useful adjective comparison needs the target spelling record resolved.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German weiss supplies only a spelling redirect; it lacks substantive endpoint definitions. Danish blank paired with that redirect is not a useful white headline."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful adverb exactly/precisely overlap despite other unrelated senses.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish lige just/exactly matches English right exactly/precisely. Displayed English justice/correctness uses just in a different sense and grammar."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "compatible_labels": [
+        "partial_overlap",
+        "related_meanings"
+      ],
+      "scorable": true,
+      "display_status": "unresolved",
+      "candidate_note": "Tear production is a narrower contextual comparison, not blanket synonymy.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Cry/weep and eyes watering overlap in tear-producing contexts but the English sense includes other secretions and subjects. The unqualified headline may overstate that relationship."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful confectionery/candy noun overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish confectionery shares English sweet as candy; English adjective/other noun senses do not all transfer."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "compatible_labels": [
+        "related_meanings",
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful narrow versus small contrast with historical slender overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Direct slender/slim in English is archaic. Modern size versus width meanings are related rather than equivalent. The target headline is a verb, not the source adjective."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "compatible_labels": [
+        "related_meanings",
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful cloud versus sky contrast; old shared cloud sense must be marked inactive.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "English cloud is obsolete; modern Danish cloud and English sky concern related atmospheric concepts. Other current Danish senses do not establish equivalence."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Weak form collision; no observed shared meaning.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Tail/bottom or haul/drag do not match straw."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "A form contrast rather than translation evidence.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Throat/neck and straw have distinct observed meanings."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "compatible_labels": [
+        "related_form"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Related distance concepts across adjective and adverb.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish long adjective and Norwegian far adverb concern distance but differ in grammar; displaying a surname discards that lexical relationship."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "compatible_labels": [
+        "partial_overlap",
+        "related_meanings",
+        "related_form"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful reciprocal fight versus strike comparison if grammar remains visible.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Fighting can involve striking, but reciprocal Danish fight is not every Norwegian hit/tack/mow/defeat use. Contextual overlap or a related action/form is justified; full equivalence is not."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful ordinary dog comparison, with other senses retained.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Dog/hound and dog/female dog share dog meanings; the Danish banknote sense and Norwegian female restriction prevent inventory-wide equivalence."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful noise/disturbance overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Din/disturbances share Swedish racket/row meanings; Swedish fraction is a distinct additional sense."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful overweight adjective comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Both expressly describe overweight fat; Danish rich/cool/bold/joint and Swedish thick do not all align."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "compatible_labels": [
+        "partial_overlap",
+        "related_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Furniture support offers a possible narrower comparison; human foot and leg differ.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish base/foot and Swedish furniture leg can share support contexts. Human foot versus leg is not equivalent, so that unqualified displayed pairing is misleading."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Form resemblance only, without meaning overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Throat/neck and straw/haulm are distinct."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Weak form collision; grammar and meanings differ.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Danish haul/drag or tail/bottom does not overlap Swedish straw/haulm."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Clear same-form deceptive comparison across number and noun.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German elf is eleven; English elf is a supernatural creature or other recorded nouns, never eleven."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Valid secondary beer-foam comparison; poor ordinary headline.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Both expressly share beer foam. Flower/plant and the many ordinary head meanings remain distinct; this specialised match should not masquerade as their ordinary main meanings."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Possible form contrast, not a supported translation.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German blood does not match blunt edge/personality, foil/needle, cigar or its other meanings. A specialised needle headline is a poor default."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful small-stature comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Small physical size can match short stature/extent, while young/insignificant and the many other short senses differ."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "compatible_labels": [],
+      "scorable": false,
+      "display_status": "contradicted",
+      "candidate_note": "Recover the deprecated spelling target before using this comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Fluß supplies only a deprecated-spelling record, not a substantive river definition. English currency/popularity is unrelated to the quoted flow source; the displayed pair is unusable."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Clear red versus root form contrast.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German red/gules and Norwegian plant/tooth/hair root differ. The red-card abbreviation and tooth-root headline select secondary contexts."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful bitter-taste adjective overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German explicitly includes taste, emotional meanings and adverbs; bare Norwegian bitter supports conservative shared taste, not proof of every German use."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful colour noun overlap with additional grammatical uses.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Both have the noun black. Norwegian also has adjective black/illegal and German a surname; not all uses coincide."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Weak form resemblance; no observed meaning match.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German stalk does not mean Norwegian tail or haul/drag. Displaying a verb against the stalk noun adds grammatical confusion."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful salad versus salt contrast when main senses are displayed.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Salad/lettuce and the separate salat prayer do not mean salt. Prayer is a poor default headline for this ordinary food-word contrast."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Weak form collision; shared short spelling is insufficient.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German pub/desk bar, pressure unit or cash do not match tree bark or a sailing ship. Two specialised headlines obscure the common uses."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful explicitly regional leg overlap, not unrestricted ordinary equivalence.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German has regional leg, matching Swedish leg, plus foot/pedestal/meter uses. Unqualified leg hides the German regional restriction and the ordinary foot/leg contrast."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful hide/conceal/disguise action comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Veiling/disguising/making obscure and hiding/concealing share contextual concealment. Swedish stash noun/reflexive and the broader German actions are not exhaustive equivalents."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful spoiled and morally bad adjective overlap.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Rotten/off and morally reprehensible are expressly shared; German has additional illness/skill/appearance and adverb uses."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Valid secondary beer foam overlap needs a visible scope.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "German beer head matches Swedish beverage foam, but flowers/plants versus mouth foam dominate other uses. Broad inherited English head glosses are not all relevant."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Weak form collision and a misleading dialectal headline.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Brew making drinks/mixture and its dialectal cliff noun do not mean Norwegian broad/wide adjective. The cliff is not an ordinary brew headline."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Potential form contrast; distance and travel are not synonyms.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "English distant/far/long and Norwegian danger/go/rush/sail have no observed direct modern overlap. The chosen long versus rush pair is not a meaningful aligned headline."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful combustion/heating overlap with additional senses.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "English setting fire/heating and Norwegian burning/roasting share some actions; English firearms/employment and Norwegian distilling do not all align."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful healthy/sound adjective comparison.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Healthy and mentally sound are expressly shared; English acoustic/other senses and Norwegian cocktail/rudeness/sexual senses are separate."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "compatible_labels": [
+        "related_meanings",
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful modern sky versus cloud contrast, with obsolete overlap identified.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "English cloud is obsolete; the ordinary sky and cloud are related but distinct. Norwegian shy/avoid does not add equivalence."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful mythology comparison with a narrower female figure.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Swedish feminine fairy/elf overlaps English mythological elf, not every fantasy variant or the regional bluefish sense."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "compatible_labels": [
+        "partial_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful material overlap with a roofing-use restriction.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Thatch can be straw used for roofs, matching part of Swedish straw/haulm; palms, turf buildup, metaphorical hair and roofing verb do not all transfer."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "compatible_labels": [
+        "partial_overlap",
+        "related_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Furniture supports offer a secondary contextual comparison; body-part meanings differ.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "English short support/foot and Swedish furniture leg can overlap in objects. Foot versus leg/bone and other senses are not equivalent; the headline conceals the main contrast."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "compatible_labels": [
+        "related_meanings",
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful small versus narrow/slim contrast; direct slender sense is archaic.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Modern English size is related to Swedish width/body shape; English slender is archaic. Rare noun small-of-back against a Swedish adjective is a poor headline."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "A form contrast with a spurious generic surface headline.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Run movement/routes/flows and round shape have no observed equivalent meaning. Various horizontal dimensions or surfaces is a grouping heading, not a useful counterpart to round."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful tooth versus woman/aunt form contrast.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Tooth/prong and older woman/aunt/address uses have distinct meanings. The feminine human reference must not be inferred from a generic shared noun class."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "compatible_labels": [
+        "partial_overlap",
+        "related_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Outer-cover meanings are related; any equivalence is contextual, not the ship sense.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Tree bark and shell/fruit peel both concern coverings but are not unrestricted synonyms. The displayed sailing ship versus shell does not express that potential overlap."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "contradicted",
+      "candidate_note": "Useful know versus white form contrast, across grammar.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Norwegian knowing is not Swedish whiteness/skin/sobriety or the figurative honesty sense. Honesty is an unrepresentative default for vit."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "compatible_labels": [
+        "related_meanings",
+        "historical_overlap"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "Useful jump versus run contrast with an archaic direct jump sense.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Swedish direct jump is archaic. Current run and jump are related locomotion actions, not plain equivalent translations; other noun senses remain distinct."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "compatible_labels": [
+        "different_meanings"
+      ],
+      "scorable": true,
+      "display_status": "supported",
+      "candidate_note": "A body-part contrast, not shared meaning.",
+      "history_note": "Historical relation held fixed; not independently judged in this meaning pilot.",
+      "reason": "Tail/haul/drag and neck/throat differ; being parts of an animal does not establish overlap."
+    }
+  ],
+  "review_date": "2026-10-14",
+  "procedure": "Read all 50 evidence-only cases before running either prediction arm; source-guided agent judgments, no human adjudication.",
+  "rubric": "Modern inventory overlap, allowing conservative partial labels for clear shared uses; inactive-only overlap stays qualified. Related conceptual/grammatical readings may have several admissible labels. Spelling redirects without definitions remain unresolved. Display assesses an ordinary useful paired headline, separately from valid secondary matches."
+}

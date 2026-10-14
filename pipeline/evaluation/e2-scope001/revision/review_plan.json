@@ -1,0 +1,50 @@
+{
+  "phase": "development",
+  "seed": 20261014,
+  "hypothesis": "Reject explicit source usage/grammar conflicts without vetoing weakly embedded translations.",
+  "measures": [
+    "meaning",
+    "display"
+  ],
+  "tradeoffs": "Preserve useful overlap; disclose unresolved or absent claims.",
+  "decision_rule": "Exploratory pilot only; inspect all losses before extending; no automatic adoption.",
+  "rubric": "Modern inventory overlap, allowing conservative partial labels for clear shared uses; inactive-only overlap stays qualified. Related conceptual/grammatical readings may have several admissible labels. Spelling redirects without definitions remain unresolved. Display assesses an ordinary useful paired headline, separately from valid secondary matches.",
+  "quotas": {
+    "da-de": 5,
+    "da-en": 5,
+    "da-nb": 5,
+    "da-sv": 5,
+    "de-en": 5,
+    "de-nb": 5,
+    "de-sv": 5,
+    "en-nb": 5,
+    "en-sv": 5,
+    "nb-sv": 5
+  },
+  "inputs": {
+    "frame": {
+      "path": "review_frame.json",
+      "sha256": "7309edd2c7c7a181ec0ad13493f60235f0c9da85e5b4ab1e52a3fcb28b2cab49"
+    },
+    "families": {
+      "path": "../families.json",
+      "sha256": "d93778b2a0031e9e7f04ee2ea8d101ae9924e43ebac8db9507c1bc2001c2ba21"
+    },
+    "original_plan": {
+      "path": "../../../evaluation/E2_SCOPE_PLAN.md",
+      "sha256": "73ec1ddc4b1fc2b55071aa9ef96c3c24982b8d72af8e6be85f9b68501c3c813d"
+    },
+    "revision_plan": {
+      "path": "../../../evaluation/E2_SCOPE_REVISION_PLAN.md",
+      "sha256": "be503f797139b2c286f65a82b8450051a602f3a62631b7d09d97f86a7d4dcd03"
+    },
+    "references": {
+      "path": "../references.json",
+      "sha256": "f9df4223f780d0c674cdb2feba45e1d853058f26a0f8d030f0a38d6f08fb9399"
+    },
+    "matrix_cache": {
+      "path": "../matrix_cache.json",
+      "sha256": "0d5c2a97b6646612473b3e6bc4b74fa9f9edb578d0b3eaccf9772be32b803ab2"
+    }
+  }
+}

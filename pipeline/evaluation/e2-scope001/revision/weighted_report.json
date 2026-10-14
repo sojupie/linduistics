@@ -1,0 +1,768 @@
+{
+  "plan_sha256": "0868a40bfaede8c83be81dda2e5e3b7386537b8933f90e26ca0b2611cbb5cf50",
+  "packet_sha256": "55cc75efa15202b1385cfa5f0c7daa4c8022ba3ca46263c0d1799c4180822747",
+  "review_sha256": "2aa2ee33456d85fb2ba4ca3cdff7db9d936702f79297239456b93fae9d4bc2c0",
+  "reviewer": {
+    "name": "Codex source-guided first review",
+    "kind": "agent",
+    "date": "2026-10-14"
+  },
+  "facts_sha256": "4564e69afad1f0b70765fffac06de1dcaf1e1dfe58aa66bfc334337ed7d4eafe",
+  "facts_reviewer": {
+    "name": "Codex source-guided first review",
+    "kind": "agent",
+    "date": "2026-10-14"
+  },
+  "phase": "development",
+  "population": 182,
+  "sample": 50,
+  "strata": {
+    "da-de": {
+      "N": 26,
+      "n": 5,
+      "probability": 0.19230769230769232,
+      "weight": 5.2
+    },
+    "da-en": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "da-nb": {
+      "N": 6,
+      "n": 5,
+      "probability": 0.8333333333333334,
+      "weight": 1.2
+    },
+    "da-sv": {
+      "N": 11,
+      "n": 5,
+      "probability": 0.45454545454545453,
+      "weight": 2.2
+    },
+    "de-en": {
+      "N": 35,
+      "n": 5,
+      "probability": 0.14285714285714285,
+      "weight": 7.0
+    },
+    "de-nb": {
+      "N": 27,
+      "n": 5,
+      "probability": 0.18518518518518517,
+      "weight": 5.4
+    },
+    "de-sv": {
+      "N": 29,
+      "n": 5,
+      "probability": 0.1724137931034483,
+      "weight": 5.8
+    },
+    "en-nb": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "en-sv": {
+      "N": 12,
+      "n": 5,
+      "probability": 0.4166666666666667,
+      "weight": 2.4
+    },
+    "nb-sv": {
+      "N": 13,
+      "n": 5,
+      "probability": 0.38461538461538464,
+      "weight": 2.6
+    }
+  },
+  "dimensions": {
+    "candidate": {
+      "control": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "variant": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "paired_change": {
+        "mean": 0.0,
+        "sampling_standard_error": 0.0
+      },
+      "unresolved_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    "display": {
+      "control": {
+        "supported": {
+          "mean": 0.4934065934065934,
+          "sampling_standard_error": 0.07698584566214063
+        },
+        "contradicted": {
+          "mean": 0.4945054945054945,
+          "sampling_standard_error": 0.07698584566214063
+        },
+        "unresolved": {
+          "mean": 0.012087912087912088,
+          "sampling_standard_error": 0.008927514730369186
+        },
+        "not_applicable": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "variant": {
+        "supported": {
+          "mean": 0.4934065934065934,
+          "sampling_standard_error": 0.07698584566214063
+        },
+        "contradicted": {
+          "mean": 0.4945054945054945,
+          "sampling_standard_error": 0.07698584566214063
+        },
+        "unresolved": {
+          "mean": 0.012087912087912088,
+          "sampling_standard_error": 0.008927514730369186
+        },
+        "not_applicable": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "paired_change": {
+        "mean": 0.0,
+        "sampling_standard_error": 0.0
+      },
+      "unresolved_change_bounds": [
+        -0.012087912087912088,
+        0.012087912087912088
+      ]
+    },
+    "meaning": {
+      "control": {
+        "supported": {
+          "mean": 0.8417582417582418,
+          "sampling_standard_error": 0.049912373402970396
+        },
+        "contradicted": {
+          "mean": 0.06263736263736264,
+          "sampling_standard_error": 0.02989334177744054
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 0.0956043956043956,
+          "sampling_standard_error": 0.04750761828838965
+        }
+      },
+      "variant": {
+        "supported": {
+          "mean": 0.8703296703296703,
+          "sampling_standard_error": 0.049912373402970396
+        },
+        "contradicted": {
+          "mean": 0.03406593406593407,
+          "sampling_standard_error": 0.015305921183718813
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 0.0956043956043956,
+          "sampling_standard_error": 0.04750761828838965
+        }
+      },
+      "paired_change": {
+        "mean": 0.02857142857142857,
+        "sampling_standard_error": 0.025677629550654776
+      },
+      "unresolved_change_bounds": [
+        0.02857142857142857,
+        0.02857142857142857
+      ]
+    },
+    "history": {
+      "control": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "variant": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "paired_change": {
+        "mean": 0.0,
+        "sampling_standard_error": 0.0
+      },
+      "unresolved_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    "task": {
+      "control": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "variant": {
+        "supported": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "contradicted": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "unresolved": {
+          "mean": 0.0,
+          "sampling_standard_error": 0.0
+        },
+        "not_applicable": {
+          "mean": 1.0,
+          "sampling_standard_error": 0.0
+        }
+      },
+      "paired_change": {
+        "mean": 0.0,
+        "sampling_standard_error": 0.0
+      },
+      "unresolved_change_bounds": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "by_stratum": {
+    "da-de": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 3,
+          "contradicted": 2
+        },
+        "variant": {
+          "supported": 3,
+          "contradicted": 2
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 2,
+          "contradicted": 1,
+          "not_applicable": 2
+        },
+        "variant": {
+          "supported": 3,
+          "not_applicable": 2
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "da-en": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "contradicted": 2,
+          "unresolved": 1,
+          "supported": 2
+        },
+        "variant": {
+          "contradicted": 2,
+          "unresolved": 1,
+          "supported": 2
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 5
+        },
+        "variant": {
+          "supported": 5
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "da-nb": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 4,
+          "contradicted": 1
+        },
+        "variant": {
+          "supported": 4,
+          "contradicted": 1
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 4,
+          "contradicted": 1
+        },
+        "variant": {
+          "supported": 4,
+          "contradicted": 1
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "da-sv": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 4,
+          "contradicted": 1
+        },
+        "variant": {
+          "supported": 4,
+          "contradicted": 1
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 5
+        },
+        "variant": {
+          "supported": 5
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "de-en": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 2,
+          "contradicted": 3
+        },
+        "variant": {
+          "supported": 2,
+          "contradicted": 3
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 4,
+          "not_applicable": 1
+        },
+        "variant": {
+          "supported": 4,
+          "not_applicable": 1
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "de-nb": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "contradicted": 3,
+          "supported": 2
+        },
+        "variant": {
+          "contradicted": 3,
+          "supported": 2
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 5
+        },
+        "variant": {
+          "supported": 5
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "de-sv": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "contradicted": 3,
+          "supported": 2
+        },
+        "variant": {
+          "contradicted": 3,
+          "supported": 2
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 5
+        },
+        "variant": {
+          "supported": 5
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "en-nb": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "contradicted": 2,
+          "supported": 3
+        },
+        "variant": {
+          "contradicted": 2,
+          "supported": 3
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 5
+        },
+        "variant": {
+          "supported": 5
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "en-sv": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 2,
+          "contradicted": 3
+        },
+        "variant": {
+          "supported": 2,
+          "contradicted": 3
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 4,
+          "contradicted": 1
+        },
+        "variant": {
+          "supported": 4,
+          "contradicted": 1
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    },
+    "nb-sv": {
+      "candidate": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "display": {
+        "control": {
+          "supported": 3,
+          "contradicted": 2
+        },
+        "variant": {
+          "supported": 3,
+          "contradicted": 2
+        }
+      },
+      "meaning": {
+        "control": {
+          "supported": 4,
+          "contradicted": 1
+        },
+        "variant": {
+          "supported": 4,
+          "contradicted": 1
+        }
+      },
+      "history": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      },
+      "task": {
+        "control": {
+          "not_applicable": 5
+        },
+        "variant": {
+          "not_applicable": 5
+        }
+      }
+    }
+  }
+}

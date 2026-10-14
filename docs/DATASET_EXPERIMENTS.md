@@ -6,6 +6,14 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**E2 follow-up, 2026-10-14:** completed the offline sense-scope pilot and an
+explicitly preregistered revision. The hard similarity veto lost useful overlap;
+the conflict-only revision repaired two diagnostic cases and one unseen case
+without observed losses. See the [full result](../pipeline/evaluation/E2_SCOPE_RESULT.md).
+It is a candidate for wider verification, not adopted. The pilot also documents
+ordinary-headline failures and the very small coverage of the frozen family
+registry. Display selection and broader verification coverage are the next work.
+
 **Fedora recovery, 2026-10-14:** the accepted five-language build is running again,
 and the later experiment/verification history is recovered. See the
 [recovery result](FEDORA_RECOVERY_RESULT.md). E2's original 207 profiles and

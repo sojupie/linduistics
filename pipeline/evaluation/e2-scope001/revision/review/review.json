@@ -1,0 +1,3511 @@
+{
+  "packet_sha256": "55cc75efa15202b1385cfa5f0c7daa4c8022ba3ca46263c0d1799c4180822747",
+  "facts_sha256": "4564e69afad1f0b70765fffac06de1dcaf1e1dfe58aa66bfc334337ed7d4eafe",
+  "reviewer": {
+    "name": "Codex source-guided first review",
+    "kind": "agent",
+    "date": "2026-10-14"
+  },
+  "judgments": [
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both noun inventories describe rain; German place names and surname are separate entries."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both noun inventories describe rain; German place names and surname are separate entries."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both noun inventories describe rain; German place names and surname are separate entries."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both noun inventories describe rain; German place names and surname are separate entries."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e471569ff84d60270901",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish adjective black matches the concept of German noun black; Danish noun sort/kind/quality is not that colour noun."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish adjective black matches the concept of German noun black; Danish noun sort/kind/quality is not that colour noun."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish adjective black matches the concept of German noun black; Danish noun sort/kind/quality is not that colour noun."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Danish adjective black matches the concept of German noun black; Danish noun sort/kind/quality is not that colour noun."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7d48b10617aebbc5adb5",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German Weiss supplies only an alternative-spelling record. The target meaning cannot be settled from this inventory, and blank is not the intended white-colour headline."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German Weiss supplies only an alternative-spelling record. The target meaning cannot be settled from this inventory, and blank is not the intended white-colour headline."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "46fdc18d106cafa83ac4",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both have food nouns; Danish also has give birth/feed verbs and German meal/groceries and a place name."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both have food nouns; Danish also has give birth/feed verbs and German meal/groceries and a place name."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both have food nouns; Danish also has give birth/feed verbs and German meal/groceries and a place name."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both have food nouns; Danish also has give birth/feed verbs and German meal/groceries and a place name."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "97f47c012d632240d957",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German weiss supplies only a spelling redirect; it lacks substantive endpoint definitions. Danish blank paired with that redirect is not a useful white headline."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German weiss supplies only a spelling redirect; it lacks substantive endpoint definitions. Danish blank paired with that redirect is not a useful white headline."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f3d805dafc1d0da582c4",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish lige just/exactly matches English right exactly/precisely. Displayed English justice/correctness uses just in a different sense and grammar."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish lige just/exactly matches English right exactly/precisely. Displayed English justice/correctness uses just in a different sense and grammar."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish lige just/exactly matches English right exactly/precisely. Displayed English justice/correctness uses just in a different sense and grammar."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish lige just/exactly matches English right exactly/precisely. Displayed English justice/correctness uses just in a different sense and grammar."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "507325404ea74f00ed60",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "A",
+      "dimension": "display",
+      "status": "unresolved",
+      "reason": "Cry/weep and eyes watering overlap in tear-producing contexts but the English sense includes other secretions and subjects. The unqualified headline may overstate that relationship."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Cry/weep and eyes watering overlap in tear-producing contexts but the English sense includes other secretions and subjects. The unqualified headline may overstate that relationship."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "B",
+      "dimension": "display",
+      "status": "unresolved",
+      "reason": "Cry/weep and eyes watering overlap in tear-producing contexts but the English sense includes other secretions and subjects. The unqualified headline may overstate that relationship."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Cry/weep and eyes watering overlap in tear-producing contexts but the English sense includes other secretions and subjects. The unqualified headline may overstate that relationship."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "89c1034b59ee9d39525b",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish confectionery shares English sweet as candy; English adjective/other noun senses do not all transfer."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish confectionery shares English sweet as candy; English adjective/other noun senses do not all transfer."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish confectionery shares English sweet as candy; English adjective/other noun senses do not all transfer."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish confectionery shares English sweet as candy; English adjective/other noun senses do not all transfer."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d868848751027f04426a",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Direct slender/slim in English is archaic. Modern size versus width meanings are related rather than equivalent. The target headline is a verb, not the source adjective."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Direct slender/slim in English is archaic. Modern size versus width meanings are related rather than equivalent. The target headline is a verb, not the source adjective."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Direct slender/slim in English is archaic. Modern size versus width meanings are related rather than equivalent. The target headline is a verb, not the source adjective."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Direct slender/slim in English is archaic. Modern size versus width meanings are related rather than equivalent. The target headline is a verb, not the source adjective."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "77228ab95504f9ed4d78",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English cloud is obsolete; modern Danish cloud and English sky concern related atmospheric concepts. Other current Danish senses do not establish equivalence."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English cloud is obsolete; modern Danish cloud and English sky concern related atmospheric concepts. Other current Danish senses do not establish equivalence."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English cloud is obsolete; modern Danish cloud and English sky concern related atmospheric concepts. Other current Danish senses do not establish equivalence."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English cloud is obsolete; modern Danish cloud and English sky concern related atmospheric concepts. Other current Danish senses do not establish equivalence."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9796ec3df25f1ea0be6",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tail/bottom or haul/drag do not match straw."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tail/bottom or haul/drag do not match straw."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tail/bottom or haul/drag do not match straw."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tail/bottom or haul/drag do not match straw."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "66bcf4a8cd95e7229c80",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Throat/neck and straw have distinct observed meanings."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Throat/neck and straw have distinct observed meanings."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Throat/neck and straw have distinct observed meanings."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Throat/neck and straw have distinct observed meanings."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fc83f0d9e77ed13b11c4",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish long adjective and Norwegian far adverb concern distance but differ in grammar; displaying a surname discards that lexical relationship."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Danish long adjective and Norwegian far adverb concern distance but differ in grammar; displaying a surname discards that lexical relationship."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish long adjective and Norwegian far adverb concern distance but differ in grammar; displaying a surname discards that lexical relationship."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Danish long adjective and Norwegian far adverb concern distance but differ in grammar; displaying a surname discards that lexical relationship."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7901259c8d1ca399a3be",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Fighting can involve striking, but reciprocal Danish fight is not every Norwegian hit/tack/mow/defeat use. Contextual overlap or a related action/form is justified; full equivalence is not."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Fighting can involve striking, but reciprocal Danish fight is not every Norwegian hit/tack/mow/defeat use. Contextual overlap or a related action/form is justified; full equivalence is not."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Fighting can involve striking, but reciprocal Danish fight is not every Norwegian hit/tack/mow/defeat use. Contextual overlap or a related action/form is justified; full equivalence is not."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Fighting can involve striking, but reciprocal Danish fight is not every Norwegian hit/tack/mow/defeat use. Contextual overlap or a related action/form is justified; full equivalence is not."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "26b5c9925cf1160d581b",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Dog/hound and dog/female dog share dog meanings; the Danish banknote sense and Norwegian female restriction prevent inventory-wide equivalence."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Dog/hound and dog/female dog share dog meanings; the Danish banknote sense and Norwegian female restriction prevent inventory-wide equivalence."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Dog/hound and dog/female dog share dog meanings; the Danish banknote sense and Norwegian female restriction prevent inventory-wide equivalence."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Dog/hound and dog/female dog share dog meanings; the Danish banknote sense and Norwegian female restriction prevent inventory-wide equivalence."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "27640bbda8fbddf82065",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Din/disturbances share Swedish racket/row meanings; Swedish fraction is a distinct additional sense."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Din/disturbances share Swedish racket/row meanings; Swedish fraction is a distinct additional sense."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Din/disturbances share Swedish racket/row meanings; Swedish fraction is a distinct additional sense."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Din/disturbances share Swedish racket/row meanings; Swedish fraction is a distinct additional sense."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5f066c0c6361d4830509",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both expressly describe overweight fat; Danish rich/cool/bold/joint and Swedish thick do not all align."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both expressly describe overweight fat; Danish rich/cool/bold/joint and Swedish thick do not all align."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both expressly describe overweight fat; Danish rich/cool/bold/joint and Swedish thick do not all align."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both expressly describe overweight fat; Danish rich/cool/bold/joint and Swedish thick do not all align."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "a4de66ac7d510738c3fc",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish base/foot and Swedish furniture leg can share support contexts. Human foot versus leg is not equivalent, so that unqualified displayed pairing is misleading."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish base/foot and Swedish furniture leg can share support contexts. Human foot versus leg is not equivalent, so that unqualified displayed pairing is misleading."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Danish base/foot and Swedish furniture leg can share support contexts. Human foot versus leg is not equivalent, so that unqualified displayed pairing is misleading."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish base/foot and Swedish furniture leg can share support contexts. Human foot versus leg is not equivalent, so that unqualified displayed pairing is misleading."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "99893bd48d26c526e2f9",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Throat/neck and straw/haulm are distinct."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Throat/neck and straw/haulm are distinct."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Throat/neck and straw/haulm are distinct."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Throat/neck and straw/haulm are distinct."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d5c48fe8f08c2ba9acae",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish haul/drag or tail/bottom does not overlap Swedish straw/haulm."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish haul/drag or tail/bottom does not overlap Swedish straw/haulm."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Danish haul/drag or tail/bottom does not overlap Swedish straw/haulm."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Danish haul/drag or tail/bottom does not overlap Swedish straw/haulm."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "24f206604d543ee5375a",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "German elf is eleven; English elf is a supernatural creature or other recorded nouns, never eleven."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German elf is eleven; English elf is a supernatural creature or other recorded nouns, never eleven."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "German elf is eleven; English elf is a supernatural creature or other recorded nouns, never eleven."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German elf is eleven; English elf is a supernatural creature or other recorded nouns, never eleven."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "14a42da03b3e307070d7",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Both expressly share beer foam. Flower/plant and the many ordinary head meanings remain distinct; this specialised match should not masquerade as their ordinary main meanings."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both expressly share beer foam. Flower/plant and the many ordinary head meanings remain distinct; this specialised match should not masquerade as their ordinary main meanings."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Both expressly share beer foam. Flower/plant and the many ordinary head meanings remain distinct; this specialised match should not masquerade as their ordinary main meanings."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both expressly share beer foam. Flower/plant and the many ordinary head meanings remain distinct; this specialised match should not masquerade as their ordinary main meanings."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dd3d192c6758571ab9f0",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German blood does not match blunt edge/personality, foil/needle, cigar or its other meanings. A specialised needle headline is a poor default."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German blood does not match blunt edge/personality, foil/needle, cigar or its other meanings. A specialised needle headline is a poor default."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German blood does not match blunt edge/personality, foil/needle, cigar or its other meanings. A specialised needle headline is a poor default."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German blood does not match blunt edge/personality, foil/needle, cigar or its other meanings. A specialised needle headline is a poor default."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "9d4fc546897fe5a31d85",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Small physical size can match short stature/extent, while young/insignificant and the many other short senses differ."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Small physical size can match short stature/extent, while young/insignificant and the many other short senses differ."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Small physical size can match short stature/extent, while young/insignificant and the many other short senses differ."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Small physical size can match short stature/extent, while young/insignificant and the many other short senses differ."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f0c7575af70e8eba288b",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Fluß supplies only a deprecated-spelling record, not a substantive river definition. English currency/popularity is unrelated to the quoted flow source; the displayed pair is unusable."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Fluß supplies only a deprecated-spelling record, not a substantive river definition. English currency/popularity is unrelated to the quoted flow source; the displayed pair is unusable."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "d0f1298f4bd4037a04c2",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German red/gules and Norwegian plant/tooth/hair root differ. The red-card abbreviation and tooth-root headline select secondary contexts."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German red/gules and Norwegian plant/tooth/hair root differ. The red-card abbreviation and tooth-root headline select secondary contexts."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German red/gules and Norwegian plant/tooth/hair root differ. The red-card abbreviation and tooth-root headline select secondary contexts."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German red/gules and Norwegian plant/tooth/hair root differ. The red-card abbreviation and tooth-root headline select secondary contexts."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "5e26d522fd61355f5c2e",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "German explicitly includes taste, emotional meanings and adverbs; bare Norwegian bitter supports conservative shared taste, not proof of every German use."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German explicitly includes taste, emotional meanings and adverbs; bare Norwegian bitter supports conservative shared taste, not proof of every German use."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "German explicitly includes taste, emotional meanings and adverbs; bare Norwegian bitter supports conservative shared taste, not proof of every German use."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German explicitly includes taste, emotional meanings and adverbs; bare Norwegian bitter supports conservative shared taste, not proof of every German use."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "f1828ad0163573744da0",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both have the noun black. Norwegian also has adjective black/illegal and German a surname; not all uses coincide."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both have the noun black. Norwegian also has adjective black/illegal and German a surname; not all uses coincide."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Both have the noun black. Norwegian also has adjective black/illegal and German a surname; not all uses coincide."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Both have the noun black. Norwegian also has adjective black/illegal and German a surname; not all uses coincide."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4a9b05e62334679ab0d8",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German stalk does not mean Norwegian tail or haul/drag. Displaying a verb against the stalk noun adds grammatical confusion."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German stalk does not mean Norwegian tail or haul/drag. Displaying a verb against the stalk noun adds grammatical confusion."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German stalk does not mean Norwegian tail or haul/drag. Displaying a verb against the stalk noun adds grammatical confusion."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German stalk does not mean Norwegian tail or haul/drag. Displaying a verb against the stalk noun adds grammatical confusion."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "e9f65bd02b29637aaee4",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Salad/lettuce and the separate salat prayer do not mean salt. Prayer is a poor default headline for this ordinary food-word contrast."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Salad/lettuce and the separate salat prayer do not mean salt. Prayer is a poor default headline for this ordinary food-word contrast."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Salad/lettuce and the separate salat prayer do not mean salt. Prayer is a poor default headline for this ordinary food-word contrast."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Salad/lettuce and the separate salat prayer do not mean salt. Prayer is a poor default headline for this ordinary food-word contrast."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "7a945b93b02244e697ca",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German pub/desk bar, pressure unit or cash do not match tree bark or a sailing ship. Two specialised headlines obscure the common uses."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German pub/desk bar, pressure unit or cash do not match tree bark or a sailing ship. Two specialised headlines obscure the common uses."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German pub/desk bar, pressure unit or cash do not match tree bark or a sailing ship. Two specialised headlines obscure the common uses."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German pub/desk bar, pressure unit or cash do not match tree bark or a sailing ship. Two specialised headlines obscure the common uses."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "bf4df66d797ecc6e7b1c",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German has regional leg, matching Swedish leg, plus foot/pedestal/meter uses. Unqualified leg hides the German regional restriction and the ordinary foot/leg contrast."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German has regional leg, matching Swedish leg, plus foot/pedestal/meter uses. Unqualified leg hides the German regional restriction and the ordinary foot/leg contrast."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German has regional leg, matching Swedish leg, plus foot/pedestal/meter uses. Unqualified leg hides the German regional restriction and the ordinary foot/leg contrast."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German has regional leg, matching Swedish leg, plus foot/pedestal/meter uses. Unqualified leg hides the German regional restriction and the ordinary foot/leg contrast."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4de02ee1324656c48ead",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Veiling/disguising/making obscure and hiding/concealing share contextual concealment. Swedish stash noun/reflexive and the broader German actions are not exhaustive equivalents."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Veiling/disguising/making obscure and hiding/concealing share contextual concealment. Swedish stash noun/reflexive and the broader German actions are not exhaustive equivalents."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Veiling/disguising/making obscure and hiding/concealing share contextual concealment. Swedish stash noun/reflexive and the broader German actions are not exhaustive equivalents."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Veiling/disguising/making obscure and hiding/concealing share contextual concealment. Swedish stash noun/reflexive and the broader German actions are not exhaustive equivalents."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "1840a74d0ff5f3f11c66",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Rotten/off and morally reprehensible are expressly shared; German has additional illness/skill/appearance and adverb uses."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Rotten/off and morally reprehensible are expressly shared; German has additional illness/skill/appearance and adverb uses."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Rotten/off and morally reprehensible are expressly shared; German has additional illness/skill/appearance and adverb uses."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Rotten/off and morally reprehensible are expressly shared; German has additional illness/skill/appearance and adverb uses."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "ce76ba0bf3635f2d1a2a",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German beer head matches Swedish beverage foam, but flowers/plants versus mouth foam dominate other uses. Broad inherited English head glosses are not all relevant."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German beer head matches Swedish beverage foam, but flowers/plants versus mouth foam dominate other uses. Broad inherited English head glosses are not all relevant."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "German beer head matches Swedish beverage foam, but flowers/plants versus mouth foam dominate other uses. Broad inherited English head glosses are not all relevant."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "German beer head matches Swedish beverage foam, but flowers/plants versus mouth foam dominate other uses. Broad inherited English head glosses are not all relevant."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "652d29210490acdfaffc",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Brew making drinks/mixture and its dialectal cliff noun do not mean Norwegian broad/wide adjective. The cliff is not an ordinary brew headline."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Brew making drinks/mixture and its dialectal cliff noun do not mean Norwegian broad/wide adjective. The cliff is not an ordinary brew headline."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Brew making drinks/mixture and its dialectal cliff noun do not mean Norwegian broad/wide adjective. The cliff is not an ordinary brew headline."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Brew making drinks/mixture and its dialectal cliff noun do not mean Norwegian broad/wide adjective. The cliff is not an ordinary brew headline."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "54e78665c859b8c84158",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "English distant/far/long and Norwegian danger/go/rush/sail have no observed direct modern overlap. The chosen long versus rush pair is not a meaningful aligned headline."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English distant/far/long and Norwegian danger/go/rush/sail have no observed direct modern overlap. The chosen long versus rush pair is not a meaningful aligned headline."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "English distant/far/long and Norwegian danger/go/rush/sail have no observed direct modern overlap. The chosen long versus rush pair is not a meaningful aligned headline."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English distant/far/long and Norwegian danger/go/rush/sail have no observed direct modern overlap. The chosen long versus rush pair is not a meaningful aligned headline."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2a3c63162bcfa0996816",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English setting fire/heating and Norwegian burning/roasting share some actions; English firearms/employment and Norwegian distilling do not all align."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English setting fire/heating and Norwegian burning/roasting share some actions; English firearms/employment and Norwegian distilling do not all align."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English setting fire/heating and Norwegian burning/roasting share some actions; English firearms/employment and Norwegian distilling do not all align."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English setting fire/heating and Norwegian burning/roasting share some actions; English firearms/employment and Norwegian distilling do not all align."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "c7c089a942dc77f59182",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Healthy and mentally sound are expressly shared; English acoustic/other senses and Norwegian cocktail/rudeness/sexual senses are separate."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Healthy and mentally sound are expressly shared; English acoustic/other senses and Norwegian cocktail/rudeness/sexual senses are separate."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Healthy and mentally sound are expressly shared; English acoustic/other senses and Norwegian cocktail/rudeness/sexual senses are separate."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Healthy and mentally sound are expressly shared; English acoustic/other senses and Norwegian cocktail/rudeness/sexual senses are separate."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "df219d0dc76c624d7344",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English cloud is obsolete; the ordinary sky and cloud are related but distinct. Norwegian shy/avoid does not add equivalence."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English cloud is obsolete; the ordinary sky and cloud are related but distinct. Norwegian shy/avoid does not add equivalence."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "English cloud is obsolete; the ordinary sky and cloud are related but distinct. Norwegian shy/avoid does not add equivalence."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English cloud is obsolete; the ordinary sky and cloud are related but distinct. Norwegian shy/avoid does not add equivalence."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "205a2e477b1c84d1a262",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Swedish feminine fairy/elf overlaps English mythological elf, not every fantasy variant or the regional bluefish sense."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Swedish feminine fairy/elf overlaps English mythological elf, not every fantasy variant or the regional bluefish sense."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Swedish feminine fairy/elf overlaps English mythological elf, not every fantasy variant or the regional bluefish sense."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Swedish feminine fairy/elf overlaps English mythological elf, not every fantasy variant or the regional bluefish sense."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "dc43c012906db938002b",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Thatch can be straw used for roofs, matching part of Swedish straw/haulm; palms, turf buildup, metaphorical hair and roofing verb do not all transfer."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Thatch can be straw used for roofs, matching part of Swedish straw/haulm; palms, turf buildup, metaphorical hair and roofing verb do not all transfer."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Thatch can be straw used for roofs, matching part of Swedish straw/haulm; palms, turf buildup, metaphorical hair and roofing verb do not all transfer."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Thatch can be straw used for roofs, matching part of Swedish straw/haulm; palms, turf buildup, metaphorical hair and roofing verb do not all transfer."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "12bb5a9b6171fffec787",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "English short support/foot and Swedish furniture leg can overlap in objects. Foot versus leg/bone and other senses are not equivalent; the headline conceals the main contrast."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English short support/foot and Swedish furniture leg can overlap in objects. Foot versus leg/bone and other senses are not equivalent; the headline conceals the main contrast."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "English short support/foot and Swedish furniture leg can overlap in objects. Foot versus leg/bone and other senses are not equivalent; the headline conceals the main contrast."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "English short support/foot and Swedish furniture leg can overlap in objects. Foot versus leg/bone and other senses are not equivalent; the headline conceals the main contrast."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "6361ee8420a50844b619",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Modern English size is related to Swedish width/body shape; English slender is archaic. Rare noun small-of-back against a Swedish adjective is a poor headline."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Modern English size is related to Swedish width/body shape; English slender is archaic. Rare noun small-of-back against a Swedish adjective is a poor headline."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Modern English size is related to Swedish width/body shape; English slender is archaic. Rare noun small-of-back against a Swedish adjective is a poor headline."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Modern English size is related to Swedish width/body shape; English slender is archaic. Rare noun small-of-back against a Swedish adjective is a poor headline."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "4111c2f77aa9773b6f95",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Run movement/routes/flows and round shape have no observed equivalent meaning. Various horizontal dimensions or surfaces is a grouping heading, not a useful counterpart to round."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Run movement/routes/flows and round shape have no observed equivalent meaning. Various horizontal dimensions or surfaces is a grouping heading, not a useful counterpart to round."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Run movement/routes/flows and round shape have no observed equivalent meaning. Various horizontal dimensions or surfaces is a grouping heading, not a useful counterpart to round."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Run movement/routes/flows and round shape have no observed equivalent meaning. Various horizontal dimensions or surfaces is a grouping heading, not a useful counterpart to round."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "660179797a9fb1105d19",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tooth/prong and older woman/aunt/address uses have distinct meanings. The feminine human reference must not be inferred from a generic shared noun class."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tooth/prong and older woman/aunt/address uses have distinct meanings. The feminine human reference must not be inferred from a generic shared noun class."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tooth/prong and older woman/aunt/address uses have distinct meanings. The feminine human reference must not be inferred from a generic shared noun class."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tooth/prong and older woman/aunt/address uses have distinct meanings. The feminine human reference must not be inferred from a generic shared noun class."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "2f842158707cbf52688d",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Tree bark and shell/fruit peel both concern coverings but are not unrestricted synonyms. The displayed sailing ship versus shell does not express that potential overlap."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tree bark and shell/fruit peel both concern coverings but are not unrestricted synonyms. The displayed sailing ship versus shell does not express that potential overlap."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Tree bark and shell/fruit peel both concern coverings but are not unrestricted synonyms. The displayed sailing ship versus shell does not express that potential overlap."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tree bark and shell/fruit peel both concern coverings but are not unrestricted synonyms. The displayed sailing ship versus shell does not express that potential overlap."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "cc1667ca852f866dc477",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "A",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Norwegian knowing is not Swedish whiteness/skin/sobriety or the figurative honesty sense. Honesty is an unrepresentative default for vit."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Norwegian knowing is not Swedish whiteness/skin/sobriety or the figurative honesty sense. Honesty is an unrepresentative default for vit."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "B",
+      "dimension": "display",
+      "status": "contradicted",
+      "reason": "Norwegian knowing is not Swedish whiteness/skin/sobriety or the figurative honesty sense. Honesty is an unrepresentative default for vit."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Norwegian knowing is not Swedish whiteness/skin/sobriety or the figurative honesty sense. Honesty is an unrepresentative default for vit."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fa79a386a9535ffdff63",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Swedish direct jump is archaic. Current run and jump are related locomotion actions, not plain equivalent translations; other noun senses remain distinct."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Swedish direct jump is archaic. Current run and jump are related locomotion actions, not plain equivalent translations; other noun senses remain distinct."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Swedish direct jump is archaic. Current run and jump are related locomotion actions, not plain equivalent translations; other noun senses remain distinct."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "contradicted",
+      "reason": "Swedish direct jump is archaic. Current run and jump are related locomotion actions, not plain equivalent translations; other noun senses remain distinct."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "fac248194ade6776b11c",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "A",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "A",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tail/haul/drag and neck/throat differ; being parts of an animal does not establish overlap."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "A",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tail/haul/drag and neck/throat differ; being parts of an animal does not establish overlap."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "A",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "A",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "B",
+      "dimension": "candidate",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "B",
+      "dimension": "display",
+      "status": "supported",
+      "reason": "Tail/haul/drag and neck/throat differ; being parts of an animal does not establish overlap."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "B",
+      "dimension": "meaning",
+      "status": "supported",
+      "reason": "Tail/haul/drag and neck/throat differ; being parts of an animal does not establish overlap."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "B",
+      "dimension": "history",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    },
+    {
+      "id": "40fc422f2de41955f6b5",
+      "arm": "B",
+      "dimension": "task",
+      "status": "not_applicable",
+      "reason": "No claim made in this dimension of the meaning experiment."
+    }
+  ]
+}

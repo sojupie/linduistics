@@ -14,6 +14,14 @@ Agreement with the starting dataset is not the target.
 
 ## Recommended order
 
+**Update, 2026-10-14:** the [sense-scope follow-up](../pipeline/evaluation/E2_SCOPE_RESULT.md)
+rejects a hard source-gloss similarity veto after reviewing its losses. Its
+conflict-only revision retains inference and gives a small exploratory gain.
+Keep that revision for wider testing; move entry/grammar-aware display selection
+forward next. The new pilot exposed substantial headline problems within its
+restricted frame. Broader family assignment is required before dataset-wide
+quality estimates. The earlier hypotheses and results below remain unchanged.
+
 | Priority | Direction | My judgment |
 | --- | --- | --- |
 | 1 | E2: dictionary evidence tied to the meanings being compared | Strongest measured lead; pursue first |

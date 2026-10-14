@@ -1,0 +1,9 @@
+{
+  "revision_plan_sha256": "be503f797139b2c286f65a82b8450051a602f3a62631b7d09d97f86a7d4dcd03",
+  "original_protocol_sha256": "453fbf5581659e8852411d8dfb238ec32b5b8bb95b1eb9679f7c5e7513782e85",
+  "matrix_cache_sha256": "0d5c2a97b6646612473b3e6bc4b74fa9f9edb578d0b3eaccf9772be32b803ab2",
+  "references_sha256": "f9df4223f780d0c674cdb2feba45e1d853058f26a0f8d030f0a38d6f08fb9399",
+  "code_sha256": "c9333b2b6bf215d27e3d8c76e32c7624f04530c70e0e136a748ecc2c479f66e6",
+  "runner_sha256": "2c19e267f32657e6cd8eccbfb60659505ad92927a382c5f77331661d3bdcff41",
+  "scope": "Exploratory follow-up on unchanged sample and references; not adopted."
+}

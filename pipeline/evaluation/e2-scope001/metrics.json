@@ -1,0 +1,30 @@
+{
+  "diagnostic": {
+    "cases": 207,
+    "scorable": 197,
+    "compatible": {
+      "control": 169,
+      "variant": 159
+    },
+    "changed": 27,
+    "gains": 5,
+    "losses": 15
+  },
+  "pilot": {
+    "cases": 50,
+    "scorable": 47,
+    "compatible": {
+      "control": 43,
+      "variant": 39
+    },
+    "changed": 9,
+    "gains": 2,
+    "losses": 6
+  },
+  "preservation": {
+    "concept_comparisons": 995,
+    "candidate_display_history_inputs_unchanged": true,
+    "live_database_changed": false
+  },
+  "limits": "Pilot frame only; first agent review; no reserved confirmation or automatic adoption."
+}

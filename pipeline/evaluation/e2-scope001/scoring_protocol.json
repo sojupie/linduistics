@@ -1,0 +1,8 @@
+{
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "references_sha256": "f9df4223f780d0c674cdb2feba45e1d853058f26a0f8d030f0a38d6f08fb9399",
+  "meaning_code_sha256": "98f3f7b7b777f209fc451649d16d11b91803843ebfe1018767c50bf4a85fa27b",
+  "runner_sha256": "0ca17f33f50e4482be0eec7d5daafd6d1a94f504c7f3d43499607288c1262c43",
+  "matrix_cache_sha256": "0d5c2a97b6646612473b3e6bc4b74fa9f9edb578d0b3eaccf9772be32b803ab2"
+}

@@ -1,0 +1,24 @@
+{
+  "diagnostic": {
+    "cases": 207,
+    "scorable": 197,
+    "compatible": {
+      "control": 169,
+      "variant": 171
+    },
+    "changes": 3,
+    "gains": 2,
+    "losses": 0
+  },
+  "sample": {
+    "cases": 50,
+    "scorable": 47,
+    "compatible": {
+      "control": 43,
+      "variant": 44
+    },
+    "changes": 1,
+    "gains": 1,
+    "losses": 0
+  }
+}
