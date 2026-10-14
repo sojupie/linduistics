@@ -15,6 +15,12 @@ ENTITY_TYPES = {
     'region': r'\b(?:region|county|province|prefecture|island)\b',
     'person_name': r'\b(?:given name|surname)\b',
 }
+ASSOCIATION_COSINE = 0.60
+
+
+def source_association_key(source):
+    # One Wiktionary sense can have several glosses; keep their scores separate.
+    return source['source_entry_key'], source['source_sense_id'], source['gloss']
 
 
 def grammatical_class(sense):
@@ -81,11 +87,15 @@ def lexical_alternatives(sense):
     return terms, context.rstrip(') .').casefold() if separator else ''
 
 
-def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation_evidence):
+def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation_evidence,
+                 *, sense_scoped=False, source_associations=None, rejected=None, scope_policy='gate'):
+    if scope_policy not in ('gate', 'audit'):
+        raise ValueError(f'Unknown scope policy: {scope_policy}')
     ordinary = [[s for s in senses if modern(s) and not is_name(s) and not is_redirect(s)]
                 for senses in [senses_a, senses_b]]
     evidence = []
     common_classes = {grammatical_class(s) for s in ordinary[0]} & {grammatical_class(s) for s in ordinary[1]}
+    indices = [{id(s): i for i, s in enumerate(senses)} for senses in (senses_a, senses_b)]
     for source in translation_evidence:
         entry = source.get('source_entry_key', '').split('|')
         if len(entry) < 2 or entry[0] != 'en' or not modern(source) or is_name(source) or is_redirect(source):
@@ -94,17 +104,74 @@ def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation
                for lang, word in [(lang_a, word_a), (lang_b, word_b)]):
             continue
         if grammatical_class(source) in common_classes:
-            evidence.append({'kind': 'source_sense_translation_link', 'scope': 'lexeme_class',
+            item = {'kind': 'source_sense_translation_link', 'scope': 'lexeme_class',
                 'source_entry_key': source['source_entry_key'], 'source_sense_id': source['source_sense_id'],
-                'gloss': source['gloss'], 'pos': source.get('pos')})
+                'gloss': source['gloss'], 'pos': source.get('pos')}
+            if sense_scoped:
+                identity = source['source_entry_key'], source['source_sense_id']
+                scores = (source_associations or {}).get(source_association_key(source))
+                if scores is not None and (len(scores) != 2 or
+                        any(len(v) != len(s) for v, s in zip(scores, (senses_a, senses_b)))):
+                    raise ValueError('Source associations do not match endpoint sense inventories')
+                admitted = []
+                for side, (lang, senses) in enumerate(zip((lang_a, lang_b), (senses_a, senses_b))):
+                    matches = []
+                    for sense in ordinary[side]:
+                        i = indices[side][id(sense)]
+                        if grammatical_class(sense) != grammatical_class(source):
+                            continue
+                        if lang == 'en':
+                            identities = {(sense.get('source_entry_key'), sense.get('source_sense_id'))}
+                            identities.update((c.get('source_entry_key'), c.get('source_sense_id'))
+                                              for c in sense.get('source_identity_candidates') or [])
+                            if identity in identities:
+                                matches.append({'index': i, 'basis': 'recorded_source_identity'})
+                        elif scores is not None and scores[side][i] >= ASSOCIATION_COSINE:
+                            matches.append({'index': i, 'basis': 'source_gloss_association',
+                                            'score': float(scores[side][i])})
+                    admitted.append(matches)
+                conflicts = []
+                if scope_policy == 'audit':
+                    for side, matches in enumerate(admitted):
+                        if matches:
+                            continue
+                        senses = (senses_a, senses_b)[side]
+                        aliases = [(i, s) for i, s in enumerate(senses)
+                                   if entry[1].casefold() in lexical_alternatives(s)[0]]
+                        current = [(i, s) for i, s in aliases if modern(s)]
+                        retired = [i for i, s in aliases if not modern(s) and
+                                   grammatical_class(s) == grammatical_class(source)]
+                        if retired and not any(grammatical_class(s) == grammatical_class(source) for _, s in current):
+                            conflicts.append({'side': side, 'reason': 'alias_only_inactive_in_source_class', 'indices': retired})
+                        elif current and not any(grammatical_class(s) == grammatical_class(source) for _, s in current):
+                            conflicts.append({'side': side, 'reason': 'current_alias_grammar_conflict',
+                                              'indices': [i for i, _ in current]})
+                        else:
+                            admitted[side] = [{'index': indices[side][id(s)], 'basis': 'documented_lemma_link_unlocalized'}
+                                              for s in ordinary[side] if grammatical_class(s) == grammatical_class(source)]
+                if not all(admitted) or conflicts:
+                    if rejected is not None:
+                        rejected.append(item | {'reason': 'source_meaning_not_supported_on_both_endpoints',
+                                                'endpoint_matches': admitted, 'explicit_conflicts': conflicts})
+                    continue
+                item.update(scope='inferred_endpoint_senses', endpoint_matches=admitted,
+                            source_tags=source.get('tags') or [],
+                            endpoint_tags=[[(senses_a, senses_b)[side][m['index']].get('tags') or []
+                                            for m in matches] for side, matches in enumerate(admitted)])
+                if any(m['basis'] == 'documented_lemma_link_unlocalized' for side in admitted for m in side):
+                    item['scope'] = 'lexeme_class_unlocalized'
+            evidence.append(item)
     for side, (lang, word) in enumerate([(lang_a, word_a), (lang_b, word_b)]):
         if lang != 'en':
             continue
         for sense in ordinary[1 - side]:
             terms, context = lexical_alternatives(sense)
             if word.casefold() in terms and grammatical_class(sense) in common_classes:
-                evidence.append({'kind': 'explicit_english_headword_gloss', 'scope': 'lexeme_class',
-                    'english_word': word, 'gloss': sense['gloss'], 'qualification': context, 'pos': sense.get('pos')})
+                item = {'kind': 'explicit_english_headword_gloss', 'scope': 'lexeme_class',
+                    'english_word': word, 'gloss': sense['gloss'], 'qualification': context, 'pos': sense.get('pos')}
+                if sense_scoped:
+                    item.update(scope='sense_to_lexeme_inferred', translated_sense_index=indices[1-side][id(sense)])
+                evidence.append(item)
     for a in ordinary[0]:
         for b in ordinary[1]:
             terms_a, context_a = lexical_alternatives(a)
@@ -112,14 +179,18 @@ def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation
             shared = terms_a & terms_b
             if (shared and grammatical_class(a) == grammatical_class(b)
                     and not (context_a and context_b and context_a != context_b)):
-                evidence.append({'kind': 'shared_translated_lexical_alternative', 'scope': 'lexeme_class',
+                item = {'kind': 'shared_translated_lexical_alternative', 'scope': 'lexeme_class',
                     'terms': sorted(shared), 'glosses': [a['gloss'], b['gloss']],
-                    'qualifications': [context_a, context_b], 'pos': a.get('pos')})
+                    'qualifications': [context_a, context_b], 'pos': a.get('pos')}
+                if sense_scoped:
+                    item.update(scope='sense_pair_inferred', indices=[indices[0][id(a)], indices[1][id(b)]])
+                evidence.append(item)
     return evidence
 
 
 def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mode=False,
-                     lang_a='', lang_b='', translation_evidence=None):
+                     lang_a='', lang_b='', translation_evidence=None, sense_scoped=False,
+                     source_associations=None, scope_policy='gate'):
     assert len(matrix) == len(senses_a) and all(len(row) == len(senses_b) for row in matrix)
     usable = [[i for i, sense in enumerate(senses) if modern(sense) and not is_redirect(sense)]
               for senses in [senses_a, senses_b]]
@@ -143,7 +214,7 @@ def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mod
             compatible = grammatical_class(a) == grammatical_class(b)
             if score >= 0.75 and compatible:
                 pairs.append([i, j])
-            elif score >= 0.60:
+            elif score >= ASSOCIATION_COSINE:
                 associated.append({'indices': [i, j], 'kind': 'related_meanings' if compatible else 'related_form', 'score': score})
     ordinary = [[i for i in side if not is_name(senses[i])]
                 for side, senses in zip(usable, [senses_a, senses_b])]
@@ -171,8 +242,11 @@ def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mod
                             'shared_aliases': sorted(terms_a & terms_b)})
     variant = name_variant([senses_a[i] for i in usable[0] if is_name(senses_a[i])],
                            [senses_b[i] for i in usable[1] if is_name(senses_b[i])], word_a, word_b)
+    rejected_dictionary = []
     lexical = word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b,
-                           translation_evidence or []) if evidence_mode else []
+                           translation_evidence or [], sense_scoped=sense_scoped,
+                           source_associations=source_associations,
+                           rejected=rejected_dictionary, scope_policy=scope_policy) if evidence_mode else []
     if pairs:
         label = 'equivalent' if min(coverage) >= 0.80 else 'partial_overlap'
     elif entity_pairs:
@@ -194,12 +268,15 @@ def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mod
         label = 'historical_overlap'
     else:
         label = 'different_meanings'
-    return {'label': label, 'directional_coverage': coverage, 'modern_pairs': pairs,
+    result = {'label': label, 'directional_coverage': coverage, 'modern_pairs': pairs,
             'related_candidates': associated, 'inactive_pairs': historical,
             'entity_pairs': entity_pairs, 'name_variant_evidence': variant,
             'word_overlap_evidence': lexical,
             'rejected_pair_evidence': rejected, 'usable_modern_senses': [len(s) for s in usable],
             'basis': 'Inferred from recorded meanings and grammatical context; not ancestry proof.'}
+    if sense_scoped:
+        result['rejected_dictionary_evidence'] = rejected_dictionary
+    return result
 
 
 def self_check():
@@ -232,6 +309,31 @@ def self_check():
     assert word_overlap([translated], [english], 'säen', 'sow', 'de', 'en', [source])
     assert not word_overlap([a], [english], 'säen', 'plant', 'de', 'en', [source])
     assert not word_overlap([name], [name], 'Brown', 'Green', 'de', 'en', [source])
+    # A same-spelled English homograph cannot inherit another entry's link.
+    identity = source['source_entry_key'], source['source_sense_id']
+    associations = {source_association_key(source): [[0.80], [1.0]]}
+    wrong_entry = source | {'source_entry_key': 'en|sow|verb|other', 'source_sense_id': 'other'}
+    assert not word_overlap([a], [wrong_entry], 'a', 'sow', 'de', 'en', [source],
+                            sense_scoped=True, source_associations=associations)
+    accepted = word_overlap([a], [source], 'a', 'sow', 'de', 'en', [source],
+                            sense_scoped=True, source_associations=associations)
+    assert accepted[0]['endpoint_matches'][0][0]['index'] == 0
+    assert accepted[0]['scope'] == 'inferred_endpoint_senses'
+    inactive = a | {'tags': ['obsolete']}
+    assert not word_overlap([inactive], [source], 'a', 'sow', 'de', 'en', [source],
+                            sense_scoped=True, source_associations=associations)
+    # Weak embeddings cannot veto a recorded translation with no positive conflict.
+    weak = {source_association_key(source): [[0.2], [1.0]]}
+    assert word_overlap([a], [source], 'a', 'sow', 'de', 'en', [source],
+                        sense_scoped=True, source_associations=weak, scope_policy='audit')
+    wrong_class = source | {'source_entry_key': 'en|black|noun|1', 'gloss': 'black', 'pos': 'noun'}
+    assert not word_overlap([a | {'gloss': 'black', 'pos': 'adj'}, a | {'gloss': 'kind', 'pos': 'noun'}],
+                            [wrong_class], 'a', 'b', 'da', 'de', [wrong_class],
+                            sense_scoped=True, scope_policy='audit')
+    retired_alias = source | {'gloss': 'to sow', 'tags': ['obsolete']}
+    weak_two = {source_association_key(source): [[0.2, 0.2], [1.0]]}
+    assert not word_overlap([retired_alias, a | {'gloss': 'to cultivate'}], [source], 'a', 'sow', 'de', 'en',
+                            [source], sense_scoped=True, source_associations=weak_two, scope_policy='audit')
     print('Meaning profile self-check passed.')
 
 
