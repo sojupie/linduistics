@@ -165,7 +165,7 @@ def score(directory):
         arguments = dict(evidence_mode=True, lang_a=row['lang_a'], lang_b=row['lang_b'], translation_evidence=row['translations'])
         control = profile_meanings(a, b, matrix, row['word_a'], row['word_b'], **arguments)
         variant = profile_meanings(a, b, matrix, row['word_a'], row['word_b'], sense_scoped=True,
-                                   source_associations=associations, **arguments)
+                                   source_associations=associations, scope_policy='gate', **arguments)
         predictions[identity(row)] = {'control': control, 'variant': variant}
         cache.append({'words': identity(row), 'matrix': matrix,
                       'associations': [{'identity_and_gloss': k, 'scores': v} for k, v in associations.items()]})

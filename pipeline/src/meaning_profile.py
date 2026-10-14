@@ -88,7 +88,7 @@ def lexical_alternatives(sense):
 
 
 def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation_evidence,
-                 *, sense_scoped=False, source_associations=None, rejected=None, scope_policy='gate'):
+                 *, sense_scoped=False, source_associations=None, rejected=None, scope_policy='audit'):
     if scope_policy not in ('gate', 'audit'):
         raise ValueError(f'Unknown scope policy: {scope_policy}')
     ordinary = [[s for s in senses if modern(s) and not is_name(s) and not is_redirect(s)]
@@ -190,7 +190,7 @@ def word_overlap(senses_a, senses_b, word_a, word_b, lang_a, lang_b, translation
 
 def profile_meanings(senses_a, senses_b, matrix, word_a, word_b, *, evidence_mode=False,
                      lang_a='', lang_b='', translation_evidence=None, sense_scoped=False,
-                     source_associations=None, scope_policy='gate'):
+                     source_associations=None, scope_policy='audit'):
     assert len(matrix) == len(senses_a) and all(len(row) == len(senses_b) for row in matrix)
     usable = [[i for i, sense in enumerate(senses) if modern(sense) and not is_redirect(sense)]
               for senses in [senses_a, senses_b]]
@@ -314,18 +314,18 @@ def self_check():
     associations = {source_association_key(source): [[0.80], [1.0]]}
     wrong_entry = source | {'source_entry_key': 'en|sow|verb|other', 'source_sense_id': 'other'}
     assert not word_overlap([a], [wrong_entry], 'a', 'sow', 'de', 'en', [source],
-                            sense_scoped=True, source_associations=associations)
+                            sense_scoped=True, source_associations=associations, scope_policy='gate')
     accepted = word_overlap([a], [source], 'a', 'sow', 'de', 'en', [source],
-                            sense_scoped=True, source_associations=associations)
+                            sense_scoped=True, source_associations=associations, scope_policy='gate')
     assert accepted[0]['endpoint_matches'][0][0]['index'] == 0
     assert accepted[0]['scope'] == 'inferred_endpoint_senses'
     inactive = a | {'tags': ['obsolete']}
     assert not word_overlap([inactive], [source], 'a', 'sow', 'de', 'en', [source],
-                            sense_scoped=True, source_associations=associations)
+                            sense_scoped=True, source_associations=associations, scope_policy='gate')
     # Weak embeddings cannot veto a recorded translation with no positive conflict.
     weak = {source_association_key(source): [[0.2], [1.0]]}
     assert word_overlap([a], [source], 'a', 'sow', 'de', 'en', [source],
-                        sense_scoped=True, source_associations=weak, scope_policy='audit')
+                        sense_scoped=True, source_associations=weak)
     wrong_class = source | {'source_entry_key': 'en|black|noun|1', 'gloss': 'black', 'pos': 'noun'}
     assert not word_overlap([a | {'gloss': 'black', 'pos': 'adj'}, a | {'gloss': 'kind', 'pos': 'noun'}],
                             [wrong_class], 'a', 'b', 'da', 'de', [wrong_class],

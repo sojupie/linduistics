@@ -24,6 +24,10 @@ same pinned MiniLM revision on CPU. Model files match the preserved Windows
 snapshot; file hashes and package versions are saved. The default meaning API
 retains E2-002 behavior. Both scope policies require explicit opt-in.
 
+Opting into scope checks defaults to the conflict-preserving policy. The rejected
+hard gate requires an explicit research option; a future caller cannot reactivate
+it simply by enabling sense scope. Original sources remain saved for reproduction.
+
 ## Results
 
 These counts measure compatibility with source-guided agent judgments, not expert
