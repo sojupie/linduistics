@@ -368,3 +368,26 @@ The [verification protocol](DATASET_VERIFICATION.md), recorded 2026-10-04, turns
 this conclusion into a repeatable procedure. It separates independent retrieval,
 display, meaning, history and task checks, and supplies a tool for frozen samples,
 explicit reviews and weighted reports. Use it before the proposed follow-ups.
+
+
+## E1 follow-up: entry compatibility helps, but ranking remains constrained
+
+The [2026-10-25 result](../pipeline/evaluation/E1_ENTRY_RESULT.md) tests the
+entry/grammar hypothesis above. C raises suitable specified-concept displays
+from 652 to 658 out of 995 against the prior order preference, with seven gains
+and one loss. It also repairs the saga name intrusion. This supports a modest
+development benefit; it does not establish broad display correctness. The sun
+loss exposes inconsistent name/noun labels across dictionaries.
+
+Two constraints deserve the next frozen experiment. English translation-source
+identities sometimes exclude ordinary senses before ranking. The close-score
+window can also exclude ordinary alignment when a secondary match scores much
+higher. Water/Wasser demonstrates the latter: urine scores 0.8557, ordinary water
+0.6861. Usage or order preferences inside a 0.10 window cannot choose the latter.
+
+Separate the ordinary headline from the strongest shared-sense match. Preserve
+both outputs and their usage scope. A valid secondary match must remain visible;
+a correct false-friend headline may show different ordinary meanings. Measure
+source correctness, ordinary suitability and pair alignment separately, with
+classification labels held fixed for this display experiment. Freeze that method
+and a broader review sample before running it. No live adoption follows from C.

@@ -1,0 +1,41 @@
+{
+  "initial_selector_and_runner_commit": "af41e4c",
+  "prepare_source_sha256": "862dca6ff6ff2799f54716a88896993a2a2a6ebb89376df8e283e53e7c29af8c",
+  "replay_code_sha256": "58e9b9b8bf54f889d3b8271e316246780ceda8a2f3d745cc8d22dfa11104765a",
+  "byte_identical_outputs": [
+    "cases.json",
+    "changes.json",
+    "pending_concepts.json",
+    "metrics.json",
+    "case_results.json"
+  ],
+  "replay_protocol": {
+    "experiment": "E1-004",
+    "inputs": {
+      "pipeline/evaluation/e1-run003/comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+      "pipeline/evaluation/e1-run003/case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+      "pipeline/evaluation/e1-run003/concept_case_results.json": "0955e81b5fea97c2e01fbd69fa5c766ca31146312ee82847074d2cdadec202e0",
+      "pipeline/evaluation/e1-run003/open_case_results.json": "cae181327815dcbdf0e123965a5326221a9ec58dbf6d48931e2e62d5121daf57",
+      "pipeline/evaluation/e0_display_review_001_100.json": "8ee9e2ebb2d1f2ad4b03798ee9cdbd0cf1003d45e1be103976eb05b275b86824",
+      "pipeline/evaluation/e0_display_review_101_250.json": "f746630c4a686416f6c6346b4a9cb0494ab41620f5bb4d96866523152db3486e",
+      "pipeline/evaluation/e0_display_review_251_400.json": "79fd8e145595a58019386d638a9c87a84b60c61a2609b2d275a45b085fb81ddd",
+      "pipeline/evaluation/e0_display_review_401_550.json": "affd9c97241cce66562c85e31a0f5064f24bf73be2ea62ea95254acfda5bb0ad",
+      "pipeline/evaluation/e0_display_review_551_700.json": "dcdb0edd2fd290b8d66b6ba2b82d7e1ca1d52202e702566dab92e994e3451157",
+      "pipeline/evaluation/e0_display_review_701_897.json": "57f21d2630b5f4f6331d4c75e923beb09aea4c4692e76e6310bcc526acb8078a",
+      "pipeline/evaluation/e1-run003/concept_review.json": "bc9927f53cf9be4ec9ae7f1196e7fbec7026946fcfac13b64b63ffb279051928",
+      "pipeline/evaluation/e0_concept_results.csv": "9fcb721c480b2edad401e3a28f604f2e04e82168464d94d258295ca9c5a55cda",
+      "pipeline/evaluation/E1_ENTRY_PLAN.md": "7bb4cf64295f2612a997c9ec8853fd50ae0930e72b0054c238e120ab89a7571d"
+    },
+    "code": {
+      "pipeline/evaluation/e1_entry.py": "58e9b9b8bf54f889d3b8271e316246780ceda8a2f3d745cc8d22dfa11104765a",
+      "pipeline/src/sense_display.py": "8b21e408a6cc933a7955bc076e6c9702c5cb7e6e629fe086570d753a6080743d",
+      "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+      "pipeline/src/parser.py": "616c2e4556a7383a370ff95e66c0aa6770699869b2007b6d1d7c6502bc9d1990"
+    },
+    "cases": 1202,
+    "comparisons": 1201,
+    "B_reconstruction_mismatches": 0,
+    "matrix_cells_preserved": 81143,
+    "review_limit": "Familiar development set, source-guided agent review; no population accuracy claim."
+  }
+}

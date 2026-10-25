@@ -6,6 +6,16 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**E1 display follow-up, 2026-10-25:** C's compatible-entry preference improves
+specified-concept displays to 658/995, versus the original 630 and B's 652.
+It gains seven and loses one against B, and repairs B's saga mismatch. The sun
+loss shows that matching dictionary grammar can displace a valid reading.
+A separate post-result diagnosis finds that source eligibility and the close-score
+window can exclude ordinary readings before ranking. See the [result and concrete
+next experiment](../pipeline/evaluation/E1_ENTRY_RESULT.md). C remains a research
+comparator. Next, freeze separate ordinary-headline and secondary-match selection;
+retain source links as scoped evidence and measure both tasks independently.
+
 **E2 follow-up, 2026-10-14:** completed the offline sense-scope pilot and an
 explicitly preregistered revision. The hard similarity veto lost useful overlap;
 the conflict-only revision repaired two diagnostic cases and one unseen case

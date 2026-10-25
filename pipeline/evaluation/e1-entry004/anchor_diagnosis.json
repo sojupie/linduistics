@@ -1,0 +1,64 @@
+{
+  "counts": {
+    "english_comparisons": 482,
+    "anchor_excludes_active_senses": 440,
+    "only_usage_restricted_english_with_excluded_unrestricted": 9
+  },
+  "restricted_only_cases": [
+    [
+      "da",
+      "dårlig",
+      "en",
+      "bad"
+    ],
+    [
+      "da",
+      "komme",
+      "en",
+      "come"
+    ],
+    [
+      "de",
+      "gelb",
+      "en",
+      "yellow"
+    ],
+    [
+      "de",
+      "kommen",
+      "en",
+      "come"
+    ],
+    [
+      "de",
+      "schlecht",
+      "en",
+      "bad"
+    ],
+    [
+      "en",
+      "bad",
+      "nb",
+      "dårlig"
+    ],
+    [
+      "en",
+      "come",
+      "nb",
+      "komme"
+    ],
+    [
+      "en",
+      "bad",
+      "sv",
+      "dålig"
+    ],
+    [
+      "en",
+      "blunt",
+      "sv",
+      "joint"
+    ]
+  ],
+  "scope": "All 1,201 familiar selected rows, not a population sample. Restricted means existing RESTRICTED_USAGE tags only; it does not detect untagged narrow senses."
+}

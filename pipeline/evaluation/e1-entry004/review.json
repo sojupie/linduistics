@@ -1,0 +1,374 @@
+{
+  "reviewer": "Codex agent, source-guided development review; no independent second reviewer",
+  "blinding": "Unblinded: selector and earlier outcomes known. No claim of independent accuracy.",
+  "concept_judgments": [
+    {
+      "concept_id": "102",
+      "concept": "moon",
+      "expected_meaning": "A natural satellite of a planet.",
+      "lang": "nb",
+      "word": "måne",
+      "display": "a moon; a natural satellite orbiting a planet or another larger celestial body",
+      "decision": "acceptable",
+      "reason": "Direct definition of a natural satellite, matching the specified concept."
+    },
+    {
+      "concept_id": "130",
+      "concept": "round",
+      "expected_meaning": "Circular or having a circular cross-section in at least one direction.",
+      "lang": "en",
+      "word": "round",
+      "display": "Plump.",
+      "decision": "restricted_sense",
+      "reason": "Plump is a body-shape use, not the general circular-cross-section concept."
+    },
+    {
+      "concept_id": "130",
+      "concept": "round",
+      "expected_meaning": "Circular or having a circular cross-section in at least one direction.",
+      "lang": "sv",
+      "word": "rund",
+      "display": "round (plump)",
+      "decision": "restricted_sense",
+      "reason": "Plump is a body-shape use, not the general circular-cross-section concept."
+    },
+    {
+      "concept_id": "164",
+      "concept": "sun",
+      "expected_meaning": "The particular star at the centre of our solar system, from which the Earth gets light and heat.",
+      "lang": "nb",
+      "word": "sol",
+      "display": "a sun; a star forming the central body of a planetary system",
+      "decision": "restricted_sense",
+      "reason": "A generic star is broader than the specified Sun at the centre of our solar system."
+    },
+    {
+      "concept_id": "194",
+      "concept": "white",
+      "expected_meaning": "Bright and colourless; reflecting equal quantities of all frequencies of visible light.",
+      "lang": "en",
+      "word": "white",
+      "display": "Bright and colourless; reflecting equal quantities of all frequencies of visible light.",
+      "decision": "acceptable",
+      "reason": "Directly states the specified white-color property."
+    },
+    {
+      "concept_id": "64",
+      "concept": "good",
+      "expected_meaning": "Having desired or positive qualities.",
+      "lang": "en",
+      "word": "good",
+      "display": "Competent or talented.",
+      "decision": "restricted_sense",
+      "reason": "Competence is a particular positive quality, narrower than general good."
+    },
+    {
+      "concept_id": "7",
+      "concept": "bad",
+      "expected_meaning": "Not good; unfavorable; negative.",
+      "lang": "de",
+      "word": "schlecht",
+      "display": "bad, off (spoiled, rotten, overripe)",
+      "decision": "restricted_sense",
+      "reason": "Spoiled or rotten is a particular bad condition, not general unfavorable quality."
+    },
+    {
+      "concept_id": "92",
+      "concept": "left",
+      "expected_meaning": "Something that is on the left side relative to another object.",
+      "lang": "da",
+      "word": "venstre",
+      "display": "left (direction)",
+      "decision": "acceptable",
+      "reason": "Directly denotes the left direction."
+    }
+  ],
+  "changed_display_reviews": [
+    {
+      "case_id": "iecor:22-102-1:58-102-1",
+      "panel": "concept",
+      "display": [
+        "Any natural satellite of a planet.",
+        "a moon; a natural satellite orbiting a planet or another larger celestial body"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Natural satellites align; replacing the specific Moon with a generic moon remains acceptable for this benchmark concept."
+    },
+    {
+      "case_id": "iecor:27-102-1:58-102-1",
+      "panel": "concept",
+      "display": [
+        "moon (a natural satellite that is orbiting its corresponding planet)",
+        "a moon; a natural satellite orbiting a planet or another larger celestial body"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Natural satellites align; replacing the specific Moon with a generic moon remains acceptable for this benchmark concept."
+    },
+    {
+      "case_id": "iecor:27-102-1:69-102-1",
+      "panel": "concept",
+      "display": [
+        "moon (a natural satellite that is orbiting its corresponding planet)",
+        "a moon"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Natural satellites align; replacing the specific Moon with a generic moon remains acceptable for this benchmark concept."
+    },
+    {
+      "case_id": "iecor:20-106-1:27-106-1",
+      "panel": "concept",
+      "display": [
+        "name (word or phrase indicating a particular person, place, class or thing)",
+        "name (full name)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "narrower",
+      "reason": "A full personal name is a valid narrower case of name. The old review accepted this gloss; reuse that judgment without treating it as universal name coverage."
+    },
+    {
+      "case_id": "iecor:27-106-1:69-106-1",
+      "panel": "concept",
+      "display": [
+        "name (full name)",
+        "name (of a person or something else)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "narrower",
+      "reason": "A full personal name is a valid narrower case of name. The old review accepted this gloss; reuse that judgment without treating it as universal name coverage."
+    },
+    {
+      "case_id": "iecor:22-130-1:69-130-1",
+      "panel": "concept",
+      "display": [
+        "Plump.",
+        "round (plump)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "secondary",
+      "reason": "Both now mean plump. This is valid shared meaning but does not recover the benchmark circular-shape concept."
+    },
+    {
+      "case_id": "iecor:20-132-1:58-132-1",
+      "panel": "concept",
+      "display": [
+        "salt",
+        "salt"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both selected readings denote salt as a substance; avoids selecting salty against the substance."
+    },
+    {
+      "case_id": "iecor:20-132-1:69-132-1",
+      "panel": "concept",
+      "display": [
+        "salt",
+        "salt"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both selected readings denote salt as a substance; avoids selecting salty against the substance."
+    },
+    {
+      "case_id": "iecor:58-132-1:69-132-1",
+      "panel": "concept",
+      "display": [
+        "salt",
+        "salt"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both selected readings denote salt as a substance; avoids selecting salty against the substance."
+    },
+    {
+      "case_id": "iecor:20-141-1:22-141-1",
+      "panel": "concept",
+      "display": [
+        "short",
+        "Having little duration."
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "secondary",
+      "reason": "Short and short duration can overlap, but the benchmark asks about spatial length. Grammar repair alone does not fix the temporal sense."
+    },
+    {
+      "case_id": "iecor:27-141-1:22-141-1",
+      "panel": "concept",
+      "display": [
+        "short",
+        "Having little duration."
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "secondary",
+      "reason": "Short and short duration can overlap, but the benchmark asks about spatial length. Grammar repair alone does not fix the temporal sense."
+    },
+    {
+      "case_id": "iecor:22-164-1:58-164-1",
+      "panel": "concept",
+      "display": [
+        "A star, especially when seen as the centre of any single solar system.",
+        "a sun; a star forming the central body of a planetary system"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "broader",
+      "reason": "Both mean a generic star acting as a sun. Valid shared meaning, but loses the previously suitable display of our Sun."
+    },
+    {
+      "case_id": "iecor:20-19-1:22-19-1",
+      "panel": "concept",
+      "display": [
+        "breathe (to draw air in and out)",
+        "To draw air into (inhale), and expel air from (exhale), the lungs in order to extract oxygen and excrete waste gases."
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both now denote breathing, avoiding breath as a noun against the breathing verb."
+    },
+    {
+      "case_id": "iecor:20-19-1:69-19-1",
+      "panel": "concept",
+      "display": [
+        "breathe (to draw air in and out)",
+        "to breathe (repeatedly draw air into, and expel it from, the lungs)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both now denote breathing, avoiding breath as a noun against the breathing verb."
+    },
+    {
+      "case_id": "iecor:22-194-1:58-194-1",
+      "panel": "concept",
+      "display": [
+        "Bright and colourless; reflecting equal quantities of all frequencies of visible light.",
+        "white (color/colour)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Adjectival white-color readings align; the earlier color noun also communicated the concept."
+    },
+    {
+      "case_id": "iecor:20-222-1:22-222-1",
+      "panel": "concept",
+      "display": [
+        "to hide, conceal (oneself).",
+        "To put (something) in a place where it will be out of sight or harder to discover."
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "partial",
+      "scope": "narrower",
+      "reason": "Reflexive hiding oneself is narrower than putting an object out of sight. Restores the original display but not full benchmark suitability."
+    },
+    {
+      "case_id": "iecor:22-64-1:69-64-1",
+      "panel": "concept",
+      "display": [
+        "Competent or talented.",
+        "good (having pleasing or suitable qualities)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "partial",
+      "scope": "narrower",
+      "reason": "Competence is a particular form of being good; this avoids the adjective/adverb mismatch but retains a narrow English sense."
+    },
+    {
+      "case_id": "iecor:27-7-1:22-7-1",
+      "panel": "concept",
+      "display": [
+        "bad, off (spoiled, rotten, overripe)",
+        "Overly promiscuous, licentious."
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "unresolved",
+      "scope": "restricted",
+      "reason": "The English licentious sense persists. Matching adjective labels does not establish alignment with spoiled German food or the broad Norwegian definition."
+    },
+    {
+      "case_id": "iecor:22-7-1:58-7-1",
+      "panel": "concept",
+      "display": [
+        "Overly promiscuous, licentious.",
+        "bad, unwell, poor, of poor quality"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "unresolved",
+      "scope": "restricted",
+      "reason": "The English licentious sense persists. Matching adjective labels does not establish alignment with spoiled German food or the broad Norwegian definition."
+    },
+    {
+      "case_id": "iecor:20-92-1:58-92-1",
+      "panel": "concept",
+      "display": [
+        "left (direction)",
+        "left (opposite of right)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "ordinary",
+      "reason": "Both denote the left direction. A grammar change does not change the communicated meaning."
+    },
+    {
+      "case_id": "ced0d1387965bd0d",
+      "panel": "open",
+      "display": [
+        "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+        "a story, a tale (more generally)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "shared",
+      "scope": "narrower",
+      "reason": "A Norse prose narrative is a kind of story; returns to the original source-reviewed shared reading instead of the unrelated given name."
+    },
+    {
+      "case_id": "9eb94ed76c72d5eb",
+      "panel": "open",
+      "display": [
+        "A member of one of various indigenous peoples in the Americas, Pacific, and East Asia formerly subject to Spain or Portugal, specifically a Native American in Mexico or Brazil, or an indigenous inhabitant of the Philippines.",
+        "indigo (color)"
+      ],
+      "recorded_source_membership": true,
+      "factual_correctness": "not_independently_checked",
+      "alignment": "disjoint",
+      "scope": "not_applicable",
+      "reason": "An indigenous person and indigo color do not share a sense. Replacing the California city does not improve translation alignment."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "concept_id": "102",
+    "concept": "moon",
+    "expected_meaning": "A natural satellite of a planet.",
+    "lang": "nb",
+    "word": "måne",
+    "display": "a moon; a natural satellite orbiting a planet or another larger celestial body"
+  },
+  {
+    "concept_id": "130",
+    "concept": "round",
+    "expected_meaning": "Circular or having a circular cross-section in at least one direction.",
+    "lang": "en",
+    "word": "round",
+    "display": "Plump."
+  },
+  {
+    "concept_id": "130",
+    "concept": "round",
+    "expected_meaning": "Circular or having a circular cross-section in at least one direction.",
+    "lang": "sv",
+    "word": "rund",
+    "display": "round (plump)"
+  },
+  {
+    "concept_id": "164",
+    "concept": "sun",
+    "expected_meaning": "The particular star at the centre of our solar system, from which the Earth gets light and heat.",
+    "lang": "nb",
+    "word": "sol",
+    "display": "a sun; a star forming the central body of a planetary system"
+  },
+  {
+    "concept_id": "194",
+    "concept": "white",
+    "expected_meaning": "Bright and colourless; reflecting equal quantities of all frequencies of visible light.",
+    "lang": "en",
+    "word": "white",
+    "display": "Bright and colourless; reflecting equal quantities of all frequencies of visible light."
+  },
+  {
+    "concept_id": "64",
+    "concept": "good",
+    "expected_meaning": "Having desired or positive qualities.",
+    "lang": "en",
+    "word": "good",
+    "display": "Competent or talented."
+  },
+  {
+    "concept_id": "7",
+    "concept": "bad",
+    "expected_meaning": "Not good; unfavorable; negative.",
+    "lang": "de",
+    "word": "schlecht",
+    "display": "bad, off (spoiled, rotten, overripe)"
+  },
+  {
+    "concept_id": "92",
+    "concept": "left",
+    "expected_meaning": "Something that is on the left side relative to another object.",
+    "lang": "da",
+    "word": "venstre",
+    "display": "left (direction)"
+  }
+]

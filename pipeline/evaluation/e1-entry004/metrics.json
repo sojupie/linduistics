@@ -1,0 +1,328 @@
+{
+  "counts": {
+    "concept": {
+      "control": {
+        "wrong_sense": 259,
+        "acceptable": 630,
+        "restricted_sense": 99,
+        "unresolved": 7
+      },
+      "B": {
+        "wrong_sense": 240,
+        "acceptable": 652,
+        "restricted_sense": 96,
+        "unresolved": 7
+      },
+      "C": {
+        "wrong_sense": 234,
+        "acceptable": 658,
+        "restricted_sense": 96,
+        "unresolved": 7
+      }
+    },
+    "open": {
+      "control": {
+        "matches_shared_sense": 85,
+        "mismatched_selected_senses": 78,
+        "unresolved": 6,
+        "unsupported_generic_match": 4,
+        "related_grammatical_form": 1,
+        "no_shared_display_sense": 5,
+        "matches_shared_restricted_sense": 1,
+        "inactive_selected_sense": 8,
+        "restricted_selected_sense": 8,
+        "matches_restricted_shared_sense": 9,
+        "overbroad_selected_sense": 1,
+        "matches_documented_name_variant": 1
+      },
+      "B": {
+        "matches_shared_sense": 86,
+        "mismatched_selected_senses": 74,
+        "unresolved": 7,
+        "unsupported_generic_match": 4,
+        "related_grammatical_form": 1,
+        "no_shared_display_sense": 9,
+        "matches_shared_restricted_sense": 1,
+        "inactive_selected_sense": 8,
+        "restricted_selected_sense": 7,
+        "matches_restricted_shared_sense": 8,
+        "overbroad_selected_sense": 1,
+        "matches_documented_name_variant": 1
+      },
+      "C": {
+        "matches_shared_sense": 86,
+        "mismatched_selected_senses": 72,
+        "unresolved": 7,
+        "unsupported_generic_match": 4,
+        "related_grammatical_form": 1,
+        "no_shared_display_sense": 10,
+        "matches_shared_restricted_sense": 1,
+        "inactive_selected_sense": 8,
+        "restricted_selected_sense": 7,
+        "matches_restricted_shared_sense": 9,
+        "overbroad_selected_sense": 1,
+        "matches_documented_name_variant": 1
+      }
+    }
+  },
+  "concept_by_pair": {
+    "da-en": {
+      "control": {
+        "wrong_sense": 33,
+        "acceptable": 45,
+        "restricted_sense": 16,
+        "unresolved": 1
+      },
+      "B": {
+        "wrong_sense": 33,
+        "acceptable": 47,
+        "restricted_sense": 14,
+        "unresolved": 1
+      },
+      "C": {
+        "wrong_sense": 31,
+        "acceptable": 48,
+        "restricted_sense": 15,
+        "unresolved": 1
+      }
+    },
+    "da-de": {
+      "control": {
+        "acceptable": 68,
+        "restricted_sense": 11,
+        "wrong_sense": 15,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 71,
+        "restricted_sense": 11,
+        "wrong_sense": 12,
+        "unresolved": 1
+      },
+      "C": {
+        "acceptable": 72,
+        "wrong_sense": 12,
+        "restricted_sense": 10,
+        "unresolved": 1
+      }
+    },
+    "da-nb": {
+      "control": {
+        "acceptable": 80,
+        "wrong_sense": 18,
+        "restricted_sense": 2
+      },
+      "B": {
+        "acceptable": 85,
+        "wrong_sense": 14,
+        "restricted_sense": 1
+      },
+      "C": {
+        "acceptable": 86,
+        "wrong_sense": 14
+      }
+    },
+    "da-sv": {
+      "control": {
+        "acceptable": 71,
+        "restricted_sense": 9,
+        "wrong_sense": 22,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 75,
+        "wrong_sense": 18,
+        "restricted_sense": 9,
+        "unresolved": 1
+      },
+      "C": {
+        "acceptable": 77,
+        "wrong_sense": 17,
+        "restricted_sense": 8,
+        "unresolved": 1
+      }
+    },
+    "de-en": {
+      "control": {
+        "acceptable": 51,
+        "wrong_sense": 39,
+        "restricted_sense": 13
+      },
+      "B": {
+        "acceptable": 52,
+        "wrong_sense": 38,
+        "restricted_sense": 13
+      },
+      "C": {
+        "acceptable": 52,
+        "wrong_sense": 37,
+        "restricted_sense": 14
+      }
+    },
+    "en-nb": {
+      "control": {
+        "acceptable": 50,
+        "wrong_sense": 35,
+        "restricted_sense": 8
+      },
+      "B": {
+        "acceptable": 50,
+        "wrong_sense": 35,
+        "restricted_sense": 8
+      },
+      "C": {
+        "acceptable": 49,
+        "wrong_sense": 34,
+        "restricted_sense": 10
+      }
+    },
+    "en-sv": {
+      "control": {
+        "acceptable": 45,
+        "restricted_sense": 19,
+        "wrong_sense": 40,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 46,
+        "restricted_sense": 19,
+        "wrong_sense": 39,
+        "unresolved": 1
+      },
+      "C": {
+        "acceptable": 46,
+        "restricted_sense": 20,
+        "wrong_sense": 38,
+        "unresolved": 1
+      }
+    },
+    "de-nb": {
+      "control": {
+        "acceptable": 69,
+        "wrong_sense": 19,
+        "restricted_sense": 3,
+        "unresolved": 1
+      },
+      "B": {
+        "acceptable": 70,
+        "wrong_sense": 18,
+        "restricted_sense": 3,
+        "unresolved": 1
+      },
+      "C": {
+        "acceptable": 70,
+        "wrong_sense": 18,
+        "restricted_sense": 3,
+        "unresolved": 1
+      }
+    },
+    "de-sv": {
+      "control": {
+        "acceptable": 73,
+        "restricted_sense": 10,
+        "wrong_sense": 21
+      },
+      "B": {
+        "acceptable": 75,
+        "restricted_sense": 10,
+        "wrong_sense": 19
+      },
+      "C": {
+        "acceptable": 76,
+        "wrong_sense": 19,
+        "restricted_sense": 9
+      }
+    },
+    "nb-sv": {
+      "control": {
+        "acceptable": 78,
+        "unresolved": 2,
+        "wrong_sense": 17,
+        "restricted_sense": 8
+      },
+      "B": {
+        "acceptable": 81,
+        "unresolved": 2,
+        "wrong_sense": 14,
+        "restricted_sense": 8
+      },
+      "C": {
+        "acceptable": 82,
+        "unresolved": 2,
+        "wrong_sense": 14,
+        "restricted_sense": 7
+      }
+    }
+  },
+  "changes": {
+    "concept": {
+      "control": {
+        "gained": [
+          "iecor:20-106-1:27-106-1",
+          "iecor:27-106-1:69-106-1",
+          "iecor:20-107-1:69-107-1",
+          "iecor:20-125-1:69-125-1",
+          "iecor:20-129-1:27-129-1",
+          "iecor:20-132-1:58-132-1",
+          "iecor:20-132-1:69-132-1",
+          "iecor:58-132-1:69-132-1",
+          "iecor:20-138-1:69-138-1",
+          "iecor:20-140-1:27-140-1",
+          "iecor:20-140-1:58-140-1",
+          "iecor:20-141-1:58-141-1",
+          "iecor:27-145-1:69-145-1",
+          "iecor:58-145-1:69-145-1",
+          "iecor:20-150-1:58-150-1",
+          "iecor:20-158-1:27-158-1",
+          "iecor:20-178-1:22-178-1",
+          "iecor:20-18-1:58-18-1",
+          "iecor:20-180-1:58-180-1",
+          "iecor:20-19-1:22-19-1",
+          "iecor:20-19-1:69-19-1",
+          "iecor:22-215-1:69-215-1",
+          "iecor:58-217-1:69-217-1",
+          "iecor:58-40-1:69-40-1",
+          "iecor:20-50-1:69-50-1",
+          "iecor:27-50-1:22-50-1",
+          "iecor:27-6-1:58-6-1",
+          "iecor:27-61-1:69-61-1",
+          "iecor:20-92-1:22-92-1"
+        ],
+        "lost": [
+          "iecor:22-164-1:58-164-1"
+        ]
+      },
+      "B": {
+        "gained": [
+          "iecor:20-106-1:27-106-1",
+          "iecor:27-106-1:69-106-1",
+          "iecor:20-132-1:58-132-1",
+          "iecor:20-132-1:69-132-1",
+          "iecor:58-132-1:69-132-1",
+          "iecor:20-19-1:22-19-1",
+          "iecor:20-19-1:69-19-1"
+        ],
+        "lost": [
+          "iecor:22-164-1:58-164-1"
+        ]
+      }
+    },
+    "open": {
+      "control": {
+        "gained": [
+          "1c5dad79d53672e2"
+        ],
+        "lost": []
+      },
+      "B": {
+        "gained": [
+          "ced0d1387965bd0d"
+        ],
+        "lost": []
+      }
+    }
+  },
+  "review_sha256": "4b56729a93275e1e139b777ebb717d51cd62cd1b915214e0ddc9116b90e4c429",
+  "cases_sha256": "020ae58354bbbb1cf84cd12d9ee7a338ba25050094df8e6d322fa119646681df",
+  "limits": "Diagnostic familiar development cases, not a probability sample of the dataset. Source judgments are not independent gold."
+}
