@@ -1,0 +1,366 @@
+{
+  "reserved": {
+    "per_pair": {
+      "da-de": {
+        "control": {
+          "acceptable": 6,
+          "restricted_sense": 1,
+          "missing": 2,
+          "wrong_sense": 1
+        },
+        "F": {
+          "acceptable": 8,
+          "missing": 2
+        }
+      },
+      "da-en": {
+        "control": {
+          "acceptable": 5,
+          "wrong_sense": 1,
+          "missing": 3,
+          "restricted_sense": 1
+        },
+        "F": {
+          "acceptable": 6,
+          "missing": 3,
+          "restricted_sense": 1
+        }
+      },
+      "da-nb": {
+        "control": {
+          "missing": 1,
+          "acceptable": 9
+        },
+        "F": {
+          "missing": 1,
+          "acceptable": 9
+        }
+      },
+      "da-sv": {
+        "control": {
+          "wrong_sense": 2,
+          "restricted_sense": 1,
+          "acceptable": 6,
+          "missing": 1
+        },
+        "F": {
+          "acceptable": 9,
+          "missing": 1
+        }
+      },
+      "de-en": {
+        "control": {
+          "acceptable": 6,
+          "wrong_sense": 4
+        },
+        "F": {
+          "wrong_sense": 2,
+          "acceptable": 8
+        }
+      },
+      "de-nb": {
+        "control": {
+          "acceptable": 7,
+          "wrong_sense": 1,
+          "missing": 2
+        },
+        "F": {
+          "acceptable": 8,
+          "missing": 2
+        }
+      },
+      "de-sv": {
+        "control": {
+          "missing": 3,
+          "wrong_sense": 3,
+          "acceptable": 3,
+          "restricted_sense": 1
+        },
+        "F": {
+          "missing": 3,
+          "wrong_sense": 1,
+          "acceptable": 6
+        }
+      },
+      "en-nb": {
+        "control": {
+          "restricted_sense": 1,
+          "wrong_sense": 1,
+          "acceptable": 5,
+          "missing": 3
+        },
+        "F": {
+          "acceptable": 7,
+          "missing": 3
+        }
+      },
+      "en-sv": {
+        "control": {
+          "restricted_sense": 3,
+          "acceptable": 4,
+          "missing": 1,
+          "wrong_sense": 2
+        },
+        "F": {
+          "restricted_sense": 2,
+          "acceptable": 6,
+          "wrong_sense": 1,
+          "missing": 1
+        }
+      },
+      "nb-sv": {
+        "control": {
+          "acceptable": 6,
+          "wrong_sense": 2,
+          "missing": 2
+        },
+        "F": {
+          "acceptable": 8,
+          "missing": 2
+        }
+      }
+    },
+    "selected_alignment": {
+      "control": {},
+      "F": {}
+    },
+    "entry_correctness": {
+      "control": {},
+      "F": {}
+    },
+    "source_gloss_membership_errors": [],
+    "unresolved_upper_bounds": {
+      "control": {
+        "mean": 0.5698529411764706,
+        "sampling_standard_error": 0.04477678563727995
+      },
+      "F": {
+        "mean": 0.75,
+        "sampling_standard_error": 0.039848599720115375
+      }
+    },
+    "counts": {
+      "control": {
+        "acceptable": 57,
+        "restricted_sense": 8,
+        "missing": 18,
+        "wrong_sense": 17
+      },
+      "F": {
+        "acceptable": 75,
+        "missing": 18,
+        "restricted_sense": 3,
+        "wrong_sense": 4
+      }
+    },
+    "transitions": {
+      "same": 76,
+      "gain": 21,
+      "loss": 3
+    },
+    "changed_displays": 30,
+    "weighted": {
+      "control": {
+        "mean": 0.5698529411764706,
+        "sampling_standard_error": 0.04477678563727995
+      },
+      "F": {
+        "mean": 0.75,
+        "sampling_standard_error": 0.039848599720115375
+      },
+      "difference": {
+        "mean": 0.18014705882352938,
+        "sampling_standard_error": 0.042685865964206315
+      }
+    }
+  },
+  "broad": {
+    "per_pair": {
+      "da-de": {
+        "control": {
+          "supported": 9,
+          "secondary_or_restricted": 1
+        },
+        "F": {
+          "supported": 10
+        }
+      },
+      "da-en": {
+        "control": {
+          "contradicted": 1,
+          "supported": 6,
+          "secondary_or_restricted": 3
+        },
+        "F": {
+          "supported": 8,
+          "secondary_or_restricted": 2
+        }
+      },
+      "da-nb": {
+        "control": {
+          "supported": 9,
+          "secondary_or_restricted": 1
+        },
+        "F": {
+          "supported": 10
+        }
+      },
+      "da-sv": {
+        "control": {
+          "supported": 9,
+          "secondary_or_restricted": 1
+        },
+        "F": {
+          "supported": 9,
+          "secondary_or_restricted": 1
+        }
+      },
+      "de-en": {
+        "control": {
+          "supported": 6,
+          "secondary_or_restricted": 3,
+          "unresolved": 1
+        },
+        "F": {
+          "supported": 7,
+          "unresolved": 2,
+          "secondary_or_restricted": 1
+        }
+      },
+      "de-nb": {
+        "control": {
+          "supported": 8,
+          "secondary_or_restricted": 2
+        },
+        "F": {
+          "supported": 10
+        }
+      },
+      "de-sv": {
+        "control": {
+          "supported": 10
+        },
+        "F": {
+          "supported": 10
+        }
+      },
+      "en-nb": {
+        "control": {
+          "supported": 6,
+          "secondary_or_restricted": 3,
+          "contradicted": 1
+        },
+        "F": {
+          "supported": 7,
+          "secondary_or_restricted": 2,
+          "contradicted": 1
+        }
+      },
+      "en-sv": {
+        "control": {
+          "supported": 5,
+          "contradicted": 1,
+          "secondary_or_restricted": 3,
+          "unresolved": 1
+        },
+        "F": {
+          "supported": 6,
+          "contradicted": 1,
+          "secondary_or_restricted": 2,
+          "unresolved": 1
+        }
+      },
+      "nb-sv": {
+        "control": {
+          "secondary_or_restricted": 2,
+          "supported": 8
+        },
+        "F": {
+          "supported": 10
+        }
+      }
+    },
+    "selected_alignment": {
+      "control": {
+        "shared": 29,
+        "partial_or_contextual": 13,
+        "documented_name_variant": 4,
+        "different": 44,
+        "related_form": 9,
+        "unresolved": 1
+      },
+      "F": {
+        "shared": 28,
+        "partial_or_contextual": 10,
+        "documented_name_variant": 4,
+        "different": 49,
+        "related_form": 8,
+        "unresolved": 1
+      }
+    },
+    "entry_correctness": {
+      "control": {
+        "source_supported": 95,
+        "unresolved": 5
+      },
+      "F": {
+        "source_supported": 95,
+        "unresolved": 5
+      }
+    },
+    "source_gloss_membership_errors": [],
+    "unresolved_upper_bounds": {
+      "control": {
+        "mean": 0.7223494831102979,
+        "sampling_standard_error": 0.06057347353723773
+      },
+      "F": {
+        "mean": 0.8597033545036968,
+        "sampling_standard_error": 0.045853585682630205
+      }
+    },
+    "counts": {
+      "control": {
+        "supported": 76,
+        "secondary_or_restricted": 19,
+        "contradicted": 3,
+        "unresolved": 2
+      },
+      "F": {
+        "supported": 87,
+        "secondary_or_restricted": 8,
+        "unresolved": 3,
+        "contradicted": 2
+      }
+    },
+    "transitions": {
+      "same": 85,
+      "gain": 13,
+      "loss": 2
+    },
+    "changed_displays": 27,
+    "weighted": {
+      "control": {
+        "mean": 0.6749092742304637,
+        "sampling_standard_error": 0.06327592932159
+      },
+      "F": {
+        "mean": 0.7822063970059581,
+        "sampling_standard_error": 0.05837608878209415
+      },
+      "difference": {
+        "mean": 0.10729712277549446,
+        "sampling_standard_error": 0.06087136270239666
+      }
+    }
+  },
+  "retrieval": {
+    "missing_comparison": 98,
+    "found": 446
+  },
+  "second_review": "pending_external_reviewer",
+  "review_hashes": {
+    "reserved": "ba0abf5336698ee7b7e4666f4471a547b4a7fc7492833b9f32d4c33efbb28883",
+    "broad": "762749ca5ffdd65ede27b53e32b4dde98183b8e45447d9e2103303ed3d5e8569"
+  }
+}

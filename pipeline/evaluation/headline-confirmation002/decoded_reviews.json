@@ -1,0 +1,2548 @@
+[
+  {
+    "id": "iecor:20-213-1:27-213-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe shadow/shade.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-204-1:27-204-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs name the ordinary worm.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-80-1:27-80-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe hunting game.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-151-1:27-151-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify snakes.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-146-1:27-146-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe sleeping.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-57-1:27-57-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Mist/fog describes suspended droplets reducing visibility; neither is another lexical sense.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-63-1:27-63-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "restricted_sense"
+    },
+    "observation": "A specifies transfer of ownership; B's present/put wording is broader and lacks that constraint.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-35-1:27-35-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No baseline comparison for the expected dust forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-216-1:27-216-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "Severe/harsh is not material hardness; B explicitly supplies hard.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-12-1:27-12-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No baseline comparison for the expected bird forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-95-1:22-95-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe being alive.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-211-1:22-211-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A supplies the insect; B supplies a fishing lure.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-202-1:22-202-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected woman forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-139-1:22-139-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected sewing forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-86-1:22-86-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe putting to death.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-62-1:22-62-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs specify maximum capacity.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-136-1:22-136-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected sea forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-118-1:22-118-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "restricted_sense",
+      "control": "restricted_sense"
+    },
+    "observation": "Both select musical/performance play rather than general recreational activity.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-187-1:22-187-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe cleaning with water.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-216-1:22-216-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Tough/hard with the pressure definition and hard/solid-firm both express physical hardness.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-204-1:58-204-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected worm forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-52-1:58-52-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs denote the number five.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-80-1:58-80-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe hunting.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-12-1:58-12-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify birds.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-199-1:58-199-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify wings.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-4-1:58-4-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs define the residue of combustion.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-49-1:58-49-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "The headwords/glosses identify the finger/toe nail reading.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-120-1:58-120-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe pushing/shoving.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-62-1:58-62-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe maximum capacity.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-224-1:58-224-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe performing an action.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-4-1:69-4-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A selects combustion residue; B selects the ash-removal verb instead of the noun concept.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-95-1:69-95-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "restricted_sense"
+    },
+    "observation": "A describes being alive; B selects the narrower live-off/sustenance construction.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-114-1:69-114-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe long existence/age.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-41-1:69-41-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe falling.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-52-1:69-52-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs denote the number five.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-118-1:69-118-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected play forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:20-133-1:69-133-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify finely ground rock/sand.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:20-90-1:69-90-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify laughter.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-161-1:69-161-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A selects stone/rock; B selects male given names.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:20-211-1:69-211-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify the insect fly.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-224-1:22-224-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "wrong_sense",
+      "control": "acceptable"
+    },
+    "observation": "A selects the English auxiliary question marker; B selects performing an action.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-148-1:22-148-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A pairs a smelling action with the sense noun; B has two smelling actions.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-224-2:22-224-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "wrong_sense"
+    },
+    "observation": "A supplies performing an action; B's English auxiliary does not express the concept.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-114-1:22-114-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "Former/previous is a different old reading; B explicitly describes long existence.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-105-1:22-105-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify the food-ingestion opening.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-57-1:22-57-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe low cloud/fog.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-181-1:22-181-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A describes the woody plant; B selects a storage object made from its trunk.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-151-1:22-151-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify legless reptiles.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-204-1:22-204-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A describes the animal worm; B selects software.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-23-1:22-23-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe low temperature.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-218-1:58-218-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe going/walking.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-166-1:58-166-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both German swim readings still describe the swimming action; a distance object does not change the action.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-37-1:58-37-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A selects the planet; B supplies earth/soil as required.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-181-1:58-181-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify trees.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-151-1:58-151-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify snakes.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-136-1:58-136-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected sea forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:27-99-1:58-99-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs explicitly identify adult male humans.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-74-1:58-74-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected heavy forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:27-52-1:58-52-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs denote five.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-118-1:58-118-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe recreational play.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-202-1:69-202-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected woman forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:27-173-1:69-173-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "wrong_sense"
+    },
+    "observation": "Both retain German remembering rather than the general think concept; B only repairs the Swedish endpoint.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-151-1:69-151-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A selects the reptile; B selects a figurative insult.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-41-1:69-41-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A selects downward falling; B selects death in battle.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-57-1:69-57-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe fog.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:27-134-1:69-134-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "restricted_sense",
+      "F": "acceptable"
+    },
+    "observation": "A supplies the recipient-directed tell/inform use; B directly supplies saying/uttering.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-181-1:69-181-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify trees.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-142-1:69-142-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe singing.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:27-56-1:69-56-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected flying forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:27-74-1:69-74-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected heavy forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:22-99-1:58-99-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "restricted_sense"
+    },
+    "observation": "A identifies adult male humans; B's Homo/person definition is broader and omits male/adult restrictions.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:22-226-1:58-226-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A selects an arthropod pincer; B selects the keratin digit projection required by the reference.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-176-1:58-176-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs denote three.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-208-1:58-208-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs identify ants.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-202-1:58-202-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected woman forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:22-35-1:58-35-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected dust forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:22-166-1:58-166-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs explicitly describe swimming in water.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:22-80-1:58-80-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe hunting animals.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:22-89-1:58-89-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected lake forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:22-118-1:58-118-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe recreational play.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-59-1:69-59-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "restricted_sense",
+      "F": "restricted_sense"
+    },
+    "observation": "Both select the written digit rather than the natural number itself.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-114-1:69-114-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "restricted_sense",
+      "F": "acceptable"
+    },
+    "observation": "A describes age measured in any specified duration; B explicitly supplies long existence.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-62-1:69-62-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe maximum capacity.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-134-1:69-134-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe pronouncing/saying words.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:22-120-1:69-120-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "restricted_sense",
+      "F": "wrong_sense"
+    },
+    "observation": "A's forceful ejection is a narrower related action; B's weapon shooting is not the ordinary pushing concept.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-139-1:69-139-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected sewing forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:22-204-1:69-204-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A selects software; B supplies the animal worm.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-49-1:69-49-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "restricted_sense",
+      "control": "acceptable"
+    },
+    "observation": "A is the broader animal plate/claw definition; B specifically supplies the human/ape finger-and-toe plate.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:22-118-1:69-118-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both broad recreational play and ordinary children's play instantiate this activity concept.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:22-23-1:69-23-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A selects emotional distance; B supplies physical low temperature.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:58-176-1:69-176-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs denote three.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:58-226-1:69-226-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "wrong_sense",
+      "F": "acceptable"
+    },
+    "observation": "A selects pincers; B supplies the required keratin claws.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:58-199-1:69-199-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs identify wings.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:58-204-1:69-204-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected worm forms.",
+    "versions": null
+  },
+  {
+    "id": "iecor:58-151-1:69-151-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "wrong_sense"
+    },
+    "observation": "A supplies the reptile; B selects an insult.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:58-143-1:69-143-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe the sitting posture.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:58-57-1:69-57-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe fog/mist near the ground.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:58-166-1:69-166-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "acceptable",
+      "F": "acceptable"
+    },
+    "observation": "Both pairs describe swimming.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "iecor:58-62-1:69-62-1",
+    "panel": "reserved",
+    "verdicts": {
+      "F": "acceptable",
+      "control": "acceptable"
+    },
+    "observation": "Both pairs describe maximum capacity.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "iecor:58-89-1:69-89-1",
+    "panel": "reserved",
+    "verdicts": {
+      "control": "missing",
+      "F": "missing"
+    },
+    "observation": "No comparison for the expected lake forms.",
+    "versions": null
+  },
+  {
+    "id": "row:12824",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both definitions describe insult/offense.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:28440",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe speechlessness; Danish also has goalless/scoreless uses.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:30296",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Invent/devise aligns with devise/design; sketch/draft is a narrower related activity. Both are substantive ordinary readings.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:37282",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Tailor-made/customized overlaps contextually with user-defined.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:50950",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "The source records related given-name forms, not a shared individual identity.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:62266",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both verb readings mean to date; the Danish noun is another use.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:66666",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "The German toil reading is dated/colloquial; feudal labor is a substantive historical topic reading. Neither means robot.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:67422",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Arctic region and Arctic adjective have related meanings with different grammatical roles.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:67660",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Poppy seed and a surname are different; source membership does not establish a historical relationship.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:80966",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both definitions name a biophysicist.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:111244",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "contradicted"
+    },
+    "observation": "Simpleton/person aligns; a fool-around verb paired with a person noun changes grammatical use.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:141726",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "A daffodil and a personal name whose etymology mentions daffodil are different referents.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:150602",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Auditor and an act of revising are different meanings.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:152572",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Autocrat and craft automatically are different meanings.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:154848",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "Political adjective and dated make-political verb are related forms; the English fallback remains dated.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:163386",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "The bodily-sac sense of bag is valid but secondary to its available container reading. Both versions retain it.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:172836",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A given name and a Macedonian city are different; both source definitions are substantive.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:207496",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Gentleness and make glad are different meanings, despite positive affect.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:217472",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "Sexual slang for anus is secondary; sewer-access opening is an ordinary manhole reading. Neither means mandola.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:252348",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "The source explicitly records a spelling variant of Stephanie; this does not identify a person.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:266444",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Kick and fire from employment are both ordinary Norwegian readings; only the latter aligns with Danish here.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:269480",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "The selected they and plural you differ. The full Danish inventory also records formal you, which needs separate scope.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:277244",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name the coast/shoreline.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:277678",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name the Latvian language; the inventories also contain adjectives.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:279066",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both name monarchy.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:311090",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "Delay is an ordinary reading; galvanize is a specialist homograph. Neither means refine.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:318070",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A Slovenian person and the country Slovenia differ in referent type.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:318834",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both describe sexual bashfulness/modesty.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:322300",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Deification and renewal are different meanings.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:322374",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Increase and relinquishment are different meanings.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:327164",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "A surname and a sports position differ. The Swedish inventory has additional homographs.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:335312",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both name a wheel rim.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:335954",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "The source records given-name equivalents of George, not a shared personal identity.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:341294",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name the architectural bracket; this is a substantive reading even though control-panel uses also exist.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:349290",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name a raindrop.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:358262",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Warning overlaps with harbinger; a notice period does not. Both Danish readings are current and substantive.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:361196",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name dissonance.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:378646",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Sickle and sail differ; Danish also has a seal homograph.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:382202",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "Save and saver are derivationally related; the bowling spare noun is a secondary introduction and loses that relation.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:386634",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "Spare someone something is ordinary; the put-money-aside reading is tagged rare. Neither directly means answer.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:406060",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A gasp is a sudden intake of breath, narrower than a general breath.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:450680",
+    "panel": "broad",
+    "verdicts": {
+      "F": "unresolved",
+      "control": "supported"
+    },
+    "observation": "Occitan person mismatches the German language use. Provençal dialect versus Occitan language is scoped overlap. Preferred word introductions remain ambiguous.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:451546",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "Battering ram is a valid secondary reading; male sheep is an ordinary ram reading. Neither is the recorded German memory acronym.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:628274",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Natural produce and a given-name variant differ; the name has no ordinary lexical alternative in this inventory.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:638536",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both physical injury and something causing injury are substantive harm readings. Neither means resin.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:769634",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "The Austrian table/chart reading is regional and paired with a verb; the stage arrangement and furniture readings are substantive but different. Full inventories have chart-related overlap.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:810514",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Phosphide and phosphine are different chemical species. Technical definitions are appropriate for these technical words.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:842496",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "The German pendulum-clock entry is obsolete; the adjective is related but does not denote a clock. No modern German substitute is invented.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:854504",
+    "panel": "broad",
+    "verdicts": {
+      "F": "unresolved",
+      "control": "unresolved"
+    },
+    "observation": "Bare phrenic is ambiguous between mind and diaphragm associations; this inventory cannot establish a preferred current introduction.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:872166",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A plant and its pigment compound differ. Both specialist definitions are substantive.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:893986",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Image/reflection overlaps with visual reflection, not every light/sound/thought use.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:904458",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name habitat.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:904974",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name a female hero.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:905842",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "Act/state of informing is a narrower abstract use; information content aligns directly with the Norwegian information reading.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:909164",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both descriptions identify Liechtenstein by geography and capital, rather than merely sharing a generic country gloss.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:912480",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name a livestock pen/enclosure.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:913500",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both name the musical fifth; the interval descriptions are compatible.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:921360",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "Urine/pee is a valid secondary match. Water/pee gives ordinary introductions but deliberately loses that selected overlap; retain the secondary evidence.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:951148",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Professor and profession differ: a person/title versus an occupation.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:962666",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Muslim woman and Muslim adjective are related uses with different grammatical roles.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:974336",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both refer to annelids, with plural/singular scope retained.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:977000",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "The Basque language and a person differ; Basque woman overlaps with the broader person reading. Both Swedish uses are substantive.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1041244",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe a sweet disposition. The German word is regional, and that qualification must remain visible.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1046646",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Arduous describes difficulty; diligent describes a worker's conduct. Related subject matter does not make them equivalent.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1047442",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Nostalgic is a particular kind of longing, not all longing.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1058056",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe becoming vapor.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1065350",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "The titles have related legal/civil-service roles but their institutional definitions are not identical.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1066274",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both name a lexeme.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1078508",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Ambivalence noun and ambivalent adjective are related forms.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1087692",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A city and a vessel anchor differ.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1134748",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Sabbatical leave overlaps with a sabbatical year, with duration/scope differences.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1167388",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A Norwegian village and coffee grounds differ.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1194874",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "The general battery reading is substantive; artillery battery is a specialized sense. Neither means the Palestinian village.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1196080",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A Canadian town and a burger differ.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1197800",
+    "panel": "broad",
+    "verdicts": {
+      "F": "secondary_or_restricted",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "The English hit-out reading is dialectal; no ordinary modern alternative is present. It differs from format.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1198664",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "The source records George-related given-name forms, not shared individual identity.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1219396",
+    "panel": "broad",
+    "verdicts": {
+      "control": "contradicted",
+      "F": "contradicted"
+    },
+    "observation": "Both retain a truncated bird definition ending in 'or'. The Norwegian prow is also uncertain; galleon is clearer but cannot repair the English fragment.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1251640",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Pole excessively and persuade differ.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1269388",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "A person who demolishes and demonize differ.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1275922",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "Careful consideration is obsolete here; perception is a different mental concept. No current English reading is fabricated.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1288640",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe the combined breakfast/lunch meal.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1338846",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe protective tinted glasses.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1364916",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both Swedish drink-related verb readings are substantive for this colloquial word; neither means the fabric.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1382970",
+    "panel": "broad",
+    "verdicts": {
+      "F": "contradicted",
+      "control": "contradicted"
+    },
+    "observation": "The Swedish definition is an obsolete spelling redirect, not an ordinary introduction. Both versions retain the fallback; English surname does not repair it.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1384540",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "secondary_or_restricted"
+    },
+    "observation": "Both choose obscure English noun readings despite available ordinary fill uses; neither weft/blanket nor carriage shaft/felt establishes equivalent meanings.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1392282",
+    "panel": "broad",
+    "verdicts": {
+      "F": "secondary_or_restricted",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "The Swedish readings are rare; neither sea nor shallow muddy bay means irritable mood. Keep that qualification.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1409040",
+    "panel": "broad",
+    "verdicts": {
+      "F": "unresolved",
+      "control": "unresolved"
+    },
+    "observation": "The English place and surname are source-attested, but their preferred priority is unresolved; both differ from froth.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1412774",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "A Karelian person differs from a capable man or the given name Karl. Each is a substantive recorded use.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1443006",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "A stone milestone is an ordinary concrete reading; the figurative Swedish reading is tagged rare. The English places do not share its meaning.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1533380",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "An adjective relating to gadolinium and the element noun are related forms.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1573302",
+    "panel": "broad",
+    "verdicts": {
+      "control": "secondary_or_restricted",
+      "F": "supported"
+    },
+    "observation": "Time passing is figurative; flee is an ordinary Swedish reading. Neither selected pair directly equates Norwegian flying with Swedish fleeing/time passing.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1574666",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both selected adjectives mean voluntary; other grammatical uses remain separate.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1585952",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Both name a creator/originator.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1586250",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "The qualified copy gloss denotes the source/model from which something is copied, giving contextual overlap with original.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1587066",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both name a pixel.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1589532",
+    "panel": "broad",
+    "verdicts": {
+      "control": "supported",
+      "F": "supported"
+    },
+    "observation": "Sandpaper and a sheet of sandpaper overlap with material/unit differences.",
+    "versions": {
+      "A": "control",
+      "B": "F"
+    }
+  },
+  {
+    "id": "row:1601058",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Both describe food prepared from blood.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1603668",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "secondary_or_restricted"
+    },
+    "observation": "Straight/easy and thing are substantive uses; the subjective 'one's thing' reading is secondary. Nice/kind is also an ordinary Norwegian reading, but is not equivalent.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1610778",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "Minimum noun and minimal adjective are related forms.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  },
+  {
+    "id": "row:1630886",
+    "panel": "broad",
+    "verdicts": {
+      "F": "supported",
+      "control": "supported"
+    },
+    "observation": "A specially prepared substance and a social class differ.",
+    "versions": {
+      "A": "F",
+      "B": "control"
+    }
+  }
+]

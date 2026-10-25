@@ -1,0 +1,21 @@
+{
+  "method_commit": "816ad8d",
+  "variant": "F",
+  "inputs": {
+    "pipeline/evaluation/HEADLINE_CONFIRMATION_PLAN.md": "97fe72f530aee42d8fa1fc85d85b6870fe351d688bad098ab313edebc0528981",
+    "pipeline/data/reproduce-five-language-20261002/all_comparisons_v2.parquet": "a7e2bfe3ffa75931c9134f3e570eec53cbf644713b738bedc055fdc9b44b120f",
+    "pipeline/evaluation/e0_families_v2.json": "b07cf0cb30876cb7cd3904511490154e8d72c010e9d8bf87bf0295861dae5642",
+    "pipeline/evaluation/e0_concept_results.csv": "9fcb721c480b2edad401e3a28f604f2e04e82168464d94d258295ca9c5a55cda",
+    "pipeline/evaluation/headline-confirmation002/sample.json": "4d469543a26ab28808f69ac6d01dd2d323565ba33b9e31464e8ba5427024743d",
+    "pipeline/evaluation/headline-confirmation002/rows.json": "c8428b03cb35a180578c4294f7806bb81d5cdacc69655c01e82bc2174175a2ca"
+  },
+  "code": {
+    "pipeline/evaluation/headline_verify.py": "5be11422ae681a6a8ad785be3bdbad038947a424d8ff2cd19c63874dcda23052",
+    "pipeline/src/sense_display.py": "f944c6dc116bedd1a5b765798fbc9758ddf24e07d1aaf4654c74aaec30165402",
+    "pipeline/src/translation_support.py": "d7e9d8783e67e539632cb3dbb50a4ee66fe961d560e8bec9392f88a65a67300a",
+    "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+    "pipeline/evaluation/e2.py": "01866f7e3aa7014a07cb5c178a25192c0628a2b68cef54281d7901d4a7a61877",
+    "pipeline/evaluation/e2_scope.py": "1e28c53b425ec492624985df5c8b69d06aadb90e262650cd113bcfc192366f35"
+  },
+  "model_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+}

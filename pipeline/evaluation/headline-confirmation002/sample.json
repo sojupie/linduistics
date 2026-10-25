@@ -1,0 +1,4055 @@
+{
+  "cases": [
+    {
+      "id": "iecor:20-213-1:27-213-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-213-1:27-213-1",
+        "concept_id": "213",
+        "concept": "shadow",
+        "expected_meaning": "Darkness, where light (particularly sunlight) is blocked.",
+        "lang_a": "da",
+        "word_a": "skygge",
+        "lang_b": "de",
+        "word_b": "Schatten",
+        "form_id_a": "20-213-1",
+        "form_id_b": "27-213-1",
+        "expert_sets_a": "7022",
+        "expert_sets_b": "8269",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=skygge",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "shadow",
+        "display_b": "shade, shadow"
+      },
+      "row_index": 37508
+    },
+    {
+      "id": "iecor:20-204-1:27-204-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-204-1:27-204-1",
+        "concept_id": "204",
+        "concept": "worm",
+        "expected_meaning": "A generally tubular invertebrate of the annelid phylum.",
+        "lang_a": "da",
+        "word_a": "orm",
+        "lang_b": "de",
+        "word_b": "Wurm",
+        "form_id_a": "20-204-1",
+        "form_id_b": "27-204-1",
+        "expert_sets_a": "348",
+        "expert_sets_b": "348",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=orm",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "worm",
+        "display_b": "worm"
+      },
+      "row_index": 30942
+    },
+    {
+      "id": "iecor:20-80-1:27-80-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-80-1:27-80-1",
+        "concept_id": "80",
+        "concept": "hunt",
+        "expected_meaning": "To chase down prey and (usually) kill it.",
+        "lang_a": "da",
+        "word_a": "jage",
+        "lang_b": "de",
+        "word_b": "jagen",
+        "form_id_a": "20-80-1",
+        "form_id_b": "27-80-1",
+        "expert_sets_a": "5597",
+        "expert_sets_b": "243",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=jage",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "to hunt, shoot",
+        "display_b": "to hunt (game)"
+      },
+      "row_index": 20450
+    },
+    {
+      "id": "iecor:20-151-1:27-151-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-151-1:27-151-1",
+        "concept_id": "151",
+        "concept": "snake",
+        "expected_meaning": "Any reptile of the suborder Serpentes, typically having a scaly cylindrical limbless body, fused eyelids, and a jaw modified for swallowing large prey.",
+        "lang_a": "da",
+        "word_a": "slange",
+        "lang_b": "de",
+        "word_b": "Schlange",
+        "form_id_a": "20-151-1",
+        "form_id_b": "27-151-1",
+        "expert_sets_a": "5737",
+        "expert_sets_b": "302",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=slange",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "unknown",
+        "display_a": "snake, serpent",
+        "display_b": "snake"
+      },
+      "row_index": 37972
+    },
+    {
+      "id": "iecor:20-146-1:27-146-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-146-1:27-146-1",
+        "concept_id": "146",
+        "concept": "sleep",
+        "expected_meaning": "To rest in a state of decreased consciousness and reduced metabolism.",
+        "lang_a": "da",
+        "word_a": "sove",
+        "lang_b": "de",
+        "word_b": "schlafen",
+        "form_id_a": "20-146-1",
+        "form_id_b": "27-146-1",
+        "expert_sets_a": "7523",
+        "expert_sets_b": "5089",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=sove",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to sleep",
+        "display_b": "to sleep"
+      },
+      "row_index": 39018
+    },
+    {
+      "id": "iecor:20-57-1:27-57-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-57-1:27-57-1",
+        "concept_id": "57",
+        "concept": "fog",
+        "expected_meaning": "Water droplets or, rarely, ice crystals suspended in the air in sufficient concentration to reduce visibility appreciably.",
+        "lang_a": "da",
+        "word_a": "tåge",
+        "lang_b": "de",
+        "word_b": "Nebel",
+        "form_id_a": "20-57-1",
+        "form_id_b": "27-57-1",
+        "expert_sets_a": "1315",
+        "expert_sets_b": "2150",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=tåge",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "mist",
+        "display_b": "fog, mist, haze"
+      },
+      "row_index": 44248
+    },
+    {
+      "id": "iecor:20-63-1:27-63-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-63-1:27-63-1",
+        "concept_id": "63",
+        "concept": "give",
+        "expected_meaning": "To transfer the possession or holding (of an object) to another person.",
+        "lang_a": "da",
+        "word_a": "give",
+        "lang_b": "de",
+        "word_b": "geben",
+        "form_id_a": "20-63-1",
+        "form_id_b": "27-63-1",
+        "expert_sets_a": "228",
+        "expert_sets_b": "228",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=give",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "to give",
+        "display_b": "to present; to put"
+      },
+      "row_index": 15524
+    },
+    {
+      "id": "iecor:20-35-1:27-35-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-35-1:27-35-1",
+        "concept_id": "35",
+        "concept": "dust",
+        "expected_meaning": "Any kind of solid material divided in particles of very small size.",
+        "lang_a": "da",
+        "word_a": "støv",
+        "lang_b": "de",
+        "word_b": "Staub",
+        "form_id_a": "20-35-1",
+        "form_id_b": "27-35-1",
+        "expert_sets_a": "9687",
+        "expert_sets_b": "207",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=støv",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-216-1:27-216-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-216-1:27-216-1",
+        "concept_id": "216",
+        "concept": "hard",
+        "expected_meaning": "Resistant to pressure.",
+        "lang_a": "da",
+        "word_a": "hård",
+        "lang_b": "de",
+        "word_b": "hart",
+        "form_id_a": "20-216-1",
+        "form_id_b": "27-216-1",
+        "expert_sets_a": "5449",
+        "expert_sets_b": "5449",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=hård",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "severe, harsh",
+        "display_b": "severe, harsh"
+      },
+      "row_index": 18880
+    },
+    {
+      "id": "iecor:20-12-1:27-12-1",
+      "panel": "reserved",
+      "stratum": "da-de",
+      "reference": {
+        "case_id": "iecor:20-12-1:27-12-1",
+        "concept_id": "12",
+        "concept": "bird",
+        "expected_meaning": "Any of the bipedal, warm-blooded vertebrates that lay eggs having wings which, for most species, enables them to fly.",
+        "lang_a": "da",
+        "word_a": "fugl",
+        "lang_b": "de",
+        "word_b": "Vogel",
+        "form_id_a": "20-12-1",
+        "form_id_b": "27-12-1",
+        "expert_sets_a": "186",
+        "expert_sets_b": "186",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fugl",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-95-1:22-95-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-95-1:22-95-1",
+        "concept_id": "95",
+        "concept": "live",
+        "expected_meaning": "To be alive; to have a life.",
+        "lang_a": "da",
+        "word_a": "leve",
+        "lang_b": "en",
+        "word_b": "live",
+        "form_id_a": "20-95-1",
+        "form_id_b": "22-95-1",
+        "expert_sets_a": "255",
+        "expert_sets_b": "255",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/109300",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to live, be alive",
+        "display_b": "To be alive; to have life."
+      },
+      "row_index": 99378
+    },
+    {
+      "id": "iecor:20-211-1:22-211-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-211-1:22-211-1",
+        "concept_id": "211",
+        "concept": "fly_N",
+        "expected_meaning": "A common insect; any species of insect of the order Diptera.",
+        "lang_a": "da",
+        "word_a": "flue",
+        "lang_b": "en",
+        "word_b": "fly",
+        "form_id_a": "20-211-1",
+        "form_id_b": "22-211-1",
+        "expert_sets_a": "5414",
+        "expert_sets_b": "5414",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=flue",
+        "source_b": "http://www.oed.com/view/Entry/72263",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "fly (insect) (Brachycera)",
+        "display_b": "A lightweight fishing lure resembling an insect."
+      },
+      "row_index": 90588
+    },
+    {
+      "id": "iecor:20-202-1:22-202-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-202-1:22-202-1",
+        "concept_id": "202",
+        "concept": "woman",
+        "expected_meaning": "An adult human member of the sex that produces ova and bears young.",
+        "lang_a": "da",
+        "word_a": "kvinde",
+        "lang_b": "en",
+        "word_b": "woman",
+        "form_id_a": "20-202-1",
+        "form_id_b": "22-202-1",
+        "expert_sets_a": "671",
+        "expert_sets_b": "1365",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=kvinde",
+        "source_b": "http://www.oed.com/view/Entry/229884",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-139-1:22-139-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-139-1:22-139-1",
+        "concept_id": "139",
+        "concept": "sew",
+        "expected_meaning": "To pass thread repeatedly through fabric or a material, using a needle, in order to join two or more parts or to make a pattern or motif.",
+        "lang_a": "da",
+        "word_a": "sy",
+        "lang_b": "en",
+        "word_b": "sew",
+        "form_id_a": "20-139-1",
+        "form_id_b": "22-139-1",
+        "expert_sets_a": "815",
+        "expert_sets_b": "815",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=sy",
+        "source_b": "http://www.oed.com/view/Entry/176956",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-86-1:22-86-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-86-1:22-86-1",
+        "concept_id": "86",
+        "concept": "kill",
+        "expected_meaning": "To put to death; to end a life.",
+        "lang_a": "da",
+        "word_a": "dræbe",
+        "lang_b": "en",
+        "word_b": "kill",
+        "form_id_a": "20-86-1",
+        "form_id_b": "22-86-1",
+        "expert_sets_a": "248",
+        "expert_sets_b": "8329",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=dræbe",
+        "source_b": "http://www.oed.com/view/Entry/103361",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "to kill",
+        "display_b": "To put to death; to extinguish the life of."
+      },
+      "row_index": 88432
+    },
+    {
+      "id": "iecor:20-62-1:22-62-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-62-1:22-62-1",
+        "concept_id": "62",
+        "concept": "full",
+        "expected_meaning": "Containing the most or maximum amount possible in the given available space.",
+        "lang_a": "da",
+        "word_a": "fuld",
+        "lang_b": "en",
+        "word_b": "full",
+        "form_id_a": "20-62-1",
+        "form_id_b": "22-62-1",
+        "expert_sets_a": "2235",
+        "expert_sets_b": "2235",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fuld",
+        "source_b": "http://www.oed.com/view/Entry/75327",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "full (containing the maximum possible amount)",
+        "display_b": "Containing the maximum possible amount that can fit in the space available."
+      },
+      "row_index": 92152
+    },
+    {
+      "id": "iecor:20-136-1:22-136-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-136-1:22-136-1",
+        "concept_id": "136",
+        "concept": "sea",
+        "expected_meaning": "A body of salt water that is smaller than an ocean and generally in proximity to a continent.",
+        "lang_a": "da",
+        "word_a": "hav",
+        "lang_b": "en",
+        "word_b": "sea",
+        "form_id_a": "20-136-1",
+        "form_id_b": "22-136-1",
+        "expert_sets_a": "2774",
+        "expert_sets_b": "2773",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=hav",
+        "source_b": "http://www.oed.com/view/Entry/174071",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-118-1:22-118-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-118-1:22-118-1",
+        "concept_id": "118",
+        "concept": "play",
+        "expected_meaning": "To act in a manner such that one has fun; to engage in playful activities expressly for the purpose of recreation.",
+        "lang_a": "da",
+        "word_a": "spille",
+        "lang_b": "en",
+        "word_b": "play",
+        "form_id_a": "20-118-1",
+        "form_id_b": "22-118-1",
+        "expert_sets_a": "5660",
+        "expert_sets_b": "1354",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=spille",
+        "source_b": "http://www.oed.com/view/Entry/145475",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "to play (music, a game, in a theatrical performance)",
+        "display_b": "To produce sound (especially music), moving pictures, or theatrical performance."
+      },
+      "row_index": 108612
+    },
+    {
+      "id": "iecor:20-187-1:22-187-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-187-1:22-187-1",
+        "concept_id": "187",
+        "concept": "wash",
+        "expected_meaning": "To remove dirt and grime from an object, using water (usually with soap).",
+        "lang_a": "da",
+        "word_a": "vaske",
+        "lang_b": "en",
+        "word_b": "wash",
+        "form_id_a": "20-187-1",
+        "form_id_b": "22-187-1",
+        "expert_sets_a": "5776",
+        "expert_sets_b": "334",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=vaske",
+        "source_b": "http://www.oed.com/view/Entry/225924",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to wash",
+        "display_b": "To clean with water."
+      },
+      "row_index": 113614
+    },
+    {
+      "id": "iecor:20-216-1:22-216-1",
+      "panel": "reserved",
+      "stratum": "da-en",
+      "reference": {
+        "case_id": "iecor:20-216-1:22-216-1",
+        "concept_id": "216",
+        "concept": "hard",
+        "expected_meaning": "Resistant to pressure.",
+        "lang_a": "da",
+        "word_a": "hård",
+        "lang_b": "en",
+        "word_b": "hard",
+        "form_id_a": "20-216-1",
+        "form_id_b": "22-216-1",
+        "expert_sets_a": "5449",
+        "expert_sets_b": "5449",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=hård",
+        "source_b": "http://www.oed.com/view/Entry/84122",
+        "coverage_status": "found",
+        "category": "cognate_false_friend",
+        "relation": "cognate",
+        "display_a": "tough",
+        "display_b": "Resistant to pressure; difficult to break, cut, or penetrate."
+      },
+      "row_index": 95314
+    },
+    {
+      "id": "iecor:20-204-1:58-204-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-204-1:58-204-1",
+        "concept_id": "204",
+        "concept": "worm",
+        "expected_meaning": "A generally tubular invertebrate of the annelid phylum.",
+        "lang_a": "da",
+        "word_a": "orm",
+        "lang_b": "nb",
+        "word_b": "mark",
+        "form_id_a": "20-204-1",
+        "form_id_b": "58-204-1",
+        "expert_sets_a": "348",
+        "expert_sets_b": "3139",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=orm",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-52-1:58-52-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-52-1:58-52-1",
+        "concept_id": "52",
+        "concept": "five",
+        "expected_meaning": "The natural number five (5).",
+        "lang_a": "da",
+        "word_a": "fem",
+        "lang_b": "nb",
+        "word_b": "fem",
+        "form_id_a": "20-52-1",
+        "form_id_b": "58-52-1",
+        "expert_sets_a": "39",
+        "expert_sets_b": "39",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fem",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "five",
+        "display_b": "five"
+      },
+      "row_index": 271222
+    },
+    {
+      "id": "iecor:20-80-1:58-80-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-80-1:58-80-1",
+        "concept_id": "80",
+        "concept": "hunt",
+        "expected_meaning": "To chase down prey and (usually) kill it.",
+        "lang_a": "da",
+        "word_a": "jage",
+        "lang_b": "nb",
+        "word_b": "jakte",
+        "form_id_a": "20-80-1",
+        "form_id_b": "58-80-1",
+        "expert_sets_a": "5597",
+        "expert_sets_b": "9973",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=jage",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "unknown",
+        "display_a": "to hunt, shoot",
+        "display_b": "to hunt"
+      },
+      "row_index": 275524
+    },
+    {
+      "id": "iecor:20-12-1:58-12-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-12-1:58-12-1",
+        "concept_id": "12",
+        "concept": "bird",
+        "expected_meaning": "Any of the bipedal, warm-blooded vertebrates that lay eggs having wings which, for most species, enables them to fly.",
+        "lang_a": "da",
+        "word_a": "fugl",
+        "lang_b": "nb",
+        "word_b": "fugl",
+        "form_id_a": "20-12-1",
+        "form_id_b": "58-12-1",
+        "expert_sets_a": "186",
+        "expert_sets_b": "186",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fugl",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "bird",
+        "display_b": "a bird"
+      },
+      "row_index": 288768
+    },
+    {
+      "id": "iecor:20-199-1:58-199-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-199-1:58-199-1",
+        "concept_id": "199",
+        "concept": "wing",
+        "expected_meaning": "The appendage of an animal's (bird, bat, insect) body that enables it to fly in the air.",
+        "lang_a": "da",
+        "word_a": "vinge",
+        "lang_b": "nb",
+        "word_b": "vinge",
+        "form_id_a": "20-199-1",
+        "form_id_b": "58-199-1",
+        "expert_sets_a": "1336",
+        "expert_sets_b": "1336",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=vinge",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "wing",
+        "display_b": "a wing"
+      },
+      "row_index": 289344
+    },
+    {
+      "id": "iecor:20-4-1:58-4-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-4-1:58-4-1",
+        "concept_id": "4",
+        "concept": "ash",
+        "expected_meaning": "The incombustible matter remaining after a substance has been incinerated.",
+        "lang_a": "da",
+        "word_a": "aske",
+        "lang_b": "nb",
+        "word_b": "aske",
+        "form_id_a": "20-4-1",
+        "form_id_b": "58-4-1",
+        "expert_sets_a": "178",
+        "expert_sets_b": "178",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=aske",
+        "source_b": "https://ordbok.uib.no/perl/ordbok.cgi?ant_bokmaal=5&ant_nynorsk=5&bokmaal=+&ordbok=bokmaal&OPP=+aske",
+        "coverage_status": "found",
+        "category": "accidental_lookalike",
+        "relation": "false_cognate",
+        "display_a": "ash (solid remains of a fire)",
+        "display_b": "ash (or ashes) (powdery residue left after burning a substance)"
+      },
+      "row_index": 267308
+    },
+    {
+      "id": "iecor:20-49-1:58-49-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-49-1:58-49-1",
+        "concept_id": "49",
+        "concept": "nail",
+        "expected_meaning": "Hard keratin part growing at the end of a human's finger or toe.",
+        "lang_a": "da",
+        "word_a": "negl",
+        "lang_b": "nb",
+        "word_b": "negl",
+        "form_id_a": "20-49-1",
+        "form_id_b": "58-49-1",
+        "expert_sets_a": "2268",
+        "expert_sets_b": "2268",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=negl",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "nail (on fingers and toes)",
+        "display_b": "a nail"
+      },
+      "row_index": 279560
+    },
+    {
+      "id": "iecor:20-120-1:58-120-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-120-1:58-120-1",
+        "concept_id": "120",
+        "concept": "push",
+        "expected_meaning": "To apply a force to (an object), in order that it moves away from the origin of the force that was applied.",
+        "lang_a": "da",
+        "word_a": "skubbe",
+        "lang_b": "nb",
+        "word_b": "dytte",
+        "form_id_a": "20-120-1",
+        "form_id_b": "58-120-1",
+        "expert_sets_a": "4323",
+        "expert_sets_b": "4207",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=skubbe",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "push",
+        "display_b": "to push, shove"
+      },
+      "row_index": 283228
+    },
+    {
+      "id": "iecor:20-62-1:58-62-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-62-1:58-62-1",
+        "concept_id": "62",
+        "concept": "full",
+        "expected_meaning": "Containing the most or maximum amount possible in the given available space.",
+        "lang_a": "da",
+        "word_a": "fuld",
+        "lang_b": "nb",
+        "word_b": "full",
+        "form_id_a": "20-62-1",
+        "form_id_b": "58-62-1",
+        "expert_sets_a": "2235",
+        "expert_sets_b": "2235",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fuld",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "full (containing the maximum possible amount)",
+        "display_b": "full (containing the maximum possible amount)"
+      },
+      "row_index": 272646
+    },
+    {
+      "id": "iecor:20-224-1:58-224-1",
+      "panel": "reserved",
+      "stratum": "da-nb",
+      "reference": {
+        "case_id": "iecor:20-224-1:58-224-1",
+        "concept_id": "224",
+        "concept": "do",
+        "expected_meaning": "To perform an action.",
+        "lang_a": "da",
+        "word_a": "gøre",
+        "lang_b": "nb",
+        "word_b": "gjøre",
+        "form_id_a": "20-224-1",
+        "form_id_b": "58-224-1",
+        "expert_sets_a": "6463",
+        "expert_sets_b": "6463",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=gøre",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "to do, perform, execute",
+        "display_b": "to do (something)"
+      },
+      "row_index": 273806
+    },
+    {
+      "id": "iecor:20-4-1:69-4-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-4-1:69-4-1",
+        "concept_id": "4",
+        "concept": "ash",
+        "expected_meaning": "The incombustible matter remaining after a substance has been incinerated.",
+        "lang_a": "da",
+        "word_a": "aske",
+        "lang_b": "sv",
+        "word_b": "aska",
+        "form_id_a": "20-4-1",
+        "form_id_b": "69-4-1",
+        "expert_sets_a": "178",
+        "expert_sets_b": "178",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=aske",
+        "source_b": "http://www.saob.se/artikel/?seek=aska",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to ash (to knock the ash off a lit cigarette, cigar, etc.)",
+        "display_b": "to ash, to remove ashes from a cigarette, smoking pipe, stove, or burner"
+      },
+      "row_index": 326866
+    },
+    {
+      "id": "iecor:20-95-1:69-95-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-95-1:69-95-1",
+        "concept_id": "95",
+        "concept": "live",
+        "expected_meaning": "To be alive; to have a life.",
+        "lang_a": "da",
+        "word_a": "leve",
+        "lang_b": "sv",
+        "word_b": "leva",
+        "form_id_a": "20-95-1",
+        "form_id_b": "69-95-1",
+        "expert_sets_a": "255",
+        "expert_sets_b": "255",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=leva",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to live off or live on",
+        "display_b": "to live on, to live off (something)"
+      },
+      "row_index": 342916
+    },
+    {
+      "id": "iecor:20-114-1:69-114-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-114-1:69-114-1",
+        "concept_id": "114",
+        "concept": "old",
+        "expected_meaning": "Having lived or existed for a relatively long period of time.",
+        "lang_a": "da",
+        "word_a": "gammel",
+        "lang_b": "sv",
+        "word_b": "gammal",
+        "form_id_a": "20-114-1",
+        "form_id_b": "69-114-1",
+        "expert_sets_a": "1322",
+        "expert_sets_b": "1322",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=gammel",
+        "source_b": "http://www.saob.se/artikel/?seek=gammal",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "old (having existed for a relatively long period of time)",
+        "display_b": "old (having existed for a long time)"
+      },
+      "row_index": 335600
+    },
+    {
+      "id": "iecor:20-41-1:69-41-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-41-1:69-41-1",
+        "concept_id": "41",
+        "concept": "fall",
+        "expected_meaning": "To descend in free fall due to the effect of gravity.",
+        "lang_a": "da",
+        "word_a": "falde",
+        "lang_b": "sv",
+        "word_b": "falla",
+        "form_id_a": "20-41-1",
+        "form_id_b": "69-41-1",
+        "expert_sets_a": "212",
+        "expert_sets_b": "212",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=falde",
+        "source_b": "http://www.saob.se/artikel/?seek=falla",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to fall",
+        "display_b": "to fall"
+      },
+      "row_index": 332550
+    },
+    {
+      "id": "iecor:20-52-1:69-52-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-52-1:69-52-1",
+        "concept_id": "52",
+        "concept": "five",
+        "expected_meaning": "The natural number five (5).",
+        "lang_a": "da",
+        "word_a": "fem",
+        "lang_b": "sv",
+        "word_b": "fem",
+        "form_id_a": "20-52-1",
+        "form_id_b": "69-52-1",
+        "expert_sets_a": "39",
+        "expert_sets_b": "39",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=fem",
+        "source_b": "http://www.saob.se/artikel/?seek=fem",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "five",
+        "display_b": "five"
+      },
+      "row_index": 332902
+    },
+    {
+      "id": "iecor:20-118-1:69-118-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-118-1:69-118-1",
+        "concept_id": "118",
+        "concept": "play",
+        "expected_meaning": "To act in a manner such that one has fun; to engage in playful activities expressly for the purpose of recreation.",
+        "lang_a": "da",
+        "word_a": "spille",
+        "lang_b": "sv",
+        "word_b": "leka",
+        "form_id_a": "20-118-1",
+        "form_id_b": "69-118-1",
+        "expert_sets_a": "5660",
+        "expert_sets_b": "2833",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=spille",
+        "source_b": "http://www.saob.se/artikel/?seek=leka",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:20-133-1:69-133-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-133-1:69-133-1",
+        "concept_id": "133",
+        "concept": "sand",
+        "expected_meaning": "A loose material consisting of small mineral particles, or rock and mineral particles, distinguishable by the naked eye; grains vary from almost spherical to angular, with a diameter range from 1/16 to 2 millimeters.",
+        "lang_a": "da",
+        "word_a": "sand",
+        "lang_b": "sv",
+        "word_b": "sand",
+        "form_id_a": "20-133-1",
+        "form_id_b": "69-133-1",
+        "expert_sets_a": "284",
+        "expert_sets_b": "284",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=sand",
+        "source_b": "http://www.saob.se/artikel/?seek=sand",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "sand (finely ground rock)",
+        "display_b": "sand (finely ground rock)"
+      },
+      "row_index": 360382
+    },
+    {
+      "id": "iecor:20-90-1:69-90-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-90-1:69-90-1",
+        "concept_id": "90",
+        "concept": "laugh",
+        "expected_meaning": "To express pleasure, mirth or derision by peculiar movement of the muscles of the face, particularly of the mouth, causing a lighting up of the face and eyes, and usually accompanied by the emission of explosive or chuckling sounds from the chest and throat.",
+        "lang_a": "da",
+        "word_a": "grine",
+        "lang_b": "sv",
+        "word_b": "skratta",
+        "form_id_a": "20-90-1",
+        "form_id_b": "69-90-1",
+        "expert_sets_a": "4243",
+        "expert_sets_b": "2102",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=skratta",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to laugh",
+        "display_b": "to laugh"
+      },
+      "row_index": 336464
+    },
+    {
+      "id": "iecor:20-161-1:69-161-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-161-1:69-161-1",
+        "concept_id": "161",
+        "concept": "stone",
+        "expected_meaning": "A general term for rock that is used in construction, either crushed for use as aggregate or cut into shaped blocks as dimension stone.",
+        "lang_a": "da",
+        "word_a": "sten",
+        "lang_b": "sv",
+        "word_b": "sten",
+        "form_id_a": "20-161-1",
+        "form_id_b": "69-161-1",
+        "expert_sets_a": "311",
+        "expert_sets_b": "311",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=sten",
+        "source_b": "http://www.saob.se/artikel/?seek=sten",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "a male given name from Old Norse",
+        "display_b": "a male given name from Old Norse"
+      },
+      "row_index": 353560
+    },
+    {
+      "id": "iecor:20-211-1:69-211-1",
+      "panel": "reserved",
+      "stratum": "da-sv",
+      "reference": {
+        "case_id": "iecor:20-211-1:69-211-1",
+        "concept_id": "211",
+        "concept": "fly_N",
+        "expected_meaning": "A common insect; any species of insect of the order Diptera.",
+        "lang_a": "da",
+        "word_a": "flue",
+        "lang_b": "sv",
+        "word_b": "fluga",
+        "form_id_a": "20-211-1",
+        "form_id_b": "69-211-1",
+        "expert_sets_a": "5414",
+        "expert_sets_b": "5414",
+        "history_reference": "same_expert_set",
+        "source_a": "http://ordnet.dk/ddo/ordbog?query=flue",
+        "source_b": "http://www.saob.se/artikel/?seek=fluga",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "fly (insect) (Brachycera)",
+        "display_b": "a fly (insect)"
+      },
+      "row_index": 333452
+    },
+    {
+      "id": "iecor:27-224-1:22-224-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-224-1:22-224-1",
+        "concept_id": "224",
+        "concept": "do",
+        "expected_meaning": "To perform an action.",
+        "lang_a": "de",
+        "word_a": "tun",
+        "lang_b": "en",
+        "word_b": "do",
+        "form_id_a": "27-224-1",
+        "form_id_b": "22-224-1",
+        "expert_sets_a": "5125",
+        "expert_sets_b": "5125",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/56228",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to do (to perform or execute an action)",
+        "display_b": "To perform; to execute."
+      },
+      "row_index": 520532
+    },
+    {
+      "id": "iecor:27-148-1:22-148-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-148-1:22-148-1",
+        "concept_id": "148",
+        "concept": "smell",
+        "expected_meaning": "To perceive the presence of molecules in the air by inhaling them through the nose.",
+        "lang_a": "de",
+        "word_a": "riechen",
+        "lang_b": "en",
+        "word_b": "smell",
+        "form_id_a": "27-148-1",
+        "form_id_b": "22-148-1",
+        "expert_sets_a": "299",
+        "expert_sets_b": "6978",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/182542",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to use the sense of smell; to detect a smell",
+        "display_b": "The sense that detects odours."
+      },
+      "row_index": 512972
+    },
+    {
+      "id": "iecor:27-224-2:22-224-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-224-2:22-224-1",
+        "concept_id": "224",
+        "concept": "do",
+        "expected_meaning": "To perform an action.",
+        "lang_a": "de",
+        "word_a": "machen",
+        "lang_b": "en",
+        "word_b": "do",
+        "form_id_a": "27-224-2",
+        "form_id_b": "22-224-1",
+        "expert_sets_a": "5438",
+        "expert_sets_b": "5125",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/56228",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to do, perform, carry out (an action) (to execute; to put into operation)",
+        "display_b": "To perform; to execute."
+      },
+      "row_index": 506364
+    },
+    {
+      "id": "iecor:27-114-1:22-114-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-114-1:22-114-1",
+        "concept_id": "114",
+        "concept": "old",
+        "expected_meaning": "Having lived or existed for a relatively long period of time.",
+        "lang_a": "de",
+        "word_a": "alt",
+        "lang_b": "en",
+        "word_b": "old",
+        "form_id_a": "27-114-1",
+        "form_id_b": "22-114-1",
+        "expert_sets_a": "268",
+        "expert_sets_b": "268",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/130955",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "old",
+        "display_b": "Former, previous."
+      },
+      "row_index": 478722
+    },
+    {
+      "id": "iecor:27-105-1:22-105-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-105-1:22-105-1",
+        "concept_id": "105",
+        "concept": "mouth",
+        "expected_meaning": "Opening in the lower half of a human face which is used for food ingestion and articulation.",
+        "lang_a": "de",
+        "word_a": "Mund",
+        "lang_b": "en",
+        "word_b": "mouth",
+        "form_id_a": "27-105-1",
+        "form_id_b": "22-105-1",
+        "expert_sets_a": "262",
+        "expert_sets_b": "262",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/122997",
+        "coverage_status": "found",
+        "category": "semantic_divergence",
+        "relation": "cognate",
+        "display_a": "mouth of a person",
+        "display_b": "The front opening of a creature through which food is ingested."
+      },
+      "row_index": 444104
+    },
+    {
+      "id": "iecor:27-57-1:22-57-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-57-1:22-57-1",
+        "concept_id": "57",
+        "concept": "fog",
+        "expected_meaning": "Water droplets or, rarely, ice crystals suspended in the air in sufficient concentration to reduce visibility appreciably.",
+        "lang_a": "de",
+        "word_a": "Nebel",
+        "lang_b": "en",
+        "word_b": "fog",
+        "form_id_a": "27-57-1",
+        "form_id_b": "22-57-1",
+        "expert_sets_a": "2150",
+        "expert_sets_b": "6151",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/72391",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "fog, mist, haze",
+        "display_b": "A thick cloud that forms near the ground; the obscurity of such a cloud."
+      },
+      "row_index": 445356
+    },
+    {
+      "id": "iecor:27-181-1:22-181-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-181-1:22-181-1",
+        "concept_id": "181",
+        "concept": "tree",
+        "expected_meaning": "Any large woody perennial plant with a distinct trunk giving rise to branches or leaves at some distance from the ground.",
+        "lang_a": "de",
+        "word_a": "Baum",
+        "lang_b": "en",
+        "word_b": "tree",
+        "form_id_a": "27-181-1",
+        "form_id_b": "22-181-1",
+        "expert_sets_a": "329",
+        "expert_sets_b": "503",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/205416",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "tree",
+        "display_b": "An object made from a tree trunk and having multiple hooks or storage platforms."
+      },
+      "row_index": 408452
+    },
+    {
+      "id": "iecor:27-151-1:22-151-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-151-1:22-151-1",
+        "concept_id": "151",
+        "concept": "snake",
+        "expected_meaning": "Any reptile of the suborder Serpentes, typically having a scaly cylindrical limbless body, fused eyelids, and a jaw modified for swallowing large prey.",
+        "lang_a": "de",
+        "word_a": "Schlange",
+        "lang_b": "en",
+        "word_b": "snake",
+        "form_id_a": "27-151-1",
+        "form_id_b": "22-151-1",
+        "expert_sets_a": "302",
+        "expert_sets_b": "1358",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/182961",
+        "coverage_status": "found",
+        "category": "accidental_lookalike",
+        "relation": "false_cognate",
+        "display_a": "snake",
+        "display_b": "Any of the suborder Serpentes of legless reptiles with long, thin bodies and fork-shaped tongues."
+      },
+      "row_index": 456458
+    },
+    {
+      "id": "iecor:27-204-1:22-204-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-204-1:22-204-1",
+        "concept_id": "204",
+        "concept": "worm",
+        "expected_meaning": "A generally tubular invertebrate of the annelid phylum.",
+        "lang_a": "de",
+        "word_a": "Wurm",
+        "lang_b": "en",
+        "word_b": "worm",
+        "form_id_a": "27-204-1",
+        "form_id_b": "22-204-1",
+        "expert_sets_a": "348",
+        "expert_sets_b": "348",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/230283",
+        "coverage_status": "found",
+        "category": "cognate_false_friend",
+        "relation": "cognate",
+        "display_a": "worm",
+        "display_b": "A self-replicating program that propagates through a network by copying itself, differing from a virus which seeks to propagate by inserting its code into other executable files."
+      },
+      "row_index": 474634
+    },
+    {
+      "id": "iecor:27-23-1:22-23-1",
+      "panel": "reserved",
+      "stratum": "de-en",
+      "reference": {
+        "case_id": "iecor:27-23-1:22-23-1",
+        "concept_id": "23",
+        "concept": "cold",
+        "expected_meaning": "Having a low temperature.",
+        "lang_a": "de",
+        "word_a": "kalt",
+        "lang_b": "en",
+        "word_b": "cold",
+        "form_id_a": "27-23-1",
+        "form_id_b": "22-23-1",
+        "expert_sets_a": "196",
+        "expert_sets_b": "196",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.oed.com/view/Entry/36101",
+        "coverage_status": "found",
+        "category": "accidental_lookalike",
+        "relation": "false_cognate",
+        "display_a": "cold, chilly; the physical perception of something (objects, weather, body etc.) to have a low temperature",
+        "display_b": "Having a low temperature."
+      },
+      "row_index": 502442
+    },
+    {
+      "id": "iecor:27-218-1:58-218-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-218-1:58-218-1",
+        "concept_id": "218",
+        "concept": "go",
+        "expected_meaning": "To get from one place to another by any means.",
+        "lang_a": "de",
+        "word_a": "gehen",
+        "lang_b": "nb",
+        "word_b": "gå",
+        "form_id_a": "27-218-1",
+        "form_id_b": "58-218-1",
+        "expert_sets_a": "5432",
+        "expert_sets_b": "5432",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to go, to walk",
+        "display_b": "To walk, go."
+      },
+      "row_index": 929048
+    },
+    {
+      "id": "iecor:27-166-1:58-166-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-166-1:58-166-1",
+        "concept_id": "166",
+        "concept": "swim",
+        "expected_meaning": "To move through the water, without touching the bottom.",
+        "lang_a": "de",
+        "word_a": "schwimmen",
+        "lang_b": "nb",
+        "word_b": "svømme",
+        "form_id_a": "27-166-1",
+        "form_id_b": "58-166-1",
+        "expert_sets_a": "316",
+        "expert_sets_b": "316",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "to swim (a certain distance)",
+        "display_b": "to swim"
+      },
+      "row_index": 935128
+    },
+    {
+      "id": "iecor:27-37-1:58-37-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-37-1:58-37-1",
+        "concept_id": "37",
+        "concept": "earth",
+        "expected_meaning": "The soft and loose material forming a great part of the Earth surface.",
+        "lang_a": "de",
+        "word_a": "Erde",
+        "lang_b": "nb",
+        "word_b": "jord",
+        "form_id_a": "27-37-1",
+        "form_id_b": "58-37-1",
+        "expert_sets_a": "209",
+        "expert_sets_b": "209",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "the planet Earth",
+        "display_b": "the earth, or the Earth (the planet we live on; see also Jorden)"
+      },
+      "row_index": 900476
+    },
+    {
+      "id": "iecor:27-181-1:58-181-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-181-1:58-181-1",
+        "concept_id": "181",
+        "concept": "tree",
+        "expected_meaning": "Any large woody perennial plant with a distinct trunk giving rise to branches or leaves at some distance from the ground.",
+        "lang_a": "de",
+        "word_a": "Baum",
+        "lang_b": "nb",
+        "word_b": "tre",
+        "form_id_a": "27-181-1",
+        "form_id_b": "58-181-1",
+        "expert_sets_a": "329",
+        "expert_sets_b": "503",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "tree",
+        "display_b": "tree"
+      },
+      "row_index": 896558
+    },
+    {
+      "id": "iecor:27-151-1:58-151-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-151-1:58-151-1",
+        "concept_id": "151",
+        "concept": "snake",
+        "expected_meaning": "Any reptile of the suborder Serpentes, typically having a scaly cylindrical limbless body, fused eyelids, and a jaw modified for swallowing large prey.",
+        "lang_a": "de",
+        "word_a": "Schlange",
+        "lang_b": "nb",
+        "word_b": "slange",
+        "form_id_a": "27-151-1",
+        "form_id_b": "58-151-1",
+        "expert_sets_a": "302",
+        "expert_sets_b": "5737",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "accidental_lookalike",
+        "relation": "false_cognate",
+        "display_a": "snake",
+        "display_b": "a snake"
+      },
+      "row_index": 915386
+    },
+    {
+      "id": "iecor:27-136-1:58-136-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-136-1:58-136-1",
+        "concept_id": "136",
+        "concept": "sea",
+        "expected_meaning": "A body of salt water that is smaller than an ocean and generally in proximity to a continent.",
+        "lang_a": "de",
+        "word_a": "Meer",
+        "lang_b": "nb",
+        "word_b": "sjø",
+        "form_id_a": "27-136-1",
+        "form_id_b": "58-136-1",
+        "expert_sets_a": "287",
+        "expert_sets_b": "2773",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:27-99-1:58-99-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-99-1:58-99-1",
+        "concept_id": "99",
+        "concept": "man",
+        "expected_meaning": "An adult human member of the sex that begets young by fertilizing ova.",
+        "lang_a": "de",
+        "word_a": "Mann",
+        "lang_b": "nb",
+        "word_b": "mann",
+        "form_id_a": "27-99-1",
+        "form_id_b": "58-99-1",
+        "expert_sets_a": "8248",
+        "expert_sets_b": "8248",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "man, male human being",
+        "display_b": "man (an adult male human being)"
+      },
+      "row_index": 909672
+    },
+    {
+      "id": "iecor:27-74-1:58-74-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-74-1:58-74-1",
+        "concept_id": "74",
+        "concept": "heavy",
+        "expected_meaning": "Of a physical object, having great weight.",
+        "lang_a": "de",
+        "word_a": "schwer",
+        "lang_b": "nb",
+        "word_b": "tung",
+        "form_id_a": "27-74-1",
+        "form_id_b": "58-74-1",
+        "expert_sets_a": "238",
+        "expert_sets_b": "1143",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:27-52-1:58-52-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-52-1:58-52-1",
+        "concept_id": "52",
+        "concept": "five",
+        "expected_meaning": "The natural number five (5).",
+        "lang_a": "de",
+        "word_a": "fünf",
+        "lang_b": "nb",
+        "word_b": "fem",
+        "form_id_a": "27-52-1",
+        "form_id_b": "58-52-1",
+        "expert_sets_a": "39",
+        "expert_sets_b": "39",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "five (numerical value represented by the Arabic numeral 5; or describing a set with five elements)",
+        "display_b": "five"
+      },
+      "row_index": 928854
+    },
+    {
+      "id": "iecor:27-118-1:58-118-1",
+      "panel": "reserved",
+      "stratum": "de-nb",
+      "reference": {
+        "case_id": "iecor:27-118-1:58-118-1",
+        "concept_id": "118",
+        "concept": "play",
+        "expected_meaning": "To act in a manner such that one has fun; to engage in playful activities expressly for the purpose of recreation.",
+        "lang_a": "de",
+        "word_a": "spielen",
+        "lang_b": "nb",
+        "word_b": "leke",
+        "form_id_a": "27-118-1",
+        "form_id_b": "58-118-1",
+        "expert_sets_a": "270",
+        "expert_sets_b": "2833",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "to play (engage in some activity for fun or entertainment)",
+        "display_b": "to play, to act in a manner such that one has fun"
+      },
+      "row_index": 935746
+    },
+    {
+      "id": "iecor:27-202-1:69-202-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-202-1:69-202-1",
+        "concept_id": "202",
+        "concept": "woman",
+        "expected_meaning": "An adult human member of the sex that produces ova and bears young.",
+        "lang_a": "de",
+        "word_a": "Frau",
+        "lang_b": "sv",
+        "word_b": "kvinna",
+        "form_id_a": "27-202-1",
+        "form_id_b": "69-202-1",
+        "expert_sets_a": "346",
+        "expert_sets_b": "671",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=kvinna",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:27-173-1:69-173-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-173-1:69-173-1",
+        "concept_id": "173",
+        "concept": "think",
+        "expected_meaning": "To actively and consciously use one's mental powers, usually to form ideas.",
+        "lang_a": "de",
+        "word_a": "denken",
+        "lang_b": "sv",
+        "word_b": "tänka",
+        "form_id_a": "27-173-1",
+        "form_id_b": "69-173-1",
+        "expert_sets_a": "322",
+        "expert_sets_b": "5763",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=tänka",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "unknown",
+        "display_a": "not to forget; to remember",
+        "display_b": "to keep in mind, to remember, be mindful of"
+      },
+      "row_index": 1032794
+    },
+    {
+      "id": "iecor:27-151-1:69-151-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-151-1:69-151-1",
+        "concept_id": "151",
+        "concept": "snake",
+        "expected_meaning": "Any reptile of the suborder Serpentes, typically having a scaly cylindrical limbless body, fused eyelids, and a jaw modified for swallowing large prey.",
+        "lang_a": "de",
+        "word_a": "Schlange",
+        "lang_b": "sv",
+        "word_b": "orm",
+        "form_id_a": "27-151-1",
+        "form_id_b": "69-151-1",
+        "expert_sets_a": "302",
+        "expert_sets_b": "1380",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=orm",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "snake",
+        "display_b": "snake (generic insult, referencing the archetype of serpents)"
+      },
+      "row_index": 1011302
+    },
+    {
+      "id": "iecor:27-41-1:69-41-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-41-1:69-41-1",
+        "concept_id": "41",
+        "concept": "fall",
+        "expected_meaning": "To descend in free fall due to the effect of gravity.",
+        "lang_a": "de",
+        "word_a": "fallen",
+        "lang_b": "sv",
+        "word_b": "falla",
+        "form_id_a": "27-41-1",
+        "form_id_b": "69-41-1",
+        "expert_sets_a": "212",
+        "expert_sets_b": "212",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=falla",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to die, to fall (in battle)",
+        "display_b": "to fall (die, especially in battle)"
+      },
+      "row_index": 1036704
+    },
+    {
+      "id": "iecor:27-57-1:69-57-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-57-1:69-57-1",
+        "concept_id": "57",
+        "concept": "fog",
+        "expected_meaning": "Water droplets or, rarely, ice crystals suspended in the air in sufficient concentration to reduce visibility appreciably.",
+        "lang_a": "de",
+        "word_a": "Nebel",
+        "lang_b": "sv",
+        "word_b": "dimma",
+        "form_id_a": "27-57-1",
+        "form_id_b": "69-57-1",
+        "expert_sets_a": "2150",
+        "expert_sets_b": "2278",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=dimma",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "unknown",
+        "display_a": "fog, mist, haze",
+        "display_b": "fog (cloud that forms at a low altitude and obscures vision)"
+      },
+      "row_index": 1003720
+    },
+    {
+      "id": "iecor:27-134-1:69-134-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-134-1:69-134-1",
+        "concept_id": "134",
+        "concept": "say",
+        "expected_meaning": "To utter specific words or notions.",
+        "lang_a": "de",
+        "word_a": "sagen",
+        "lang_b": "sv",
+        "word_b": "säga",
+        "form_id_a": "27-134-1",
+        "form_id_b": "69-134-1",
+        "expert_sets_a": "285",
+        "expert_sets_b": "285",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=säga",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "to tell (to inform (someone) verbally)",
+        "display_b": "to tell"
+      },
+      "row_index": 1050380
+    },
+    {
+      "id": "iecor:27-181-1:69-181-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-181-1:69-181-1",
+        "concept_id": "181",
+        "concept": "tree",
+        "expected_meaning": "Any large woody perennial plant with a distinct trunk giving rise to branches or leaves at some distance from the ground.",
+        "lang_a": "de",
+        "word_a": "Baum",
+        "lang_b": "sv",
+        "word_b": "träd",
+        "form_id_a": "27-181-1",
+        "form_id_b": "69-181-1",
+        "expert_sets_a": "329",
+        "expert_sets_b": "503",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=träd",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "tree",
+        "display_b": "a tree"
+      },
+      "row_index": 977130
+    },
+    {
+      "id": "iecor:27-142-1:69-142-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-142-1:69-142-1",
+        "concept_id": "142",
+        "concept": "sing",
+        "expected_meaning": "To produce harmonious sounds with one's voice.",
+        "lang_a": "de",
+        "word_a": "singen",
+        "lang_b": "sv",
+        "word_b": "sjunga",
+        "form_id_a": "27-142-1",
+        "form_id_b": "69-142-1",
+        "expert_sets_a": "293",
+        "expert_sets_b": "293",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=sjunga",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to sing",
+        "display_b": "to sing"
+      },
+      "row_index": 1052658
+    },
+    {
+      "id": "iecor:27-56-1:69-56-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-56-1:69-56-1",
+        "concept_id": "56",
+        "concept": "fly_V",
+        "expected_meaning": "To move autonomously through the air, without any part of the object or object's enclosure touching anything attached to the ground.",
+        "lang_a": "de",
+        "word_a": "fliegen",
+        "lang_b": "sv",
+        "word_b": "flyga",
+        "form_id_a": "27-56-1",
+        "form_id_b": "69-56-1",
+        "expert_sets_a": "224",
+        "expert_sets_b": "224",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=flyga",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:27-74-1:69-74-1",
+      "panel": "reserved",
+      "stratum": "de-sv",
+      "reference": {
+        "case_id": "iecor:27-74-1:69-74-1",
+        "concept_id": "74",
+        "concept": "heavy",
+        "expected_meaning": "Of a physical object, having great weight.",
+        "lang_a": "de",
+        "word_a": "schwer",
+        "lang_b": "sv",
+        "word_b": "tung",
+        "form_id_a": "27-74-1",
+        "form_id_b": "69-74-1",
+        "expert_sets_a": "238",
+        "expert_sets_b": "1143",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=tung",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:22-99-1:58-99-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-99-1:58-99-1",
+        "concept_id": "99",
+        "concept": "man",
+        "expected_meaning": "An adult human member of the sex that begets young by fertilizing ova.",
+        "lang_a": "en",
+        "word_a": "man",
+        "lang_b": "nb",
+        "word_b": "mann",
+        "form_id_a": "22-99-1",
+        "form_id_b": "58-99-1",
+        "expert_sets_a": "8248",
+        "expert_sets_b": "8248",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/113198",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "cognate_false_friend",
+        "relation": "cognate",
+        "display_a": "A member of the genus Homo, especially of the species Homo sapiens.",
+        "display_b": "man (an adult male human being)"
+      },
+      "row_index": 1127896
+    },
+    {
+      "id": "iecor:22-226-1:58-226-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-226-1:58-226-1",
+        "concept_id": "226",
+        "concept": "claw",
+        "expected_meaning": "The hard, keratin part growing at the feet of animals.",
+        "lang_a": "en",
+        "word_a": "claw",
+        "lang_b": "nb",
+        "word_b": "klo",
+        "form_id_a": "22-226-1",
+        "form_id_b": "58-226-1",
+        "expert_sets_a": "5228",
+        "expert_sets_b": "5228",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/34016",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "The pincer (chela) of a crustacean or other arthropod.",
+        "display_b": "pincer (of a lobster, scorpion, etc.)"
+      },
+      "row_index": 1116484
+    },
+    {
+      "id": "iecor:22-176-1:58-176-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-176-1:58-176-1",
+        "concept_id": "176",
+        "concept": "three",
+        "expected_meaning": "The natural number three (3).",
+        "lang_a": "en",
+        "word_a": "three",
+        "lang_b": "nb",
+        "word_b": "tre",
+        "form_id_a": "22-176-1",
+        "form_id_b": "58-176-1",
+        "expert_sets_a": "146",
+        "expert_sets_b": "146",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/201165",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "semantic_divergence",
+        "relation": "cognate",
+        "display_a": "A numerical value equal to 3; the number following two and preceding four.",
+        "display_b": "three"
+      },
+      "row_index": 1139230
+    },
+    {
+      "id": "iecor:22-208-1:58-208-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-208-1:58-208-1",
+        "concept_id": "208",
+        "concept": "ant",
+        "expected_meaning": "Any of the black, red, brown, or yellow insects of the family Formicidae characterized by a large head and by living in organized colonies.",
+        "lang_a": "en",
+        "word_a": "ant",
+        "lang_b": "nb",
+        "word_b": "maur",
+        "form_id_a": "22-208-1",
+        "form_id_b": "58-208-1",
+        "expert_sets_a": "5281",
+        "expert_sets_b": "5007",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/8159",
+        "source_b": "https://ordbok.uib.no/perl/ordbok.cgi?ant_bokmaal=5&ant_nynorsk=5&bokmaal=+&ordbok=bokmaal&OPP=+maur",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "Any of various insects in the family Formicidae in the order Hymenoptera, typically living in large colonies composed almost entirely of flightless females.",
+        "display_b": "ant (insect)"
+      },
+      "row_index": 1112606
+    },
+    {
+      "id": "iecor:22-202-1:58-202-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-202-1:58-202-1",
+        "concept_id": "202",
+        "concept": "woman",
+        "expected_meaning": "An adult human member of the sex that produces ova and bears young.",
+        "lang_a": "en",
+        "word_a": "woman",
+        "lang_b": "nb",
+        "word_b": "kvinne",
+        "form_id_a": "22-202-1",
+        "form_id_b": "58-202-1",
+        "expert_sets_a": "1365",
+        "expert_sets_b": "671",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/229884",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:22-35-1:58-35-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-35-1:58-35-1",
+        "concept_id": "35",
+        "concept": "dust",
+        "expected_meaning": "Any kind of solid material divided in particles of very small size.",
+        "lang_a": "en",
+        "word_a": "dust",
+        "lang_b": "nb",
+        "word_b": "støv",
+        "form_id_a": "22-35-1",
+        "form_id_b": "58-35-1",
+        "expert_sets_a": "2464",
+        "expert_sets_b": "9687",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/58683",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:22-166-1:58-166-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-166-1:58-166-1",
+        "concept_id": "166",
+        "concept": "swim",
+        "expected_meaning": "To move through the water, without touching the bottom.",
+        "lang_a": "en",
+        "word_a": "swim",
+        "lang_b": "nb",
+        "word_b": "svømme",
+        "form_id_a": "22-166-1",
+        "form_id_b": "58-166-1",
+        "expert_sets_a": "316",
+        "expert_sets_b": "316",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/195839",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "cognate_false_friend",
+        "relation": "cognate",
+        "display_a": "To move through the water, without touching the bottom; to propel oneself in water by natural means.",
+        "display_b": "to swim"
+      },
+      "row_index": 1138408
+    },
+    {
+      "id": "iecor:22-80-1:58-80-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-80-1:58-80-1",
+        "concept_id": "80",
+        "concept": "hunt",
+        "expected_meaning": "To chase down prey and (usually) kill it.",
+        "lang_a": "en",
+        "word_a": "hunt",
+        "lang_b": "nb",
+        "word_b": "jakte",
+        "form_id_a": "22-80-1",
+        "form_id_b": "58-80-1",
+        "expert_sets_a": "1349",
+        "expert_sets_b": "9973",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/89514",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "To find or search for an animal in the wild with the intention of killing the animal for its meat or for sport.",
+        "display_b": "to hunt"
+      },
+      "row_index": 1125016
+    },
+    {
+      "id": "iecor:22-89-1:58-89-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-89-1:58-89-1",
+        "concept_id": "89",
+        "concept": "lake",
+        "expected_meaning": "An enclosed body of water, usually but not necessarily fresh water, from which the sea is excluded.",
+        "lang_a": "en",
+        "word_a": "lake",
+        "lang_b": "nb",
+        "word_b": "innsjø",
+        "form_id_a": "22-89-1",
+        "form_id_b": "58-89-1",
+        "expert_sets_a": "5612",
+        "expert_sets_b": "1317",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/105168",
+        "source_b": "",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:22-118-1:58-118-1",
+      "panel": "reserved",
+      "stratum": "en-nb",
+      "reference": {
+        "case_id": "iecor:22-118-1:58-118-1",
+        "concept_id": "118",
+        "concept": "play",
+        "expected_meaning": "To act in a manner such that one has fun; to engage in playful activities expressly for the purpose of recreation.",
+        "lang_a": "en",
+        "word_a": "play",
+        "lang_b": "nb",
+        "word_b": "leke",
+        "form_id_a": "22-118-1",
+        "form_id_b": "58-118-1",
+        "expert_sets_a": "1354",
+        "expert_sets_b": "2833",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/145475",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+        "display_b": "to play, to act in a manner such that one has fun"
+      },
+      "row_index": 1131934
+    },
+    {
+      "id": "iecor:22-59-1:69-59-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-59-1:69-59-1",
+        "concept_id": "59",
+        "concept": "four",
+        "expected_meaning": "The natural number four (4).",
+        "lang_a": "en",
+        "word_a": "four",
+        "lang_b": "sv",
+        "word_b": "fyra",
+        "form_id_a": "22-59-1",
+        "form_id_b": "69-59-1",
+        "expert_sets_a": "44",
+        "expert_sets_b": "44",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/73969",
+        "source_b": "http://www.saob.se/artikel/?seek=fyra",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "The digit or figure 4; an occurrence thereof.",
+        "display_b": "four; the digit \"4\""
+      },
+      "row_index": 1305364
+    },
+    {
+      "id": "iecor:22-114-1:69-114-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-114-1:69-114-1",
+        "concept_id": "114",
+        "concept": "old",
+        "expected_meaning": "Having lived or existed for a relatively long period of time.",
+        "lang_a": "en",
+        "word_a": "old",
+        "lang_b": "sv",
+        "word_b": "gammal",
+        "form_id_a": "22-114-1",
+        "form_id_b": "69-114-1",
+        "expert_sets_a": "268",
+        "expert_sets_b": "1322",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/130955",
+        "source_b": "http://www.saob.se/artikel/?seek=gammal",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "Having existed or lived for the specified time.",
+        "display_b": "old (having existed for a long time)"
+      },
+      "row_index": 1321878
+    },
+    {
+      "id": "iecor:22-62-1:69-62-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-62-1:69-62-1",
+        "concept_id": "62",
+        "concept": "full",
+        "expected_meaning": "Containing the most or maximum amount possible in the given available space.",
+        "lang_a": "en",
+        "word_a": "full",
+        "lang_b": "sv",
+        "word_b": "full",
+        "form_id_a": "22-62-1",
+        "form_id_b": "69-62-1",
+        "expert_sets_a": "2235",
+        "expert_sets_b": "2235",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/75327",
+        "source_b": "http://www.saob.se/artikel/?seek=full",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "Containing the maximum possible amount that can fit in the space available.",
+        "display_b": "full (containing the maximum possible amount)"
+      },
+      "row_index": 1305840
+    },
+    {
+      "id": "iecor:22-134-1:69-134-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-134-1:69-134-1",
+        "concept_id": "134",
+        "concept": "say",
+        "expected_meaning": "To utter specific words or notions.",
+        "lang_a": "en",
+        "word_a": "say",
+        "lang_b": "sv",
+        "word_b": "säga",
+        "form_id_a": "22-134-1",
+        "form_id_b": "69-134-1",
+        "expert_sets_a": "285",
+        "expert_sets_b": "285",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/171590",
+        "source_b": "http://www.saob.se/artikel/?seek=säga",
+        "coverage_status": "found",
+        "category": "semantic_narrowing",
+        "relation": "cognate",
+        "display_a": "To pronounce.",
+        "display_b": "to say"
+      },
+      "row_index": 1331990
+    },
+    {
+      "id": "iecor:22-120-1:69-120-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-120-1:69-120-1",
+        "concept_id": "120",
+        "concept": "push",
+        "expected_meaning": "To apply a force to (an object), in order that it moves away from the origin of the force that was applied.",
+        "lang_a": "en",
+        "word_a": "push",
+        "lang_b": "sv",
+        "word_b": "skjuta",
+        "form_id_a": "22-120-1",
+        "form_id_b": "69-120-1",
+        "expert_sets_a": "5663",
+        "expert_sets_b": "452",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/155116",
+        "source_b": "http://www.saob.se/artikel/?seek=skjuta",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "To apply a force to (an object) such that it moves away from the person or thing applying the force.",
+        "display_b": "to eject; to jettison (from something, with force)"
+      },
+      "row_index": 1327800
+    },
+    {
+      "id": "iecor:22-139-1:69-139-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-139-1:69-139-1",
+        "concept_id": "139",
+        "concept": "sew",
+        "expected_meaning": "To pass thread repeatedly through fabric or a material, using a needle, in order to join two or more parts or to make a pattern or motif.",
+        "lang_a": "en",
+        "word_a": "sew",
+        "lang_b": "sv",
+        "word_b": "sy",
+        "form_id_a": "22-139-1",
+        "form_id_b": "69-139-1",
+        "expert_sets_a": "815",
+        "expert_sets_b": "815",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/176956",
+        "source_b": "http://www.saob.se/artikel/?seek=sy",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:22-204-1:69-204-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-204-1:69-204-1",
+        "concept_id": "204",
+        "concept": "worm",
+        "expected_meaning": "A generally tubular invertebrate of the annelid phylum.",
+        "lang_a": "en",
+        "word_a": "worm",
+        "lang_b": "sv",
+        "word_b": "mask",
+        "form_id_a": "22-204-1",
+        "form_id_b": "69-204-1",
+        "expert_sets_a": "348",
+        "expert_sets_b": "3139",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/230283",
+        "source_b": "http://www.saob.se/artikel/?seek=mask",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "A self-replicating program that propagates through a network by copying itself, differing from a virus which seeks to propagate by inserting its code into other executable files.",
+        "display_b": "a worm"
+      },
+      "row_index": 1347094
+    },
+    {
+      "id": "iecor:22-49-1:69-49-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-49-1:69-49-1",
+        "concept_id": "49",
+        "concept": "nail",
+        "expected_meaning": "Hard keratin part growing at the end of a human's finger or toe.",
+        "lang_a": "en",
+        "word_a": "nail",
+        "lang_b": "sv",
+        "word_b": "nagel",
+        "form_id_a": "22-49-1",
+        "form_id_b": "69-49-1",
+        "expert_sets_a": "2268",
+        "expert_sets_b": "2268",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/124844",
+        "source_b": "http://www.saob.se/artikel/?seek=nagel",
+        "coverage_status": "found",
+        "category": "cognate_false_friend",
+        "relation": "cognate",
+        "display_a": "The thin, flat type of such a plate on the fingers and toes of humans, chimpanzees and some other primates.",
+        "display_b": "a nail"
+      },
+      "row_index": 1320142
+    },
+    {
+      "id": "iecor:22-118-1:69-118-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-118-1:69-118-1",
+        "concept_id": "118",
+        "concept": "play",
+        "expected_meaning": "To act in a manner such that one has fun; to engage in playful activities expressly for the purpose of recreation.",
+        "lang_a": "en",
+        "word_a": "play",
+        "lang_b": "sv",
+        "word_b": "leka",
+        "form_id_a": "22-118-1",
+        "form_id_b": "69-118-1",
+        "expert_sets_a": "1354",
+        "expert_sets_b": "2833",
+        "history_reference": "different_expert_sets",
+        "source_a": "http://www.oed.com/view/Entry/145475",
+        "source_b": "http://www.saob.se/artikel/?seek=leka",
+        "coverage_status": "found",
+        "category": "independent_root",
+        "relation": "independent",
+        "display_a": "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+        "display_b": "to play (more generally, sometimes with relaxed or nonchalant connotations)"
+      },
+      "row_index": 1325316
+    },
+    {
+      "id": "iecor:22-23-1:69-23-1",
+      "panel": "reserved",
+      "stratum": "en-sv",
+      "reference": {
+        "case_id": "iecor:22-23-1:69-23-1",
+        "concept_id": "23",
+        "concept": "cold",
+        "expected_meaning": "Having a low temperature.",
+        "lang_a": "en",
+        "word_a": "cold",
+        "lang_b": "sv",
+        "word_b": "kall",
+        "form_id_a": "22-23-1",
+        "form_id_b": "69-23-1",
+        "expert_sets_a": "196",
+        "expert_sets_b": "196",
+        "history_reference": "same_expert_set",
+        "source_a": "http://www.oed.com/view/Entry/36101",
+        "source_b": "http://www.saob.se/artikel/?seek=kall",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "Unfriendly; emotionally distant or unfeeling.",
+        "display_b": "unfriendly, emotionally distant or unfeeling."
+      },
+      "row_index": 1292442
+    },
+    {
+      "id": "iecor:58-176-1:69-176-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-176-1:69-176-1",
+        "concept_id": "176",
+        "concept": "three",
+        "expected_meaning": "The natural number three (3).",
+        "lang_a": "nb",
+        "word_a": "tre",
+        "lang_b": "sv",
+        "word_b": "tre",
+        "form_id_a": "58-176-1",
+        "form_id_b": "69-176-1",
+        "expert_sets_a": "146",
+        "expert_sets_b": "146",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=tre",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "three",
+        "display_b": "three"
+      },
+      "row_index": 1595214
+    },
+    {
+      "id": "iecor:58-226-1:69-226-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-226-1:69-226-1",
+        "concept_id": "226",
+        "concept": "claw",
+        "expected_meaning": "The hard, keratin part growing at the feet of animals.",
+        "lang_a": "nb",
+        "word_a": "klo",
+        "lang_b": "sv",
+        "word_b": "klo",
+        "form_id_a": "58-226-1",
+        "form_id_b": "69-226-1",
+        "expert_sets_a": "5228",
+        "expert_sets_b": "5228",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=klo",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "pincer (of a lobster, scorpion, etc.)",
+        "display_b": "a pincer (of a lobster, scorpion, etc.)"
+      },
+      "row_index": 1580152
+    },
+    {
+      "id": "iecor:58-199-1:69-199-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-199-1:69-199-1",
+        "concept_id": "199",
+        "concept": "wing",
+        "expected_meaning": "The appendage of an animal's (bird, bat, insect) body that enables it to fly in the air.",
+        "lang_a": "nb",
+        "word_a": "vinge",
+        "lang_b": "sv",
+        "word_b": "vinge",
+        "form_id_a": "58-199-1",
+        "form_id_b": "69-199-1",
+        "expert_sets_a": "1336",
+        "expert_sets_b": "1336",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "",
+        "coverage_status": "found",
+        "category": "accidental_lookalike",
+        "relation": "false_cognate",
+        "display_a": "a wing",
+        "display_b": "a wing"
+      },
+      "row_index": 1598090
+    },
+    {
+      "id": "iecor:58-204-1:69-204-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-204-1:69-204-1",
+        "concept_id": "204",
+        "concept": "worm",
+        "expected_meaning": "A generally tubular invertebrate of the annelid phylum.",
+        "lang_a": "nb",
+        "word_a": "mark",
+        "lang_b": "sv",
+        "word_b": "mask",
+        "form_id_a": "58-204-1",
+        "form_id_b": "69-204-1",
+        "expert_sets_a": "3139",
+        "expert_sets_b": "3139",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=mask",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "iecor:58-151-1:69-151-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-151-1:69-151-1",
+        "concept_id": "151",
+        "concept": "snake",
+        "expected_meaning": "Any reptile of the suborder Serpentes, typically having a scaly cylindrical limbless body, fused eyelids, and a jaw modified for swallowing large prey.",
+        "lang_a": "nb",
+        "word_a": "slange",
+        "lang_b": "sv",
+        "word_b": "orm",
+        "form_id_a": "58-151-1",
+        "form_id_b": "69-151-1",
+        "expert_sets_a": "5737",
+        "expert_sets_b": "1380",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=orm",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "a snake",
+        "display_b": "snake (generic insult, referencing the archetype of serpents)"
+      },
+      "row_index": 1591378
+    },
+    {
+      "id": "iecor:58-143-1:69-143-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-143-1:69-143-1",
+        "concept_id": "143",
+        "concept": "sit",
+        "expected_meaning": "To be in a position with the upper body upright and the legs resting.",
+        "lang_a": "nb",
+        "word_a": "sitte",
+        "lang_b": "sv",
+        "word_b": "sitta",
+        "form_id_a": "58-143-1",
+        "form_id_b": "69-143-1",
+        "expert_sets_a": "294",
+        "expert_sets_b": "294",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=sitta",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to sit (of a person, be in a position in which the upper body is upright and the legs are supported)",
+        "display_b": "to sit (be in a position with the upper body upright and the legs resting)"
+      },
+      "row_index": 1590286
+    },
+    {
+      "id": "iecor:58-57-1:69-57-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-57-1:69-57-1",
+        "concept_id": "57",
+        "concept": "fog",
+        "expected_meaning": "Water droplets or, rarely, ice crystals suspended in the air in sufficient concentration to reduce visibility appreciably.",
+        "lang_a": "nb",
+        "word_a": "tåke",
+        "lang_b": "sv",
+        "word_b": "dimma",
+        "form_id_a": "58-57-1",
+        "form_id_b": "69-57-1",
+        "expert_sets_a": "1315",
+        "expert_sets_b": "2278",
+        "history_reference": "different_expert_sets",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=dimma",
+        "coverage_status": "found",
+        "category": "unrelated_equivalent",
+        "relation": "unrelated",
+        "display_a": "a fog or mist",
+        "display_b": "fog (cloud that forms at a low altitude and obscures vision)"
+      },
+      "row_index": 1595844
+    },
+    {
+      "id": "iecor:58-166-1:69-166-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-166-1:69-166-1",
+        "concept_id": "166",
+        "concept": "swim",
+        "expected_meaning": "To move through the water, without touching the bottom.",
+        "lang_a": "nb",
+        "word_a": "svømme",
+        "lang_b": "sv",
+        "word_b": "simma",
+        "form_id_a": "58-166-1",
+        "form_id_b": "69-166-1",
+        "expert_sets_a": "316",
+        "expert_sets_b": "316",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=simma",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "to swim",
+        "display_b": "to swim"
+      },
+      "row_index": 1593620
+    },
+    {
+      "id": "iecor:58-62-1:69-62-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-62-1:69-62-1",
+        "concept_id": "62",
+        "concept": "full",
+        "expected_meaning": "Containing the most or maximum amount possible in the given available space.",
+        "lang_a": "nb",
+        "word_a": "full",
+        "lang_b": "sv",
+        "word_b": "full",
+        "form_id_a": "58-62-1",
+        "form_id_b": "69-62-1",
+        "expert_sets_a": "2235",
+        "expert_sets_b": "2235",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=full",
+        "coverage_status": "found",
+        "category": "full_cognate",
+        "relation": "cognate",
+        "display_a": "full (containing the maximum possible amount)",
+        "display_b": "full (containing the maximum possible amount)"
+      },
+      "row_index": 1574788
+    },
+    {
+      "id": "iecor:58-89-1:69-89-1",
+      "panel": "reserved",
+      "stratum": "nb-sv",
+      "reference": {
+        "case_id": "iecor:58-89-1:69-89-1",
+        "concept_id": "89",
+        "concept": "lake",
+        "expected_meaning": "An enclosed body of water, usually but not necessarily fresh water, from which the sea is excluded.",
+        "lang_a": "nb",
+        "word_a": "innsjø",
+        "lang_b": "sv",
+        "word_b": "sjö",
+        "form_id_a": "58-89-1",
+        "form_id_b": "69-89-1",
+        "expert_sets_a": "1317",
+        "expert_sets_b": "1317",
+        "history_reference": "same_expert_set",
+        "source_a": "",
+        "source_b": "http://www.saob.se/artikel/?seek=sjö",
+        "coverage_status": "missing_comparison",
+        "category": "",
+        "relation": "",
+        "display_a": "",
+        "display_b": ""
+      },
+      "row_index": null
+    },
+    {
+      "id": "row:12824",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 12824,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:28440",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 28440,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:30296",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 30296,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:37282",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 37282,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:50950",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 50950,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:62266",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 62266,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:66666",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 66666,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:67422",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 67422,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:67660",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 67660,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:80966",
+      "panel": "broad",
+      "stratum": "da-de",
+      "row_index": 80966,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:111244",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 111244,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:141726",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 141726,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:150602",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 150602,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:152572",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 152572,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:154848",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 154848,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:163386",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 163386,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:172836",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 172836,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:207496",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 207496,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:217472",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 217472,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:252348",
+      "panel": "broad",
+      "stratum": "da-en",
+      "row_index": 252348,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:266444",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 266444,
+      "family_status": "unknown",
+      "family_groups": [
+        [
+          "fe91c2aaa3ed6a39",
+          "test"
+        ],
+        null
+      ]
+    },
+    {
+      "id": "row:269480",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 269480,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:277244",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 277244,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:277678",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 277678,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:279066",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 279066,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:311090",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 311090,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:318070",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 318070,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:318834",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 318834,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:322300",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 322300,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:322374",
+      "panel": "broad",
+      "stratum": "da-nb",
+      "row_index": 322374,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:327164",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 327164,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:335312",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 335312,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:335954",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 335954,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:341294",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 341294,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:349290",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 349290,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:358262",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 358262,
+      "family_status": "unknown",
+      "family_groups": [
+        [
+          "247a9766e960cef1",
+          "development"
+        ],
+        null
+      ]
+    },
+    {
+      "id": "row:361196",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 361196,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:378646",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 378646,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:382202",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 382202,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        [
+          "aeb43ee76d41036b",
+          "development"
+        ]
+      ]
+    },
+    {
+      "id": "row:386634",
+      "panel": "broad",
+      "stratum": "da-sv",
+      "row_index": 386634,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:406060",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 406060,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:450680",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 450680,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:451546",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 451546,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:628274",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 628274,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:638536",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 638536,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:769634",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 769634,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:810514",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 810514,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:842496",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 842496,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:854504",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 854504,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:872166",
+      "panel": "broad",
+      "stratum": "de-en",
+      "row_index": 872166,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:893986",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 893986,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:904458",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 904458,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:904974",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 904974,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:905842",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 905842,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:909164",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 909164,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:912480",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 912480,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:913500",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 913500,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:921360",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 921360,
+      "family_status": "unknown",
+      "family_groups": [
+        [
+          "48c5603e04e2de96",
+          "development"
+        ],
+        null
+      ]
+    },
+    {
+      "id": "row:951148",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 951148,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:962666",
+      "panel": "broad",
+      "stratum": "de-nb",
+      "row_index": 962666,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:974336",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 974336,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:977000",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 977000,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1041244",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1041244,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1046646",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1046646,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1047442",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1047442,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1058056",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1058056,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1065350",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1065350,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1066274",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1066274,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1078508",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1078508,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1087692",
+      "panel": "broad",
+      "stratum": "de-sv",
+      "row_index": 1087692,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1134748",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1134748,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1167388",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1167388,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1194874",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1194874,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1196080",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1196080,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1197800",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1197800,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1198664",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1198664,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1219396",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1219396,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1251640",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1251640,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1269388",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1269388,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1275922",
+      "panel": "broad",
+      "stratum": "en-nb",
+      "row_index": 1275922,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1288640",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1288640,
+      "family_status": "unknown",
+      "family_groups": [
+        [
+          "4a178e56689820ee",
+          "development"
+        ],
+        null
+      ]
+    },
+    {
+      "id": "row:1338846",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1338846,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1364916",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1364916,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1382970",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1382970,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1384540",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1384540,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1392282",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1392282,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1409040",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1409040,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        [
+          "722e4fb99e74818c",
+          "development"
+        ]
+      ]
+    },
+    {
+      "id": "row:1412774",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1412774,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1443006",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1443006,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1533380",
+      "panel": "broad",
+      "stratum": "en-sv",
+      "row_index": 1533380,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1573302",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1573302,
+      "family_status": "unknown",
+      "family_groups": [
+        [
+          "5513bb7c40692142",
+          "test"
+        ],
+        null
+      ]
+    },
+    {
+      "id": "row:1574666",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1574666,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1585952",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1585952,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1586250",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1586250,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1587066",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1587066,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1589532",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1589532,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1601058",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1601058,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1603668",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1603668,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1610778",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1610778,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "row:1630886",
+      "panel": "broad",
+      "stratum": "nb-sv",
+      "row_index": 1630886,
+      "family_status": "unknown",
+      "family_groups": [
+        null,
+        null
+      ]
+    }
+  ],
+  "strata": {
+    "reserved": {
+      "da-de": {
+        "N": 55,
+        "n": 10
+      },
+      "da-en": {
+        "N": 54,
+        "n": 10
+      },
+      "da-nb": {
+        "N": 54,
+        "n": 10
+      },
+      "da-sv": {
+        "N": 54,
+        "n": 10
+      },
+      "de-en": {
+        "N": 55,
+        "n": 10
+      },
+      "de-nb": {
+        "N": 55,
+        "n": 10
+      },
+      "de-sv": {
+        "N": 55,
+        "n": 10
+      },
+      "en-nb": {
+        "N": 54,
+        "n": 10
+      },
+      "en-sv": {
+        "N": 54,
+        "n": 10
+      },
+      "nb-sv": {
+        "N": 54,
+        "n": 10
+      }
+    },
+    "broad": {
+      "da-de": {
+        "N": 41443,
+        "n": 10
+      },
+      "da-en": {
+        "N": 91614,
+        "n": 10
+      },
+      "da-nb": {
+        "N": 29483,
+        "n": 10
+      },
+      "da-sv": {
+        "N": 38203,
+        "n": 10
+      },
+      "de-en": {
+        "N": 246233,
+        "n": 10
+      },
+      "de-nb": {
+        "N": 39200,
+        "n": 10
+      },
+      "de-sv": {
+        "N": 69327,
+        "n": 10
+      },
+      "en-nb": {
+        "N": 84818,
+        "n": 10
+      },
+      "en-sv": {
+        "N": 142410,
+        "n": 10
+      },
+      "nb-sv": {
+        "N": 36496,
+        "n": 10
+      }
+    }
+  },
+  "second_review_allocation": [
+    "iecor:20-146-1:27-146-1",
+    "iecor:20-80-1:27-80-1",
+    "iecor:20-86-1:22-86-1",
+    "iecor:20-118-1:22-118-1",
+    "iecor:20-80-1:58-80-1",
+    "iecor:20-4-1:58-4-1",
+    "iecor:20-4-1:69-4-1",
+    "iecor:20-118-1:69-118-1",
+    "iecor:27-114-1:22-114-1",
+    "iecor:27-148-1:22-148-1",
+    "iecor:27-218-1:58-218-1",
+    "iecor:27-166-1:58-166-1",
+    "iecor:27-142-1:69-142-1",
+    "iecor:27-181-1:69-181-1",
+    "iecor:22-226-1:58-226-1",
+    "iecor:22-208-1:58-208-1",
+    "iecor:22-49-1:69-49-1",
+    "iecor:22-139-1:69-139-1",
+    "iecor:58-199-1:69-199-1",
+    "iecor:58-151-1:69-151-1",
+    "row:67660",
+    "row:50950",
+    "row:207496",
+    "row:154848",
+    "row:322300",
+    "row:266444",
+    "row:378646",
+    "row:335954",
+    "row:450680",
+    "row:842496",
+    "row:909164",
+    "row:913500",
+    "row:1047442",
+    "row:1078508",
+    "row:1269388",
+    "row:1167388",
+    "row:1409040",
+    "row:1443006",
+    "row:1586250",
+    "row:1587066"
+  ],
+  "second_review_status": "pending_external_reviewer",
+  "seed": 20261025
+}

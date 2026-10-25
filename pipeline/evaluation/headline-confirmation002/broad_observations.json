@@ -1,0 +1,2507 @@
+{
+  "packet_sha256": "12b081e1732a0c6bbb352c9e7117e27e76d3cded41a9e29403d15aca43f683f6",
+  "reviewer": "Codex agent, source-guided; arm map and scores not read, method known",
+  "rubric": "Supported means a plausible substantive introduction, not a measured most-frequent sense. Source-supported does not mean independently proven correct. Technical vocabulary is not penalized merely for being technical. Secondary/restricted includes dialectal and obsolete-only fallbacks. Historical relationship is not judged from glosses.",
+  "cases": [
+    {
+      "id": "row:12824",
+      "panel": "broad",
+      "observation": "Both definitions describe insult/offense.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "insult, offense",
+            "insult (action or speech deliberately intended to be rude)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "insult, offense",
+            "insult (action or speech deliberately intended to be rude)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:28440",
+      "panel": "broad",
+      "observation": "Both describe speechlessness; Danish also has goalless/scoreless uses.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "speechless, dumbfounded",
+            "speechless, dumbfounded, tongue-tied"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "speechless, dumbfounded",
+            "speechless, dumbfounded, tongue-tied"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:30296",
+      "panel": "broad",
+      "observation": "Invent/devise aligns with devise/design; sketch/draft is a narrower related activity. Both are substantive ordinary readings.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to invent, devise",
+            "to devise, design"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to invent, devise",
+            "to sketch, to draft"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:37282",
+      "panel": "broad",
+      "observation": "Tailor-made/customized overlaps contextually with user-defined.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "tailor-made, customized",
+            "user-defined"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "tailor-made, customized",
+            "user-defined"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:50950",
+      "panel": "broad",
+      "observation": "The source records related given-name forms, not a shared individual identity.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name, short for Magdalene",
+            "a diminutive of the female given name Magdalene"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name, short for Magdalene",
+            "a diminutive of the female given name Magdalene"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:62266",
+      "panel": "broad",
+      "observation": "Both verb readings mean to date; the Danish noun is another use.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to date (someone)",
+            "to date"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to date (someone)",
+            "to date"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:66666",
+      "panel": "broad",
+      "observation": "The German toil reading is dated/colloquial; feudal labor is a substantive historical topic reading. Neither means robot.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "robot",
+            "to toil"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "robot",
+            "to perform feudal labour"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:67422",
+      "panel": "broad",
+      "observation": "Arctic region and Arctic adjective have related meanings with different grammatical roles.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Arctic (a continental region consisting of the portion of the Earth north of the Arctic Circle, containing the North Pole)",
+            "Arctic"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Arctic (a continental region consisting of the portion of the Earth north of the Arctic Circle, containing the North Pole)",
+            "Arctic"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:67660",
+      "panel": "broad",
+      "observation": "Poppy seed and a surname are different; source membership does not establish a historical relationship.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "poppy seed",
+            "a surname"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "poppy seed",
+            "a surname"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:80966",
+      "panel": "broad",
+      "observation": "Both definitions name a biophysicist.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "biophysicist",
+            "biophysicist"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "biophysicist",
+            "biophysicist"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:111244",
+      "panel": "broad",
+      "observation": "Simpleton/person aligns; a fool-around verb paired with a person noun changes grammatical use.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "simpleton",
+            "An insane or very foolish person."
+          ]
+        },
+        "B": {
+          "headline": "contradicted",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "fool, fool about, fool around",
+            "An insane or very foolish person."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:141726",
+      "panel": "broad",
+      "observation": "A daffodil and a personal name whose etymology mentions daffodil are different referents.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "narcissus, daffodil",
+            "A female given name from Persian, meaning “daffodil”."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "narcissus, daffodil",
+            "A female given name from Persian, meaning “daffodil”."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:150602",
+      "panel": "broad",
+      "observation": "Auditor and an act of revising are different meanings.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "auditor (person who audits company or organisation accounts)",
+            "The act of revising; a revision."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "auditor (person who audits company or organisation accounts)",
+            "The act of revising; a revision."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:152572",
+      "panel": "broad",
+      "observation": "Autocrat and craft automatically are different meanings.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "autocrat",
+            "To craft automatically."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "autocrat",
+            "To craft automatically."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:154848",
+      "panel": "broad",
+      "observation": "Political adjective and dated make-political verb are related forms; the English fallback remains dated.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "political",
+            "To make political; to politicize."
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "political",
+            "To make political; to politicize."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:163386",
+      "panel": "broad",
+      "observation": "The bodily-sac sense of bag is valid but secondary to its available container reading. Both versions retain it.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "in the back part (of something)",
+            "A sac in animal bodies, containing some fluid or other substance."
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "in the back part (of something)",
+            "A sac in animal bodies, containing some fluid or other substance."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:172836",
+      "panel": "broad",
+      "observation": "A given name and a Macedonian city are different; both source definitions are substantive.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name",
+            "A city in Central Macedonia, northern Greece."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name",
+            "A city in Central Macedonia, northern Greece."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:207496",
+      "panel": "broad",
+      "observation": "Gentleness and make glad are different meanings, despite positive affect.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "gentleness",
+            "To make glad or blithe; gladden."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "gentleness",
+            "To make glad or blithe; gladden."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:217472",
+      "panel": "broad",
+      "observation": "Sexual slang for anus is secondary; sewer-access opening is an ordinary manhole reading. Neither means mandola.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "mandola",
+            "The anus of man, in a sexual context."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "mandola",
+            "A hole in the ground used to access the sewers or other underground vaults and installations."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:252348",
+      "panel": "broad",
+      "observation": "The source explicitly records a spelling variant of Stephanie; this does not identify a person.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name of French origin",
+            "A female given name from French, a less common spelling of Stephanie."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a female given name of French origin",
+            "A female given name from French, a less common spelling of Stephanie."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:266444",
+      "panel": "broad",
+      "observation": "Kick and fire from employment are both ordinary Norwegian readings; only the latter aligns with Danish here.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to fire; sack",
+            "to kick"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to fire; sack",
+            "to fire, sack (terminate the employment of someone)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:269480",
+      "panel": "broad",
+      "observation": "The selected they and plural you differ. The full Danish inventory also records formal you, which needs separate scope.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "they (third-person plural)",
+            "you (second-person plural subject and object pronoun)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "they (third-person plural)",
+            "you (second-person plural subject and object pronoun)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:277244",
+      "panel": "broad",
+      "observation": "Both name the coast/shoreline.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "coast (shoreline)",
+            "coast (shoreline)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "coast (shoreline)",
+            "coast (shoreline)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:277678",
+      "panel": "broad",
+      "observation": "Both name the Latvian language; the inventories also contain adjectives.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Latvian (the Latvian language)",
+            "Latvian (language)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Latvian (the Latvian language)",
+            "Latvian (language)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:279066",
+      "panel": "broad",
+      "observation": "Both name monarchy.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "monarchy",
+            "a monarchy"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "monarchy",
+            "a monarchy"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:311090",
+      "panel": "broad",
+      "observation": "Delay is an ordinary reading; galvanize is a specialist homograph. Neither means refine.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to refine, fine-tune",
+            "to delay"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to refine, fine-tune",
+            "to galvanise (UK) or galvanize (coat metal with zinc (sink))"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:318070",
+      "panel": "broad",
+      "observation": "A Slovenian person and the country Slovenia differ in referent type.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Slovenian, a person from Slovenia.",
+            "Slovenia; a country on the Balkan Peninsula in Central Europe; capital: Ljubljana."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Slovenian, a person from Slovenia.",
+            "Slovenia; a country on the Balkan Peninsula in Central Europe; capital: Ljubljana."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:318834",
+      "panel": "broad",
+      "observation": "Both describe sexual bashfulness/modesty.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "modest, bashful; shy or timid in matters of a sexual nature; reluctant to being fully or partially nude",
+            "shy, timid in matters of a sexual nature"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "modest, bashful; shy or timid in matters of a sexual nature; reluctant to being fully or partially nude",
+            "shy, timid in matters of a sexual nature"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:322300",
+      "panel": "broad",
+      "observation": "Deification and renewal are different meanings.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "deification",
+            "renewal"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "deification",
+            "renewal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:322374",
+      "panel": "broad",
+      "observation": "Increase and relinquishment are different meanings.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "enhancement, increase, raise",
+            "relinquishment, surrender"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "enhancement, increase, raise",
+            "relinquishment, surrender"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:327164",
+      "panel": "broad",
+      "observation": "A surname and a sports position differ. The Swedish inventory has additional homographs.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a surname",
+            "back; position behind most players on the team"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a surname",
+            "back; position behind most players on the team"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:335312",
+      "panel": "broad",
+      "observation": "Both name a wheel rim.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "rim, wheelrim",
+            "a rim (the hard part of a wheel, to which the rubber tire is attached; in modern car wheels this is includes the hub)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "rim, wheelrim",
+            "a rim (the hard part of a wheel, to which the rubber tire is attached; in modern car wheels this is includes the hub)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:335954",
+      "panel": "broad",
+      "observation": "The source records given-name equivalents of George, not a shared personal identity.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a male given name, equivalent to English George",
+            "a male given name from Low German, equivalent to English George"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a male given name, equivalent to English George",
+            "a male given name from Low German, equivalent to English George"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:341294",
+      "panel": "broad",
+      "observation": "Both name the architectural bracket; this is a substantive reading even though control-panel uses also exist.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "console, an ornamental scroll-shaped bracket, corbel",
+            "console, an ornamental scroll-shaped bracket"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "console, an ornamental scroll-shaped bracket, corbel",
+            "console, an ornamental scroll-shaped bracket"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:349290",
+      "panel": "broad",
+      "observation": "Both name a raindrop.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "raindrop",
+            "a raindrop"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "raindrop",
+            "a raindrop"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:358262",
+      "panel": "broad",
+      "observation": "Warning overlaps with harbinger; a notice period does not. Both Danish readings are current and substantive.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "warning, advisory, notice, heads-up (that something will/might happen)",
+            "harbinger, foreboding"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "notice (period of time)",
+            "harbinger, foreboding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:361196",
+      "panel": "broad",
+      "observation": "Both name dissonance.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "dissonance",
+            "dissonance"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "dissonance",
+            "dissonance"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:378646",
+      "panel": "broad",
+      "observation": "Sickle and sail differ; Danish also has a seal homograph.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sickle (tool used for harvesting)",
+            "to sail"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sickle (tool used for harvesting)",
+            "to sail"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:382202",
+      "panel": "broad",
+      "observation": "Save and saver are derivationally related; the bowling spare noun is a secondary introduction and loses that relation.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to save up",
+            "saver (person who saves money)"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "spare (the act of knocking down all remaining pins in second ball of a frame)",
+            "saver (person who saves money)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:386634",
+      "panel": "broad",
+      "observation": "Spare someone something is ordinary; the put-money-aside reading is tagged rare. Neither directly means answer.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to answer, reply to",
+            "to spare, to save (make not have to deal with)"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to answer, reply to",
+            "to put aside (money or the like)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:406060",
+      "panel": "broad",
+      "observation": "A gasp is a sudden intake of breath, narrower than a general breath.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "breath (a single act of breathing in and out)",
+            "A short, sudden intake of breath."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "breath (a single act of breathing in and out)",
+            "A short, sudden intake of breath."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:450680",
+      "panel": "broad",
+      "observation": "Occitan person mismatches the German language use. Provençal dialect versus Occitan language is scoped overlap. Preferred word introductions remain ambiguous.",
+      "arms": {
+        "A": {
+          "headline": "unresolved",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "Provençal, Occitan",
+            "Someone of the regional culture that speaks this language; an inhabitant of Occitania."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Provençal (dialect of the Occitan language)",
+            "An endangered Romance language spoken in Occitania, a region of Europe that includes Southern France, Auvergne, Limousin, and some parts of Catalonia and Italy."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:451546",
+      "panel": "broad",
+      "observation": "Battering ram is a valid secondary reading; male sheep is an ordinary ram reading. Neither is the recorded German memory acronym.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "RAM (random-access memory)",
+            "A battering ram; a heavy object used for breaking through doors."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "RAM (random-access memory)",
+            "A male sheep, typically uncastrated."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:628274",
+      "panel": "broad",
+      "observation": "Natural produce and a given-name variant differ; the name has no ordinary lexical alternative in this inventory.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "natural produce",
+            "A female given name from Latin, of rather rare usage, variant of Natalie."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "natural produce",
+            "A female given name from Latin, of rather rare usage, variant of Natalie."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:638536",
+      "panel": "broad",
+      "observation": "Both physical injury and something causing injury are substantive harm readings. Neither means resin.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "resin",
+            "Physical injury; hurt; damage."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "resin",
+            "That which causes injury, damage, or loss."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:769634",
+      "panel": "broad",
+      "observation": "The Austrian table/chart reading is regional and paired with a verb; the stage arrangement and furniture readings are substantive but different. Full inventories have chart-related overlap.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "tableau (arrangement of actors on stage or screen)",
+            "An item of furniture with a flat top surface raised above the ground, usually on one or more legs."
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "table, chart, ranking",
+            "To tabulate; to put into a table or grid."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:810514",
+      "panel": "broad",
+      "observation": "Phosphide and phosphine are different chemical species. Technical definitions are appropriate for these technical words.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "phosphide",
+            "A toxic gas, chemical formula PH₃."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "phosphide",
+            "A toxic gas, chemical formula PH₃."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:842496",
+      "panel": "broad",
+      "observation": "The German pendulum-clock entry is obsolete; the adjective is related but does not denote a clock. No modern German substitute is invented.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "pendulum clock",
+            "Characteristic of the motion of a pendulum."
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "pendulum clock",
+            "Characteristic of the motion of a pendulum."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:854504",
+      "panel": "broad",
+      "observation": "Bare phrenic is ambiguous between mind and diaphragm associations; this inventory cannot establish a preferred current introduction.",
+      "arms": {
+        "A": {
+          "headline": "unresolved",
+          "selected_meaning": "unresolved",
+          "entry_correctness": "unresolved",
+          "display": [
+            "phrenic",
+            "The branch of science that relates to the mind; mental philosophy."
+          ]
+        },
+        "B": {
+          "headline": "unresolved",
+          "selected_meaning": "unresolved",
+          "entry_correctness": "unresolved",
+          "display": [
+            "phrenic",
+            "The phrenic nerves; the nerves that control the diaphragm."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:872166",
+      "panel": "broad",
+      "observation": "A plant and its pigment compound differ. Both specialist definitions are substantive.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "pelargonium (plant of the genus Pelargonium)",
+            "An anthocyanin that is a glucoside of pelargonidin"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "pelargonium (plant of the genus Pelargonium)",
+            "An anthocyanin that is a glucoside of pelargonidin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:893986",
+      "panel": "broad",
+      "observation": "Image/reflection overlaps with visual reflection, not every light/sound/thought use.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "image, reflection",
+            "a reflection (of light and sound; thought)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "image, reflection",
+            "a reflection (of light and sound; thought)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:904458",
+      "panel": "broad",
+      "observation": "Both name habitat.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "habitat",
+            "a habitat"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "habitat",
+            "a habitat"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:904974",
+      "panel": "broad",
+      "observation": "Both name a female hero.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "heroine",
+            "heroine, hero (female)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "heroine",
+            "heroine, hero (female)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:905842",
+      "panel": "broad",
+      "observation": "Act/state of informing is a narrower abstract use; information content aligns directly with the Norwegian information reading.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "information (the act of informing or the state of being informed)",
+            "information"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a piece of information; (in the plural) information, intelligence (things to be known about a topic)",
+            "information"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:909164",
+      "panel": "broad",
+      "observation": "Both descriptions identify Liechtenstein by geography and capital, rather than merely sharing a generic country gloss.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Liechtenstein (a microstate in Central Europe; official name: Fürstentum Liechtenstein; capital: Vaduz)",
+            "Liechtenstein; a country in Europe, between Switzerland and Austria, with Vaduz as its capital."
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Liechtenstein (a microstate in Central Europe; official name: Fürstentum Liechtenstein; capital: Vaduz)",
+            "Liechtenstein; a country in Europe, between Switzerland and Austria, with Vaduz as its capital."
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:912480",
+      "panel": "broad",
+      "observation": "Both name a livestock pen/enclosure.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a small, fenced-in plot of land, usually for livestock; a pen; a fold",
+            "an enclosure for livestock"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a small, fenced-in plot of land, usually for livestock; a pen; a fold",
+            "an enclosure for livestock"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:913500",
+      "panel": "broad",
+      "observation": "Both name the musical fifth; the interval descriptions are compatible.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A fifth; an interval of six (kleine Quinte, diminished fifth) or seven (große Quinte, perfect fifth) semitones.",
+            "a fifth (interval on diatonic scale)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A fifth; an interval of six (kleine Quinte, diminished fifth) or seven (große Quinte, perfect fifth) semitones.",
+            "a fifth (interval on diatonic scale)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:921360",
+      "panel": "broad",
+      "observation": "Urine/pee is a valid secondary match. Water/pee gives ordinary introductions but deliberately loses that selected overlap; retain the secondary evidence.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "urine",
+            "pee"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "water (H₂O)",
+            "pee"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:951148",
+      "panel": "broad",
+      "observation": "Professor and profession differ: a person/title versus an occupation.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "professor",
+            "a profession"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "professor",
+            "a profession"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:962666",
+      "panel": "broad",
+      "observation": "Muslim woman and Muslim adjective are related uses with different grammatical roles.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Muslimah",
+            "Muslim (relating to Muslims and their religion)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Muslimah",
+            "Muslim (relating to Muslims and their religion)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:974336",
+      "panel": "broad",
+      "observation": "Both refer to annelids, with plural/singular scope retained.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "the annelids, Annelida",
+            "annelid"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "the annelids, Annelida",
+            "annelid"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:977000",
+      "panel": "broad",
+      "observation": "The Basque language and a person differ; Basque woman overlaps with the broader person reading. Both Swedish uses are substantive.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Basque (male or of unspecified gender)",
+            "Basque language"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Basque (male or of unspecified gender)",
+            "Basque woman"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1041244",
+      "panel": "broad",
+      "observation": "Both describe a sweet disposition. The German word is regional, and that qualification must remain visible.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sweet (having a pleasing disposition); cute",
+            "lovely, sweet (having a pleasing disposition)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sweet (having a pleasing disposition); cute",
+            "lovely, sweet (having a pleasing disposition)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1046646",
+      "panel": "broad",
+      "observation": "Arduous describes difficulty; diligent describes a worker's conduct. Related subject matter does not make them equivalent.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "arduous",
+            "diligent, hardworking"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "arduous",
+            "diligent, hardworking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1047442",
+      "panel": "broad",
+      "observation": "Nostalgic is a particular kind of longing, not all longing.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "nostalgic",
+            "longing (feeling or expressing longing)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "nostalgic",
+            "longing (feeling or expressing longing)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1058056",
+      "panel": "broad",
+      "observation": "Both describe becoming vapor.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to evaporate, vaporize",
+            "to (be) turn(ed) into vapor, to (be) evaporate(ed), to (be) vaporize(ed)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to evaporate, vaporize",
+            "to (be) turn(ed) into vapor, to (be) evaporate(ed), to (be) vaporize(ed)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1065350",
+      "panel": "broad",
+      "observation": "The titles have related legal/civil-service roles but their institutional definitions are not identical.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "graduate civil servant, especially in law; assessor",
+            "an associate judge, a deputy judge (at a court of appeal)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "graduate civil servant, especially in law; assessor",
+            "an associate judge, a deputy judge (at a court of appeal)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1066274",
+      "panel": "broad",
+      "observation": "Both name a lexeme.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "lexeme (unit of vocabulary, the different forms of the same lemma)",
+            "lexeme"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "lexeme (unit of vocabulary, the different forms of the same lemma)",
+            "lexeme"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1078508",
+      "panel": "broad",
+      "observation": "Ambivalence noun and ambivalent adjective are related forms.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "ambivalence",
+            "ambivalent"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "ambivalence",
+            "ambivalent"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1087692",
+      "panel": "broad",
+      "observation": "A city and a vessel anchor differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Ankara (the capital city of Turkey and the capital of Ankara Province)",
+            "an anchor (tool to hook a vessel into sea bottom)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Ankara (the capital city of Turkey and the capital of Ankara Province)",
+            "an anchor (tool to hook a vessel into sea bottom)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1134748",
+      "panel": "broad",
+      "observation": "Sabbatical leave overlaps with a sabbatical year, with duration/scope differences.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "An extended period of leave from a person's usual pursuits.",
+            "sabbatical, sabbatical year"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "An extended period of leave from a person's usual pursuits.",
+            "sabbatical, sabbatical year"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1167388",
+      "panel": "broad",
+      "observation": "A Norwegian village and coffee grounds differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A village in Lunner municipality, Akershus, Norway.",
+            "coffee grounds"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A village in Lunner municipality, Akershus, Norway.",
+            "coffee grounds"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1194874",
+      "panel": "broad",
+      "observation": "The general battery reading is substantive; artillery battery is a specialized sense. Neither means the Palestinian village.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A village in Bethlehem governorate, West Bank, Palestine.",
+            "battery"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A village in Bethlehem governorate, West Bank, Palestine.",
+            "battery (a coordinated group of artillery)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1196080",
+      "panel": "broad",
+      "observation": "A Canadian town and a burger differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A town in Newfoundland and Labrador, Canada.",
+            "a burger"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A town in Newfoundland and Labrador, Canada.",
+            "a burger"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1197800",
+      "panel": "broad",
+      "observation": "The English hit-out reading is dialectal; no ordinary modern alternative is present. It differs from format.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "To deal a blow; hit out.",
+            "a format"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "To deal a blow; hit out.",
+            "a format"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1198664",
+      "panel": "broad",
+      "observation": "The source records George-related given-name forms, not shared individual identity.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A diminutive of the male given name George.",
+            "a male given name from Latin [in turn from Ancient Greek], equivalent to English George"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "documented_name_variant",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A diminutive of the male given name George.",
+            "a male given name from Latin [in turn from Ancient Greek], equivalent to English George"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1219396",
+      "panel": "broad",
+      "observation": "Both retain a truncated bird definition ending in 'or'. The Norwegian prow is also uncertain; galleon is clearer but cannot repair the English fragment.",
+      "arms": {
+        "A": {
+          "headline": "contradicted",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A crested gallito (Rhinocrypta lanceolata) or",
+            "the foremost part of an old sailing ship, where the figurehead was mounted (the prow?)."
+          ]
+        },
+        "B": {
+          "headline": "contradicted",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A crested gallito (Rhinocrypta lanceolata) or",
+            "a galleon (large sailing ship)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1251640",
+      "panel": "broad",
+      "observation": "Pole excessively and persuade differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "To pole excessively.",
+            "to persuade (convince)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "To pole excessively.",
+            "to persuade (convince)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1269388",
+      "panel": "broad",
+      "observation": "A person who demolishes and demonize differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "One who demolishes.",
+            "to demonise"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "One who demolishes.",
+            "to demonise"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1275922",
+      "panel": "broad",
+      "observation": "Careful consideration is obsolete here; perception is a different mental concept. No current English reading is fabricated.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Careful consideration; pondering.",
+            "perception"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Careful consideration; pondering.",
+            "perception"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1288640",
+      "panel": "broad",
+      "observation": "Both describe the combined breakfast/lunch meal.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A meal eaten later in the day than breakfast and earlier than lunch, often in a leisurely, festive, and/or social way, and often consisting of typical foods from both of those meals.",
+            "brunch"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A meal eaten later in the day than breakfast and earlier than lunch, often in a leisurely, festive, and/or social way, and often consisting of typical foods from both of those meals.",
+            "brunch"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1338846",
+      "panel": "broad",
+      "observation": "Both describe protective tinted glasses.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Tinted glasses worn to protect the eyes from the sun or other bright light, and may also be worn as a fashion accessory.",
+            "sunglasses"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "Tinted glasses worn to protect the eyes from the sun or other bright light, and may also be worn as a fashion accessory.",
+            "sunglasses"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1364916",
+      "panel": "broad",
+      "observation": "Both Swedish drink-related verb readings are substantive for this colloquial word; neither means the fabric.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A strong, rough fabric made up of a mixture of silk, and mohair or wool.",
+            "to drink highballs (see grogg)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A strong, rough fabric made up of a mixture of silk, and mohair or wool.",
+            "to mix (and drink) a highball (with the specified ingredients)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1382970",
+      "panel": "broad",
+      "observation": "The Swedish definition is an obsolete spelling redirect, not an ordinary introduction. Both versions retain the fallback; English surname does not repair it.",
+      "arms": {
+        "A": {
+          "headline": "contradicted",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A surname.",
+            "obsolete typography of dess (“its”)"
+          ]
+        },
+        "B": {
+          "headline": "contradicted",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A surname.",
+            "obsolete typography of dess (“its”)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1384540",
+      "panel": "broad",
+      "observation": "Both choose obscure English noun readings despite available ordinary fill uses; neither weft/blanket nor carriage shaft/felt establishes equivalent meanings.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "The weft yarn.",
+            "a blanket"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "One of the thills or shafts of a carriage.",
+            "felt (cloth)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1392282",
+      "panel": "broad",
+      "observation": "The Swedish readings are rare; neither sea nor shallow muddy bay means irritable mood. Keep that qualification.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "An irritable mood.",
+            "sea (large body of salt water)"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "An irritable mood.",
+            "shallow, muddy bay (of the sea)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1409040",
+      "panel": "broad",
+      "observation": "The English place and surname are source-attested, but their preferred priority is unresolved; both differ from froth.",
+      "arms": {
+        "A": {
+          "headline": "unresolved",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A small town by the river Cinca in Bajo Cinca, Huesca, Aragon, Spain, whose inhabitants speak Fragatí, a distinct local dialect of Catalan.",
+            "froth (around the mouth, usually from illness or (powerless) rage, sometimes figuratively)"
+          ]
+        },
+        "B": {
+          "headline": "unresolved",
+          "selected_meaning": "different",
+          "entry_correctness": "unresolved",
+          "display": [
+            "A surname of Iberian origin.",
+            "froth (around the mouth, usually from illness or (powerless) rage, sometimes figuratively)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1412774",
+      "panel": "broad",
+      "observation": "A Karelian person differs from a capable man or the given name Karl. Each is a substantive recorded use.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A Karelian, Kareli; a native of Karelia.",
+            "a “real man”, a capable man, a full grown man (compare kraftkarl (“strongman”), karlaktig (“in manly fashion”))"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A Karelian, Kareli; a native of Karelia.",
+            "a male given name from Old Norse"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1443006",
+      "panel": "broad",
+      "observation": "A stone milestone is an ordinary concrete reading; the figurative Swedish reading is tagged rare. The English places do not share its meaning.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A small village and civil parish (served by Milson and Neen Sollars Parish Council) in southern Shropshire, England (OS grid ref SO6373).",
+            "a milestone made of stone"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "A suburb of Palmerston North, Manawatū-Whanganui, New Zealand.",
+            "a milestone"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1533380",
+      "panel": "broad",
+      "observation": "An adjective relating to gadolinium and the element noun are related forms.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "gadolinian; relating to or containing gadolinium.",
+            "gadolinium"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "gadolinian; relating to or containing gadolinium.",
+            "gadolinium"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1573302",
+      "panel": "broad",
+      "observation": "Time passing is figurative; flee is an ordinary Swedish reading. Neither selected pair directly equates Norwegian flying with Swedish fleeing/time passing.",
+      "arms": {
+        "A": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to fly",
+            "to pass, to go by (of time)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "to fly",
+            "to flee, to run away, to escape"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1574666",
+      "panel": "broad",
+      "observation": "Both selected adjectives mean voluntary; other grammatical uses remain separate.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "voluntary",
+            "voluntary"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "voluntary",
+            "voluntary"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1585952",
+      "panel": "broad",
+      "observation": "Both name a creator/originator.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "creator, originator",
+            "a creator"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "creator, originator",
+            "a creator"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1586250",
+      "panel": "broad",
+      "observation": "The qualified copy gloss denotes the source/model from which something is copied, giving contextual overlap with original.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "an original",
+            "a copy (the text, from which is copied)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "an original",
+            "a copy (the text, from which is copied)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1587066",
+      "panel": "broad",
+      "observation": "Both name a pixel.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a pixel",
+            "a pixel"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a pixel",
+            "a pixel"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1589532",
+      "panel": "broad",
+      "observation": "Sandpaper and a sheet of sandpaper overlap with material/unit differences.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sandpaper or sanding paper",
+            "a sheet of sandpaper, a sanding sheet"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "partial_or_contextual",
+          "entry_correctness": "source_supported",
+          "display": [
+            "sandpaper or sanding paper",
+            "a sheet of sandpaper, a sanding sheet"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1601058",
+      "panel": "broad",
+      "observation": "Both describe food prepared from blood.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "food prepared from animal blood, or in which animal blood is a principal ingredient",
+            "food made out of blood (such as blood pudding or blood sausage)"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "shared",
+          "entry_correctness": "source_supported",
+          "display": [
+            "food prepared from animal blood, or in which animal blood is a principal ingredient",
+            "food made out of blood (such as blood pudding or blood sausage)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1603668",
+      "panel": "broad",
+      "observation": "Straight/easy and thing are substantive uses; the subjective 'one's thing' reading is secondary. Nice/kind is also an ordinary Norwegian reading, but is not equivalent.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "straight, easy",
+            "a thing (concrete or abstract – also of events, like in English)"
+          ]
+        },
+        "B": {
+          "headline": "secondary_or_restricted",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "nice, kind, good, good-natured",
+            "thing (subjective liking)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1610778",
+      "panel": "broad",
+      "observation": "Minimum noun and minimal adjective are related forms.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "minimum",
+            "minimal; the smallest possible amount, quantity, or degree; as small as possible"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "related_form",
+          "entry_correctness": "source_supported",
+          "display": [
+            "minimum",
+            "minimal; the smallest possible amount, quantity, or degree; as small as possible"
+          ]
+        }
+      }
+    },
+    {
+      "id": "row:1630886",
+      "panel": "broad",
+      "observation": "A specially prepared substance and a social class differ.",
+      "arms": {
+        "A": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a preparation (specially made substance)",
+            "precariat, a new class of unemployed people"
+          ]
+        },
+        "B": {
+          "headline": "supported",
+          "selected_meaning": "different",
+          "entry_correctness": "source_supported",
+          "display": [
+            "a preparation (specially made substance)",
+            "precariat, a new class of unemployed people"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "replay_files_byte_identical": [
+    "matrix_cache.json",
+    "predictions.json",
+    "packet.json",
+    "private_arm_map.json"
+  ],
+  "environment": {
+    "python": "3.14.8",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.0",
+    "torch": "2.14.1+cpu",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.19.0"
+  },
+  "stored_control_unchanged": true,
+  "reconstructed_max_vs_stored": {
+    "n": 182,
+    "absolute_difference_over_1e_5": 30,
+    "maximum_absolute_difference": 0.543466717004776
+  },
+  "note": "Replay uses the saved matrices and source associations; this does not establish bitwise encoder reproducibility across hardware. Full-matrix maxima need not equal stored scores: the old builder selected a scoped cell, not always the global maximum. Duplicate identical glosses are compared by the closest matching cell.",
+  "reconstructed_display_cell_vs_stored": {
+    "n": 182,
+    "absolute_difference_over_1e_5": 0,
+    "maximum_absolute_difference": 3.5762786865234375e-07
+  },
+  "review_report_replay_byte_identical": [
+    "summary.json",
+    "decoded_reviews.json"
+  ]
+}

@@ -1,0 +1,1836 @@
+{
+  "packet_sha256": "12b081e1732a0c6bbb352c9e7117e27e76d3cded41a9e29403d15aca43f683f6",
+  "reviewer": "Codex agent, source-guided; arm map and scores not read, method known",
+  "cases": [
+    {
+      "id": "iecor:20-213-1:27-213-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe shadow/shade.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "shadow",
+            "shade, shadow"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "shadow",
+            "shade, shadow"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-204-1:27-204-1",
+      "panel": "reserved",
+      "observation": "Both pairs name the ordinary worm.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "worm",
+            "worm"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "worm",
+            "worm"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-80-1:27-80-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe hunting game.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to hunt, shoot",
+            "to hunt (game)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to hunt, shoot",
+            "to hunt (game)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-151-1:27-151-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify snakes.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake, serpent",
+            "snake"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake, serpent",
+            "snake"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-146-1:27-146-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe sleeping.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sleep",
+            "to sleep"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sleep",
+            "to sleep"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-57-1:27-57-1",
+      "panel": "reserved",
+      "observation": "Mist/fog describes suspended droplets reducing visibility; neither is another lexical sense.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "mist",
+            "fog, mist, haze"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fog",
+            "fog, mist, haze"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-63-1:27-63-1",
+      "panel": "reserved",
+      "observation": "A specifies transfer of ownership; B's present/put wording is broader and lacks that constraint.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to give",
+            "to give (changing ownership)"
+          ]
+        },
+        "B": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "to give",
+            "to present; to put"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-35-1:27-35-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No baseline comparison for the expected dust forms."
+    },
+    {
+      "id": "iecor:20-216-1:27-216-1",
+      "panel": "reserved",
+      "observation": "Severe/harsh is not material hardness; B explicitly supplies hard.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "severe, harsh",
+            "severe, harsh"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "hard",
+            "hard"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-12-1:27-12-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No baseline comparison for the expected bird forms."
+    },
+    {
+      "id": "iecor:20-95-1:22-95-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe being alive.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to live, be alive",
+            "To be alive; to have life."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to live, be alive",
+            "To be alive; to have life."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-211-1:22-211-1",
+      "panel": "reserved",
+      "observation": "A supplies the insect; B supplies a fishing lure.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fly (insect) (Brachycera)",
+            "Any insect of the order Diptera; characterized by having two wings (except for some wingless species), also called true flies."
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "fly (insect) (Brachycera)",
+            "A lightweight fishing lure resembling an insect."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-202-1:22-202-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected woman forms."
+    },
+    {
+      "id": "iecor:20-139-1:22-139-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected sewing forms."
+    },
+    {
+      "id": "iecor:20-86-1:22-86-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe putting to death.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to kill",
+            "To put to death; to extinguish the life of."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to kill",
+            "To put to death; to extinguish the life of."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-62-1:22-62-1",
+      "panel": "reserved",
+      "observation": "Both pairs specify maximum capacity.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "Containing the maximum possible amount that can fit in the space available."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "Containing the maximum possible amount that can fit in the space available."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-136-1:22-136-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected sea forms."
+    },
+    {
+      "id": "iecor:20-118-1:22-118-1",
+      "panel": "reserved",
+      "observation": "Both select musical/performance play rather than general recreational activity.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "to play (music, a game, in a theatrical performance)",
+            "To produce sound (especially music), moving pictures, or theatrical performance."
+          ]
+        },
+        "B": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "to play (music, a game, in a theatrical performance)",
+            "To produce sound (especially music), moving pictures, or theatrical performance."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-187-1:22-187-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe cleaning with water.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to wash",
+            "To clean with water."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to wash",
+            "To clean with water."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-216-1:22-216-1",
+      "panel": "reserved",
+      "observation": "Tough/hard with the pressure definition and hard/solid-firm both express physical hardness.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tough",
+            "Resistant to pressure; difficult to break, cut, or penetrate."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "hard",
+            "Solid and firm."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-204-1:58-204-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected worm forms."
+    },
+    {
+      "id": "iecor:20-52-1:58-52-1",
+      "panel": "reserved",
+      "observation": "Both pairs denote the number five.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five",
+            "five"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five",
+            "five"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-80-1:58-80-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe hunting.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to hunt, shoot",
+            "to hunt"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to hunt, shoot",
+            "to hunt"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-12-1:58-12-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify birds.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "bird",
+            "a bird"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "bird",
+            "a bird"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-199-1:58-199-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify wings.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "wing",
+            "a wing"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "wing",
+            "a wing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-4-1:58-4-1",
+      "panel": "reserved",
+      "observation": "Both pairs define the residue of combustion.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "ash (solid remains of a fire)",
+            "ash (or ashes) (powdery residue left after burning a substance)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "ash (solid remains of a fire)",
+            "ash (or ashes) (powdery residue left after burning a substance)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-49-1:58-49-1",
+      "panel": "reserved",
+      "observation": "The headwords/glosses identify the finger/toe nail reading.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "nail (on fingers and toes)",
+            "a nail"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "nail (on fingers and toes)",
+            "a nail"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-120-1:58-120-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe pushing/shoving.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "push",
+            "to push, shove"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "push",
+            "to push, shove"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-62-1:58-62-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe maximum capacity.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "full (containing the maximum possible amount)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "full (containing the maximum possible amount)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-224-1:58-224-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe performing an action.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to do, perform, execute",
+            "to do (something)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to do, perform, execute",
+            "to do (something)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-4-1:69-4-1",
+      "panel": "reserved",
+      "observation": "A selects combustion residue; B selects the ash-removal verb instead of the noun concept.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "ash (solid remains of a fire)",
+            "ashes, ash"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "to ash (to knock the ash off a lit cigarette, cigar, etc.)",
+            "to ash, to remove ashes from a cigarette, smoking pipe, stove, or burner"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-95-1:69-95-1",
+      "panel": "reserved",
+      "observation": "A describes being alive; B selects the narrower live-off/sustenance construction.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to live, be alive",
+            "to live, to be alive (concretely or figuratively)"
+          ]
+        },
+        "B": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "to live off or live on",
+            "to live on, to live off (something)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-114-1:69-114-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe long existence/age.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "old (having existed for a relatively long period of time)",
+            "old (having existed for a long time)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "old (having existed for a relatively long period of time)",
+            "old (having existed for a long time)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-41-1:69-41-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe falling.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to fall",
+            "to fall"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to fall",
+            "to fall"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-52-1:69-52-1",
+      "panel": "reserved",
+      "observation": "Both pairs denote the number five.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five",
+            "five"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five",
+            "five"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-118-1:69-118-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected play forms."
+    },
+    {
+      "id": "iecor:20-133-1:69-133-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify finely ground rock/sand.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "sand (finely ground rock)",
+            "sand (finely ground rock)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "sand (finely ground rock)",
+            "sand (finely ground rock)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-90-1:69-90-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify laughter.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to laugh",
+            "to laugh"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to laugh",
+            "to laugh"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-161-1:69-161-1",
+      "panel": "reserved",
+      "observation": "A selects stone/rock; B selects male given names.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "stone",
+            "a stone; a rock"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "a male given name from Old Norse",
+            "a male given name from Old Norse"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:20-211-1:69-211-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify the insect fly.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fly (insect) (Brachycera)",
+            "a fly (insect)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fly (insect) (Brachycera)",
+            "a fly (insect)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-224-1:22-224-1",
+      "panel": "reserved",
+      "observation": "A selects the English auxiliary question marker; B selects performing an action.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "to do (to perform or execute an action)",
+            "A syntactic marker in a question whose main verb is not another auxiliary verb or be."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to do (to perform or execute an action)",
+            "To perform; to execute."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-148-1:22-148-1",
+      "panel": "reserved",
+      "observation": "A pairs a smelling action with the sense noun; B has two smelling actions.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "to use the sense of smell; to detect a smell",
+            "The sense that detects odours."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to smell (something); to sniff (something)",
+            "To sense a smell or smells."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-224-2:22-224-1",
+      "panel": "reserved",
+      "observation": "A supplies performing an action; B's English auxiliary does not express the concept.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to do, perform, carry out (an action) (to execute; to put into operation)",
+            "To perform; to execute."
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "to make, to produce, to create (an object, arrangement, situation, etc.)",
+            "A syntactic marker in a question whose main verb is not another auxiliary verb or be."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-114-1:22-114-1",
+      "panel": "reserved",
+      "observation": "Former/previous is a different old reading; B explicitly describes long existence.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "old",
+            "Former, previous."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "old",
+            "Of an object, concept, relationship, etc., having existed for a relatively long period of time."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-105-1:22-105-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify the food-ingestion opening.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "mouth of a person",
+            "The front opening of a creature through which food is ingested."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "mouth of a person",
+            "The front opening of a creature through which food is ingested."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-57-1:22-57-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe low cloud/fog.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fog, mist, haze",
+            "A thick cloud that forms near the ground; the obscurity of such a cloud."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fog, mist, haze",
+            "A thick cloud that forms near the ground; the obscurity of such a cloud."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-181-1:22-181-1",
+      "panel": "reserved",
+      "observation": "A describes the woody plant; B selects a storage object made from its trunk.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tree",
+            "A perennial woody plant taller and larger than a shrub with a wooden trunk and, at some distance from the ground, having leaves and branches."
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "tree",
+            "An object made from a tree trunk and having multiple hooks or storage platforms."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-151-1:22-151-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify legless reptiles.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake",
+            "Any of the suborder Serpentes of legless reptiles with long, thin bodies and fork-shaped tongues."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake",
+            "Any of the suborder Serpentes of legless reptiles with long, thin bodies and fork-shaped tongues."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-204-1:22-204-1",
+      "panel": "reserved",
+      "observation": "A describes the animal worm; B selects software.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "worm",
+            "A generally tubular invertebrate of the annelid phylum; an earthworm."
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "worm",
+            "A self-replicating program that propagates through a network by copying itself, differing from a virus which seeks to propagate by inserting its code into other executable files."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-23-1:22-23-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe low temperature.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "cold, chilly; the physical perception of something (objects, weather, body etc.) to have a low temperature",
+            "Having a low temperature."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "cold, chilly; the physical perception of something (objects, weather, body etc.) to have a low temperature",
+            "Having a low temperature."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-218-1:58-218-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe going/walking.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to go, to walk",
+            "To walk, go."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to go, to walk",
+            "To walk, go."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-166-1:58-166-1",
+      "panel": "reserved",
+      "observation": "Both German swim readings still describe the swimming action; a distance object does not change the action.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to swim (to use swimming motions to move in the water)",
+            "to swim"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to swim (a certain distance)",
+            "to swim"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-37-1:58-37-1",
+      "panel": "reserved",
+      "observation": "A selects the planet; B supplies earth/soil as required.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "the planet Earth",
+            "the earth, or the Earth (the planet we live on; see also Jorden)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "earth",
+            "earth, soil, ground"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-181-1:58-181-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify trees.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tree",
+            "tree"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tree",
+            "tree"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-151-1:58-151-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify snakes.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake",
+            "a snake"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake",
+            "a snake"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-136-1:58-136-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected sea forms."
+    },
+    {
+      "id": "iecor:27-99-1:58-99-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly identify adult male humans.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "man, male human being",
+            "man (an adult male human being)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "man, male human being",
+            "man (an adult male human being)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-74-1:58-74-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected heavy forms."
+    },
+    {
+      "id": "iecor:27-52-1:58-52-1",
+      "panel": "reserved",
+      "observation": "Both pairs denote five.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five (numerical value represented by the Arabic numeral 5; or describing a set with five elements)",
+            "five"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "five (numerical value represented by the Arabic numeral 5; or describing a set with five elements)",
+            "five"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-118-1:58-118-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe recreational play.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to play (engage in some activity for fun or entertainment)",
+            "to play, to act in a manner such that one has fun"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to play (engage in some activity for fun or entertainment)",
+            "to play, to act in a manner such that one has fun"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-202-1:69-202-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected woman forms."
+    },
+    {
+      "id": "iecor:27-173-1:69-173-1",
+      "panel": "reserved",
+      "observation": "Both retain German remembering rather than the general think concept; B only repairs the Swedish endpoint.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "not to forget; to remember",
+            "to keep in mind, to remember, be mindful of"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "not to forget; to remember",
+            "to think (think to oneself, have a thought (process) in one's head)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-151-1:69-151-1",
+      "panel": "reserved",
+      "observation": "A selects the reptile; B selects a figurative insult.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "snake",
+            "serpent, snake, or therof slithering legless animal (cf. kopparorm, “slowworm”, sandorm, “sandworm” in the book series Dune)"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "snake",
+            "snake (generic insult, referencing the archetype of serpents)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-41-1:69-41-1",
+      "panel": "reserved",
+      "observation": "A selects downward falling; B selects death in battle.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to fall, to drop",
+            "to fall"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "to die, to fall (in battle)",
+            "to fall (die, especially in battle)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-57-1:69-57-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe fog.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fog, mist, haze",
+            "fog (cloud that forms at a low altitude and obscures vision)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "fog, mist, haze",
+            "fog (cloud that forms at a low altitude and obscures vision)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-134-1:69-134-1",
+      "panel": "reserved",
+      "observation": "A supplies the recipient-directed tell/inform use; B directly supplies saying/uttering.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "to tell (to inform (someone) verbally)",
+            "to tell"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to say (to pronounce; communicate verbally)",
+            "to say"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-181-1:69-181-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify trees.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tree",
+            "a tree"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "tree",
+            "a tree"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-142-1:69-142-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe singing.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sing",
+            "to sing"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sing",
+            "to sing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:27-56-1:69-56-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected flying forms."
+    },
+    {
+      "id": "iecor:27-74-1:69-74-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected heavy forms."
+    },
+    {
+      "id": "iecor:22-99-1:58-99-1",
+      "panel": "reserved",
+      "observation": "A identifies adult male humans; B's Homo/person definition is broader and omits male/adult restrictions.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "An adult male human.",
+            "man (an adult male human being)"
+          ]
+        },
+        "B": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "A member of the genus Homo, especially of the species Homo sapiens.",
+            "man (an adult male human being)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-226-1:58-226-1",
+      "panel": "reserved",
+      "observation": "A selects an arthropod pincer; B selects the keratin digit projection required by the reference.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "The pincer (chela) of a crustacean or other arthropod.",
+            "pincer (of a lobster, scorpion, etc.)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "A curved, pointed, horny projection on each digit of the foot of a mammal, reptile, or bird.",
+            "claw"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-176-1:58-176-1",
+      "panel": "reserved",
+      "observation": "Both pairs denote three.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "A numerical value equal to 3; the number following two and preceding four.",
+            "three"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "A numerical value equal to 3; the number following two and preceding four.",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-208-1:58-208-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify ants.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Any of various insects in the family Formicidae in the order Hymenoptera, typically living in large colonies composed almost entirely of flightless females.",
+            "ant (insect)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Any of various insects in the family Formicidae in the order Hymenoptera, typically living in large colonies composed almost entirely of flightless females.",
+            "ant (insect)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-202-1:58-202-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected woman forms."
+    },
+    {
+      "id": "iecor:22-35-1:58-35-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected dust forms."
+    },
+    {
+      "id": "iecor:22-166-1:58-166-1",
+      "panel": "reserved",
+      "observation": "Both pairs explicitly describe swimming in water.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To move through the water, without touching the bottom; to propel oneself in water by natural means.",
+            "to swim"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To move through the water, without touching the bottom; to propel oneself in water by natural means.",
+            "to swim"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-80-1:58-80-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe hunting animals.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To find or search for an animal in the wild with the intention of killing the animal for its meat or for sport.",
+            "to hunt"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To find or search for an animal in the wild with the intention of killing the animal for its meat or for sport.",
+            "to hunt"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-89-1:58-89-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected lake forms."
+    },
+    {
+      "id": "iecor:22-118-1:58-118-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe recreational play.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+            "to play, to act in a manner such that one has fun"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+            "to play, to act in a manner such that one has fun"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-59-1:69-59-1",
+      "panel": "reserved",
+      "observation": "Both select the written digit rather than the natural number itself.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "The digit or figure 4; an occurrence thereof.",
+            "four; the digit \"4\""
+          ]
+        },
+        "B": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "The digit or figure 4; an occurrence thereof.",
+            "four; the digit \"4\""
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-114-1:69-114-1",
+      "panel": "reserved",
+      "observation": "A describes age measured in any specified duration; B explicitly supplies long existence.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "Having existed or lived for the specified time.",
+            "old (having existed for a long time)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Of an object, concept, relationship, etc., having existed for a relatively long period of time.",
+            "old (having existed for a long time)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-62-1:69-62-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe maximum capacity.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Containing the maximum possible amount that can fit in the space available.",
+            "full (containing the maximum possible amount)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Containing the maximum possible amount that can fit in the space available.",
+            "full (containing the maximum possible amount)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-134-1:69-134-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe pronouncing/saying words.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To pronounce.",
+            "to say"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To pronounce.",
+            "to say"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-120-1:69-120-1",
+      "panel": "reserved",
+      "observation": "A's forceful ejection is a narrower related action; B's weapon shooting is not the ordinary pushing concept.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "To apply a force to (an object) such that it moves away from the person or thing applying the force.",
+            "to eject; to jettison (from something, with force)"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "To apply a force to (an object) such that it moves away from the person or thing applying the force.",
+            "to shoot ((a projectile with) a weapon), (often, idiomatically – see the usage notes below) to fire ((a projectile with) a weapon)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-139-1:69-139-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected sewing forms."
+    },
+    {
+      "id": "iecor:22-204-1:69-204-1",
+      "panel": "reserved",
+      "observation": "A selects software; B supplies the animal worm.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "A self-replicating program that propagates through a network by copying itself, differing from a virus which seeks to propagate by inserting its code into other executable files.",
+            "a worm"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "A generally tubular invertebrate of the annelid phylum; an earthworm.",
+            "a worm"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-49-1:69-49-1",
+      "panel": "reserved",
+      "observation": "A is the broader animal plate/claw definition; B specifically supplies the human/ape finger-and-toe plate.",
+      "arms": {
+        "A": {
+          "concept_fit": "restricted_sense",
+          "display": [
+            "The horny plate or appendage at the ends of the digits of various animals, including most reptiles, birds, and mammals (both nonhuman and human).",
+            "a nail"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "The thin, flat type of such a plate on the fingers and toes of humans, chimpanzees and some other primates.",
+            "a nail"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-118-1:69-118-1",
+      "panel": "reserved",
+      "observation": "Both broad recreational play and ordinary children's play instantiate this activity concept.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+            "to play (more generally, sometimes with relaxed or nonchalant connotations)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+            "to play (like children)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:22-23-1:69-23-1",
+      "panel": "reserved",
+      "observation": "A selects emotional distance; B supplies physical low temperature.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "Unfriendly; emotionally distant or unfeeling.",
+            "unfriendly, emotionally distant or unfeeling."
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "Having a low temperature.",
+            "cold; having a low temperature."
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-176-1:69-176-1",
+      "panel": "reserved",
+      "observation": "Both pairs denote three.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "three",
+            "three"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "three",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-226-1:69-226-1",
+      "panel": "reserved",
+      "observation": "A selects pincers; B supplies the required keratin claws.",
+      "arms": {
+        "A": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "pincer (of a lobster, scorpion, etc.)",
+            "a pincer (of a lobster, scorpion, etc.)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "claw",
+            "a claw"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-199-1:69-199-1",
+      "panel": "reserved",
+      "observation": "Both pairs identify wings.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "a wing",
+            "a wing"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "a wing",
+            "a wing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-204-1:69-204-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected worm forms."
+    },
+    {
+      "id": "iecor:58-151-1:69-151-1",
+      "panel": "reserved",
+      "observation": "A supplies the reptile; B selects an insult.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "a snake",
+            "serpent, snake, or therof slithering legless animal (cf. kopparorm, “slowworm”, sandorm, “sandworm” in the book series Dune)"
+          ]
+        },
+        "B": {
+          "concept_fit": "wrong_sense",
+          "display": [
+            "a snake",
+            "snake (generic insult, referencing the archetype of serpents)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-143-1:69-143-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe the sitting posture.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sit (of a person, be in a position in which the upper body is upright and the legs are supported)",
+            "to sit (be in a position with the upper body upright and the legs resting)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to sit (of a person, be in a position in which the upper body is upright and the legs are supported)",
+            "to sit (be in a position with the upper body upright and the legs resting)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-57-1:69-57-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe fog/mist near the ground.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "a fog or mist",
+            "fog (cloud that forms at a low altitude and obscures vision)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "a fog or mist",
+            "fog (cloud that forms at a low altitude and obscures vision)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-166-1:69-166-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe swimming.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to swim",
+            "to swim"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "to swim",
+            "to swim"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-62-1:69-62-1",
+      "panel": "reserved",
+      "observation": "Both pairs describe maximum capacity.",
+      "arms": {
+        "A": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "full (containing the maximum possible amount)"
+          ]
+        },
+        "B": {
+          "concept_fit": "acceptable",
+          "display": [
+            "full (containing the maximum possible amount)",
+            "full (containing the maximum possible amount)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "iecor:58-89-1:69-89-1",
+      "panel": "reserved",
+      "missing": true,
+      "observation": "No comparison for the expected lake forms."
+    }
+  ]
+}

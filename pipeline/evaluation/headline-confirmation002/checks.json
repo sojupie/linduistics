@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "frontend_build": "passed",
+    "frontend_lint": "passed with five warnings in unchanged ComparativeLexicon/Header code",
+    "selector_self_check": "passed",
+    "translation_support_self_check": "passed",
+    "production_data_excluded": true,
+    "production_preview_route_redirect": "/lexicon",
+    "database_started_or_written": false,
+    "browser_desktop": "ordinary H2O and retained urine cards rendered",
+    "browser_exact_selection": "row:921360 shows Wasser/tiss with original urine/pee preserved",
+    "browser_missing_case": "iecor:20-35-1:27-35-1 shows explicit missing comparison",
+    "mobile": {
+      "width": 390,
+      "document_scroll_width": 384,
+      "articles": 2,
+      "viewport_restored": true
+    }
+  }
+}

@@ -1,0 +1,2174 @@
+{
+  "12824": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "insult, offense",
+      "insult (action or speech deliberately intended to be rude)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "15524": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to give",
+      "to give (changing ownership)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "18880": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "hard",
+      "hard"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "20450": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to hunt, shoot",
+      "to hunt (game)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "28440": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "speechless, dumbfounded",
+      "speechless, dumbfounded, tongue-tied"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "30296": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to invent, devise",
+      "to sketch, to draft"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "30942": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "worm",
+      "worm"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "37282": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "tailor-made, customized",
+      "user-defined"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "37508": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "shadow",
+      "shade, shadow"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "37972": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "snake, serpent",
+      "snake"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "39018": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to sleep",
+      "to sleep"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "44248": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "fog",
+      "fog, mist, haze"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "50950": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a female given name, short for Magdalene",
+      "a diminutive of the female given name Magdalene"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "62266": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "to date (someone)",
+      "to date"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "66666": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "robot",
+      "to perform feudal labour"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "67422": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Arctic (a continental region consisting of the portion of the Earth north of the Arctic Circle, containing the North Pole)",
+      "Arctic"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "67660": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "poppy seed",
+      "a surname"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "80966": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "biophysicist",
+      "biophysicist"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "88432": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to kill",
+      "To put to death; to extinguish the life of."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "90588": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "fly (insect) (Brachycera)",
+      "Any insect of the order Diptera; characterized by having two wings (except for some wingless species), also called true flies."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "92152": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "full (containing the maximum possible amount)",
+      "Containing the maximum possible amount that can fit in the space available."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "95314": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "hard",
+      "Solid and firm."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "cognate_false_friend"
+  },
+  "99378": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to live, be alive",
+      "To be alive; to have life."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "108612": {
+    "indices": [
+      0,
+      16
+    ],
+    "display": [
+      "to play (music, a game, in a theatrical performance)",
+      "To produce sound (especially music), moving pictures, or theatrical performance."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "111244": {
+    "indices": [
+      0,
+      2
+    ],
+    "display": [
+      "simpleton",
+      "An insane or very foolish person."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "113614": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to wash",
+      "To clean with water."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "141726": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "narcissus, daffodil",
+      "A female given name from Persian, meaning “daffodil”."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "150602": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "auditor (person who audits company or organisation accounts)",
+      "The act of revising; a revision."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "152572": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "autocrat",
+      "To craft automatically."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "154848": {
+    "indices": null,
+    "display": [
+      "political",
+      "To make political; to politicize."
+    ],
+    "status": "original_no_substantive_proposal",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "163386": {
+    "indices": [
+      3,
+      8
+    ],
+    "display": [
+      "in the back part (of something)",
+      "A sac in animal bodies, containing some fluid or other substance."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "172836": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a female given name",
+      "A city in Central Macedonia, northern Greece."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "207496": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "gentleness",
+      "To make glad or blithe; gladden."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "217472": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "mandola",
+      "A hole in the ground used to access the sewers or other underground vaults and installations."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "252348": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a female given name of French origin",
+      "A female given name from French, a less common spelling of Stephanie."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "266444": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to fire; sack",
+      "to kick"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "267308": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "ash (solid remains of a fire)",
+      "ash (or ashes) (powdery residue left after burning a substance)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "269480": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "they (third-person plural)",
+      "you (second-person plural subject and object pronoun)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "271222": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "five",
+      "five"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "272646": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "full (containing the maximum possible amount)",
+      "full (containing the maximum possible amount)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "273806": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to do, perform, execute",
+      "to do (something)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "275524": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to hunt, shoot",
+      "to hunt"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "277244": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "coast (shoreline)",
+      "coast (shoreline)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "277678": {
+    "indices": [
+      1,
+      1
+    ],
+    "display": [
+      "Latvian (the Latvian language)",
+      "Latvian (language)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "279066": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "monarchy",
+      "a monarchy"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "279560": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "nail (on fingers and toes)",
+      "a nail"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "283228": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "push",
+      "to push, shove"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "288768": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "bird",
+      "a bird"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "289344": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "wing",
+      "a wing"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "311090": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to refine, fine-tune",
+      "to delay"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "318070": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Slovenian, a person from Slovenia.",
+      "Slovenia; a country on the Balkan Peninsula in Central Europe; capital: Ljubljana."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "318834": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "modest, bashful; shy or timid in matters of a sexual nature; reluctant to being fully or partially nude",
+      "shy, timid in matters of a sexual nature"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "322300": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "deification",
+      "renewal"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "322374": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "enhancement, increase, raise",
+      "relinquishment, surrender"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "326866": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "ash (solid remains of a fire)",
+      "ashes, ash"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "327164": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a surname",
+      "back; position behind most players on the team"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "332550": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to fall",
+      "to fall"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "332902": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "five",
+      "five"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "333452": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "fly (insect) (Brachycera)",
+      "a fly (insect)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "335312": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "rim, wheelrim",
+      "a rim (the hard part of a wheel, to which the rubber tire is attached; in modern car wheels this is includes the hub)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "335600": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "old (having existed for a relatively long period of time)",
+      "old (having existed for a long time)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "335954": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a male given name, equivalent to English George",
+      "a male given name from Low German, equivalent to English George"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "336464": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to laugh",
+      "to laugh"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "341294": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "console, an ornamental scroll-shaped bracket, corbel",
+      "console, an ornamental scroll-shaped bracket"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "342916": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to live, be alive",
+      "to live, to be alive (concretely or figuratively)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "349290": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "raindrop",
+      "a raindrop"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "353560": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "stone",
+      "a stone; a rock"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "358262": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "notice (period of time)",
+      "harbinger, foreboding"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "360382": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "sand (finely ground rock)",
+      "sand (finely ground rock)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "361196": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "dissonance",
+      "dissonance"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "378646": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "sickle (tool used for harvesting)",
+      "to sail"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "382202": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "spare (the act of knocking down all remaining pins in second ball of a frame)",
+      "saver (person who saves money)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "386634": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to answer, reply to",
+      "to spare, to save (make not have to deal with)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "406060": {
+    "indices": [
+      0,
+      4
+    ],
+    "display": [
+      "breath (a single act of breathing in and out)",
+      "A short, sudden intake of breath."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "408452": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "tree",
+      "A perennial woody plant taller and larger than a shrub with a wooden trunk and, at some distance from the ground, having leaves and branches."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "444104": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "mouth of a person",
+      "The front opening of a creature through which food is ingested."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_divergence"
+  },
+  "445356": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "fog, mist, haze",
+      "A thick cloud that forms near the ground; the obscurity of such a cloud."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "450680": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "Provençal, Occitan",
+      "Someone of the regional culture that speaks this language; an inhabitant of Occitania."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "451546": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "RAM (random-access memory)",
+      "A male sheep, typically uncastrated."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "456458": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "snake",
+      "Any of the suborder Serpentes of legless reptiles with long, thin bodies and fork-shaped tongues."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "474634": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "worm",
+      "A generally tubular invertebrate of the annelid phylum; an earthworm."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "cognate_false_friend"
+  },
+  "478722": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "old",
+      "Of an object, concept, relationship, etc., having existed for a relatively long period of time."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "502442": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "cold, chilly; the physical perception of something (objects, weather, body etc.) to have a low temperature",
+      "Having a low temperature."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "506364": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "to make, to produce, to create (an object, arrangement, situation, etc.)",
+      "A syntactic marker in a question whose main verb is not another auxiliary verb or be."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "512972": {
+    "indices": [
+      0,
+      3
+    ],
+    "display": [
+      "to smell (something); to sniff (something)",
+      "To sense a smell or smells."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "520532": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "to do (to perform or execute an action)",
+      "A syntactic marker in a question whose main verb is not another auxiliary verb or be."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "628274": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "natural produce",
+      "A female given name from Latin, of rather rare usage, variant of Natalie."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "638536": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "resin",
+      "Physical injury; hurt; damage."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "769634": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "tableau (arrangement of actors on stage or screen)",
+      "An item of furniture with a flat top surface raised above the ground, usually on one or more legs."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "810514": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "phosphide",
+      "A toxic gas, chemical formula PH₃."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "842496": {
+    "indices": null,
+    "display": [
+      "pendulum clock",
+      "Characteristic of the motion of a pendulum."
+    ],
+    "status": "original_no_substantive_proposal",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "854504": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "phrenic",
+      "The branch of science that relates to the mind; mental philosophy."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "872166": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "pelargonium (plant of the genus Pelargonium)",
+      "An anthocyanin that is a glucoside of pelargonidin"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "893986": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "image, reflection",
+      "a reflection (of light and sound; thought)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "896558": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "tree",
+      "tree"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "900476": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "earth",
+      "earth, soil, ground"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "904458": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "habitat",
+      "a habitat"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "904974": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "heroine",
+      "heroine, hero (female)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "905842": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a piece of information; (in the plural) information, intelligence (things to be known about a topic)",
+      "information"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "909164": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Liechtenstein (a microstate in Central Europe; official name: Fürstentum Liechtenstein; capital: Vaduz)",
+      "Liechtenstein; a country in Europe, between Switzerland and Austria, with Vaduz as its capital."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "909672": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "man, male human being",
+      "man (an adult male human being)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "912480": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a small, fenced-in plot of land, usually for livestock; a pen; a fold",
+      "an enclosure for livestock"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "913500": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A fifth; an interval of six (kleine Quinte, diminished fifth) or seven (große Quinte, perfect fifth) semitones.",
+      "a fifth (interval on diatonic scale)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "915386": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "snake",
+      "a snake"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "921360": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "water (H₂O)",
+      "pee"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "928854": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "five (numerical value represented by the Arabic numeral 5; or describing a set with five elements)",
+      "five"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "929048": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to go, to walk",
+      "To walk, go."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "935128": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to swim (to use swimming motions to move in the water)",
+      "to swim"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "935746": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "to play (engage in some activity for fun or entertainment)",
+      "to play, to act in a manner such that one has fun"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "951148": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "professor",
+      "a profession"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "962666": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Muslimah",
+      "Muslim (relating to Muslims and their religion)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "974336": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "the annelids, Annelida",
+      "annelid"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "977000": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Basque (male or of unspecified gender)",
+      "Basque language"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "977130": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "tree",
+      "a tree"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1003720": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "fog, mist, haze",
+      "fog (cloud that forms at a low altitude and obscures vision)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1011302": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "snake",
+      "serpent, snake, or therof slithering legless animal (cf. kopparorm, “slowworm”, sandorm, “sandworm” in the book series Dune)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1032794": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "not to forget; to remember",
+      "to think (think to oneself, have a thought (process) in one's head)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1036704": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to fall, to drop",
+      "to fall"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1041244": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "sweet (having a pleasing disposition); cute",
+      "lovely, sweet (having a pleasing disposition)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1046646": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "arduous",
+      "diligent, hardworking"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1047442": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "nostalgic",
+      "longing (feeling or expressing longing)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1050380": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to say (to pronounce; communicate verbally)",
+      "to say"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1052658": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to sing",
+      "to sing"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1058056": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to evaporate, vaporize",
+      "to (be) turn(ed) into vapor, to (be) evaporate(ed), to (be) vaporize(ed)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1065350": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "graduate civil servant, especially in law; assessor",
+      "an associate judge, a deputy judge (at a court of appeal)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1066274": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "lexeme (unit of vocabulary, the different forms of the same lemma)",
+      "lexeme"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1078508": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "ambivalence",
+      "ambivalent"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1087692": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Ankara (the capital city of Turkey and the capital of Ankara Province)",
+      "an anchor (tool to hook a vessel into sea bottom)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1112606": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Any of various insects in the family Formicidae in the order Hymenoptera, typically living in large colonies composed almost entirely of flightless females.",
+      "ant (insect)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1116484": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A curved, pointed, horny projection on each digit of the foot of a mammal, reptile, or bird.",
+      "claw"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1125016": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To find or search for an animal in the wild with the intention of killing the animal for its meat or for sport.",
+      "to hunt"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1127896": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "An adult male human.",
+      "man (an adult male human being)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "cognate_false_friend"
+  },
+  "1131934": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+      "to play, to act in a manner such that one has fun"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1134748": {
+    "indices": [
+      2,
+      0
+    ],
+    "display": [
+      "An extended period of leave from a person's usual pursuits.",
+      "sabbatical, sabbatical year"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1138408": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To move through the water, without touching the bottom; to propel oneself in water by natural means.",
+      "to swim"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "cognate_false_friend"
+  },
+  "1139230": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A numerical value equal to 3; the number following two and preceding four.",
+      "three"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_divergence"
+  },
+  "1167388": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A village in Lunner municipality, Akershus, Norway.",
+      "coffee grounds"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1194874": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A village in Bethlehem governorate, West Bank, Palestine.",
+      "battery"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1196080": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A town in Newfoundland and Labrador, Canada.",
+      "a burger"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1197800": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To deal a blow; hit out.",
+      "a format"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1198664": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A diminutive of the male given name George.",
+      "a male given name from Latin [in turn from Ancient Greek], equivalent to English George"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1219396": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "A crested gallito (Rhinocrypta lanceolata) or",
+      "a galleon (large sailing ship)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1251640": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To pole excessively.",
+      "to persuade (convince)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1269388": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "One who demolishes.",
+      "to demonise"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1275922": {
+    "indices": null,
+    "display": [
+      "Careful consideration; pondering.",
+      "perception"
+    ],
+    "status": "original_no_substantive_proposal",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1288640": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A meal eaten later in the day than breakfast and earlier than lunch, often in a leisurely, festive, and/or social way, and often consisting of typical foods from both of those meals.",
+      "brunch"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1292442": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Having a low temperature.",
+      "cold; having a low temperature."
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1305364": {
+    "indices": [
+      2,
+      1
+    ],
+    "display": [
+      "The digit or figure 4; an occurrence thereof.",
+      "four; the digit \"4\""
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1305840": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Containing the maximum possible amount that can fit in the space available.",
+      "full (containing the maximum possible amount)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1320142": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "The horny plate or appendage at the ends of the digits of various animals, including most reptiles, birds, and mammals (both nonhuman and human).",
+      "a nail"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "cognate_false_friend"
+  },
+  "1321878": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Of an object, concept, relationship, etc., having existed for a relatively long period of time.",
+      "old (having existed for a long time)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1325316": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To act in a manner such that one has fun; to engage in activities expressly for the purpose of recreation or entertainment.",
+      "to play (like children)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1327800": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To apply a force to (an object) such that it moves away from the person or thing applying the force.",
+      "to shoot ((a projectile with) a weapon), (often, idiomatically – see the usage notes below) to fire ((a projectile with) a weapon)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1331990": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "To pronounce.",
+      "to say"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1338846": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "Tinted glasses worn to protect the eyes from the sun or other bright light, and may also be worn as a fashion accessory.",
+      "sunglasses"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1347094": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A generally tubular invertebrate of the annelid phylum; an earthworm.",
+      "a worm"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1364916": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A strong, rough fabric made up of a mixture of silk, and mohair or wool.",
+      "to drink highballs (see grogg)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1382970": {
+    "indices": null,
+    "display": [
+      "A surname.",
+      "obsolete typography of dess (“its”)"
+    ],
+    "status": "original_no_substantive_proposal",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1384540": {
+    "indices": [
+      27,
+      0
+    ],
+    "display": [
+      "One of the thills or shafts of a carriage.",
+      "felt (cloth)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1392282": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "An irritable mood.",
+      "sea (large body of salt water)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1409040": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A small town by the river Cinca in Bajo Cinca, Huesca, Aragon, Spain, whose inhabitants speak Fragatí, a distinct local dialect of Catalan.",
+      "froth (around the mouth, usually from illness or (powerless) rage, sometimes figuratively)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1412774": {
+    "indices": [
+      0,
+      1
+    ],
+    "display": [
+      "A Karelian, Kareli; a native of Karelia.",
+      "a “real man”, a capable man, a full grown man (compare kraftkarl (“strongman”), karlaktig (“in manly fashion”))"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1443006": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "A small village and civil parish (served by Milson and Neen Sollars Parish Council) in southern Shropshire, England (OS grid ref SO6373).",
+      "a milestone made of stone"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1533380": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "gadolinian; relating to or containing gadolinium.",
+      "gadolinium"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1573302": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "to fly",
+      "to flee, to run away, to escape"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1574666": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "voluntary",
+      "voluntary"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1574788": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "full (containing the maximum possible amount)",
+      "full (containing the maximum possible amount)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1580152": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "claw",
+      "a claw"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1585952": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "creator, originator",
+      "a creator"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1586250": {
+    "indices": [
+      1,
+      0
+    ],
+    "display": [
+      "an original",
+      "a copy (the text, from which is copied)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "independent_root"
+  },
+  "1587066": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a pixel",
+      "a pixel"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1589532": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "sandpaper or sanding paper",
+      "a sheet of sandpaper, a sanding sheet"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1590286": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to sit (of a person, be in a position in which the upper body is upright and the legs are supported)",
+      "to sit (be in a position with the upper body upright and the legs resting)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1591378": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a snake",
+      "serpent, snake, or therof slithering legless animal (cf. kopparorm, “slowworm”, sandorm, “sandworm” in the book series Dune)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1593620": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "to swim",
+      "to swim"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1595214": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "three",
+      "three"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "full_cognate"
+  },
+  "1595844": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a fog or mist",
+      "fog (cloud that forms at a low altitude and obscures vision)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "unrelated_equivalent"
+  },
+  "1598090": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a wing",
+      "a wing"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1601058": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "food prepared from animal blood, or in which animal blood is a principal ingredient",
+      "food made out of blood (such as blood pudding or blood sausage)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1603668": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "straight, easy",
+      "a thing (concrete or abstract – also of events, like in English)"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  },
+  "1610778": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "minimum",
+      "minimal; the smallest possible amount, quantity, or degree; as small as possible"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "semantic_narrowing"
+  },
+  "1630886": {
+    "indices": [
+      0,
+      0
+    ],
+    "display": [
+      "a preparation (specially made substance)",
+      "precariat, a new class of unemployed people"
+    ],
+    "status": "proposed",
+    "meaning_label_unchanged": "accidental_lookalike"
+  }
+}

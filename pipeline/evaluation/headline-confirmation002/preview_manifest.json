@@ -1,0 +1,9 @@
+{
+  "output": "frontend/src/routes/preview/headline-data.json",
+  "sha256": "e5fb2000097e163f9299cf8552e2dce316fd4ff134f1a6ac09990f363019cda0",
+  "cases": 201,
+  "found": 183,
+  "source": "frozen baseline and H1 sample; water is a previously exposed development diagnostic",
+  "database_ids": false,
+  "meaning_labels_unchanged": true
+}
