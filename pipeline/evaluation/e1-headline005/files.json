@@ -1,0 +1,16 @@
+{
+  "cases.json": "a2e0b435ca4dcc66960aeb01145d5e9ba56f18c77218e539132ce96d91cd225e",
+  "concept_results.json": "49260cb723913825aed971cf11e5abe5d0ae1265b12a89213901e2bee0db9cd7",
+  "initial-scoring/concept_results.json": "49260cb723913825aed971cf11e5abe5d0ae1265b12a89213901e2bee0db9cd7",
+  "initial-scoring/metrics.json": "5af2fa0a1316261a6ac4da3018776dc87e9afe56abf7099e03a7c41c8ca84149",
+  "initial-scoring/review.json": "f29ca33da64b6001b8f9d04840b2758c4714027520c8a45ade872a477e90ba0f",
+  "metrics.json": "9d803201d4b1244a17d4168e010fd189a63e5ac9656dae4a9e18258c692077aa",
+  "open_review_packet.json": "e891949b98c2f6ae13cbc44be4cf49c1cfae07b89139700100cf4b346816c057",
+  "pending_concepts.json": "81e1a8532275b345af3d6fe1621dfc097c9e3bf6d22d9b409953281ca1306ffd",
+  "protocol.json": "edb8203463f95a0c8f7cc7e1a707f760f05998ce2496064ea683c78a8d5c662d",
+  "review.json": "c382d5d442a99db711cabb45441c971df5423122585fd3cd929b1f1c7d69db8b",
+  "sample.json": "60c7b673df0c0386b30e8588925e8a2737ff8829eba24a11cc37e4964872d9dd",
+  "source-snapshots/.gitattributes": "c452b3ce3bcfb0b1edf9d6c669bb76af501b5a6b0649d0e2f8695a75955bd5e9",
+  "source-snapshots/e1_headline.py": "05b5217f9dbc40c6ace6c97fd732776c824b879d912ddd3448bb3a50545ea6c2",
+  "source-snapshots/sense_display.py": "a31356c050ec94569b86397a785d652fd4cefb3cceb1978678f565a120c4a0d4"
+}

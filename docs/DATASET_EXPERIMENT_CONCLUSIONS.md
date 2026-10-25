@@ -417,3 +417,35 @@ qualifications, synonymous inactive meanings and raw translation statements
 before promoting inherited links to verified sense correspondences. No extra
 weighted score, synthetic cosine boost, source-independent vote count or new
 residual classifier category was introduced.
+
+
+## Ordinary-headline experiment: a stronger candidate, with measurable losses
+
+The [D/E/F result](../pipeline/evaluation/E1_HEADLINE_RESULT.md) separates default
+headlines from strongest shared-sense matches. A frozen, stratified 100-case
+sample from the 995 found development concepts improves from 65 suitable displays
+to 85 with F. The final arm gains 25 and loses five against the original; the
+weighted paired gain is 19.97 percentage points with sampling SE 4.97, conditional
+on these source-guided judgments. This estimates the fixed development frame,
+not the whole dataset or unseen families.
+
+The gain comes from ordinary meanings replacing secondary readings, metadata
+and proper-name intrusions. The structural revisions were each planned before
+testing. All source records and original strongest matches remain available.
+Water/Wasser now proposes ordinary water while retaining urine as a secondary
+match. F is selected as the frozen development candidate for confirmation.
+
+Broader diagnostics remain mixed: all 69 changed open displays were reviewed,
+with twelve headline-plausibility gains and six losses against the original.
+Source order still picks the wrong ordinary sense for abdomen/stomach, covered
+wet objects/liquid substance, race/running and scalp/general hair. Generic-star
+readings also displace specific-Sun readings, including an additional unsampled
+F loss. Proper-name cleanup improves cases outside the concept sample; those
+repairs are diagnostic, not added to the sampled score.
+
+Test F unchanged on reserved concept families and a broader probability sample,
+with unknown-family exploratory cases identified separately. Evaluate entry/sense
+correctness, ordinary suitability and shared-sense alignment separately. Do not
+keep modifying F until this development slice passes perfectly. Product preview
+must distinguish ordinary headlines from secondary shared meanings. No live
+publication follows from the development gain alone.

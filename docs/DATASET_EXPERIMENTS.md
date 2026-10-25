@@ -6,6 +6,19 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**Ordinary headlines, 2026-10-25:** completed D/E/F development experiments with
+separate ordinary-headline and original strongest-match outputs. In a frozen
+100-case concept sample (ten per language pair), suitable displays rise from
+65 originally / 66 with the prior selector to 85 with F. F gains 25 and loses
+five against the original. The weighted gain in the fixed 995-case development
+frame is 19.97 points (sampling SE 4.97), conditional on source-guided judgments.
+All changed open displays were reviewed; F has twelve plausibility gains and
+six losses there. The [result](../pipeline/evaluation/E1_HEADLINE_RESULT.md)
+preserves failures, source snapshots and exact replay evidence. F is the frozen
+candidate for broader/reserved verification, not a published method. Next test
+F unchanged on reserved concepts and a broader probability sample, then preview
+the separate headline and secondary outputs in the product.
+
 **Translation support, 2026-10-25:** added an offline evidence API that separates
 inherited dictionary links, lexical-gloss correspondences and embedding
 suggestions. Of 1,251 development comparisons, 336 have dictionary/lexical

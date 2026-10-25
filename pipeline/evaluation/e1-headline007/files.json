@@ -1,0 +1,15 @@
+{
+  "cases.json": "4a5d1b8346fccd1b48d2b1271cad0ac4cc118e2cf1d895a3e5dbefa97229bded",
+  "concept_results.json": "3d43506b8af60f26d12c983905209458cbf2648556c39bd0b423a4d90943d9d8",
+  "entry_changes_review.json": "aa437d29e2fd24fe8bd4d650ae5745215e8351ea94c03e045196940dc3db0f0c",
+  "metrics.json": "58c9cf77711bff4a91642afb5b212a5c5b06fccddc73a35671667eff80ef8136",
+  "open_review_packet.json": "5095efab25fe890a74a7538ac85bb6bef2933e387a56cc68dda7c2978cb6d8cc",
+  "pending_concepts.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "protocol.json": "c3d529c5ca0147e06dbc628da5c98927b9003d65f455ba10592a99c9a09b0b7b",
+  "reproduction.json": "6a421c725ebeb96712af4511751282dc4b7e33e51568ba759303caaff365adda",
+  "review.json": "a21bf14689d73b5addea07cdd3cdd3aad243584ba75b19da2ef8f58d40c2e8ce",
+  "sample.json": "60c7b673df0c0386b30e8588925e8a2737ff8829eba24a11cc37e4964872d9dd",
+  "source-snapshots/.gitattributes": "c452b3ce3bcfb0b1edf9d6c669bb76af501b5a6b0649d0e2f8695a75955bd5e9",
+  "source-snapshots/e1_headline.py": "12da8a8b5dc1ae52c45c2683e47ff67a1fd2ad2d70ce389a25e11a793e6c21c9",
+  "source-snapshots/sense_display.py": "f944c6dc116bedd1a5b765798fbc9758ddf24e07d1aaf4654c74aaec30165402"
+}

@@ -1,0 +1,363 @@
+{
+  "reviewer": "Codex agent, source-guided diagnostic review",
+  "cases": [
+    {
+      "case_id": "iecor:20-102-1:22-102-1",
+      "words": [
+        "da",
+        "måne",
+        "en",
+        "moon"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "moon (a natural satellite of a planet, especially the Earth's moon)",
+        "The Earth's moon; the sole natural satellite of the Earth, represented in astronomy and astrology by ☾."
+      ],
+      "F": [
+        "moon (a natural satellite of a planet, especially the Earth's moon)",
+        "Any natural satellite of a planet."
+      ],
+      "finding": "generic_satellite",
+      "reason": "Generic moon readings still describe natural satellites; no new exact meaning correspondence is implied."
+    },
+    {
+      "case_id": "iecor:27-102-1:22-102-1",
+      "words": [
+        "de",
+        "Mond",
+        "en",
+        "moon"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "the Moon; Earth's only natural satellite, and also a luminary",
+        "The Earth's moon; the sole natural satellite of the Earth, represented in astronomy and astrology by ☾."
+      ],
+      "F": [
+        "moon (a natural satellite that is orbiting its corresponding planet)",
+        "Any natural satellite of a planet."
+      ],
+      "finding": "generic_satellite",
+      "reason": "Generic moon readings still describe natural satellites; no new exact meaning correspondence is implied."
+    },
+    {
+      "case_id": "iecor:22-102-1:69-102-1",
+      "words": [
+        "en",
+        "moon",
+        "sv",
+        "måne"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "The Earth's moon; the sole natural satellite of the Earth, represented in astronomy and astrology by ☾.",
+        "a moon"
+      ],
+      "F": [
+        "Any natural satellite of a planet.",
+        "a moon"
+      ],
+      "finding": "generic_satellite",
+      "reason": "Generic moon readings still describe natural satellites; no new exact meaning correspondence is implied."
+    },
+    {
+      "case_id": "iecor:27-102-1:69-102-1",
+      "words": [
+        "de",
+        "Mond",
+        "sv",
+        "måne"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "the Moon; Earth's only natural satellite, and also a luminary",
+        "a moon"
+      ],
+      "F": [
+        "moon (a natural satellite that is orbiting its corresponding planet)",
+        "a moon"
+      ],
+      "finding": "generic_satellite",
+      "reason": "Generic moon readings still describe natural satellites; no new exact meaning correspondence is implied."
+    },
+    {
+      "case_id": "iecor:20-164-1:27-164-1",
+      "words": [
+        "da",
+        "sol",
+        "de",
+        "Sonne"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "sun",
+        "the Sun"
+      ],
+      "F": [
+        "sun",
+        "a sun (a star, especially when being the center of a solar system)"
+      ],
+      "finding": "specificity_loss",
+      "reason": "German the Sun becomes a generic star acting as a sun. This is a further unsampled specific-concept loss; preserve it explicitly."
+    },
+    {
+      "case_id": "iecor:20-31-1:22-31-1",
+      "words": [
+        "da",
+        "hund",
+        "en",
+        "dog"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "dog",
+        "The eleventh of the 12-year cycle of animals which appear in the Chinese zodiac related to the Chinese calendar."
+      ],
+      "F": [
+        "dog",
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding."
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "Ordinary domestic dog replaces a proper-name zodiac/language entry."
+    },
+    {
+      "case_id": "iecor:27-31-1:22-31-1",
+      "words": [
+        "de",
+        "Hund",
+        "en",
+        "dog"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "dog, hound",
+        "The eleventh of the 12-year cycle of animals which appear in the Chinese zodiac related to the Chinese calendar."
+      ],
+      "F": [
+        "dog, hound",
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding."
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "Ordinary domestic dog replaces a proper-name zodiac/language entry."
+    },
+    {
+      "case_id": "iecor:22-31-1:58-31-1",
+      "words": [
+        "en",
+        "dog",
+        "nb",
+        "hund"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "The eleventh of the 12-year cycle of animals which appear in the Chinese zodiac related to the Chinese calendar.",
+        "dog; hound"
+      ],
+      "F": [
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding.",
+        "dog; hound"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "Ordinary domestic dog replaces a proper-name zodiac/language entry."
+    },
+    {
+      "case_id": "iecor:22-31-1:69-31-1",
+      "words": [
+        "en",
+        "dog",
+        "sv",
+        "hund"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "The eleventh of the 12-year cycle of animals which appear in the Chinese zodiac related to the Chinese calendar.",
+        "a dog, a hound"
+      ],
+      "F": [
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding.",
+        "a dog, a hound"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "Ordinary domestic dog replaces a proper-name zodiac/language entry."
+    },
+    {
+      "case_id": "iecor:20-40-1:22-40-1",
+      "words": [
+        "da",
+        "øje",
+        "en",
+        "eye"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "eye",
+        "the comedic magazine Private Eye."
+      ],
+      "F": [
+        "eye (an opening to receive a rope or a thread)",
+        "An organ through which animals see (“perceive surroundings via light”)."
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "The anatomical eye replaces a magazine title. Danish øje still selects the opening-for-thread sense, so that complete pair is not counted as a recovered anatomical match."
+    },
+    {
+      "case_id": "iecor:27-40-1:22-40-1",
+      "words": [
+        "de",
+        "Auge",
+        "en",
+        "eye"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "eye",
+        "the comedic magazine Private Eye."
+      ],
+      "F": [
+        "eye",
+        "An organ through which animals see (“perceive surroundings via light”)."
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "The anatomical eye replaces a magazine title. Danish øje still selects the opening-for-thread sense, so that complete pair is not counted as a recovered anatomical match."
+    },
+    {
+      "case_id": "iecor:22-40-1:58-40-1",
+      "words": [
+        "en",
+        "eye",
+        "nb",
+        "øye"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "the comedic magazine Private Eye.",
+        "an eye"
+      ],
+      "F": [
+        "An organ through which animals see (“perceive surroundings via light”).",
+        "an eye"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "The anatomical eye replaces a magazine title. Danish øje still selects the opening-for-thread sense, so that complete pair is not counted as a recovered anatomical match."
+    },
+    {
+      "case_id": "iecor:22-40-1:69-40-1",
+      "words": [
+        "en",
+        "eye",
+        "sv",
+        "öga"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "the comedic magazine Private Eye.",
+        "eye"
+      ],
+      "F": [
+        "An organ through which animals see (“perceive surroundings via light”).",
+        "eye"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "The anatomical eye replaces a magazine title. Danish øje still selects the opening-for-thread sense, so that complete pair is not counted as a recovered anatomical match."
+    },
+    {
+      "case_id": "iecor:27-78-1:22-78-1",
+      "words": [
+        "de",
+        "Horn",
+        "en",
+        "horn"
+      ],
+      "panel": "concept",
+      "in_concept_sample": false,
+      "E": [
+        "horn (musical instrument)",
+        "Cape Horn, at the southern tip of South America."
+      ],
+      "F": [
+        "horn (substance from which animal horns are made)",
+        "A hard growth of keratin that protrudes from the top of the head of certain animals, usually paired."
+      ],
+      "finding": "partial_entry_recovery",
+      "reason": "Removing Cape Horn reveals animal horn versus horn material; this improves entry relevance but does not establish identical selected senses."
+    },
+    {
+      "case_id": "4350671919cdc8b6",
+      "words": [
+        "de",
+        "Platten",
+        "en",
+        "platzer"
+      ],
+      "panel": "open",
+      "in_concept_sample": false,
+      "E": [
+        "a municipality of Rhineland-Palatinate, Germany",
+        "A surname from German."
+      ],
+      "F": [
+        "flat tire",
+        "A surname from German."
+      ],
+      "finding": "unresolved_entry_choice",
+      "reason": "Flat tire and a surname remain unrelated; no preferred comparative surname entry is established."
+    },
+    {
+      "case_id": "9eb94ed76c72d5eb",
+      "words": [
+        "en",
+        "indio",
+        "sv",
+        "indigo"
+      ],
+      "panel": "open",
+      "in_concept_sample": false,
+      "E": [
+        "A city in Riverside County, California, United States.",
+        "indigo (color)"
+      ],
+      "F": [
+        "A member of one of various indigenous peoples in the Americas, Pacific, and East Asia formerly subject to Spain or Portugal, specifically a Native American in Mexico or Brazil, or an indigenous inhabitant of the Philippines.",
+        "indigo (color)"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "The lowercase indigenous-person noun replaces the capitalized city; indigo remains a different meaning."
+    },
+    {
+      "case_id": "b3a1530df0fc57a6",
+      "words": [
+        "en",
+        "dog",
+        "nb",
+        "bikkje"
+      ],
+      "panel": "open",
+      "in_concept_sample": false,
+      "E": [
+        "The eleventh of the 12-year cycle of animals which appear in the Chinese zodiac related to the Chinese calendar.",
+        "dog"
+      ],
+      "F": [
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding.",
+        "dog"
+      ],
+      "finding": "lexical_entry_recovery",
+      "reason": "Ordinary domestic dog replaces a proper-name zodiac/language entry."
+    }
+  ],
+  "limits": "No F-versus-E change occurs in the 100-case primary sample. These are familiar diagnostic cases, not an additional probability sample."
+}

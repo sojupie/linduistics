@@ -1,0 +1,131 @@
+{
+  "D": {
+    "byte_identical_outputs": [
+      "cases.json",
+      "pending_concepts.json",
+      "open_review_packet.json",
+      "concept_results.json",
+      "metrics.json"
+    ],
+    "replay_protocol": {
+      "run": "E1-005",
+      "variant": "D",
+      "inputs": {
+        "pipeline/evaluation/e0_display_review_001_100.json": "8ee9e2ebb2d1f2ad4b03798ee9cdbd0cf1003d45e1be103976eb05b275b86824",
+        "pipeline/evaluation/e0_display_review_101_250.json": "f746630c4a686416f6c6346b4a9cb0494ab41620f5bb4d96866523152db3486e",
+        "pipeline/evaluation/e0_display_review_251_400.json": "79fd8e145595a58019386d638a9c87a84b60c61a2609b2d275a45b085fb81ddd",
+        "pipeline/evaluation/e0_display_review_401_550.json": "affd9c97241cce66562c85e31a0f5064f24bf73be2ea62ea95254acfda5bb0ad",
+        "pipeline/evaluation/e0_display_review_551_700.json": "dcdb0edd2fd290b8d66b6ba2b82d7e1ca1d52202e702566dab92e994e3451157",
+        "pipeline/evaluation/e0_display_review_701_897.json": "57f21d2630b5f4f6331d4c75e923beb09aea4c4692e76e6310bcc526acb8078a",
+        "pipeline/evaluation/e1-run003/concept_review.json": "bc9927f53cf9be4ec9ae7f1196e7fbec7026946fcfac13b64b63ffb279051928",
+        "pipeline/evaluation/e1-run003/comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+        "pipeline/evaluation/e1-run003/case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+        "pipeline/evaluation/e1-entry004/cases.json": "020ae58354bbbb1cf84cd12d9ee7a338ba25050094df8e6d322fa119646681df",
+        "pipeline/evaluation/e1-entry004/review.json": "4b56729a93275e1e139b777ebb717d51cd62cd1b915214e0ddc9116b90e4c429",
+        "pipeline/evaluation/translation-support001/final/profiles.json.gz": "6084f54766a5dd671f471e92ccd9c2d5ad9b8859548be0dbe6c14e014437ea90",
+        "pipeline/evaluation/e1-headline005/sample.json": "60c7b673df0c0386b30e8588925e8a2737ff8829eba24a11cc37e4964872d9dd",
+        "pipeline/evaluation/E1_HEADLINE_PLAN.md": "5d149b35ae63ea18ed57023898962a30ca1c33c188e7c449bdda652fa902f87f",
+        "pipeline/evaluation/e0_concept_results.csv": "9fcb721c480b2edad401e3a28f604f2e04e82168464d94d258295ca9c5a55cda"
+      },
+      "code": {
+        "pipeline/evaluation/e1_headline.py": "12da8a8b5dc1ae52c45c2683e47ff67a1fd2ad2d70ce389a25e11a793e6c21c9",
+        "pipeline/evaluation/e0.py": "fc90b008995a0bb050dbb4bc348b846581fcc95c30453bd16ba7364e237f4b0a",
+        "pipeline/evaluation/e1_entry.py": "4f1338e54732dc5896d1112be66d90fbbb1130c814feb749acb9fe9e78a3084e",
+        "pipeline/src/sense_display.py": "f944c6dc116bedd1a5b765798fbc9758ddf24e07d1aaf4654c74aaec30165402",
+        "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+        "pipeline/src/parser.py": "616c2e4556a7383a370ff95e66c0aa6770699869b2007b6d1d7c6502bc9d1990"
+      },
+      "preserved_secondary_displays": 1202,
+      "matrix_cells_retained": 81143
+    }
+  },
+  "E": {
+    "byte_identical_outputs": [
+      "cases.json",
+      "pending_concepts.json",
+      "open_review_packet.json",
+      "concept_results.json",
+      "metrics.json"
+    ],
+    "replay_protocol": {
+      "run": "E1-006",
+      "variant": "E",
+      "inputs": {
+        "pipeline/evaluation/e0_display_review_001_100.json": "8ee9e2ebb2d1f2ad4b03798ee9cdbd0cf1003d45e1be103976eb05b275b86824",
+        "pipeline/evaluation/e0_display_review_101_250.json": "f746630c4a686416f6c6346b4a9cb0494ab41620f5bb4d96866523152db3486e",
+        "pipeline/evaluation/e0_display_review_251_400.json": "79fd8e145595a58019386d638a9c87a84b60c61a2609b2d275a45b085fb81ddd",
+        "pipeline/evaluation/e0_display_review_401_550.json": "affd9c97241cce66562c85e31a0f5064f24bf73be2ea62ea95254acfda5bb0ad",
+        "pipeline/evaluation/e0_display_review_551_700.json": "dcdb0edd2fd290b8d66b6ba2b82d7e1ca1d52202e702566dab92e994e3451157",
+        "pipeline/evaluation/e0_display_review_701_897.json": "57f21d2630b5f4f6331d4c75e923beb09aea4c4692e76e6310bcc526acb8078a",
+        "pipeline/evaluation/e1-run003/concept_review.json": "bc9927f53cf9be4ec9ae7f1196e7fbec7026946fcfac13b64b63ffb279051928",
+        "pipeline/evaluation/e1-run003/comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+        "pipeline/evaluation/e1-run003/case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+        "pipeline/evaluation/e1-entry004/cases.json": "020ae58354bbbb1cf84cd12d9ee7a338ba25050094df8e6d322fa119646681df",
+        "pipeline/evaluation/e1-entry004/review.json": "4b56729a93275e1e139b777ebb717d51cd62cd1b915214e0ddc9116b90e4c429",
+        "pipeline/evaluation/translation-support001/final/profiles.json.gz": "6084f54766a5dd671f471e92ccd9c2d5ad9b8859548be0dbe6c14e014437ea90",
+        "pipeline/evaluation/e1-headline005/sample.json": "60c7b673df0c0386b30e8588925e8a2737ff8829eba24a11cc37e4964872d9dd",
+        "pipeline/evaluation/E1_HEADLINE_PLAN.md": "5d149b35ae63ea18ed57023898962a30ca1c33c188e7c449bdda652fa902f87f",
+        "pipeline/evaluation/e0_concept_results.csv": "9fcb721c480b2edad401e3a28f604f2e04e82168464d94d258295ca9c5a55cda",
+        "pipeline/evaluation/E1_HEADLINE_REVISION_PLAN.md": "9ed0a8b456c5a4df9d75cd648dc8e25d18f64eac8b0a4cc1f0f7da0597b7a0db",
+        "pipeline/evaluation/e1-headline005/review.json": "c382d5d442a99db711cabb45441c971df5423122585fd3cd929b1f1c7d69db8b",
+        "pipeline/evaluation/e1-headline005/cases.json": "a2e0b435ca4dcc66960aeb01145d5e9ba56f18c77218e539132ce96d91cd225e"
+      },
+      "code": {
+        "pipeline/evaluation/e1_headline.py": "12da8a8b5dc1ae52c45c2683e47ff67a1fd2ad2d70ce389a25e11a793e6c21c9",
+        "pipeline/evaluation/e0.py": "fc90b008995a0bb050dbb4bc348b846581fcc95c30453bd16ba7364e237f4b0a",
+        "pipeline/evaluation/e1_entry.py": "4f1338e54732dc5896d1112be66d90fbbb1130c814feb749acb9fe9e78a3084e",
+        "pipeline/src/sense_display.py": "f944c6dc116bedd1a5b765798fbc9758ddf24e07d1aaf4654c74aaec30165402",
+        "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+        "pipeline/src/parser.py": "616c2e4556a7383a370ff95e66c0aa6770699869b2007b6d1d7c6502bc9d1990"
+      },
+      "preserved_secondary_displays": 1202,
+      "matrix_cells_retained": 81143
+    }
+  },
+  "F": {
+    "byte_identical_outputs": [
+      "cases.json",
+      "pending_concepts.json",
+      "open_review_packet.json",
+      "concept_results.json",
+      "metrics.json"
+    ],
+    "replay_protocol": {
+      "run": "E1-007",
+      "variant": "F",
+      "inputs": {
+        "pipeline/evaluation/e0_display_review_001_100.json": "8ee9e2ebb2d1f2ad4b03798ee9cdbd0cf1003d45e1be103976eb05b275b86824",
+        "pipeline/evaluation/e0_display_review_101_250.json": "f746630c4a686416f6c6346b4a9cb0494ab41620f5bb4d96866523152db3486e",
+        "pipeline/evaluation/e0_display_review_251_400.json": "79fd8e145595a58019386d638a9c87a84b60c61a2609b2d275a45b085fb81ddd",
+        "pipeline/evaluation/e0_display_review_401_550.json": "affd9c97241cce66562c85e31a0f5064f24bf73be2ea62ea95254acfda5bb0ad",
+        "pipeline/evaluation/e0_display_review_551_700.json": "dcdb0edd2fd290b8d66b6ba2b82d7e1ca1d52202e702566dab92e994e3451157",
+        "pipeline/evaluation/e0_display_review_701_897.json": "57f21d2630b5f4f6331d4c75e923beb09aea4c4692e76e6310bcc526acb8078a",
+        "pipeline/evaluation/e1-run003/concept_review.json": "bc9927f53cf9be4ec9ae7f1196e7fbec7026946fcfac13b64b63ffb279051928",
+        "pipeline/evaluation/e1-run003/comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+        "pipeline/evaluation/e1-run003/case_displays.json": "bc4f608827dedec0e6c420bf8db9dcd58c2e3abaced04820c24cdc3c23800bf4",
+        "pipeline/evaluation/e1-entry004/cases.json": "020ae58354bbbb1cf84cd12d9ee7a338ba25050094df8e6d322fa119646681df",
+        "pipeline/evaluation/e1-entry004/review.json": "4b56729a93275e1e139b777ebb717d51cd62cd1b915214e0ddc9116b90e4c429",
+        "pipeline/evaluation/translation-support001/final/profiles.json.gz": "6084f54766a5dd671f471e92ccd9c2d5ad9b8859548be0dbe6c14e014437ea90",
+        "pipeline/evaluation/e1-headline005/sample.json": "60c7b673df0c0386b30e8588925e8a2737ff8829eba24a11cc37e4964872d9dd",
+        "pipeline/evaluation/E1_HEADLINE_PLAN.md": "5d149b35ae63ea18ed57023898962a30ca1c33c188e7c449bdda652fa902f87f",
+        "pipeline/evaluation/e0_concept_results.csv": "9fcb721c480b2edad401e3a28f604f2e04e82168464d94d258295ca9c5a55cda",
+        "pipeline/evaluation/E1_HEADLINE_REVISION_PLAN.md": "9ed0a8b456c5a4df9d75cd648dc8e25d18f64eac8b0a4cc1f0f7da0597b7a0db",
+        "pipeline/evaluation/e1-headline005/review.json": "c382d5d442a99db711cabb45441c971df5423122585fd3cd929b1f1c7d69db8b",
+        "pipeline/evaluation/e1-headline005/cases.json": "a2e0b435ca4dcc66960aeb01145d5e9ba56f18c77218e539132ce96d91cd225e",
+        "pipeline/evaluation/E1_HEADLINE_ENTRY_PLAN.md": "8cd8c526a7cfd7d8b2b11381ae2f1afd0eba9e1eb7126b85fa6d26c79e537091",
+        "pipeline/evaluation/e1-headline006/review.json": "17826766311872e053c361ac176ae7f175d183daaae23550672c8fc43e0f4255",
+        "pipeline/evaluation/e1-headline006/cases.json": "5c211b1211517ef4f92538ac846ab4bb6e3b32d20a6f8a30ee89ffbdb9f7524c"
+      },
+      "code": {
+        "pipeline/evaluation/e1_headline.py": "12da8a8b5dc1ae52c45c2683e47ff67a1fd2ad2d70ce389a25e11a793e6c21c9",
+        "pipeline/evaluation/e0.py": "fc90b008995a0bb050dbb4bc348b846581fcc95c30453bd16ba7364e237f4b0a",
+        "pipeline/evaluation/e1_entry.py": "4f1338e54732dc5896d1112be66d90fbbb1130c814feb749acb9fe9e78a3084e",
+        "pipeline/src/sense_display.py": "f944c6dc116bedd1a5b765798fbc9758ddf24e07d1aaf4654c74aaec30165402",
+        "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+        "pipeline/src/parser.py": "616c2e4556a7383a370ff95e66c0aa6770699869b2007b6d1d7c6502bc9d1990"
+      },
+      "preserved_secondary_displays": 1202,
+      "matrix_cells_retained": 81143
+    }
+  }
+}

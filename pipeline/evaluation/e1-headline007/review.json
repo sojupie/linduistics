@@ -1,0 +1,1732 @@
+{
+  "reviewer": "Codex agent, source-guided, unblinded; no independent expert check",
+  "rubric": "Headline suitability means a plausible substantive introduction for the recorded word, not measured most-frequent usage. Shared alignment is separate; contextual overlap is not complete equivalence.",
+  "pending_concepts_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "open_packet_sha256": "5095efab25fe890a74a7538ac85bb6bef2933e387a56cc68dda7c2978cb6d8cc",
+  "reused_E_review_sha256": "17826766311872e053c361ac176ae7f175d183daaae23550672c8fc43e0f4255",
+  "concept_judgments": [],
+  "open_judgments": [
+    {
+      "case_id": "0f059edbe554fae2",
+      "words": [
+        "en",
+        "that",
+        "sv",
+        "det"
+      ],
+      "control": [
+        "The (thing, person, idea, etc) indicated or understood from context, especially if more remote physically, temporally or mentally than one designated as “this”, or if expressing distinction.",
+        "it, there; the impersonal pronoun, used as a placeholder for a delayed subject or object"
+      ],
+      "control_headline": "suitable",
+      "reason": "Demonstrative that and anaphoric it overlap in reference contexts but are not the same pronoun function.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "The thing, person, idea, quality, event, action, or time indicated or understood from context, especially if more remote geographically, temporally or mentally than one designated as “this”, or if expressing distinction.",
+        "it; third-person singular, referring to nouns of neuter gender. Nominative, accusative or dative"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "3a557f935068172d",
+      "words": [
+        "de",
+        "Methode",
+        "nb",
+        "metode"
+      ],
+      "control": [
+        "approach",
+        "a method"
+      ],
+      "control_headline": "unresolved",
+      "reason": "Manner, approach and method overlap; the terse source inventory does not establish which German rendering is a better introduction.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "manner",
+        "a method"
+      ],
+      "F_headline": "unresolved",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "ad00dda3ea74e7d6",
+      "words": [
+        "de",
+        "schwindeln",
+        "sv",
+        "fuska"
+      ],
+      "control": [
+        "cheat, get somewhere or achieve something illegitimately",
+        "cheat, to violate rules in order to get an advantage"
+      ],
+      "control_headline": "suitable",
+      "reason": "Dizziness and cheating are different recorded senses; ordinary source readings do not preserve the original shared cheat match.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to be dizzy",
+        "cheat, to violate rules in order to get an advantage"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "9c0464e9c3ee7491",
+      "words": [
+        "nb",
+        "mystisk",
+        "sv",
+        "mystiskt"
+      ],
+      "control": [
+        "mysterious",
+        "mysteriously"
+      ],
+      "control_headline": "suitable",
+      "reason": "Mystical and mysteriously differ in meaning and grammatical use; neither produces a plain shared translation.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "mystical",
+        "mysteriously"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8bf3b0088e4b88af",
+      "words": [
+        "da",
+        "forbindelse",
+        "en",
+        "link"
+      ],
+      "control": [
+        "connection",
+        "The connection between buses or systems."
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "General connection is a better introduction than the English transport/systems connection.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "connection",
+        "A connection between places, people, events, things, or ideas."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "d6a689f71715b07d",
+      "words": [
+        "de",
+        "Falte",
+        "sv",
+        "rynka"
+      ],
+      "control": [
+        "wrinkle",
+        "a wrinkle"
+      ],
+      "control_headline": "suitable",
+      "reason": "A wrinkle is a kind of fold; both readings are substantive everyday uses.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fold",
+        "a wrinkle"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "9dae311612769848",
+      "words": [
+        "de",
+        "Siemens",
+        "en",
+        "sieben"
+      ],
+      "control": [
+        "a surname",
+        "A surname from German."
+      ],
+      "control_headline": "unresolved",
+      "reason": "The SI unit and a different surname do not match; the original generic surname descriptions also failed to identify a shared person/family.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "siemens",
+        "A surname from German."
+      ],
+      "F_headline": "entry_or_metadata_problem",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "18d631e4f6074cda",
+      "words": [
+        "de",
+        "Eibe",
+        "en",
+        "yew"
+      ],
+      "control": [
+        "yew (tree or shrub)",
+        "Any tree or shrub of the genus Taxus."
+      ],
+      "control_headline": "suitable",
+      "reason": "The yew species is narrower than the Taxus genus. Both are plausible botanical introductions, not exhaustive equivalence.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "yew (tree or shrub)",
+        "A species of coniferous tree, Taxus baccata, with dark-green flat needle-like leaves and seeds bearing red arils, native to western, central and southern Europe, northwest Africa, northern Iran and southwest Asia."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "5ae138da81d98ec6",
+      "words": [
+        "de",
+        "entwöhnen",
+        "en",
+        "wean"
+      ],
+      "control": [
+        "to wean",
+        "To cease to depend."
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Breastfeeding cessation is a concrete ordinary wean sense; generic cease-to-depend is broader and less informative.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to wean",
+        "To cease giving breast milk to an offspring; to accustom and reconcile (a child or young animal) to a want or deprivation of mother's milk; to take from the breast or udder."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8147baeaa5a4b1f9",
+      "words": [
+        "de",
+        "verletzen",
+        "sv",
+        "invadera"
+      ],
+      "control": [
+        "to violate (rules, laws, etc.)",
+        "to invade"
+      ],
+      "control_headline": "suitable",
+      "reason": "Injure and invade are distinct actions. D displays an ordinary contrast rather than manufacturing translation overlap.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to hurt, to injure (cause bodily harm to someone)",
+        "to invade"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "c6ea140f9fcfc1a2",
+      "words": [
+        "nb",
+        "effekt",
+        "sv",
+        "verkan"
+      ],
+      "control": [
+        "an effect",
+        "effect, result"
+      ],
+      "control_headline": "suitable",
+      "reason": "Effect and action can be related, but bare action is too broad to establish an equally informative Swedish headline.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "an effect",
+        "action"
+      ],
+      "F_headline": "unresolved",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "54133de7e63674b2",
+      "words": [
+        "de",
+        "Quartier",
+        "nb",
+        "kvarter"
+      ],
+      "control": [
+        "quarter, district, quartal, neighborhood of a city",
+        "quarter (district, area; phase of the moon)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Accommodation and a district/quarter are distinct uses; the original district match remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "accommodation, quarters",
+        "quarter (district, area; phase of the moon)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "e144f5ba0e777f09",
+      "words": [
+        "en",
+        "sound",
+        "nb",
+        "frisk"
+      ],
+      "control": [
+        "Healthy.",
+        "well, healthy"
+      ],
+      "control_headline": "suitable",
+      "reason": "Fresh can include being healthy, but the bare gloss does not establish that intended sense in the new pair.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "Healthy.",
+        "fresh"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "unresolved",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "93cefed14c4fc6e0",
+      "words": [
+        "nb",
+        "by",
+        "sv",
+        "by"
+      ],
+      "control": [
+        "town, city (regardless of population size or land area)",
+        "village"
+      ],
+      "control_headline": "suitable",
+      "reason": "Town/city versus hamlet retains a settlement-size contrast rather than a direct shared meaning.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "town, city (regardless of population size or land area)",
+        "hamlet"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "6ad16b1db9b08286",
+      "words": [
+        "en",
+        "part",
+        "nb",
+        "par"
+      ],
+      "control": [
+        "To divide in two.",
+        "a pair"
+      ],
+      "control_headline": "suitable",
+      "reason": "English component is ordinary; Norwegian bare golf par is specialized and is not the original pair reading.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A portion; a component.",
+        "par"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "7aeb9db4063f4c67",
+      "words": [
+        "de",
+        "Jarl",
+        "nb",
+        "jarl"
+      ],
+      "control": [
+        "jarl (nobleman)",
+        "an earl (British nobleman)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Both now name the Norse title; a historical subject is not automatically an obsolete word use.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "jarl (nobleman)",
+        "jarl (a title given to the highest noblemen in Norse times. Went out of use in the 14th century.)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "96675c7f4e167162",
+      "words": [
+        "en",
+        "hurry",
+        "nb",
+        "press"
+      ],
+      "control": [
+        "An incidence of a defensive pressure that forces the quarterback to throw the ball earlier than intended or rush their decision, often leading to an incomplete pass or failed play.",
+        "pressure"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Rushed action is a better general hurry headline than an American-football pressure statistic; pressure is related, not identical.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A rushed action.",
+        "pressure"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "ced0d1387965bd0d",
+      "words": [
+        "en",
+        "saga",
+        "sv",
+        "saga"
+      ],
+      "control": [
+        "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+        "a story, a tale (more generally)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Fairy tale is an ordinary Swedish saga reading, but a Norse prose saga and a fairy tale are not plainly the same narrative category.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "An Old Norse (Icelandic) prose narrative, especially one dealing with family or social histories and legends.",
+        "a fairy tale"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "559797c9d349302d",
+      "words": [
+        "da",
+        "alf",
+        "en",
+        "elf"
+      ],
+      "control": [
+        "elf",
+        "A supernatural being or spirit associated with illness, mischief, and harmful or dangerous magical influence; in later Norse sources, sometimes divided into benevolent light elves (inhabiting Álfheimr) and malevolent dark elves."
+      ],
+      "control_headline": "suitable",
+      "reason": "Fairy and the described Germanic elf overlap contextually; the broad mythological labels do not establish full equivalence.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fairy",
+        "A supernatural being or spirit associated with illness, mischief, and harmful or dangerous magical influence; in later Norse sources, sometimes divided into benevolent light elves (inhabiting Álfheimr) and malevolent dark elves."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "7a921ef902f71dc2",
+      "words": [
+        "de",
+        "Initiator",
+        "nb",
+        "initiativ"
+      ],
+      "control": [
+        "initiator",
+        "initiative"
+      ],
+      "control_headline": "suitable",
+      "reason": "An initiator is a person; an initiative is an action/proposal. The expanded gloss clarifies the contrast.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "initiator, one who initiates (male or of unspecified gender)",
+        "initiative"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "064989c4ead0a5ef",
+      "words": [
+        "en",
+        "platea",
+        "sv",
+        "platta"
+      ],
+      "control": [
+        "A borough of Pennsylvania.",
+        "A record."
+      ],
+      "control_headline": "entry_or_metadata_problem",
+      "reason": "English Platea remains a city entry under a lowercased comparison word; changing the Swedish flat-object reading does not resolve that entry identity issue.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A borough of Pennsylvania.",
+        "A wide flat object, often solid and stiff, a plate"
+      ],
+      "F_headline": "entry_or_metadata_problem",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "dd170d09314fcb5d",
+      "words": [
+        "da",
+        "forholdsord",
+        "en",
+        "preposition"
+      ],
+      "control": [
+        "preposition",
+        "An adposition."
+      ],
+      "control_headline": "unresolved",
+      "reason": "The specific preposition definition is more informative than the broad adposition genus.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "preposition",
+        "Any of a class of non-inflecting words and multiword terms typically employed to connect a following noun or a pronoun, in an adjectival or adverbial sense, with some other word: a particle used with a noun or pronoun (in English always in the objective case) to make a phrase limiting some other word."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8a92889432233991",
+      "words": [
+        "de",
+        "Ampfer",
+        "en",
+        "amper"
+      ],
+      "control": [
+        "sorrel (genus Rumex)",
+        "A defect or flaw, especially in cloth."
+      ],
+      "control_headline": "unresolved",
+      "reason": "Sorrel and a tumour/flaw are distinct; these terse uncommon-word records do not establish ordinary-use priority.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "sorrel (genus Rumex)",
+        "A tumour, often accompanied by inflammation; pustule; varicose vein; pus; atter."
+      ],
+      "F_headline": "unresolved",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "6cc63e8e4f424a86",
+      "words": [
+        "de",
+        "Diskus",
+        "nb",
+        "diskos"
+      ],
+      "control": [
+        "discus (round plate-like object for throwing)",
+        "discus throw"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "The discus object now appears on both sides instead of object versus throwing event.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "discus (round plate-like object for throwing)",
+        "a discus"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "b22638cbb9183e48",
+      "words": [
+        "nb",
+        "filletante",
+        "sv",
+        "tant"
+      ],
+      "control": [
+        "great-aunt (an aunt of one's parent)",
+        "a middle-aged or older woman (in general), an older lady (possibly implying outmoded views, clothing, or the like)"
+      ],
+      "control_headline": "suitable",
+      "reason": "An uncle wife or great-aunt is an older female relative; the Swedish older-woman sense is broader.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "the wife of one's uncle",
+        "a middle-aged or older woman (in general), an older lady (possibly implying outmoded views, clothing, or the like)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "468e618f6420770c",
+      "words": [
+        "da",
+        "varsel",
+        "de",
+        "Vorzeichen"
+      ],
+      "control": [
+        "omen",
+        "omen, presage"
+      ],
+      "control_headline": "suitable",
+      "reason": "Notice period and omen are different Danish uses; the valid omen correspondence remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "notice (period of time)",
+        "omen, presage"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8695f88bf063ed7c",
+      "words": [
+        "de",
+        "gegen",
+        "en",
+        "against"
+      ],
+      "control": [
+        "against",
+        "In opposition to."
+      ],
+      "control_headline": "suitable",
+      "reason": "Against in a contrary direction is an ordinary prepositional use compatible with German gegen.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "against",
+        "In a contrary direction to."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "90b18673995805e0",
+      "words": [
+        "da",
+        "blive",
+        "nb",
+        "blive"
+      ],
+      "control": [
+        "to be (used with the past participle to form the passive voice)",
+        "to drown"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Become is a concrete ordinary Danish headline; Norwegian drown is a different meaning. The passive auxiliary was less informative.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to become (go from one state into another, with a predicative or the preposition til (“to”); the latter is preferred with nouns if a change is implied)",
+        "to drown"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "eeb6d0f02d6acaec",
+      "words": [
+        "nb",
+        "søk",
+        "sv",
+        "sökande"
+      ],
+      "control": [
+        "a search (act of searching)",
+        "search (the act of searching), seeking"
+      ],
+      "control_headline": "suitable",
+      "reason": "Search and applicant are different uses, though an applicant seeks something. The original search match remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "a search (act of searching)",
+        "an applicant (a person applying for a grant, employment or such)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "b3a5280f0949f774",
+      "words": [
+        "en",
+        "blunt",
+        "sv",
+        "joint"
+      ],
+      "control": [
+        "A marijuana cigar.",
+        "a joint, a marijuana cigarette"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Fencing foil is specialized, as was the cannabis-cigar source reading. Source class agreement does not select the ordinary adjective blunt.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A fencer's practice foil with a soft tip.",
+        "a joint, a marijuana cigarette"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "ee93428a0734facf",
+      "words": [
+        "nb",
+        "ball",
+        "sv",
+        "balle"
+      ],
+      "control": [
+        "ball (solid or hollow sphere)",
+        "a schlong, cock ((larger) penis)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Sphere versus testicle remains a body-object contrast; the Swedish colloquial testicle reading is not a sphere definition.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "ball (solid or hollow sphere)",
+        "a testicle"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "c02d4747240b936b",
+      "words": [
+        "en",
+        "home",
+        "nb",
+        "hjem"
+      ],
+      "control": [
+        "The locality where a thing is usually found, or was first found, or where it is naturally abundant; habitat; seat.",
+        "Place of origin or belonging. Similar to German Heimat."
+      ],
+      "control_headline": "suitable",
+      "reason": "Both now show adverbial home rather than two related location nouns.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "To one's home.",
+        "home"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "710eb84218c4c739",
+      "words": [
+        "da",
+        "lune",
+        "de",
+        "Luna"
+      ],
+      "control": [
+        "whim, caprice",
+        "Luna"
+      ],
+      "control_headline": "suitable",
+      "reason": "Mood and the goddess/name Luna are different meanings.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "mood",
+        "Luna"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "dd65dcc6edd8b2e3",
+      "words": [
+        "en",
+        "granada",
+        "nb",
+        "granka"
+      ],
+      "control": [
+        "A province of Andalusia, Spain.",
+        "Gran Canaria (an island of the Canary Islands, capital city Las Palmas)"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "The Spanish city and Gran Canaria are distinct places; the Norwegian island nickname is slang in either display.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A city, the provincial capital of Granada province, Andalusia, Spain.",
+        "Gran Canaria (an island of the Canary Islands, capital city Las Palmas)"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "5538fd8fea652f9d",
+      "words": [
+        "en",
+        "chaos",
+        "nb",
+        "kaos"
+      ],
+      "control": [
+        "Any state of disorder; a confused or amorphous mixture or conglomeration.",
+        "chaos"
+      ],
+      "control_headline": "suitable",
+      "reason": "Cosmogonic primordial matter is a specialized chaos reading; ordinary disorder remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "The unordered state of matter in classical accounts of cosmogony.",
+        "chaos"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "9323985f5c917462",
+      "words": [
+        "nb",
+        "stimuli",
+        "sv",
+        "stimulus"
+      ],
+      "control": [
+        "a single stimulus; a boost",
+        "stimulus"
+      ],
+      "control_headline": "suitable",
+      "reason": "Collective stimuli and singular stimulus differ in number; the new display makes that distinction explicit.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "multiple stimulus together",
+        "stimulus"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "f0c4c5dcd1e012f9",
+      "words": [
+        "de",
+        "verschleiern",
+        "nb",
+        "gjemme"
+      ],
+      "control": [
+        "to disguise",
+        "to conceal or hide"
+      ],
+      "control_headline": "suitable",
+      "reason": "Veiling is one means of hiding; both are ordinary source readings with narrower alignment.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to veil",
+        "to conceal or hide"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "bb84b37896d85c41",
+      "words": [
+        "da",
+        "spektakel",
+        "nb",
+        "spektakulær"
+      ],
+      "control": [
+        "disturbances",
+        "spectacular"
+      ],
+      "control_headline": "suitable",
+      "reason": "Noise and spectacular differ in meaning and grammar; the new Danish gloss is substantive.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "noise, din",
+        "spectacular"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "4beeb8c1b25059c4",
+      "words": [
+        "da",
+        "rum",
+        "en",
+        "room"
+      ],
+      "control": [
+        "room (part of a building)",
+        "A separate part of a building, enclosed by walls, a floor and a ceiling."
+      ],
+      "control_headline": "suitable",
+      "reason": "A building room and available space are related but different selected meanings. The original room match remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "room (part of a building)",
+        "Space for something, or to carry out an activity."
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "06847cc95d74d47e",
+      "words": [
+        "en",
+        "supplement",
+        "nb",
+        "supplement"
+      ],
+      "control": [
+        "A vitamin, herbal extract, or chemical compound ingested to meet dietary deficiencies or enhance muscular development; the dosage form that conveys or embodies it (e.g., tablet, capsule, pill, powder, beverage).",
+        "a supplement"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "A general addition is a better supplement introduction than only a vitamin dosage.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "Something added; especially, such an addition added to make up for a deficiency.",
+        "a supplement"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8401249afe759b67",
+      "words": [
+        "da",
+        "bod",
+        "nb",
+        "bot"
+      ],
+      "control": [
+        "fine",
+        "a remedy"
+      ],
+      "control_headline": "suitable",
+      "reason": "Both now select a monetary penalty instead of fine versus remedy.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fine",
+        "a fine (sum of money to be paid as a penalty for an offence)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "be5f78f5256eaf32",
+      "words": [
+        "de",
+        "Stiel",
+        "sv",
+        "still"
+      ],
+      "control": [
+        "stipe",
+        "still"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Stalk is a more ordinary plant-part rendering than technical stipe; Swedish still is unrelated and adverbial.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "stalk (thin stem)",
+        "still"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "318bb3bc430bf9db",
+      "words": [
+        "da",
+        "kue",
+        "sv",
+        "kuva"
+      ],
+      "control": [
+        "to subdue",
+        "to force into submission; to subdue, to suppress"
+      ],
+      "control_headline": "suitable",
+      "reason": "Intimidating someone can force submission; contextual overlap remains.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to cow (to intimidate)",
+        "to force into submission; to subdue, to suppress"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "939d0905929225ef",
+      "words": [
+        "de",
+        "Apostroph",
+        "en",
+        "apostrophus"
+      ],
+      "control": [
+        "inverted comma",
+        "The symbol 'Ↄ', used in Roman numerals to indicate multiplication by 10."
+      ],
+      "control_headline": "suitable",
+      "reason": "A historical musical neume is a specialized apostrophus use; apostrophe shape resemblance does not make it the same punctuation mark.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "apostrophe",
+        "An open notehead ( ~ ) or an apostrophe ( ' ) used as a neume to mark a low, unaccented syllable at the beginning of a phrase or a short quick syllable"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "dbf8ffc483f49eda",
+      "words": [
+        "de",
+        "Pott",
+        "sv",
+        "pott"
+      ],
+      "control": [
+        "pot (cooking vessel)",
+        "pot, kitty"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Large ship is a substantive but specialized Pott reading; kitty is not that vessel. Removing metadata does not establish ordinary entry priority.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": false,
+      "F": [
+        "large ship",
+        "pot, kitty"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "b9b0af2e68f16dac",
+      "words": [
+        "de",
+        "schwach",
+        "en",
+        "mild"
+      ],
+      "control": [
+        "weak",
+        "Not serious or dangerous."
+      ],
+      "control_headline": "suitable",
+      "reason": "Weak and gentle/not-easily-angered are related personality/strength qualities, not the same meaning.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "weak, lacking in strength",
+        "Gentle and not easily angered"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "fde727b04fd3cf74",
+      "words": [
+        "da",
+        "bæger",
+        "de",
+        "Pokal"
+      ],
+      "control": [
+        "cup",
+        "cup, trophy"
+      ],
+      "control_headline": "suitable",
+      "reason": "A goblet/chalice is a kind of cup; both are substantive vessel readings.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "cup",
+        "goblet, chalice"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "3491b9d4715b2edb",
+      "words": [
+        "da",
+        "seefeld",
+        "en",
+        "seefeldt"
+      ],
+      "control": [
+        "a surname",
+        "A surname."
+      ],
+      "control_headline": "unresolved",
+      "reason": "A specific historical person is not a general surname introduction; generic surname overlap was not verified identity either.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "Jacob Enevoldsen Seefeld til Visborg og Sostrup (1545–1599), rigsråd, hofmeister (1568–1599), and owner of the Visborggaard Estate",
+        "A surname."
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "unresolved",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "ac5b516ab867a75f",
+      "words": [
+        "en",
+        "blunt",
+        "nb",
+        "stump"
+      ],
+      "control": [
+        "Having a thick edge or point; not sharp.",
+        "buttocks, little scamp, tiny tot"
+      ],
+      "control_headline": "suitable",
+      "reason": "A practice foil and a stub/fragment are distinct; fencing is a specialized blunt reading instead of the ordinary adjective.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "A fencer's practice foil with a soft tip.",
+        "a stub, stump, bit, fragment, piece, butt (of cigar, cigarette)"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "4def90dad7f3a26e",
+      "words": [
+        "de",
+        "Feingehalt",
+        "sv",
+        "lödighet"
+      ],
+      "control": [
+        "fineness (of a precious metal)",
+        "fineness of any precious metal"
+      ],
+      "control_headline": "suitable",
+      "reason": "Figurative fineness/quality is broader than precious-metal fineness; neither implies every quality use corresponds.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fineness (of a precious metal)",
+        "fineness, quality"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "f42fe6b28e4d42c6",
+      "words": [
+        "en",
+        "law",
+        "nb",
+        "lag"
+      ],
+      "control": [
+        "A rule, such as:",
+        "the correct or usual way in which something is arranged; correct and regular order, condition, etc."
+      ],
+      "control_headline": "entry_or_metadata_problem",
+      "reason": "D replaces a heading with a substantive law definition, but the Norwegian historical district is specialized and distinct from rules.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "The body of binding rules and regulations, customs, and standards established in a community by its legislative and judicial authorities.",
+        "a district (area which is under common law and has common principal Things)"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "c7417d79d1da4e9d",
+      "words": [
+        "da",
+        "tumult",
+        "sv",
+        "bråk"
+      ],
+      "control": [
+        "scuffle",
+        "brawl, row, racket; trouble"
+      ],
+      "control_headline": "suitable",
+      "reason": "Uproar/tumult and brawl/row overlap in noisy disturbance contexts.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "uproar, tumult",
+        "brawl, row, racket; trouble"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "0f7d6d84faaa8781",
+      "words": [
+        "da",
+        "fed",
+        "nb",
+        "tykk"
+      ],
+      "control": [
+        "fat (carrying a larger than normal amount of fat on one's body), obese",
+        "fat"
+      ],
+      "control_headline": "suitable",
+      "reason": "Obese versus thick are related physical descriptions; the original fat correspondence is retained separately.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fat (carrying a larger than normal amount of fat on one's body), obese",
+        "thick"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "ce63257877dd7ce1",
+      "words": [
+        "de",
+        "rendern",
+        "en",
+        "renter"
+      ],
+      "control": [
+        "to render",
+        "To restore the original design of (a tapestry) by working in new warp."
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "The English fine-sewing action is specialized and is not rendering; the previous tapestry repair was also specialized.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to render",
+        "To sew together so that the seam is scarcely visible; to sew up with skill and nicety; to finedraw."
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "4350671919cdc8b6",
+      "words": [
+        "de",
+        "Platten",
+        "en",
+        "platzer"
+      ],
+      "control": [
+        "a municipality of Rhineland-Palatinate, Germany",
+        "A surname from German."
+      ],
+      "F": [
+        "flat tire",
+        "A surname from German."
+      ],
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_E_review": false,
+      "control_headline": "unresolved",
+      "F_headline": "unresolved",
+      "F_alignment": "different",
+      "reason": "Flat tire and a surname do not share a meaning. Platten has lexical and municipal entries; the supplied surname description does not establish a preferred comparative entry or shared identity."
+    },
+    {
+      "case_id": "1c5dad79d53672e2",
+      "words": [
+        "en",
+        "scrape",
+        "sv",
+        "skrapa"
+      ],
+      "control": [
+        "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
+        "a squeegee"
+      ],
+      "control_headline": "suitable",
+      "reason": "Both now show the scraping action instead of an English action versus a squeegee noun.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
+        "to scrape, to scratch"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "8345073bf09f4fa3",
+      "words": [
+        "de",
+        "Franse",
+        "sv",
+        "frans"
+      ],
+      "control": [
+        "fringe",
+        "an eyelash"
+      ],
+      "control_headline": "suitable",
+      "reason": "Both now describe a fabric fringe; eyelash is a different Swedish sense retained in the inventory.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "fringe",
+        "(one of a number of) loose strings of fabric or the like that are attached on one end, either deliberate to be decorative or from wear; a fringe, a fraying"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "92e1933ea1aba6fe",
+      "words": [
+        "da",
+        "gat",
+        "en",
+        "gate"
+      ],
+      "control": [
+        "scupper",
+        "A movable barrier."
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Animal anus and a regional English path are distinct. Neither pair establishes ordinary gate correspondence.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "anus (of an animal, fish especially)",
+        "A way, path."
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "d22a2cdf23e4d91d",
+      "words": [
+        "nb",
+        "skjell",
+        "sv",
+        "skal"
+      ],
+      "control": [
+        "a mussel, shell (seashell)",
+        "a shell"
+      ],
+      "control_headline": "suitable",
+      "reason": "A seashell is within the broader external-covering shell definition.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "a mussel, shell (seashell)",
+        "shell ((hard) external covering of an animal, egg, nut, various objects, etc. – used similarly to English)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "22ef5549c5118b06",
+      "words": [
+        "en",
+        "brew",
+        "sv",
+        "brygga"
+      ],
+      "control": [
+        "To make beer by steeping a starch source in water and fermenting the resulting sweet liquid with yeast.",
+        "to brew (to prepare liquor or coffee)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Coffee/tea brewing is a substantive ordinary brew use and overlaps the Swedish liquor/coffee definition.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "To make tea or coffee by mixing tea leaves or coffee beans with hot water.",
+        "to brew (to prepare liquor or coffee)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "c129c83130b53470",
+      "words": [
+        "da",
+        "indlysende",
+        "de",
+        "offenkundig"
+      ],
+      "control": [
+        "obvious",
+        "apparent"
+      ],
+      "control_headline": "suitable",
+      "reason": "Obvious and overt/manifest align more directly than the ambiguous apparent gloss.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "obvious",
+        "overt, obvious, manifest"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "f1b16632ff8321d5",
+      "words": [
+        "da",
+        "prostitueret",
+        "en",
+        "whore"
+      ],
+      "control": [
+        "prostituted, prostitute",
+        "To engage the services of a prostitute."
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "The source adjective and the vulgar prostituting-oneself verb are related forms, not a matched ordinary grammatical use.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "prostituted, prostitute",
+        "To prostitute oneself."
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "related_not_shared",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "37f9d4344b6da7da",
+      "words": [
+        "nb",
+        "skum",
+        "sv",
+        "fradga"
+      ],
+      "control": [
+        "foam, froth",
+        "froth, foam (more generally, often on carbonated beverages and of foam with smaller bubbles)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Mouth froth is a narrower bodily context; the broader shared foam reading remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "foam, froth",
+        "froth (around the mouth, usually from illness or (powerless) rage, sometimes figuratively)"
+      ],
+      "F_headline": "secondary_or_specialized",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "881ecfa30bcb5407",
+      "words": [
+        "da",
+        "mistænke",
+        "sv",
+        "tro"
+      ],
+      "control": [
+        "to suspect",
+        "to believe, to trust (someone) (think that they are telling the truth)"
+      ],
+      "control_headline": "suitable",
+      "reason": "Suspecting and believing something may overlap as uncertain judgments, but are not interchangeable in general.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "to suspect",
+        "to believe, (in the sense of \"to believe\") to think (think that something is true or real (without being perfectly certain))"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "3d7f303d520159a9",
+      "words": [
+        "de",
+        "welche",
+        "sv",
+        "vilken"
+      ],
+      "control": [
+        "some",
+        "what a, such (exclamatory adjective)"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "The interrogative Swedish which is a clearer ordinary headline than the exclamation; German some remains a different use.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "some",
+        "which, what, which one(s), who (plural), whom (plural) (interrogative pronoun)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "9eb94ed76c72d5eb",
+      "words": [
+        "en",
+        "indio",
+        "sv",
+        "indigo"
+      ],
+      "control": [
+        "A city in Riverside County, California, United States.",
+        "indigo (dye)"
+      ],
+      "F": [
+        "A member of one of various indigenous peoples in the Americas, Pacific, and East Asia formerly subject to Spain or Portugal, specifically a Native American in Mexico or Brazil, or an indigenous inhabitant of the Philippines.",
+        "indigo (color)"
+      ],
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_E_review": false,
+      "control_headline": "entry_or_metadata_problem",
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reason": "The ordinary indigenous-person noun now corresponds to the stored lowercase indio headword rather than the city Indio. Indigo color remains a different meaning; no translation is asserted."
+    },
+    {
+      "case_id": "e40a113de8aba4a1",
+      "words": [
+        "de",
+        "bar",
+        "nb",
+        "bare"
+      ],
+      "control": [
+        "bare",
+        "but"
+      ],
+      "control_headline": "suitable",
+      "reason": "In cash versus only are different adverbial readings; the old bare/but contrast remains secondary.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "in cash",
+        "only, merely, just"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "different",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "dc8dbe30b476e7c2",
+      "words": [
+        "da",
+        "kåd",
+        "nb",
+        "karsk"
+      ],
+      "control": [
+        "horny, sexually aroused",
+        "horny, frisky"
+      ],
+      "control_headline": "secondary_or_specialized",
+      "reason": "Energetic exuberance and vigor overlap contextually; this is more general than the sexual-arousal headline.",
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_D_review": true,
+      "F": [
+        "exuberant, happy in an energetic way",
+        "healthy, vigorous (enjoying good health; free from disease or disorder)"
+      ],
+      "F_headline": "suitable",
+      "F_alignment": "contextual_or_narrower",
+      "reused_E_review": true
+    },
+    {
+      "case_id": "b3a1530df0fc57a6",
+      "words": [
+        "en",
+        "dog",
+        "nb",
+        "bikkje"
+      ],
+      "control": [
+        "A person:",
+        "bitch (female dog)"
+      ],
+      "F": [
+        "The species Canis familiaris (sometimes designated Canis lupus familiaris), domesticated for thousands of years and of highly variable appearance because of human breeding.",
+        "dog"
+      ],
+      "source_membership": true,
+      "independent_factual_check": false,
+      "reused_E_review": false,
+      "control_headline": "entry_or_metadata_problem",
+      "F_headline": "suitable",
+      "F_alignment": "shared",
+      "reason": "The ordinary domestic-dog noun replaces a heading and the later humorous/zodiac proper names. The Norwegian dog reading aligns. This is a diagnostic case outside the sampled concept panel."
+    }
+  ]
+}

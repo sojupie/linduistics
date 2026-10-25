@@ -1,0 +1,194 @@
+[
+  {
+    "concept_id": "10",
+    "lang": "sv",
+    "word": "mage",
+    "display": "stomach (organ)",
+    "concept": "belly",
+    "expected_meaning": "The lower part of the front of the torso (or a comparable part of an animal), confined by the upper side by the midriff and the lowerside by the pelvis. Contains the intestines."
+  },
+  {
+    "concept_id": "111",
+    "lang": "en",
+    "word": "night",
+    "display": "The time when the Sun is below the horizon when the sky is dark.",
+    "concept": "night",
+    "expected_meaning": "The period between sunset and sunrise, when a location faces far away from the sun, thus when the sky is dark."
+  },
+  {
+    "concept_id": "129",
+    "lang": "en",
+    "word": "rotten",
+    "display": "Of perishable items, overridden with bacteria and other infectious agents.",
+    "concept": "rotten",
+    "expected_meaning": "Having changed its colour, smell or composition (partially or completely), due to being attacked and decomposed by microorganisms (relating to organic matter)."
+  },
+  {
+    "concept_id": "14",
+    "lang": "en",
+    "word": "black",
+    "display": "Alternative letter-case form of black (“of or relating to any of various ethnic groups having dark pigmentation of the skin”).",
+    "concept": "black",
+    "expected_meaning": "Dark and colourless; not reflecting visible light."
+  },
+  {
+    "concept_id": "14",
+    "lang": "en",
+    "word": "black",
+    "display": "Alternative letter-case form of black (“person having dark pigmentation of the skin”).",
+    "concept": "black",
+    "expected_meaning": "Dark and colourless; not reflecting visible light."
+  },
+  {
+    "concept_id": "164",
+    "lang": "sv",
+    "word": "sol",
+    "display": "sun (star the Earth revolves around)",
+    "concept": "sun",
+    "expected_meaning": "The particular star at the centre of our solar system, from which the Earth gets light and heat."
+  },
+  {
+    "concept_id": "177",
+    "lang": "en",
+    "word": "throw",
+    "display": "To hurl; to release (an object) with some force from one’s hands, an apparatus, etc. so that it moves rapidly through the air.",
+    "concept": "throw",
+    "expected_meaning": "To cause (an object) to move rapidly through the air, with the force of the hand or arm."
+  },
+  {
+    "concept_id": "177",
+    "lang": "sv",
+    "word": "kasta",
+    "display": "to throw (make an object fly through the air)",
+    "concept": "throw",
+    "expected_meaning": "To cause (an object) to move rapidly through the air, with the force of the hand or arm."
+  },
+  {
+    "concept_id": "18",
+    "lang": "en",
+    "word": "chest",
+    "display": "A box, now usually a large strong box with a secure convex lid.",
+    "concept": "chest",
+    "expected_meaning": "The portion of the body from the base of the neck to the top of the abdomen; the thorax."
+  },
+  {
+    "concept_id": "198",
+    "lang": "en",
+    "word": "wind",
+    "display": "Real or perceived movement of atmospheric air usually caused by convection or differences in air pressure.",
+    "concept": "wind",
+    "expected_meaning": "The motion of air relative to the earth's surface; usually means horizontal air motion, as distinguished from vertical motion."
+  },
+  {
+    "concept_id": "20",
+    "lang": "de",
+    "word": "brennen",
+    "display": "to burn; to light on fire",
+    "concept": "burn",
+    "expected_meaning": "To put fire on something or to be on fire."
+  },
+  {
+    "concept_id": "217",
+    "lang": "en",
+    "word": "sweet",
+    "display": "Tasting of sugars.",
+    "concept": "sweet",
+    "expected_meaning": "Having the taste characteristic of sugar or honey."
+  },
+  {
+    "concept_id": "219",
+    "lang": "de",
+    "word": "rennen",
+    "display": "race (a contest where the goal is to be the first to reach some objective)",
+    "concept": "run",
+    "expected_meaning": "To move quickly by alternately making a short jump off of either foot."
+  },
+  {
+    "concept_id": "219",
+    "lang": "de",
+    "word": "laufen",
+    "display": "to walk; to jog; to run (to move on foot; either at a normal or an increased speed)",
+    "concept": "run",
+    "expected_meaning": "To move quickly by alternately making a short jump off of either foot."
+  },
+  {
+    "concept_id": "219",
+    "lang": "en",
+    "word": "run",
+    "display": "To move swiftly.",
+    "concept": "run",
+    "expected_meaning": "To move quickly by alternately making a short jump off of either foot."
+  },
+  {
+    "concept_id": "25",
+    "lang": "en",
+    "word": "count",
+    "display": "To recite numbers in sequence.",
+    "concept": "count",
+    "expected_meaning": "To determine the amount of something or to enumerate the digits of one's numeral system."
+  },
+  {
+    "concept_id": "25",
+    "lang": "sv",
+    "word": "räkna",
+    "display": "to count (enumerate consecutive numbers)",
+    "concept": "count",
+    "expected_meaning": "To determine the amount of something or to enumerate the digits of one's numeral system."
+  },
+  {
+    "concept_id": "64",
+    "lang": "en",
+    "word": "good",
+    "display": "Acting in the interest of what is beneficial, ethical, or moral.",
+    "concept": "good",
+    "expected_meaning": "Having desired or positive qualities."
+  },
+  {
+    "concept_id": "68",
+    "lang": "en",
+    "word": "hair",
+    "display": "A pigmented filament of keratin which grows from a follicle on the skin of humans and other mammals.",
+    "concept": "hair",
+    "expected_meaning": "The hair on the head of humans (rather than the hair in general or the hair on the body)."
+  },
+  {
+    "concept_id": "7",
+    "lang": "en",
+    "word": "bad",
+    "display": "Of low quality.",
+    "concept": "bad",
+    "expected_meaning": "Not good; unfavorable; negative."
+  },
+  {
+    "concept_id": "7",
+    "lang": "sv",
+    "word": "dålig",
+    "display": "bad (similar senses to English, but see subsenses and usage notes)",
+    "concept": "bad",
+    "expected_meaning": "Not good; unfavorable; negative."
+  },
+  {
+    "concept_id": "73",
+    "lang": "nb",
+    "word": "hjerte",
+    "display": "heart (anatomy: an organ of the body)",
+    "concept": "heart",
+    "expected_meaning": "A muscular organ that pumps blood through the body."
+  },
+  {
+    "concept_id": "91",
+    "lang": "en",
+    "word": "leaf",
+    "display": "A Canadian person.",
+    "concept": "leaf",
+    "expected_meaning": "The main organ of photosynthesis and transpiration in higher plants, usually consisting of a flat green blade attached to the stem directly or by a stalk."
+  },
+  {
+    "concept_id": "93",
+    "lang": "en",
+    "word": "leg",
+    "display": "A limb or appendage that an animal uses for support or locomotion on land.",
+    "concept": "leg",
+    "expected_meaning": "The limb of an animal (including humans) that extends from the groin to the ankle."
+  }
+]
