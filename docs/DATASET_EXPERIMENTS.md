@@ -6,6 +6,17 @@ This document records what we intend to test, why, and what actually happens. A 
 
 ## Where to resume
 
+**Translation support, 2026-10-25:** added an offline evidence API that separates
+inherited dictionary links, lexical-gloss correspondences and embedding
+suggestions. Of 1,251 development comparisons, 336 have dictionary/lexical
+support without an embedding match; this is coverage, not a count of fixes.
+Reviewed all eight reference conflicts and the frozen twelve-case low-score
+sample. Target qualification, polysemy and usage remain important constraints;
+exact source identity does not establish an exact target sense. All 257 reviewed
+E2 audit labels reproduce unchanged. See the [result](../pipeline/evaluation/TRANSLATION_SUPPORT_RESULT.md).
+Use the API for the separate headline experiment; no production classification
+or live dataset changed.
+
 **E1 display follow-up, 2026-10-25:** C's compatible-entry preference improves
 specified-concept displays to 658/995, versus the original 630 and B's 652.
 It gains seven and loses one against B, and repairs B's saga mismatch. The sun

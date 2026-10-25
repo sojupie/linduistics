@@ -1,0 +1,11 @@
+{
+  "byte_identical_final_replay": [
+    "profiles.json",
+    "reference_results.json",
+    "review_packet.json",
+    "metrics.json",
+    "protocol.json"
+  ],
+  "initial_source_snapshots_verified": true,
+  "final_protocol_sha256": "6df50c341b6f53472ffedf44a7aa6e08416ca5390d81610671d52e7006cd8c62"
+}

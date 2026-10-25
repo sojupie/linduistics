@@ -391,3 +391,29 @@ a correct false-friend headline may show different ordinary meanings. Measure
 source correctness, ordinary suitability and pair alignment separately, with
 classification labels held fixed for this display experiment. Freeze that method
 and a broader review sample before running it. No live adoption follows from C.
+
+
+## Translation support: use multiple evidence channels without counting them twice
+
+The [T1-001 result](../pipeline/evaluation/TRANSLATION_SUPPORT_RESULT.md) adds a
+reusable evidence API on the existing conflict-only E2 method. It preserves source
+translation links independently of cosine and distinguishes direct English links,
+shared English source senses, lexical-gloss inferences and embedding candidates.
+It resolves 627 of 628 source identities; 336 of 1,251 development comparisons
+have dictionary/lexical support without an embedding match. These are evidence
+coverage counts, not newly corrected labels or a population accuracy estimate.
+
+The twelve-case low-score review supports the value of dictionary evidence,
+including valid narrower uses. All eight conflicts with old references were also
+reviewed. Some inherited links mix polysemous English senses or fail to respect
+target usage; one reference appears to confuse a historical subject with obsolete
+usage. Preserve those disagreements rather than automatically treating either
+the source link or the old review as truth. A supported comparison can still
+contain an incorrect individual source-to-target inference.
+
+Keep the API as the next display experiment's input contract. Test ordinary
+headlines separately from strongest secondary overlap. Then audit endpoint
+qualifications, synonymous inactive meanings and raw translation statements
+before promoting inherited links to verified sense correspondences. No extra
+weighted score, synthetic cosine boost, source-independent vote count or new
+residual classifier category was introduced.

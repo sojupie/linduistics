@@ -1,0 +1,23 @@
+{
+  "run": "T1-001",
+  "seed": 20261025,
+  "inputs": {
+    "pipeline/evaluation/TRANSLATION_SUPPORT_PLAN.md": "1efc929c22cf48dc207164af079727392a87b0437ed254e875c70adc5864af82",
+    "pipeline/evaluation/e1-run003/comparisons.json": "bae7dfa441ad670d46dbf97cf979f4000cb4949567f2fede8a5d4e71095270ea",
+    "pipeline/evaluation/e2-scope001/matrix_cache.json": "0d5c2a97b6646612473b3e6bc4b74fa9f9edb578d0b3eaccf9772be32b803ab2",
+    "pipeline/evaluation/e2-scope001/frame.json": "ee70d9d1bea8f5120af850429b2db735337dffe19cce19b4e2a1c545112f43a4",
+    "pipeline/evaluation/e2-scope001/references.json": "f9df4223f780d0c674cdb2feba45e1d853058f26a0f8d030f0a38d6f08fb9399",
+    "pipeline/evaluation/e2-scope001/revision/diagnostic_results.json": "559b4be9968cbac76258720b179875e851a0c2a19395a6359c5f7adbd86847c2",
+    "pipeline/evaluation/e2-scope001/revision/sample_results.json": "3267f2e077939f8120d7f3ac602fc19ba0723a99de82231e6458ca8ec1ae4d8b",
+    "pipeline/data/reproduce-five-language-20261002/lemmas_en.parquet": "c3e70eecf397229e686c26ef9a517d2828477bd89a1194b80c1205791a57368b"
+  },
+  "code": {
+    "pipeline/evaluation/t1.py": "3ac51591d4c9412053ba670d1ddb7ee570472e139b6575ab87b5923b596002ed",
+    "pipeline/src/translation_support.py": "d7e9d8783e67e539632cb3dbb50a4ee66fe961d560e8bec9392f88a65a67300a",
+    "pipeline/src/meaning_profile.py": "a103e3e0dd96a81101af108eccac7673d75fc5cbb20d2253c70d4c6f9bf848df",
+    "pipeline/evaluation/e2.py": "01866f7e3aa7014a07cb5c178a25192c0628a2b68cef54281d7901d4a7a61877",
+    "pipeline/evaluation/e2_scope.py": "1e28c53b425ec492624985df5c8b69d06aadb90e262650cd113bcfc192366f35"
+  },
+  "preservation": "All rows and scores read only; E2 audit labels reproduce on all 257 reviewed cases.",
+  "review_limits": "Familiar development material and source-guided judgments; no independent confirmation or population estimate."
+}

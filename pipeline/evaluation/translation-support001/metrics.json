@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "comparisons": 1251,
+    "dictionary_supported": 1084,
+    "lexical_supported": 1014,
+    "embedding_suggested": 786,
+    "dictionary_or_lexical_supported": 1119,
+    "supported_without_embedding_match": 336
+  },
+  "link_statuses": {
+    "current_translation_supported": 2089,
+    "historical_source_link": 23,
+    "source_scope_unresolved": 50,
+    "name_or_entity_source_link": 21,
+    "endpoint_usage_or_grammar_conflict": 18,
+    "source_identity_unresolved": 1
+  },
+  "routes": {
+    "shared_english_sense": 1265,
+    "direct_from_english": 937
+  },
+  "reference_panels": {
+    "diagnostic": {
+      "supported_compatible": 107,
+      "supported_conflict": 7,
+      "no_support_asserted": 83,
+      "unresolved": 10
+    },
+    "pilot": {
+      "supported_compatible": 23,
+      "unresolved": 3,
+      "no_support_asserted": 23,
+      "supported_conflict": 1
+    }
+  },
+  "requested_source_identities": 628,
+  "resolved_source_identities": 627,
+  "review_cases": 20,
+  "low_embedding_diagnostic_sample": 12
+}

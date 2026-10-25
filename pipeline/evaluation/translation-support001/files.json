@@ -1,0 +1,51 @@
+{
+  "final/metrics.json": {
+    "sha256": "051938221cdf27c913aa44dc9b255d9c1069b0bbe84cd09d6c21ace933d85453"
+  },
+  "final/profiles.json.gz": {
+    "sha256": "6084f54766a5dd671f471e92ccd9c2d5ad9b8859548be0dbe6c14e014437ea90",
+    "uncompressed_sha256": "60168a55ac4223e702dcda3abe83953fc040b318154398d77bc1eadf3298773e"
+  },
+  "final/protocol.json": {
+    "sha256": "6df50c341b6f53472ffedf44a7aa6e08416ca5390d81610671d52e7006cd8c62"
+  },
+  "final/reference_results.json": {
+    "sha256": "85bdb9eaf45e68e3300f0aecc7c89b74a89824aa30c5f6ff6a28162f2ca50114"
+  },
+  "final/review.json": {
+    "sha256": "1dbce12eb6ad8a8da9d4b57c7fdeb4a56d8b072d739e36e747630ac6bb49998f"
+  },
+  "final/review_packet.json.gz": {
+    "sha256": "716224668a5b4b8f9b55cb043c40d646dd95e6030bdb1aadeabaa037e5d7ff5e",
+    "uncompressed_sha256": "070103ea8019944ef3130e6c031a82c0c0c315c6c715ddedf742a0d487269ad2"
+  },
+  "metrics.json": {
+    "sha256": "051938221cdf27c913aa44dc9b255d9c1069b0bbe84cd09d6c21ace933d85453"
+  },
+  "profiles.json.gz": {
+    "sha256": "b54f31e37a17811dd91be62eb87756c558e880cdabcd5f656c7d1232a4945b9e",
+    "uncompressed_sha256": "95b7e323f3dc20aa9d07c356e7aeddeb4c9501f607ac377f3c95aeca15b70a32"
+  },
+  "protocol.json": {
+    "sha256": "84ec5340a0aebe5f565cf1b91755c74ee6a06c19d4d25a9d280c901e5dd81f2d"
+  },
+  "reference_results.json": {
+    "sha256": "85bdb9eaf45e68e3300f0aecc7c89b74a89824aa30c5f6ff6a28162f2ca50114"
+  },
+  "reproduction.json": {
+    "sha256": "e0cec51efb66d6cb094db763519546ef225c11df5ad2f9069aa513c30f614c6f"
+  },
+  "review.json": {
+    "sha256": "48a0285fa7e56073d530e264f69c915a0dd982bff8cef97fd2d1bc14aefe1a23"
+  },
+  "review_packet.json.gz": {
+    "sha256": "44dc091fb9e6bdec7ddd54197204b9609f13bb40636bc62943aebe17917c81a4",
+    "uncompressed_sha256": "3e4fa6d302cd1d90fcb370b06e9ad455c010ba3d6d0840f0d7581fef109a52c7"
+  },
+  "source-snapshots/runner.py": {
+    "sha256": "820d8f38afe318f89eb554f343b73160038fda313b27ded3d621a4ce5fb698a9"
+  },
+  "source-snapshots/translation_support.py": {
+    "sha256": "65b250a2e8482a9d41cee4318619b9141c49fe75dc4b4164014064e79b17d239"
+  }
+}

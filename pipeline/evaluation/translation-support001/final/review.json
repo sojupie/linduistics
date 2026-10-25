@@ -1,0 +1,229 @@
+{
+  "packet_sha256": "070103ea8019944ef3130e6c031a82c0c0c315c6c715ddedf742a0d487269ad2",
+  "reviewer": "Codex agent, source-guided and unblinded; no independent expert review",
+  "judgments": [
+    {
+      "words": [
+        "da",
+        "frø",
+        "en",
+        "seed"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "Plant seed senses align; the frog homograph is irrelevant. The broad source definition does not identify every English seed use."
+    },
+    {
+      "words": [
+        "da",
+        "hale",
+        "sv",
+        "svans"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "Both record an animal tail. Unlocalized Danish noun candidates also include bottom/fanny; those are not equally validated matches."
+    },
+    {
+      "words": [
+        "da",
+        "kendsgerning",
+        "de",
+        "Wirklichkeit"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "related_not_established_shared",
+      "reason": "Fact and reality are related; the inherited fact-source link alone does not establish a common endpoint sense. Retain the old conflict."
+    },
+    {
+      "words": [
+        "da",
+        "ny",
+        "en",
+        "new"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "Ordinary new meanings align through the explicit lexical gloss. The nine source units do not validate every source-to-target sense combination."
+    },
+    {
+      "words": [
+        "da",
+        "pedantisk",
+        "de",
+        "etepetete"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "contextual_overlap",
+      "reason": "Pedantic and finical overlap in fussiness; affected and hoity-toity are not general pedantic meanings. The link is contextual, not complete equivalence."
+    },
+    {
+      "words": [
+        "da",
+        "tælle",
+        "en",
+        "count"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "The Danish counting verbs and the English determining-number sense align. Tallow and the noble title are different readings."
+    },
+    {
+      "words": [
+        "de",
+        "Bauchnabel",
+        "nb",
+        "navle"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "Navel, bellybutton and umbilicus describe the same body feature; the shared navel gloss independently corroborates the inherited source link within this dictionary source."
+    },
+    {
+      "words": [
+        "de",
+        "Jarl",
+        "nb",
+        "jarl"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "reference_disagreement",
+      "reason": "Both inventories record the historical Norse title. A historical subject is not necessarily an obsolete word use. The original reference treated the Norwegian historical tag as excluding current overlap; keep that judgment but flag it for adjudication. British earl remains a separate sense."
+    },
+    {
+      "words": [
+        "de",
+        "Obersattel",
+        "sv",
+        "mutter"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "polysemy_conflict",
+      "reason": "The instrument nut and hardware nut have explicit incompatible object qualifications. The inherited link cannot validate the Swedish bolt-nut sense as an instrument component."
+    },
+    {
+      "words": [
+        "de",
+        "scharf",
+        "nb",
+        "skarp"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "Sharp cutting edges align; the live-ammunition meanings also offer another shared use. This does not establish correspondence for every figurative source gloss."
+    },
+    {
+      "words": [
+        "de",
+        "sich",
+        "sv",
+        "sig"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported_with_inventory_gap",
+      "reason": "The saved German inventory omits ordinary reflexive use; the earlier source-guided review already documents native-source confirmation. Keep this gap visible rather than pretending reciprocal each other is the Swedish reflexive definition."
+    },
+    {
+      "words": [
+        "de",
+        "verletzen",
+        "sv",
+        "invadera"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "source_scope_conflict",
+      "reason": "Injury or violation is not invasion. The inherited invade source link is too weak to establish endpoint overlap; its source reference needs raw-source audit."
+    },
+    {
+      "words": [
+        "en",
+        "bite",
+        "sv",
+        "bita"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "The biting verbs share a teeth action. The separate Swedish cutting-into-bits sense is not automatically the target of each English source sense."
+    },
+    {
+      "words": [
+        "en",
+        "blunt",
+        "sv",
+        "joint"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "related_not_established_shared",
+      "reason": "A cannabis cigar and cigarette are related smoking products. The source link may be an approximate translation; it does not independently establish an exact shared modern sense."
+    },
+    {
+      "words": [
+        "en",
+        "dig",
+        "nb",
+        "grave"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported",
+      "reason": "To dig and the English excavation action align; the accent-grave noun is a separate homograph."
+    },
+    {
+      "words": [
+        "en",
+        "foot",
+        "sv",
+        "ben"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "contextual_overlap",
+      "reason": "Furniture supports provide secondary contextual overlap. Body foot versus leg/bone remains a contrast; the link must not promote the furniture reading to ordinary equivalence."
+    },
+    {
+      "words": [
+        "en",
+        "sweet",
+        "nb",
+        "søt"
+      ],
+      "reason_selected": "seeded_low_embedding_sample",
+      "finding": "supported_with_link_conflict",
+      "reason": "Sweet taste aligns through the explicit Norwegian gloss. The fragrant English source link does not align with the recorded Norwegian taste reading despite its 0.639 locator score. Comparison-level support does not validate every source unit."
+    },
+    {
+      "words": [
+        "nb",
+        "band",
+        "sv",
+        "bindel"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "polysemy_conflict",
+      "reason": "A musical group and a body strap differ. The common English gloss band is ambiguous; a semicolon alternative and a parenthetical qualifier expose different senses. Retain the conflict."
+    },
+    {
+      "words": [
+        "nb",
+        "hoppe",
+        "sv",
+        "springa"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "usage_conflict",
+      "reason": "The direct Swedish jump sense is archaic. The source uses English leap, so the older exact-headword alias check misses synonymous jump. Run and jump do not establish plain current translation overlap."
+    },
+    {
+      "words": [
+        "nb",
+        "tante",
+        "sv",
+        "tant"
+      ],
+      "reason_selected": "reference_conflict",
+      "finding": "usage_and_scope_conflict",
+      "reason": "The Swedish kinship reading is dated; current older-woman uses are not the recorded Norwegian kinship aunt sense. English aunt as fictive kin is contextual evidence, not proof of target equivalence."
+    }
+  ],
+  "policy": "Original reference judgments remain unchanged; disagreements and scope limitations are additional records.",
+  "original_review_sha256": "48a0285fa7e56073d530e264f69c915a0dd982bff8cef97fd2d1bc14aefe1a23",
+  "reuse_note": "Same selected words, inventories, references and support assertions; final output clarifies localization descriptions only."
+}
