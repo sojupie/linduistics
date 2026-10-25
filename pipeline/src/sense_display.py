@@ -40,12 +40,19 @@ def eligible_pairs(senses_a, senses_b, lang_a, lang_b, translation_refs):
 
 
 def select_display(senses_a, senses_b, matrix, eligible, variant):
-    if variant not in {'A', 'B'}:
+    if variant not in {'A', 'B', 'C'}:
         raise ValueError(f'Unknown display variant: {variant}')
     if not eligible:
         return None
     highest = max(float(matrix[i][j]) for i, j in eligible)
     close = [(i, j) for i, j in eligible if float(matrix[i][j]) >= highest - 0.10]
+    if variant == 'C':
+        from meaning_profile import grammatical_class, is_name
+        same_kind = [(i, j) for i, j in close if is_name(senses_a[i]) == is_name(senses_b[j])]
+        close = same_kind or close
+        same_class = [(i, j) for i, j in close if grammatical_class(senses_a[i])
+                      and grammatical_class(senses_a[i]) == grammatical_class(senses_b[j])]
+        close = same_class or close
     restrictions = [[bool(RESTRICTED_USAGE.intersection(s.get('tags') or [])) for s in senses]
                     for senses in (senses_a, senses_b)]
     minimum = min(int(restrictions[0][i]) + int(restrictions[1][j]) for i, j in close)
@@ -53,7 +60,7 @@ def select_display(senses_a, senses_b, matrix, eligible, variant):
              if int(restrictions[0][i]) + int(restrictions[1][j]) == minimum]
     ranks_a, ranks_b = entry_ranks(senses_a), entry_ranks(senses_b)
     return max(close, key=lambda ij: float(matrix[ij[0]][ij[1]]) -
-               (0.05 * (ranks_a[ij[0]] + ranks_b[ij[1]]) / 2 if variant == 'B' else 0))
+               (0.05 * (ranks_a[ij[0]] + ranks_b[ij[1]]) / 2 if variant in {'B', 'C'} else 0))
 
 
 def self_check():
@@ -73,6 +80,14 @@ def self_check():
     assert select_display([ordinary], [ordinary], [[1]], [], 'A') is None
     historical = ordinary | {'tags': ['historical']}
     assert select_display([historical, ordinary], [ordinary], [[0.9], [0.85]], [(0, 0), (1, 0)], 'A') == (0, 0)
+    noun = ordinary | {'pos': 'noun'}
+    name = ordinary | {'pos': 'name', 'gloss': 'a female given name'}
+    assert select_display([noun], [name, noun], [[0.90, 0.85]], [(0, 0), (0, 1)], 'C') == (0, 1)
+    verb = ordinary | {'pos': 'verb'}
+    assert select_display([noun], [verb, noun], [[0.90, 0.85]], [(0, 0), (0, 1)], 'C') == (0, 1)
+    # Compatibility never reaches outside the fixed close-score window.
+    assert select_display([noun], [verb, noun], [[0.90, 0.70]], [(0, 0), (0, 1)], 'C') == (0, 0)
+    assert select_display([noun], [slang | {'pos': 'noun'}], [[0.9]], [(0, 0)], 'C') == (0, 0)
     print('Display selector self-check passed.')
 
 
