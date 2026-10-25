@@ -56,14 +56,28 @@ def describe_meaning_evidence(row, source_inventory, *, source_associations=None
             status = 'endpoint_usage_or_grammar_conflict'
         else:
             status = 'source_scope_unresolved'
+        endpoint_identities = [source_identity_matches(side, identity) for side in senses]
+
+        def describe_localization(evidence):
+            matches = []
+            for side, candidates in enumerate(evidence.get('endpoint_matches', [])):
+                identities = {m['index']: m['basis'] for m in endpoint_identities[side]}
+                matches.append([dict(candidate, basis=identities.get(candidate['index'], 'unresolved_source_identity')
+                                     if candidate['basis'] == 'recorded_source_identity' else
+                                     {'source_gloss_association': 'embedding_localization_candidate',
+                                      'documented_lemma_link_unlocalized': 'unlocalized_compatible_grammar'}.get(candidate['basis'], candidate['basis']))
+                                for candidate in candidates])
+            return dict(evidence, endpoint_matches=matches)
+
         link = {'source_entry_key': identity[0], 'source_sense_id': identity[1],
                 'route': 'direct_from_english' if 'en' in (row['lang_a'], row['lang_b']) else 'shared_english_sense',
                 'provenance': 'inherited_build_translation_reference', 'raw_translation_rechecked': False,
                 'independent_confirmation_count': 0, 'status': status,
                 'source_meanings': [{'gloss': s['gloss'], 'pos': s.get('pos'), 'tags': s.get('tags') or [],
                                      'is_active': s.get('is_active', True)} for s in source_records],
-                'source_endpoint_identities': [source_identity_matches(side, identity) for side in senses],
-                'localization_candidates': selected, 'conflicts': rejected,
+                'source_endpoint_identities': endpoint_identities,
+                'localization_candidates': [describe_localization(e) for e in selected],
+                'conflicts': [describe_localization(e) for e in rejected],
                 'target_sense_attested': False}
         links.append(link)
     lexical = [e for e in profile['word_overlap_evidence'] if e['kind'] != 'source_sense_translation_link']
@@ -92,10 +106,17 @@ def self_check():
     assert not describe_meaning_evidence(row, {})['current_dictionary_support']
     merged = dict(target, source_identity_candidates=[source])
     assert source_identity_matches([merged], identity)[0]['basis'] == 'merged_source_identity_candidate'
+    ambiguous = describe_meaning_evidence(dict(row, senses_a=json.dumps([merged])), {identity: [source]})
+    matches = ambiguous['dictionary_links'][0]['localization_candidates'][0]['endpoint_matches'][0]
+    assert matches[0]['basis'] == 'merged_source_identity_candidate'
     historical = dict(source, tags=['obsolete'], is_active=False)
     assert describe_meaning_evidence(row, {identity: [historical]})['dictionary_links'][0]['status'] == 'historical_source_link'
     wrong = dict(target, pos='verb')
     assert not describe_meaning_evidence(dict(row, senses_b=json.dumps([wrong])), {identity: [source]})['current_dictionary_support']
+    mixed = dict(row, senses_b=json.dumps([dict(target, gloss='paint'), wrong]), matrix=[[0.1, 0.1]])
+    conflict = describe_meaning_evidence(mixed, {identity: [source]})
+    assert conflict['dictionary_links'][0]['status'] == 'endpoint_usage_or_grammar_conflict'
+    assert not conflict['current_dictionary_support']
     assert row['matrix'] == [[0.1]] and row['def_a'] == 'A container.'
     print('Translation support self-check passed.')
 

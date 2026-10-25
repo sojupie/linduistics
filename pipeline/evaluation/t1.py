@@ -32,6 +32,7 @@ def run(destination):
     rows = familiar_rows() + pilot
     assert len(rows) == 1251 and len({identity(r) for r in rows}) == 1251
     sources, wanted = translation_sources(rows)
+    source_snapshot = json.dumps(sorted(sources.items()), sort_keys=True)
     cached = {tuple(r['words']): r for r in read(old / 'matrix_cache.json')}
     expected = {tuple(r['words']): r for n in ('diagnostic_results.json', 'sample_results.json')
                 for r in read(old / 'revision' / n)}
@@ -42,10 +43,11 @@ def run(destination):
         cache = cached[words]
         associations = {tuple(a['identity_and_gloss']): a['scores'] for a in cache['associations']}
         before = json.dumps(row, sort_keys=True)
+        scores_before = json.dumps(cache['matrix'])
         profile = describe_meaning_evidence(row, sources, source_associations=associations, matrix=cache['matrix'])
         assert before == json.dumps(row, sort_keys=True), words
         # Freeze scores too: evidence never manufactures a cosine of one.
-        assert cache['matrix'] == cached[words]['matrix']
+        assert scores_before == json.dumps(cache['matrix'])
         profiles.append(profile)
         counts['comparisons'] += 1
         counts['dictionary_supported'] += profile['current_dictionary_support']
@@ -79,6 +81,7 @@ def run(destination):
                        'senses': [json.loads(row['senses_' + side]) for side in 'ab'],
                        'evidence': by_words[words], 'reference': next((r['reference'] for r in judgments if tuple(r['words']) == words), None)})
     save_json(destination / 'profiles.json', profiles)
+    assert source_snapshot == json.dumps(sorted(sources.items()), sort_keys=True)
     save_json(destination / 'reference_results.json', judgments)
     save_json(destination / 'review_packet.json', packet)
     save_json(destination / 'metrics.json', {'counts': counts, 'link_statuses': statuses, 'routes': routes,
