@@ -1,5 +1,12 @@
 # H1: fixed ordinary-headline confirmation
 
+**Post-result adoption audit:** the [full product assessment](HEADLINE_ADOPTION_AUDIT.md)
+supersedes the preview-only next step below. It reviews all 182 available
+original/proposed pairs and all 57 changes. The original scores remain recorded,
+but they do not establish only two broader product regressions. Explicit
+selection faults need engineering fixes; another person reviewing the sample
+is not a prerequisite for doing that work.
+
 Date: 2026-10-25. Decision: **keep F frozen and provide a local preview**. This run supports better introductory definitions, with specific losses. It does not approve a database replacement or new classification rules.
 
 ## What was tested

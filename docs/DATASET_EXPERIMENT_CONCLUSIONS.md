@@ -14,6 +14,16 @@ Agreement with the starting dataset is not the target.
 
 ## Recommended order
 
+**Post-result assessment, 2026-10-25:** [the adoption audit](../pipeline/evaluation/HEADLINE_ADOPTION_AUDIT.md)
+finds that H1’s introductory-definition score understated losses in useful pair
+alignment. Keep separate introductory meanings and matching senses, but repair
+selection before installing F as the default. The concrete faults are early
+source-order exclusion, auxiliary/lexical conflation, grammatical-class
+preferences overriding meaningful relationships, independent name filtering,
+and failure to use the dictionary evidence’s endpoint candidates. External
+review is useful scrutiny, not an excuse to leave these faults for the user.
+The earlier H1 measurements and decision remain historical below.
+
 **Update, 2026-10-25:** [H1 fixed-method confirmation](../pipeline/evaluation/HEADLINE_CONFIRMATION_RESULT.md)
 finds 57 → 75 suitable displays in 100 reserved concept cases (18 missing),
 and 76 → 87 plausible introductions in 100 broader rows. The broader weighted

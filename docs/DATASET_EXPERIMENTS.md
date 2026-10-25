@@ -443,6 +443,10 @@ The method was frozen before opening reserved concepts. Retrieval remains 446/54
 
 The [result](../pipeline/evaluation/HEADLINE_CONFIRMATION_RESULT.md) separates retrieval, displayed sense, source membership, selected meaning, unchanged historical/modern labels and untested game validity. The [case account](../pipeline/evaluation/HEADLINE_CONFIRMATION_CASES.md) lists every gain/loss. A development-only artifact-backed preview shows ordinary readings above retained original matches, with the stored score explicitly attached to the original match. Browser checks covered exact selection, missing states and mobile layout; production excludes the preview data. No database change or release approval follows.
 
+### H1 post-result product audit
+
+The [adoption audit](../pipeline/evaluation/HEADLINE_ADOPTION_AUDIT.md) rereads every available original/proposed pair and records all 57 changes. It preserves the original measures but corrects their interpretation: plausible word introductions do not by themselves make a useful displayed comparison. It finds explicit pair-alignment losses beyond the two broad binary headline losses, plus systematic source-order, auxiliary-role, entity-kind and dictionary-evidence handling faults. The next engineering work is to fix those general selection rules while retaining valid secondary matches. No user-supplied counterexamples or independent human review are required to diagnose these explicit defects. Fresh confirmation remains necessary for new accuracy claims after changing the method.
+
 ## Release decision
 
 After selecting methods with demonstrated benefits and explicit trade-offs, test their combined output against independent references and reproducible broader samples. Compare the starting dataset to identify changes and losses. Check the actual lexicon and game behavior as well as offline records. Review changed and unchanged comparisons, and investigate systematic failures before publication.
