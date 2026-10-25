@@ -63,9 +63,11 @@ def select_display(senses_a, senses_b, matrix, eligible, variant):
                (0.05 * (ranks_a[ij[0]] + ranks_b[ij[1]]) / 2 if variant in {'B', 'C'} else 0))
 
 
-def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evidence):
+def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evidence, *, variant='D'):
     """Experimental D: early usable entry readings, independently of secondary maxima."""
     from meaning_profile import grammatical_class, is_redirect, modern
+    if variant not in {'D', 'E'}:
+        raise ValueError(f'Unknown headline variant: {variant}')
 
     def personal(sense):
         named = sense.get('pos') == 'name' or 'proper-noun' in (sense.get('tags') or [])
@@ -75,11 +77,20 @@ def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evide
         return 'noun' if sense.get('pos') == 'name' and not personal(sense) else grammatical_class(sense)
 
     first = []
-    for senses in (senses_a, senses_b):
+    for senses, word in ((senses_a, word_a), (senses_b, word_b)):
         entries = defaultdict(list)
-        for i, sense in enumerate(senses):
-            if modern(sense) and not is_redirect(sense):
-                entries[sense.get('source_entry_key'), grammatical_class(sense), sense.get('etymology_number')].append(i)
+        usable = [i for i, sense in enumerate(senses) if modern(sense) and not is_redirect(sense)]
+        if variant == 'E':
+            usable = [i for i in usable if not {'alt-of', 'form-of'}.intersection(senses[i].get('tags') or [])]
+            ordinary = [i for i in usable if not {'humorous', 'nonstandard', 'abbreviation', 'ellipsis'}.intersection(senses[i].get('tags') or [])]
+            usable = ordinary or usable
+            forms = {i: (senses[i].get('source_entry_key') or '').split('|') for i in usable}
+            exact_classes = {grammatical_class(senses[i]) for i in usable if len(forms[i]) > 1 and forms[i][1] == word}
+            usable = [i for i in usable if grammatical_class(senses[i]) not in exact_classes
+                      or len(forms[i]) < 2 or forms[i][1] == word or forms[i][1].casefold() != word.casefold()]
+        for i in usable:
+            sense = senses[i]
+            entries[sense.get('source_entry_key'), grammatical_class(sense), sense.get('etymology_number')].append(i)
         indices = []
         for candidates in entries.values():
             unrestricted = [i for i in candidates if not RESTRICTED_USAGE.intersection(senses[i].get('tags') or [])]
@@ -144,6 +155,14 @@ def self_check():
     assert select_headline([historical | {'is_active': False}], [noun], [[0.8]], 'a', 'b', evidence) == (0, 0)
     missing = noun | {'source_entry_key': None, 'source_sense_id': None}
     assert select_headline([missing, missing | {'gloss': 'later'}], [noun], [[0.4], [0.9]], 'a', 'b', evidence) == (0, 0)
+    variant = noun | {'gloss': 'Alternative letter-case form.', 'tags': ['alt-of']}
+    assert select_headline([variant, noun], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='E') == (1, 0)
+    assert select_headline([variant], [noun], [[0.95]], 'a', 'b', evidence, variant='E') is None
+    uppercase = noun | {'source_entry_key': 'en|A|noun|1'}
+    lowercase = noun | {'source_entry_key': 'en|a|noun|1'}
+    assert select_headline([uppercase, lowercase], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='E') == (1, 0)
+    celestial = noun | {'pos': 'name', 'source_entry_key': 'en|A|name|1', 'gloss': 'A celestial body.'}
+    assert select_headline([celestial, lowercase], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='E') == (0, 0)
     print('Display selector self-check passed.')
 
 

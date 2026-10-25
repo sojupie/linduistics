@@ -14,7 +14,7 @@ sys.path.insert(0, str(OUTPUT.parent / 'src'))
 from sense_display import eligible_pairs, select_display, select_headline
 
 
-def prepare(destination):
+def prepare(destination, variant='D'):
     frozen_sample = OUTPUT / 'e1-headline005/sample.json'
     if not destination.exists():
         destination.mkdir(parents=True)
@@ -41,6 +41,10 @@ def prepare(destination):
             judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
     for r in read(OUTPUT / 'e1-entry004/review.json')['concept_judgments']:
         judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
+    if variant == 'E':
+        for r in read(OUTPUT / 'e1-headline005/review.json')['concept_judgments']:
+            judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
+        d_cases = {r['case_id']: r for r in read(OUTPUT / 'e1-headline005/cases.json')}
     pending, packet, cases = {}, [], []
     for case in read(old / 'case_displays.json'):
         control = case['displays']['control']
@@ -53,8 +57,13 @@ def prepare(destination):
         assert glosses(secondary) == control, case['case_id']
         for v in ('B', 'C'):
             assert glosses(select_display(*senses, row['matrix'], eligible, v)) == c_cases[case['case_id']]['displays'][v]
-        chosen = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words])
-        displays = {**c_cases[case['case_id']]['displays'], 'D': glosses(chosen)}
+        chosen = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words], variant=variant)
+        displays = dict(c_cases[case['case_id']]['displays'])
+        if variant == 'E':
+            d = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words])
+            assert glosses(d) == d_cases[case['case_id']]['displays']['D']
+            displays['D'] = glosses(d)
+        displays[variant] = glosses(chosen)
         result = {k: case[k] for k in ('case_id', 'panel', 'family_group', 'lang_a', 'word_a', 'lang_b', 'word_b')}
         result.update(row_words=list(words), displays=displays, headline_indices=chosen, secondary_indices=secondary,
                       headline_status='proposed' if chosen is not None else 'no_current_substantive_sense_keep_original',
@@ -71,7 +80,7 @@ def prepare(destination):
                     if ident not in judgments:
                         pending[ident] = dict(concept_id=ident[0], lang=ident[1], word=ident[2], display=ident[3],
                                               concept=concept['concept'], expected_meaning=concept['expected_meaning'])
-        if case['panel'] == 'open' and displays['D'] != control:
+        if case['panel'] == 'open' and displays[variant] != control:
             fields = ('gloss', 'pos', 'tags', 'is_active', 'source_entry_key', 'source_sense_id')
             packet.append({**result, 'senses': [[{k: s[k] for k in fields if k in s} for s in side] for side in senses]})
         cases.append(result)
@@ -81,18 +90,21 @@ def prepare(destination):
     save_json(destination / 'open_review_packet.json', packet)
     inputs = paths + [old / 'comparisons.json', old / 'case_displays.json', OUTPUT / 'e1-entry004/cases.json',
         OUTPUT / 'e1-entry004/review.json', evidence_file, frozen_sample, OUTPUT / 'E1_HEADLINE_PLAN.md', OUTPUT / 'e0_concept_results.csv']
+    if variant == 'E':
+        inputs += [OUTPUT / 'E1_HEADLINE_REVISION_PLAN.md', OUTPUT / 'e1-headline005/review.json', OUTPUT / 'e1-headline005/cases.json']
     code = [Path(__file__), OUTPUT / 'e0.py', OUTPUT / 'e1_entry.py', OUTPUT.parent / 'src/sense_display.py',
             OUTPUT.parent / 'src/meaning_profile.py', OUTPUT.parent / 'src/parser.py']
     root = OUTPUT.parent.parent
-    save_json(destination / 'protocol.json', {'run': 'E1-005', 'inputs': {str(p.relative_to(root)): digest(p) for p in inputs},
+    save_json(destination / 'protocol.json', {'run': 'E1-005' if variant == 'D' else 'E1-006', 'variant': variant, 'inputs': {str(p.relative_to(root)): digest(p) for p in inputs},
         'code': {str(p.relative_to(root)): digest(p) for p in code}, 'preserved_secondary_displays': len(cases),
         'matrix_cells_retained': sum(sum(map(len, r['matrix'])) for r in rows)})
     print(json.dumps({'concept_glosses_to_review': len(pending), 'open_displays_to_review': len(packet),
-                      'changes': dict(Counter(r['panel'] for r in cases if r['displays']['D'] != r['displays']['control']))}))
+                      'changes': dict(Counter(r['panel'] for r in cases if r['displays'][variant] != r['displays']['control']))}))
 
 
 def summarize(destination):
     protocol = read(destination / 'protocol.json')
+    candidate = protocol.get('variant', 'D')
     for path, expected in protocol['inputs'].items():
         assert digest(OUTPUT.parent.parent / path) == expected, path
     review = read(destination / 'review.json')
@@ -134,26 +146,36 @@ def summarize(destination):
         differences[v] = {'weighted_change': estimate(values, sample['strata']),
             'gains': [r['case_id'] for r in results if r['decisions'][v] == 'acceptable' and r['decisions']['control'] != 'acceptable'],
             'losses': [r['case_id'] for r in results if r['decisions'][v] != 'acceptable' and r['decisions']['control'] == 'acceptable']}
+    if candidate == 'E':
+        values = {pair: [int(r['decisions']['E'] == 'acceptable') - int(r['decisions']['D'] == 'acceptable')
+                        for r in results if r['pair'] == pair] for pair in sample['strata']}
+        differences['E_vs_D'] = {'weighted_change': estimate(values, sample['strata']),
+            'gains': [r['case_id'] for r in results if r['decisions']['E'] == 'acceptable' and r['decisions']['D'] != 'acceptable'],
+            'losses': [r['case_id'] for r in results if r['decisions']['E'] != 'acceptable' and r['decisions']['D'] == 'acceptable']}
     packet = {r['case_id']: r for r in read(destination / 'open_review_packet.json')}
     open_reviews = review['open_judgments']
     assert len(open_reviews) == len(packet) and {r['case_id'] for r in open_reviews} == set(packet)
     for r in open_reviews:
-        assert r['control'] == packet[r['case_id']]['displays']['control'] and r['D'] == packet[r['case_id']]['displays']['D']
+        assert r['control'] == packet[r['case_id']]['displays']['control'] and r[candidate] == packet[r['case_id']]['displays'][candidate]
     open_metrics = {'reviewed_changed': len(packet), 'unchanged': 207 - len(packet),
-        'headline_counts_on_changed': {v: dict(Counter(r[v + '_headline'] for r in open_reviews)) for v in ('control', 'D')},
-        'D_alignment_on_changed': dict(Counter(r['D_alignment'] for r in open_reviews)),
-        'plausibility_gains': [r['case_id'] for r in open_reviews if r['D_headline'] == 'suitable' and r['control_headline'] != 'suitable'],
-        'plausibility_losses': [r['case_id'] for r in open_reviews if r['D_headline'] != 'suitable' and r['control_headline'] == 'suitable']}
+        'headline_counts_on_changed': {v: dict(Counter(r[v + '_headline'] for r in open_reviews)) for v in ('control', candidate)},
+        candidate + '_alignment_on_changed': dict(Counter(r[candidate + '_alignment'] for r in open_reviews)),
+        'plausibility_gains': [r['case_id'] for r in open_reviews if r[candidate + '_headline'] == 'suitable' and r['control_headline'] != 'suitable'],
+        'plausibility_losses': [r['case_id'] for r in open_reviews if r[candidate + '_headline'] != 'suitable' and r['control_headline'] == 'suitable']}
     save_json(destination / 'concept_results.json', results)
     save_json(destination / 'metrics.json', {'concept_counts': counts, 'concept_by_pair': per_pair, 'weighted': weighted,
         'differences': differences, 'open': open_metrics, 'review_sha256': digest(destination / 'review.json'),
         'limits': 'Source-guided familiar development judgments. Sampling error applies only to the fixed 995-case frame; it excludes reviewer bias.'})
-    print(json.dumps({'concept_counts': counts, 'D_weighted': weighted['D'], 'D_change': differences['D'], 'open': open_metrics}, indent=2))
+    print(json.dumps({'concept_counts': counts, 'candidate_weighted': weighted[candidate], 'candidate_change': differences[candidate], 'open': open_metrics}, indent=2))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--summarize', action='store_true')
+    parser.add_argument('--variant', choices=['D', 'E'], default='D')
     args = parser.parse_args()
-    (summarize if args.summarize else prepare)(args.output)
+    if args.summarize:
+        summarize(args.output)
+    else:
+        prepare(args.output, args.variant)
