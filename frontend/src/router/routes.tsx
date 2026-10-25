@@ -48,6 +48,20 @@ export const lexiconSearchSchema = z.object({
   q: z.string().optional(),
 });
 
+const HeadlinePreviewLazy = import.meta.env.DEV
+  ? React.lazy(() => import('../routes/preview/headline.lazy').then((m) => ({ default: m.HeadlinePreview })))
+  : null;
+
+export const headlinePreviewRoute = createRoute({
+  getParentRoute: () => RootRoute,
+  path: '/lexicon-headline-preview',
+  validateSearch: z.object({ case: z.string().optional() }),
+  beforeLoad: () => {
+    if (!import.meta.env.DEV) throw redirect({ to: '/lexicon' });
+  },
+  component: () => HeadlinePreviewLazy && <Suspense fallback={<LoadingIndicator />}><HeadlinePreviewLazy /></Suspense>,
+});
+
 // Route definitions
 export const indexRoute = createRoute({
   getParentRoute: () => RootRoute,
@@ -144,6 +158,7 @@ const routeTree = RootRoute.addChildren([
   languagesRoute,
   languagesPreviewRoute,
   lexiconRoute,
+  headlinePreviewRoute,
   quizRoute,
   gamesRoute,
   falseFriendsGameRoute,

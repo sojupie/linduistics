@@ -8,9 +8,10 @@ import { TaxonomyBadge } from '../common/TaxonomyBadge';
 
 interface WordPairCardProps {
   pair: WordPair;
+  meaningSimilarityLabel?: string;
 }
 
-export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
+export const WordPairCard: React.FC<WordPairCardProps> = ({ pair, meaningSimilarityLabel = 'Meaning similarity' }) => {
 
   return (
     <article className="border border-book-rule bg-page-surface p-6 font-serif">
@@ -93,7 +94,7 @@ export const WordPairCard: React.FC<WordPairCardProps> = ({ pair }) => {
           </strong>
         </span>
         <span>
-          Meaning similarity:{' '}
+          {meaningSimilarityLabel}:{' '}
           <strong
             className={`typo-metric font-normal ${
               pair.semanticSim > 0.7
