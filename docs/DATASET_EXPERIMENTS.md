@@ -437,6 +437,12 @@ Append a record for each run under its experiment. Preserve failed hypotheses an
 
 Each completed run must include a readable account of what improved, what worsened, and why we reached the decision. Saved data supports that account. An inconclusive result must name the missing evidence and the next check needed to resolve it.
 
+### H1: fixed ordinary-headline confirmation and local preview
+
+The method was frozen before opening reserved concepts. Retrieval remains 446/544, with 98 missing comparisons. In 100 sampled expected comparisons, suitable displays rise 57 → 75 (21 gains, 3 losses; 18 missing included). In a random 100-row broader sample, plausible introductions rise 76 → 87 (13 gains, 2 losses). Weighted paired gains are 18.0 points (SE 4.3) and 10.7 points (SE 6.1); the latter remains imprecise. These are source-guided agent reviews, with 40 preallocated second-review cases pending. Broader family assignments are all unknown, so they are exploratory. The selector and source-evidence method were not tuned after opening this sample.
+
+The [result](../pipeline/evaluation/HEADLINE_CONFIRMATION_RESULT.md) separates retrieval, displayed sense, source membership, selected meaning, unchanged historical/modern labels and untested game validity. The [case account](../pipeline/evaluation/HEADLINE_CONFIRMATION_CASES.md) lists every gain/loss. A development-only artifact-backed preview shows ordinary readings above retained original matches, with the stored score explicitly attached to the original match. Browser checks covered exact selection, missing states and mobile layout; production excludes the preview data. No database change or release approval follows.
+
 ## Release decision
 
 After selecting methods with demonstrated benefits and explicit trade-offs, test their combined output against independent references and reproducible broader samples. Compare the starting dataset to identify changes and losses. Check the actual lexicon and game behavior as well as offline records. Review changed and unchanged comparisons, and investigate systematic failures before publication.

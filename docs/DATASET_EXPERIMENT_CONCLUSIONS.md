@@ -14,6 +14,16 @@ Agreement with the starting dataset is not the target.
 
 ## Recommended order
 
+**Update, 2026-10-25:** [H1 fixed-method confirmation](../pipeline/evaluation/HEADLINE_CONFIRMATION_RESULT.md)
+finds 57 → 75 suitable displays in 100 reserved concept cases (18 missing),
+and 76 → 87 plausible introductions in 100 broader rows. The broader weighted
+gain has wide uncertainty and all sampled family assignments are unknown.
+Keep F frozen for a local preview that preserves secondary matches. The actual
+preview now exists at `/lexicon-headline-preview` in development. Its data is
+frozen, not a database replacement. Independent second review, meaning/history
+classification and game validation remain separate work. H1 is now exposed;
+do not tune and reconfirm on these same cases.
+
 **Update, 2026-10-14:** the [sense-scope follow-up](../pipeline/evaluation/E2_SCOPE_RESULT.md)
 rejects a hard source-gloss similarity veto after reviewing its losses. Its
 conflict-only revision retains inference and gives a small exploratory gain.
