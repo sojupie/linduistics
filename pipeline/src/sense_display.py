@@ -63,6 +63,52 @@ def select_display(senses_a, senses_b, matrix, eligible, variant):
                (0.05 * (ranks_a[ij[0]] + ranks_b[ij[1]]) / 2 if variant in {'B', 'C'} else 0))
 
 
+def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evidence):
+    """Experimental D: early usable entry readings, independently of secondary maxima."""
+    from meaning_profile import grammatical_class, is_redirect, modern
+
+    def personal(sense):
+        named = sense.get('pos') == 'name' or 'proper-noun' in (sense.get('tags') or [])
+        return named and any(term in sense['gloss'].lower() for term in ('given name', 'surname'))
+
+    def grammar(sense):
+        return 'noun' if sense.get('pos') == 'name' and not personal(sense) else grammatical_class(sense)
+
+    first = []
+    for senses in (senses_a, senses_b):
+        entries = defaultdict(list)
+        for i, sense in enumerate(senses):
+            if modern(sense) and not is_redirect(sense):
+                entries[sense.get('source_entry_key'), grammatical_class(sense), sense.get('etymology_number')].append(i)
+        indices = []
+        for candidates in entries.values():
+            unrestricted = [i for i in candidates if not RESTRICTED_USAGE.intersection(senses[i].get('tags') or [])]
+            candidates = unrestricted or candidates
+            identity = lambda i: senses[i].get('source_sense_id') or ('unidentified', i)
+            earliest = identity(candidates[0])
+            indices.extend(i for i in candidates if identity(i) == earliest)
+        first.append(indices)
+    pairs = [(i, j) for i in first[0] for j in first[1]]
+    if not pairs:
+        return None
+    least_personal = min(int(personal(senses_a[i])) + int(personal(senses_b[j])) for i, j in pairs)
+    pairs = [(i, j) for i, j in pairs if int(personal(senses_a[i])) + int(personal(senses_b[j])) == least_personal]
+    compatible = [(i, j) for i, j in pairs if grammar(senses_a[i]) and grammar(senses_a[i]) == grammar(senses_b[j])]
+    pairs = compatible or pairs
+    source_classes = {grammar(s) for link in dictionary_evidence['dictionary_links']
+                      if link['status'] == 'current_translation_supported' for s in link['source_meanings']}
+    supported = [(i, j) for i, j in pairs if grammar(senses_a[i]) == grammar(senses_b[j])
+                 and grammar(senses_a[i]) in source_classes]
+    pairs = supported or pairs
+
+    def exact_form(sense, word):
+        parts = (sense.get('source_entry_key') or '').split('|')
+        return len(parts) > 1 and parts[1] == word
+
+    return max(pairs, key=lambda ij: (float(matrix[ij[0]][ij[1]]),
+        int(exact_form(senses_a[ij[0]], word_a)) + int(exact_form(senses_b[ij[1]], word_b)), -ij[0], -ij[1]))
+
+
 def self_check():
     ordinary = {'gloss': 'ordinary', 'source_entry_key': 'entry', 'source_sense_id': 'first'}
     slang = {'gloss': 'secondary', 'tags': ['slang'], 'source_entry_key': 'entry', 'source_sense_id': 'second'}
@@ -88,6 +134,16 @@ def self_check():
     # Compatibility never reaches outside the fixed close-score window.
     assert select_display([noun], [verb, noun], [[0.90, 0.70]], [(0, 0), (0, 1)], 'C') == (0, 0)
     assert select_display([noun], [slang | {'pos': 'noun'}], [[0.9]], [(0, 0)], 'C') == (0, 0)
+    evidence = {'dictionary_links': []}
+    secondary = noun | {'gloss': 'secondary', 'source_sense_id': 'later'}
+    assert select_headline([noun, secondary], [noun], [[0.4], [0.95]], 'a', 'b', evidence) == (0, 0)
+    # Removing the headline window never removes the strongest secondary match.
+    assert max([(0, 0), (1, 0)], key=lambda ij: [[0.4], [0.95]][ij[0]][ij[1]]) == (1, 0)
+    assert select_headline([name, noun], [noun], [[0.95], [0.4]], 'a', 'b', evidence) == (1, 0)
+    assert select_headline([noun | {'is_active': False}], [noun], [[1]], 'a', 'b', evidence) is None
+    assert select_headline([historical | {'is_active': False}], [noun], [[0.8]], 'a', 'b', evidence) == (0, 0)
+    missing = noun | {'source_entry_key': None, 'source_sense_id': None}
+    assert select_headline([missing, missing | {'gloss': 'later'}], [noun], [[0.4], [0.9]], 'a', 'b', evidence) == (0, 0)
     print('Display selector self-check passed.')
 
 
