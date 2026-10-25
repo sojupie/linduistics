@@ -41,10 +41,14 @@ def prepare(destination, variant='D'):
             judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
     for r in read(OUTPUT / 'e1-entry004/review.json')['concept_judgments']:
         judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
-    if variant == 'E':
+    if variant in {'E', 'F'}:
         for r in read(OUTPUT / 'e1-headline005/review.json')['concept_judgments']:
             judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
         d_cases = {r['case_id']: r for r in read(OUTPUT / 'e1-headline005/cases.json')}
+    if variant == 'F':
+        for r in read(OUTPUT / 'e1-headline006/review.json')['concept_judgments']:
+            judgments[r['concept_id'], r['lang'], r['word'], r['display']] = r['decision']
+        e_cases = {r['case_id']: r for r in read(OUTPUT / 'e1-headline006/cases.json')}
     pending, packet, cases = {}, [], []
     for case in read(old / 'case_displays.json'):
         control = case['displays']['control']
@@ -59,10 +63,14 @@ def prepare(destination, variant='D'):
             assert glosses(select_display(*senses, row['matrix'], eligible, v)) == c_cases[case['case_id']]['displays'][v]
         chosen = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words], variant=variant)
         displays = dict(c_cases[case['case_id']]['displays'])
-        if variant == 'E':
+        if variant in {'E', 'F'}:
             d = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words])
             assert glosses(d) == d_cases[case['case_id']]['displays']['D']
             displays['D'] = glosses(d)
+        if variant == 'F':
+            e = select_headline(*senses, row['matrix'], row['word_a'], row['word_b'], evidence[words], variant='E')
+            assert glosses(e) == e_cases[case['case_id']]['displays']['E']
+            displays['E'] = glosses(e)
         displays[variant] = glosses(chosen)
         result = {k: case[k] for k in ('case_id', 'panel', 'family_group', 'lang_a', 'word_a', 'lang_b', 'word_b')}
         result.update(row_words=list(words), displays=displays, headline_indices=chosen, secondary_indices=secondary,
@@ -90,12 +98,14 @@ def prepare(destination, variant='D'):
     save_json(destination / 'open_review_packet.json', packet)
     inputs = paths + [old / 'comparisons.json', old / 'case_displays.json', OUTPUT / 'e1-entry004/cases.json',
         OUTPUT / 'e1-entry004/review.json', evidence_file, frozen_sample, OUTPUT / 'E1_HEADLINE_PLAN.md', OUTPUT / 'e0_concept_results.csv']
-    if variant == 'E':
+    if variant in {'E', 'F'}:
         inputs += [OUTPUT / 'E1_HEADLINE_REVISION_PLAN.md', OUTPUT / 'e1-headline005/review.json', OUTPUT / 'e1-headline005/cases.json']
+    if variant == 'F':
+        inputs += [OUTPUT / 'E1_HEADLINE_ENTRY_PLAN.md', OUTPUT / 'e1-headline006/review.json', OUTPUT / 'e1-headline006/cases.json']
     code = [Path(__file__), OUTPUT / 'e0.py', OUTPUT / 'e1_entry.py', OUTPUT.parent / 'src/sense_display.py',
             OUTPUT.parent / 'src/meaning_profile.py', OUTPUT.parent / 'src/parser.py']
     root = OUTPUT.parent.parent
-    save_json(destination / 'protocol.json', {'run': 'E1-005' if variant == 'D' else 'E1-006', 'variant': variant, 'inputs': {str(p.relative_to(root)): digest(p) for p in inputs},
+    save_json(destination / 'protocol.json', {'run': {'D': 'E1-005', 'E': 'E1-006', 'F': 'E1-007'}[variant], 'variant': variant, 'inputs': {str(p.relative_to(root)): digest(p) for p in inputs},
         'code': {str(p.relative_to(root)): digest(p) for p in code}, 'preserved_secondary_displays': len(cases),
         'matrix_cells_retained': sum(sum(map(len, r['matrix'])) for r in rows)})
     print(json.dumps({'concept_glosses_to_review': len(pending), 'open_displays_to_review': len(packet),
@@ -146,12 +156,12 @@ def summarize(destination):
         differences[v] = {'weighted_change': estimate(values, sample['strata']),
             'gains': [r['case_id'] for r in results if r['decisions'][v] == 'acceptable' and r['decisions']['control'] != 'acceptable'],
             'losses': [r['case_id'] for r in results if r['decisions'][v] != 'acceptable' and r['decisions']['control'] == 'acceptable']}
-    if candidate == 'E':
-        values = {pair: [int(r['decisions']['E'] == 'acceptable') - int(r['decisions']['D'] == 'acceptable')
+    for comparator in (['D'] if candidate == 'E' else ['D', 'E'] if candidate == 'F' else []):
+        values = {pair: [int(r['decisions'][candidate] == 'acceptable') - int(r['decisions'][comparator] == 'acceptable')
                         for r in results if r['pair'] == pair] for pair in sample['strata']}
-        differences['E_vs_D'] = {'weighted_change': estimate(values, sample['strata']),
-            'gains': [r['case_id'] for r in results if r['decisions']['E'] == 'acceptable' and r['decisions']['D'] != 'acceptable'],
-            'losses': [r['case_id'] for r in results if r['decisions']['E'] != 'acceptable' and r['decisions']['D'] == 'acceptable']}
+        differences[candidate + '_vs_' + comparator] = {'weighted_change': estimate(values, sample['strata']),
+            'gains': [r['case_id'] for r in results if r['decisions'][candidate] == 'acceptable' and r['decisions'][comparator] != 'acceptable'],
+            'losses': [r['case_id'] for r in results if r['decisions'][candidate] != 'acceptable' and r['decisions'][comparator] == 'acceptable']}
     packet = {r['case_id']: r for r in read(destination / 'open_review_packet.json')}
     open_reviews = review['open_judgments']
     assert len(open_reviews) == len(packet) and {r['case_id'] for r in open_reviews} == set(packet)
@@ -173,7 +183,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--summarize', action='store_true')
-    parser.add_argument('--variant', choices=['D', 'E'], default='D')
+    parser.add_argument('--variant', choices=['D', 'E', 'F'], default='D')
     args = parser.parse_args()
     if args.summarize:
         summarize(args.output)

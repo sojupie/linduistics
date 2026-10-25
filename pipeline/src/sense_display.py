@@ -66,7 +66,7 @@ def select_display(senses_a, senses_b, matrix, eligible, variant):
 def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evidence, *, variant='D'):
     """Experimental D: early usable entry readings, independently of secondary maxima."""
     from meaning_profile import grammatical_class, is_redirect, modern
-    if variant not in {'D', 'E'}:
+    if variant not in {'D', 'E', 'F'}:
         raise ValueError(f'Unknown headline variant: {variant}')
 
     def personal(sense):
@@ -80,7 +80,7 @@ def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evide
     for senses, word in ((senses_a, word_a), (senses_b, word_b)):
         entries = defaultdict(list)
         usable = [i for i, sense in enumerate(senses) if modern(sense) and not is_redirect(sense)]
-        if variant == 'E':
+        if variant in {'E', 'F'}:
             usable = [i for i in usable if not {'alt-of', 'form-of'}.intersection(senses[i].get('tags') or [])]
             ordinary = [i for i in usable if not {'humorous', 'nonstandard', 'abbreviation', 'ellipsis'}.intersection(senses[i].get('tags') or [])]
             usable = ordinary or usable
@@ -88,6 +88,10 @@ def select_headline(senses_a, senses_b, matrix, word_a, word_b, dictionary_evide
             exact_classes = {grammatical_class(senses[i]) for i in usable if len(forms[i]) > 1 and forms[i][1] == word}
             usable = [i for i in usable if grammatical_class(senses[i]) not in exact_classes
                       or len(forms[i]) < 2 or forms[i][1] == word or forms[i][1].casefold() != word.casefold()]
+        if variant == 'F':
+            lexical = [i for i in usable if senses[i].get('pos') != 'name'
+                       and 'proper-noun' not in (senses[i].get('tags') or [])]
+            usable = lexical or usable
         for i in usable:
             sense = senses[i]
             entries[sense.get('source_entry_key'), grammatical_class(sense), sense.get('etymology_number')].append(i)
@@ -163,6 +167,8 @@ def self_check():
     assert select_headline([uppercase, lowercase], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='E') == (1, 0)
     celestial = noun | {'pos': 'name', 'source_entry_key': 'en|A|name|1', 'gloss': 'A celestial body.'}
     assert select_headline([celestial, lowercase], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='E') == (0, 0)
+    assert select_headline([celestial, lowercase], [noun], [[0.95], [0.4]], 'a', 'b', evidence, variant='F') == (1, 0)
+    assert select_headline([celestial], [celestial], [[0.95]], 'a', 'a', evidence, variant='F') == (0, 0)
     print('Display selector self-check passed.')
 
 
