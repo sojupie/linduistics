@@ -6,10 +6,13 @@
 #>
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$PythonExe = Join-Path $ScriptDir "pipeline\.venv\Scripts\python.exe"
+$OnWindows = $env:OS -eq "Windows_NT"
+$VenvPath = if ($OnWindows) { "pipeline/.venv/Scripts/python.exe" } else { "pipeline/.venv/bin/python" }
+$PythonExe = Join-Path $ScriptDir $VenvPath
 
 if (-not (Test-Path $PythonExe)) {
-    $PythonExe = "python"
+    $PythonExe = if ($OnWindows) { "python" } else { "python3" }
 }
 
 & $PythonExe (Join-Path $ScriptDir "run_backends.py") @args
+exit $LASTEXITCODE

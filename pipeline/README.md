@@ -6,6 +6,14 @@ The pipeline preserves the accepted five-language result. It does not change can
 
 From the repository root, with the local dumps, cached model, and PostgreSQL available:
 
+Linux:
+
+```bash
+pipeline/.venv/bin/python pipeline/run.py --run-dir pipeline/data/builds/20261003-formalized
+```
+
+Windows:
+
 ```powershell
 pipeline/.venv/Scripts/python.exe pipeline/run.py --run-dir pipeline/data/builds/20261003-formalized
 ```
@@ -37,6 +45,14 @@ Publication takes database locks while replacing these tables; readers can wait 
 The existing individual scripts remain available for diagnosis. `db/seed_db.py` now loads core tags when the input includes them. Use the runner and publisher for a complete release rather than combining individual commands manually.
 
 ## Verification
+
+Linux:
+
+```bash
+pipeline/.venv/bin/python -m pytest pipeline/tests -q -p no:cacheprovider
+```
+
+Windows:
 
 ```powershell
 pipeline/.venv/Scripts/python.exe -m pytest pipeline/tests -q -p no:cacheprovider

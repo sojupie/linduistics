@@ -29,4 +29,4 @@ Transfer this branch and its commits; a local commit is not automatically synced
 
 Full reruns also need the ignored local inputs: `pipeline/data/reproduce-five-language-20261002/` (including comparisons and lemma Parquets), plus the pinned model or permission to download it. Model revision and input hashes are in that run's `protocol.json`. Recreate Python/frontend dependencies; a database is unnecessary for offline selection work.
 
-Check `git status` before moving: startup changes in `run_backends.py`, `run-backends.ps1`, `pipeline/README.md`, and untracked startup/dependency/test files remain uncommitted. Transfer them separately if wanted; preserve them during this work.
+The cross-platform startup scripts, dependency list, launcher tests and startup docs are now committed too. Follow the root README to recreate the local environment. Check `git status` for any later local changes before moving.
