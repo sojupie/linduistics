@@ -34,8 +34,8 @@ git switch codex/e2-sense-scope
 
 The code, startup instructions, handoff note, and saved evaluation cases are in Git. The saved rows, matrices and reviews are under `pipeline/evaluation/headline-confirmation002/`.
 
-The full dataset is **not in Git**. To rerun selection and evaluate fresh cases, copy this directory from the Linux machine into the same relative location in the other checkout:
+The full dataset is **not in Git**, but it is already present in the Windows checkout at `Users/ollem/Git/Github/linduistics/pipeline/data/reproduce-five-language-20261002/` on volume `001C3C8E1C3C8128`.
 
-`pipeline/data/reproduce-five-language-20261002/` — approximately 724 MB, containing the comparison, lemma and word-form Parquets.
+On 2026-11-19, all **12 files (758,852,300 bytes, approximately 724 MiB)** there were SHA-256 verified against the Linux source. Every file was already identical, so no replacement was needed. `LINUX_TRANSFER_VERIFICATION.json` and `LINUX_TRANSFER_README.txt` in that folder record the verification. No further dataset transfer is needed for that checkout. Keep this ignored folder when updating the repository.
 
 Recreate dependencies using the root README. Download the pinned embedding model if it is not cached; its revision and the dataset hashes are recorded in `pipeline/evaluation/headline-confirmation002/protocol.json`. Offline selector work does not need a database.
