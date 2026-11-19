@@ -25,8 +25,17 @@ Preserve original results. The old dataset is a starting point, not an accuracy 
 
 ## Moving machines
 
-Transfer this branch and its commits; a local commit is not automatically synced. Saved sample rows, matrices and reviews are in `pipeline/evaluation/headline-confirmation002/`.
+The branch is already pushed to GitHub. In the other machine's checkout:
 
-Full reruns also need the ignored local inputs: `pipeline/data/reproduce-five-language-20261002/` (including comparisons and lemma Parquets), plus the pinned model or permission to download it. Model revision and input hashes are in that run's `protocol.json`. Recreate Python/frontend dependencies; a database is unnecessary for offline selection work.
+```bash
+git fetch origin
+git switch codex/e2-sense-scope
+```
 
-The cross-platform startup scripts, dependency list, launcher tests and startup docs are now committed too. Follow the root README to recreate the local environment. Check `git status` for any later local changes before moving.
+The code, startup instructions, handoff note, and saved evaluation cases are in Git. The saved rows, matrices and reviews are under `pipeline/evaluation/headline-confirmation002/`.
+
+The full dataset is **not in Git**. To rerun selection and evaluate fresh cases, copy this directory from the Linux machine into the same relative location in the other checkout:
+
+`pipeline/data/reproduce-five-language-20261002/` — approximately 724 MB, containing the comparison, lemma and word-form Parquets.
+
+Recreate dependencies using the root README. Download the pinned embedding model if it is not cached; its revision and the dataset hashes are recorded in `pipeline/evaluation/headline-confirmation002/protocol.json`. Offline selector work does not need a database.
